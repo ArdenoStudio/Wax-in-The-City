@@ -15,23 +15,39 @@ const ICONS: Record<ServiceCategory, LucideIcon> = {
   "hydra-facial": Droplets,
 };
 
-/** Service category overview (file 08, section 05). 2×2 mobile, 4-col desktop. */
+/** Service category overview with a sharper menu-led layout. */
 export function ServicesGrid() {
   return (
-    <section className="bg-cream-alt px-5 py-section lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeading
-          eyebrow="What we do"
-          title="Treatments made for you."
-          subtitle="Four kinds of care, each done with the same genuine attention."
-        />
+    <section className="bg-cream px-5 py-section-lg lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <div className="w-full min-w-0 max-w-[calc(100vw-2.5rem)] sm:max-w-full lg:sticky lg:top-28">
+          <SectionHeading
+            eyebrow="Treatment menu"
+            title="Specialist care, not a salon buffet."
+            subtitle="Focused services. Clean prep. Appointment-led care."
+            align="left"
+            className="w-full max-w-[calc(100vw-2.5rem)] sm:max-w-full"
+          />
+          <div className="mt-8 max-w-full border-l-2 border-brand-action pl-5">
+            <p className="max-w-full break-words font-serif text-h4 italic text-warm sm:text-h3">
+              Waxing is the hero. Skin care supports the promise.
+            </p>
+            <Link
+              href="/services"
+              className="mt-6 inline-flex items-center gap-2 rounded-pill bg-ink px-5 py-3 text-body-sm font-medium text-cream transition-colors hover:bg-brand-action"
+            >
+              Full menu
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
 
         <motion.div
           variants={staggerFast}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6"
+          className="grid gap-4 sm:grid-cols-2"
         >
           {SERVICE_CATEGORIES.map((cat) => {
             const Icon = ICONS[cat.slug];
@@ -39,17 +55,20 @@ export function ServicesGrid() {
               <motion.div key={cat.slug} variants={fadeUp}>
                 <Link
                   href={`/services/${cat.href}`}
-                  className="group flex h-full flex-col rounded-card-lg border border-warm-border bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover sm:p-6"
+                  className="group flex min-h-[260px] flex-col border border-warm-border bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-brand-action/50 hover:shadow-card-hover sm:p-7"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-pill bg-brand-mist text-brand-action transition-colors group-hover:bg-brand-action group-hover:text-cream">
-                    <Icon className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-4 font-serif text-h3 text-warm">{cat.name}</h3>
-                  <p className="mt-2 flex-1 text-body-sm text-warm-grey">{cat.short}</p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-caption font-semibold uppercase tracking-wide text-brand-action">
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-pill bg-brand-mist text-brand-action transition-colors group-hover:bg-brand-action group-hover:text-cream">
+                      <Icon className="h-6 w-6" />
+                    </span>
+                    <span className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action">
                       {formatLKRFrom(cat.priceFrom)}
                     </span>
+                  </div>
+                  <h3 className="mt-8 font-serif text-h2 font-light text-warm">{cat.name}</h3>
+                  <p className="mt-2 flex-1 text-body-sm text-warm-grey">{cat.short}</p>
+                  <div className="mt-7 flex items-center justify-between border-t border-warm-border pt-4">
+                    <span className="text-body-sm font-medium text-warm">Explore</span>
                     <ArrowRight className="h-4 w-4 text-brand-action transition-transform group-hover:translate-x-1" />
                   </div>
                 </Link>

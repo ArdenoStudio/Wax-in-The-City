@@ -1,30 +1,34 @@
-import { TESTIMONIALS } from "@/lib/site";
-import { TestimonialCard } from "@/components/ui/testimonial-card";
+import { REVIEW_THEMES } from "@/lib/site";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 /**
- * Auto-scrolling testimonial marquee (file 08, section 08) — Aceternity
- * "Infinite Moving Cards" pattern. Two identical groups, track translates -50%,
- * pauses on hover, stilled by reduced-motion.
+ * Public review theme section. This avoids shipping fake client testimonials
+ * while still making the strongest social-proof themes visible.
  */
 export function TestimonialsCarousel() {
   return (
-    <section className="overflow-hidden bg-cream py-section">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+    <section className="bg-cream px-5 py-section-lg lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
         <SectionHeading
-          eyebrow="In their words"
-          title="What our guests are saying."
+          eyebrow="Public review themes"
+          title="The proof is not loud. It is consistent."
+          subtitle="Across public reviews, the same signals keep showing up: clean process, gentle handling, and careful product choice."
         />
-      </div>
 
-      <div className="group relative mt-12 overflow-hidden">
-        {/* Edge fades */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-cream to-transparent sm:w-28" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-cream to-transparent sm:w-28" />
-
-        <div className="flex w-max animate-marquee-slow gap-5 px-2.5">
-          {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
-            <TestimonialCard key={i} testimonial={t} />
+        <div className="grid gap-4">
+          {REVIEW_THEMES.map((theme, i) => (
+            <article
+              key={theme.title}
+              className="grid gap-4 border border-warm-border bg-white p-5 sm:grid-cols-[72px_1fr] sm:p-6"
+            >
+              <span className="font-serif text-[2.5rem] font-light leading-none text-brand-action">
+                0{i + 1}
+              </span>
+              <div>
+                <h3 className="font-serif text-h3 text-warm">{theme.title}</h3>
+                <p className="mt-2 text-body-sm text-warm-grey">{theme.body}</p>
+              </div>
+            </article>
           ))}
         </div>
       </div>

@@ -8,7 +8,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { BookingZone } from "@/components/sections/BookingZone";
 
 const BRANCH_IMAGES: Record<BranchSlug, string> = {
-  battaramulla: "https://images.unsplash.com/photo-1596178060810-72660ee8d2c0?q=80&w=1600&auto=format&fit=crop",
+  battaramulla: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1600&auto=format&fit=crop",
   nugegoda: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop",
 };
 

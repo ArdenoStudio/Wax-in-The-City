@@ -43,12 +43,12 @@ export const GALLERY: GalleryImage[] = [
     category: "events",
   },
   {
-    src: "https://images.unsplash.com/photo-1596178060810-72660ee8d2c0?q=80&w=900&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=900&auto=format&fit=crop",
     alt: "Soft neutral spa interior",
     category: "salon",
   },
   {
-    src: "https://images.unsplash.com/photo-1607006677169-c0eb0e7c5f4f?q=80&w=900&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?q=80&w=900&auto=format&fit=crop",
     alt: "Glowing, healthy skin result",
     category: "results",
   },

@@ -8,9 +8,9 @@
 export const SITE = {
   name: "Wax In The City SL",
   shortName: "Wax In The City",
-  tagline: "Smooth. Safe. Genuine.",
+  tagline: "Private waxing, done properly.",
   description:
-    "Ladies-only waxing & beauty in Colombo — waxing, facials, Moroccan treatments and hydra facials across two branches in Battaramulla and Nugegoda.",
+    "Ladies-only waxing and skin care in Colombo — known for careful hygiene, premium products, and private appointment-led care.",
   url: "https://waxinthecitylk.com",
   locale: "en_LK",
   instagram: "https://instagram.com/waxinthecitylk",
@@ -18,7 +18,7 @@ export const SITE = {
 } as const;
 
 /** Default WhatsApp number — overridable via NEXT_PUBLIC_WHATSAPP_NUMBER. */
-const DEFAULT_WHATSAPP = "94770000000"; // TBC from client — placeholder
+const DEFAULT_WHATSAPP = "94779469437";
 
 export function whatsappNumber(): string {
   return process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? DEFAULT_WHATSAPP;
@@ -50,8 +50,8 @@ export const BRANCHES: Branch[] = [
     slug: "battaramulla",
     name: "Battaramulla",
     area: "Battaramulla, Colombo",
-    address: "Battaramulla, Colombo (exact address to be confirmed)",
-    phone: "+94 77 000 0000",
+    address: "15, 3 Centre Rd, Battaramulla 10120, Sri Lanka",
+    phone: "+94 77 946 9437",
     whatsapp: DEFAULT_WHATSAPP,
     hours: {
       weekday: "9:00 AM – 6:00 PM",
@@ -59,14 +59,14 @@ export const BRANCHES: Branch[] = [
       poya: "Closed on Poya days & public holidays",
     },
     googleMapsUrl: "https://maps.google.com/?q=Battaramulla+Colombo",
-    blurb: "Our Battaramulla studio — a calm, private space east of the city.",
+    blurb: "A private appointment-led studio with calm rooms and careful treatment flow.",
   },
   {
     slug: "nugegoda",
     name: "Nugegoda",
     area: "Nugegoda, Colombo",
     address: "Nugegoda, Colombo (exact address to be confirmed)",
-    phone: "+94 77 000 0000",
+    phone: "+94 77 946 9437",
     whatsapp: DEFAULT_WHATSAPP,
     hours: {
       weekday: "9:00 AM – 6:00 PM",
@@ -74,7 +74,7 @@ export const BRANCHES: Branch[] = [
       poya: "Closed on Poya days & public holidays",
     },
     googleMapsUrl: "https://maps.google.com/?q=Nugegoda+Colombo",
-    blurb: "Our Nugegoda studio — easy to reach in the heart of the suburb.",
+    blurb: "A convenient second studio for guests closer to the High Level Road side.",
   },
 ];
 
@@ -99,16 +99,16 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     slug: "waxing",
     href: "waxing",
     name: "Waxing",
-    short: "Clean, gentle waxing that leaves you genuinely smooth.",
+    short: "Root-clean hair removal with careful prep and fresh tools.",
     description:
-      "Premium soft wax that removes hair cleanly at the root, with a gentle technique made for sensitive skin. Fresh wax, clean tools, and a private room — every time.",
+      "A focused waxing menu for women who care about hygiene as much as the final result. Fresh wax, no rushed handling, and a private room — every time.",
     priceFrom: 800,
   },
   {
     slug: "facial",
     href: "facials",
     name: "Facials",
-    short: "Cleansing, brightening facials tailored to your skin.",
+    short: "Calm skin work for glow, texture, and maintenance.",
     description:
       "Facial care designed around your skin — from a classic cleanse to a brightening treatment that leaves you glowing, without the hard sell.",
     priceFrom: 3500,
@@ -117,7 +117,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     slug: "moroccan",
     href: "moroccan",
     name: "Moroccan",
-    short: "An authentic black-soap & clay ritual for radiant skin.",
+    short: "A deep-clean ritual using black soap and clay.",
     description:
       "A deep-cleansing ritual with authentic Moroccan black soap and clay that draws out impurities and nourishes deeply. Used for centuries across North Africa — now in Colombo.",
     priceFrom: 4500,
@@ -126,7 +126,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     slug: "hydra-facial",
     href: "hydra-facial",
     name: "Hydra Facial",
-    short: "Cleanse, extract and hydrate — results, not recovery.",
+    short: "Cleanse, extract, hydrate — visible refresh without downtime.",
     description:
       "A professional multi-step facial that cleanses, extracts and hydrates in under an hour. Active serums, zero downtime, visible results from the first session.",
     priceFrom: 7500,
@@ -234,10 +234,39 @@ export const NAV_LINKS = [
 ] as const;
 
 export const TRUST_PILLARS = [
-  { title: "Fresh wax, every time", body: "Single-use wax strips and clean tools for every guest — always." },
-  { title: "Ladies-only space", body: "A private, women-only studio where you can truly relax." },
-  { title: "Certified therapists", body: "Trained, certified therapists who take genuine care." },
-  { title: "Two Colombo locations", body: "Find us in Battaramulla and Nugegoda, close to home." },
+  { title: "No double dipping", body: "Spatulas and strips are treated as single-use once they touch skin." },
+  { title: "Private rooms", body: "Ladies-only spaces designed for calm, comfortable appointments." },
+  { title: "Skin-first choices", body: "Therapists match products and pressure to your skin and service." },
+  { title: "Appointment led", body: "Requests are reviewed before confirmation so visits do not feel rushed." },
+] as const;
+
+export const CARE_STANDARDS = [
+  "Fresh wax setup before every guest",
+  "Disposable covers and clean prep surfaces",
+  "Clear after-care guidance before you leave",
+  "Quiet rooms, no rushed open-floor service",
+] as const;
+
+export const REVIEW_THEMES = [
+  {
+    title: "Cleanliness people notice",
+    body: "Guests repeatedly mention fresh tools, disposable covers, and a studio that feels looked after.",
+  },
+  {
+    title: "Less fear around waxing",
+    body: "The recurring signal is comfort: first-timers and regulars both call out gentle handling.",
+  },
+  {
+    title: "Product quality matters",
+    body: "Public reviews often mention premium wax, careful product choice, and skin-aware recommendations.",
+  },
+] as const;
+
+export const HOMEPAGE_STATS = [
+  { value: "5.0", label: "public review signal" },
+  { value: "135+", label: "review count found online" },
+  { value: "14+", label: "treatment options" },
+  { value: "24h", label: "request confirmation window" },
 ] as const;
 
 export const MARQUEE_WORDS = [

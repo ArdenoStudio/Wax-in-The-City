@@ -38,11 +38,11 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         scrolled
-          ? "bg-cream/95 shadow-nav backdrop-blur-sm"
+          ? "bg-cream/92 shadow-nav backdrop-blur-md"
           : "bg-transparent"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:h-20 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:h-20 sm:px-5 lg:px-8">
         {/* Logo */}
         <Link
           href="/"
@@ -71,7 +71,12 @@ export function Navbar() {
         </Link>
 
         {/* Desktop links (centre) */}
-        <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex">
+        <div
+          className={cn(
+            "absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 rounded-pill px-2 py-1 lg:flex",
+            onDark ? "border border-cream/12 bg-ink/22 backdrop-blur-md" : "border border-warm-border/70 bg-white/70"
+          )}
+        >
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href || pathname.startsWith(link.href + "/");
             return (
@@ -80,7 +85,7 @@ export function Navbar() {
                 href={link.href}
                 data-active={active}
                 className={cn(
-                  "nav-link text-body-sm font-medium tracking-wide transition-colors",
+                  "rounded-pill px-4 py-2 text-body-sm font-medium tracking-wide transition-colors",
                   onDark ? "text-cream/90 hover:text-cream" : "text-warm hover:text-brand-action"
                 )}
               >
@@ -91,7 +96,7 @@ export function Navbar() {
         </div>
 
         {/* Right: Book CTA + mobile hamburger */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
           <Button
             asChild
             size="sm"
@@ -99,11 +104,6 @@ export function Navbar() {
             className="hidden sm:inline-flex"
           >
             <Link href="/book">Book Your Visit</Link>
-          </Button>
-
-          {/* Mobile Book pill */}
-          <Button asChild size="sm" variant={onDark ? "ghost" : "primary"} className="sm:hidden">
-            <Link href="/book">Book</Link>
           </Button>
 
           {/* Mobile hamburger */}

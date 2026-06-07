@@ -24,19 +24,23 @@ export function BookingZone({
   defaultBranch,
   defaultService,
   heading = "Ready when you are.",
-  subtitle = "Send a request and we'll confirm within 24 hours — or reach us instantly on WhatsApp.",
+  subtitle = "Send a request and the team will confirm before your visit. For urgent slots, WhatsApp is still the fastest route.",
   standalone = true,
 }: BookingZoneProps) {
   return (
     <section
       id="book"
-      className={standalone ? "bg-cream px-5 py-section-lg lg:px-8" : "px-5 lg:px-8"}
+      className={standalone ? "bg-ink px-5 py-section-lg text-cream lg:px-8" : "px-5 lg:px-8"}
     >
       <div className="mx-auto max-w-2xl">
-        {/* Maroon accent line at top (file 08) */}
-        <div className="mx-auto mb-8 h-0.5 w-16 rounded-pill bg-brand-action" />
+        <div className="mx-auto mb-8 h-0.5 w-16 rounded-pill bg-gold" />
 
-        <SectionHeading eyebrow="Book your visit" title={heading} subtitle={subtitle} />
+        <SectionHeading
+          eyebrow="Book your visit"
+          title={heading}
+          subtitle={subtitle}
+          tone={standalone ? "light" : "dark"}
+        />
 
         <div
           className="mt-12"
@@ -52,13 +56,13 @@ export function BookingZone({
           )}
         </div>
 
-        <p className="mt-6 text-center text-body-sm text-warm-grey">
+        <p className={standalone ? "mt-6 text-center text-body-sm text-cream/60" : "mt-6 text-center text-body-sm text-warm-grey"}>
           Prefer to chat?{" "}
           <a
             href={whatsappLink("Hi! I'd like to ask about a booking.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-brand-action underline-offset-4 hover:underline"
+            className={standalone ? "font-medium text-brand-light underline-offset-4 hover:underline" : "font-medium text-brand-action underline-offset-4 hover:underline"}
           >
             Message us on WhatsApp
           </a>
@@ -71,8 +75,8 @@ export function BookingZone({
 /** Reserved wrapper for the future Dinaya embed. */
 function DinayaPlaceholder() {
   return (
-    <div className="dinaya-widget-zone flex h-[480px] items-center justify-center rounded-card-lg border border-dashed border-warm-border bg-cream-alt text-center">
-      <p className="px-6 text-body text-warm-grey">
+    <div className="dinaya-widget-zone flex h-[480px] items-center justify-center border border-dashed border-cream/24 bg-cream/5 text-center">
+      <p className="px-6 text-body text-cream/66">
         Online booking is coming soon. For now, please send a request or message us
         on WhatsApp.
       </p>
@@ -82,11 +86,11 @@ function DinayaPlaceholder() {
 
 function WhatsappOnly() {
   return (
-    <div className="flex flex-col items-center rounded-card-lg border border-warm-border bg-white p-8 text-center shadow-card">
-      <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-brand-mist text-brand-action">
+    <div className="flex flex-col items-center border border-cream/12 bg-cream/5 p-8 text-center">
+      <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-cream/10 text-brand-light">
         <WhatsappIcon className="h-7 w-7" />
       </span>
-      <p className="mt-5 max-w-sm text-body text-warm-grey">
+      <p className="mt-5 max-w-sm text-body text-cream/66">
         The quickest way to book is a quick WhatsApp message. We&apos;ll confirm a
         time that works for you.
       </p>

@@ -1,8 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { blurFade, drawUnderline, viewportOnce } from "@/lib/animations";
 
 interface SectionHeadingProps {
   /** Small uppercase eyebrow above the title. */
@@ -37,39 +35,26 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <motion.span
-          variants={blurFade}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
+        <span
           className={cn(
             "mb-3 text-caption font-semibold uppercase tracking-[0.18em]",
             light ? "text-brand-light" : "text-brand-action"
           )}
         >
           {eyebrow}
-        </motion.span>
+        </span>
       )}
 
-      <div className="relative inline-block">
-        <motion.h2
-          variants={blurFade}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
+      <div className="relative inline-block max-w-full">
+        <h2
           className={cn(
-            "font-serif text-h2 font-medium sm:text-[2.5rem] sm:leading-tight",
+            "max-w-full break-words font-serif text-h2 font-medium sm:text-[2.5rem] sm:leading-tight",
             light ? "text-cream" : "text-warm"
           )}
         >
           {title}
-        </motion.h2>
-        <motion.span
-          variants={drawUnderline}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          style={{ transformOrigin: "left" }}
+        </h2>
+        <span
           className={cn(
             "absolute -bottom-2 left-0 block h-[2px] w-full",
             light ? "bg-brand-light" : "bg-brand-action/70",
@@ -79,18 +64,14 @@ export function SectionHeading({
       </div>
 
       {subtitle && (
-        <motion.p
-          variants={blurFade}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
+        <p
           className={cn(
-            "mt-6 max-w-xl text-body-lg",
+            "mt-6 w-full max-w-xl break-words text-body-lg",
             light ? "text-cream/70" : "text-warm-grey"
           )}
         >
           {subtitle}
-        </motion.p>
+        </p>
       )}
     </div>
   );

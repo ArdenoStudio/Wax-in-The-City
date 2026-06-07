@@ -2,7 +2,6 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { BranchSelector } from "@/components/sections/BranchSelector";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { TrustStrip } from "@/components/sections/TrustStrip";
-import { MarqueeStrip } from "@/components/ui/marquee-strip";
 import { TestimonialsCarousel } from "@/components/sections/TestimonialsCarousel";
 import { GalleryTeaser } from "@/components/sections/GalleryTeaser";
 import { BookingZone } from "@/components/sections/BookingZone";
@@ -12,14 +11,13 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <BranchSelector />
       <ServicesGrid />
       <TrustStrip />
-      <MarqueeStrip />
+      <BranchSelector />
       <TestimonialsCarousel />
       <GalleryTeaser />
-      <BookingZone />
       <AboutTeaser />
+      <BookingZone />
     </>
   );
 }

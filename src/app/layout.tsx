@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
-import { LoadingScreen } from "@/components/global/LoadingScreen";
 import { Navbar } from "@/components/global/Navbar";
 import { Footer } from "@/components/global/Footer";
 import { MobileBookingBar } from "@/components/global/MobileBookingBar";
@@ -65,10 +64,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${dmSans.variable} ${cormorant.variable} antialiased`}
     >
       <body className="min-h-screen bg-cream text-warm">
-        <LoadingScreen />
         <Navbar />
         <main className="flex min-h-screen flex-col">{children}</main>
         <Footer />

@@ -16,22 +16,23 @@ export function BranchCard({ branch, variant = "compact" }: BranchCardProps) {
   );
 
   return (
-    <div className="group flex h-full flex-col rounded-card-lg border border-warm-border bg-white p-6 shadow-card transition-shadow duration-300 hover:shadow-card-hover sm:p-7">
+    <div className="group flex h-full flex-col border border-warm-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-action/40 hover:shadow-card-hover sm:p-7">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-caption font-semibold uppercase tracking-[0.16em] text-brand-action">
             Branch
           </p>
-          <h3 className="mt-1 font-serif text-h3 text-warm">{branch.name}</h3>
+          <h3 className="mt-1 font-serif text-h2 font-light text-warm">{branch.name}</h3>
         </div>
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-pill bg-brand-mist text-brand-action">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-pill bg-ink text-cream">
           <MapPin className="h-5 w-5" />
         </span>
       </div>
 
-      <p className="mt-3 text-body-sm text-warm-grey">{branch.area}</p>
+      <p className="mt-3 text-body-sm text-warm-grey">{branch.blurb}</p>
 
-      <div className="mt-5 space-y-2 text-body-sm text-warm-grey">
+      <div className="mt-6 space-y-2 border-t border-warm-border pt-5 text-body-sm text-warm-grey">
+        <p>{branch.area}</p>
         <p className="flex items-center gap-2">
           <Clock className="h-4 w-4 text-brand-action" />
           <span>{branch.hours.weekday}</span>
@@ -44,7 +45,7 @@ export function BranchCard({ branch, variant = "compact" }: BranchCardProps) {
         )}
       </div>
 
-      <div className="mt-6 flex flex-col gap-2 pt-2">
+      <div className="mt-auto flex flex-col gap-2 pt-7 sm:flex-row sm:items-center">
         <a
           href={wa}
           target="_blank"
@@ -56,7 +57,7 @@ export function BranchCard({ branch, variant = "compact" }: BranchCardProps) {
         </a>
         <Link
           href={`/locations/${branch.slug}`}
-          className="nav-link inline-flex items-center gap-1.5 self-start text-body-sm font-medium text-brand-action"
+          className="inline-flex h-11 items-center gap-1.5 text-body-sm font-medium text-brand-action sm:px-2"
         >
           Branch details
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

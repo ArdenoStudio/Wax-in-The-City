@@ -7,22 +7,25 @@
  * ------------------------------------------------------------------ */
 
 @theme {
-  /* --- Colour: Brand maroon system --- */
-  --color-brand: #461216;          /* True brand — dark backgrounds, loading screen */
-  --color-brand-action: #5c1018;   /* Buttons, links, interactive on light bg */
-  --color-brand-dark: #30090d;     /* Hover / pressed states */
-  --color-brand-footer: #2c0b10;   /* Footer background */
-  --color-brand-light: #d4a5a5;    /* Dusty rose accent */
-  --color-brand-mist: #f0ddd8;     /* Blush mist — hover bg, pills */
+  /* --- Colour: private studio system --- */
+  --color-brand: #3e0f17;          /* Deep wine */
+  --color-brand-action: #8f1f34;   /* Booking/action red */
+  --color-brand-dark: #21080e;     /* Pressed/nav */
+  --color-brand-footer: #170b0f;   /* Footer background */
+  --color-brand-light: #e7b6bd;    /* Rose highlight */
+  --color-brand-mist: #f7e3e1;     /* Soft rose surface */
+  --color-sage: #9ba78f;           /* Calm contrast */
+  --color-ink: #171112;            /* Editorial dark */
+  --color-gold: #c6a15b;           /* Warm detail */
 
   /* --- Colour: Cream backgrounds --- */
-  --color-cream: #faf7f2;          /* Dominant page background */
-  --color-cream-alt: #f4efe8;      /* Alternating sections */
+  --color-cream: #fffaf4;          /* Dominant page background */
+  --color-cream-alt: #f5eee5;      /* Alternating sections */
 
   /* --- Colour: Warm neutrals --- */
-  --color-warm: #1c0f0f;           /* Body text — never pure black */
-  --color-warm-grey: #7a6b6b;      /* Secondary text, captions */
-  --color-warm-border: #e8ddd5;    /* Card borders, dividers */
+  --color-warm: #1e1717;           /* Body text — never pure black */
+  --color-warm-grey: #746765;      /* Secondary text, captions */
+  --color-warm-border: #e5d8cf;    /* Card borders, dividers */
 
   /* --- Colour: Semantic --- */
   --color-success: #7a9e7e;
@@ -31,10 +34,10 @@
   /* --- Type scale --- */
   --text-display: 3.5rem;
   --text-display--line-height: 1.1;
-  --text-display--letter-spacing: -0.02em;
+  --text-display--letter-spacing: 0;
   --text-h1: 2.5rem;
   --text-h1--line-height: 1.15;
-  --text-h1--letter-spacing: -0.015em;
+  --text-h1--letter-spacing: 0;
   --text-h2: 2rem;
   --text-h2--line-height: 1.25;
   --text-h3: 1.5rem;
@@ -57,8 +60,8 @@
   --spacing-section-lg: 120px;
 
   /* --- Radius --- */
-  --radius-card: 12px;
-  --radius-card-lg: 16px;
+  --radius-card: 8px;
+  --radius-card-lg: 8px;
   --radius-pill: 9999px;
 
   /* --- Shadows --- */
@@ -81,6 +84,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -89,6 +93,12 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-brand-action);
+  color: var(--color-cream);
 }
 
 /* Marquee strip — file 10, section 6 */

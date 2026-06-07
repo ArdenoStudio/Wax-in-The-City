@@ -18,7 +18,7 @@ interface Stat {
 
 const DEFAULT_STATS: Stat[] = [
   { value: 2, label: "Colombo branches" },
-  { value: 5000, suffix: "+", label: "Happy guests" },
+  { value: 135, suffix: "+", label: "Public reviews found" },
   { value: 100, suffix: "%", label: "Ladies-only space" },
   { value: 14, suffix: "+", label: "Treatments" },
 ];

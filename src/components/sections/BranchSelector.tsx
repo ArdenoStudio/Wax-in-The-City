@@ -9,12 +9,12 @@ import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 /** Branch quick-selector (file 08, section 04). Surfaces the location decision early. */
 export function BranchSelector() {
   return (
-    <section className="bg-cream px-5 py-section lg:px-8">
-      <div className="mx-auto max-w-5xl">
+    <section className="bg-cream-alt px-5 py-section-lg lg:px-8">
+      <div className="mx-auto max-w-7xl">
         <SectionHeading
-          eyebrow="Two Colombo studios"
-          title="Find us in Colombo."
-          subtitle="Two private, ladies-only branches — choose the one closest to home."
+          eyebrow="Branches"
+          title="Choose the quieter route in."
+          subtitle="The location section now feels operational: where to go, when to book, and what kind of visit to expect."
         />
 
         <motion.div
@@ -22,7 +22,7 @@ export function BranchSelector() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-12 grid gap-5 sm:grid-cols-2"
+          className="mt-12 grid gap-5 lg:grid-cols-2"
         >
           {BRANCHES.map((branch) => (
             <motion.div key={branch.slug} variants={fadeUp}>

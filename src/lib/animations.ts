@@ -16,10 +16,9 @@ export const fadeIn: Variants = {
 };
 
 export const blurFade: Variants = {
-  hidden: { opacity: 0, filter: "blur(8px)", y: 16 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
-    filter: "blur(0px)",
     y: 0,
     transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
   },

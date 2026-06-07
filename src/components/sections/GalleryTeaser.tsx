@@ -13,24 +13,39 @@ export function GalleryTeaser() {
   const photos = GALLERY.slice(0, 6);
 
   return (
-    <section className="bg-cream-alt px-5 py-section lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeading eyebrow="Inside our studio" title="A look around." />
+    <section className="bg-cream-alt px-5 py-section-lg lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+        <div className="lg:sticky lg:top-28">
+          <SectionHeading
+            eyebrow="Visual proof"
+            title="Replace the stock later. Design for the real studio now."
+            subtitle="This layout is ready for actual salon photography: details, rooms, products, and result-safe closeups without making the page feel like a template."
+          />
+          <Link
+            href="/gallery"
+            className="mt-8 inline-flex items-center gap-2 rounded-pill border border-brand-action/40 px-6 py-3 font-medium text-brand-action transition-colors hover:bg-brand-mist"
+          >
+            See full gallery
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
 
         <motion.div
           variants={staggerFast}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-12 columns-2 gap-4 [column-fill:_balance] lg:columns-3"
+          className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3"
         >
           {photos.map((photo, i) => (
             <motion.div
               key={photo.src}
               variants={scaleIn}
-              className="mb-4 break-inside-avoid overflow-hidden rounded-card-lg"
+              className={`overflow-hidden border border-warm-border bg-white ${
+                i === 0 || i === 5 ? "row-span-2" : ""
+              }`}
             >
-              <div className={`relative w-full ${i % 3 === 0 ? "aspect-[3/4]" : "aspect-square"}`}>
+              <div className={`relative w-full ${i === 0 || i === 5 ? "h-full min-h-[260px]" : "aspect-square"}`}>
                 <Image
                   src={photo.src}
                   alt={photo.alt}
@@ -42,16 +57,6 @@ export function GalleryTeaser() {
             </motion.div>
           ))}
         </motion.div>
-
-        <div className="mt-10 flex justify-center">
-          <Link
-            href="/gallery"
-            className="nav-link inline-flex items-center gap-2 font-medium text-brand-action"
-          >
-            See full gallery
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
       </div>
     </section>
   );
