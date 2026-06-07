@@ -16,7 +16,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-12 w-full items-center justify-between rounded-card border border-warm-border bg-white px-4 text-body text-warm shadow-sm transition-colors data-[placeholder]:text-warm-grey/70 focus:border-brand-action focus:outline-none focus:ring-2 focus:ring-brand-action/20 disabled:cursor-not-allowed disabled:opacity-50",
+      "flex h-12 w-full items-center justify-between rounded-card border border-warm-border/80 bg-white/86 px-4 text-body text-warm shadow-[inset_0_1px_0_rgba(255,255,255,0.76),0_10px_28px_rgba(39,19,21,0.05)] backdrop-blur transition-all duration-300 data-[placeholder]:text-warm-grey/62 focus:border-brand-action/70 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-action/12 disabled:cursor-not-allowed disabled:opacity-50",
       className
     )}
     {...props}
@@ -37,8 +37,8 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       position={position}
-      className={cn(
-        "relative z-50 max-h-72 min-w-[8rem] overflow-hidden rounded-card border border-warm-border bg-white text-warm shadow-card-hover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+    className={cn(
+        "relative z-50 max-h-72 min-w-[8rem] overflow-hidden rounded-card border border-warm-border/80 bg-white/95 text-warm shadow-card-hover backdrop-blur-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
         position === "popper" && "w-[var(--radix-select-trigger-width)] translate-y-1",
         className
       )}
@@ -57,7 +57,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-pointer select-none items-center rounded-[8px] py-2.5 pl-9 pr-3 text-body-sm outline-none focus:bg-brand-mist data-[state=checked]:font-medium data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex w-full cursor-pointer select-none items-center rounded-[8px] py-2.5 pl-9 pr-3 text-body-sm outline-none transition-colors focus:bg-brand-mist data-[state=checked]:font-medium data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className
     )}
     {...props}

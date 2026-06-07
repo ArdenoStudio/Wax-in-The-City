@@ -8,13 +8,13 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden bg-brand-footer text-cream/80">
-      {/* Ambient texture — very low opacity radial glows */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        className="pointer-events-none absolute inset-0 opacity-[0.08]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 20%, #fff 0, transparent 40%), radial-gradient(circle at 80% 60%, #fff 0, transparent 35%)",
+            "linear-gradient(135deg, rgba(255,255,255,0.22) 0 1px, transparent 1px 100%), linear-gradient(180deg, rgba(255,255,255,0.08), transparent)",
+          backgroundSize: "32px 32px, 100% 100%",
         }}
       />
 

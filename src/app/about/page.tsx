@@ -44,17 +44,21 @@ export default function AboutPage() {
       />
 
       {/* Founder story */}
-      <section className="bg-cream px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-section lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <AnimatedSection variant="slideFromLeft">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-card-lg">
-              <Image
-                src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?q=80&w=1100&auto=format&fit=crop"
-                alt="A calm corner of the studio"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
+            <div className="group premium-surface micro-lift relative aspect-[4/5] overflow-hidden rounded-card p-2">
+              <div className="relative z-10 h-full overflow-hidden rounded-[7px]">
+                <Image
+                  src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?q=80&w=1100&auto=format&fit=crop"
+                  alt="A calm corner of the studio"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="image-polish object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/26 via-transparent to-transparent" />
+              </div>
             </div>
           </AnimatedSection>
 
@@ -83,14 +87,16 @@ export default function AboutPage() {
       <MarqueeStrip />
 
       {/* Stats */}
-      <section className="bg-cream-alt px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream-alt px-5 py-section lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-5xl">
           <StatsCounter />
         </div>
       </section>
 
       {/* Values */}
-      <section className="bg-cream px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-section lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             eyebrow="What we stand for"
@@ -101,12 +107,12 @@ export default function AboutPage() {
               const Icon = value.icon;
               return (
                 <AnimatedSection key={value.title} variant="fadeUp" delay={i * 0.08}>
-                  <div className="flex h-full flex-col items-center rounded-card-lg border border-warm-border bg-cream-alt/50 px-6 py-9 text-center">
-                    <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-brand-mist text-brand-action">
+                  <div className="premium-surface micro-lift flex h-full flex-col items-center rounded-card px-6 py-9 text-center">
+                    <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-card bg-brand-mist text-brand-action shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]">
                       <Icon className="h-7 w-7" />
                     </span>
-                    <h3 className="mt-5 font-serif text-h3 text-warm">{value.title}</h3>
-                    <p className="mt-2 text-body-sm text-warm-grey">{value.body}</p>
+                    <h3 className="relative z-10 mt-5 text-h4 font-semibold text-warm">{value.title}</h3>
+                    <p className="relative z-10 mt-2 text-body-sm text-warm-grey">{value.body}</p>
                   </div>
                 </AnimatedSection>
               );

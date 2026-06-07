@@ -50,7 +50,7 @@ function Ticker({ value, suffix }: { value: number; suffix?: string }) {
 
 export function StatsCounter({ stats = DEFAULT_STATS }: { stats?: Stat[] }) {
   return (
-    <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
       {stats.map((stat) => (
         <motion.div
           key={stat.label}
@@ -58,12 +58,12 @@ export function StatsCounter({ stats = DEFAULT_STATS }: { stats?: Stat[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
-          className="text-center"
+          className="premium-surface micro-lift rounded-card p-5 text-center"
         >
-          <p className="font-serif text-[2.75rem] font-light leading-none text-brand-action sm:text-[3.25rem]">
+          <p className="relative z-10 font-serif text-[2.75rem] font-medium leading-none text-brand-action sm:text-[3.25rem]">
             <Ticker value={stat.value} suffix={stat.suffix} />
           </p>
-          <p className="mt-3 text-body-sm text-warm-grey">{stat.label}</p>
+          <p className="relative z-10 mt-3 text-body-sm text-warm-grey">{stat.label}</p>
         </motion.div>
       ))}
     </div>

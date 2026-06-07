@@ -20,11 +20,11 @@ export function BeforeAfterSlider({
   afterAlt = "After treatment",
 }: BeforeAfterSliderProps) {
   return (
-    <div className="overflow-hidden rounded-card-lg border border-warm-border shadow-card">
+    <div className="premium-surface micro-lift overflow-hidden rounded-card p-2">
       <ReactCompareSlider
         itemOne={<ReactCompareSliderImage src={beforeSrc} alt={beforeAlt} />}
         itemTwo={<ReactCompareSliderImage src={afterSrc} alt={afterAlt} />}
-        className="aspect-[4/3] w-full"
+        className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[7px]"
       />
     </div>
   );

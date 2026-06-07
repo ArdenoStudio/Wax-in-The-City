@@ -13,8 +13,8 @@ export function BranchSelector() {
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Branches"
-          title="Choose the quieter route in."
-          subtitle="The location section now feels operational: where to go, when to book, and what kind of visit to expect."
+          title="Choose the easiest route in."
+          subtitle="Two Colombo locations with clear hours, quick WhatsApp booking and a calmer appointment flow."
         />
 
         <motion.div

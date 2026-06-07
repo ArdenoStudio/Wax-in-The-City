@@ -39,14 +39,14 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded-card-lg border border-warm-border bg-white p-6 shadow-card sm:p-8">
+    <div className="premium-surface rounded-card p-5 sm:p-7">
       <AnimatePresence mode="wait">
         {submitted ? (
           <motion.div
             key="ok"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center py-8 text-center"
+            className="relative z-10 flex flex-col items-center py-8 text-center"
           >
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
               <Check className="h-7 w-7" />
@@ -62,7 +62,7 @@ export function ContactForm() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-5"
+            className="relative z-10 flex flex-col gap-5"
             noValidate
           >
             <div className="grid gap-5 sm:grid-cols-2">
@@ -148,7 +148,7 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-pill bg-brand-action px-8 text-body-lg font-medium text-cream shadow-card transition-colors hover:bg-brand-dark disabled:opacity-70"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-8 text-body-lg font-medium text-cream shadow-[0_16px_42px_rgba(151,35,58,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_56px_rgba(151,35,58,0.32)] disabled:opacity-70"
             >
               {isSubmitting ? (
                 <>

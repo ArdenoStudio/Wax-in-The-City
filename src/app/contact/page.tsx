@@ -23,7 +23,8 @@ export default function ContactPage() {
         imageAlt="Soft botanical studio detail"
       />
 
-      <section className="bg-cream px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           {/* Form */}
           <div>
@@ -41,10 +42,10 @@ export default function ContactPage() {
                 {BRANCHES.map((b) => (
                   <div
                     key={b.slug}
-                    className="rounded-card-lg border border-warm-border bg-white p-6 shadow-card"
+                    className="premium-surface micro-lift rounded-card p-6"
                   >
-                    <p className="font-serif text-h4 text-warm">{b.name}</p>
-                    <div className="mt-3 space-y-2 text-body-sm text-warm-grey">
+                    <p className="relative z-10 font-serif text-h4 font-medium text-warm">{b.name}</p>
+                    <div className="relative z-10 mt-3 space-y-2 text-body-sm text-warm-grey">
                       <p className="flex items-center gap-2">
                         <MapPin className="h-4 w-4 text-brand-action" />
                         {b.area}
@@ -62,7 +63,7 @@ export default function ContactPage() {
                       href={whatsappLink(`Hi! I have a question about your ${b.name} branch.`, b.whatsapp)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 inline-flex h-11 items-center gap-2 rounded-pill bg-brand-action px-5 text-body-sm font-medium text-cream transition-colors hover:bg-brand-dark"
+                      className="relative z-10 mt-4 inline-flex h-11 items-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)] transition-all duration-300 hover:-translate-y-0.5"
                     >
                       <WhatsappIcon className="h-4 w-4" />
                       WhatsApp {b.name}
@@ -80,7 +81,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="flex h-12 w-12 items-center justify-center rounded-pill border border-warm-border text-brand-action transition-colors hover:bg-brand-mist"
+                  className="flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
                 >
                   <InstagramIcon className="h-5 w-5" />
                 </a>
@@ -89,7 +90,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="flex h-12 w-12 items-center justify-center rounded-pill border border-warm-border text-brand-action transition-colors hover:bg-brand-mist"
+                  className="flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
                 >
                   <FacebookIcon className="h-5 w-5" />
                 </a>
@@ -98,7 +99,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
-                  className="flex h-12 w-12 items-center justify-center rounded-pill border border-warm-border text-brand-action transition-colors hover:bg-brand-mist"
+                  className="flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
                 >
                   <WhatsappIcon className="h-5 w-5" />
                 </a>

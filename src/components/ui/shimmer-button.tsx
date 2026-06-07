@@ -21,7 +21,7 @@ export const ShimmerButton = React.forwardRef<
     <button
       ref={ref}
       className={cn(
-        "group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-pill bg-brand-action px-8 font-sans text-body-lg font-medium text-cream shadow-card transition-all duration-200 hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/50 focus-visible:ring-offset-2 active:scale-[0.98]",
+        "group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-8 font-sans text-body-lg font-medium text-cream shadow-[0_16px_42px_rgba(151,35,58,0.32)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_22px_58px_rgba(151,35,58,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/50 focus-visible:ring-offset-2 active:scale-[0.98]",
         className
       )}
       {...props}

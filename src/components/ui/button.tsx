@@ -4,24 +4,24 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-sans font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/50 focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-sans font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         // Primary maroon — buttons on light backgrounds
         primary:
-          "bg-brand-action text-cream shadow-card hover:bg-brand-dark",
+          "bg-[linear-gradient(135deg,#a5273f,#6f1726)] text-cream shadow-[0_14px_30px_rgba(151,35,58,0.24)] hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(151,35,58,0.28)]",
         // Outline — maroon hairline on cream
         outline:
-          "border border-brand-action/60 text-brand-action hover:bg-brand-mist",
+          "border border-brand-action/35 bg-white/35 text-brand-action backdrop-blur hover:-translate-y-0.5 hover:border-brand-action/60 hover:bg-brand-mist",
         // Ghost on dark hero — cream outline over photography
         ghost:
-          "border border-cream/70 text-cream hover:bg-cream/10",
+          "border border-cream/30 bg-cream/8 text-cream backdrop-blur-md hover:-translate-y-0.5 hover:bg-cream/14",
         // Subtle text button
         link: "text-brand-action underline-offset-4 hover:underline",
         // Inverted — cream button on maroon sections
         inverted:
-          "bg-cream text-brand-action hover:bg-brand-mist",
+          "bg-cream text-brand-action shadow-[0_14px_34px_rgba(0,0,0,0.18)] hover:-translate-y-0.5 hover:bg-brand-mist",
       },
       size: {
         sm: "h-10 rounded-pill px-4 text-body-sm",

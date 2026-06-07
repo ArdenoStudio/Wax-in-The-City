@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "motion/react";
-import { Check, Loader2 } from "lucide-react";
+import { Check, Clock3, Loader2, ShieldCheck } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import { bookingSchema, type BookingInput } from "@/lib/booking";
 import { submitBooking } from "@/app/actions/booking";
@@ -53,14 +53,24 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
   };
 
   return (
-    <div className="rounded-card-lg border border-warm-border bg-white p-6 shadow-card sm:p-8">
+    <div className="premium-surface rounded-card p-5 sm:p-7">
+      <div className="relative z-10 mb-6 grid gap-2 text-caption font-semibold uppercase tracking-[0.12em] text-warm-grey sm:grid-cols-2">
+        <span className="flex items-center gap-2 rounded-card border border-warm-border/70 bg-white/58 px-3 py-2">
+          <ShieldCheck className="h-4 w-4 text-brand-action" />
+          Private request
+        </span>
+        <span className="flex items-center gap-2 rounded-card border border-warm-border/70 bg-white/58 px-3 py-2">
+          <Clock3 className="h-4 w-4 text-brand-action" />
+          Confirmation first
+        </span>
+      </div>
       <AnimatePresence mode="wait">
         {submitted ? (
           <motion.div
             key="success"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center py-8 text-center"
+            className="relative z-10 flex flex-col items-center py-8 text-center"
           >
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
               <Check className="h-7 w-7" />
@@ -74,7 +84,7 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
               href={whatsappLink("Hi! I just sent a booking request.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex h-12 items-center gap-2 rounded-pill border border-brand-action/40 px-6 font-medium text-brand-action transition-colors hover:bg-brand-mist"
+              className="mt-6 inline-flex h-12 items-center gap-2 rounded-pill border border-brand-action/35 bg-white/42 px-6 font-medium text-brand-action transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
             >
               <WhatsappIcon className="h-4 w-4" />
               Chat on WhatsApp
@@ -86,7 +96,7 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-5"
+            className="relative z-10 flex flex-col gap-5"
             noValidate
           >
             <div className="flex flex-col gap-2">
@@ -183,7 +193,7 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-pill bg-brand-action px-8 text-body-lg font-medium text-cream shadow-card transition-colors hover:bg-brand-dark disabled:opacity-70"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-8 text-body-lg font-medium text-cream shadow-[0_16px_42px_rgba(151,35,58,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_56px_rgba(151,35,58,0.32)] disabled:opacity-70"
             >
               {isSubmitting ? (
                 <>

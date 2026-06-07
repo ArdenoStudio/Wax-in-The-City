@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
-import { Menu } from "lucide-react";
+import { CalendarDays, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
@@ -36,9 +36,9 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-cream/92 shadow-nav backdrop-blur-md"
+          ? "bg-cream/78 shadow-nav backdrop-blur-2xl"
           : "bg-transparent"
       )}
     >
@@ -47,7 +47,7 @@ export function Navbar() {
         <Link
           href="/"
           aria-label={`${SITE.name} home`}
-          className="relative z-10 flex items-center"
+          className="relative z-10 flex items-center gap-3"
         >
           <span
             className={cn(
@@ -55,8 +55,8 @@ export function Navbar() {
               // White logo art: shown directly over the dark hero, on a maroon
               // chip once the nav turns cream so it stays legible.
               scrolled
-                ? "h-11 w-11 bg-brand p-1.5 shadow-card sm:h-12 sm:w-12"
-                : "h-10 w-10 drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)] sm:h-12 sm:w-12"
+                ? "h-11 w-11 bg-brand p-1.5 shadow-[0_14px_34px_rgba(53,16,23,0.24)] sm:h-12 sm:w-12"
+                : "h-10 w-10 drop-shadow-[0_10px_28px_rgba(0,0,0,0.36)] sm:h-12 sm:w-12"
             )}
           >
             <Image
@@ -68,13 +68,31 @@ export function Navbar() {
               className="object-contain p-0.5"
             />
           </span>
+          <span className="hidden leading-none sm:block">
+            <span
+              className={cn(
+                "block font-serif text-h4 font-medium transition-colors",
+                onDark ? "text-cream" : "text-warm"
+              )}
+            >
+              {SITE.shortName}
+            </span>
+            <span
+              className={cn(
+                "mt-1 block text-[0.64rem] font-semibold uppercase tracking-[0.16em] transition-colors",
+                onDark ? "text-cream/54" : "text-warm-grey"
+              )}
+            >
+              Private studio
+            </span>
+          </span>
         </Link>
 
         {/* Desktop links (centre) */}
         <div
           className={cn(
-            "absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 rounded-pill px-2 py-1 lg:flex",
-            onDark ? "border border-cream/12 bg-ink/22 backdrop-blur-md" : "border border-warm-border/70 bg-white/70"
+            "absolute left-1/2 hidden -translate-x-1/2 items-center gap-1.5 rounded-pill px-1.5 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] lg:flex",
+            onDark ? "border border-cream/14 bg-ink/24 backdrop-blur-xl" : "border border-warm-border/70 bg-white/72 backdrop-blur-2xl"
           )}
         >
           {NAV_LINKS.map((link) => {
@@ -85,8 +103,9 @@ export function Navbar() {
                 href={link.href}
                 data-active={active}
                 className={cn(
-                  "rounded-pill px-4 py-2 text-body-sm font-medium tracking-wide transition-colors",
-                  onDark ? "text-cream/90 hover:text-cream" : "text-warm hover:text-brand-action"
+                  "rounded-pill px-4 py-2 text-body-sm font-medium tracking-wide transition-all duration-300",
+                  active && (onDark ? "bg-cream/12 text-cream" : "bg-brand-mist text-brand-action"),
+                  !active && (onDark ? "text-cream/82 hover:bg-cream/9 hover:text-cream" : "text-warm/74 hover:bg-brand-mist/70 hover:text-brand-action")
                 )}
               >
                 {link.label}
@@ -103,7 +122,10 @@ export function Navbar() {
             variant={onDark ? "ghost" : "primary"}
             className="hidden sm:inline-flex"
           >
-            <Link href="/book">Book Your Visit</Link>
+            <Link href="/book">
+              <CalendarDays className="h-4 w-4" />
+              Book
+            </Link>
           </Button>
 
           {/* Mobile hamburger */}
@@ -112,8 +134,8 @@ export function Navbar() {
               <button
                 aria-label="Open menu"
                 className={cn(
-                  "flex h-11 w-11 items-center justify-center rounded-pill transition-colors lg:hidden",
-                  onDark ? "text-cream hover:bg-cream/10" : "text-warm hover:bg-brand-mist"
+                  "flex h-11 w-11 items-center justify-center rounded-pill border transition-all duration-300 lg:hidden",
+                  onDark ? "border-cream/15 bg-cream/8 text-cream backdrop-blur-xl hover:bg-cream/14" : "border-warm-border/70 bg-white/70 text-warm backdrop-blur-xl hover:bg-brand-mist"
                 )}
               >
                 <Menu className="h-6 w-6" />

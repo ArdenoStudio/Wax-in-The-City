@@ -21,12 +21,13 @@ export default function ServicesPage() {
         imageAlt="Soft, editorial close-up of skincare"
       />
 
-      <section className="bg-cream px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Explore by category"
-            title="What we offer."
-            subtitle="Tap a category to see treatments, times and pricing."
+            title="Choose your treatment path."
+            subtitle="Compare treatments, timing and starting prices without digging through a long salon list."
           />
           <div className="mt-12">
             <ServiceTabs />

@@ -36,21 +36,21 @@ export function PageHero({
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(23,17,18,0.88)_0%,rgba(62,15,23,0.62)_48%,rgba(62,15,23,0.28)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,12,13,0.92)_0%,rgba(35,12,17,0.72)_50%,rgba(35,12,17,0.30)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.16)_0%,transparent_48%,rgba(21,16,17,0.78)_100%)]" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-14 pt-28 lg:px-8 lg:pb-20">
         {eyebrow && (
-          <p className="mb-4 inline-flex rounded-pill border border-cream/15 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light backdrop-blur">
+          <p className="mb-5 inline-flex rounded-pill border border-cream/18 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl">
             {eyebrow}
           </p>
         )}
-        <h1 className="max-w-3xl font-serif text-[3rem] font-light italic leading-[1.02] text-cream sm:text-[4.4rem]">
+        <h1 className="max-w-3xl text-balance font-serif text-[3rem] font-medium leading-[1] text-cream sm:text-[4.6rem]">
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-4 max-w-xl text-body-lg text-cream/85">
+          <p className="mt-5 max-w-xl text-balance text-body-lg text-cream/80">
             {subtitle}
           </p>
         )}

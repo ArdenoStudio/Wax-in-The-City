@@ -24,8 +24,7 @@ export function ServiceTabs({
 
   return (
     <div>
-      {/* Tab row */}
-      <div className="flex justify-start gap-1 overflow-x-auto pb-2 sm:justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="mx-auto flex w-fit max-w-full justify-start gap-1 overflow-x-auto rounded-pill border border-warm-border/70 bg-white/58 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_18px_46px_rgba(39,19,21,0.06)] backdrop-blur-xl sm:justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {SERVICE_CATEGORIES.map((cat) => {
           const isActive = active === cat.slug;
           return (
@@ -39,8 +38,8 @@ export function ServiceTabs({
               {isActive && (
                 <motion.span
                   layoutId="service-tab-indicator"
-                  className="absolute inset-0 rounded-pill bg-brand-action"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  className="absolute inset-0 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] shadow-[0_12px_28px_rgba(151,35,58,0.22)]"
+                  transition={{ type: "spring", stiffness: 360, damping: 34 }}
                 />
               )}
               <span className="relative z-10">{cat.name}</span>

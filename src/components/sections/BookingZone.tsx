@@ -30,10 +30,20 @@ export function BookingZone({
   return (
     <section
       id="book"
-      className={standalone ? "bg-ink px-5 py-section-lg text-cream lg:px-8" : "px-5 lg:px-8"}
+      className={
+        standalone
+          ? "relative overflow-hidden bg-ink px-5 py-section-lg text-cream lg:px-8"
+          : "px-5 lg:px-8"
+      }
     >
-      <div className="mx-auto max-w-2xl">
-        <div className="mx-auto mb-8 h-0.5 w-16 rounded-pill bg-gold" />
+      {standalone && (
+        <>
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(53,16,23,0.84),rgba(21,16,17,0.98)_56%,rgba(19,9,13,1))]" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-60" />
+        </>
+      )}
+      <div className="relative mx-auto max-w-2xl">
+        <div className="mx-auto mb-8 h-px w-24 hairline-gradient" />
 
         <SectionHeading
           eyebrow="Book your visit"

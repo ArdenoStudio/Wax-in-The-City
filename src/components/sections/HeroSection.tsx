@@ -3,24 +3,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { ChevronDown, ShieldCheck, Sparkles } from "lucide-react";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { ArrowRight, CalendarDays, ChevronDown, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CARE_STANDARDS, HOMEPAGE_STATS } from "@/lib/site";
 
-/**
- * Full-bleed hero (file 08 section 03, file 10 section 3).
- * Warm photo + maroon scrim, Cormorant italic headline entering word-by-word,
- * DM Sans sub-copy, shimmer + ghost CTAs. 100svh on mobile.
- */
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[720px] w-full items-end overflow-hidden bg-ink text-cream sm:min-h-[760px]">
-      {/* Image-led editorial background */}
+    <section className="relative flex min-h-[760px] w-full items-end overflow-hidden bg-ink text-cream">
       <motion.div
         initial={{ opacity: 0, scale: 1.06 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.1, ease: "easeOut" }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0"
       >
         <Image
@@ -29,68 +22,83 @@ export function HeroSection() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[62%_center]"
+          className="object-cover object-[62%_center] saturate-[0.94]"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(23,17,18,0.92)_0%,rgba(62,15,23,0.74)_42%,rgba(62,15,23,0.34)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_28%,rgba(231,182,189,0.26),transparent_28%),radial-gradient(circle_at_18%_88%,rgba(198,161,91,0.18),transparent_30%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,12,13,0.94)_0%,rgba(35,12,17,0.82)_42%,rgba(35,12,17,0.36)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.20)_0%,transparent_42%,rgba(21,16,17,0.82)_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink/64 to-transparent" />
       </motion.div>
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 px-5 pb-24 pt-28 sm:pb-28 lg:grid-cols-[minmax(0,1fr)_430px] lg:px-8 lg:pb-24">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 px-5 pb-24 pt-28 sm:pb-28 lg:grid-cols-[minmax(0,1fr)_390px] lg:px-8 lg:pb-24">
         <div className="max-w-3xl">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-5 inline-flex items-center gap-2 rounded-pill border border-cream/20 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light backdrop-blur"
+            transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6 inline-flex items-center gap-2 rounded-pill border border-cream/18 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-xl"
           >
             <Sparkles className="h-4 w-4" />
-            Ladies-only waxing studio · Colombo
+            Ladies-only private studio · Colombo
           </motion.p>
 
-          <h1 className="max-w-[10ch] font-serif text-[3.2rem] font-light italic leading-[0.98] text-cream sm:text-[5.4rem] lg:text-[6.4rem]">
-            Private waxing.
+          <motion.h1
+            initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.78, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-[11ch] text-balance font-serif text-[3.55rem] font-medium leading-[0.95] text-cream sm:text-[5.2rem] lg:text-[6.35rem]"
+          >
+            Private waxing,
             <br />
-            Done properly.
-          </h1>
+            quietly perfected.
+          </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-6 max-w-xl text-body-lg text-cream/82"
+            transition={{ duration: 0.65, delay: 0.36, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-7 max-w-xl text-balance text-body-lg text-cream/78"
           >
-            A quieter, cleaner appointment experience for waxing, facials and
-            skin care — built around comfort, hygiene and honest after-care.
+            A calmer appointment experience for waxing, facials and skin care,
+            designed around privacy, prep, hygiene and after-care that feels
+            considered.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            transition={{ duration: 0.65, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
-            <Link href="/book" className="sm:w-auto">
-              <ShimmerButton className="w-full sm:w-auto">Book Your Visit</ShimmerButton>
+            <Link
+              href="/book"
+              className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-8 text-body-lg font-medium text-cream shadow-[0_18px_48px_rgba(151,35,58,0.36)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_24px_64px_rgba(151,35,58,0.42)]"
+            >
+              <span className="relative z-10 inline-flex items-center gap-2">
+                <CalendarDays className="h-5 w-5" />
+                Book Your Visit
+              </span>
+              <span className="pointer-events-none absolute inset-0 -translate-x-full bg-[linear-gradient(110deg,transparent_30%,rgba(255,255,255,0.45)_50%,transparent_70%)] motion-safe:animate-[witc-shimmer_3.2s_ease-in-out_infinite]" />
             </Link>
             <Button asChild variant="ghost" size="lg">
-              <Link href="/services">View Treatment Menu</Link>
+              <Link href="/services">
+                View Menu
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
           </motion.div>
 
           <motion.dl
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="mt-10 grid max-w-2xl grid-cols-2 gap-px overflow-hidden rounded-card border border-cream/15 bg-cream/15 sm:grid-cols-4"
+            transition={{ duration: 0.65, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="glass-panel mt-10 grid max-w-2xl grid-cols-2 gap-px overflow-hidden rounded-card sm:grid-cols-4"
           >
             {HOMEPAGE_STATS.map((stat) => (
-              <div key={stat.label} className="bg-ink/55 px-4 py-4 backdrop-blur">
-                <dt className="text-caption uppercase tracking-[0.12em] text-cream/54">
+              <div key={stat.label} className="bg-ink/36 px-4 py-4">
+                <dt className="text-caption uppercase tracking-[0.12em] text-cream/50">
                   {stat.label}
                 </dt>
-                <dd className="mt-1 font-serif text-h3 text-cream">{stat.value}</dd>
+                <dd className="mt-1 text-h4 font-semibold text-cream">{stat.value}</dd>
               </div>
             ))}
           </motion.dl>
@@ -99,21 +107,26 @@ export function HeroSection() {
         <motion.aside
           initial={{ opacity: 0, x: 28 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.35, ease: "easeOut" }}
-          className="hidden self-end border-l border-cream/18 pl-8 lg:block"
+          transition={{ duration: 0.78, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
+          className="glass-panel animate-float-soft hidden self-end rounded-card p-6 lg:block"
         >
-          <p className="text-caption font-semibold uppercase tracking-[0.16em] text-brand-light">
-            Studio standard
-          </p>
-          <ul className="mt-5 space-y-4">
+          <div className="flex items-center justify-between border-b border-cream/12 pb-5">
+            <p className="text-caption font-semibold uppercase tracking-[0.16em] text-brand-light">
+              Studio protocol
+            </p>
+            <span className="rounded-pill bg-cream/10 px-3 py-1 text-caption text-cream/70">
+              04 steps
+            </span>
+          </div>
+          <ul className="mt-5 space-y-3">
             {CARE_STANDARDS.map((item) => (
-              <li key={item} className="flex gap-3 text-body-sm leading-relaxed text-cream/78">
-                <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+              <li key={item} className="group flex gap-3 rounded-card bg-cream/[0.055] p-3 text-body-sm leading-relaxed text-cream/76 transition-colors hover:bg-cream/[0.085]">
+                <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold transition-transform group-hover:scale-110" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
-          <p className="mt-8 border-t border-cream/15 pt-5 font-serif text-h4 italic text-cream">
+          <p className="mt-6 border-t border-cream/12 pt-5 font-serif text-h4 italic text-cream">
             Specialist care without the awkward salon-floor feeling.
           </p>
         </motion.aside>
@@ -126,7 +139,9 @@ export function HeroSection() {
         transition={{ duration: 0.6, delay: 1.2 }}
         className="absolute inset-x-0 bottom-6 z-10 flex justify-center"
       >
-        <ChevronDown className="h-6 w-6 animate-bob text-cream/70" />
+        <span className="flex h-10 w-10 items-center justify-center rounded-pill border border-cream/16 bg-cream/8 backdrop-blur-xl">
+          <ChevronDown className="h-5 w-5 animate-bob text-cream/70" />
+        </span>
       </motion.div>
     </section>
   );

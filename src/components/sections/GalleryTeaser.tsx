@@ -13,17 +13,19 @@ export function GalleryTeaser() {
   const photos = GALLERY.slice(0, 6);
 
   return (
-    <section className="bg-cream-alt px-5 py-section-lg lg:px-8">
+    <section className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
         <div className="lg:sticky lg:top-28">
           <SectionHeading
             eyebrow="Visual proof"
-            title="Replace the stock later. Design for the real studio now."
-            subtitle="This layout is ready for actual salon photography: details, rooms, products, and result-safe closeups without making the page feel like a template."
+            title="A closer look at the studio rhythm."
+            subtitle="Treatment rooms, product details and quiet prep moments help clients understand what the visit feels like before they arrive."
+            align="left"
           />
           <Link
             href="/gallery"
-            className="mt-8 inline-flex items-center gap-2 rounded-pill border border-brand-action/40 px-6 py-3 font-medium text-brand-action transition-colors hover:bg-brand-mist"
+            className="mt-8 inline-flex items-center gap-2 rounded-pill border border-brand-action/35 bg-white/40 px-6 py-3 font-medium text-brand-action shadow-[0_14px_34px_rgba(39,19,21,0.05)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
           >
             See full gallery
             <ArrowRight className="h-4 w-4" />
@@ -41,18 +43,19 @@ export function GalleryTeaser() {
             <motion.div
               key={photo.src}
               variants={scaleIn}
-              className={`overflow-hidden border border-warm-border bg-white ${
+              className={`group premium-surface micro-lift overflow-hidden rounded-card ${
                 i === 0 || i === 5 ? "row-span-2" : ""
               }`}
             >
-              <div className={`relative w-full ${i === 0 || i === 5 ? "h-full min-h-[260px]" : "aspect-square"}`}>
+              <div className={`relative z-10 w-full overflow-hidden rounded-[7px] ${i === 0 || i === 5 ? "h-full min-h-[280px]" : "aspect-square"}`}>
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
                   sizes="(max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 hover:scale-105"
+                  className="image-polish object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/24 via-transparent to-transparent opacity-70 transition-opacity group-hover:opacity-40" />
               </div>
             </motion.div>
           ))}

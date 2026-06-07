@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface SectionHeadingProps {
@@ -27,7 +28,11 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   const light = tone === "light";
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
         "flex flex-col",
         align === "center" ? "items-center text-center" : "items-start text-left",
@@ -37,10 +42,16 @@ export function SectionHeading({
       {eyebrow && (
         <span
           className={cn(
-            "mb-3 text-caption font-semibold uppercase tracking-[0.18em]",
+            "mb-3 inline-flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.18em]",
             light ? "text-brand-light" : "text-brand-action"
           )}
         >
+          <span
+            className={cn(
+              "h-px w-8",
+              light ? "bg-brand-light/70" : "bg-brand-action/60"
+            )}
+          />
           {eyebrow}
         </span>
       )}
@@ -48,7 +59,7 @@ export function SectionHeading({
       <div className="relative inline-block max-w-full">
         <h2
           className={cn(
-            "max-w-full break-words font-serif text-h2 font-medium sm:text-[2.5rem] sm:leading-tight",
+            "max-w-full break-words text-balance font-serif text-h2 font-medium leading-tight sm:text-[2.65rem]",
             light ? "text-cream" : "text-warm"
           )}
         >
@@ -56,9 +67,8 @@ export function SectionHeading({
         </h2>
         <span
           className={cn(
-            "absolute -bottom-2 left-0 block h-[2px] w-full",
-            light ? "bg-brand-light" : "bg-brand-action/70",
-            align === "center" && "left-1/2 w-16 -translate-x-1/2"
+            "absolute -bottom-3 left-0 block h-px w-full hairline-gradient",
+            align === "center" && "left-1/2 w-24 -translate-x-1/2"
           )}
         />
       </div>
@@ -66,13 +76,13 @@ export function SectionHeading({
       {subtitle && (
         <p
           className={cn(
-            "mt-6 w-full max-w-xl break-words text-body-lg",
+            "mt-7 w-full max-w-xl break-words text-balance text-body-lg",
             light ? "text-cream/70" : "text-warm-grey"
           )}
         >
           {subtitle}
         </p>
       )}
-    </div>
+    </motion.div>
   );
 }

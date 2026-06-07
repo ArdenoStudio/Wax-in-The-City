@@ -58,11 +58,12 @@ export default async function ServiceCategoryPage({
         imageAlt={`${category.name} at Wax In The City`}
       />
 
-      <section className="bg-cream px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-section lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-7xl">
           <Link
             href="/services"
-            className="nav-link mb-10 inline-flex items-center gap-1.5 text-body-sm font-medium text-brand-action"
+            className="mb-10 inline-flex items-center gap-1.5 rounded-pill border border-brand-action/30 bg-white/42 px-4 py-2.5 text-body-sm font-medium text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
           >
             <ArrowLeft className="h-4 w-4" />
             All services
@@ -79,15 +80,16 @@ export default async function ServiceCategoryPage({
       </section>
 
       {/* Related categories */}
-      <section className="bg-cream-alt px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream-alt px-5 py-section lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="font-serif text-h2 text-warm">Explore other treatments</h2>
+          <h2 className="font-serif text-h2 font-medium text-warm">Explore other treatments</h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {SERVICE_CATEGORIES.filter((c) => c.slug !== category.slug).map((c) => (
               <Link
                 key={c.slug}
                 href={`/services/${c.href}`}
-                className="rounded-pill border border-brand-action/40 px-5 py-2.5 text-body-sm font-medium text-brand-action transition-colors hover:bg-brand-mist"
+                className="rounded-pill border border-brand-action/30 bg-white/42 px-5 py-2.5 text-body-sm font-medium text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
               >
                 {c.name}
               </Link>
