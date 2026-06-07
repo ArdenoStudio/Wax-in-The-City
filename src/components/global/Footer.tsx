@@ -1,0 +1,147 @@
+import Link from "next/link";
+import Image from "next/image";
+import { InstagramIcon, FacebookIcon, WhatsappIcon } from "@/components/icons";
+import { SITE, NAV_LINKS, BRANCHES, whatsappLink } from "@/lib/site";
+
+export function Footer() {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="relative overflow-hidden bg-brand-footer text-cream/80">
+      {/* Ambient texture — very low opacity radial glows */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 20% 20%, #fff 0, transparent 40%), radial-gradient(circle at 80% 60%, #fff 0, transparent 35%)",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1.4fr]">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-3">
+              <span className="relative block h-12 w-12">
+                <Image
+                  src="/images/witc-logo.png"
+                  alt={SITE.name}
+                  fill
+                  sizes="48px"
+                  className="object-contain"
+                />
+              </span>
+              <span className="font-serif text-h3 text-cream">{SITE.shortName}</span>
+            </div>
+            <p className="mt-4 max-w-xs font-serif text-h4 italic text-brand-light">
+              {SITE.tagline}
+            </p>
+            <p className="mt-3 max-w-xs text-body-sm text-cream/60">
+              Ladies-only waxing &amp; beauty care across two Colombo branches.
+            </p>
+
+            <div className="mt-6 flex items-center gap-3">
+              <SocialIcon href={SITE.instagram} label="Instagram">
+                <InstagramIcon className="h-5 w-5" />
+              </SocialIcon>
+              <SocialIcon href={SITE.facebook} label="Facebook">
+                <FacebookIcon className="h-5 w-5" />
+              </SocialIcon>
+              <SocialIcon
+                href={whatsappLink("Hi! I'd like to ask about a booking.")}
+                label="WhatsApp"
+              >
+                <WhatsappIcon className="h-5 w-5" />
+              </SocialIcon>
+            </div>
+          </div>
+
+          {/* Nav */}
+          <div>
+            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50">
+              Explore
+            </h3>
+            <ul className="mt-4 space-y-3">
+              <li>
+                <Link href="/" className="text-body-sm transition-colors hover:text-cream">
+                  Home
+                </Link>
+              </li>
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-body-sm transition-colors hover:text-cream"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/book" className="text-body-sm transition-colors hover:text-cream">
+                  Book Your Visit
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Branches */}
+          <div>
+            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50">
+              Our Branches
+            </h3>
+            <div className="mt-4 grid gap-6 sm:grid-cols-2">
+              {BRANCHES.map((b) => (
+                <div key={b.slug}>
+                  <p className="font-serif text-h4 text-cream">{b.name}</p>
+                  <p className="mt-1 text-body-sm text-cream/60">{b.area}</p>
+                  <p className="mt-2 text-body-sm text-cream/60">{b.hours.weekday}</p>
+                  <p className="text-caption text-cream/40">{b.hours.poya}</p>
+                  <a
+                    href={whatsappLink(`Hi! I'd like to book at your ${b.name} branch.`, b.whatsapp)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-block text-body-sm text-brand-light underline-offset-4 hover:underline"
+                  >
+                    WhatsApp {b.name}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-14 flex flex-col gap-3 border-t border-cream/10 pt-6 text-caption text-cream/40 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} {SITE.name}. All rights reserved.</p>
+          <p>
+            Crafted by{" "}
+            <span className="text-cream/60">Ardeno Studio</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function SocialIcon({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="flex h-11 w-11 items-center justify-center rounded-pill border border-cream/15 text-cream/70 transition-colors hover:border-brand-light hover:text-cream"
+    >
+      {children}
+    </a>
+  );
+}

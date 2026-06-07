@@ -1,0 +1,172 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ------------------------------------------------------------------ *
+ *  WAX IN THE CITY SL — "Velvet Intimacy"
+ *  Brand theme tokens for Tailwind v4. See creative bible 02 + 03 + 11.
+ * ------------------------------------------------------------------ */
+
+@theme {
+  /* --- Colour: Brand maroon system --- */
+  --color-brand: #461216;          /* True brand — dark backgrounds, loading screen */
+  --color-brand-action: #5c1018;   /* Buttons, links, interactive on light bg */
+  --color-brand-dark: #30090d;     /* Hover / pressed states */
+  --color-brand-footer: #2c0b10;   /* Footer background */
+  --color-brand-light: #d4a5a5;    /* Dusty rose accent */
+  --color-brand-mist: #f0ddd8;     /* Blush mist — hover bg, pills */
+
+  /* --- Colour: Cream backgrounds --- */
+  --color-cream: #faf7f2;          /* Dominant page background */
+  --color-cream-alt: #f4efe8;      /* Alternating sections */
+
+  /* --- Colour: Warm neutrals --- */
+  --color-warm: #1c0f0f;           /* Body text — never pure black */
+  --color-warm-grey: #7a6b6b;      /* Secondary text, captions */
+  --color-warm-border: #e8ddd5;    /* Card borders, dividers */
+
+  /* --- Colour: Semantic --- */
+  --color-success: #7a9e7e;
+  --color-error: #c0392b;
+
+  /* --- Type scale --- */
+  --text-display: 3.5rem;
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.02em;
+  --text-h1: 2.5rem;
+  --text-h1--line-height: 1.15;
+  --text-h1--letter-spacing: -0.015em;
+  --text-h2: 2rem;
+  --text-h2--line-height: 1.25;
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.3;
+  --text-h4: 1.125rem;
+  --text-h4--line-height: 1.4;
+  --text-h4--letter-spacing: 0.01em;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.75;
+  --text-body: 1rem;
+  --text-body--line-height: 1.75;
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.6;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0.05em;
+
+  /* --- Spacing: section rhythm --- */
+  --spacing-section: 80px;
+  --spacing-section-lg: 120px;
+
+  /* --- Radius --- */
+  --radius-card: 12px;
+  --radius-card-lg: 16px;
+  --radius-pill: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-card: 0 2px 12px rgba(28, 15, 15, 0.06);
+  --shadow-card-hover: 0 8px 32px rgba(28, 15, 15, 0.12);
+  --shadow-nav: 0 1px 0 rgba(28, 15, 15, 0.08);
+}
+
+/* Font families are bound to next/font CSS variables at runtime, so they
+   must be inlined (not resolved at build time). */
+@theme inline {
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------------ *
+ *  Base layer
+ * ------------------------------------------------------------------ */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-warm);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Marquee strip — file 10, section 6 */
+@keyframes witc-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: witc-marquee 30s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-slow {
+  animation: witc-marquee 50s linear infinite;
+}
+.group:hover .animate-marquee-slow {
+  animation-play-state: paused;
+}
+
+/* Accordion expand/collapse (Radix content-height variable) */
+@keyframes accordion-down {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+.animate-accordion-down { animation: accordion-down 0.3s ease-out; }
+.animate-accordion-up { animation: accordion-up 0.3s ease-out; }
+
+/* Shimmer sweep for the primary CTA */
+@keyframes witc-shimmer {
+  0%   { transform: translateX(-100%); }
+  60%  { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Subtle scroll-indicator bob */
+@keyframes witc-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+.animate-bob {
+  animation: witc-bob 1.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee,
+  .animate-bob { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Nav link underline — file 10, section 2 */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background-color: currentColor;
+  transition: transform 0.25s ease-out;
+}
+.nav-link:hover::after,
+.nav-link[data-active="true"]::after {
+  transform: scaleX(1);
+}
