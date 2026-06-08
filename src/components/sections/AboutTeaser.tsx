@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
+import { IMAGES, BLUR_DATA_URL } from "@/lib/images";
 import { fadeUp, slideFromLeft, viewportOnce } from "@/lib/animations";
 
 /** About teaser: founder/studio positioning without generic beauty-site filler. */
@@ -22,10 +23,12 @@ export function AboutTeaser() {
         >
           <div className="relative z-10 h-full overflow-hidden rounded-[7px]">
             <Image
-              src="https://images.unsplash.com/photo-1556760544-74068565f05c?q=80&w=1100&auto=format&fit=crop"
-              alt="The calm, welcoming space at Wax In The City"
+              src={IMAGES.about.src}
+              alt={IMAGES.about.alt}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
               className="image-polish object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/58 via-brand/10 to-transparent" />

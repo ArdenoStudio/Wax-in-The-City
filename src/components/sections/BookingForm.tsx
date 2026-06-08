@@ -9,9 +9,11 @@ import { WhatsappIcon } from "@/components/icons";
 import { bookingSchema, type BookingInput } from "@/lib/booking";
 import { submitBooking } from "@/app/actions/booking";
 import { SERVICE_CATEGORIES, BRANCHES, whatsappLink, type BranchSlug } from "@/lib/site";
+import { fieldAriaProps, fieldErrorId } from "@/lib/form-a11y";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -66,7 +68,7 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
           <ShieldCheck className="h-4 w-4 text-brand-action" />
           Private request
         </span>
-        <span className="flex items-center gap-2 rounded-card border border-warm-border/70 bg-white/58 px-3 py-2">
+        <span className="sticky top-24 flex items-center gap-2 rounded-card border border-warm-border/70 bg-white/58 px-3 py-2 md:static">
           <Clock3 className="h-4 w-4 text-brand-action" />
           Confirmation first
         </span>
@@ -87,15 +89,16 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
               We&apos;ll reach out within 24 hours to confirm your booking. For
               anything urgent, message us on WhatsApp.
             </p>
-            <a
-              href={whatsappLink("Hi! I just sent a booking request.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex h-12 items-center gap-2 rounded-pill border border-brand-action/35 bg-white/42 px-6 font-medium text-brand-action transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
-            >
-              <WhatsappIcon className="h-4 w-4" />
-              Chat on WhatsApp
-            </a>
+            <Button asChild variant="outline" size="md" className="mt-6">
+              <a
+                href={whatsappLink("Hi! I just sent a booking request.")}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <WhatsappIcon className="h-4 w-4" />
+                Chat on WhatsApp
+              </a>
+            </Button>
           </motion.div>
         ) : (
           <motion.form
@@ -106,8 +109,7 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
             className="relative z-10 flex flex-col gap-5"
             noValidate
           >
-            {/* Progress bar */}
-            <div className="flex flex-col gap-1.5">
+            <div className="sticky top-20 z-20 -mx-1 flex flex-col gap-1.5 rounded-card bg-cream/92 px-1 py-2 backdrop-blur-md md:static md:bg-transparent md:p-0">
               <div className="flex items-center justify-between">
                 <span className="text-caption text-warm-grey">Booking details</span>
                 <span className="text-caption font-medium text-brand-action">{filledCount} / 4</span>
@@ -131,9 +133,16 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
                   </motion.span>
                 )}
               </div>
-              <Input id="name" placeholder="Your name" {...register("name")} />
+              <Input
+                id="name"
+                placeholder="Your name"
+                {...register("name")}
+                {...fieldAriaProps("name", errors.name)}
+              />
               {errors.name && (
-                <p className="text-body-sm text-error">{errors.name.message}</p>
+                <p id={fieldErrorId("name")} className="text-body-sm text-error" role="alert">
+                  {errors.name.message}
+                </p>
               )}
             </div>
 
@@ -152,21 +161,29 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
                 inputMode="tel"
                 placeholder="Your number (we'll only call or WhatsApp)"
                 {...register("phone")}
+                {...fieldAriaProps("phone", errors.phone)}
               />
               {errors.phone && (
-                <p className="text-body-sm text-error">{errors.phone.message}</p>
+                <p id={fieldErrorId("phone")} className="text-body-sm text-error" role="alert">
+                  {errors.phone.message}
+                </p>
               )}
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="flex flex-col gap-2">
-                <Label>Which location works for you?</Label>
+                <Label htmlFor="branch-select">Which location works for you?</Label>
                 <Controller
                   control={control}
                   name="branch"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger aria-label="Select branch location">
+                      <SelectTrigger
+                        id="branch-select"
+                        aria-label="Select branch location"
+                        aria-invalid={errors.branch ? true : undefined}
+                        aria-describedby={errors.branch ? fieldErrorId("branch") : undefined}
+                      >
                         <SelectValue placeholder="Choose a branch" />
                       </SelectTrigger>
                       <SelectContent>
@@ -180,18 +197,23 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
                   )}
                 />
                 {errors.branch && (
-                  <p className="text-body-sm text-error">{errors.branch.message}</p>
+                  <p id={fieldErrorId("branch")} className="text-body-sm text-error" role="alert">
+                    {errors.branch.message}
+                  </p>
                 )}
               </div>
 
               <div className="flex flex-col gap-2">
-                <Label>What are you looking for?</Label>
+                <Label htmlFor="service-select">What are you looking for?</Label>
                 <Controller
                   control={control}
                   name="service_preference"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger aria-label="Select treatment type">
+                      <SelectTrigger
+                        id="service-select"
+                        aria-label="Select treatment type"
+                      >
                         <SelectValue placeholder="Choose a treatment" />
                       </SelectTrigger>
                       <SelectContent>
@@ -222,16 +244,12 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
             </div>
 
             {serverError && (
-              <p className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error">
+              <p className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error" role="alert">
                 {serverError}
               </p>
             )}
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-8 text-body-lg font-medium text-cream shadow-[0_16px_42px_rgba(151,35,58,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_56px_rgba(151,35,58,0.32)] disabled:opacity-70"
-            >
+            <Button type="submit" size="lg" variant="primary" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
@@ -240,7 +258,7 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
               ) : (
                 "Send My Request"
               )}
-            </button>
+            </Button>
 
             <p className="text-center text-caption text-warm-grey">
               No card required to enquire · We&apos;ll confirm within 24 hours

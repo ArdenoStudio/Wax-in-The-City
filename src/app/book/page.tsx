@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/sections/PageHero";
 import { BookingZone } from "@/components/sections/BookingZone";
-import { BRANCHES, type BranchSlug } from "@/lib/site";
+import { BRANCHES, SERVICES, SERVICE_CATEGORIES, type BranchSlug } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Book Your Visit",
@@ -13,6 +12,23 @@ function isBranchSlug(value?: string): value is BranchSlug {
   return Boolean(value) && BRANCHES.some((b) => b.slug === value);
 }
 
+function resolveServicePreference(value?: string): string | undefined {
+  if (!value) return undefined;
+  const decoded = decodeURIComponent(value);
+  const byName = SERVICES.find(
+    (s) => s.name.toLowerCase() === decoded.toLowerCase()
+  );
+  if (byName) return byName.name;
+  const bySlug = SERVICES.find((s) => s.slug === decoded);
+  if (bySlug) return bySlug.name;
+  const byCategory = SERVICE_CATEGORIES.find(
+    (c) =>
+      c.name.toLowerCase() === decoded.toLowerCase() || c.href === decoded
+  );
+  if (byCategory) return byCategory.name;
+  return decoded;
+}
+
 export default async function BookPage({
   searchParams,
 }: {
@@ -20,24 +36,15 @@ export default async function BookPage({
 }) {
   const { branch, service } = await searchParams;
   const defaultBranch = isBranchSlug(branch) ? branch : undefined;
+  const defaultService = resolveServicePreference(service);
 
   return (
-    <>
-      <PageHero
-        eyebrow="Book your visit"
-        title="Ready when you are."
-        subtitle="Tell us what you'd like and when — we'll confirm within 24 hours."
-        image="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop"
-        imageAlt="Calm treatment space ready for a visit"
-      />
-
-      <BookingZone
-        mode="form"
-        defaultBranch={defaultBranch}
-        defaultService={service}
-        heading="Send your request."
-        subtitle="No card required to enquire. Prefer WhatsApp? It's just below."
-      />
-    </>
+    <BookingZone
+      mode="form"
+      defaultBranch={defaultBranch}
+      defaultService={defaultService}
+      heading="Book your visit."
+      subtitle="Tell us what you'd like and when — we'll confirm within 24 hours. No card required to enquire."
+    />
   );
 }

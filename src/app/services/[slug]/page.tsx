@@ -7,16 +7,35 @@ import {
   getCategory,
   servicesByCategory,
 } from "@/lib/site";
+import { IMAGES } from "@/lib/images";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServiceCard } from "@/components/ui/service-card";
 import { BookingZone } from "@/components/sections/BookingZone";
+import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 
 const HERO_IMAGES: Record<string, string> = {
-  waxing: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1600&auto=format&fit=crop",
-  facials: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1600&auto=format&fit=crop",
-  moroccan: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop",
-  "hydra-facial": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=1600&auto=format&fit=crop",
+  waxing: IMAGES.services.waxing,
+  facials: IMAGES.services.facials,
+  moroccan: IMAGES.services.moroccan,
+  "hydra-facial": IMAGES.services.hydraFacial,
+};
+
+const BEFORE_AFTER: Partial<
+  Record<string, { before: string; after: string; beforeAlt: string; afterAlt: string }>
+> = {
+  waxing: {
+    before: IMAGES.beforeAfter.waxing.before,
+    after: IMAGES.beforeAfter.waxing.after,
+    beforeAlt: "Skin texture before waxing treatment",
+    afterAlt: "Smooth result after waxing treatment",
+  },
+  facials: {
+    before: IMAGES.beforeAfter.facial.before,
+    after: IMAGES.beforeAfter.facial.after,
+    beforeAlt: "Skin before facial treatment",
+    afterAlt: "Refreshed skin after facial treatment",
+  },
 };
 
 export function generateStaticParams() {
@@ -34,6 +53,7 @@ export async function generateMetadata({
   return {
     title: category.name,
     description: category.description,
+    alternates: { canonical: `/services/${slug}` },
   };
 }
 
@@ -47,6 +67,7 @@ export default async function ServiceCategoryPage({
   if (!category) notFound();
 
   const services = servicesByCategory(category.slug);
+  const comparison = BEFORE_AFTER[category.href];
 
   return (
     <>
@@ -58,16 +79,33 @@ export default async function ServiceCategoryPage({
         imageAlt={`${category.name} at Wax In The City`}
       />
 
-      <section className="relative overflow-hidden bg-cream px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-7xl">
           <Link
             href="/services"
-            className="mb-10 inline-flex items-center gap-1.5 rounded-pill border border-brand-action/30 bg-white/42 px-4 py-2.5 text-body-sm font-medium text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
+            className="nav-link mb-10 inline-flex items-center gap-1.5 text-body-sm font-medium text-brand-action"
           >
             <ArrowLeft className="h-4 w-4" />
             All services
           </Link>
+
+          {comparison && (
+            <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
+              <h2 className="font-serif text-h3 font-medium text-warm">Visual proof</h2>
+              <p className="mt-2 text-body-sm text-warm-grey">
+                Placeholder comparison imagery until client-approved before/after photos are available.
+              </p>
+              <div className="mt-6">
+                <BeforeAfterSlider
+                  beforeSrc={comparison.before}
+                  afterSrc={comparison.after}
+                  beforeAlt={comparison.beforeAlt}
+                  afterAlt={comparison.afterAlt}
+                />
+              </div>
+            </AnimatedSection>
+          )}
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => (
@@ -79,8 +117,7 @@ export default async function ServiceCategoryPage({
         </div>
       </section>
 
-      {/* Related categories */}
-      <section className="relative overflow-hidden bg-cream-alt px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-5xl text-center">
           <h2 className="font-serif text-h2 font-medium text-warm">Explore other treatments</h2>

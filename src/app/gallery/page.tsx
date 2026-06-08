@@ -22,7 +22,7 @@ export default function GalleryPage() {
         imageAlt="Soft studio interior"
       />
 
-      <section className="bg-cream px-5 py-section lg:px-8">
+      <section className="bg-cream px-5 py-section-lg lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow="Gallery" title="Browse the studio." />
           <div className="mt-12">

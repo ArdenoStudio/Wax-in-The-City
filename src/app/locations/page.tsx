@@ -23,7 +23,7 @@ export default function LocationsPage() {
         imageAlt="Calm, welcoming studio interior"
       />
 
-      <section className="bg-cream px-5 py-section lg:px-8">
+      <section className="bg-cream px-5 py-section-lg lg:px-8">
         <div className="mx-auto max-w-5xl">
           <SectionHeading eyebrow="Our branches" title="Two Colombo studios." />
           <div className="mt-12 grid gap-6 sm:grid-cols-2">

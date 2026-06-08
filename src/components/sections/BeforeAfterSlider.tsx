@@ -16,7 +16,7 @@ interface BeforeAfterSliderProps {
 const SliderHandle = () => (
   <ReactCompareSliderHandle
     buttonStyle={{
-      background: "#351017",
+      background: "var(--color-brand)",
       border: "2.5px solid rgba(255,255,255,0.35)",
       backdropFilter: "blur(6px)",
       width: 44,

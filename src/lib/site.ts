@@ -179,7 +179,11 @@ export interface Testimonial {
   rating: number;
 }
 
-/** Placeholder reviews — replace with real Google/collected reviews. */
+/**
+ * Placeholder reviews — not rendered on the site until client-verified.
+ * Homepage uses REVIEW_THEMES instead to avoid shipping unverified quotes.
+ * Swap into ReviewThemes or a carousel once testimonials are confirmed.
+ */
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
@@ -231,6 +235,7 @@ export const NAV_LINKS = [
   { label: "About", href: "/about" },
   { label: "Gallery", href: "/gallery" },
   { label: "FAQ", href: "/faq" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export const TRUST_PILLARS = [
