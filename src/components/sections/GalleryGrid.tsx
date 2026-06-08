@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -17,11 +17,17 @@ const FILTERS: { key: GalleryCategory | "all"; label: string }[] = [
 export function GalleryGrid() {
   const [filter, setFilter] = useState<GalleryCategory | "all">("all");
   const [active, setActive] = useState<number | null>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const closeRef = useRef<HTMLButtonElement | null>(null);
 
   const photos =
     filter === "all" ? GALLERY : GALLERY.filter((p) => p.category === filter);
 
-  const close = useCallback(() => setActive(null), []);
+  const close = useCallback(() => {
+    setActive(null);
+    triggerRef.current?.focus();
+  }, []);
+
   const next = useCallback(
     () => setActive((i) => (i === null ? i : (i + 1) % photos.length)),
     [photos.length]
@@ -33,6 +39,7 @@ export function GalleryGrid() {
 
   useEffect(() => {
     if (active === null) return;
+    closeRef.current?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
       if (e.key === "ArrowRight") next();
@@ -48,12 +55,13 @@ export function GalleryGrid() {
 
   return (
     <div>
-      {/* Filter bar */}
-      <div className="flex flex-wrap justify-center gap-2">
+      <div className="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter gallery">
         {FILTERS.map((f) => (
           <button
             key={f.key}
+            type="button"
             onClick={() => setFilter(f.key)}
+            aria-pressed={filter === f.key}
             className={cn(
               "rounded-pill px-5 py-2.5 text-body-sm font-medium transition-colors",
               filter === f.key
@@ -66,13 +74,15 @@ export function GalleryGrid() {
         ))}
       </div>
 
-      {/* Masonry */}
       <div className="mt-10 columns-2 gap-4 lg:columns-3">
         {photos.map((photo, i) => (
           <motion.button
             key={photo.src}
+            ref={active === i ? triggerRef : undefined}
             layout
+            type="button"
             onClick={() => setActive(i)}
+            aria-label={`View image: ${photo.alt}`}
             className="mb-4 block w-full break-inside-avoid overflow-hidden rounded-card-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action"
           >
             <div className={cn("relative w-full", i % 3 === 1 ? "aspect-[3/4]" : "aspect-square")}>
@@ -88,10 +98,12 @@ export function GalleryGrid() {
         ))}
       </div>
 
-      {/* Lightbox */}
       <AnimatePresence>
         {active !== null && photos[active] && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Image lightbox"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -100,20 +112,23 @@ export function GalleryGrid() {
             className="fixed inset-0 z-[90] flex items-center justify-center bg-warm/90 p-4 backdrop-blur-sm"
           >
             <button
+              ref={closeRef}
+              type="button"
               onClick={close}
-              aria-label="Close"
-              className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-pill bg-cream/10 text-cream hover:bg-cream/20"
+              aria-label="Close lightbox"
+              className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-pill bg-cream/10 text-cream hover:bg-cream/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50"
             >
               <X className="h-5 w-5" />
             </button>
 
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 prev();
               }}
-              aria-label="Previous"
-              className="absolute left-3 flex h-12 w-12 items-center justify-center rounded-pill bg-cream/10 text-cream hover:bg-cream/20 sm:left-6"
+              aria-label="Previous image"
+              className="absolute left-3 flex h-12 w-12 items-center justify-center rounded-pill bg-cream/10 text-cream hover:bg-cream/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 sm:left-6"
             >
               <ChevronLeft className="h-6 w-6" />
             </button>
@@ -137,12 +152,13 @@ export function GalleryGrid() {
             </motion.div>
 
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 next();
               }}
-              aria-label="Next"
-              className="absolute right-3 flex h-12 w-12 items-center justify-center rounded-pill bg-cream/10 text-cream hover:bg-cream/20 sm:right-6"
+              aria-label="Next image"
+              className="absolute right-3 flex h-12 w-12 items-center justify-center rounded-pill bg-cream/10 text-cream hover:bg-cream/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 sm:right-6"
             >
               <ChevronRight className="h-6 w-6" />
             </button>

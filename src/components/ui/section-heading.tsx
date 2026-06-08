@@ -1,23 +1,17 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface SectionHeadingProps {
-  /** Small uppercase eyebrow above the title. */
   eyebrow?: string;
   title: string;
   subtitle?: string;
   align?: "left" | "center";
-  /** Cream text + light underline for dark backgrounds. */
   tone?: "dark" | "light";
   className?: string;
 }
 
-/**
- * Editorial section heading (file 11) — Cormorant title with an underline that
- * draws in on scroll (drawUnderline variant, transform-origin left).
- */
 export function SectionHeading({
   eyebrow,
   title,
@@ -27,14 +21,16 @@ export function SectionHeading({
   className,
 }: SectionHeadingProps) {
   const light = tone === "light";
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 18, filter: "blur(8px)" }}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "flex flex-col",
+        "motion-reduce-none flex flex-col",
         align === "center" ? "items-center text-center" : "items-start text-left",
         className
       )}

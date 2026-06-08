@@ -2,15 +2,28 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, CalendarDays, ChevronDown, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { IMAGES, BLUR_DATA_URL } from "@/lib/images";
 import { CARE_STANDARDS } from "@/lib/site";
 
 const HEADLINE_LINES = ["Private", "waxing,", "quietly", "perfected."];
 const HERO_TRUST_POINTS = ["Fresh wax setup", "Private rooms", "Confirmation first"];
 
+function scrollToServices() {
+  document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+}
+
 export function HeroSection() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section className="relative flex min-h-[760px] w-full items-end overflow-hidden bg-ink text-cream">
       <motion.div
@@ -20,12 +33,14 @@ export function HeroSection() {
         className="absolute inset-0"
       >
         <Image
-          src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1600&auto=format&fit=crop"
-          alt="A warm, calm treatment room at Wax In The City"
+          src={IMAGES.hero.src}
+          alt={IMAGES.hero.alt}
           fill
           priority
           fetchPriority="high"
           sizes="100vw"
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
           className="object-cover object-[62%_center] saturate-[0.94]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,12,13,0.94)_0%,rgba(35,12,17,0.82)_42%,rgba(35,12,17,0.36)_100%)]" />
@@ -45,7 +60,7 @@ export function HeroSection() {
             Ladies-only private studio · Colombo
           </motion.p>
 
-          <h1 className="max-w-[10ch] font-serif text-[3.25rem] font-medium leading-[0.92] text-cream sm:text-[5rem] lg:text-[5.8rem]">
+          <h1 className="max-w-[10ch] font-serif text-[clamp(3.25rem,8vw,5.8rem)] font-medium leading-[0.92] text-cream">
             {HEADLINE_LINES.map((line) => (
               <span key={line} className="block leading-[1.02]">
                 {line}
@@ -70,16 +85,12 @@ export function HeroSection() {
             transition={{ duration: 0.65, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}
             className="mt-9 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:items-center"
           >
-            <Link
-              href="/book"
-              className="group relative inline-flex h-14 w-full items-center justify-center overflow-hidden rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-8 text-body-lg font-medium text-cream shadow-[0_18px_48px_rgba(151,35,58,0.36)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_24px_64px_rgba(151,35,58,0.42)] sm:w-auto"
-            >
-              <span className="relative z-10 inline-flex items-center gap-2">
+            <Button asChild size="lg" variant="primary" className="w-full sm:w-auto">
+              <Link href="/book">
                 <CalendarDays className="h-5 w-5" />
                 Book Your Visit
-              </span>
-              <span className="pointer-events-none absolute inset-0 -translate-x-full bg-[linear-gradient(110deg,transparent_30%,rgba(255,255,255,0.45)_50%,transparent_70%)] motion-safe:animate-[witc-shimmer_3.2s_ease-in-out_infinite]" />
-            </Link>
+              </Link>
+            </Button>
             <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto">
               <Link href="/services">
                 View Menu
@@ -103,6 +114,35 @@ export function HeroSection() {
               </li>
             ))}
           </motion.ul>
+
+          {/* Mobile studio protocol */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.72, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-8 lg:hidden"
+          >
+            <Accordion type="single" collapsible className="glass-panel rounded-card">
+              <AccordionItem value="protocol" className="border-none">
+                <AccordionTrigger className="px-5 py-4 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light hover:no-underline">
+                  Studio protocol
+                </AccordionTrigger>
+                <AccordionContent className="px-5 pb-5">
+                  <ul className="space-y-3">
+                    {CARE_STANDARDS.map((item) => (
+                      <li
+                        key={item}
+                        className="flex gap-3 rounded-card bg-cream/[0.055] p-3 text-body-sm leading-relaxed text-cream/76"
+                      >
+                        <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </motion.div>
         </div>
 
         <motion.aside
@@ -139,9 +179,14 @@ export function HeroSection() {
         transition={{ duration: 0.6, delay: 1.2 }}
         className="absolute inset-x-0 bottom-6 z-10 flex justify-center"
       >
-        <span className="flex h-10 w-10 items-center justify-center rounded-pill border border-cream/16 bg-cream/8 backdrop-blur-xl">
-          <ChevronDown className="h-5 w-5 animate-bob text-cream/70" />
-        </span>
+        <button
+          type="button"
+          onClick={scrollToServices}
+          aria-label="Scroll to services"
+          className="flex h-10 w-10 items-center justify-center rounded-pill border border-cream/16 bg-cream/8 backdrop-blur-xl transition-colors hover:bg-cream/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/40"
+        >
+          <ChevronDown className={`h-5 w-5 text-cream/70 ${reduceMotion ? "" : "animate-bob"}`} />
+        </button>
       </motion.div>
     </section>
   );

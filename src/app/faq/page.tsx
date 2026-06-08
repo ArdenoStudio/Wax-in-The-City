@@ -20,7 +20,7 @@ export default function FAQPage() {
         imageAlt="Calm studio detail"
       />
 
-      <section className="bg-cream px-5 py-section lg:px-8">
+      <section className="bg-cream px-5 py-section-lg lg:px-8">
         <div className="mx-auto max-w-3xl">
           <FAQAccordion />
         </div>

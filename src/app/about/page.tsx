@@ -7,6 +7,7 @@ import { BookingZone } from "@/components/sections/BookingZone";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 import { MarqueeStrip } from "@/components/ui/marquee-strip";
+import { IMAGES } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "About",
@@ -39,12 +40,12 @@ export default function AboutPage() {
         eyebrow="Our story"
         title="A studio built for women."
         subtitle="The people and the promise behind Wax In The City."
-        image="https://images.unsplash.com/photo-1556760544-74068565f05c?q=80&w=1600&auto=format&fit=crop"
+        image={IMAGES.about.src}
         imageAlt="The warm, welcoming Wax In The City studio"
       />
 
       {/* Founder story */}
-      <section className="relative overflow-hidden bg-cream px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <AnimatedSection variant="slideFromLeft">
@@ -87,7 +88,7 @@ export default function AboutPage() {
       <MarqueeStrip />
 
       {/* Stats */}
-      <section className="relative overflow-hidden bg-cream-alt px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-5xl">
           <StatsCounter />
@@ -95,7 +96,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="relative overflow-hidden bg-cream px-5 py-section lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-6xl">
           <SectionHeading

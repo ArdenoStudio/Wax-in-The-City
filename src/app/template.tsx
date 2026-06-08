@@ -1,12 +1,14 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
-/**
- * Page-transition wrapper (file 10, section 10). template.tsx re-mounts on each
- * navigation, so this plays an enter animation on every route change.
- */
 export default function Template({ children }: { children: React.ReactNode }) {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return <>{children}</>;
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}

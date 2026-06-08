@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { InstagramIcon, FacebookIcon, WhatsappIcon } from "@/components/icons";
 import { SITE, NAV_LINKS, BRANCHES, whatsappLink } from "@/lib/site";
+import { IMAGES } from "@/lib/images";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -25,7 +26,7 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <span className="relative block h-12 w-12">
                 <Image
-                  src="/images/witc-logo.png"
+                  src={IMAGES.logo}
                   alt={SITE.name}
                   fill
                   sizes="48px"

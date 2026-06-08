@@ -10,7 +10,7 @@ const buttonVariants = cva(
       variant: {
         // Primary maroon with liquid sweep
         primary:
-          "bg-[linear-gradient(135deg,#a5273f,#6f1726)] text-cream shadow-[0_14px_30px_rgba(151,35,58,0.24)] hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(151,35,58,0.28)] before:absolute before:inset-0 before:content-[''] before:-translate-x-[110%] before:skew-x-[-15deg] before:bg-gradient-to-r before:from-transparent before:via-cream/20 before:to-transparent before:transition-[transform] before:duration-500 before:ease-out hover:before:translate-x-[110%]",
+          "bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] text-cream shadow-[0_14px_30px_rgba(162,15,55,0.24)] hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(162,15,55,0.28)] before:absolute before:inset-0 before:content-[''] before:-translate-x-[110%] before:skew-x-[-15deg] before:bg-gradient-to-r before:from-transparent before:via-cream/20 before:to-transparent before:transition-[transform] before:duration-500 before:ease-out hover:before:translate-x-[110%]",
         // Outline — maroon hairline on cream
         outline:
           "border border-brand-action/35 bg-white/35 text-brand-action backdrop-blur hover:-translate-y-0.5 hover:border-brand-action/60 hover:bg-brand-mist",

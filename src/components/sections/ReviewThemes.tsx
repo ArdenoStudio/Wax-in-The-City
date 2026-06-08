@@ -9,7 +9,7 @@ import { fadeUp, staggerFast, viewportOnce } from "@/lib/animations";
  * Public review theme section. This avoids shipping fake client testimonials
  * while still making the strongest social-proof themes visible.
  */
-export function TestimonialsCarousel() {
+export function ReviewThemes() {
   return (
     <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />

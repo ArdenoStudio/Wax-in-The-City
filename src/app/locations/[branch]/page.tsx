@@ -3,13 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin, Clock, Phone } from "lucide-react";
 import { BRANCHES, getBranch, whatsappLink, type BranchSlug } from "@/lib/site";
+import { IMAGES } from "@/lib/images";
 import { WhatsappIcon } from "@/components/icons";
 import { PageHero } from "@/components/sections/PageHero";
 import { BookingZone } from "@/components/sections/BookingZone";
 
 const BRANCH_IMAGES: Record<BranchSlug, string> = {
-  battaramulla: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1600&auto=format&fit=crop",
-  nugegoda: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop",
+  battaramulla: IMAGES.branches.battaramulla,
+  nugegoda: IMAGES.branches.nugegoda,
 };
 
 function isBranchSlug(value: string): value is BranchSlug {
@@ -31,6 +32,7 @@ export async function generateMetadata({
   return {
     title: `${b.name} branch`,
     description: `Visit our ${b.name} studio in Colombo. ${b.blurb}`,
+    alternates: { canonical: `/locations/${branch}` },
   };
 }
 
@@ -53,7 +55,7 @@ export default async function BranchPage({
         imageAlt={`${b.name} branch interior`}
       />
 
-      <section className="bg-cream px-5 py-section lg:px-8">
+      <section className="bg-cream px-5 py-section-lg lg:px-8">
         <div className="mx-auto max-w-5xl">
           <Link
             href="/locations"

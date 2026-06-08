@@ -60,7 +60,7 @@
 
   /* --- Radius --- */
   --radius-card: 8px;
-  --radius-card-lg: 8px;
+  --radius-card-lg: 12px;
   --radius-pill: 9999px;
 
   /* --- Shadows --- */
@@ -71,8 +71,8 @@
 
 /* Font families use local system stacks so production builds do not fetch fonts. */
 @theme inline {
-  --font-serif: var(--font-display), Georgia, serif;
-  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-serif: var(--font-display, var(--font-display-fallback)), Georgia, serif;
+  --font-sans: var(--font-body, var(--font-body-fallback)), system-ui, sans-serif;
 }
 
 /* ------------------------------------------------------------------ *
@@ -80,8 +80,8 @@
  * ------------------------------------------------------------------ */
 
 :root {
-  --font-display: "Bodoni 72", Didot, "Bodoni MT", Georgia, serif;
-  --font-body: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-display-fallback: "Bodoni 72", Didot, "Bodoni MT", Georgia, serif;
+  --font-body-fallback: "Avenir Next", "Segoe UI", system-ui, sans-serif;
 }
 
 html {
@@ -240,6 +240,11 @@ textarea {
   .animate-marquee,
   .animate-bob,
   .animate-float-soft { animation: none; }
+  .motion-reduce-none {
+    filter: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { IMAGES } from "@/lib/images";
 
 const SESSION_KEY = "witc-loaded";
 
@@ -62,7 +63,7 @@ export function LoadingScreen() {
             className="relative h-28 w-28 sm:h-32 sm:w-32"
           >
             <Image
-              src="/images/witc-logo.png"
+              src={IMAGES.logo}
               alt="Wax In The City"
               fill
               priority

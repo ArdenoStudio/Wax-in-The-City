@@ -8,10 +8,12 @@ import { Check, Loader2 } from "lucide-react";
 import { contactSchema, type ContactInput } from "@/lib/booking";
 import { submitContact } from "@/app/actions/booking";
 import { BRANCHES, whatsappLink } from "@/lib/site";
+import { fieldAriaProps, fieldErrorId } from "@/lib/form-a11y";
 import { WhatsappIcon } from "@/components/icons";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -68,9 +70,16 @@ export function ContactForm() {
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="flex flex-col gap-2">
                 <Label htmlFor="c-name">Your name</Label>
-                <Input id="c-name" placeholder="Your name" {...register("name")} />
+                <Input
+                  id="c-name"
+                  placeholder="Your name"
+                  {...register("name")}
+                  {...fieldAriaProps("name", errors.name)}
+                />
                 {errors.name && (
-                  <p className="text-body-sm text-error">{errors.name.message}</p>
+                  <p id={fieldErrorId("name")} className="text-body-sm text-error" role="alert">
+                    {errors.name.message}
+                  </p>
                 )}
               </div>
               <div className="flex flex-col gap-2">
@@ -80,9 +89,12 @@ export function ContactForm() {
                   type="email"
                   placeholder="you@example.com"
                   {...register("email")}
+                  {...fieldAriaProps("email", errors.email)}
                 />
                 {errors.email && (
-                  <p className="text-body-sm text-error">{errors.email.message}</p>
+                  <p id={fieldErrorId("email")} className="text-body-sm text-error" role="alert">
+                    {errors.email.message}
+                  </p>
                 )}
               </div>
             </div>
@@ -96,19 +108,27 @@ export function ContactForm() {
                   inputMode="tel"
                   placeholder="Your number"
                   {...register("phone")}
+                  {...fieldAriaProps("phone", errors.phone)}
                 />
                 {errors.phone && (
-                  <p className="text-body-sm text-error">{errors.phone.message}</p>
+                  <p id={fieldErrorId("phone")} className="text-body-sm text-error" role="alert">
+                    {errors.phone.message}
+                  </p>
                 )}
               </div>
               <div className="flex flex-col gap-2">
-                <Label>Which branch?</Label>
+                <Label htmlFor="c-branch">Which branch?</Label>
                 <Controller
                   control={control}
                   name="branch"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger>
+                      <SelectTrigger
+                        id="c-branch"
+                        aria-label="Select branch location"
+                        aria-invalid={errors.branch ? true : undefined}
+                        aria-describedby={errors.branch ? fieldErrorId("branch") : undefined}
+                      >
                         <SelectValue placeholder="Choose a branch" />
                       </SelectTrigger>
                       <SelectContent>
@@ -122,7 +142,9 @@ export function ContactForm() {
                   )}
                 />
                 {errors.branch && (
-                  <p className="text-body-sm text-error">{errors.branch.message}</p>
+                  <p id={fieldErrorId("branch")} className="text-body-sm text-error" role="alert">
+                    {errors.branch.message}
+                  </p>
                 )}
               </div>
             </div>
@@ -133,23 +155,22 @@ export function ContactForm() {
                 id="c-message"
                 placeholder="Tell us what you'd like to ask."
                 {...register("message")}
+                {...fieldAriaProps("message", errors.message)}
               />
               {errors.message && (
-                <p className="text-body-sm text-error">{errors.message.message}</p>
+                <p id={fieldErrorId("message")} className="text-body-sm text-error" role="alert">
+                  {errors.message.message}
+                </p>
               )}
             </div>
 
             {serverError && (
-              <p className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error">
+              <p className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error" role="alert">
                 {serverError}
               </p>
             )}
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-8 text-body-lg font-medium text-cream shadow-[0_16px_42px_rgba(151,35,58,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_56px_rgba(151,35,58,0.32)] disabled:opacity-70"
-            >
+            <Button type="submit" size="lg" variant="primary" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
@@ -158,7 +179,7 @@ export function ContactForm() {
               ) : (
                 "Send Message"
               )}
-            </button>
+            </Button>
 
             <p className="text-center text-body-sm text-warm-grey">
               Prefer WhatsApp?{" "}
