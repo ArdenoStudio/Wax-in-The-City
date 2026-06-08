@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Newsreader } from "next/font/google";
 import { preconnect } from "react-dom";
 import "./globals.css";
 import { SITE } from "@/lib/site";
@@ -7,21 +6,6 @@ import { Navbar } from "@/components/global/Navbar";
 import { Footer } from "@/components/global/Footer";
 import { MobileBookingBar } from "@/components/global/MobileBookingBar";
 import { SmoothScrollProvider } from "@/components/global/SmoothScrollProvider";
-import { Cursor } from "@/components/global/Cursor";
-
-const geist = Geist({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-geist",
-});
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-newsreader",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -65,13 +49,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   preconnect("https://images.unsplash.com");
   return (
-    <html
-      lang="en"
-      className={`${geist.variable} ${newsreader.variable} antialiased`}
-    >
-      <body className="min-h-screen bg-cream text-warm">
+    <html lang="en">
+      <body className="min-h-screen bg-cream text-warm antialiased">
         <SmoothScrollProvider>
-          <Cursor />
           <Navbar />
           <main className="flex min-h-screen flex-col">{children}</main>
           <Footer />

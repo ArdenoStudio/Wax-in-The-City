@@ -7,24 +7,24 @@
 
 @theme {
   /* --- Colour: private studio system --- */
-  --color-brand: #351017;          /* Deep wine */
-  --color-brand-action: #97233a;   /* Booking/action red */
-  --color-brand-dark: #1d090d;     /* Pressed/nav */
-  --color-brand-footer: #13090d;   /* Footer background */
-  --color-brand-light: #f0c4ca;    /* Rose highlight */
-  --color-brand-mist: #f8e6e4;     /* Soft rose surface */
-  --color-sage: #9da995;           /* Calm contrast */
+  --color-brand: #2b0710;          /* Oxblood */
+  --color-brand-action: #a20f37;   /* Booking/action wine */
+  --color-brand-dark: #17070b;     /* Pressed/nav */
+  --color-brand-footer: #12060a;   /* Footer background */
+  --color-brand-light: #ffd6de;    /* Blush highlight */
+  --color-brand-mist: #fce5ec;     /* Soft blush surface */
+  --color-sage: #a3a981;           /* Calm contrast */
   --color-ink: #151011;            /* Editorial dark */
-  --color-gold: #d1ad64;           /* Warm detail */
+  --color-gold: #d9b35f;           /* Jewelry detail */
 
-  /* --- Colour: Cream backgrounds --- */
-  --color-cream: #fffaf6;          /* Dominant page background */
-  --color-cream-alt: #f4eee7;      /* Alternating sections */
+  /* --- Colour: Pearl backgrounds --- */
+  --color-cream: #fff7f9;          /* Dominant page background */
+  --color-cream-alt: #f8edf1;      /* Alternating sections */
 
   /* --- Colour: Warm neutrals --- */
-  --color-warm: #21191a;           /* Body text, never pure black */
-  --color-warm-grey: #706565;      /* Secondary text, captions */
-  --color-warm-border: #e8dcd4;    /* Card borders, dividers */
+  --color-warm: #1f171a;           /* Body text, never pure black */
+  --color-warm-grey: #65565d;      /* Secondary text, captions */
+  --color-warm-border: #ead7df;    /* Card borders, dividers */
 
   /* --- Colour: Semantic --- */
   --color-success: #7a9e7e;
@@ -69,20 +69,19 @@
   --shadow-nav: 0 18px 50px rgba(27, 14, 16, 0.10);
 }
 
-/* Font families are bound to next/font CSS variables at runtime. */
+/* Font families use local system stacks so production builds do not fetch fonts. */
 @theme inline {
-  --font-serif: var(--font-newsreader), Georgia, serif;
-  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-serif: var(--font-display), Georgia, serif;
+  --font-sans: var(--font-body), system-ui, sans-serif;
 }
 
 /* ------------------------------------------------------------------ *
  *  Base layer
  * ------------------------------------------------------------------ */
 
-/* Custom cursor — only on fine-pointer (mouse) devices */
-.witc-custom-cursor,
-.witc-custom-cursor * {
-  cursor: none !important;
+:root {
+  --font-display: "Bodoni 72", Didot, "Bodoni MT", Georgia, serif;
+  --font-body: "Avenir Next", "Segoe UI", system-ui, sans-serif;
 }
 
 html {

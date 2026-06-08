@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, Clock3, Loader2, ShieldCheck } from "lucide-react";
@@ -33,7 +33,6 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
     register,
     handleSubmit,
     control,
-    watch,
     formState: { errors, isSubmitting },
   } = useForm<BookingInput>({
     resolver: zodResolver(bookingSchema),
@@ -43,7 +42,10 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
     },
   });
 
-  const watchedFields = watch(["name", "phone", "branch", "service_preference"]);
+  const watchedFields = useWatch({
+    control,
+    name: ["name", "phone", "branch", "service_preference"],
+  });
   const filledCount = watchedFields.filter(Boolean).length;
   const progress = (filledCount / 4) * 100;
 

@@ -262,13 +262,6 @@ export const REVIEW_THEMES = [
   },
 ] as const;
 
-export const HOMEPAGE_STATS = [
-  { value: "5.0", label: "public review signal" },
-  { value: "135+", label: "review count found online" },
-  { value: "14+", label: "treatment options" },
-  { value: "24h", label: "request confirmation window" },
-] as const;
-
 export const MARQUEE_WORDS = [
   "Smooth",
   "Safe",

@@ -24,9 +24,12 @@ export async function submitBooking(
   const supabase = await createClient();
 
   if (!supabase) {
-    // Supabase not provisioned yet — don't lose the lead silently.
-    console.warn("[booking] Supabase not configured; request not persisted:", parsed.data);
-    return { ok: true };
+    console.warn("[booking] Supabase not configured; request not persisted");
+    return {
+      ok: false,
+      error:
+        "Online request capture is not connected yet. Please message us on WhatsApp so we receive it immediately.",
+    };
   }
 
   const { error } = await supabase.from("booking_requests").insert({
@@ -64,8 +67,12 @@ export async function submitContact(raw: unknown): Promise<BookingResult> {
 
   const supabase = await createClient();
   if (!supabase) {
-    console.warn("[contact] Supabase not configured; message not persisted:", parsed.data);
-    return { ok: true };
+    console.warn("[contact] Supabase not configured; message not persisted");
+    return {
+      ok: false,
+      error:
+        "Online message capture is not connected yet. Please message us on WhatsApp so we receive it immediately.",
+    };
   }
 
   const { error } = await supabase.from("booking_requests").insert({

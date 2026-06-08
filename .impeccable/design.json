@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-08T06:45:00.000Z",
+  "title": "Design System: Wax In The City SL",
+  "extensions": {
+    "colorMeta": {
+      "oxblood-deep": {
+        "role": "primary",
+        "displayName": "Oxblood Deep",
+        "canonical": "#2b0710",
+        "tonalRamp": ["#17070b", "#2b0710", "#4b0c1b", "#74132b", "#a20f37", "#d05a75", "#ffd6de", "#fff7f9"]
+      },
+      "wine-action": {
+        "role": "primary",
+        "displayName": "Wine Action",
+        "canonical": "#a20f37",
+        "tonalRamp": ["#23050d", "#4b0c1b", "#74132b", "#a20f37", "#c5385c", "#e47b95", "#ffd6de", "#fff7f9"]
+      },
+      "pearl-blush": {
+        "role": "neutral",
+        "displayName": "Pearl Blush",
+        "canonical": "#fff7f9",
+        "tonalRamp": ["#1f171a", "#65565d", "#9d8c94", "#cbb8c0", "#ead7df", "#f8edf1", "#fff7f9", "#ffffff"]
+      },
+      "antique-gold": {
+        "role": "secondary",
+        "displayName": "Antique Gold",
+        "canonical": "#d9b35f",
+        "tonalRamp": ["#271b07", "#5d3f11", "#8c641f", "#b98a35", "#d9b35f", "#e7c985", "#f2dfb2", "#fbf2dc"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Boutique Display",
+        "purpose": "Hero and major brand statements only."
+      },
+      "body": {
+        "displayName": "Appointment Body",
+        "purpose": "Clear service, branch, and booking copy."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-rest",
+        "value": "0 18px 55px rgba(27, 14, 16, 0.08)",
+        "purpose": "Ambient lift for service and form surfaces."
+      },
+      {
+        "name": "card-hover",
+        "value": "0 26px 80px rgba(27, 14, 16, 0.16)",
+        "purpose": "Meaningful hover lift on repeated cards."
+      },
+      {
+        "name": "hero-glass",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.16), 0 24px 70px rgba(0,0,0,0.22)",
+        "purpose": "Dark hero overlays only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-expo-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Primary reveal and surface motion."
+      },
+      {
+        "name": "micro-lift",
+        "value": "520ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Card hover lift and action feedback."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Booking Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Wine conversion button for booking paths.",
+      "html": "<button class=\"ds-btn-primary\">Book your visit</button>",
+      "css": ".ds-btn-primary{height:56px;border:0;border-radius:9999px;padding:16px 32px;background:linear-gradient(135deg,#a20f37,#6f1726);color:#fff7f9;font:600 18px/1.2 Avenir Next,Segoe UI,system-ui,sans-serif;box-shadow:0 18px 48px rgba(151,35,58,.34);transition:transform .3s ease,box-shadow .3s ease}.ds-btn-primary:hover{transform:translateY(-2px);box-shadow:0 24px 64px rgba(151,35,58,.42)}.ds-btn-primary:focus-visible{outline:2px solid rgba(162,15,55,.55);outline-offset:3px}"
+    },
+    {
+      "name": "Pearl Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Booking and contact form input.",
+      "html": "<input class=\"ds-field\" placeholder=\"Your number\" />",
+      "css": ".ds-field{height:48px;width:100%;border:1px solid rgba(234,215,223,.85);border-radius:8px;background:rgba(255,255,255,.86);padding:12px 16px;color:#1f171a;font:400 16px/1.5 Avenir Next,Segoe UI,system-ui,sans-serif;box-shadow:inset 0 1px 0 rgba(255,255,255,.76),0 10px 28px rgba(39,19,21,.05);transition:border-color .3s ease,box-shadow .3s ease,background-color .3s ease}.ds-field::placeholder{color:#65565d}.ds-field:focus-visible{outline:0;border-color:rgba(162,15,55,.7);box-shadow:0 0 0 4px rgba(162,15,55,.12)}"
+    },
+    {
+      "name": "Premium Service Card",
+      "kind": "card",
+      "refersTo": "card-premium",
+      "description": "Repeated treatment card with a tailored edge.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-card-rule\"></span><h3>Brazilian Wax</h3><p>Private, careful and appointment-led.</p></article>",
+      "css": ".ds-card{border:1px solid rgba(84,56,51,.12);border-radius:8px;background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(255,247,249,.74));padding:24px;color:#1f171a;box-shadow:0 24px 80px rgba(42,20,22,.08);transition:transform .52s cubic-bezier(.16,1,.3,1),box-shadow .52s cubic-bezier(.16,1,.3,1)}.ds-card:hover{transform:translateY(-5px);box-shadow:0 28px 80px rgba(44,21,25,.14)}.ds-card-rule{display:block;width:48px;height:1px;background:#a20f37;margin-bottom:20px}.ds-card h3{margin:0;font:600 18px/1.4 Avenir Next,Segoe UI,system-ui,sans-serif}.ds-card p{margin:12px 0 0;color:#65565d;font:400 14px/1.6 Avenir Next,Segoe UI,system-ui,sans-serif}"
+    },
+    {
+      "name": "Floating Nav",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Transparent over hero, pearl pill after scroll.",
+      "html": "<nav class=\"ds-nav\"><a>Services</a><a>Locations</a><a>Book</a></nav>",
+      "css": ".ds-nav{display:inline-flex;gap:6px;align-items:center;border:1px solid rgba(234,215,223,.7);border-radius:9999px;background:rgba(255,247,249,.88);padding:6px;box-shadow:0 4px 32px rgba(28,15,15,.12);backdrop-filter:blur(18px)}.ds-nav a{border-radius:9999px;padding:8px 16px;color:#1f171a;text-decoration:none;font:600 14px/1 Avenir Next,Segoe UI,system-ui,sans-serif}.ds-nav a:hover,.ds-nav a:focus-visible{background:#fce5ec;color:#a20f37;outline:0}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Private Dressing Room",
+    "overview": "The system should feel like stepping behind a velvet curtain into a private appointment room: dark wine, pearled blush, precise gold, and confident type.",
+    "keyCharacteristics": [
+      "Dark wine brand fields with pearled blush relief.",
+      "Fashion-label display type paired with clean appointment-system body type.",
+      "Tight, quiet components with 8px cards and pill CTAs only where the action deserves it.",
+      "Motion that feels like a composed reveal, not a hover toy."
+    ],
+    "rules": [
+      {
+        "name": "The Jewelry Rule",
+        "body": "Gold is an accent, not a theme. If a section uses more than one gold element, one must become wine or plum.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Candy Pink Rule",
+        "body": "Pink may be pearl or blush, never bubblegum, neon, or cosmetic-template pink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Blur Has a Job Rule",
+        "body": "Backdrop blur is allowed only when it separates interface from photography or dark hero content. Decorative blur on ordinary cards is prohibited.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do make the first viewport say privacy, hygiene, and appointment-led care before it says beauty.",
+      "Do use oxblood and pearl as the main brand contrast, with gold as a controlled detail.",
+      "Do keep card corners at 8px and use pill shapes only for actions, chips, and nav containers.",
+      "Do respect reduced motion and keep motion available as enhancement, not a requirement to read content."
+    ],
+    "donts": [
+      "Don't use generic pink salon templates.",
+      "Don't use overdone glass and cursor effects.",
+      "Don't use fake luxury wording.",
+      "Don't rely on stock-photo sameness when client photography becomes available.",
+      "Don't hide booking reliability problems behind success messages."
+    ]
+  }
+}
