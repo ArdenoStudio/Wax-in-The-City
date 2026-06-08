@@ -6,8 +6,6 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
-      // Supabase Storage public URLs (gallery) — wildcard project ref.
-      { protocol: "https", hostname: "*.supabase.co" },
     ],
   },
 };

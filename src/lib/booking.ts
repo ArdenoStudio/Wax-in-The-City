@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-/** Booking request shape — mirrors the Supabase `booking_requests` table. */
+/** Booking request shape — mirrors the Neon `booking_requests` table. */
 export const bookingSchema = z.object({
   name: z.string().min(2, { message: "We need this to get back to you." }),
   phone: z

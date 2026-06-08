@@ -10,9 +10,9 @@ Ladies-only beauty salon website for Colombo, covering Battaramulla and Nugegoda
 - Lenis for smooth wheel scrolling, disabled for reduced-motion users
 - Radix UI primitives with shadcn-style components in `src/components/ui`
 - `react-hook-form` and `zod` for booking and contact forms
-- Supabase form capture as the pre-Dinaya backend
+- Neon Postgres (`@neondatabase/serverless`) for form capture as the pre-Dinaya backend
 - `react-compare-slider` for before/after imagery
-- System font stack: Bodoni/Didot-style display, Avenir/Segoe-style body, no remote font fetch required for builds
+- Cormorant Garamond + DM Sans via `next/font`
 
 ## Getting Started
 
@@ -32,15 +32,16 @@ http://localhost:3000
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key for public form inserts |
+| `DATABASE_URL` | Neon Postgres connection string (server-only; never expose to the browser) |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number, digits only, for example `94771234567` |
+
+On Vercel, add Neon via the Marketplace (`vercel integration add neon`) to auto-provision `DATABASE_URL`.
 
 ## Booking Capture
 
-Run `supabase/schema.sql` in the Supabase SQL editor before relying on the forms. It creates `services`, `booking_requests`, `testimonials`, and `gallery`, with RLS policies for public insert-only booking requests.
+Run `db/schema.sql` against your Neon database before relying on the forms. It creates `services`, `booking_requests`, `testimonials`, and `gallery`.
 
-If Supabase env vars are missing, booking and contact forms now fail honestly and ask the visitor to use WhatsApp instead. They do not show a false success state.
+Form writes run through server actions using `DATABASE_URL` — no client-side database access. If `DATABASE_URL` is missing, booking and contact forms fail honestly and ask the visitor to use WhatsApp instead. They do not show a false success state.
 
 ## Impeccable Context
 
@@ -57,8 +58,8 @@ src/
   components/global/       Navbar, Footer, MobileBookingBar, smooth scroll
   components/sections/     homepage, services, booking, gallery, trust sections
   components/ui/           shared primitives and cards
-  lib/                     content, booking schemas, Supabase clients, utilities
-supabase/
+  lib/                     content, booking schemas, Neon client, utilities
+db/
   schema.sql               pre-Dinaya database setup
 ```
 
@@ -68,7 +69,7 @@ supabase/
 - Real salon photography
 - Real testimonials or approved Google review quotes
 - Final service menu and pricing
-- Production Supabase env vars
+- Production Neon `DATABASE_URL`
 - Custom domain and metadata URL alignment
 - Dinaya booking widget when ready
 

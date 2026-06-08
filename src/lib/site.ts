@@ -146,7 +146,7 @@ export interface Service {
   slug: string;
 }
 
-/** Placeholder service set — replace with Supabase data once populated. */
+/** Placeholder service set — replace with Neon data once populated. */
 export const SERVICES: Service[] = [
   // Waxing
   { name: "Full Body Wax", category: "waxing", duration: "60–75 min", priceFrom: 6500, slug: "full-body-wax", description: "Head-to-toe smoothness in one unhurried session, with premium soft wax and a gentle, skin-first technique." },

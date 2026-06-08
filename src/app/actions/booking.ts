@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@/lib/supabase/server";
+import { getSql } from "@/lib/db";
 import {
   bookingSchema,
   contactSchema,
@@ -8,10 +8,9 @@ import {
 } from "@/lib/booking";
 
 /**
- * Server action: capture a booking request into Supabase `booking_requests`.
- * Pre-Dinaya fallback (file 08). When Supabase isn't configured yet the request
- * is logged and treated as received — WhatsApp remains the reliable channel and
- * is always offered alongside this form.
+ * Server action: capture a booking request into Neon `booking_requests`.
+ * Pre-Dinaya fallback. When DATABASE_URL isn't configured the request is not
+ * persisted — WhatsApp remains the reliable channel.
  */
 export async function submitBooking(
   raw: unknown
@@ -21,10 +20,10 @@ export async function submitBooking(
     return { ok: false, error: "Please check the form and try again." };
   }
 
-  const supabase = await createClient();
+  const sql = getSql();
 
-  if (!supabase) {
-    console.warn("[booking] Supabase not configured; request not persisted");
+  if (!sql) {
+    console.warn("[booking] DATABASE_URL not configured; request not persisted");
     return {
       ok: false,
       error:
@@ -32,17 +31,27 @@ export async function submitBooking(
     };
   }
 
-  const { error } = await supabase.from("booking_requests").insert({
-    name: parsed.data.name,
-    phone: parsed.data.phone,
-    branch: parsed.data.branch,
-    service_preference: parsed.data.service_preference || null,
-    preferred_date: parsed.data.preferred_date || null,
-    message: parsed.data.message || null,
-  });
-
-  if (error) {
-    console.error("[booking] insert failed:", error.message);
+  try {
+    await sql`
+      insert into booking_requests (
+        name,
+        phone,
+        branch,
+        service_preference,
+        preferred_date,
+        message
+      )
+      values (
+        ${parsed.data.name},
+        ${parsed.data.phone},
+        ${parsed.data.branch},
+        ${parsed.data.service_preference || null},
+        ${parsed.data.preferred_date || null},
+        ${parsed.data.message || null}
+      )
+    `;
+  } catch (error) {
+    console.error("[booking] insert failed:", error);
     return {
       ok: false,
       error: "Something went wrong on our side. Please try WhatsApp instead.",
@@ -65,9 +74,9 @@ export async function submitContact(raw: unknown): Promise<BookingResult> {
   const { name, email, phone, branch, message } = parsed.data;
   const composed = email ? `${message}\n\nEmail: ${email}` : message;
 
-  const supabase = await createClient();
-  if (!supabase) {
-    console.warn("[contact] Supabase not configured; message not persisted");
+  const sql = getSql();
+  if (!sql) {
+    console.warn("[contact] DATABASE_URL not configured; message not persisted");
     return {
       ok: false,
       error:
@@ -75,16 +84,25 @@ export async function submitContact(raw: unknown): Promise<BookingResult> {
     };
   }
 
-  const { error } = await supabase.from("booking_requests").insert({
-    name,
-    phone,
-    branch,
-    service_preference: "General enquiry",
-    message: composed,
-  });
-
-  if (error) {
-    console.error("[contact] insert failed:", error.message);
+  try {
+    await sql`
+      insert into booking_requests (
+        name,
+        phone,
+        branch,
+        service_preference,
+        message
+      )
+      values (
+        ${name},
+        ${phone},
+        ${branch},
+        ${"General enquiry"},
+        ${composed}
+      )
+    `;
+  } catch (error) {
+    console.error("[contact] insert failed:", error);
     return {
       ok: false,
       error: "Something went wrong on our side. Please try WhatsApp instead.",
