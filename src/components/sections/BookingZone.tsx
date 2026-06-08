@@ -4,7 +4,7 @@ import { BookingForm } from "@/components/sections/BookingForm";
 import { whatsappLink, type BranchSlug } from "@/lib/site";
 
 interface BookingZoneProps {
-  /** 'form' = Supabase fallback (current), 'dinaya' = embedded widget (future). */
+  /** 'form' = Neon-backed request form (current), 'dinaya' = embedded widget (future). */
   mode?: "form" | "dinaya" | "whatsapp-only";
   defaultBranch?: BranchSlug;
   defaultService?: string;
