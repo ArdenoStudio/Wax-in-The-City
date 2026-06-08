@@ -35,14 +35,16 @@ export function Navbar() {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled
-          ? "bg-cream/78 shadow-nav backdrop-blur-2xl"
-          : "bg-transparent"
-      )}
+      className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6"
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:h-20 sm:px-5 lg:px-8">
+      <div
+        className={cn(
+          "mx-auto flex items-center justify-between gap-3 transition-all duration-500",
+          scrolled
+            ? "mt-3 h-14 max-w-5xl rounded-pill border border-warm-border/50 bg-cream/88 px-5 shadow-[0_4px_32px_rgba(28,15,15,0.12)] backdrop-blur-xl sm:h-16 sm:px-6"
+            : "h-16 max-w-7xl px-1 sm:h-20"
+        )}
+      >
         {/* Logo */}
         <Link
           href="/"

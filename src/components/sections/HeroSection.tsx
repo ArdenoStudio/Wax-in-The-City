@@ -2,12 +2,24 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import { ArrowRight, CalendarDays, ChevronDown, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CARE_STANDARDS, HOMEPAGE_STATS } from "@/lib/site";
 
+const HEADLINE_LINES = ["Private waxing,", "quietly perfected."];
+
 export function HeroSection() {
+  const reduce = useReducedMotion();
+
+  const charVariant: Variants = {
+    hidden: reduce ? { opacity: 0 } : { y: "110%", opacity: 0 },
+    visible: (i: number) => ({
+      y: "0%",
+      opacity: 1,
+      transition: { duration: 0.52, ease: [0.215, 0.61, 0.355, 1] as const, delay: 0.2 + i * 0.028 },
+    }),
+  };
   return (
     <section className="relative flex min-h-[760px] w-full items-end overflow-hidden bg-ink text-cream">
       <motion.div
@@ -42,16 +54,30 @@ export function HeroSection() {
             Ladies-only private studio · Colombo
           </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.78, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-[11ch] text-balance font-serif text-[3.55rem] font-medium leading-[0.95] text-cream sm:text-[5.2rem] lg:text-[6.35rem]"
-          >
-            Private waxing,
-            <br />
-            quietly perfected.
-          </motion.h1>
+          <h1 className="max-w-[11ch] font-serif text-[3.55rem] font-medium leading-[0.95] text-cream sm:text-[5.2rem] lg:text-[6.35rem]">
+            {(() => {
+              let ci = 0;
+              return HEADLINE_LINES.map((line, li) => (
+                <span key={li} className="block overflow-hidden leading-[1.05]">
+                  {line.split("").map((char) => {
+                    const idx = ci++;
+                    return (
+                      <motion.span
+                        key={idx}
+                        custom={idx}
+                        variants={charVariant}
+                        initial="hidden"
+                        animate="visible"
+                        className="inline-block"
+                      >
+                        {char === " " ? " " : char}
+                      </motion.span>
+                    );
+                  })}
+                </span>
+              ));
+            })()}
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
