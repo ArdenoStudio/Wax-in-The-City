@@ -20,6 +20,7 @@ export function HeroSection() {
       transition: { duration: 0.52, ease: [0.215, 0.61, 0.355, 1] as const, delay: 0.2 + i * 0.028 },
     }),
   };
+
   return (
     <section className="relative flex min-h-[760px] w-full items-end overflow-hidden bg-ink text-cream">
       <motion.div
@@ -54,26 +55,33 @@ export function HeroSection() {
             Ladies-only private studio · Colombo
           </motion.p>
 
-          <h1 className="max-w-[11ch] font-serif text-[3.55rem] font-medium leading-[0.95] text-cream sm:text-[5.2rem] lg:text-[6.35rem]">
+          <h1 className="font-serif text-[3.55rem] font-medium leading-[1.0] text-cream sm:text-[5.2rem] lg:text-[6.35rem]">
             {(() => {
               let ci = 0;
               return HEADLINE_LINES.map((line, li) => (
-                <span key={li} className="block overflow-hidden leading-[1.05]">
-                  {line.split("").map((char) => {
-                    const idx = ci++;
-                    return (
-                      <motion.span
-                        key={idx}
-                        custom={idx}
-                        variants={charVariant}
-                        initial="hidden"
-                        animate="visible"
-                        className="inline-block"
-                      >
-                        {char === " " ? " " : char}
-                      </motion.span>
-                    );
-                  })}
+                <span key={li} className="block overflow-hidden pb-[0.06em]">
+                  {line.split(" ").map((word, wi, arr) => (
+                    <span key={wi}>
+                      <span className="inline-block whitespace-nowrap">
+                        {word.split("").map((char) => {
+                          const idx = ci++;
+                          return (
+                            <motion.span
+                              key={idx}
+                              custom={idx}
+                              variants={charVariant}
+                              initial="hidden"
+                              animate="visible"
+                              className="inline-block"
+                            >
+                              {char}
+                            </motion.span>
+                          );
+                        })}
+                      </span>
+                      {wi < arr.length - 1 && " "}
+                    </span>
+                  ))}
                 </span>
               ));
             })()}
@@ -159,7 +167,6 @@ export function HeroSection() {
         </motion.aside>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
