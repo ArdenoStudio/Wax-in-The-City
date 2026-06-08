@@ -10,6 +10,7 @@ import { fadeUp, slideFromLeft, viewportOnce } from "@/lib/animations";
 export function AboutTeaser() {
   return (
     <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
+      <span aria-hidden className="pointer-events-none absolute left-6 top-6 select-none font-serif text-[6rem] font-light leading-none text-warm/[0.035] sm:text-[9rem] lg:left-12 lg:text-[11rem]">02</span>
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
       <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
         <motion.div

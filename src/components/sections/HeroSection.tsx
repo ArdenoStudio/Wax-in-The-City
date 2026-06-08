@@ -21,6 +21,7 @@ export function HeroSection() {
           alt="A warm, calm treatment room at Wax In The City"
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
           className="object-cover object-[62%_center] saturate-[0.94]"
         />

@@ -79,8 +79,14 @@
  *  Base layer
  * ------------------------------------------------------------------ */
 
+/* Custom cursor — only on fine-pointer (mouse) devices */
+.witc-custom-cursor,
+.witc-custom-cursor * {
+  cursor: none !important;
+}
+
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
 }

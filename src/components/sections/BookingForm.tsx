@@ -33,6 +33,7 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
     register,
     handleSubmit,
     control,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<BookingInput>({
     resolver: zodResolver(bookingSchema),
@@ -41,6 +42,10 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
       service_preference: defaultService ?? undefined,
     },
   });
+
+  const watchedFields = watch(["name", "phone", "branch", "service_preference"]);
+  const filledCount = watchedFields.filter(Boolean).length;
+  const progress = (filledCount / 4) * 100;
 
   const onSubmit = async (data: BookingInput) => {
     setServerError(null);
@@ -99,8 +104,31 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
             className="relative z-10 flex flex-col gap-5"
             noValidate
           >
+            {/* Progress bar */}
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center justify-between">
+                <span className="text-caption text-warm-grey">Booking details</span>
+                <span className="text-caption font-medium text-brand-action">{filledCount} / 4</span>
+              </div>
+              <div className="h-px w-full overflow-hidden rounded-full bg-warm-border">
+                <motion.div
+                  className="h-full rounded-full bg-brand-action"
+                  initial={{ width: "0%" }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                />
+              </div>
+            </div>
+
             <div className="flex flex-col gap-2">
-              <Label htmlFor="name">Your name</Label>
+              <div className="flex items-center justify-between">
+                <Label htmlFor="name">Your name</Label>
+                {watchedFields[0] && (
+                  <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
+                    <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />Done
+                  </motion.span>
+                )}
+              </div>
               <Input id="name" placeholder="Your name" {...register("name")} />
               {errors.name && (
                 <p className="text-body-sm text-error">{errors.name.message}</p>
@@ -108,7 +136,14 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label htmlFor="phone">Phone</Label>
+              <div className="flex items-center justify-between">
+                <Label htmlFor="phone">Phone</Label>
+                {watchedFields[1] && (
+                  <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
+                    <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />Done
+                  </motion.span>
+                )}
+              </div>
               <Input
                 id="phone"
                 type="tel"
@@ -129,7 +164,7 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
                   name="branch"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger>
+                      <SelectTrigger aria-label="Select branch location">
                         <SelectValue placeholder="Choose a branch" />
                       </SelectTrigger>
                       <SelectContent>
@@ -154,7 +189,7 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
                   name="service_preference"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger>
+                      <SelectTrigger aria-label="Select treatment type">
                         <SelectValue placeholder="Choose a treatment" />
                       </SelectTrigger>
                       <SelectContent>

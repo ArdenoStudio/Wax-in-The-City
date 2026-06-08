@@ -19,6 +19,7 @@ const ICONS: Record<ServiceCategory, LucideIcon> = {
 export function ServicesGrid() {
   return (
     <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
+      <span aria-hidden className="pointer-events-none absolute right-6 top-6 select-none font-serif text-[6rem] font-light leading-none text-warm/[0.035] sm:text-[9rem] lg:right-12 lg:text-[11rem]">01</span>
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-60" />
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
         <div className="w-full min-w-0 max-w-[calc(100vw-2.5rem)] sm:max-w-full lg:sticky lg:top-28">

@@ -54,3 +54,17 @@ export const drawUnderline: Variants = {
 
 /** Standard viewport config for whileInView section entrances. */
 export const viewportOnce = { once: true, margin: "-80px" } as const;
+
+/** Character-level curtain reveal — wrap each char in overflow-hidden span. */
+export const charVariant: Variants = {
+  hidden: { y: "105%", opacity: 0 },
+  visible: (i: number) => ({
+    y: "0%",
+    opacity: 1,
+    transition: {
+      duration: 0.55,
+      ease: [0.215, 0.61, 0.355, 1],
+      delay: 0.1 + i * 0.032,
+    },
+  }),
+};

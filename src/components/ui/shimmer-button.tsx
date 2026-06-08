@@ -36,6 +36,10 @@ export const ShimmerButton = React.forwardRef<
           background: `linear-gradient(110deg, transparent 30%, ${shimmerColor} 50%, transparent 70%)`,
         }}
       />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -translate-x-[110%] skew-x-[-15deg] bg-gradient-to-r from-transparent via-cream/25 to-transparent transition-[transform] duration-500 ease-out group-hover:translate-x-[110%]"
+      />
     </button>
   );
 });

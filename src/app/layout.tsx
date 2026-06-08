@@ -1,10 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Newsreader } from "next/font/google";
+import { preconnect } from "react-dom";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { Navbar } from "@/components/global/Navbar";
 import { Footer } from "@/components/global/Footer";
 import { MobileBookingBar } from "@/components/global/MobileBookingBar";
+import { SmoothScrollProvider } from "@/components/global/SmoothScrollProvider";
+import { Cursor } from "@/components/global/Cursor";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -60,17 +63,20 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  preconnect("https://images.unsplash.com");
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
       className={`${geist.variable} ${newsreader.variable} antialiased`}
     >
       <body className="min-h-screen bg-cream text-warm">
-        <Navbar />
-        <main className="flex min-h-screen flex-col">{children}</main>
-        <Footer />
-        <MobileBookingBar />
+        <SmoothScrollProvider>
+          <Cursor />
+          <Navbar />
+          <main className="flex min-h-screen flex-col">{children}</main>
+          <Footer />
+          <MobileBookingBar />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

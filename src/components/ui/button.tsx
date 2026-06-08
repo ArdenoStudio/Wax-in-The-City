@@ -4,13 +4,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-sans font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] [&_svg]:shrink-0",
+  "relative inline-flex items-center justify-center gap-2 overflow-hidden whitespace-nowrap font-sans font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        // Primary maroon — buttons on light backgrounds
+        // Primary maroon with liquid sweep
         primary:
-          "bg-[linear-gradient(135deg,#a5273f,#6f1726)] text-cream shadow-[0_14px_30px_rgba(151,35,58,0.24)] hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(151,35,58,0.28)]",
+          "bg-[linear-gradient(135deg,#a5273f,#6f1726)] text-cream shadow-[0_14px_30px_rgba(151,35,58,0.24)] hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(151,35,58,0.28)] before:absolute before:inset-0 before:content-[''] before:-translate-x-[110%] before:skew-x-[-15deg] before:bg-gradient-to-r before:from-transparent before:via-cream/20 before:to-transparent before:transition-[transform] before:duration-500 before:ease-out hover:before:translate-x-[110%]",
         // Outline — maroon hairline on cream
         outline:
           "border border-brand-action/35 bg-white/35 text-brand-action backdrop-blur hover:-translate-y-0.5 hover:border-brand-action/60 hover:bg-brand-mist",
