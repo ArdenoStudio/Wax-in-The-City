@@ -37,7 +37,9 @@ export const IMAGES = {
     },
   },
   og: "/images/og-image.jpg",
-  logo: "/images/witc-logo.png",
+  logo: "/images/witc-wordmark-square.jpg",
+  wordmark: "/images/witc-wordmark.jpg",
+  logoMark: "/images/witc-logo.png",
 } as const;
 
 /** Tiny blur placeholder for Next/Image while photos load. */

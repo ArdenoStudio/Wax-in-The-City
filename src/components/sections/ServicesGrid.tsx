@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Sparkles, Flower2, Leaf, Droplets, ArrowRight, type LucideIcon } from "lucide-react";
-import { SERVICE_CATEGORIES, type ServiceCategory } from "@/lib/site";
-import { formatLKRFrom } from "@/lib/utils";
+import { SERVICE_CATEGORIES, type ServiceCategory, type ServiceCategoryMeta } from "@/lib/site";
+import { cn, formatLKRFrom } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { staggerFast, fadeUp, viewportOnce } from "@/lib/animations";
 
@@ -15,8 +15,42 @@ const ICONS: Record<ServiceCategory, LucideIcon> = {
   "hydra-facial": Droplets,
 };
 
+const CATEGORY_TONES: Record<
+  ServiceCategory,
+  { row: string; icon: string; price: string; arrow: string }
+> = {
+  waxing: {
+    row: "hover:bg-brand-action/[0.075]",
+    icon: "border-brand-action/14 bg-brand-mist text-brand-action group-hover:bg-brand-action group-hover:text-cream",
+    price: "border-brand-action/18 bg-brand-mist/80 text-brand-action",
+    arrow: "border-brand-action/18 text-brand-action group-hover:border-brand-action group-hover:bg-brand-action group-hover:text-cream",
+  },
+  facial: {
+    row: "hover:bg-gold/[0.09]",
+    icon: "border-gold/30 bg-gold/12 text-warm group-hover:bg-gold group-hover:text-brand-dark",
+    price: "border-gold/35 bg-gold/12 text-warm",
+    arrow: "border-gold/30 text-warm group-hover:border-gold group-hover:bg-gold group-hover:text-brand-dark",
+  },
+  moroccan: {
+    row: "hover:bg-sage/[0.12]",
+    icon: "border-sage/30 bg-sage/14 text-warm group-hover:bg-sage group-hover:text-brand-dark",
+    price: "border-sage/35 bg-sage/14 text-warm",
+    arrow: "border-sage/30 text-warm group-hover:border-sage group-hover:bg-sage group-hover:text-brand-dark",
+  },
+  "hydra-facial": {
+    row: "hover:bg-brand/[0.07]",
+    icon: "border-brand/12 bg-brand/8 text-brand group-hover:bg-brand group-hover:text-cream",
+    price: "border-brand/16 bg-brand/8 text-brand",
+    arrow: "border-brand/16 text-brand group-hover:border-brand group-hover:bg-brand group-hover:text-cream",
+  },
+};
+
 /** Service category overview with a sharper menu-led layout. */
-export function ServicesGrid() {
+export function ServicesGrid({
+  categories = SERVICE_CATEGORIES,
+}: {
+  categories?: ServiceCategoryMeta[];
+}) {
   return (
     <section id="services" className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
       <span aria-hidden className="pointer-events-none absolute right-6 top-6 select-none font-serif text-[6rem] font-light leading-none text-warm/[0.035] sm:text-[9rem] lg:right-12 lg:text-[11rem]">01</span>
@@ -61,17 +95,18 @@ export function ServicesGrid() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="premium-surface rounded-card p-2"
+          className="studio-plate rounded-card p-2"
         >
-          {SERVICE_CATEGORIES.map((cat, i) => {
+          {categories.map((cat, i) => {
             const Icon = ICONS[cat.slug];
+            const tone = CATEGORY_TONES[cat.slug];
             return (
               <motion.div key={cat.slug} variants={fadeUp}>
                 <Link
                   href={`/services/${cat.href}`}
-                  className="group relative z-10 grid gap-5 rounded-card p-5 transition-all duration-500 ease-out hover:bg-white/72 sm:grid-cols-[76px_1fr_auto] sm:items-center sm:p-6"
+                  className={cn("group relative z-10 grid gap-5 rounded-card p-5 transition-all duration-500 ease-out sm:grid-cols-[76px_1fr_auto] sm:items-center sm:p-6", tone.row)}
                 >
-                  <span className="flex h-16 w-16 items-center justify-center rounded-card border border-brand-action/12 bg-brand-mist/80 text-brand-action shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] transition-all duration-500 group-hover:border-brand-action/30 group-hover:bg-brand-action group-hover:text-cream">
+                  <span className={cn("flex h-16 w-16 items-center justify-center rounded-card border shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] transition-all duration-500", tone.icon)}>
                       <Icon className="h-6 w-6" />
                   </span>
 
@@ -80,18 +115,18 @@ export function ServicesGrid() {
                       <h3 className="font-serif text-h2 font-medium leading-tight text-warm">
                         {cat.name}
                       </h3>
-                      <span className="rounded-pill border border-brand-action/18 bg-brand-mist/70 px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em] text-brand-action">
+                      <span className={cn("rounded-pill border px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em]", tone.price)}>
                         {formatLKRFrom(cat.priceFrom)}
                       </span>
                     </div>
                     <p className="mt-2 max-w-lg text-body-sm text-warm-grey">{cat.short}</p>
                   </div>
 
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-pill border border-brand-action/18 text-brand-action transition-all duration-300 group-hover:border-brand-action group-hover:bg-brand-action group-hover:text-cream sm:justify-self-end">
+                  <span className={cn("inline-flex h-11 w-11 items-center justify-center rounded-pill border transition-all duration-300 sm:justify-self-end", tone.arrow)}>
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </Link>
-                {i < SERVICE_CATEGORIES.length - 1 && (
+                {i < categories.length - 1 && (
                   <div className="relative z-10 mx-5 h-px bg-warm-border/70" />
                 )}
               </motion.div>

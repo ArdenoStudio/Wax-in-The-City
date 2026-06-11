@@ -3,6 +3,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { ServiceTabs } from "@/components/sections/ServiceTabs";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { getPublicServiceContent } from "@/lib/service-content";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
     "Waxing, facials, Moroccan treatments and hydra facials — done with genuine care at our ladies-only studios in Battaramulla and Nugegoda.",
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const serviceContent = await getPublicServiceContent();
+
   return (
     <>
       <PageHero
@@ -30,7 +33,10 @@ export default function ServicesPage() {
             subtitle="Compare treatments, timing and starting prices without digging through a long salon list."
           />
           <div className="mt-12">
-            <ServiceTabs />
+            <ServiceTabs
+              categories={serviceContent.categories}
+              services={serviceContent.services}
+            />
           </div>
         </div>
       </section>

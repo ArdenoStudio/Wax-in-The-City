@@ -6,13 +6,18 @@ import { ReviewThemes } from "@/components/sections/ReviewThemes";
 import { GalleryTeaser } from "@/components/sections/GalleryTeaser";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { AboutTeaser } from "@/components/sections/AboutTeaser";
+import { BeforeAfterShowcase } from "@/components/sections/BeforeAfterShowcase";
+import { getPublicServiceContent } from "@/lib/service-content";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const serviceContent = await getPublicServiceContent();
+
   return (
     <>
       <HeroSection />
-      <ServicesGrid />
+      <ServicesGrid categories={serviceContent.categories} />
       <TrustStrip />
+      <BeforeAfterShowcase />
       <BranchSelector />
       <ReviewThemes />
       <GalleryTeaser />

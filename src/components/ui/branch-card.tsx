@@ -50,14 +50,14 @@ export function BranchCard({ branch, variant = "compact" }: BranchCardProps) {
           href={wa}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)] transition-all duration-300 hover:-translate-y-0.5"
+          className="pressable inline-flex h-11 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)]"
         >
           <WhatsappIcon className="h-4 w-4" />
           WhatsApp {branch.name}
         </a>
         <Link
           href={`/locations/${branch.slug}`}
-          className="inline-flex h-11 items-center gap-1.5 text-body-sm font-medium text-brand-action transition-colors hover:text-brand-dark sm:px-2"
+          className="icon-drift inline-flex h-11 items-center gap-1.5 text-body-sm font-medium text-brand-action transition-colors duration-500 ease-[var(--ease-apple)] hover:text-brand-dark sm:px-2"
         >
           Branch details
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

@@ -4,27 +4,33 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   SERVICE_CATEGORIES,
-  servicesByCategory,
+  SERVICES,
   type ServiceCategory,
+  type ServiceCategoryMeta,
+  type Service,
 } from "@/lib/site";
 import { ServiceCard } from "@/components/ui/service-card";
 import { fadeUp, staggerFast } from "@/lib/animations";
 
 export function ServiceTabs({
   initial = "waxing",
+  categories = SERVICE_CATEGORIES,
+  services = SERVICES,
 }: {
   initial?: ServiceCategory;
+  categories?: ServiceCategoryMeta[];
+  services?: Service[];
 }) {
   const [active, setActive] = useState<ServiceCategory>(initial);
-  const services = servicesByCategory(active);
+  const activeServices = services.filter((service) => service.category === active);
   return (
     <div>
       <div
         role="tablist"
         aria-label="Service categories"
-        className="mx-auto flex w-fit max-w-full justify-start gap-1 overflow-x-auto rounded-pill border border-warm-border/70 bg-white/58 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_18px_46px_rgba(39,19,21,0.06)] backdrop-blur-xl sm:justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="mx-auto flex max-w-full flex-wrap justify-center gap-1.5 rounded-card border border-warm-border/70 bg-white/58 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_18px_46px_rgba(39,19,21,0.06)] backdrop-blur-xl sm:w-fit sm:flex-nowrap sm:rounded-pill"
       >
-        {SERVICE_CATEGORIES.map((cat, index) => {
+        {categories.map((cat, index) => {
           const isActive = active === cat.slug;
           return (
             <button
@@ -39,16 +45,16 @@ export function ServiceTabs({
               onKeyDown={(e) => {
                 if (e.key === "ArrowRight") {
                   e.preventDefault();
-                  const next = SERVICE_CATEGORIES[(index + 1) % SERVICE_CATEGORIES.length];
+                  const next = categories[(index + 1) % categories.length];
                   setActive(next.slug);
                 }
                 if (e.key === "ArrowLeft") {
                   e.preventDefault();
-                  const prev = SERVICE_CATEGORIES[(index - 1 + SERVICE_CATEGORIES.length) % SERVICE_CATEGORIES.length];
+                  const prev = categories[(index - 1 + categories.length) % categories.length];
                   setActive(prev.slug);
                 }
               }}
-              className={`relative shrink-0 rounded-pill px-5 py-2.5 text-body-sm font-medium transition-colors ${
+              className={`pressable relative shrink-0 rounded-pill px-4 py-2.5 text-body-sm font-medium transition-colors sm:px-5 ${
                 isActive ? "text-cream" : "text-warm-grey hover:text-brand-action"
               }`}
             >
@@ -78,7 +84,7 @@ export function ServiceTabs({
           exit={{ opacity: 0, transition: { duration: 0.2 } }}
           className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {services.map((service) => (
+          {activeServices.map((service) => (
             <motion.div key={service.slug} variants={fadeUp}>
               <ServiceCard service={service} />
             </motion.div>

@@ -8,7 +8,7 @@ import { Check, Clock3, Loader2, ShieldCheck } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import { bookingSchema, type BookingInput } from "@/lib/booking";
 import { submitBooking } from "@/app/actions/booking";
-import { SERVICE_CATEGORIES, BRANCHES, whatsappLink, type BranchSlug } from "@/lib/site";
+import { SERVICES, BRANCHES, whatsappLink, type BranchSlug } from "@/lib/site";
 import { fieldAriaProps, fieldErrorId } from "@/lib/form-a11y";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -25,9 +25,19 @@ import {
 interface BookingFormProps {
   defaultBranch?: BranchSlug;
   defaultService?: string;
+  serviceOptions?: string[];
 }
 
-export function BookingForm({ defaultBranch, defaultService }: BookingFormProps) {
+export function BookingForm({
+  defaultBranch,
+  defaultService,
+  serviceOptions = SERVICES.map((service) => service.name),
+}: BookingFormProps) {
+  const options =
+    defaultService && !serviceOptions.includes(defaultService)
+      ? [defaultService, ...serviceOptions]
+      : serviceOptions;
+
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -109,7 +119,7 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
             className="relative z-10 flex flex-col gap-5"
             noValidate
           >
-            <div className="sticky top-20 z-20 -mx-1 flex flex-col gap-1.5 rounded-card bg-cream/92 px-1 py-2 backdrop-blur-md md:static md:bg-transparent md:p-0">
+            <div className="sticky top-20 z-20 flex flex-col gap-1.5 rounded-card bg-cream/92 py-2 backdrop-blur-md md:static md:bg-transparent md:p-0">
               <div className="flex items-center justify-between">
                 <span className="text-caption text-warm-grey">Booking details</span>
                 <span className="text-caption font-medium text-brand-action">{filledCount} / 4</span>
@@ -217,9 +227,9 @@ export function BookingForm({ defaultBranch, defaultService }: BookingFormProps)
                         <SelectValue placeholder="Choose a treatment" />
                       </SelectTrigger>
                       <SelectContent>
-                        {SERVICE_CATEGORIES.map((c) => (
-                          <SelectItem key={c.slug} value={c.name}>
-                            {c.name}
+                        {options.map((service) => (
+                          <SelectItem key={service} value={service}>
+                            {service}
                           </SelectItem>
                         ))}
                       </SelectContent>

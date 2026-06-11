@@ -41,7 +41,7 @@ export function GalleryTeaser() {
         >
           {photos.map((photo, i) => (
             <motion.div
-              key={photo.src}
+              key={`${photo.src}-${i}`}
               variants={scaleIn}
               className={`group premium-surface micro-lift overflow-hidden rounded-card ${
                 i === 0 || i === 5 ? "row-span-2" : ""
@@ -53,6 +53,7 @@ export function GalleryTeaser() {
                   alt={photo.alt}
                   fill
                   sizes="(max-width: 1024px) 50vw, 33vw"
+                  unoptimized={photo.src.startsWith("http")}
                   className="image-polish object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/24 via-transparent to-transparent opacity-70 transition-opacity group-hover:opacity-40" />

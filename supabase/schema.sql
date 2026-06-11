@@ -15,10 +15,17 @@ create table if not exists services (
   duration_min text,
   price_from integer,
   slug text unique not null,
+  active boolean default true,
   featured boolean default false,
   sort_order integer default 0,
-  created_at timestamptz default now()
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
 );
+
+alter table services add column if not exists active boolean default true;
+alter table services add column if not exists featured boolean default false;
+alter table services add column if not exists sort_order integer default 0;
+alter table services add column if not exists updated_at timestamptz default now();
 
 create table if not exists booking_requests (
   id uuid primary key default gen_random_uuid(),
@@ -68,8 +75,9 @@ create policy "anon can submit booking requests"
   with check (true);
 
 -- Public, read-only content tables (safe to read with the anon key).
+drop policy if exists "public can read services" on services;
 create policy "public can read services"
-  on services for select to anon using (true);
+  on services for select to anon using (coalesce(active, true));
 
 create policy "public can read testimonials"
   on testimonials for select to anon using (true);

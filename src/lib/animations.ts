@@ -6,49 +6,61 @@ import type { Variants } from "motion/react";
  */
 
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 26 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.72, ease: [0.16, 1, 0.3, 1] },
+  },
 };
 
 export const fadeIn: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
+  visible: { opacity: 1, transition: { duration: 0.58, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export const blurFade: Variants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.78, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
 export const staggerContainer: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.04 } },
 };
 
 export const staggerFast: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
+  visible: { transition: { staggerChildren: 0.055, delayChildren: 0.02 } },
 };
 
 export const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.96 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, scale: 0.965 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.68, ease: [0.16, 1, 0.3, 1] },
+  },
 };
 
 export const slideFromLeft: Variants = {
-  hidden: { opacity: 0, x: -16 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, x: -18 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.74, ease: [0.16, 1, 0.3, 1] },
+  },
 };
 
 export const drawUnderline: Variants = {
   hidden: { scaleX: 0 },
   visible: {
     scaleX: 1,
-    transition: { duration: 0.6, ease: "easeOut", delay: 0.3 },
+    transition: { duration: 0.68, ease: [0.16, 1, 0.3, 1], delay: 0.18 },
   },
 };
 

@@ -59,7 +59,7 @@ export default async function BranchPage({
         <div className="mx-auto max-w-5xl">
           <Link
             href="/locations"
-            className="nav-link mb-10 inline-flex items-center gap-1.5 text-body-sm font-medium text-brand-action"
+            className="nav-link mb-10 inline-flex min-h-10 items-center gap-1.5 text-body-sm font-medium text-brand-action"
           >
             <ArrowLeft className="h-4 w-4" />
             All locations

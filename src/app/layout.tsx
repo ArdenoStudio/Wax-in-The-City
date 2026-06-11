@@ -1,6 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
-import { preconnect } from "react-dom";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
@@ -11,20 +9,6 @@ import { SmoothScrollProvider } from "@/components/global/SmoothScrollProvider";
 import { LoadingScreen } from "@/components/global/LoadingScreen";
 import { SkipLink } from "@/components/global/SkipLink";
 import { JsonLd } from "@/components/global/JsonLd";
-
-const displayFont = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const bodyFont = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-body",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -81,9 +65,8 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  preconnect("https://images.unsplash.com");
   return (
-    <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`}>
+    <html lang="en">
       <body className="min-h-screen bg-cream text-warm antialiased">
         <JsonLd />
         <SkipLink />

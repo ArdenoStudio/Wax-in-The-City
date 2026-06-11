@@ -19,21 +19,21 @@ export function Footer() {
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-20">
+      <div className="relative mx-auto max-w-7xl px-5 pb-28 pt-16 md:py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1.4fr]">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3">
-              <span className="relative block h-12 w-12">
+              <span className="relative block h-16 w-16 rounded-pill border border-cream/10 bg-brand p-1">
                 <Image
-                  src={IMAGES.logo}
+                  src={IMAGES.wordmark}
                   alt={SITE.name}
                   fill
-                  sizes="48px"
+                  sizes="64px"
+                  loading="eager"
                   className="object-contain"
                 />
               </span>
-              <span className="font-serif text-h3 text-cream">{SITE.shortName}</span>
             </div>
             <p className="mt-4 max-w-xs font-serif text-h4 italic text-brand-light">
               {SITE.tagline}
@@ -63,9 +63,9 @@ export function Footer() {
             <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50">
               Explore
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-3 space-y-1">
               <li>
-                <Link href="/" className="text-body-sm transition-colors hover:text-cream">
+                <Link href="/" className="inline-flex min-h-10 min-w-10 items-center text-body-sm transition-colors hover:text-cream">
                   Home
                 </Link>
               </li>
@@ -73,14 +73,14 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-body-sm transition-colors hover:text-cream"
+                    className="inline-flex min-h-10 min-w-10 items-center text-body-sm transition-colors hover:text-cream"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/book" className="text-body-sm transition-colors hover:text-cream">
+                <Link href="/book" className="inline-flex min-h-10 min-w-10 items-center text-body-sm transition-colors hover:text-cream">
                   Book Your Visit
                 </Link>
               </li>
@@ -103,7 +103,7 @@ export function Footer() {
                     href={whatsappLink(`Hi! I'd like to book at your ${b.name} branch.`, b.whatsapp)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-2 inline-block text-body-sm text-brand-light underline-offset-4 hover:underline"
+                    className="mt-2 inline-flex min-h-10 items-center text-body-sm text-brand-light underline-offset-4 hover:underline"
                   >
                     WhatsApp {b.name}
                   </a>

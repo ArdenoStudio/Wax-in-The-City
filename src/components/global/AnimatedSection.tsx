@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import { fadeUp, blurFade, scaleIn, slideFromLeft, viewportOnce } from "@/lib/animations";
 
 const VARIANTS: Record<string, Variants> = {
@@ -28,6 +28,7 @@ export function AnimatedSection({
 }: AnimatedSectionProps) {
   const MotionTag = as === "section" ? motion.section : motion.div;
   const base = VARIANTS[variant];
+  const reduceMotion = useReducedMotion();
 
   // Clone the variant to apply the optional delay without mutating the shared object.
   const variants: Variants = {
@@ -45,7 +46,7 @@ export function AnimatedSection({
     <MotionTag
       className={className}
       variants={variants}
-      initial="hidden"
+      initial={reduceMotion ? false : "hidden"}
       whileInView="visible"
       viewport={viewportOnce}
     >

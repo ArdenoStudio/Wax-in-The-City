@@ -52,7 +52,7 @@ export function SectionHeading({
         </span>
       )}
 
-      <div className="relative inline-block max-w-full">
+      <div className="relative inline-block min-w-24 max-w-full">
         <h2
           className={cn(
             "max-w-full break-words text-balance font-serif text-h2 font-medium leading-tight sm:text-[2.65rem]",

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { IMAGES } from "@/lib/images";
 
@@ -13,10 +14,13 @@ const SESSION_KEY = "witc-loaded";
  * Max ~1.5s. Honours prefers-reduced-motion and sessionStorage.
  */
 export function LoadingScreen() {
+  const pathname = usePathname();
   const reduce = useReducedMotion();
   const [visible, setVisible] = useState(false);
+  const isHome = pathname === "/";
 
   useEffect(() => {
+    if (!isHome) return;
     if (typeof window === "undefined") return;
     const seen = sessionStorage.getItem(SESSION_KEY);
     if (seen) return;
@@ -30,11 +34,11 @@ export function LoadingScreen() {
     const hold = reduce ? 400 : 1300;
     const timer = window.setTimeout(() => setVisible(false), hold);
     return () => window.clearTimeout(timer);
-  }, [reduce]);
+  }, [isHome, reduce]);
 
   // Lock scroll while visible
   useEffect(() => {
-    if (visible) {
+    if (isHome && visible) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -42,11 +46,11 @@ export function LoadingScreen() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [visible]);
+  }, [isHome, visible]);
 
   return (
     <AnimatePresence>
-      {visible && (
+      {isHome && visible && (
         <motion.div
           key="witc-loader"
           className="fixed inset-0 z-[100] flex items-center justify-center bg-brand"
@@ -66,7 +70,8 @@ export function LoadingScreen() {
               src={IMAGES.logo}
               alt="Wax In The City"
               fill
-              priority
+              loading="eager"
+              fetchPriority="high"
               sizes="128px"
               className="object-contain"
             />

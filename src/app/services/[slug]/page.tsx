@@ -5,8 +5,8 @@ import { ArrowLeft } from "lucide-react";
 import {
   SERVICE_CATEGORIES,
   getCategory,
-  servicesByCategory,
 } from "@/lib/site";
+import { getPublicServiceContent } from "@/lib/service-content";
 import { IMAGES } from "@/lib/images";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServiceCard } from "@/components/ui/service-card";
@@ -27,14 +27,14 @@ const BEFORE_AFTER: Partial<
   waxing: {
     before: IMAGES.beforeAfter.waxing.before,
     after: IMAGES.beforeAfter.waxing.after,
-    beforeAlt: "Skin texture before waxing treatment",
-    afterAlt: "Smooth result after waxing treatment",
+    beforeAlt: "Illustrative clean preparation before a waxing visit",
+    afterAlt: "Illustrative smooth finish after a waxing visit",
   },
   facials: {
     before: IMAGES.beforeAfter.facial.before,
     after: IMAGES.beforeAfter.facial.after,
-    beforeAlt: "Skin before facial treatment",
-    afterAlt: "Refreshed skin after facial treatment",
+    beforeAlt: "Illustrative facial preparation before treatment",
+    afterAlt: "Illustrative calm skin-care finish after treatment",
   },
 };
 
@@ -63,10 +63,14 @@ export default async function ServiceCategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const category = getCategory(slug);
+  const serviceContent = await getPublicServiceContent();
+  const category =
+    serviceContent.categories.find((c) => c.href === slug) ?? getCategory(slug);
   if (!category) notFound();
 
-  const services = servicesByCategory(category.slug);
+  const services = serviceContent.services.filter(
+    (service) => service.category === category.slug
+  );
   const comparison = BEFORE_AFTER[category.href];
 
   return (
@@ -84,7 +88,7 @@ export default async function ServiceCategoryPage({
         <div className="mx-auto max-w-7xl">
           <Link
             href="/services"
-            className="nav-link mb-10 inline-flex items-center gap-1.5 text-body-sm font-medium text-brand-action"
+            className="nav-link mb-10 inline-flex min-h-10 items-center gap-1.5 text-body-sm font-medium text-brand-action"
           >
             <ArrowLeft className="h-4 w-4" />
             All services
@@ -92,9 +96,9 @@ export default async function ServiceCategoryPage({
 
           {comparison && (
             <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
-              <h2 className="font-serif text-h3 font-medium text-warm">Visual proof</h2>
+              <h2 className="font-serif text-h3 font-medium text-warm">Treatment flow preview</h2>
               <p className="mt-2 text-body-sm text-warm-grey">
-                Placeholder comparison imagery until client-approved before/after photos are available.
+                An honest process preview until client-approved result photos are available.
               </p>
               <div className="mt-6">
                 <BeforeAfterSlider
@@ -102,6 +106,8 @@ export default async function ServiceCategoryPage({
                   afterSrc={comparison.after}
                   beforeAlt={comparison.beforeAlt}
                   afterAlt={comparison.afterAlt}
+                  beforeLabel="Before care"
+                  afterLabel="After care"
                 />
               </div>
             </AnimatedSection>
@@ -122,7 +128,7 @@ export default async function ServiceCategoryPage({
         <div className="mx-auto max-w-5xl text-center">
           <h2 className="font-serif text-h2 font-medium text-warm">Explore other treatments</h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {SERVICE_CATEGORIES.filter((c) => c.slug !== category.slug).map((c) => (
+            {serviceContent.categories.filter((c) => c.slug !== category.slug).map((c) => (
               <Link
                 key={c.slug}
                 href={`/services/${c.href}`}

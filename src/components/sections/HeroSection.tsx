@@ -36,11 +36,12 @@ export function HeroSection() {
           src={IMAGES.hero.src}
           alt={IMAGES.hero.alt}
           fill
-          priority
+          loading="eager"
           fetchPriority="high"
           sizes="100vw"
           placeholder="blur"
           blurDataURL={BLUR_DATA_URL}
+          unoptimized={IMAGES.hero.src.startsWith("http")}
           className="object-cover object-[62%_center] saturate-[0.94]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,12,13,0.94)_0%,rgba(35,12,17,0.82)_42%,rgba(35,12,17,0.36)_100%)]" />
@@ -61,10 +62,20 @@ export function HeroSection() {
           </motion.p>
 
           <h1 className="max-w-[10ch] font-serif text-[clamp(3.25rem,8vw,5.8rem)] font-medium leading-[0.92] text-cream">
-            {HEADLINE_LINES.map((line) => (
-              <span key={line} className="block leading-[1.02]">
+            {HEADLINE_LINES.map((line, i) => (
+              <motion.span
+                key={line}
+                className="block leading-[1.02]"
+                initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.82,
+                  delay: 0.16 + i * 0.07,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              >
                 {line}
-              </span>
+              </motion.span>
             ))}
           </h1>
 
@@ -108,7 +119,7 @@ export function HeroSection() {
             {HERO_TRUST_POINTS.map((point) => (
               <li
                 key={point}
-                className="rounded-pill border border-cream/16 bg-cream/9 px-4 py-2 text-body-sm font-medium text-cream/78 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl"
+                className="pressable rounded-pill border border-cream/16 bg-cream/9 px-4 py-2 text-body-sm font-medium text-cream/78 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl"
               >
                 {point}
               </li>
@@ -183,7 +194,7 @@ export function HeroSection() {
           type="button"
           onClick={scrollToServices}
           aria-label="Scroll to services"
-          className="flex h-10 w-10 items-center justify-center rounded-pill border border-cream/16 bg-cream/8 backdrop-blur-xl transition-colors hover:bg-cream/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/40"
+          className="pressable flex h-10 w-10 items-center justify-center rounded-pill border border-cream/16 bg-cream/8 backdrop-blur-xl hover:bg-cream/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/40"
         >
           <ChevronDown className={`h-5 w-5 text-cream/70 ${reduceMotion ? "" : "animate-bob"}`} />
         </button>

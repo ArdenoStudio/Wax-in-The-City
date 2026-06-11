@@ -8,6 +8,7 @@ interface BookingZoneProps {
   mode?: "form" | "dinaya" | "whatsapp-only";
   defaultBranch?: BranchSlug;
   defaultService?: string;
+  serviceOptions?: string[];
   heading?: string;
   subtitle?: string;
   /** Adds the top section padding + cream background. False when embedded in a page. */
@@ -23,6 +24,7 @@ export function BookingZone({
   mode = "form",
   defaultBranch,
   defaultService,
+  serviceOptions,
   heading = "Ready when you are.",
   subtitle = "Send a request and the team will confirm before your visit. For urgent slots, WhatsApp is still the fastest route.",
   standalone = true,
@@ -62,7 +64,11 @@ export function BookingZone({
           ) : mode === "whatsapp-only" ? (
             <WhatsappOnly />
           ) : (
-            <BookingForm defaultBranch={defaultBranch} defaultService={defaultService} />
+            <BookingForm
+              defaultBranch={defaultBranch}
+              defaultService={defaultService}
+              serviceOptions={serviceOptions}
+            />
           )}
         </div>
 
@@ -72,7 +78,7 @@ export function BookingZone({
             href={whatsappLink("Hi! I'd like to ask about a booking.")}
             target="_blank"
             rel="noopener noreferrer"
-            className={standalone ? "font-medium text-brand-light underline-offset-4 hover:underline" : "font-medium text-brand-action underline-offset-4 hover:underline"}
+            className={standalone ? "inline-flex min-h-10 items-center font-medium text-brand-light underline-offset-4 hover:underline" : "inline-flex min-h-10 items-center font-medium text-brand-action underline-offset-4 hover:underline"}
           >
             Message us on WhatsApp
           </a>

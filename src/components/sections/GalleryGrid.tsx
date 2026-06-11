@@ -55,7 +55,7 @@ export function GalleryGrid() {
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter gallery">
+      <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center" role="group" aria-label="Filter gallery">
         {FILTERS.map((f) => (
           <button
             key={f.key}
@@ -63,7 +63,8 @@ export function GalleryGrid() {
             onClick={() => setFilter(f.key)}
             aria-pressed={filter === f.key}
             className={cn(
-              "rounded-pill px-5 py-2.5 text-body-sm font-medium transition-colors",
+              "rounded-pill px-4 py-2.5 text-body-sm font-medium transition-colors sm:px-5",
+              "pressable",
               filter === f.key
                 ? "bg-brand-action text-cream"
                 : "border border-warm-border text-warm-grey hover:text-brand-action"
@@ -77,7 +78,7 @@ export function GalleryGrid() {
       <div className="mt-10 columns-2 gap-4 lg:columns-3">
         {photos.map((photo, i) => (
           <motion.button
-            key={photo.src}
+            key={`${photo.src}-${i}`}
             ref={active === i ? triggerRef : undefined}
             layout
             type="button"
@@ -91,6 +92,7 @@ export function GalleryGrid() {
                 alt={photo.alt}
                 fill
                 sizes="(max-width: 1024px) 50vw, 33vw"
+                unoptimized={photo.src.startsWith("http")}
                 className="object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>
@@ -147,6 +149,7 @@ export function GalleryGrid() {
                 alt={photos[active].alt}
                 fill
                 sizes="100vw"
+                unoptimized={photos[active].src.startsWith("http")}
                 className="object-contain"
               />
             </motion.div>

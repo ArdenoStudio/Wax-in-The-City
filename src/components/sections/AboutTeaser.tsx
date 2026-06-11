@@ -29,6 +29,7 @@ export function AboutTeaser() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
+              unoptimized={IMAGES.about.src.startsWith("http")}
               className="image-polish object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/58 via-brand/10 to-transparent" />

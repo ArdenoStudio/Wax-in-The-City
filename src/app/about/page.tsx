@@ -56,6 +56,8 @@ export default function AboutPage() {
                   alt="A calm corner of the studio"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="eager"
+                  unoptimized
                   className="image-polish object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/26 via-transparent to-transparent" />

@@ -187,7 +187,7 @@ export function ContactForm() {
                 href={whatsappLink("Hi! I have a question.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 font-medium text-brand-action underline-offset-4 hover:underline"
+                className="inline-flex min-h-10 items-center gap-1 font-medium text-brand-action underline-offset-4 hover:underline"
               >
                 <WhatsappIcon className="h-4 w-4" />
                 Message us
