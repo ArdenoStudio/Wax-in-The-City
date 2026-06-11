@@ -66,7 +66,7 @@ export function PageHero({
             {eyebrow}
           </motion.p>
         )}
-        <h1 className="max-w-3xl text-balance font-serif text-[3rem] font-medium leading-[1] text-cream sm:text-[4.6rem]">
+        <h1 className="max-w-[12ch] break-words text-balance font-serif text-[clamp(2.35rem,10vw,3.15rem)] font-medium leading-[1.04] text-cream sm:max-w-3xl sm:text-[4.6rem] sm:leading-[1]">
           {title}
         </h1>
         {subtitle && (

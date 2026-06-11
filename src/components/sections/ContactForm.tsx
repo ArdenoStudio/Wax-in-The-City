@@ -172,12 +172,12 @@ export function ContactForm() {
 
             <Button type="submit" size="lg" variant="primary" disabled={isSubmitting}>
               {isSubmitting ? (
-                <>
+                <span className="relative z-10 inline-flex items-center gap-2 text-cream">
                   <Loader2 className="h-5 w-5 animate-spin" />
                   Sending...
-                </>
+                </span>
               ) : (
-                "Send Message"
+                <span className="relative z-10 text-cream">Send Message</span>
               )}
             </Button>
 

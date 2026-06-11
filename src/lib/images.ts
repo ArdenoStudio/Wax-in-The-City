@@ -40,6 +40,10 @@ export const IMAGES = {
   logo: "/images/witc-wordmark-square.jpg",
   wordmark: "/images/witc-wordmark.jpg",
   logoMark: "/images/witc-logo.png",
+  socialProof: {
+    src: "/images/witc-social-proof.jpg",
+    alt: "A polished Wax In The City guest seated inside the studio",
+  },
 } as const;
 
 /** Tiny blur placeholder for Next/Image while photos load. */

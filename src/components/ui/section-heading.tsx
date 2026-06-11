@@ -25,8 +25,8 @@ export function SectionHeading({
 
   return (
     <motion.div
-      initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 18, filter: "blur(8px)" }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={false}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
