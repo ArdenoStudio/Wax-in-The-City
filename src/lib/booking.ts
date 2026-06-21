@@ -12,7 +12,7 @@ export const bookingSchema = z.object({
   branch: z.enum(["battaramulla", "nugegoda"], {
     message: "Which location works for you?",
   }),
-  service_preference: z.string().optional(),
+  service_preference: z.string().min(1, { message: "What would you like to book?" }),
   preferred_date: z.string().optional(),
   message: z.string().max(500).optional(),
 });

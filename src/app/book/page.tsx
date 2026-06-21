@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { BookingZone } from "@/components/sections/BookingZone";
-import { BRANCHES, SERVICES, SERVICE_CATEGORIES, type BranchSlug } from "@/lib/site";
+import { PageHero } from "@/components/sections/PageHero";
+import { WaxBookLayout } from "@/components/sections/WaxBookLayout";
+import { BRANCHES, getBranch, SERVICES, SERVICE_CATEGORIES, type BranchSlug } from "@/lib/site";
 import { getPublicServiceContent } from "@/lib/service-content";
 
 export const metadata: Metadata = {
   title: "Book Your Visit",
   description:
-    "Book your visit to Wax In The City — send a request and we'll confirm within 24 hours, or reach us instantly on WhatsApp.",
+    "Send a booking request to Wax In The City — we confirm within 24 hours, or reach us on WhatsApp for urgent timing.",
 };
 
 function isBranchSlug(value?: string): value is BranchSlug {
@@ -20,15 +21,12 @@ function resolveServicePreference(
 ): string | undefined {
   if (!value) return undefined;
   const decoded = decodeURIComponent(value);
-  const byName = services.find(
-    (s) => s.name.toLowerCase() === decoded.toLowerCase()
-  );
+  const byName = services.find((s) => s.name.toLowerCase() === decoded.toLowerCase());
   if (byName) return byName.name;
   const bySlug = services.find((s) => s.slug === decoded);
   if (bySlug) return bySlug.name;
   const byCategory = categories.find(
-    (c) =>
-      c.name.toLowerCase() === decoded.toLowerCase() || c.href === decoded
+    (c) => c.name.toLowerCase() === decoded.toLowerCase() || c.href === decoded
   );
   if (byCategory) return byCategory.name;
   return decoded;
@@ -41,7 +39,8 @@ export default async function BookPage({
 }) {
   const { branch, service } = await searchParams;
   const serviceContent = await getPublicServiceContent();
-  const defaultBranch = isBranchSlug(branch) ? branch : undefined;
+  const defaultBranch =
+    isBranchSlug(branch) && getBranch(branch).status === "open" ? branch : undefined;
   const defaultService = resolveServicePreference(
     service,
     serviceContent.services,
@@ -49,13 +48,18 @@ export default async function BookPage({
   );
 
   return (
-    <BookingZone
-      mode="form"
-      defaultBranch={defaultBranch}
-      defaultService={defaultService}
-      serviceOptions={serviceContent.services.map((item) => item.name)}
-      heading="Book your visit."
-      subtitle="Tell us what you'd like and when — we'll confirm within 24 hours. No card required to enquire."
-    />
+    <>
+      <PageHero
+        voice="sans"
+        title="Send a booking request."
+        subtitle="We confirm by call or WhatsApp before your visit. No card required."
+        minimal
+      />
+      <WaxBookLayout
+        defaultBranch={defaultBranch}
+        defaultService={defaultService}
+        serviceOptions={serviceContent.services.map((item) => item.name)}
+      />
+    </>
   );
 }
