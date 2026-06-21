@@ -8,20 +8,9 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-brand-footer text-cream/80">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.08]"
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, rgba(255,255,255,0.22) 0 1px, transparent 1px 100%), linear-gradient(180deg, rgba(255,255,255,0.08), transparent)",
-          backgroundSize: "32px 32px, 100% 100%",
-        }}
-      />
-
-      <div className="relative mx-auto max-w-7xl px-5 pb-28 pt-16 md:py-16 lg:px-8 lg:py-20">
+    <footer className="bg-brand-footer text-cream/80">
+      <div className="mx-auto max-w-7xl px-5 pb-28 pt-16 md:py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1.4fr]">
-          {/* Brand */}
           <div>
             <div className="flex items-center gap-3">
               <span className="relative block h-16 w-16 rounded-pill border border-cream/10 bg-brand p-1">
@@ -39,7 +28,7 @@ export function Footer() {
               {SITE.tagline}
             </p>
             <p className="mt-3 max-w-xs text-body-sm text-cream/60">
-              Ladies-only waxing &amp; beauty care across two Colombo branches.
+              Ladies-only waxing and skin care in Colombo.
             </p>
 
             <div className="mt-6 flex items-center gap-3">
@@ -58,14 +47,11 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Nav */}
           <div>
-            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50">
-              Explore
-            </h3>
+            <h3 className="type-label text-cream/50">Explore</h3>
             <ul className="mt-3 space-y-1">
               <li>
-                <Link href="/" className="inline-flex min-h-10 min-w-10 items-center text-body-sm transition-colors hover:text-cream">
+                <Link href="/" className="inline-flex min-h-10 items-center text-body-sm hover:text-cream">
                   Home
                 </Link>
               </li>
@@ -73,40 +59,41 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="inline-flex min-h-10 min-w-10 items-center text-body-sm transition-colors hover:text-cream"
+                    className="inline-flex min-h-10 items-center text-body-sm hover:text-cream"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/book" className="inline-flex min-h-10 min-w-10 items-center text-body-sm transition-colors hover:text-cream">
+                <Link href="/book" className="inline-flex min-h-10 items-center text-body-sm hover:text-cream">
                   Book Your Visit
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Branches */}
           <div>
-            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50">
-              Our Branches
-            </h3>
+            <h3 className="type-label text-cream/50">Our branches</h3>
             <div className="mt-4 grid gap-6 sm:grid-cols-2">
               {BRANCHES.map((b) => (
                 <div key={b.slug}>
-                  <p className="font-serif text-h4 text-cream">{b.name}</p>
+                  <p className="type-label text-brand-light">
+                    {b.status === "open" ? "Open now" : "Opening soon"}
+                  </p>
+                  <p className="mt-1 font-serif text-h4 text-cream">{b.name}</p>
                   <p className="mt-1 text-body-sm text-cream/60">{b.area}</p>
                   <p className="mt-2 text-body-sm text-cream/60">{b.hours.weekday}</p>
-                  <p className="text-caption text-cream/40">{b.hours.poya}</p>
-                  <a
-                    href={whatsappLink(`Hi! I'd like to book at your ${b.name} branch.`, b.whatsapp)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-flex min-h-10 items-center text-body-sm text-brand-light underline-offset-4 hover:underline"
-                  >
-                    WhatsApp {b.name}
-                  </a>
+                  {b.status === "open" && (
+                    <a
+                      href={whatsappLink(`Hi! I'd like to book at your ${b.name} branch.`, b.whatsapp)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-flex min-h-10 items-center text-body-sm text-brand-light underline-offset-4 hover:underline"
+                    >
+                      WhatsApp {b.name}
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
