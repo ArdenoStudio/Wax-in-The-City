@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import {
   SERVICE_CATEGORIES,
   SERVICES,
@@ -10,7 +9,7 @@ import {
   type Service,
 } from "@/lib/site";
 import { ServiceCard } from "@/components/ui/service-card";
-import { fadeUp, staggerFast } from "@/lib/animations";
+import { cn } from "@/lib/utils";
 
 export function ServiceTabs({
   initial = "waxing",
@@ -23,12 +22,13 @@ export function ServiceTabs({
 }) {
   const [active, setActive] = useState<ServiceCategory>(initial);
   const activeServices = services.filter((service) => service.category === active);
+
   return (
     <div>
       <div
         role="tablist"
         aria-label="Service categories"
-        className="mx-auto flex max-w-full flex-wrap justify-center gap-1.5 rounded-card border border-warm-border/70 bg-white/58 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_18px_46px_rgba(39,19,21,0.06)] backdrop-blur-xl sm:w-fit sm:flex-nowrap sm:rounded-pill"
+        className="flex max-w-full flex-wrap gap-1 rounded-pill border border-warm-border bg-cream-alt p-1 sm:w-fit"
       >
         {categories.map((cat, index) => {
           const isActive = active === cat.slug;
@@ -54,43 +54,30 @@ export function ServiceTabs({
                   setActive(prev.slug);
                 }
               }}
-              className={`pressable relative shrink-0 rounded-pill px-4 py-2.5 text-body-sm font-medium transition-colors sm:px-5 ${
-                isActive ? "text-cream" : "text-warm-grey hover:text-brand-action"
-              }`}
-            >
-              {isActive && (
-                <motion.span
-                  layoutId="service-tab-indicator"
-                  className="absolute inset-0 rounded-pill bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] shadow-[0_12px_28px_rgba(162,15,55,0.22)]"
-                  transition={{ type: "spring", stiffness: 360, damping: 34 }}
-                />
+              className={cn(
+                "rounded-pill px-4 py-2.5 text-body-sm font-medium transition-colors sm:px-5",
+                isActive
+                  ? "bg-brand-action text-cream"
+                  : "text-warm-grey hover:text-brand-action"
               )}
-              <span className="relative z-10">{cat.name}</span>
+            >
+              {cat.name}
             </button>
           );
         })}
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={active}
-          role="tabpanel"
-          id={`service-panel-${active}`}
-          aria-labelledby={`service-tab-${active}`}
-          tabIndex={0}
-          variants={staggerFast}
-          initial="hidden"
-          animate="visible"
-          exit={{ opacity: 0, transition: { duration: 0.2 } }}
-          className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {activeServices.map((service) => (
-            <motion.div key={service.slug} variants={fadeUp}>
-              <ServiceCard service={service} />
-            </motion.div>
-          ))}
-        </motion.div>
-      </AnimatePresence>
+      <div
+        role="tabpanel"
+        id={`service-panel-${active}`}
+        aria-labelledby={`service-tab-${active}`}
+        tabIndex={0}
+        className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        {activeServices.map((service) => (
+          <ServiceCard key={service.slug} service={service} />
+        ))}
+      </div>
     </div>
   );
 }

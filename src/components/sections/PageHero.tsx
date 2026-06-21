@@ -1,80 +1,84 @@
-"use client";
-
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
+import { cn } from "@/lib/utils";
 
 interface PageHeroProps {
-  eyebrow?: string;
   title: string;
   subtitle?: string;
-  image: string;
-  imageAlt: string;
-  /** Shorter hero for inner pages (default) vs taller. */
+  image?: string;
+  imageAlt?: string;
   size?: "sm" | "md";
+  voice?: "serif" | "sans";
+  /** Text-only hero — no background photo */
+  minimal?: boolean;
 }
 
-/** Reusable inner-page hero (file 08 — every page opens with a hero). */
 export function PageHero({
-  eyebrow,
   title,
   subtitle,
   image,
-  imageAlt,
+  imageAlt = "",
   size = "sm",
+  voice = "sans",
+  minimal = false,
 }: PageHeroProps) {
-  const reduceMotion = useReducedMotion();
+  if (minimal || !image) {
+    return (
+      <section
+        className={cn(
+          "band-pearl border-b border-warm-border px-5 pt-28 pb-12 lg:px-8 lg:pb-16",
+          size === "md" ? "lg:pt-32" : "lg:pt-28"
+        )}
+      >
+        <div className="mx-auto max-w-3xl">
+          <h1
+            className={cn(
+              "text-balance",
+              voice === "serif" ? "type-title-serif" : "type-title-sans"
+            )}
+          >
+            {title}
+          </h1>
+          {subtitle && (
+            <p className="mt-5 max-w-xl text-body text-warm-grey">{subtitle}</p>
+          )}
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
-      className={`relative flex w-full items-end overflow-hidden bg-ink ${
-        size === "md" ? "min-h-[560px]" : "min-h-[460px]"
-      }`}
+      className={cn(
+        "band-wine relative flex w-full items-end overflow-hidden",
+        size === "md" ? "min-h-[480px]" : "min-h-[400px]"
+      )}
     >
-      <motion.div
-        className="absolute inset-0"
-        initial={reduceMotion ? false : { opacity: 0.9, scale: 1.035 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.12, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <div className="absolute inset-0">
         <Image
           src={image}
           alt={imageAlt}
           fill
-          loading="eager"
-          fetchPriority="high"
+          priority
           sizes="100vw"
           unoptimized={image.startsWith("http")}
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,12,13,0.94)_0%,rgba(35,12,17,0.78)_50%,rgba(35,12,17,0.42)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.22)_0%,transparent_46%,rgba(21,16,17,0.82)_100%)]" />
-      </motion.div>
+        <div className="scrim-hero-ltr absolute inset-0" />
+      </div>
 
-      <motion.div
-        className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-14 pt-28 lg:px-8 lg:pb-20"
-        initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.74, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
-      >
-        {eyebrow && (
-          <motion.p
-            className="mb-5 inline-flex rounded-pill border border-cream/18 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl"
-            initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.16 }}
-          >
-            {eyebrow}
-          </motion.p>
-        )}
-        <h1 className="max-w-[12ch] break-words text-balance font-serif text-[clamp(2.35rem,10vw,3.15rem)] font-medium leading-[1.04] text-cream sm:max-w-3xl sm:text-[4.6rem] sm:leading-[1]">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-14 pt-28 lg:px-8 lg:pb-16">
+        <h1
+          className={cn(
+            "max-w-2xl text-balance text-cream",
+            voice === "serif" ? "type-title-serif" : "type-title-sans"
+          )}
+        >
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-5 max-w-xl text-balance text-body-lg text-cream/80">
-            {subtitle}
-          </p>
+          <p className="mt-5 max-w-xl text-body text-cream/78">{subtitle}</p>
         )}
-      </motion.div>
+      </div>
     </section>
   );
 }

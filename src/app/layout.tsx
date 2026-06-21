@@ -5,8 +5,7 @@ import { IMAGES } from "@/lib/images";
 import { Navbar } from "@/components/global/Navbar";
 import { Footer } from "@/components/global/Footer";
 import { MobileBookingBar } from "@/components/global/MobileBookingBar";
-import { SmoothScrollProvider } from "@/components/global/SmoothScrollProvider";
-import { LoadingScreen } from "@/components/global/LoadingScreen";
+import { MotionProvider } from "@/components/global/MotionProvider";
 import { SkipLink } from "@/components/global/SkipLink";
 import { JsonLd } from "@/components/global/JsonLd";
 
@@ -67,18 +66,17 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-cream text-warm antialiased">
+      <body className="min-h-screen bg-cream font-sans text-warm antialiased">
         <JsonLd />
         <SkipLink />
-        <LoadingScreen />
-        <SmoothScrollProvider>
+        <MotionProvider>
           <Navbar />
-          <main id="main-content" className="flex min-h-screen flex-col">
+          <main id="main-content" className="flex min-h-screen flex-col pb-24 md:pb-0">
             {children}
           </main>
           <Footer />
           <MobileBookingBar />
-        </SmoothScrollProvider>
+        </MotionProvider>
       </body>
     </html>
   );
