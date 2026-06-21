@@ -33,16 +33,23 @@ export function whatsappLink(message?: string, number?: string): string {
 
 export type BranchSlug = "battaramulla" | "nugegoda";
 
+export type BranchStatus = "open" | "coming-soon";
+
 export interface Branch {
   slug: BranchSlug;
   name: string;
   area: string;
-  address: string; // TBC — placeholder
+  address: string;
   phone: string;
-  whatsapp: string; // digits only, country code first
+  whatsapp: string;
   hours: { weekday: string; weekend: string; poya: string };
   googleMapsUrl: string;
   blurb: string;
+  status: BranchStatus;
+}
+
+export function showAdminNav(): boolean {
+  return process.env.NEXT_PUBLIC_SHOW_ADMIN_NAV === "true";
 }
 
 export const BRANCHES: Branch[] = [
@@ -59,24 +66,56 @@ export const BRANCHES: Branch[] = [
       poya: "Closed on Poya days & public holidays",
     },
     googleMapsUrl: "https://maps.google.com/?q=Battaramulla+Colombo",
-    blurb: "A private appointment-led studio with calm rooms and careful treatment flow.",
+    blurb: "Private appointment-led studio with calm rooms and careful treatment flow.",
+    status: "open",
   },
   {
     slug: "nugegoda",
     name: "Nugegoda",
     area: "Nugegoda, Colombo",
-    address: "Nugegoda, Colombo (exact address to be confirmed)",
+    address: "Opening soon — address to be announced",
     phone: "+94 77 946 9437",
     whatsapp: DEFAULT_WHATSAPP,
     hours: {
-      weekday: "9:00 AM – 6:00 PM",
-      weekend: "9:00 AM – 5:00 PM",
-      poya: "Closed on Poya days & public holidays",
+      weekday: "Opening soon",
+      weekend: "Opening soon",
+      poya: "Book Battaramulla until we open",
     },
     googleMapsUrl: "https://maps.google.com/?q=Nugegoda+Colombo",
-    blurb: "A convenient second studio for guests closer to the High Level Road side.",
+    blurb: "Second studio for guests closer to High Level Road — opening soon.",
+    status: "coming-soon",
   },
 ];
+
+export const OPEN_BRANCHES = BRANCHES.filter((b) => b.status === "open");
+
+/** Homepage visit narrative — Act II */
+export const VISIT_STEPS = [
+  {
+    step: "01",
+    title: "Request",
+    body: "Send your branch, treatment, and preferred timing. We confirm before anything is locked in.",
+    note: "Cleanliness people notice",
+  },
+  {
+    step: "02",
+    title: "Prep",
+    body: "Fresh wax opened after you are in the room. Disposable covers and clean prep surfaces.",
+    note: "No open-floor rushing",
+  },
+  {
+    step: "03",
+    title: "Treat",
+    body: "Private ladies-only rooms. Therapists match pressure and products to your skin and service.",
+    note: "Less fear around waxing",
+  },
+  {
+    step: "04",
+    title: "After-care",
+    body: "Clear guidance before you leave. We tell you what to expect over the next few days.",
+    note: "Product quality matters",
+  },
+] as const;
 
 export function getBranch(slug: BranchSlug): Branch {
   return BRANCHES.find((b) => b.slug === slug) ?? BRANCHES[0];

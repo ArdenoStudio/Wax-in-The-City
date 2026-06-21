@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
-import { BookingZone } from "@/components/sections/BookingZone";
+import { Button } from "@/components/ui/button";
+import { whatsappLink } from "@/lib/site";
+import { WhatsappIcon } from "@/components/icons";
+import { IMAGES } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -13,20 +17,43 @@ export default function FAQPage() {
   return (
     <>
       <PageHero
-        eyebrow="Good to know"
         title="Your questions, answered."
         subtitle="Honest answers about treatments, hygiene, booking and aftercare."
-        image="https://images.unsplash.com/photo-1556760544-74068565f05c?q=80&w=1600&auto=format&fit=crop"
+        image={IMAGES.socialProof.src}
         imageAlt="Calm studio detail"
       />
 
-      <section className="bg-cream px-5 py-section-lg lg:px-8">
+      <section className="band-pearl px-5 py-section-lg lg:px-8">
         <div className="mx-auto max-w-3xl">
           <FAQAccordion />
         </div>
       </section>
 
-      <BookingZone mode="whatsapp-only" heading="Still have a question?" subtitle="Message us on WhatsApp — we're happy to help before you book." />
+      <section className="band-wine px-5 py-section-lg lg:px-8">
+        <div className="mx-auto flex max-w-3xl flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="type-title-serif text-cream">Still have a question?</h2>
+            <p className="mt-2 text-body text-cream/72">
+              Message us on WhatsApp — we are happy to help before you book.
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <Button asChild size="lg" variant="inverted">
+              <a
+                href={whatsappLink("Hi! I have a question before booking.")}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <WhatsappIcon className="h-4 w-4" />
+                WhatsApp
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="ghost">
+              <Link href="/book">Send request</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
