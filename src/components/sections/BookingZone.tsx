@@ -48,7 +48,6 @@ export function BookingZone({
         <div className="mx-auto mb-8 h-px w-24 hairline-gradient" />
 
         <SectionHeading
-          eyebrow="Book your visit"
           title={heading}
           subtitle={subtitle}
           tone={standalone ? "light" : "dark"}

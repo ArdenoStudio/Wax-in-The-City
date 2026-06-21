@@ -58,17 +58,13 @@ export function ServicesGrid({
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
         <div className="w-full min-w-0 max-w-[calc(100vw-2.5rem)] sm:max-w-full lg:sticky lg:top-28">
           <SectionHeading
-            eyebrow="Treatment menu"
             title="A tighter menu, built for trust."
             subtitle="Focused choices, clear prep and appointment-led care for a calmer visit."
             align="left"
             className="w-full max-w-[calc(100vw-2.5rem)] sm:max-w-full"
           />
-          <div className="premium-surface micro-lift mt-8 max-w-full rounded-card p-5">
+          <div className="surface-light mt-8 max-w-full rounded-card p-5">
             <div className="relative z-10">
-              <p className="text-caption font-semibold uppercase tracking-[0.16em] text-brand-action">
-                Positioning
-              </p>
               <p className="mt-3 max-w-full break-words font-serif text-h4 italic text-warm sm:text-h3">
                 Waxing is the hero. Skin care supports the promise.
               </p>
@@ -95,7 +91,7 @@ export function ServicesGrid({
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="studio-plate rounded-card p-2"
+          className="surface-light rounded-card p-2"
         >
           {categories.map((cat, i) => {
             const Icon = ICONS[cat.slug];

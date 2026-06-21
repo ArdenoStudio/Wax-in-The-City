@@ -39,7 +39,7 @@ export function Footer() {
               {SITE.tagline}
             </p>
             <p className="mt-3 max-w-xs text-body-sm text-cream/60">
-              Ladies-only waxing &amp; beauty care across two Colombo branches.
+              Ladies-only waxing &amp; beauty care — Battaramulla open now, Nugegoda opening soon.
             </p>
 
             <div className="mt-6 flex items-center gap-3">
@@ -95,18 +95,29 @@ export function Footer() {
             <div className="mt-4 grid gap-6 sm:grid-cols-2">
               {BRANCHES.map((b) => (
                 <div key={b.slug}>
-                  <p className="font-serif text-h4 text-cream">{b.name}</p>
+                  <p className="font-serif text-h4 text-cream">
+                    {b.name}
+                    {b.status === "coming-soon" && (
+                      <span className="ml-2 text-caption font-sans font-semibold text-brand-light">
+                        (opening soon)
+                      </span>
+                    )}
+                  </p>
                   <p className="mt-1 text-body-sm text-cream/60">{b.area}</p>
-                  <p className="mt-2 text-body-sm text-cream/60">{b.hours.weekday}</p>
-                  <p className="text-caption text-cream/40">{b.hours.poya}</p>
-                  <a
-                    href={whatsappLink(`Hi! I'd like to book at your ${b.name} branch.`, b.whatsapp)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-flex min-h-10 items-center text-body-sm text-brand-light underline-offset-4 hover:underline"
-                  >
-                    WhatsApp {b.name}
-                  </a>
+                  {b.status === "open" && (
+                    <>
+                      <p className="mt-2 text-body-sm text-cream/60">{b.hours.weekday}</p>
+                      <p className="text-caption text-cream/40">{b.hours.poya}</p>
+                      <a
+                        href={whatsappLink(`Hi! I'd like to book at your ${b.name} branch.`, b.whatsapp)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex min-h-10 items-center text-body-sm text-brand-light underline-offset-4 hover:underline"
+                      >
+                        WhatsApp {b.name}
+                      </a>
+                    </>
+                  )}
                 </div>
               ))}
             </div>

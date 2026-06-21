@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Clock, MapPin, Navigation, Phone } from "lucide-react";
 import { BRANCHES, whatsappLink } from "@/lib/site";
 import { PageHero } from "@/components/sections/PageHero";
@@ -7,12 +8,13 @@ import { BookingZone } from "@/components/sections/BookingZone";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 import { WhatsappIcon } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 import { IMAGES } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Locations",
   description:
-    "Two ladies-only Wax In The City studios in Colombo — Battaramulla and Nugegoda. Find hours, directions and WhatsApp booking.",
+    "Wax In The City studios in Colombo — Battaramulla is open now. Nugegoda is opening soon.",
 };
 
 const BRANCH_IMAGES = {
@@ -24,9 +26,8 @@ export default function LocationsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Visit us"
         title="Choose the studio that fits your day."
-        subtitle="Two ladies-only Colombo locations with the same private-room standard."
+        subtitle="Battaramulla is open for bookings. Nugegoda is opening soon with the same private-room standard."
         image={IMAGES.branches.battaramulla}
         imageAlt="Calm private studio room prepared for an appointment"
         size="md"
@@ -39,22 +40,23 @@ export default function LocationsPage() {
             <SectionHeading
               align="left"
               tone="light"
-              eyebrow="Branch selector"
               title="Same care standard, different side of the city."
               subtitle="Pick the branch by commute first. The appointment style stays consistent: private, clean, and reviewed before confirmation."
             />
             <div className="mt-8 grid gap-3 text-body-sm text-cream/74">
               <div className="rounded-card border border-cream/14 bg-cream/8 p-4">
-                Battaramulla works best if your day runs through the parliament, Pelawatte, or Koswatta side.
+                Battaramulla is open now — parliament, Pelawatte, or Koswatta side.
               </div>
               <div className="rounded-card border border-cream/14 bg-cream/8 p-4">
-                Nugegoda is the easier choice if High Level Road is already part of your route.
+                Nugegoda is opening soon for guests closer to High Level Road.
               </div>
             </div>
           </div>
 
           <div className="grid gap-5 md:grid-cols-2">
-            {BRANCHES.map((branch, i) => (
+            {BRANCHES.map((branch, i) => {
+              const isOpen = branch.status === "open";
+              return (
               <AnimatedSection key={branch.slug} variant="fadeUp" delay={i * 0.08}>
                 <article className="group h-full overflow-hidden rounded-card border border-cream/14 bg-cream text-warm shadow-[0_28px_90px_rgba(0,0,0,0.28)]">
                   <div className="relative min-h-[260px] overflow-hidden bg-ink">
@@ -68,9 +70,12 @@ export default function LocationsPage() {
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_25%,rgba(23,7,11,0.72)_100%)]" />
                     <div className="absolute bottom-0 left-0 p-5 text-cream">
-                      <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light">
-                        {branch.area}
-                      </p>
+                      {!isOpen && (
+                        <span className="mb-2 inline-flex rounded-pill border border-cream/20 bg-cream/12 px-3 py-1 text-caption font-semibold text-brand-light">
+                          Opening soon
+                        </span>
+                      )}
+                      <p className="text-body-sm text-cream/72">{branch.area}</p>
                       <h2 className="mt-2 font-serif text-[2.25rem] font-medium leading-none">
                         {branch.name}
                       </h2>
@@ -83,39 +88,50 @@ export default function LocationsPage() {
                         <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-action" />
                         <span>{branch.address}</span>
                       </p>
-                      <p className="flex items-center gap-2">
-                        <Clock className="h-4 w-4 text-brand-action" />
-                        {branch.hours.weekday}
-                      </p>
-                      <p className="flex items-center gap-2">
-                        <Phone className="h-4 w-4 text-brand-action" />
-                        {branch.phone}
-                      </p>
+                      {isOpen && (
+                        <>
+                          <p className="flex items-center gap-2">
+                            <Clock className="h-4 w-4 text-brand-action" />
+                            {branch.hours.weekday}
+                          </p>
+                          <p className="flex items-center gap-2">
+                            <Phone className="h-4 w-4 text-brand-action" />
+                            {branch.phone}
+                          </p>
+                        </>
+                      )}
                     </div>
                     <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-                      <a
-                        href={whatsappLink(`Hi! I'd like to book at your ${branch.name} branch.`, branch.whatsapp)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="pressable inline-flex h-11 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)]"
-                      >
-                        <WhatsappIcon className="h-4 w-4" />
-                        WhatsApp
-                      </a>
-                      <a
-                        href={branch.googleMapsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="icon-drift inline-flex h-11 items-center justify-center gap-2 rounded-pill border border-brand-action/24 px-5 text-body-sm font-medium text-brand-action"
-                      >
-                        <Navigation className="h-4 w-4" />
-                        Directions
-                      </a>
+                      {isOpen ? (
+                        <>
+                          <Button asChild size="md" variant="primary" className="w-full sm:w-auto">
+                            <a
+                              href={whatsappLink(`Hi! I'd like to book at your ${branch.name} branch.`, branch.whatsapp)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <WhatsappIcon className="h-4 w-4" />
+                              WhatsApp
+                            </a>
+                          </Button>
+                          <Button asChild size="md" variant="outline" className="w-full sm:w-auto">
+                            <a href={branch.googleMapsUrl} target="_blank" rel="noopener noreferrer">
+                              <Navigation className="h-4 w-4" />
+                              Directions
+                            </a>
+                          </Button>
+                        </>
+                      ) : (
+                        <Button asChild size="md" variant="outline" className="w-full sm:w-auto">
+                          <Link href="/contact">Get opening updates</Link>
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </article>
               </AnimatedSection>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>
@@ -124,13 +140,12 @@ export default function LocationsPage() {
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <SectionHeading
             align="left"
-            eyebrow="Before you travel"
             title="Message the branch first if timing is tight."
             subtitle="For waxing and facial appointments, a short WhatsApp message helps the studio confirm the right therapist, room, and session length."
           />
           <div className="grid gap-3 sm:grid-cols-3">
             {["Choose branch", "Confirm service", "Arrive relaxed"].map((step, index) => (
-              <div key={step} className="premium-surface rounded-card p-5">
+              <div key={step} className="surface-light rounded-card p-5">
                 <p className="relative z-10 font-serif text-h2 text-brand-action/40">
                   {String(index + 1).padStart(2, "0")}
                 </p>

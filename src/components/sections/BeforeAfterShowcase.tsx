@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { IMAGES } from "@/lib/images";
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
 
@@ -17,10 +17,6 @@ export function BeforeAfterShowcase() {
 
       <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-pill border border-cream/14 bg-cream/8 px-4 py-2 text-caption font-semibold uppercase tracking-[0.12em] text-brand-light">
-            <Sparkles className="h-4 w-4" />
-            Before and after
-          </div>
           <h2 className="mt-6 max-w-xl font-serif text-h1 font-medium leading-tight text-cream sm:text-display">
             From unsure to looked after.
           </h2>

@@ -152,6 +152,9 @@ export function GalleryGrid() {
                 unoptimized={photos[active].src.startsWith("http")}
                 className="object-contain"
               />
+              <p className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-4 text-center text-body-sm text-cream">
+                {photos[active].caption}
+              </p>
             </motion.div>
 
             <button

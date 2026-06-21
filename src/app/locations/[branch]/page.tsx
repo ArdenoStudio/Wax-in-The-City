@@ -7,6 +7,7 @@ import { IMAGES } from "@/lib/images";
 import { WhatsappIcon } from "@/components/icons";
 import { PageHero } from "@/components/sections/PageHero";
 import { BookingZone } from "@/components/sections/BookingZone";
+import { Button } from "@/components/ui/button";
 
 const BRANCH_IMAGES: Record<BranchSlug, string> = {
   battaramulla: IMAGES.branches.battaramulla,
@@ -44,11 +45,11 @@ export default async function BranchPage({
   const { branch } = await params;
   if (!isBranchSlug(branch)) notFound();
   const b = getBranch(branch);
+  const isOpen = b.status === "open";
 
   return (
     <>
       <PageHero
-        eyebrow="Our studio"
         title={`${b.name}.`}
         subtitle={b.blurb}
         image={BRANCH_IMAGES[b.slug]}
@@ -65,8 +66,17 @@ export default async function BranchPage({
             All locations
           </Link>
 
+          {!isOpen && (
+            <div className="mb-8 rounded-card border border-brand-action/20 bg-brand-mist px-5 py-4 text-body-sm text-warm">
+              This studio is opening soon. Book at{" "}
+              <Link href="/locations/battaramulla" className="font-medium text-brand-action hover:underline">
+                Battaramulla
+              </Link>{" "}
+              in the meantime, or leave your details for opening updates.
+            </div>
+          )}
+
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
-            {/* Details */}
             <div className="space-y-6">
               <Detail icon={<MapPin className="h-5 w-5" />} label="Address">
                 {b.address}
@@ -81,42 +91,63 @@ export default async function BranchPage({
               </Detail>
 
               <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-                <a
-                  href={whatsappLink(`Hi! I'd like to book at your ${b.name} branch.`, b.whatsapp)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-pill bg-brand-action px-6 font-medium text-cream transition-colors hover:bg-brand-dark"
-                >
-                  <WhatsappIcon className="h-4 w-4" />
-                  Book at {b.name}
-                </a>
-                <a
-                  href={b.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-pill border border-brand-action/40 px-6 font-medium text-brand-action transition-colors hover:bg-brand-mist"
-                >
-                  <MapPin className="h-4 w-4" />
-                  Open in Maps
-                </a>
+                {isOpen ? (
+                  <>
+                    <Button asChild size="md" variant="primary">
+                      <a
+                        href={whatsappLink(`Hi! I'd like to book at your ${b.name} branch.`, b.whatsapp)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <WhatsappIcon className="h-4 w-4" />
+                        Book at {b.name}
+                      </a>
+                    </Button>
+                    <Button asChild size="md" variant="outline">
+                      <a href={b.googleMapsUrl} target="_blank" rel="noopener noreferrer">
+                        <MapPin className="h-4 w-4" />
+                        Open in Maps
+                      </a>
+                    </Button>
+                  </>
+                ) : (
+                  <Button asChild size="md" variant="primary">
+                    <Link href="/contact">Get opening updates</Link>
+                  </Button>
+                )}
               </div>
             </div>
 
-            {/* Map embed */}
-            <div className="overflow-hidden rounded-card-lg border border-warm-border shadow-card">
-              <iframe
-                title={`Map of ${b.name} branch`}
-                src={`https://www.google.com/maps?q=${encodeURIComponent(b.area)}&output=embed`}
-                className="h-80 w-full lg:h-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            {isOpen && (
+              <div className="overflow-hidden rounded-card-lg border border-warm-border shadow-card">
+                <iframe
+                  title={`Map of ${b.name} branch`}
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(b.area)}&output=embed`}
+                  className="h-80 w-full lg:h-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      <BookingZone defaultBranch={b.slug} heading={`Book at ${b.name}.`} />
+      {isOpen ? (
+        <BookingZone defaultBranch={b.slug} heading={`Book at ${b.name}.`} />
+      ) : (
+        <section className="bg-cream-alt px-5 py-section-lg lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-serif text-h2 font-medium text-warm">Opening soon.</h2>
+            <p className="mt-4 text-body-lg text-warm-grey">
+              We&apos;ll announce the Nugegoda address and booking slots when the studio is ready.
+            </p>
+            <Button asChild size="lg" variant="primary" className="mt-8">
+              <Link href="/contact">Contact us for updates</Link>
+            </Button>
+          </div>
+        </section>
+      )}
     </>
   );
 }

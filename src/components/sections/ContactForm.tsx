@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Check, Loader2 } from "lucide-react";
 import { contactSchema, type ContactInput } from "@/lib/booking";
 import { submitContact } from "@/app/actions/booking";
-import { BRANCHES, whatsappLink } from "@/lib/site";
+import { OPEN_BRANCHES, whatsappLink } from "@/lib/site";
 import { fieldAriaProps, fieldErrorId } from "@/lib/form-a11y";
 import { WhatsappIcon } from "@/components/icons";
 import { Input } from "@/components/ui/input";
@@ -41,7 +41,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="premium-surface rounded-card p-5 sm:p-7">
+    <div className="surface-light rounded-card p-5 sm:p-7">
       <AnimatePresence mode="wait">
         {submitted ? (
           <motion.div
@@ -132,7 +132,7 @@ export function ContactForm() {
                         <SelectValue placeholder="Choose a branch" />
                       </SelectTrigger>
                       <SelectContent>
-                        {BRANCHES.map((b) => (
+                        {OPEN_BRANCHES.map((b) => (
                           <SelectItem key={b.slug} value={b.slug}>
                             {b.name}
                           </SelectItem>

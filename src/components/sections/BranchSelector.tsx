@@ -12,9 +12,8 @@ export function BranchSelector() {
     <section className="bg-cream-alt px-5 py-section-lg lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          eyebrow="Branches"
           title="Choose the easiest route in."
-          subtitle="Two Colombo locations with clear hours, quick WhatsApp booking and a calmer appointment flow."
+          subtitle="Battaramulla is open now. Nugegoda is opening soon — we'll share updates when it's ready."
         />
 
         <motion.div

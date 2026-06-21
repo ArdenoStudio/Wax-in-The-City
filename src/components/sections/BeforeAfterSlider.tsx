@@ -6,6 +6,7 @@ import {
   ReactCompareSliderHandle,
   ReactCompareSliderImage,
 } from "react-compare-slider";
+import { MoveHorizontal } from "lucide-react";
 
 interface BeforeAfterSliderProps {
   beforeSrc: string;
@@ -40,6 +41,7 @@ export function BeforeAfterSlider({
   afterLabel = "After",
 }: BeforeAfterSliderProps) {
   const [mounted, setMounted] = useState(false);
+  const [hintVisible, setHintVisible] = useState(true);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => setMounted(true));
@@ -47,23 +49,37 @@ export function BeforeAfterSlider({
   }, []);
 
   return (
-    <div className="studio-plate micro-lift overflow-hidden rounded-card p-2">
+    <div className="surface-light relative overflow-hidden rounded-card p-2">
       <div className="pointer-events-none absolute left-5 top-5 z-20 rounded-pill border border-cream/22 bg-brand/78 px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em] text-cream backdrop-blur-md">
         {beforeLabel}
       </div>
       <div className="pointer-events-none absolute right-5 top-5 z-20 rounded-pill border border-cream/22 bg-brand-action/82 px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em] text-cream backdrop-blur-md">
         {afterLabel}
       </div>
-      {mounted ? (
-        <ReactCompareSlider
-          handle={<SliderHandle />}
-          itemOne={<ReactCompareSliderImage src={beforeSrc} alt={beforeAlt} />}
-          itemTwo={<ReactCompareSliderImage src={afterSrc} alt={afterAlt} />}
-          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[7px]"
-        />
-      ) : (
-        <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[7px] bg-brand/18" />
-      )}
+      <div className="relative">
+        {mounted ? (
+          <ReactCompareSlider
+            handle={<SliderHandle />}
+            itemOne={<ReactCompareSliderImage src={beforeSrc} alt={beforeAlt} />}
+            itemTwo={<ReactCompareSliderImage src={afterSrc} alt={afterAlt} />}
+            className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[7px]"
+            onPointerDown={() => setHintVisible(false)}
+          />
+        ) : (
+          <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[7px] bg-brand/18" />
+        )}
+        {hintVisible && mounted && (
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-4 z-20 flex justify-center"
+            aria-hidden
+          >
+            <span className="inline-flex items-center gap-2 rounded-pill border border-cream/20 bg-brand/80 px-4 py-2 text-caption font-medium text-cream backdrop-blur-md">
+              <MoveHorizontal className="h-4 w-4" />
+              Drag to compare
+            </span>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
