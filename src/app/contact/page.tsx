@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Clock, MapPin, Phone } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { WaxContactMethods } from "@/components/sections/WaxContactMethods";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { InstagramIcon, FacebookIcon, WhatsappIcon } from "@/components/icons";
@@ -25,29 +26,10 @@ export default function ContactPage() {
         size="md"
       />
 
-      <section className="band-wine px-5 py-section-lg lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-          <div>
-            <h2 className="type-title-serif text-cream">If it is about timing, message us first.</h2>
-            <p className="mt-2 max-w-md text-body text-cream/72">
-              A WhatsApp message lets us confirm branch, service length, and room before you travel.
-            </p>
-          </div>
-          <Button asChild size="lg" variant="inverted">
-            <a
-              href={whatsappLink("Hi! I have a question before booking.")}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <WhatsappIcon className="h-5 w-5" />
-              Message WhatsApp
-            </a>
-          </Button>
-        </div>
-      </section>
+      <WaxContactMethods />
 
       <section id="contact-form" className="band-pearl px-5 py-section-lg lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <div className="container mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <aside className="space-y-5">
             <SectionHeading
               voice="sans"

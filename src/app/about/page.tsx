@@ -13,20 +13,7 @@ export const metadata: Metadata = {
     "A ladies-only studio built for private, careful waxing and skin care in Colombo.",
 };
 
-const VALUES = [
-  {
-    title: "Hygiene is visible",
-    body: "Fresh wax handling, clean tools, and prepared surfaces — treated as normal, not a premium add-on.",
-  },
-  {
-    title: "Privacy stays protected",
-    body: "Ladies-only rooms and appointment-led timing so sensitive services feel less intimidating.",
-  },
-  {
-    title: "Advice stays practical",
-    body: "We help you choose what suits your skin and timing — not the biggest treatment on the menu.",
-  },
-];
+import { ValuesShiftCards } from "@/components/sections/ValuesShiftCards";
 
 export default function AboutPage() {
   return (
@@ -87,16 +74,8 @@ export default function AboutPage() {
             title="What should feel different when you walk in."
             subtitle="The details are practical because the services are personal."
           />
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            {VALUES.map((value) => (
-              <div
-                key={value.title}
-                className="border border-cream/14 bg-cream/6 p-6"
-              >
-                <h3 className="type-subtitle text-cream">{value.title}</h3>
-                <p className="mt-3 text-body-sm text-cream/72">{value.body}</p>
-              </div>
-            ))}
+          <div className="mt-10">
+            <ValuesShiftCards />
           </div>
         </div>
       </section>

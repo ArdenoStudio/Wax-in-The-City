@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
-import { GalleryGrid } from "@/components/sections/GalleryGrid";
+import { WaxGallery } from "@/components/sections/WaxGallery";
 import { SITE } from "@/lib/site";
 import { InstagramIcon } from "@/components/icons";
 import { IMAGES } from "@/lib/images";
@@ -21,21 +21,19 @@ export default function GalleryPage() {
         imageAlt="Soft studio interior"
       />
 
-      <section className="band-pearl px-5 py-section-lg lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <GalleryGrid />
+      <WaxGallery />
 
-          <div className="mt-14 flex justify-center">
-            <a
-              href={SITE.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-pill border border-brand-action/40 px-6 py-3 font-medium text-brand-action transition-colors hover:bg-brand-mist"
-            >
-              <InstagramIcon className="h-5 w-5" />
-              Follow @waxinthecitylk
-            </a>
-          </div>
+      <section className="band-pearl px-5 pb-section-lg lg:px-8">
+        <div className="container flex justify-center">
+          <a
+            href={SITE.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-pill border border-brand-action/40 px-6 py-3 font-medium text-brand-action transition-colors hover:bg-brand-mist"
+          >
+            <InstagramIcon className="h-5 w-5" />
+            Follow @waxinthecitylk
+          </a>
         </div>
       </section>
     </>

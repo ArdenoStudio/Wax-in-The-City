@@ -3,25 +3,26 @@ import { CalendarDays, MapPin } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import { BRANCHES, whatsappLink } from "@/lib/site";
 import { Button } from "@/components/ui/button";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { Cta10Wax } from "@/components/sections/Cta10Wax";
 
-/** Act IV — location strip + book/WhatsApp, no embedded form. */
+/** Act IV — location strip + book/WhatsApp using shadcnblocks CTA pattern */
 export function LocationStrip() {
   const open = BRANCHES.find((b) => b.status === "open");
   const soon = BRANCHES.find((b) => b.status === "coming-soon");
 
   return (
     <section className="band-wine px-5 py-section-lg lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeading
-          voice="serif"
-          tone="light"
-          align="left"
+      <div className="mx-auto max-w-7xl space-y-10">
+        <Cta10Wax
           title="Your doorstep."
-          subtitle="Book Battaramulla now. We will share Nugegoda opening details when the studio is ready."
+          description="Book Battaramulla now. We will share Nugegoda opening details when the studio is ready."
+          primaryLabel="Send booking request"
+          primaryHref="/book"
+          secondaryLabel="Compare studios"
+          secondaryHref="/locations"
         />
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-2">
+        <div className="grid gap-4 lg:grid-cols-2">
           {open && (
             <div className="surface-on-wine p-6 text-cream sm:p-7">
               <p className="type-label text-brand-light">Open now</p>
@@ -63,12 +64,6 @@ export function LocationStrip() {
             </div>
           )}
         </div>
-
-        <p className="mt-8 text-small text-cream/60">
-          <Link href="/locations" className="text-brand-light underline-offset-4 hover:underline">
-            Compare both studios
-          </Link>
-        </p>
       </div>
     </section>
   );

@@ -7,7 +7,7 @@ import { getPublicServiceContent } from "@/lib/service-content";
 import { IMAGES } from "@/lib/images";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServiceCard } from "@/components/ui/service-card";
-import { Button } from "@/components/ui/button";
+import { Cta10Wax } from "@/components/sections/Cta10Wax";
 
 const HERO_IMAGES: Record<string, string> = {
   waxing: IMAGES.services.waxing,
@@ -98,18 +98,13 @@ export default async function ServiceCategoryPage({
       </section>
 
       <section className="band-wine px-5 py-section-lg lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-          <div>
-            <h2 className="type-title-serif text-cream">Ready to book {category.name.toLowerCase()}?</h2>
-            <p className="mt-2 max-w-md text-body text-cream/72">
-              Send a request and we&apos;ll confirm within 24 hours.
-            </p>
-          </div>
-          <Button asChild size="lg" variant="inverted">
-            <Link href={`/book?service=${encodeURIComponent(category.name)}`}>
-              Send booking request
-            </Link>
-          </Button>
+        <div className="container mx-auto max-w-7xl">
+          <Cta10Wax
+            title={`Ready to book ${category.name.toLowerCase()}?`}
+            description="Send a request and we'll confirm within 24 hours."
+            primaryLabel="Send booking request"
+            primaryHref={`/book?service=${encodeURIComponent(category.name)}`}
+          />
         </div>
       </section>
     </>

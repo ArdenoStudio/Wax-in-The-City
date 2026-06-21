@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
-import { BookingZone } from "@/components/sections/BookingZone";
+import { WaxBookLayout } from "@/components/sections/WaxBookLayout";
 import { BRANCHES, getBranch, SERVICES, SERVICE_CATEGORIES, type BranchSlug } from "@/lib/site";
 import { getPublicServiceContent } from "@/lib/service-content";
 
@@ -53,11 +53,9 @@ export default async function BookPage({
         voice="sans"
         title="Send a booking request."
         subtitle="We confirm by call or WhatsApp before your visit. No card required."
-        image=""
-        imageAlt=""
         minimal
       />
-      <BookingZone
+      <WaxBookLayout
         defaultBranch={defaultBranch}
         defaultService={defaultService}
         serviceOptions={serviceContent.services.map((item) => item.name)}

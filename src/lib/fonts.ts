@@ -1,10 +1,10 @@
-import { Instrument_Serif, Source_Sans_3 } from "next/font/google";
+import { Bodoni_Moda, Source_Sans_3 } from "next/font/google";
 
-export const instrumentSerif = Instrument_Serif({
+export const bodoniModa = Bodoni_Moda({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
+  variable: "--font-bodoni",
   display: "swap",
 });
 

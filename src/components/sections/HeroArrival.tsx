@@ -1,59 +1,102 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, CalendarDays } from "lucide-react";
+import { ArrowRight, CalendarDays, ShieldCheck } from "lucide-react";
+import {
+  HeroColorPanelsRoot,
+  HeroColorPanelsContainer,
+  HeroColorPanelsContent,
+  HeroColorPanelsHeading,
+  HeroColorPanelsDescription,
+  HeroColorPanelsActions,
+  HeroColorPanelsVisual,
+  HeroColorPanelsMobileVisual,
+} from "@/components/ui/hero-color-panel";
+import SplitText from "@/components/SplitText";
 import { Button } from "@/components/ui/button";
-import { IMAGES, BLUR_DATA_URL } from "@/lib/images";
 import { SITE } from "@/lib/site";
+import {
+  PROTOCOL_POINTS,
+  WAX_SHADER_DESKTOP,
+  WAX_SHADER_MOBILE,
+} from "@/lib/wax-theme";
+import { useReducedMotion } from "motion/react";
 
 export function HeroArrival() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="band-wine relative min-h-[min(100svh,820px)]">
-      <div className="absolute inset-0">
-        <Image
-          src={IMAGES.hero.src}
-          alt={IMAGES.hero.alt}
-          fill
-          priority
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={BLUR_DATA_URL}
-          unoptimized={IMAGES.hero.src.startsWith("http")}
-          className="object-cover object-[62%_center]"
+    <HeroColorPanelsRoot
+      className="band-wine min-h-[min(100svh,900px)] pt-24 text-cream lg:pt-28"
+      srTitle="Private waxing, done properly"
+      title={
+        reduceMotion ? (
+          <span className="type-display text-cream">
+            Private waxing,
+            <br />
+            done properly.
+          </span>
+        ) : (
+          <SplitText
+            text="Private waxing, done properly."
+            tag="span"
+            className="type-display text-cream"
+            splitType="lines"
+            delay={60}
+            duration={0.9}
+            textAlign="left"
+          />
+        )
+      }
+      subtitle=""
+      description={SITE.description}
+      showBadges={false}
+      showCta={false}
+      desktopShaderProps={WAX_SHADER_DESKTOP}
+      mobileShaderProps={WAX_SHADER_MOBILE}
+    >
+      <HeroColorPanelsContainer className="min-h-[min(80svh,760px)] items-center">
+        <HeroColorPanelsContent>
+          <p className="type-label text-brand-light lg:text-left">Ladies-only studio · Colombo</p>
+          <HeroColorPanelsHeading headingClassName="font-serif text-cream" />
+          <HeroColorPanelsDescription descriptionClassName="text-cream/78" />
+          <p className="text-small text-cream/60 lg:text-left">
+            Battaramulla open now · Nugegoda opening soon
+          </p>
+
+          <HeroColorPanelsActions className="flex-col gap-3 sm:flex-row">
+            <Button asChild size="lg" variant="primary">
+              <Link href="/book">
+                <CalendarDays className="h-5 w-5" />
+                Send a booking request
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="ghost">
+              <Link href="#visit-map">
+                Walk through a visit
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </HeroColorPanelsActions>
+
+          <div className="surface-on-wine mt-4 p-5 lg:mt-6">
+            <p className="type-label text-brand-light">Studio protocol</p>
+            <ul className="mt-3 space-y-2">
+              {PROTOCOL_POINTS.map((point) => (
+                <li key={point} className="flex gap-2 text-body-sm text-cream/80">
+                  <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </HeroColorPanelsContent>
+
+        <HeroColorPanelsVisual
+          desktopClassName="hidden lg:block min-h-[420px] rounded-card overflow-hidden border border-cream/10"
         />
-        <div className="scrim-hero-ltr absolute inset-0" />
-      </div>
-
-      <div className="relative mx-auto flex min-h-[min(100svh,820px)] max-w-7xl flex-col justify-end px-5 pb-16 pt-28 lg:px-8 lg:pb-20 lg:pt-32">
-        <p className="type-label text-brand-light">Ladies-only studio · Colombo</p>
-        <h1 className="type-display mt-5 max-w-[14ch] text-balance text-cream">
-          Private waxing,
-          <br />
-          done properly.
-        </h1>
-        <p className="mt-6 max-w-md text-body-lg text-cream/78">
-          {SITE.description}
-        </p>
-        <p className="mt-3 text-small text-cream/60">
-          Battaramulla open now · Nugegoda opening soon
-        </p>
-
-        <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Button asChild size="lg" variant="primary">
-            <Link href="/book">
-              <CalendarDays className="h-5 w-5" />
-              Send a booking request
-            </Link>
-          </Button>
-          <Button asChild variant="ghost" size="lg">
-            <Link href="#visit-map">
-              Walk through a visit
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-      </div>
-    </section>
+      </HeroColorPanelsContainer>
+      <HeroColorPanelsMobileVisual className="px-5 pb-8 lg:hidden" />
+    </HeroColorPanelsRoot>
   );
 }

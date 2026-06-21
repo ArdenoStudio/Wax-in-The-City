@@ -3,8 +3,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServiceTabs } from "@/components/sections/ServiceTabs";
+import { WaxServicesGrid } from "@/components/sections/WaxServicesGrid";
+import { Cta10Wax } from "@/components/sections/Cta10Wax";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Button } from "@/components/ui/button";
 import { getPublicServiceContent } from "@/lib/service-content";
 import { IMAGES } from "@/lib/images";
 import { formatLKRFrom } from "@/lib/utils";
@@ -29,7 +30,7 @@ export default async function ServicesPage() {
       />
 
       <section className="band-pearl px-5 py-section-lg lg:px-8">
-        <div className="mx-auto max-w-3xl">
+        <div className="container mx-auto max-w-3xl">
           <SectionHeading
             voice="sans"
             align="left"
@@ -59,12 +60,14 @@ export default async function ServicesPage() {
         </div>
       </section>
 
+      <WaxServicesGrid categories={serviceContent.categories} />
+
       <section className="band-pearl border-t border-warm-border px-5 py-section-lg lg:px-8">
-        <div className="mx-auto max-w-7xl">
+        <div className="container mx-auto max-w-7xl">
           <SectionHeading
             voice="sans"
             align="left"
-            title="Compare timing and prices."
+            title="Full menu by category"
             subtitle="Use the tabs once you know the treatment family."
           />
           <div className="mt-10">
@@ -77,16 +80,15 @@ export default async function ServicesPage() {
       </section>
 
       <section className="band-wine px-5 py-section-lg lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-          <div>
-            <h2 className="type-title-serif text-cream">Found the right treatment?</h2>
-            <p className="mt-2 max-w-md text-body text-cream/72">
-              Send a request and we&apos;ll confirm within 24 hours.
-            </p>
-          </div>
-          <Button asChild size="lg" variant="inverted">
-            <Link href="/book">Send booking request</Link>
-          </Button>
+        <div className="container mx-auto max-w-7xl">
+          <Cta10Wax
+            title="Found the right treatment?"
+            description="Send a request and we'll confirm within 24 hours."
+            primaryLabel="Send booking request"
+            primaryHref="/book"
+            secondaryLabel="WhatsApp us"
+            secondaryHref="https://wa.me/94779469437"
+          />
         </div>
       </section>
     </>

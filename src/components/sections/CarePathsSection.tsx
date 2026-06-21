@@ -1,21 +1,85 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import { type ServiceCategoryMeta } from "@/lib/site";
+import { IMAGES } from "@/lib/images";
 import { formatLKRFrom } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Button } from "@/components/ui/button";
 
 interface CarePathsSectionProps {
   categories: ServiceCategoryMeta[];
 }
 
-/** Act III — waxing-led paths, not a four-color card grid. */
+const CATEGORY_IMAGES: Record<string, string> = {
+  waxing: IMAGES.services.waxing,
+  facial: IMAGES.services.facials,
+  facials: IMAGES.services.facials,
+  moroccan: IMAGES.services.moroccan,
+  "hydra-facial": IMAGES.services.hydraFacial,
+};
+
 export function CarePathsSection({ categories }: CarePathsSectionProps) {
   const waxing = categories.find((c) => c.slug === "waxing");
-  const skin = categories.filter((c) => c.slug === "facial" || c.slug === "hydra-facial");
-  const ritual = categories.find((c) => c.slug === "moroccan");
+  const facials = categories.find((c) => c.slug === "facial" || c.href === "facials");
+  const moroccan = categories.find((c) => c.slug === "moroccan");
+
+  const cards = [
+    waxing && {
+      category: "Signature",
+      title: waxing.name,
+      slug: waxing.href,
+      src: CATEGORY_IMAGES.waxing,
+      short: waxing.short,
+      price: waxing.priceFrom,
+      content: (
+        <p className="text-body text-warm-grey">
+          {waxing.description} Starting from {formatLKRFrom(waxing.priceFrom)}. Private
+          rooms, careful prep, and therapists who match pressure to your skin.
+        </p>
+      ),
+    },
+    facials && {
+      category: "Skin reset",
+      title: "Facials & HydraFacial",
+      slug: facials.href === "facials" ? "facials" : facials.href,
+      src: CATEGORY_IMAGES.facials,
+      short: facials.short,
+      price: facials.priceFrom,
+      content: (
+        <p className="text-body text-warm-grey">
+          Calm skin work and visible refresh without downtime. We help you choose the right
+          facial for your skin and timing.
+        </p>
+      ),
+    },
+    moroccan && {
+      category: "Deep ritual",
+      title: moroccan.name,
+      slug: moroccan.href,
+      src: CATEGORY_IMAGES.moroccan,
+      short: moroccan.short,
+      price: moroccan.priceFrom,
+      content: (
+        <p className="text-body text-warm-grey">
+          {moroccan.description} A longer appointment with the same private-room standard.
+        </p>
+      ),
+    },
+  ].filter(Boolean) as Array<{
+    category: string;
+    title: string;
+    slug: string;
+    src: string;
+    short: string;
+    price: number;
+    content: React.ReactNode;
+  }>;
 
   return (
-    <section className="band-pearl px-5 py-section-lg lg:px-8">
+    <section className="band-pearl overflow-hidden px-5 py-section-lg lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           voice="serif"
@@ -24,68 +88,39 @@ export function CarePathsSection({ categories }: CarePathsSectionProps) {
           subtitle="Waxing is the hero. Skin care and rituals support the same private-room standard."
         />
 
-        <div className="mt-12 grid gap-4 lg:grid-cols-3">
-          {waxing && (
-            <Link
-              href={`/services/${waxing.href}`}
-              className="surface group flex min-h-[220px] flex-col justify-between p-6 lg:col-span-2 lg:p-8"
-            >
-              <div>
-                <p className="type-label text-brand-action">Signature</p>
-                <h3 className="type-title-serif mt-3 text-warm">{waxing.name}</h3>
-                <p className="mt-3 max-w-lg text-body text-warm-grey">{waxing.short}</p>
-              </div>
-              <div className="mt-8 flex items-center justify-between gap-4">
-                <span className="text-small font-medium text-brand-action">
-                  From {formatLKRFrom(waxing.priceFrom)}
-                </span>
-                <span className="inline-flex items-center gap-2 text-body-sm font-medium text-brand-action">
-                  View waxing menu
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </div>
-            </Link>
-          )}
-
-          <div className="grid gap-4">
-            {skin.length > 0 && (
-              <Link
-                href="/services/facials"
-                className="surface group flex flex-col justify-between p-6"
-              >
-                <div>
-                  <p className="type-label text-warm-grey">Skin reset</p>
-                  <h3 className="type-subtitle mt-2 text-warm">Facials & HydraFacial</h3>
-                  <p className="mt-2 text-small text-warm-grey">
-                    Calm skin work and visible refresh without downtime.
-                  </p>
-                </div>
-                <span className="mt-6 inline-flex items-center gap-2 text-body-sm font-medium text-brand-action">
-                  Explore skin care
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              </Link>
-            )}
-            {ritual && (
-              <Link
-                href={`/services/${ritual.href}`}
-                className="surface group flex flex-col justify-between p-6"
-              >
-                <div>
-                  <p className="type-label text-warm-grey">Deep ritual</p>
-                  <h3 className="type-subtitle mt-2 text-warm">{ritual.name}</h3>
-                  <p className="mt-2 text-small text-warm-grey">{ritual.short}</p>
-                </div>
-                <span className="mt-6 inline-flex items-center gap-2 text-body-sm font-medium text-brand-action">
-                  View Moroccan menu
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              </Link>
-            )}
-          </div>
+        <div className="mt-8 w-full">
+          <Carousel
+            items={cards.map((card, index) => (
+              <Card
+                key={card.slug}
+                card={{
+                  src: card.src,
+                  title: card.title,
+                  category: card.category,
+                  content: (
+                    <div className="space-y-6">
+                      {card.content}
+                      <div className="flex flex-wrap items-center gap-4">
+                        <span className="text-small font-medium text-brand-action">
+                          From {formatLKRFrom(card.price)}
+                        </span>
+                        <Button asChild variant="primary">
+                          <Link href={`/services/${card.slug}`}>
+                            View menu
+                            <ArrowRight className="h-4 w-4" />
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  ),
+                }}
+                index={index}
+              />
+            ))}
+          />
         </div>
 
-        <div className="mt-10">
+        <div className="mt-6">
           <Link
             href="/services"
             className="inline-flex min-h-12 items-center gap-2 text-body-sm font-medium text-brand-action hover:underline"

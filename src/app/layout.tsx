@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
-import { instrumentSerif, sourceSans } from "@/lib/fonts";
+import { bodoniModa, sourceSans } from "@/lib/fonts";
 import { Navbar } from "@/components/global/Navbar";
 import { Footer } from "@/components/global/Footer";
 import { MobileBookingBar } from "@/components/global/MobileBookingBar";
@@ -66,7 +66,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${instrumentSerif.variable} ${sourceSans.variable}`}>
+    <html lang="en" className={`${bodoniModa.variable} ${sourceSans.variable}`}>
       <body className="min-h-screen bg-cream font-sans text-warm antialiased">
         <JsonLd />
         <SkipLink />
