@@ -18,7 +18,7 @@ export function PageHero({
   image,
   imageAlt = "",
   size = "sm",
-  voice = "serif",
+  voice = "sans",
   minimal = false,
 }: PageHeroProps) {
   if (minimal || !image) {

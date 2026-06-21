@@ -80,7 +80,7 @@ export function VisitMapSection() {
                 >
                   <div
                     ref={stepRefs[index]}
-                    className="flex size-14 items-center justify-center border border-warm-border bg-cream-alt font-serif text-h3 text-brand-action/40"
+                    className="flex size-14 items-center justify-center border border-warm-border bg-cream-alt font-sans text-h3 font-semibold tabular-nums text-brand-action/40"
                   >
                     {step.step}
                   </div>

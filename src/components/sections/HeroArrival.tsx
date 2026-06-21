@@ -58,7 +58,7 @@ export function HeroArrival() {
       <HeroColorPanelsContainer className="min-h-[min(80svh,760px)] items-center">
         <HeroColorPanelsContent>
           <p className="type-label text-brand-light lg:text-left">Ladies-only studio · Colombo</p>
-          <HeroColorPanelsHeading headingClassName="font-serif text-cream" />
+          <HeroColorPanelsHeading headingClassName="font-sans font-semibold tracking-tight text-cream" />
           <HeroColorPanelsDescription descriptionClassName="text-cream/78" />
           <p className="text-small text-cream/60 lg:text-left">
             Battaramulla open now · Nugegoda opening soon

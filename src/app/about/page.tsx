@@ -37,7 +37,7 @@ export default function AboutPage() {
               className="object-cover object-[50%_20%]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(23,7,11,0.75)_100%)]" />
-            <p className="absolute bottom-0 left-0 max-w-sm p-6 font-serif text-h3 text-cream">
+            <p className="absolute bottom-0 left-0 max-w-sm p-6 font-sans text-h3 font-semibold tracking-tight text-cream">
               Glamour is welcome here. Pressure is not.
             </p>
           </div>

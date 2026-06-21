@@ -10,7 +10,7 @@ export default function NotFound() {
       <p className="text-caption font-semibold uppercase tracking-[0.18em] text-brand-action">
         404
       </p>
-      <h1 className="mt-4 max-w-lg font-serif text-h1 font-medium text-warm">
+      <h1 className="mt-4 max-w-lg font-sans text-h1 font-semibold tracking-tight text-warm">
         This page isn&apos;t part of the studio.
       </h1>
       <p className="mt-4 max-w-md text-body-lg text-warm-grey">

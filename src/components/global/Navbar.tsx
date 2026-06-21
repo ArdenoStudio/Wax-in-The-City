@@ -45,7 +45,7 @@ export function Navbar() {
           >
             <span
               className={cn(
-                "font-serif text-[1.25rem] italic leading-none sm:text-[1.35rem]",
+                "font-sans text-[1.25rem] font-semibold tracking-tight leading-none sm:text-[1.35rem]",
                 onDark ? "text-cream" : "text-brand"
               )}
             >

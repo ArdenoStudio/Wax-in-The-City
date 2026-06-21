@@ -82,7 +82,7 @@ export function CarePathsSection({ categories }: CarePathsSectionProps) {
     <section className="band-pearl overflow-hidden px-5 py-section-lg lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          voice="serif"
+          voice="sans"
           align="left"
           title="Pick the care you need."
           subtitle="Waxing is the hero. Skin care and rituals support the same private-room standard."

@@ -14,7 +14,7 @@ export function SectionHeading({
   subtitle,
   align = "center",
   tone = "dark",
-  voice = "serif",
+  voice = "sans",
   className,
 }: SectionHeadingProps) {
   const light = tone === "light";
