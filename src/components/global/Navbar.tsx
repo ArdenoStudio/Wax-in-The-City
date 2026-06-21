@@ -23,6 +23,7 @@ export function Navbar() {
   }, []);
 
   const onDark = !scrolled;
+  const onHomeHero = pathname === "/" && !scrolled;
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6" aria-label="Main navigation">
@@ -88,7 +89,12 @@ export function Navbar() {
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
-          <Button asChild size="sm" variant={onDark ? "ghost" : "primary"} className="hidden sm:inline-flex">
+          <Button
+            asChild
+            size="sm"
+            variant={onHomeHero ? "inverted" : "primary"}
+            className="hidden sm:inline-flex"
+          >
             <Link href="/book">
               <CalendarDays className="h-4 w-4" />
               Book
