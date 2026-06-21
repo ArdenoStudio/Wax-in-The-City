@@ -73,7 +73,7 @@ export default function RootLayout({
         <LoadingScreen />
         <SmoothScrollProvider>
           <Navbar />
-          <main id="main-content" className="flex min-h-screen flex-col">
+          <main id="main-content" className="flex min-h-screen flex-col pb-24 md:pb-0">
             {children}
           </main>
           <Footer />

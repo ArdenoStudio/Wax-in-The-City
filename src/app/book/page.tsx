@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BookingZone } from "@/components/sections/BookingZone";
-import { BRANCHES, SERVICES, SERVICE_CATEGORIES, type BranchSlug } from "@/lib/site";
+import { BRANCHES, getBranch, SERVICES, SERVICE_CATEGORIES, type BranchSlug } from "@/lib/site";
 import { getPublicServiceContent } from "@/lib/service-content";
 
 export const metadata: Metadata = {
@@ -41,7 +41,8 @@ export default async function BookPage({
 }) {
   const { branch, service } = await searchParams;
   const serviceContent = await getPublicServiceContent();
-  const defaultBranch = isBranchSlug(branch) ? branch : undefined;
+  const defaultBranch =
+    isBranchSlug(branch) && getBranch(branch).status === "open" ? branch : undefined;
   const defaultService = resolveServicePreference(
     service,
     serviceContent.services,

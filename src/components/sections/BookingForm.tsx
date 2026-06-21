@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "motion/react";
-import { Check, Clock3, Loader2, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Loader2 } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import { bookingSchema, type BookingInput } from "@/lib/booking";
 import { submitBooking } from "@/app/actions/booking";
-import { SERVICES, BRANCHES, whatsappLink, type BranchSlug } from "@/lib/site";
+import { OPEN_BRANCHES, whatsappLink, type BranchSlug } from "@/lib/site";
 import { fieldAriaProps, fieldErrorId } from "@/lib/form-a11y";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -31,13 +31,14 @@ interface BookingFormProps {
 export function BookingForm({
   defaultBranch,
   defaultService,
-  serviceOptions = SERVICES.map((service) => service.name),
+  serviceOptions = [],
 }: BookingFormProps) {
   const options =
     defaultService && !serviceOptions.includes(defaultService)
       ? [defaultService, ...serviceOptions]
       : serviceOptions;
 
+  const [step, setStep] = useState<1 | 2>(1);
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -45,6 +46,7 @@ export function BookingForm({
     register,
     handleSubmit,
     control,
+    trigger,
     formState: { errors, isSubmitting },
   } = useForm<BookingInput>({
     resolver: zodResolver(bookingSchema),
@@ -54,12 +56,16 @@ export function BookingForm({
     },
   });
 
-  const watchedFields = useWatch({
+  const watchedStepOne = useWatch({
     control,
-    name: ["name", "phone", "branch", "service_preference"],
+    name: ["branch", "service_preference"],
   });
-  const filledCount = watchedFields.filter(Boolean).length;
-  const progress = (filledCount / 4) * 100;
+  const stepOneReady = Boolean(watchedStepOne[0] && watchedStepOne[1]);
+
+  const goToStepTwo = async () => {
+    const valid = await trigger(["branch", "service_preference"]);
+    if (valid) setStep(2);
+  };
 
   const onSubmit = async (data: BookingInput) => {
     setServerError(null);
@@ -72,24 +78,26 @@ export function BookingForm({
   };
 
   return (
-    <div className="premium-surface rounded-card p-5 sm:p-7">
-      <div className="relative z-10 mb-6 grid gap-2 text-caption font-semibold uppercase tracking-[0.12em] text-warm-grey sm:grid-cols-2">
-        <span className="flex items-center gap-2 rounded-card border border-warm-border/70 bg-white/58 px-3 py-2">
-          <ShieldCheck className="h-4 w-4 text-brand-action" />
-          Private request
-        </span>
-        <span className="sticky top-24 flex items-center gap-2 rounded-card border border-warm-border/70 bg-white/58 px-3 py-2 md:static">
-          <Clock3 className="h-4 w-4 text-brand-action" />
-          Confirmation first
-        </span>
-      </div>
+    <div className="surface-light rounded-card p-5 sm:p-7">
+      <p className="mb-6 text-center text-body-sm text-warm-grey">
+        No card required · We confirm within 24 hours · Urgent?{" "}
+        <a
+          href={whatsappLink("Hi! I'd like to ask about a booking.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-brand-action underline-offset-4 hover:underline"
+        >
+          WhatsApp us
+        </a>
+      </p>
+
       <AnimatePresence mode="wait">
         {submitted ? (
           <motion.div
             key="success"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative z-10 flex flex-col items-center py-8 text-center"
+            className="flex flex-col items-center py-8 text-center"
           >
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
               <Check className="h-7 w-7" />
@@ -112,167 +120,200 @@ export function BookingForm({
           </motion.div>
         ) : (
           <motion.form
-            key="form"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            key={`step-${step}`}
+            initial={{ opacity: 0, x: step === 2 ? 12 : -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="relative z-10 flex flex-col gap-5"
+            className="flex flex-col gap-5"
             noValidate
           >
-            <div className="sticky top-20 z-20 flex flex-col gap-1.5 rounded-card bg-cream/92 py-2 backdrop-blur-md md:static md:bg-transparent md:p-0">
-              <div className="flex items-center justify-between">
-                <span className="text-caption text-warm-grey">Booking details</span>
-                <span className="text-caption font-medium text-brand-action">{filledCount} / 4</span>
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2 text-caption font-medium text-warm-grey">
+                <span className={step === 1 ? "text-brand-action" : "text-warm-grey"}>
+                  1. Visit
+                </span>
+                <span aria-hidden className="text-warm-border">/</span>
+                <span className={step === 2 ? "text-brand-action" : "text-warm-grey"}>
+                  2. Contact
+                </span>
               </div>
-              <div className="h-px w-full overflow-hidden rounded-full bg-warm-border">
-                <motion.div
-                  className="h-full rounded-full bg-brand-action"
-                  initial={{ width: "0%" }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                />
-              </div>
+              <span className="text-caption text-warm-grey">Step {step} of 2</span>
             </div>
 
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="name">Your name</Label>
-                {watchedFields[0] && (
-                  <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
-                    <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />Done
-                  </motion.span>
-                )}
-              </div>
-              <Input
-                id="name"
-                placeholder="Your name"
-                {...register("name")}
-                {...fieldAriaProps("name", errors.name)}
-              />
-              {errors.name && (
-                <p id={fieldErrorId("name")} className="text-body-sm text-error" role="alert">
-                  {errors.name.message}
-                </p>
-              )}
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="phone">Phone</Label>
-                {watchedFields[1] && (
-                  <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
-                    <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />Done
-                  </motion.span>
-                )}
-              </div>
-              <Input
-                id="phone"
-                type="tel"
-                inputMode="tel"
-                placeholder="Your number (we'll only call or WhatsApp)"
-                {...register("phone")}
-                {...fieldAriaProps("phone", errors.phone)}
-              />
-              {errors.phone && (
-                <p id={fieldErrorId("phone")} className="text-body-sm text-error" role="alert">
-                  {errors.phone.message}
-                </p>
-              )}
-            </div>
-
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div className="flex flex-col gap-2">
-                <Label htmlFor="branch-select">Which location works for you?</Label>
-                <Controller
-                  control={control}
-                  name="branch"
-                  render={({ field }) => (
-                    <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger
-                        id="branch-select"
-                        aria-label="Select branch location"
-                        aria-invalid={errors.branch ? true : undefined}
-                        aria-describedby={errors.branch ? fieldErrorId("branch") : undefined}
-                      >
-                        <SelectValue placeholder="Choose a branch" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {BRANCHES.map((b) => (
-                          <SelectItem key={b.slug} value={b.slug}>
-                            {b.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+            {step === 1 ? (
+              <>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="branch-select">Which location works for you?</Label>
+                  <Controller
+                    control={control}
+                    name="branch"
+                    render={({ field }) => (
+                      <Select value={field.value} onValueChange={field.onChange}>
+                        <SelectTrigger
+                          id="branch-select"
+                          aria-label="Select branch location"
+                          aria-invalid={errors.branch ? true : undefined}
+                          aria-describedby={errors.branch ? fieldErrorId("branch") : undefined}
+                        >
+                          <SelectValue placeholder="Choose a branch" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {OPEN_BRANCHES.map((b) => (
+                            <SelectItem key={b.slug} value={b.slug}>
+                              {b.name}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    )}
+                  />
+                  {errors.branch && (
+                    <p id={fieldErrorId("branch")} className="text-body-sm text-error" role="alert">
+                      {errors.branch.message}
+                    </p>
                   )}
-                />
-                {errors.branch && (
-                  <p id={fieldErrorId("branch")} className="text-body-sm text-error" role="alert">
-                    {errors.branch.message}
+                  <p className="text-caption text-warm-grey">
+                    Nugegoda is opening soon — book Battaramulla for now.
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="service-select">What are you looking for?</Label>
+                  <Controller
+                    control={control}
+                    name="service_preference"
+                    render={({ field }) => (
+                      <Select value={field.value} onValueChange={field.onChange}>
+                        <SelectTrigger
+                          id="service-select"
+                          aria-label="Select treatment type"
+                          aria-invalid={errors.service_preference ? true : undefined}
+                          aria-describedby={
+                            errors.service_preference ? fieldErrorId("service_preference") : undefined
+                          }
+                        >
+                          <SelectValue placeholder="Choose a treatment" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {options.map((service) => (
+                            <SelectItem key={service} value={service}>
+                              {service}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    )}
+                  />
+                  {errors.service_preference && (
+                    <p
+                      id={fieldErrorId("service_preference")}
+                      className="text-body-sm text-error"
+                      role="alert"
+                    >
+                      {errors.service_preference.message}
+                    </p>
+                  )}
+                </div>
+
+                <Button
+                  type="button"
+                  size="lg"
+                  variant="primary"
+                  disabled={!stepOneReady}
+                  onClick={goToStepTwo}
+                  className="w-full"
+                >
+                  Continue
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setStep(1)}
+                  className="inline-flex min-h-10 w-fit items-center gap-1.5 text-body-sm font-medium text-brand-action"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  Back to visit details
+                </button>
+
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="name">Your name</Label>
+                  <Input
+                    id="name"
+                    placeholder="Your name"
+                    autoComplete="name"
+                    {...register("name")}
+                    {...fieldAriaProps("name", errors.name)}
+                  />
+                  {errors.name && (
+                    <p id={fieldErrorId("name")} className="text-body-sm text-error" role="alert">
+                      {errors.name.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    placeholder="Your number (we'll call or WhatsApp)"
+                    {...register("phone")}
+                    {...fieldAriaProps("phone", errors.phone)}
+                  />
+                  {errors.phone && (
+                    <p id={fieldErrorId("phone")} className="text-body-sm text-error" role="alert">
+                      {errors.phone.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="preferred_date">
+                    Preferred visit date <span className="font-normal text-warm-grey">(optional)</span>
+                  </Label>
+                  <Input
+                    id="preferred_date"
+                    type="date"
+                    lang="en-LK"
+                    {...register("preferred_date")}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="message">
+                    Anything else? <span className="font-normal text-warm-grey">(optional)</span>
+                  </Label>
+                  <Textarea
+                    id="message"
+                    placeholder="Sensitivity, timing, first visit — anything that helps us prepare."
+                    {...register("message")}
+                  />
+                </div>
+
+                {serverError && (
+                  <p className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error" role="alert">
+                    {serverError}
                   </p>
                 )}
-              </div>
 
-              <div className="flex flex-col gap-2">
-                <Label htmlFor="service-select">What are you looking for?</Label>
-                <Controller
-                  control={control}
-                  name="service_preference"
-                  render={({ field }) => (
-                    <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger
-                        id="service-select"
-                        aria-label="Select treatment type"
-                      >
-                        <SelectValue placeholder="Choose a treatment" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {options.map((service) => (
-                          <SelectItem key={service} value={service}>
-                            {service}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                <Button type="submit" size="lg" variant="primary" disabled={isSubmitting} className="w-full">
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    "Send My Request"
                   )}
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="preferred_date">When do you prefer to visit?</Label>
-              <Input id="preferred_date" type="date" {...register("preferred_date")} />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="message">Anything else? (optional)</Label>
-              <Textarea
-                id="message"
-                placeholder="Tell us anything that helps us prepare for your visit."
-                {...register("message")}
-              />
-            </div>
-
-            {serverError && (
-              <p className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error" role="alert">
-                {serverError}
-              </p>
+                </Button>
+              </>
             )}
-
-            <Button type="submit" size="lg" variant="primary" disabled={isSubmitting}>
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                "Send My Request"
-              )}
-            </Button>
-
-            <p className="text-center text-caption text-warm-grey">
-              No card required to enquire · We&apos;ll confirm within 24 hours
-            </p>
           </motion.form>
         )}
       </AnimatePresence>

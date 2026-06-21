@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { CalendarDays, LayoutDashboard, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
+import { NAV_LINKS, SITE, showAdminNav, whatsappLink } from "@/lib/site";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -99,17 +99,19 @@ export function Navbar() {
         </div>
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
-          <Button
-            asChild
-            size="sm"
-            variant={onDark ? "ghost" : "outline"}
-            className="hidden lg:inline-flex"
-          >
-            <Link href="/admin">
-              <LayoutDashboard className="h-4 w-4" />
-              Admin
-            </Link>
-          </Button>
+          {showAdminNav() && (
+            <Button
+              asChild
+              size="sm"
+              variant={onDark ? "ghost" : "outline"}
+              className="hidden lg:inline-flex"
+            >
+              <Link href="/admin">
+                <LayoutDashboard className="h-4 w-4" />
+                Admin
+              </Link>
+            </Button>
+          )}
 
           <Button
             asChild
@@ -157,14 +159,16 @@ export function Navbar() {
                       <Link href="/book">Book Your Visit</Link>
                     </Button>
                   </SheetClose>
-                  <SheetClose asChild>
-                    <Button asChild size="lg" variant="outline">
-                      <Link href="/admin">
-                        <LayoutDashboard className="h-4 w-4" />
-                        Admin Panel
-                      </Link>
-                    </Button>
-                  </SheetClose>
+                  {showAdminNav() && (
+                    <SheetClose asChild>
+                      <Button asChild size="lg" variant="outline">
+                        <Link href="/admin">
+                          <LayoutDashboard className="h-4 w-4" />
+                          Admin Panel
+                        </Link>
+                      </Button>
+                    </SheetClose>
+                  )}
                   <Button asChild size="lg" variant="outline">
                     <a
                       href={whatsappLink("Hi! I'd like to ask about a booking.")}

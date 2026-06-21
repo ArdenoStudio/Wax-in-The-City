@@ -133,7 +133,7 @@ export function HeroSection() {
             transition={{ duration: 0.65, delay: 0.72, ease: [0.16, 1, 0.3, 1] }}
             className="mt-8 lg:hidden"
           >
-            <Accordion type="single" collapsible className="glass-panel rounded-card">
+            <Accordion type="single" collapsible className="surface-dark rounded-card">
               <AccordionItem value="protocol" className="border-none">
                 <AccordionTrigger className="px-5 py-4 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light hover:no-underline">
                   Studio protocol
@@ -160,7 +160,7 @@ export function HeroSection() {
           initial={{ opacity: 0, x: 28 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.78, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
-          className="glass-panel animate-float-soft hidden self-end rounded-card p-6 lg:block"
+          className="surface-dark hidden self-end rounded-card p-6 lg:block"
         >
           <div className="flex items-center justify-between border-b border-cream/12 pb-5">
             <p className="text-caption font-semibold uppercase tracking-[0.16em] text-brand-light">

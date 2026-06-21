@@ -71,7 +71,6 @@ export default async function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Treatment menu"
         title="Choose the room, the ritual, the result."
         subtitle="Waxing, skin care, Moroccan body rituals and HydraFacial work, handled with private-room care."
         image={IMAGES.services.facials}
@@ -86,7 +85,6 @@ export default async function ServicesPage() {
             <SectionHeading
               align="left"
               tone="light"
-              eyebrow="Four ways in"
               title="A visual menu, not a price dump."
               subtitle="Start with the kind of care you want. Each path keeps the practical details close: starting price, timing, and how it feels in the room."
             />
@@ -174,7 +172,6 @@ export default async function ServicesPage() {
           <div>
             <SectionHeading
               align="left"
-              eyebrow="How to choose"
               title="Tell us what your skin needs, not just the service name."
               subtitle="The best booking request gives the team context: sensitivity, timing, branch, and whether this is maintenance or a first visit."
             />
@@ -205,7 +202,6 @@ export default async function ServicesPage() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="Full menu"
             title="Compare timing and starting prices."
             subtitle="Use the tabs for the practical list once you know the treatment family."
           />

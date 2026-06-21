@@ -33,16 +33,24 @@ export function whatsappLink(message?: string, number?: string): string {
 
 export type BranchSlug = "battaramulla" | "nugegoda";
 
+export type BranchStatus = "open" | "coming-soon";
+
 export interface Branch {
   slug: BranchSlug;
   name: string;
   area: string;
-  address: string; // TBC — placeholder
+  address: string;
   phone: string;
   whatsapp: string; // digits only, country code first
   hours: { weekday: string; weekend: string; poya: string };
   googleMapsUrl: string;
   blurb: string;
+  status: BranchStatus;
+}
+
+/** Show admin link in consumer nav — off by default. Set NEXT_PUBLIC_SHOW_ADMIN_NAV=true to enable. */
+export function showAdminNav(): boolean {
+  return process.env.NEXT_PUBLIC_SHOW_ADMIN_NAV === "true";
 }
 
 export const BRANCHES: Branch[] = [
@@ -60,23 +68,28 @@ export const BRANCHES: Branch[] = [
     },
     googleMapsUrl: "https://maps.google.com/?q=Battaramulla+Colombo",
     blurb: "A private appointment-led studio with calm rooms and careful treatment flow.",
+    status: "open",
   },
   {
     slug: "nugegoda",
     name: "Nugegoda",
     area: "Nugegoda, Colombo",
-    address: "Nugegoda, Colombo (exact address to be confirmed)",
+    address: "Opening soon — address to be announced",
     phone: "+94 77 946 9437",
     whatsapp: DEFAULT_WHATSAPP,
     hours: {
-      weekday: "9:00 AM – 6:00 PM",
-      weekend: "9:00 AM – 5:00 PM",
-      poya: "Closed on Poya days & public holidays",
+      weekday: "Opening soon",
+      weekend: "Opening soon",
+      poya: "Book Battaramulla until we open",
     },
     googleMapsUrl: "https://maps.google.com/?q=Nugegoda+Colombo",
-    blurb: "A convenient second studio for guests closer to the High Level Road side.",
+    blurb: "A second studio for guests closer to High Level Road — opening soon.",
+    status: "coming-soon",
   },
 ];
+
+/** Branches accepting bookings today. */
+export const OPEN_BRANCHES = BRANCHES.filter((b) => b.status === "open");
 
 export function getBranch(slug: BranchSlug): Branch {
   return BRANCHES.find((b) => b.slug === slug) ?? BRANCHES[0];
