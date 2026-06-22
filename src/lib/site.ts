@@ -102,7 +102,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     short: "Root-clean hair removal with careful prep and fresh tools.",
     description:
       "A focused waxing menu for women who care about hygiene as much as the final result. Fresh wax, no rushed handling, and a private room — every time.",
-    priceFrom: 800,
+    priceFrom: 700,
   },
   {
     slug: "facial",
@@ -110,8 +110,8 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     name: "Facials",
     short: "Calm skin work for glow, texture, and maintenance.",
     description:
-      "Facial care designed around your skin — from a classic cleanse to a brightening treatment that leaves you glowing, without the hard sell.",
-    priceFrom: 3500,
+      "Facial care designed around your skin — from a glow-up treatment to a brightening session that leaves you luminous, without the hard sell.",
+    priceFrom: 5000,
   },
   {
     slug: "moroccan",
@@ -119,8 +119,8 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     name: "Moroccan",
     short: "A deep-clean ritual using black soap and clay.",
     description:
-      "A deep-cleansing ritual with authentic Moroccan black soap and clay that draws out impurities and nourishes deeply. Used for centuries across North Africa — now in Colombo.",
-    priceFrom: 4500,
+      "A deep-cleansing ritual with authentic Moroccan body polish and spa treatments that draw out impurities and nourish deeply. Used for centuries across North Africa — now in Colombo.",
+    priceFrom: 15000,
   },
   {
     slug: "hydra-facial",
@@ -129,12 +129,17 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     short: "Cleanse, extract, hydrate — visible refresh without downtime.",
     description:
       "A professional multi-step facial that cleanses, extracts and hydrates in under an hour. Active serums, zero downtime, visible results from the first session.",
-    priceFrom: 7500,
+    priceFrom: 10000,
   },
 ];
 
 export function getCategory(href: string): ServiceCategoryMeta | undefined {
   return SERVICE_CATEGORIES.find((c) => c.href === href);
+}
+
+export interface PriceVariant {
+  product: string;
+  price: number;
 }
 
 export interface Service {
@@ -144,28 +149,318 @@ export interface Service {
   priceFrom: number;
   description: string;
   slug: string;
+  /** When a service has multiple wax/product options at different prices. */
+  variants?: PriceVariant[];
+  /** Short note for package inclusions. */
+  includes?: string;
 }
 
-/** Placeholder service set — replace with Supabase data once populated. */
+/** Full service menu from the salon price list. */
 export const SERVICES: Service[] = [
-  // Waxing
-  { name: "Full Body Wax", category: "waxing", duration: "60–75 min", priceFrom: 6500, slug: "full-body-wax", description: "Head-to-toe smoothness in one unhurried session, with premium soft wax and a gentle, skin-first technique." },
-  { name: "Brazilian Wax", category: "waxing", duration: "30–40 min", priceFrom: 3500, slug: "brazilian-wax", description: "A private, judgement-free Brazilian wax with fresh wax and a careful, comfortable technique." },
-  { name: "Half Leg Wax", category: "waxing", duration: "25–30 min", priceFrom: 1800, slug: "half-leg-wax", description: "Smooth lower legs, cleanly waxed at the root for a longer-lasting finish." },
-  { name: "Half Arm Wax", category: "waxing", duration: "20–25 min", priceFrom: 1500, slug: "half-arm-wax", description: "Quick, gentle waxing for forearms with minimal fuss." },
-  { name: "Underarm Wax", category: "waxing", duration: "15 min", priceFrom: 900, slug: "underarm-wax", description: "Fast, fresh-wax underarm care that fits into a busy day." },
-  { name: "Eyebrow Wax", category: "waxing", duration: "15 min", priceFrom: 800, slug: "eyebrow-wax", description: "Clean, considered brow shaping that flatters your features." },
-  { name: "Lip Wax", category: "waxing", duration: "10 min", priceFrom: 800, slug: "lip-wax", description: "A quick, gentle upper-lip wax with fresh wax every time." },
+  // Waxing — body areas
+  {
+    name: "Full Leg Wax",
+    category: "waxing",
+    duration: "40–50 min",
+    priceFrom: 5000,
+    slug: "full-leg-wax",
+    description: "Smooth full legs with premium Rica or Biahu Gold wax for a longer-lasting finish.",
+    variants: [
+      { product: "Rica White Choc", price: 6500 },
+      { product: "Biahu Gold", price: 5000 },
+    ],
+  },
+  {
+    name: "Half Leg Wax",
+    category: "waxing",
+    duration: "25–30 min",
+    priceFrom: 3000,
+    slug: "half-leg-wax",
+    description: "Lower legs waxed cleanly at the root with your choice of premium wax.",
+    variants: [
+      { product: "Rica White Choc", price: 4000 },
+      { product: "Biahu Gold", price: 3000 },
+    ],
+  },
+  {
+    name: "Full Arms Wax",
+    category: "waxing",
+    duration: "25–30 min",
+    priceFrom: 2500,
+    slug: "full-arms-wax",
+    description: "Complete arm waxing from shoulder to wrist with gentle, skin-first technique.",
+    variants: [
+      { product: "Rica White Choc", price: 3500 },
+      { product: "Biahu Gold", price: 2500 },
+    ],
+  },
+  {
+    name: "Half Arms Wax",
+    category: "waxing",
+    duration: "20 min",
+    priceFrom: 1500,
+    slug: "half-arms-wax",
+    description: "Quick, gentle waxing for forearms with minimal fuss.",
+    variants: [
+      { product: "Rica White Choc", price: 2500 },
+      { product: "Biahu Gold", price: 1500 },
+    ],
+  },
+  {
+    name: "Underarm Wax",
+    category: "waxing",
+    duration: "15 min",
+    priceFrom: 2500,
+    slug: "underarm-wax",
+    description: "Fast, fresh-wax underarm care with Lycon premium products.",
+    variants: [
+      { product: "Lycon Superberry", price: 3500 },
+      { product: "Lycon Pinkini", price: 4000 },
+      { product: "Lycon Aloe Vera", price: 2500 },
+    ],
+  },
+  {
+    name: "Full Brazilian Wax",
+    category: "waxing",
+    duration: "30–40 min",
+    priceFrom: 6500,
+    slug: "full-brazilian-wax",
+    description: "A private, judgement-free Brazilian wax with fresh Lycon wax and careful technique.",
+    variants: [
+      { product: "Lycon Pinkini", price: 10500 },
+      { product: "Lycon Aloe Vera", price: 6500 },
+    ],
+  },
+  {
+    name: "Full Back Wax",
+    category: "waxing",
+    duration: "25 min",
+    priceFrom: 2500,
+    slug: "full-back-wax",
+    description: "Complete back waxing for a smooth, even finish.",
+    variants: [
+      { product: "Rica White Choc", price: 3500 },
+      { product: "Biahu Gold", price: 2500 },
+    ],
+  },
+  {
+    name: "Chest Wax",
+    category: "waxing",
+    duration: "20 min",
+    priceFrom: 2000,
+    slug: "chest-wax",
+    description: "Gentle chest waxing with premium soft wax.",
+    variants: [
+      { product: "Rica White Choc", price: 3000 },
+      { product: "Biahu Gold", price: 2000 },
+    ],
+  },
+  {
+    name: "Stomach Wax",
+    category: "waxing",
+    duration: "20 min",
+    priceFrom: 2500,
+    slug: "stomach-wax",
+    description: "Smooth stomach area with Rica or Biahu Gold wax.",
+    variants: [
+      { product: "Rica White Choc", price: 3500 },
+      { product: "Biahu Gold", price: 2500 },
+    ],
+  },
+  {
+    name: "Brazilian + Underarm",
+    category: "waxing",
+    duration: "40–45 min",
+    priceFrom: 7500,
+    slug: "brazilian-underarm-wax",
+    description: "Combined Brazilian and underarm wax in one session.",
+    variants: [
+      { product: "Lycon Pinkini", price: 10500 },
+      { product: "Lycon Aloe Vera", price: 7500 },
+    ],
+  },
+  {
+    name: "Full Leg + Full Arms",
+    category: "waxing",
+    duration: "60 min",
+    priceFrom: 6500,
+    slug: "full-leg-arms-wax",
+    description: "Combined full leg and full arm waxing at a package rate.",
+    variants: [
+      { product: "Rica White Choc", price: 9000 },
+      { product: "Biahu Gold", price: 6500 },
+    ],
+  },
+  // Waxing — face
+  {
+    name: "Full Face Wax",
+    category: "waxing",
+    duration: "30 min",
+    priceFrom: 6500,
+    slug: "full-face-wax",
+    description: "Complete facial waxing with Lycon Superberry for smooth, even skin.",
+  },
+  {
+    name: "Chin Wax",
+    category: "waxing",
+    duration: "10 min",
+    priceFrom: 3500,
+    slug: "chin-wax",
+    description: "Targeted chin waxing with Lycon Superberry.",
+  },
+  {
+    name: "Upper Lips Wax",
+    category: "waxing",
+    duration: "10 min",
+    priceFrom: 700,
+    slug: "upper-lips-wax",
+    description: "A quick, gentle upper-lip wax with fresh Lycon wax every time.",
+  },
+  {
+    name: "Eyebrow Wax",
+    category: "waxing",
+    duration: "15 min",
+    priceFrom: 1000,
+    slug: "eyebrow-wax",
+    description: "Clean, considered brow shaping that flatters your features.",
+  },
+  {
+    name: "Nose Wax",
+    category: "waxing",
+    duration: "10 min",
+    priceFrom: 1500,
+    slug: "nose-wax",
+    description: "Gentle nose waxing with Lycon Superberry.",
+  },
+  {
+    name: "Forehead Wax",
+    category: "waxing",
+    duration: "10 min",
+    priceFrom: 1100,
+    slug: "forehead-wax",
+    description: "Smooth forehead waxing for a clean, even finish.",
+  },
+  {
+    name: "Eyebrow + Upper Lips",
+    category: "waxing",
+    duration: "15 min",
+    priceFrom: 1500,
+    slug: "eyebrow-upper-lips-wax",
+    description: "Combined eyebrow and upper lip waxing in one quick session.",
+  },
+  {
+    name: "Eyebrow + Upper Lips Threading",
+    category: "waxing",
+    duration: "15 min",
+    priceFrom: 1500,
+    slug: "eyebrow-upper-lips-threading",
+    description: "Precise eyebrow and upper lip threading for clean, defined results.",
+  },
+  // Waxing — packages
+  {
+    name: "Full Body Wax",
+    category: "waxing",
+    duration: "75–90 min",
+    priceFrom: 10000,
+    slug: "full-body-wax",
+    description: "Head-to-toe smoothness in one unhurried session with premium wax.",
+    includes: "Full leg, full arms, under arms & Brazilian",
+    variants: [
+      { product: "Lycon with Rica", price: 16500 },
+      { product: "Lycon with Butiza", price: 10000 },
+    ],
+  },
+  {
+    name: "Neck to Toe",
+    category: "waxing",
+    duration: "2–2.5 hrs",
+    priceFrom: 15000,
+    slug: "neck-to-toe-wax",
+    description: "The complete waxing experience from neck to toe in one session.",
+    includes: "Full body, full face, full back, chest & neck",
+    variants: [
+      { product: "Lycon with Rica", price: 26000 },
+      { product: "Lycon with Butiza", price: 15000 },
+    ],
+  },
+  {
+    name: "Beach Body",
+    category: "waxing",
+    duration: "90 min",
+    priceFrom: 13000,
+    slug: "beach-body-wax",
+    description: "Holiday-ready smoothness covering your full body, back and stomach.",
+    includes: "Full body, back & stomach",
+    variants: [
+      { product: "Lycon with Rica", price: 22500 },
+      { product: "Lycon with Butiza", price: 13000 },
+    ],
+  },
   // Facials
-  { name: "Classic Facial", category: "facial", duration: "45 min", priceFrom: 3500, slug: "classic-facial", description: "A cleansing, balancing facial that leaves your skin fresh and calm." },
-  { name: "Deep Cleanse Facial", category: "facial", duration: "60 min", priceFrom: 4500, slug: "deep-cleanse-facial", description: "A thorough deep-clean for congested skin, with gentle extraction and hydration." },
-  { name: "Brightening Facial", category: "facial", duration: "60 min", priceFrom: 5500, slug: "brightening-facial", description: "A targeted treatment to even tone and bring back a natural glow." },
+  {
+    name: "Glow Up Facial",
+    category: "facial",
+    duration: "45 min",
+    priceFrom: 5000,
+    slug: "glow-up-facial",
+    description: "A refreshing facial that brings back your natural glow and leaves skin luminous.",
+  },
+  {
+    name: "Unicare Brightening Facial",
+    category: "facial",
+    duration: "60 min",
+    priceFrom: 8500,
+    slug: "unicare-brightening-facial",
+    description: "A targeted brightening treatment to even tone and restore radiance.",
+  },
   // Moroccan
-  { name: "Moroccan Black Soap Treatment", category: "moroccan", duration: "60 min", priceFrom: 4500, slug: "moroccan-black-soap", description: "An authentic black-soap ritual that exfoliates and softens for radiant skin." },
-  { name: "Moroccan Clay Mask", category: "moroccan", duration: "45 min", priceFrom: 4000, slug: "moroccan-clay-mask", description: "A mineral-rich clay mask that draws out impurities and nourishes deeply." },
+  {
+    name: "Moroccan Body Polish",
+    category: "moroccan",
+    duration: "60 min",
+    priceFrom: 15000,
+    slug: "moroccan-body-polish",
+    description: "An authentic Moroccan body polish ritual that exfoliates and softens for radiant skin.",
+  },
+  {
+    name: "Full Body Scrub (Spacylon)",
+    category: "moroccan",
+    duration: "60 min",
+    priceFrom: 15000,
+    slug: "full-body-scrub-spacylon",
+    description: "A deep exfoliating full body scrub using Spacylon products for silky-smooth skin.",
+  },
+  {
+    name: "Moroccan Body Polish + Full Body Wax",
+    category: "moroccan",
+    duration: "2.5 hrs",
+    priceFrom: 20000,
+    slug: "moroccan-body-polish-full-body-wax",
+    description: "Combined Moroccan body polish and full body wax for head-to-toe renewal.",
+    includes: "Moroccan body polish & full body wax",
+    variants: [
+      { product: "Butiza Gold", price: 20000 },
+      { product: "Rica White Choc", price: 26500 },
+    ],
+  },
+  {
+    name: "Japanese Spa Bed Treatment",
+    category: "moroccan",
+    duration: "90 min",
+    priceFrom: 19000,
+    slug: "japanese-spa-bed-treatment",
+    description: "A luxurious 90-minute spa experience combining facial, Moroccan body polish and head treatment.",
+    includes: "Facial, Moroccan body polish & Moroccan head treatment",
+  },
   // Hydra Facial
-  { name: "HydraFacial MD", category: "hydra-facial", duration: "50 min", priceFrom: 12500, slug: "hydrafacial-md", description: "The full multi-step HydraFacial — cleanse, extract, hydrate, with active serums and zero downtime." },
-  { name: "Express HydraFacial", category: "hydra-facial", duration: "30 min", priceFrom: 7500, slug: "express-hydrafacial", description: "A focused HydraFacial for a quick, visible refresh between busy days." },
+  {
+    name: "Hydro Facial",
+    category: "hydra-facial",
+    duration: "50 min",
+    priceFrom: 10000,
+    slug: "hydro-facial",
+    description: "A professional multi-step facial that cleanses, extracts and hydrates with zero downtime.",
+  },
 ];
 
 export function servicesByCategory(category: ServiceCategory): Service[] {

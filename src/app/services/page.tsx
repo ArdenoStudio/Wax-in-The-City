@@ -61,7 +61,7 @@ const SERVICE_GUIDE = [
   {
     icon: Clock3,
     title: "If you need a fast glow",
-    body: "Express HydraFacial is the quickest route when you need a visible refresh without planning recovery time.",
+    body: "Hydro Facial is the quickest route when you need a visible refresh without planning recovery time.",
   },
 ];
 

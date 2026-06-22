@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Clock3 } from "lucide-react";
 import { type Service } from "@/lib/site";
-import { cn, formatLKRFrom } from "@/lib/utils";
+import { cn, formatLKR, formatLKRFrom } from "@/lib/utils";
 
 const SERVICE_CARD_TONES: Record<
   Service["category"],
@@ -51,13 +51,33 @@ export function ServiceCard({ service }: { service: Service }) {
       </div>
       <div className="relative z-10 mt-4 flex flex-wrap items-center gap-2">
         <span className={cn("rounded-pill border px-3 py-1 text-caption font-semibold", tone.chip)}>
-          {formatLKRFrom(service.priceFrom)}
+          {service.variants?.length ? formatLKRFrom(service.priceFrom) : formatLKR(service.priceFrom)}
         </span>
         <span className="inline-flex items-center gap-1.5 rounded-pill border border-warm-border/70 bg-white/48 px-3 py-1 text-caption text-warm-grey">
           <Clock3 className="h-3.5 w-3.5 text-brand-action" />
           {service.duration}
         </span>
       </div>
+      {service.includes && (
+        <p className="relative z-10 mt-3 text-caption text-warm-grey">
+          Includes: {service.includes}
+        </p>
+      )}
+      {service.variants && service.variants.length > 0 && (
+        <ul className="relative z-10 mt-3 space-y-1 border-t border-warm-border/50 pt-3">
+          {service.variants.map((variant) => (
+            <li
+              key={variant.product}
+              className="flex items-center justify-between gap-3 text-caption text-warm-grey"
+            >
+              <span>{variant.product}</span>
+              <span className="shrink-0 font-medium tabular-nums text-warm">
+                {formatLKR(variant.price)}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
       <p className="relative z-10 mt-4 flex-1 text-body-sm leading-relaxed text-warm-grey">
         {service.description}
       </p>
