@@ -12,7 +12,9 @@ import { PageHero } from "@/components/sections/PageHero";
 import { ServiceCard } from "@/components/ui/service-card";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
+import { WaxPriceMatrix } from "@/components/sections/WaxPriceMatrix";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 const HERO_IMAGES: Record<string, string> = {
   waxing: IMAGES.services.waxing,
@@ -120,6 +122,20 @@ export default async function ServiceCategoryPage({
               </AnimatedSection>
             ))}
           </div>
+
+          {category.slug === "waxing" && (
+            <AnimatedSection variant="fadeUp" className="mt-16">
+              <SectionHeading
+                align="left"
+                eyebrow="Full price list"
+                title="Wax pricing by product."
+                subtitle="Each area can be done with different premium wax brands. Prices below match our current menu."
+              />
+              <div className="mt-8">
+                <WaxPriceMatrix />
+              </div>
+            </AnimatedSection>
+          )}
         </div>
       </section>
 
