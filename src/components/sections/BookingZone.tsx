@@ -2,9 +2,15 @@ import { WhatsappIcon } from "@/components/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { BookingForm } from "@/components/sections/BookingForm";
 import { whatsappLink, type BranchSlug } from "@/lib/site";
+import { isSupabaseConfigured } from "@/lib/supabase/client";
 
 interface BookingZoneProps {
-  /** 'form' = Supabase fallback (current), 'dinaya' = embedded widget (future). */
+  /**
+   * 'form' = Supabase-backed request form, 'dinaya' = embedded widget (future),
+   * 'whatsapp-only' = WhatsApp CTA only. Defaults to 'whatsapp-only' whenever
+   * Supabase isn't configured, so the primary booking route never points at a
+   * form that's guaranteed to fail.
+   */
   mode?: "form" | "dinaya" | "whatsapp-only";
   defaultBranch?: BranchSlug;
   defaultService?: string;
@@ -21,7 +27,7 @@ interface BookingZoneProps {
  * for the Dinaya widget (~30 days out) with no reflow.
  */
 export function BookingZone({
-  mode = "form",
+  mode,
   defaultBranch,
   defaultService,
   serviceOptions,
@@ -29,6 +35,7 @@ export function BookingZone({
   subtitle = "Send a request and the team will confirm before your visit. For urgent slots, WhatsApp is still the fastest route.",
   standalone = true,
 }: BookingZoneProps) {
+  const resolvedMode = mode ?? (isSupabaseConfigured() ? "form" : "whatsapp-only");
   return (
     <section
       id="book"
@@ -59,9 +66,9 @@ export function BookingZone({
           // Reserve the Dinaya widget footprint so the swap-in causes no reflow.
           style={{ minHeight: 480 }}
         >
-          {mode === "dinaya" ? (
+          {resolvedMode === "dinaya" ? (
             <DinayaPlaceholder />
-          ) : mode === "whatsapp-only" ? (
+          ) : resolvedMode === "whatsapp-only" ? (
             <WhatsappOnly />
           ) : (
             <BookingForm

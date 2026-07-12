@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
-import { CalendarDays, LayoutDashboard, Menu } from "lucide-react";
+import { CalendarDays, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
@@ -102,18 +102,6 @@ export function Navbar() {
           <Button
             asChild
             size="sm"
-            variant={onDark ? "ghost" : "outline"}
-            className="hidden lg:inline-flex"
-          >
-            <Link href="/admin">
-              <LayoutDashboard className="h-4 w-4" />
-              Admin
-            </Link>
-          </Button>
-
-          <Button
-            asChild
-            size="sm"
             variant={onDark ? "ghost" : "primary"}
             className="hidden sm:inline-flex"
           >
@@ -155,14 +143,6 @@ export function Navbar() {
                   <SheetClose asChild>
                     <Button asChild size="lg" variant="primary">
                       <Link href="/book">Book Your Visit</Link>
-                    </Button>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <Button asChild size="lg" variant="outline">
-                      <Link href="/admin">
-                        <LayoutDashboard className="h-4 w-4" />
-                        Admin Panel
-                      </Link>
                     </Button>
                   </SheetClose>
                   <Button asChild size="lg" variant="outline">

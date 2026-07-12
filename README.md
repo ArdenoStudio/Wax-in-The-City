@@ -32,6 +32,7 @@ http://localhost:3000
 
 | Variable | Purpose |
 | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL used for metadata, Open Graph, JSON-LD, sitemap, and robots. Set this per-environment (staging vs. production) so metadata doesn't point at the wrong domain. Falls back to `https://waxinthecitylk.com`. |
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key for public form inserts |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number, digits only, for example `94771234567` |
@@ -43,7 +44,7 @@ http://localhost:3000
 
 Run `supabase/schema.sql` in the Supabase SQL editor before relying on the forms. It creates `services`, `booking_requests`, `testimonials`, and `gallery`, with RLS policies for public insert-only booking requests.
 
-If Supabase env vars are missing, booking and contact forms now fail honestly and ask the visitor to use WhatsApp instead. They do not show a false success state.
+If Supabase env vars are missing, `BookingZone` automatically renders the WhatsApp-only CTA instead of the request form, so the primary booking route is never a form that's guaranteed to fail. Once `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set, it switches back to the form automatically. Pass an explicit `mode` prop to `BookingZone` to override this.
 
 ## Admin Service Editor
 
@@ -80,5 +81,20 @@ supabase/
 - Production Supabase env vars
 - Custom domain and metadata URL alignment
 - Dinaya booking widget when ready
+
+## Launch Checklist
+
+Before handing this off as a finished client site, confirm:
+
+- [ ] `NEXT_PUBLIC_SITE_URL` set to the real production domain in Vercel (not left on the `waxinthecitylk.com` fallback if that isn't the final domain)
+- [ ] Nugegoda address confirmed and `googleMapsUrl` in `src/lib/site.ts` updated to a precise place link (not a generic search URL)
+- [ ] Battaramulla `googleMapsUrl` also switched to a precise place link
+- [ ] Real salon/service photography replacing the Unsplash placeholders in `src/lib/images.ts`
+- [ ] Real, client-approved testimonials before enabling any review carousel
+- [ ] Final service menu and pricing confirmed against `src/lib/site.ts` / Supabase `services` table
+- [ ] Production Supabase project provisioned, `supabase/schema.sql` run, and env vars set in Vercel — otherwise booking stays WhatsApp-only by design
+- [ ] `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` set to strong, unique production values
+- [ ] Dinaya booking widget wired in and `BookingZone` mode switched over, once available
+- [ ] `npm run build` and `npm run lint` pass cleanly
 
 Crafted by Ardeno Studio.

@@ -50,7 +50,6 @@ export default async function BookPage({
 
   return (
     <BookingZone
-      mode="form"
       defaultBranch={defaultBranch}
       defaultService={defaultService}
       serviceOptions={serviceContent.services.map((item) => item.name)}

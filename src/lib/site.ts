@@ -11,7 +11,7 @@ export const SITE = {
   tagline: "Private waxing, done properly.",
   description:
     "Ladies-only waxing and skin care in Colombo — known for careful hygiene, premium products, and private appointment-led care.",
-  url: "https://waxinthecitylk.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://waxinthecitylk.com",
   locale: "en_LK",
   instagram: "https://instagram.com/waxinthecitylk",
   facebook: "https://facebook.com/waxinthecitylk",
