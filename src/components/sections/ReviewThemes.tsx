@@ -10,10 +10,11 @@ import { fadeUp, staggerFast, viewportOnce } from "@/lib/animations";
 /**
  * Review theme section. Avoids shipping fake client testimonials
  * while still making the strongest social-proof themes visible.
+ * No star ratings or numeric scores — themes only (indexed 01…).
  */
 export function ReviewThemes() {
   return (
-    <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
+    <section id="reviews" className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
         <div>
@@ -25,7 +26,7 @@ export function ReviewThemes() {
             align="left"
           />
           <p className="mt-4 max-w-xl text-caption text-warm-grey/80">
-            Themes summarised from public feedback — not individual quotes.
+            Themes summarised from public feedback — not individual quotes or star ratings.
           </p>
         </div>
 
@@ -36,15 +37,12 @@ export function ReviewThemes() {
           viewport={viewportOnce}
           className="grid gap-3"
         >
-          {REVIEW_THEMES.map((theme, i) => (
+          {REVIEW_THEMES.map((theme) => (
             <motion.article
               key={theme.title}
               variants={fadeUp}
-              className="premium-surface micro-lift grid gap-4 rounded-card p-5 sm:grid-cols-[72px_1fr] sm:p-6"
+              className="premium-surface micro-lift rounded-card p-5 sm:p-6"
             >
-              <span className="relative z-10 font-serif text-[2.5rem] font-medium leading-none text-brand-action">
-                0{i + 1}
-              </span>
               <div className="relative z-10">
                 <h3 className="text-h4 font-semibold text-warm">{theme.title}</h3>
                 <p className="mt-2 text-body-sm text-warm-grey">{theme.body}</p>

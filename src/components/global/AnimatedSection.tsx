@@ -1,10 +1,18 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "motion/react";
-import { fadeUp, blurFade, scaleIn, slideFromLeft, viewportOnce } from "@/lib/animations";
+import {
+  fadeUp,
+  fadeUpFast,
+  blurFade,
+  scaleIn,
+  slideFromLeft,
+  viewportOnce,
+} from "@/lib/animations";
 
 const VARIANTS: Record<string, Variants> = {
   fadeUp,
+  fadeUpFast,
   blurFade,
   scaleIn,
   slideFromLeft,

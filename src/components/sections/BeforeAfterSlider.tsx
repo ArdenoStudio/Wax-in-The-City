@@ -72,6 +72,9 @@ export function BeforeAfterSlider({
           {afterLabel}
         </span>
       </div>
+      <p className="relative z-10 mt-2 px-1 text-caption text-warm-grey">
+        Illustrative care imagery
+      </p>
     </div>
   );
 }

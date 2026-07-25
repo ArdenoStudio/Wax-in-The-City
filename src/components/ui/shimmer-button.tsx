@@ -29,7 +29,7 @@ export const ShimmerButton = React.forwardRef<
       </span>
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 -translate-x-full motion-safe:animate-[witc-shimmer_3s_ease-in-out_infinite]"
+        className="pointer-events-none absolute inset-0 -translate-x-full animate-[witc-shimmer_3s_ease-in-out_infinite] motion-reduce:animate-none motion-reduce:opacity-0"
         style={{
           background: `linear-gradient(110deg, transparent 30%, ${shimmerColor} 50%, transparent 70%)`,
         }}

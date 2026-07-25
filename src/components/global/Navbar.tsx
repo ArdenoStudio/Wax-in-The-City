@@ -123,6 +123,16 @@ export function Navbar() {
           )}
           <Button
             asChild
+            size="icon"
+            variant={onDark ? "ghost" : "primary"}
+            className="sm:hidden"
+          >
+            <Link href="/book" aria-label="Book your visit">
+              <CalendarDays className="h-4 w-4" />
+            </Link>
+          </Button>
+          <Button
+            asChild
             size="sm"
             variant={onDark ? "ghost" : "primary"}
             className="hidden sm:inline-flex"

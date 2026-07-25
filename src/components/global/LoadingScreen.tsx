@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { IMAGES } from "@/lib/images";
+import { SITE } from "@/lib/site";
 
 const SESSION_KEY = "witc-loaded";
 
@@ -57,6 +58,7 @@ export function LoadingScreen() {
       {isHome && visible && (
         <motion.div
           key="witc-loader"
+          data-loading-screen
           className="fixed inset-0 z-[100] flex items-center justify-center bg-brand"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.4, ease: "easeIn" } }}
@@ -75,7 +77,7 @@ export function LoadingScreen() {
           >
             <Image
               src={IMAGES.logo}
-              alt="Wax In The City"
+              alt={SITE.name}
               fill
               loading="eager"
               fetchPriority="high"

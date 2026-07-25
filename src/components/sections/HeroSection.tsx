@@ -75,11 +75,15 @@ export function HeroSection() {
                 className="block leading-[1.02]"
                 initial={reduceMotion ? false : { opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.82,
-                  delay: 0.16 + i * 0.07,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
+                transition={
+                  reduceMotion
+                    ? { duration: 0 }
+                    : {
+                        duration: 0.82,
+                        delay: 0.16 + i * 0.07,
+                        ease: [0.16, 1, 0.3, 1],
+                      }
+                }
               >
                 {line}
               </motion.span>
@@ -93,15 +97,15 @@ export function HeroSection() {
             className="mt-7 w-full max-w-[34rem] text-pretty text-body-lg text-cream/78"
           >
             Private rooms, fresh wax for every guest, and a confirmation before
-            you arrive — so waxing, facials and skin care feel calm from the
-            first message.
+            you arrive — ladies-only care so waxing, facials and skin care feel
+            calm from the first message.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-9 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:items-center"
+            className="mt-9 flex w-full max-w-sm flex-col gap-2.5 px-0.5 sm:max-w-none sm:flex-row sm:items-center sm:gap-3"
           >
             <Button asChild size="lg" variant="primary" className="w-full sm:w-auto">
               <Link href="/book">
@@ -151,6 +155,7 @@ export function HeroSection() {
             transition={{ duration: 0.65, delay: 0.72, ease: [0.16, 1, 0.3, 1] }}
             className="mt-8 lg:hidden"
           >
+            {/* Mobile protocol: default closed (no defaultValue); gold hygiene icons */}
             <Accordion type="single" collapsible className="glass-panel rounded-card">
               <AccordionItem value="protocol" className="border-none">
                 <AccordionTrigger className="px-5 py-4 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light hover:no-underline">
@@ -163,7 +168,7 @@ export function HeroSection() {
                         key={item}
                         className="flex gap-3 rounded-card bg-cream/[0.055] p-3 text-body-sm leading-relaxed text-cream/76"
                       >
-                        <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+                        <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -212,6 +217,7 @@ export function HeroSection() {
           type="button"
           onClick={scrollToServices}
           aria-label="Scroll to services"
+          title="Scroll to services"
           className="pressable flex h-10 w-10 items-center justify-center rounded-pill border border-cream/16 bg-cream/8 backdrop-blur-xl hover:bg-cream/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/40"
         >
           <ChevronDown className={`h-5 w-5 text-cream/70 ${reduceMotion ? "" : "animate-bob"}`} />

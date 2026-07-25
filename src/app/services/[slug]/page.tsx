@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, CalendarDays } from "lucide-react";
 import {
   SERVICE_CATEGORIES,
   SITE,
+  formatPriceFrom,
   getCategory,
+  whatsappLink,
 } from "@/lib/site";
 import { getPublicServiceContent } from "@/lib/service-content";
 import { IMAGES } from "@/lib/images";
@@ -14,6 +16,9 @@ import { ServiceCard } from "@/components/ui/service-card";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
+import { BreadcrumbJsonLd } from "@/components/global/JsonLd";
+import { WhatsappIcon } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 import {
   Accordion,
   AccordionContent,
@@ -117,6 +122,13 @@ export default async function ServiceCategoryPage({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Services", href: "/services" },
+          { name: category.name, href: `/services/${category.href}` },
+        ]}
+      />
       <PageHero
         eyebrow="Treatments"
         title={category.name}
@@ -127,78 +139,115 @@ export default async function ServiceCategoryPage({
 
       <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
-        <div className="mx-auto max-w-7xl">
-          <Link
-            href="/services"
-            className="nav-link mb-10 inline-flex min-h-10 items-center gap-1.5 text-body-sm font-medium text-brand-action"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            All services
-          </Link>
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start lg:gap-12">
+          <div className="min-w-0">
+            <Link
+              href="/services"
+              className="nav-link mb-10 inline-flex min-h-10 items-center gap-1.5 text-body-sm font-medium text-brand-action"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              All services
+            </Link>
 
-          {comparison && (
-            <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
-              <h2 className="font-serif text-h3 font-medium text-warm">Treatment flow preview</h2>
-              <p className="mt-2 text-body-sm text-warm-grey">
-                An honest process preview until client-approved result photos are available.
-              </p>
-              <div className="mt-6">
-                <BeforeAfterSlider
-                  beforeSrc={comparison.before}
-                  afterSrc={comparison.after}
-                  beforeAlt={comparison.beforeAlt}
-                  afterAlt={comparison.afterAlt}
-                  beforeLabel="Before care"
-                  afterLabel="After care"
-                />
-              </div>
-            </AnimatedSection>
-          )}
+            <p className="mb-8 text-body-sm font-medium text-brand-action">
+              {formatPriceFrom(category.priceFrom)}
+            </p>
 
-          {processStrip && !comparison && (
-            <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
-              <h2 className="font-serif text-h3 font-medium text-warm">
-                {processStrip.title}
-              </h2>
-              <p className="mt-2 text-body-sm text-warm-grey">
-                No staged before/after set yet — here is the real session shape instead.
-              </p>
-              <ol className="mt-6 space-y-3">
-                {processStrip.steps.map((step, index) => (
-                  <li
-                    key={step}
-                    className="flex gap-4 border-l-2 border-[#d9b35f]/55 pl-4"
-                  >
-                    <span className="font-serif text-h4 text-brand-action/45">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <p className="text-body-sm text-warm-grey">{step}</p>
-                  </li>
-                ))}
-              </ol>
-            </AnimatedSection>
-          )}
-
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, i) => (
-              <AnimatedSection key={service.slug} variant="fadeUp" delay={i * 0.05}>
-                <ServiceCard service={service} />
+            {comparison && (
+              <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
+                <h2 className="font-serif text-h3 font-medium text-warm">Treatment flow preview</h2>
+                <p className="mt-2 text-body-sm text-warm-grey">
+                  An honest process preview until client-approved result photos are available.
+                </p>
+                <div className="mt-6">
+                  <BeforeAfterSlider
+                    beforeSrc={comparison.before}
+                    afterSrc={comparison.after}
+                    beforeAlt={comparison.beforeAlt}
+                    afterAlt={comparison.afterAlt}
+                    beforeLabel="Before care"
+                    afterLabel="After care"
+                  />
+                </div>
               </AnimatedSection>
-            ))}
+            )}
+
+            {processStrip && !comparison && (
+              <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
+                <h2 className="font-serif text-h3 font-medium text-warm">
+                  {processStrip.title}
+                </h2>
+                <p className="mt-2 text-body-sm text-warm-grey">
+                  No staged before/after set yet — here is the real session shape instead.
+                </p>
+                <ol className="mt-6 space-y-3">
+                  {processStrip.steps.map((step, index) => (
+                    <li
+                      key={step}
+                      className="flex gap-4 border-l-2 border-[#d9b35f]/55 pl-4"
+                    >
+                      <span className="font-serif text-h4 text-brand-action/45">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <p className="text-body-sm text-warm-grey">{step}</p>
+                    </li>
+                  ))}
+                </ol>
+              </AnimatedSection>
+            )}
+
+            <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {services.map((service, i) => (
+                <AnimatedSection key={service.slug} variant="fadeUp" delay={i * 0.05}>
+                  <ServiceCard service={service} />
+                </AnimatedSection>
+              ))}
+            </div>
+
+            <div className="mx-auto mt-14 max-w-2xl">
+              <Accordion type="single" collapsible>
+                <AccordionItem value="after-care">
+                  <AccordionTrigger>After-care tip</AccordionTrigger>
+                  <AccordionContent>
+                    Keep the treated area clean, skip heavy heat and friction for the first day when
+                    advised, and follow any product guidance your therapist gives. If your skin reacts
+                    unusually, message the studio on WhatsApp before trying a new product.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
           </div>
 
-          <div className="mx-auto mt-14 max-w-2xl">
-            <Accordion type="single" collapsible>
-              <AccordionItem value="after-care">
-                <AccordionTrigger>After-care tip</AccordionTrigger>
-                <AccordionContent>
-                  Keep the treated area clean, skip heavy heat and friction for the first day when
-                  advised, and follow any product guidance your therapist gives. If your skin reacts
-                  unusually, message the studio on WhatsApp before trying a new product.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
+          <aside className="hidden lg:block">
+            <div className="sticky top-28 rounded-card border border-warm-border/80 bg-cream-alt/80 p-5">
+              <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action/70">
+                Book {category.name}
+              </p>
+              <p className="mt-2 font-serif text-h4 text-warm">
+                Request a time — we confirm before you travel.
+              </p>
+              <div className="mt-5 flex flex-col gap-2.5">
+                <Button asChild size="md" variant="primary" className="w-full">
+                  <Link href={`/book?service=${encodeURIComponent(category.name)}`}>
+                    <CalendarDays className="h-4 w-4" />
+                    Request a time
+                  </Link>
+                </Button>
+                <Button asChild size="md" variant="outline" className="w-full">
+                  <a
+                    href={whatsappLink(
+                      `Hi! I'd like to ask about ${category.name}.`
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <WhatsappIcon className="h-4 w-4" />
+                    WhatsApp
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 

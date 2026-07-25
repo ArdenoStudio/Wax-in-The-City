@@ -33,8 +33,8 @@ export function PageHero({
 
   return (
     <section
-      className={`relative flex w-full items-end overflow-hidden bg-ink ${
-        size === "md" ? "min-h-[560px]" : "min-h-[460px]"
+      className={`relative flex min-h-[42vh] w-full items-end overflow-hidden bg-ink ${
+        size === "md" ? "sm:min-h-[560px]" : "sm:min-h-[460px]"
       }`}
     >
       <motion.div

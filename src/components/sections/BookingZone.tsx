@@ -42,6 +42,7 @@ export function BookingZone({
   return (
     <section
       id="book"
+      aria-labelledby="booking-heading"
       className={
         standalone
           ? "relative overflow-hidden bg-ink px-5 py-section-lg text-cream lg:px-8"
@@ -60,6 +61,7 @@ export function BookingZone({
         <SectionHeading
           eyebrow="Book your visit"
           title={heading}
+          titleId="booking-heading"
           subtitle={subtitle}
           tone={standalone ? "light" : "dark"}
         />
@@ -145,6 +147,10 @@ function WhatsappOnly({ standalone }: { standalone: boolean }) {
             <WhatsappIcon className="h-4 w-4" />
             Chat on WhatsApp
           </a>
+          <p className="mt-2 max-w-xs text-caption leading-relaxed text-cream/58">
+            Same-day timing? WhatsApp reaches the studio fastest — we&apos;ll confirm
+            what&apos;s still open.
+          </p>
           <Link
             href="/book"
             className="mt-3 inline-flex h-12 items-center rounded-pill border border-cream/28 px-6 font-medium text-cream transition-colors hover:bg-cream/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
@@ -185,6 +191,10 @@ function WhatsappOnly({ standalone }: { standalone: boolean }) {
           Send a request
         </Link>
       </div>
+      <p className="mt-3 max-w-sm text-caption leading-relaxed text-warm-grey/90">
+        Same-day timing? WhatsApp reaches the studio fastest — we&apos;ll confirm
+        what&apos;s still open.
+      </p>
       <p className="mt-5 text-body-sm text-warm-grey">
         Ladies-only studio — private rooms, every visit.
       </p>

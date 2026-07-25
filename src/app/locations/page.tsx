@@ -27,7 +27,7 @@ export default function LocationsPage() {
       <PageHero
         eyebrow="Visit us"
         title="Choose the studio that fits your day."
-        subtitle="Two ladies-only Colombo locations with the same private-room standard."
+        subtitle="Battaramulla and Nugegoda — same private-room care, pick by your commute."
         image={IMAGES.branches.battaramulla}
         imageAlt="Calm private studio room prepared for an appointment"
         size="md"

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Heart, MapPin, ShieldCheck, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { BookingZone } from "@/components/sections/BookingZone";
+import { CareJourney } from "@/components/sections/CareJourney";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 import { MarqueeStrip } from "@/components/ui/marquee-strip";
@@ -33,25 +34,6 @@ const VALUES = [
     body: "The team should help you choose what suits your skin and timing, not push the biggest treatment on the menu.",
   },
 ];
-
-const CARE_JOURNEY = [
-  {
-    title: "Arrive",
-    body: "Check in calmly — the room is prepared for your service, not a walk-in queue.",
-  },
-  {
-    title: "Prep",
-    body: "Skin and timing are checked so the treatment can stay careful and unhurried.",
-  },
-  {
-    title: "Care",
-    body: "The session stays private and skin-aware, especially for first-timers or intimate waxing.",
-  },
-  {
-    title: "After-care",
-    body: "You leave with simple guidance for your skin instead of vague salon advice.",
-  },
-] as const;
 
 export default function AboutPage() {
   return (
@@ -113,7 +95,7 @@ export default function AboutPage() {
                 <Link
                   key={branch.slug}
                   href={`/locations/${branch.slug}`}
-                  className="rounded-card border border-warm-border bg-white/58 p-5 transition-colors hover:border-brand-action/35 hover:bg-brand-mist/40"
+                  className="rounded-card bg-cream-alt/80 p-5 transition-colors hover:bg-brand-mist/50"
                 >
                   <div className="flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.12em] text-brand-action">
                     <MapPin className="h-4 w-4" />
@@ -142,7 +124,7 @@ export default function AboutPage() {
               const Icon = value.icon;
               return (
                 <AnimatedSection key={value.title} variant="fadeUp" delay={i * 0.08}>
-                  <div className="h-full rounded-card border border-cream/14 bg-cream/8 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.10)]">
+                  <div className="h-full rounded-card bg-cream/[0.06] p-6">
                     <span className="flex h-12 w-12 items-center justify-center rounded-card bg-cream text-brand">
                       <Icon className="h-6 w-6" />
                     </span>
@@ -158,40 +140,7 @@ export default function AboutPage() {
 
       <MarqueeStrip />
 
-      <section className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            align="left"
-            eyebrow="Care journey"
-            title="Arrive → Prep → Care → After-care."
-            subtitle="A quiet sequence — muted wine and gold — so the visit feels predictable without feeling theatrical."
-          />
-          <p className="mt-4 max-w-xl text-body-sm text-warm-grey">
-            Most requests are reviewed the same day when possible; allow up to about a day for confirmation if the diary is full.
-          </p>
-
-          <ol className="relative mt-12 space-y-0">
-            <div
-              aria-hidden
-              className="absolute bottom-3 left-[0.55rem] top-3 w-px bg-[linear-gradient(180deg,rgba(217,179,95,0.55),rgba(162,15,55,0.35),rgba(217,179,95,0.2))]"
-            />
-            {CARE_JOURNEY.map((step, index) => (
-              <li key={step.title} className="relative flex gap-5 pb-10 last:pb-0">
-                <span className="relative z-10 mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#d9b35f]/70 bg-cream">
-                  <span className="h-2 w-2 rounded-full bg-brand-action/80" />
-                </span>
-                <div>
-                  <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action/70">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="mt-1 font-serif text-h3 text-warm">{step.title}</h3>
-                  <p className="mt-2 max-w-xl text-body-sm text-warm-grey">{step.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <CareJourney />
 
       <BookingZone
         heading="Visit the studio that fits your day."

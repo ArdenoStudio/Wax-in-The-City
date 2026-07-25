@@ -11,6 +11,8 @@ interface SectionHeadingProps {
   tone?: "dark" | "light";
   /** When false, hides the eyebrow row even if `eyebrow` is provided. Default true. */
   showEyebrow?: boolean;
+  /** Optional id on the title heading for aria-labelledby. */
+  titleId?: string;
   className?: string;
 }
 
@@ -21,6 +23,7 @@ export function SectionHeading({
   align = "center",
   tone = "dark",
   showEyebrow = true,
+  titleId,
   className,
 }: SectionHeadingProps) {
   const light = tone === "light";
@@ -57,6 +60,7 @@ export function SectionHeading({
 
       <div className="relative inline-block min-w-24 max-w-full">
         <h2
+          id={titleId}
           className={cn(
             "max-w-full break-words text-balance font-serif text-h2 font-medium leading-tight sm:text-[2.65rem]",
             light ? "text-cream" : "text-warm"

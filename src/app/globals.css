@@ -119,6 +119,12 @@ body {
   color: var(--color-cream);
 }
 
+input::selection,
+textarea::selection {
+  background: var(--color-brand-action);
+  color: var(--color-cream);
+}
+
 button,
 a,
 input,
@@ -131,6 +137,30 @@ textarea {
 }
 
 @layer utilities {
+  /* Ensure sr-only exists even if Tailwind utility tree is trimmed. */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .not-sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
@@ -264,8 +294,49 @@ textarea {
     background: linear-gradient(90deg, transparent, rgba(209, 173, 100, 0.84), transparent);
   }
 
+  /* 1px wine → powder divider for calm section seams */
+  .hairline-wine {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(162, 15, 55, 0.42) 22%,
+      rgba(234, 215, 223, 0.9) 50%,
+      rgba(162, 15, 55, 0.28) 78%,
+      transparent
+    );
+  }
+
   .text-cream-muted {
     color: color-mix(in srgb, var(--color-cream) 72%, transparent);
+  }
+}
+
+/* Print: keep content + serif headings; hide chrome */
+@media print {
+  nav,
+  footer,
+  [data-mobile-booking-bar],
+  [data-loading-screen],
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: #1f171a !important;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif) !important;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+
+  #main-content {
+    padding-bottom: 0 !important;
   }
 }
 
@@ -344,7 +415,8 @@ textarea {
   .animate-marquee,
   .animate-marquee-slow,
   .animate-bob,
-  .animate-float-soft { animation: none; }
+  .animate-float-soft,
+  [class*="witc-shimmer"] { animation: none !important; }
   .motion-reduce-none {
     filter: none !important;
     transform: none !important;

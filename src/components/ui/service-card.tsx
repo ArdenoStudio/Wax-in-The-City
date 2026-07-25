@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Clock3 } from "lucide-react";
-import { type Service } from "@/lib/site";
-import { cn, formatLKRFrom } from "@/lib/utils";
+import { formatPriceFrom, type Service } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 const SERVICE_CARD_TONES: Record<
   Service["category"],
@@ -61,7 +61,7 @@ export function ServiceCard({
       </div>
       <div className="relative z-10 mt-4 flex flex-wrap items-center gap-2">
         <span className={cn("rounded-pill border px-3 py-1 text-caption font-semibold", tone.chip)}>
-          {formatLKRFrom(service.priceFrom)}
+          {formatPriceFrom(service.priceFrom)}
         </span>
         <span className="inline-flex items-center gap-1.5 rounded-pill border border-warm-border/70 bg-white/48 px-3 py-1 text-caption text-warm-grey">
           <Clock3 className="h-3.5 w-3.5 text-brand-action" />

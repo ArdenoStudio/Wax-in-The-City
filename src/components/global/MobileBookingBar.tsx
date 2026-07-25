@@ -23,6 +23,7 @@ function whatsappMessageForPath(pathname: string): string {
 /**
  * Fixed bottom booking bar — mobile only.
  * Reveals after scrolling past the hero; hides on /book and while #book is in view.
+ * z-40 stays below Navbar (z-50) and Sheet (z-[60]).
  */
 export function MobileBookingBar() {
   const pathname = usePathname();
@@ -76,6 +77,7 @@ export function MobileBookingBar() {
               ? { duration: 0 }
               : { type: "spring", stiffness: 420, damping: 36, mass: 0.9 }
           }
+          data-mobile-booking-bar
           className="fixed inset-x-0 bottom-0 z-40 border-t border-warm-border/60 bg-cream/78 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-18px_48px_rgba(39,19,21,0.10)] backdrop-blur-2xl md:hidden"
         >
           <div className="flex items-center gap-3">

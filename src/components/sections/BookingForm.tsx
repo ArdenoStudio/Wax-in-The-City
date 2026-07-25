@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,6 +23,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+const NOTES_MAX_HEIGHT = 200;
 
 interface BookingFormProps {
   defaultBranch?: BranchSlug;
@@ -76,6 +78,21 @@ export function BookingForm({
   const filledCount = watchedFields.filter(Boolean).length;
   const progress = (filledCount / 4) * 100;
   const branchHours = selectedBranch ? getBranch(selectedBranch).hours : null;
+
+  const growNotes = useCallback((el: HTMLTextAreaElement | null) => {
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${Math.min(el.scrollHeight, NOTES_MAX_HEIGHT)}px`;
+  }, []);
+
+  const { ref: messageRef, onChange: messageOnChange, ...messageField } = register(
+    "message",
+    {
+      onChange: (e) => {
+        growNotes(e.target as HTMLTextAreaElement);
+      },
+    }
+  );
 
   const onSubmit = async (data: BookingInput) => {
     setServerError(null);
@@ -296,7 +313,14 @@ export function BookingForm({
               <Textarea
                 id="message"
                 placeholder="Tell us anything that helps us prepare for your visit."
-                {...register("message")}
+                rows={3}
+                className="max-h-[200px] resize-none overflow-y-auto"
+                {...messageField}
+                onChange={messageOnChange}
+                ref={(el) => {
+                  messageRef(el);
+                  growNotes(el);
+                }}
                 {...fieldAriaProps("message", errors.message)}
               />
               {errors.message && (
@@ -325,6 +349,16 @@ export function BookingForm({
 
             <p className="text-center text-caption text-warm-grey">
               No card required to enquire · We&apos;ll confirm within 24 hours
+            </p>
+            <p className="text-center text-caption text-warm-grey/85">
+              Your request is reviewed privately by the studio — see our{" "}
+              <a
+                href="/contact#privacy"
+                className="font-medium text-brand-action underline-offset-4 hover:underline"
+              >
+                privacy note
+              </a>
+              .
             </p>
           </motion.form>
         )}

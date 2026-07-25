@@ -10,13 +10,19 @@ import { LoadingScreen } from "@/components/global/LoadingScreen";
 import { SkipLink } from "@/components/global/SkipLink";
 import { JsonLd } from "@/components/global/JsonLd";
 
+/** Keep meta descriptions in the ~120–160 char SEO band. */
+const META_DESCRIPTION =
+  SITE.description.length >= 110 && SITE.description.length <= 170
+    ? SITE.description
+    : SITE.description.slice(0, 157).trimEnd() + "…";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
     default: `${SITE.name} — ${SITE.tagline}`,
     template: `%s · ${SITE.name}`,
   },
-  description: SITE.description,
+  description: META_DESCRIPTION,
   keywords: [
     "waxing Colombo",
     "ladies salon Colombo",
@@ -31,7 +37,7 @@ export const metadata: Metadata = {
     url: SITE.url,
     siteName: SITE.name,
     title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
+    description: META_DESCRIPTION,
     images: [
       {
         url: IMAGES.og,
@@ -44,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
+    description: META_DESCRIPTION,
     images: [IMAGES.og],
   },
   icons: {

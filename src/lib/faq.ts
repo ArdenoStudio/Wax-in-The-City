@@ -51,7 +51,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "Do you use fresh wax for every guest?",
         answer:
-          "Always. We use single-use wax and clean tools for every single guest, with no exceptions. Hygiene is the baseline, not an upgrade.",
+          "Always. We set up fresh wax and clean tools for every guest — no shared pot dipping. Comfort still varies by area and skin; hygiene is the baseline, not an upgrade.",
       },
     ],
   },

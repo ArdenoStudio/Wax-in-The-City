@@ -128,3 +128,114 @@ Completed homepage / section complement items.
 - [x] #118 GalleryGrid: keyboard arrows already? add if missing.
 - [x] #119 Branch detail: copy address button with inline Copied state (no toast lib).
 - [x] #120 Homepage BookingZone id="book" for MobileBookingBar observer.
+
+## Complements (121–160)
+
+- [x] #121 globals.css: `.hairline-wine` utility (1px wine/powder gradient line).
+- [x] #122 HeroSection: CTA group stacks cleanly on very small screens (gap/padding).
+- [x] #123 HeroSection: reduceMotion shows headline lines at once without y stagger.
+- [x] #124 ServicesGrid: empty-state calm studio-plate if categories empty.
+- [x] #125 TrustStrip: section id="trust" for anchors.
+- [x] #126 BranchSelector: section id="locations-teaser".
+- [x] #127 ReviewThemes: section id="reviews".
+- [x] #128 GalleryTeaser: section id="gallery-teaser".
+- [x] #129 AboutTeaser: section id="about-teaser".
+- [x] #130 FAQTeaser: section id="faq-teaser".
+- [x] #131 BookingZone: clearer WhatsApp same-day note near CTA.
+- [x] #132 BookingForm: textarea auto-grow max height for notes field.
+- [x] #133 ContactForm: character-friendly error copy polish (contactSchema).
+- [x] #134 Navbar: compact Book icon link on xs; labeled Book from sm+.
+- [x] #135 Footer: social hover gold border sparingly (rel noopener kept).
+- [x] #136 PageHero: min-h-[42vh] mobile polish with sm min-heights.
+- [x] #137 not-found: SITE.shortName brand-first.
+- [x] #138 LoadingScreen: logo alt = SITE.name.
+- [x] #139 lib/site.ts: export BOOKING_STEPS = Request/Review/Confirm.
+- [x] #140 book page: use BOOKING_STEPS constant from site.
+- [x] #141 faq page: empty search result message calm.
+- [x] #142 gallery: lightbox close button 44px hit target.
+- [x] #143 GalleryGrid: swipe hint text for mobile once.
+- [x] #144 Service detail sticky CTA column on desktop.
+- [x] #145 services page intro copy tighten one sentence.
+- [x] #146 locations page intro tighten.
+- [x] #147 about page: remove redundant card borders (one job per section).
+- [x] #148 contact page: WhatsApp primary emphasis.
+- [x] #149 JsonLd: BreadcrumbList helper (skip SearchAction — no site search).
+- [x] #150 BreadcrumbList JSON-LD on services/[slug] and locations/[branch].
+- [x] #151 Select: blush mist hover/highlight rows.
+- [x] #152 Sheet: close button size 44px (Radix focus trap kept).
+- [x] #153 accordion content prose max-w measure 65ch.
+- [x] #154 button primary: disabled opacity via pressable + disabled styles.
+- [x] #155 shimmer-button: pause animation on prefers-reduced-motion.
+- [x] #156 Marquee: add "Private Rooms" to MARQUEE_WORDS.
+- [x] #157 REVIEW_THEMES: no star numbers rendered (theme titles only).
+- [x] #158 BeforeAfter: caption "Illustrative care imagery" always visible.
+- [x] #159 StatsCounter: format numbers with en-LK locale.
+- [x] #160 print styles in globals.css: hide nav/footer/booking bar/loading; keep serif headings.
+
+## Complements wave (161–200)
+
+- [x] #161 CareJourney.tsx extracted from about; spacing polish on Arrive→Prep→Care→After-care
+- [x] #162 FAQTeaser: AnimatedSection fadeUpFast
+- [x] #163 BookingZone: aria-labelledby="booking-heading" + SectionHeading titleId
+- [x] #164 Hero protocol mobile accordion default closed; gold ShieldCheck icons
+- [x] #165 ServicesGrid: light wine hover borders on category rows
+- [x] #166 TrustStrip: gold hygiene icons; muted sage for skin-first / after-care pillar
+- [x] #167 Branch cards: WhatsApp prefilled with branch name (verified)
+- [x] #168 GalleryTeaser: stronger wine “View gallery” CTA
+- [x] #169 AboutTeaser: /about CTA with icon-drift ArrowRight
+- [x] #170 ReviewThemes: no numeric ratings (themes + index only)
+- [x] #171 FAQAccordion: aria-label on each accordion root
+- [x] #172 Contact HoursTable: closed on Poya called out in caption
+- [x] #173 Book PageHero: WhatsApp for urgent same-day timing
+- [x] #174 Locations detail: weekday / weekend / Poya hours hierarchy
+- [x] #175 services/[slug]: formatPriceFrom for category from-price
+- [x] #176 service-card: formatPriceFrom
+- [x] #177 formatPriceFrom / formatLKR* use en-LK
+- [x] #178 Metadata description length check (~120–160) in layout
+- [x] #179 robots.ts: allow public routes; disallow /admin
+- [x] #180 sitemap: lastModified + priority/frequency polish
+- [x] #181 next.config: Unsplash remotePatterns verified (still used)
+- [x] #182 eslint/tsc clean for this batch
+- [x] #183 Soft-wax / fresh-wax honesty double-check (FAQ + full-body copy)
+- [x] #184 Hydra / Moroccan category + service copy honesty
+- [x] #185 Nugegoda pending-address messaging aligned (footer / card / locations)
+- [x] #186 MobileBookingBar z-40 below Sheet; safe-area pb kept
+- [x] #187 Sheet overlay z-[60] above Navbar z-50 and bar z-40
+- [x] #188 SkipLink: sr-only until focus (verified + .sr-only utility)
+- [x] #189 SmoothScrollProvider: Lenis disabled under prefers-reduced-motion (+ change listener)
+- [x] #190 template.tsx page transition duration 0.35
+- [x] #191 globals: ::selection wine; input/textarea selection too
+- [x] #192 .sr-only / .not-sr-only utilities in globals
+- [x] #193 Hero scroll chevron: title + aria-label
+- [x] #194 Footer privacy link → /contact#privacy
+- [x] #195 Contact: id="privacy" private-review note
+- [x] #196 BookingForm privacy note under submit
+- [x] #197 Gallery filter “Studio” (+ honest categories from gallery.ts)
+- [x] #198 Admin not in NAV_LINKS (verified)
+- [x] #199 PRODUCT.md brand test: hero brand + privacy in first viewport
+- [x] #200 Wave complete summary below
+
+## Wave complete
+
+**200/200** improvement loops recorded for Wax In The City SL (wine/pearl brand).
+
+- Loops **1–120**: earlier commits on this branch
+- Loops **121–160**: parallel complement batch (section anchors, sticky service CTA, breadcrumbs, print styles, etc.)
+- Loops **161–200**: CareJourney extract, a11y/pricing/privacy/z-index/honesty polish
+
+### Complement sources used
+
+| Source | Patterns applied |
+|---|---|
+| HyperUI | Form helpers, contact/hours blocks, tel links |
+| FAQ Sections | Homepage teaser, accordion a11y labels, deep-link FAQ |
+| Footers | Branch IA, privacy link, WhatsApp CTA |
+| React Bits | fadeUpFast reveals, marquee a11y, compare framing |
+| Apple Cards Carousel | Clean gallery media rhythm |
+| shadcnblocks | Booking/contact success + privacy notes |
+| Cult UI (restrained) | Oxblood/pearl BookingZone + PageHero fields |
+| Icons (Lucide) | Gold hygiene / sage after-care trust icons |
+| Better Design Tips | Honest copy, brand-first hero, contrast |
+| 21st.dev | Booking reassurance steps, CareJourney |
+
+Rejected installs remain: DaisyUI, Tremor, Watermelon UI kits, fake reviews, purple/glow AI defaults.

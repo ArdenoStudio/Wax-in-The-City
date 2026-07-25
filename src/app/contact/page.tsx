@@ -39,24 +39,27 @@ export default function ContactPage() {
               title="If it is about timing, message us first."
               subtitle="A WhatsApp message lets the studio confirm the right branch, service length, and available room before you travel."
             />
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href={whatsappLink("Hi! I have a question before booking.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pressable inline-flex h-12 items-center justify-center gap-2 rounded-pill bg-cream px-6 text-body-sm font-semibold text-brand shadow-[0_18px_42px_rgba(0,0,0,0.24)]"
+                className="pressable inline-flex h-14 items-center justify-center gap-2 rounded-pill bg-cream px-8 text-body font-semibold text-brand shadow-[0_18px_42px_rgba(0,0,0,0.28)]"
               >
                 <WhatsappIcon className="h-5 w-5" />
-                Message WhatsApp
+                Message on WhatsApp
               </a>
               <a
                 href="#contact-form"
-                className="pressable inline-flex h-12 items-center justify-center gap-2 rounded-pill border border-cream/20 bg-cream/8 px-6 text-body-sm font-semibold text-cream"
+                className="pressable inline-flex h-12 items-center justify-center gap-2 rounded-pill border border-cream/20 bg-transparent px-6 text-body-sm font-medium text-cream/85 hover:bg-cream/8"
               >
                 <Send className="h-4 w-4" />
-                Send a note
+                Or send a note
               </a>
             </div>
+            <p className="mt-4 max-w-md text-body-sm text-cream/62">
+              WhatsApp is the primary path for timing and same-week questions.
+            </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3">
@@ -168,6 +171,18 @@ export default function ContactPage() {
             <div className="mt-8">
               <ContactForm />
             </div>
+
+            <aside
+              id="privacy"
+              className="mt-10 scroll-mt-28 rounded-card border border-warm-border/80 bg-white/50 px-5 py-5"
+            >
+              <h3 className="font-serif text-h4 text-warm">Privacy note</h3>
+              <p className="mt-2 text-body-sm leading-relaxed text-warm-grey">
+                Messages and booking requests are reviewed privately by the
+                studio team. We use your details only to reply and confirm
+                visits — not for public display or third-party marketing.
+              </p>
+            </aside>
 
             <div className="mt-10">
               <h3 className="font-serif text-h3 text-warm">Follow us</h3>

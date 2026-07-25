@@ -44,7 +44,8 @@ export function HoursTable() {
         </tbody>
       </table>
       <p className="mt-3 text-caption text-warm-grey">
-        Same hours at both branches unless WhatsApp says otherwise.
+        Closed on Poya days and public holidays. Same weekday/weekend hours at
+        both branches unless WhatsApp says otherwise.
       </p>
     </div>
   );

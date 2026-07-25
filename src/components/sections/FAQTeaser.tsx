@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { FAQ_GROUPS, type FaqGroup } from "@/lib/faq";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
+import { AnimatedSection } from "@/components/global/AnimatedSection";
 
 const DEFAULT_TEASER_QUESTIONS = [
   "Is the studio really ladies-only?",
@@ -44,29 +45,33 @@ export function FAQTeaser({
   const teaserGroups = pickTeaserGroups(groups);
 
   return (
-    <section className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
+    <section id="faq-teaser" className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
       <div className="mx-auto max-w-3xl">
-        <SectionHeading
-          eyebrow="FAQ"
-          showEyebrow={false}
-          title="Questions before you book."
-          subtitle="A few of the answers guests ask most often — hygiene, privacy and how to prepare."
-        />
+        <AnimatedSection variant="fadeUpFast">
+          <SectionHeading
+            eyebrow="FAQ"
+            showEyebrow={false}
+            title="Questions before you book."
+            subtitle="A few of the answers guests ask most often — hygiene, privacy and how to prepare."
+          />
+        </AnimatedSection>
 
-        <div className="mt-10">
+        <AnimatedSection variant="fadeUpFast" delay={0.06} className="mt-10">
           <FAQAccordion groups={teaserGroups} defaultOpen="0-0" />
-        </div>
+        </AnimatedSection>
 
-        <p className="mt-8 text-center">
-          <Link
-            href="/faq"
-            className="inline-flex items-center gap-2 text-body-sm font-medium text-brand-action transition-colors hover:text-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2"
-          >
-            All questions
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </p>
+        <AnimatedSection variant="fadeUpFast" delay={0.1}>
+          <p className="mt-8 text-center">
+            <Link
+              href="/faq"
+              className="inline-flex items-center gap-2 text-body-sm font-medium text-brand-action transition-colors hover:text-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2"
+            >
+              All questions
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </p>
+        </AnimatedSection>
       </div>
     </section>
   );

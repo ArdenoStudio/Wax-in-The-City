@@ -127,7 +127,8 @@ export function Footer() {
                   <p className="mt-1 text-body-sm text-cream-muted">{b.area}</p>
                   {isAddressPending(b) && (
                     <p className="mt-1 text-caption text-cream-muted">
-                      Exact address pending confirmation
+                      Exact street address pending confirmation — WhatsApp for
+                      directions.
                     </p>
                   )}
                   <p className="mt-2 text-body-sm text-cream/70">
@@ -163,6 +164,12 @@ export function Footer() {
             <Link href="/faq" className="transition-colors hover:text-cream">
               FAQ
             </Link>
+            <Link
+              href="/contact#privacy"
+              className="transition-colors hover:text-cream"
+            >
+              Privacy
+            </Link>
           </div>
           <p>
             Crafted by{" "}
@@ -189,7 +196,7 @@ function SocialIcon({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="pressable micro-lift flex h-11 w-11 items-center justify-center rounded-pill border border-cream/15 text-cream/70 transition-colors hover:border-brand-light hover:text-cream"
+      className="pressable micro-lift flex h-11 w-11 items-center justify-center rounded-pill border border-cream/15 text-cream/70 transition-colors hover:border-gold/55 hover:text-cream"
     >
       {children}
     </a>

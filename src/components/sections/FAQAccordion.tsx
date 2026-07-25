@@ -58,6 +58,7 @@ export function FAQAccordion({
             collapsible
             defaultValue={defaultOpen}
             className="space-y-3"
+            aria-label={`${group.category} questions`}
           >
             {group.items.map((item, i) => (
               <AccordionItem key={i} value={`${gi}-${i}`}>
@@ -206,10 +207,13 @@ function FAQAccordionEnhanced({
       </nav>
 
       {filteredGroups.length === 0 ? (
-        <p className="rounded-card border border-warm-border bg-white/50 px-5 py-8 text-center text-body text-warm-grey">
-          No questions match “{query}”. Try a shorter phrase, or message us on
-          WhatsApp.
-        </p>
+        <div className="studio-plate rounded-card px-6 py-10 text-center">
+          <p className="font-serif text-h4 text-warm">Nothing matched that search.</p>
+          <p className="mx-auto mt-2 max-w-sm text-body-sm text-warm-grey">
+            Try one word — hygiene, waxing, or booking — or clear the search to
+            browse every answer.
+          </p>
+        </div>
       ) : (
         <div className="space-y-12">
           {filteredGroups.map((group) => {
@@ -233,6 +237,7 @@ function FAQAccordionEnhanced({
                   value={openValue}
                   onValueChange={onOpenChange}
                   className="space-y-3"
+                  aria-label={`${group.category} questions`}
                 >
                   {group.items.map((item) => {
                     const i = groups[gi].items.findIndex(

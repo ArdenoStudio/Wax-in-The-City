@@ -4,13 +4,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "pressable relative inline-flex items-center justify-center gap-2 overflow-hidden whitespace-nowrap font-sans font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:pointer-events-none disabled:opacity-50 disabled:transform-none [&_svg]:shrink-0 [&_svg]:transition-transform [&_svg]:duration-500 [&_svg]:ease-[var(--ease-apple)]",
+  "pressable relative inline-flex items-center justify-center gap-2 overflow-hidden whitespace-nowrap font-sans font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:pointer-events-none disabled:opacity-45 disabled:shadow-none disabled:transform-none [&_svg]:shrink-0 [&_svg]:transition-transform [&_svg]:duration-500 [&_svg]:ease-[var(--ease-apple)]",
   {
     variants: {
       variant: {
         // Primary maroon with liquid sweep
         primary:
-          "bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] text-cream shadow-[0_14px_30px_rgba(162,15,55,0.24)] hover:shadow-[0_20px_48px_rgba(162,15,55,0.30)] before:absolute before:inset-0 before:content-[''] before:-translate-x-[120%] before:skew-x-[-15deg] before:bg-gradient-to-r before:from-transparent before:via-cream/22 before:to-transparent before:transition-transform before:duration-700 before:ease-[var(--ease-apple)] hover:before:translate-x-[120%]",
+          "bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] text-cream shadow-[0_14px_30px_rgba(162,15,55,0.24)] hover:shadow-[0_20px_48px_rgba(162,15,55,0.30)] before:absolute before:inset-0 before:content-[''] before:-translate-x-[120%] before:skew-x-[-15deg] before:bg-gradient-to-r before:from-transparent before:via-cream/22 before:to-transparent before:transition-transform before:duration-700 before:ease-[var(--ease-apple)] hover:before:translate-x-[120%] disabled:opacity-45 disabled:before:hidden",
         // Outline — maroon hairline on cream
         outline:
           "border border-brand-action/35 bg-white/35 text-brand-action backdrop-blur hover:border-brand-action/60 hover:bg-brand-mist hover:shadow-[0_16px_36px_rgba(39,19,21,0.08)]",

@@ -6,13 +6,22 @@ import { ShieldCheck, Heart, BadgeCheck, Clock3, ArrowRight, type LucideIcon } f
 import { TRUST_PILLARS } from "@/lib/site";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { staggerContainer, scaleIn, viewportOnce } from "@/lib/animations";
+import { cn } from "@/lib/utils";
 
 const ICONS: LucideIcon[] = [ShieldCheck, Heart, BadgeCheck, Clock3];
+
+/** Gold for hygiene; muted sage for skin/after-care related; gold default for the rest. */
+const ICON_TONES = [
+  "text-gold", // No double dipping — hygiene
+  "text-gold", // Private rooms
+  "text-sage", // Skin-first choices — after-care / skin guidance
+  "text-gold", // Appointment led
+] as const;
 
 /** Why-choose-us trust pillars (file 08, section 06). Clear, lightly animated. */
 export function TrustStrip() {
   return (
-    <section className="relative overflow-hidden bg-ink px-5 py-section-lg text-cream lg:px-8">
+    <section id="trust" className="relative overflow-hidden bg-ink px-5 py-section-lg text-cream lg:px-8">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(53,16,23,0.76),rgba(21,16,17,0.96)_52%,rgba(19,9,13,1))]" />
       <div className="relative mx-auto max-w-7xl">
@@ -44,7 +53,10 @@ export function TrustStrip() {
                   whileInView={{ rotate: 0 }}
                   viewport={viewportOnce}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="flex h-14 w-14 items-center justify-center rounded-card bg-cream/10 text-gold transition-transform duration-500 group-hover:scale-105"
+                  className={cn(
+                    "flex h-14 w-14 items-center justify-center rounded-card bg-cream/10 transition-transform duration-500 group-hover:scale-105",
+                    ICON_TONES[i] ?? "text-gold"
+                  )}
                 >
                   <Icon className="h-7 w-7" />
                 </motion.span>

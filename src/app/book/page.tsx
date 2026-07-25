@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { PageHero } from "@/components/sections/PageHero";
-import { BRANCHES, SERVICES, SERVICE_CATEGORIES, type BranchSlug } from "@/lib/site";
+import {
+  BOOKING_STEPS,
+  BRANCHES,
+  SERVICES,
+  SERVICE_CATEGORIES,
+  type BranchSlug,
+} from "@/lib/site";
 import { getPublicServiceContent } from "@/lib/service-content";
 import { IMAGES } from "@/lib/images";
 
@@ -36,21 +42,6 @@ function resolveServicePreference(
   return decoded;
 }
 
-const BOOKING_STEPS = [
-  {
-    title: "Request",
-    body: "Share the service, branch, and timing that work for you.",
-  },
-  {
-    title: "Review",
-    body: "The studio checks room, therapist fit, and realistic availability.",
-  },
-  {
-    title: "Confirm",
-    body: "You hear back before you travel — WhatsApp is fastest if timing is tight.",
-  },
-] as const;
-
 export default async function BookPage({
   searchParams,
 }: {
@@ -70,7 +61,7 @@ export default async function BookPage({
       <PageHero
         eyebrow="Book"
         title="Request your visit."
-        subtitle="Tell us what you need — the team reviews every request before confirming."
+        subtitle="Tell us what you need — the team reviews every request before confirming. For urgent same-day timing, WhatsApp is fastest."
         image={IMAGES.book.src}
         imageAlt={IMAGES.book.alt}
         size="sm"

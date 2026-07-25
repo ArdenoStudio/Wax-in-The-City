@@ -73,7 +73,7 @@ export default async function ServicesPage() {
       <PageHero
         eyebrow="Treatment menu"
         title="Choose the room, the ritual, the result."
-        subtitle="Waxing, skin care, Moroccan body rituals and HydraFacial work, handled with private-room care."
+        subtitle="Private-room waxing, facials, Moroccan rituals, and HydraFacial — clear choices, careful prep."
         image={IMAGES.services.facials}
         imageAlt="Soft skincare treatment close-up in a private studio"
         size="md"

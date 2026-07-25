@@ -34,7 +34,7 @@ export function BranchCard({ branch, variant = "compact" }: BranchCardProps) {
 
       {pending && (
         <span className="relative z-10 mt-3 inline-flex w-fit rounded-pill border border-gold/35 bg-gold/12 px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em] text-warm">
-          Address pending confirmation
+          Exact street address pending confirmation
         </span>
       )}
 

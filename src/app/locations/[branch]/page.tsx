@@ -16,6 +16,7 @@ import { WhatsappIcon } from "@/components/icons";
 import { PageHero } from "@/components/sections/PageHero";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { CopyAddressButton } from "@/components/sections/CopyAddressButton";
+import { BreadcrumbJsonLd } from "@/components/global/JsonLd";
 
 const BRANCH_IMAGES: Record<BranchSlug, string> = {
   battaramulla: IMAGES.branches.battaramulla,
@@ -72,6 +73,13 @@ export default async function BranchPage({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Locations", href: "/locations" },
+          { name: b.name, href: `/locations/${b.slug}` },
+        ]}
+      />
       <PageHero
         eyebrow="Our studio"
         title={`${b.name}.`}
@@ -106,7 +114,8 @@ export default async function BranchPage({
                 <span className="block">{b.address}</span>
                 {pending && (
                   <span className="mt-1 block text-body-sm text-warm-grey">
-                    Exact street details pending confirmation — message WhatsApp for directions.
+                    Exact street address pending confirmation — WhatsApp for
+                    directions.
                   </span>
                 )}
                 {!pending && (
@@ -114,9 +123,26 @@ export default async function BranchPage({
                 )}
               </Detail>
               <Detail icon={<Clock className="h-5 w-5" />} label="Hours">
-                <span className="block">Weekdays · {b.hours.weekday}</span>
-                <span className="block">Weekends · {b.hours.weekend}</span>
-                <span className="block text-warm-grey">{b.hours.poya}</span>
+                <dl className="space-y-2">
+                  <div>
+                    <dt className="text-caption font-semibold uppercase tracking-[0.12em] text-brand-action/75">
+                      Weekdays
+                    </dt>
+                    <dd className="mt-0.5 text-body text-warm">{b.hours.weekday}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-caption font-semibold uppercase tracking-[0.12em] text-brand-action/75">
+                      Weekends
+                    </dt>
+                    <dd className="mt-0.5 text-body text-warm">{b.hours.weekend}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-caption font-semibold uppercase tracking-[0.12em] text-warm-grey">
+                      Poya &amp; holidays
+                    </dt>
+                    <dd className="mt-0.5 text-body-sm text-warm-grey">{b.hours.poya}</dd>
+                  </div>
+                </dl>
               </Detail>
               <Detail icon={<Phone className="h-5 w-5" />} label="Phone">
                 <a

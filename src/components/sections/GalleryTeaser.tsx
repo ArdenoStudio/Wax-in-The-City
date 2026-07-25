@@ -13,7 +13,7 @@ export function GalleryTeaser() {
   const photos = GALLERY.slice(0, 6);
 
   return (
-    <section className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
+    <section id="gallery-teaser" className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
         <div className="lg:sticky lg:top-28">
@@ -26,9 +26,9 @@ export function GalleryTeaser() {
           />
           <Link
             href="/gallery"
-            className="mt-8 inline-flex items-center gap-2 rounded-pill border border-brand-action/35 bg-white/40 px-6 py-3 font-medium text-brand-action shadow-[0_14px_34px_rgba(39,19,21,0.05)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2"
+            className="pressable icon-drift mt-8 inline-flex items-center gap-2 rounded-pill bg-brand-action px-7 py-3.5 font-medium text-cream shadow-[0_16px_36px_rgba(162,15,55,0.22)] transition-colors hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2"
           >
-            See full gallery
+            View gallery
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

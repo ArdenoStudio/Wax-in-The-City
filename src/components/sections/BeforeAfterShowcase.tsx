@@ -60,7 +60,7 @@ export function BeforeAfterShowcase() {
             afterLabel="After care"
           />
           <p className="mt-3 text-caption text-cream/50">
-            Approved result photos can replace this panel later.
+            Illustrative care imagery — approved result photos can replace this panel later.
           </p>
         </div>
       </div>

@@ -10,7 +10,7 @@ import { fadeUp, slideFromLeft, viewportOnce } from "@/lib/animations";
 /** About teaser: founder/studio positioning without generic beauty-site filler. */
 export function AboutTeaser() {
   return (
-    <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
+    <section id="about-teaser" className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
       <span aria-hidden className="pointer-events-none absolute left-6 top-6 select-none font-serif text-[6rem] font-light leading-none text-warm/[0.035] sm:text-[9rem] lg:left-12 lg:text-[11rem]">02</span>
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
       <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
@@ -67,7 +67,7 @@ export function AboutTeaser() {
           </p>
           <Link
             href="/about"
-            className="mt-8 inline-flex items-center gap-2 rounded-pill border border-brand-action/35 bg-white/40 px-6 py-3 font-medium text-brand-action shadow-[0_14px_34px_rgba(39,19,21,0.05)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2"
+            className="icon-drift mt-8 inline-flex items-center gap-2 rounded-pill border border-brand-action/35 bg-white/40 px-6 py-3 font-medium text-brand-action shadow-[0_14px_34px_rgba(39,19,21,0.05)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2"
           >
             Read our story
             <ArrowRight className="h-4 w-4" />

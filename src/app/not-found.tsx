@@ -12,7 +12,10 @@ export default function NotFound() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(162,15,55,0.18),transparent_42%),radial-gradient(circle_at_18%_80%,rgba(252,229,236,0.55),transparent_40%),radial-gradient(circle_at_88%_70%,rgba(43,7,16,0.08),transparent_36%)]"
       />
       <div className="relative z-10">
-        <p className="text-caption font-semibold uppercase tracking-[0.18em] text-brand-action">
+        <p className="font-serif text-[clamp(1.85rem,5.5vw,2.75rem)] font-medium italic leading-none tracking-[0.01em] text-brand">
+          {SITE.shortName}
+        </p>
+        <p className="mt-5 text-caption font-semibold uppercase tracking-[0.18em] text-brand-action">
           404
         </p>
         <h1 className="mt-4 max-w-lg font-serif text-h1 font-medium text-warm">

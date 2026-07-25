@@ -10,7 +10,7 @@ export const SITE = {
   shortName: "Wax In The City",
   tagline: "Private waxing, done properly.",
   description:
-    "Ladies-only waxing and skin care in Colombo — known for careful hygiene, premium products, and private appointment-led care.",
+    "Ladies-only waxing and skin care in Colombo — private rooms, careful hygiene, clear from-prices, and appointment-led booking at Battaramulla and Nugegoda.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://waxinthecitylk.com",
   locale: "en_LK",
   instagram: "https://instagram.com/waxinthecitylk",
@@ -70,7 +70,7 @@ export const BRANCHES: Branch[] = [
     slug: "nugegoda",
     name: "Nugegoda",
     area: "Nugegoda, Colombo",
-    address: "Nugegoda, Colombo (exact address to be confirmed)",
+    address: "Nugegoda, Colombo — exact street address pending confirmation",
     phone: "+94 77 946 9437",
     whatsapp: DEFAULT_WHATSAPP,
     hours: {
@@ -130,23 +130,23 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     name: "Moroccan",
     short: "A deep-clean ritual using black soap and clay.",
     description:
-      "A deep-cleansing ritual with authentic Moroccan black soap and clay that draws out impurities and nourishes the skin — a classic North African-inspired treatment, available in Colombo.",
+      "A deep-cleansing body ritual with Moroccan-style black soap and clay. Results vary by skin — the focus is thorough cleansing and soft finish, not miracle claims.",
     priceFrom: 4500,
   },
   {
     slug: "hydra-facial",
     href: "hydra-facial",
     name: "Hydra Facial",
-    short: "Cleanse, extract, hydrate — a visible refresh without downtime.",
+    short: "Cleanse, extract, hydrate — a visible refresh with little downtime.",
     description:
-      "A professional multi-step facial that cleanses, extracts and hydrates in under an hour. Active serums, zero downtime, and a fresh finish many guests notice after a single visit.",
+      "A professional multi-step facial that cleanses, extracts and hydrates in under an hour. Active serums and typically little to no downtime — finish and glow vary by skin.",
     priceFrom: 7500,
   },
 ];
 
-/** Approachable "from" price for LKR display. */
+/** Approachable "from" price for LKR display (Sri Lanka locale grouping). */
 export function formatPriceFrom(n: number): string {
-  return `From LKR ${n.toLocaleString("en-US")}`;
+  return `From LKR ${n.toLocaleString("en-LK")}`;
 }
 
 export function getCategory(href: string): ServiceCategoryMeta | undefined {
@@ -165,7 +165,7 @@ export interface Service {
 /** Placeholder service set — replace with Supabase data once populated. */
 export const SERVICES: Service[] = [
   // Waxing
-  { name: "Full Body Wax", category: "waxing", duration: "60–75 min", priceFrom: 6500, slug: "full-body-wax", description: "Head-to-toe smoothness in one unhurried session, with premium soft wax and a gentle, skin-first technique." },
+  { name: "Full Body Wax", category: "waxing", duration: "60–75 min", priceFrom: 6500, slug: "full-body-wax", description: "Head-to-toe smoothness in one unhurried session, with fresh wax and a gentle, skin-first technique." },
   { name: "Brazilian Wax", category: "waxing", duration: "30–40 min", priceFrom: 3500, slug: "brazilian-wax", description: "A private, judgement-free Brazilian wax with fresh wax and a careful, comfortable technique." },
   { name: "Half Leg Wax", category: "waxing", duration: "25–30 min", priceFrom: 1800, slug: "half-leg-wax", description: "Smooth lower legs, cleanly waxed at the root for a longer-lasting finish." },
   { name: "Half Arm Wax", category: "waxing", duration: "20–25 min", priceFrom: 1500, slug: "half-arm-wax", description: "Quick, gentle waxing for forearms with minimal fuss." },
@@ -177,11 +177,11 @@ export const SERVICES: Service[] = [
   { name: "Deep Cleanse Facial", category: "facial", duration: "60 min", priceFrom: 4500, slug: "deep-cleanse-facial", description: "A thorough deep-clean for congested skin, with gentle extraction and hydration." },
   { name: "Brightening Facial", category: "facial", duration: "60 min", priceFrom: 5500, slug: "brightening-facial", description: "A targeted treatment to even tone and bring back a natural glow." },
   // Moroccan
-  { name: "Moroccan Black Soap Treatment", category: "moroccan", duration: "60 min", priceFrom: 4500, slug: "moroccan-black-soap", description: "An authentic black-soap ritual that exfoliates and softens for radiant skin." },
-  { name: "Moroccan Clay Mask", category: "moroccan", duration: "45 min", priceFrom: 4000, slug: "moroccan-clay-mask", description: "A mineral-rich clay mask that draws out impurities and nourishes deeply." },
+  { name: "Moroccan Black Soap Treatment", category: "moroccan", duration: "60 min", priceFrom: 4500, slug: "moroccan-black-soap", description: "A black-soap ritual that cleanses and softens — comfort and finish depend on your skin." },
+  { name: "Moroccan Clay Mask", category: "moroccan", duration: "45 min", priceFrom: 4000, slug: "moroccan-clay-mask", description: "A mineral-rich clay mask used to cleanse and refine — not a guaranteed pore or glow fix." },
   // Hydra Facial
-  { name: "HydraFacial MD", category: "hydra-facial", duration: "50 min", priceFrom: 12500, slug: "hydrafacial-md", description: "The full multi-step HydraFacial — cleanse, extract, hydrate, with active serums and zero downtime." },
-  { name: "Express HydraFacial", category: "hydra-facial", duration: "30 min", priceFrom: 7500, slug: "express-hydrafacial", description: "A focused HydraFacial for a quick, visible refresh between busy days." },
+  { name: "HydraFacial MD", category: "hydra-facial", duration: "50 min", priceFrom: 12500, slug: "hydrafacial-md", description: "The full multi-step HydraFacial — cleanse, extract, hydrate with active serums. Downtime is usually minimal; results vary." },
+  { name: "Express HydraFacial", category: "hydra-facial", duration: "30 min", priceFrom: 7500, slug: "express-hydrafacial", description: "A shorter HydraFacial for a quick refresh between busy days — visible change varies by skin." },
 ];
 
 export function servicesByCategory(category: ServiceCategory): Service[] {
@@ -288,7 +288,24 @@ export const MARQUEE_WORDS = [
   "Safe",
   "Genuine",
   "Ladies Only",
+  "Private Rooms",
   "Colombo",
   "Battaramulla",
   "Nugegoda",
+] as const;
+
+/** Booking reassurance steps — Request → Review → Confirm. */
+export const BOOKING_STEPS = [
+  {
+    title: "Request",
+    body: "Share the service, branch, and timing that work for you.",
+  },
+  {
+    title: "Review",
+    body: "The studio checks room, therapist fit, and realistic availability.",
+  },
+  {
+    title: "Confirm",
+    body: "You hear back before you travel — WhatsApp is fastest if timing is tight.",
+  },
 ] as const;

@@ -7,16 +7,26 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { GALLERY, type GalleryCategory } from "@/lib/gallery";
 import { cn } from "@/lib/utils";
 
+/** Labels match honest gallery.ts categories (studio interiors, editorial results, event placeholders). */
 const FILTERS: { key: GalleryCategory | "all"; label: string }[] = [
   { key: "all", label: "All" },
-  { key: "salon", label: "Salon" },
+  { key: "salon", label: "Studio" },
   { key: "results", label: "Results" },
   { key: "events", label: "Events" },
 ];
 
+const SWIPE_HINT_KEY = "witc-gallery-swipe-hint";
+
+function shouldShowSwipeHint(): boolean {
+  if (typeof window === "undefined") return false;
+  if (!window.matchMedia("(max-width: 767px)").matches) return false;
+  return !sessionStorage.getItem(SWIPE_HINT_KEY);
+}
+
 export function GalleryGrid() {
   const [filter, setFilter] = useState<GalleryCategory | "all">("all");
   const [active, setActive] = useState<number | null>(null);
+  const [showSwipeHint, setShowSwipeHint] = useState(shouldShowSwipeHint);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const closeRef = useRef<HTMLButtonElement | null>(null);
@@ -83,12 +93,23 @@ export function GalleryGrid() {
 
   return (
     <div>
+      {showSwipeHint && (
+        <p className="mb-4 text-center text-caption text-warm-grey md:hidden">
+          Tap a photo to open — swipe or use arrows to browse.
+        </p>
+      )}
       <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center" role="group" aria-label="Filter gallery">
         {FILTERS.map((f) => (
           <button
             key={f.key}
             type="button"
-            onClick={() => setFilterAndReset(f.key)}
+            onClick={() => {
+              if (showSwipeHint) {
+                sessionStorage.setItem(SWIPE_HINT_KEY, "1");
+                setShowSwipeHint(false);
+              }
+              setFilterAndReset(f.key);
+            }}
             aria-pressed={filter === f.key}
             className={cn(
               "rounded-pill px-4 py-2.5 text-body-sm font-medium transition-colors sm:px-5",
@@ -153,7 +174,7 @@ export function GalleryGrid() {
               type="button"
               onClick={close}
               aria-label="Close lightbox"
-              className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-pill bg-cream/10 text-cream hover:bg-cream/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50"
+              className="absolute right-4 top-4 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-pill bg-cream/10 text-cream hover:bg-cream/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50"
             >
               <X className="h-5 w-5" />
             </button>

@@ -28,7 +28,7 @@ function Ticker({ value, suffix }: { value: number; suffix?: string }) {
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const reduce = useReducedMotion();
   const count = useMotionValue(0);
-  const display = useTransform(count, (v) => Math.round(v).toLocaleString("en-US"));
+  const display = useTransform(count, (v) => Math.round(v).toLocaleString("en-LK"));
 
   useEffect(() => {
     if (!inView) return;
