@@ -28,19 +28,19 @@ export function CopyAddressButton({
       type="button"
       onClick={onCopy}
       className={cn(
-        "inline-flex h-10 items-center gap-2 rounded-pill border border-brand-action/30 bg-white/60 px-4 text-body-sm font-medium text-brand-action transition-colors hover:bg-brand-mist",
+        "tracking-[-0.011em] font-sans ease-[var(--ease-apple)] text-pretty inline-flex h-11 items-center gap-3 rounded-pill border border-brand-action/36 bg-white/68 px-7 text-body-sm font-semibold text-brand-action transition-colors duration-300 hover:bg-brand-mist/90",
         className
       )}
       aria-live="polite"
     >
       {copied ? (
         <>
-          <Check className="h-4 w-4" />
+          <Check className="h-4 w-4 shrink-0" />
           Copied
         </>
       ) : (
         <>
-          <Copy className="h-4 w-4" />
+          <Copy className="h-4 w-4 shrink-0" />
           Copy address
         </>
       )}

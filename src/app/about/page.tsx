@@ -47,12 +47,12 @@ export default function AboutPage() {
         size="md"
       />
 
-      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-10">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-55" />
+        <div className="mx-auto grid max-w-[72rem] items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <AnimatedSection variant="slideFromLeft">
             <div className="relative">
-              <div className="relative min-h-[480px] overflow-hidden rounded-card-lg bg-brand shadow-[0_30px_90px_rgba(27,14,16,0.14)] sm:min-h-[520px]">
+              <div className="relative min-h-[480px] overflow-hidden rounded-card-lg bg-brand shadow-card-hover sm:min-h-[520px]">
                 <Image
                   src={IMAGES.about.src}
                   alt={IMAGES.about.alt}
@@ -69,7 +69,7 @@ export default function AboutPage() {
                   </p>
                 </div>
               </div>
-              <div className="absolute -right-4 -top-5 hidden w-44 rounded-card border border-warm-border bg-cream p-4 shadow-card lg:block">
+              <div className="absolute -right-4 -top-5 hidden w-40 rounded-card border border-warm-border bg-cream p-5 shadow-card lg:block">
                 <Image
                   src={IMAGES.wordmark}
                   alt="Wax In The City wordmark"
@@ -82,10 +82,10 @@ export default function AboutPage() {
           </AnimatedSection>
 
           <AnimatedSection variant="fadeUp">
-            <p className="max-w-full break-words text-balance font-display text-[clamp(1.85rem,8vw,3.6rem)] font-semibold leading-[1.05] tracking-tight-display text-warm">
+            <p className="min-w-0 max-w-full break-words text-balance font-display text-[clamp(1.85rem,8vw,3.6rem)] font-semibold leading-[1.05] tracking-tight-display text-warm">
               Built like a private dressing room, run like a careful appointment studio.
             </p>
-            <p className="font-sans mt-7 max-w-2xl text-pretty text-body-lg text-warm-grey">
+            <p className="tracking-[-0.011em] font-sans mt-7 max-w-2xl text-pretty text-body-lg text-warm-grey">
               The site should say what the studio is trying to protect: comfort, privacy, hygiene, and trust before the first strip of wax or skincare product touches skin. That is why the appointment flow is quieter than a walk-in salon and why sensitive services are handled with more context.
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -93,13 +93,13 @@ export default function AboutPage() {
                 <Link
                   key={branch.slug}
                   href={`/locations/${branch.slug}`}
-                  className="ease-[var(--ease-apple)] rounded-card border border-warm-border/60 bg-cream-alt/80 p-5 transition-colors duration-300 hover:border-brand-action/25 hover:bg-brand-mist/45"
+                  className="ease-[var(--ease-apple)] rounded-card border border-warm-border/75 bg-cream-alt/90 p-5 transition-colors duration-300 hover:border-brand-action/25 hover:bg-brand-mist/45"
                 >
-                  <div className="flex items-center gap-2 font-sans text-caption font-semibold uppercase tracking-[0.1em] text-brand-action">
+                  <div className="flex items-center gap-2.5 font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em] text-brand-action">
                     <MapPin className="h-4 w-4 shrink-0" />
                     {branch.name}
                   </div>
-                  <p className="font-sans mt-3 text-pretty text-body-sm text-warm-grey">{branch.blurb}</p>
+                  <p className="tracking-[-0.011em] font-sans mt-3 text-pretty text-body-sm text-warm-grey">{branch.blurb}</p>
                 </Link>
               ))}
             </div>
@@ -109,7 +109,7 @@ export default function AboutPage() {
 
       <section className="relative overflow-hidden bg-brand px-5 py-section-lg text-cream lg:px-8">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(217,179,95,0.2),transparent_34%),radial-gradient(circle_at_82%_18%,rgba(255,214,222,0.13),transparent_28%)]" />
-        <div className="relative mx-auto max-w-7xl">
+        <div className="relative mx-auto max-w-[72rem]">
           <SectionHeading
             align="left"
             tone="light"
@@ -122,14 +122,14 @@ export default function AboutPage() {
               const Icon = value.icon;
               return (
                 <AnimatedSection key={value.title} variant="fadeUp" delay={i * 0.08}>
-                  <div className="h-full rounded-card border border-cream/10 bg-cream/[0.06] p-6">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-card bg-cream text-brand">
-                      <Icon className="h-6 w-6" />
+                  <div className="h-full rounded-card border border-cream/24 bg-cream/[0.08] p-6">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-card bg-cream text-brand">
+                      <Icon className="h-6 w-6 shrink-0" />
                     </span>
                     <h3 className="text-balance mt-6 font-display text-h3 font-semibold tracking-display text-cream">
                       {value.title}
                     </h3>
-                    <p className="font-sans mt-3 text-pretty text-body-sm leading-relaxed text-cream/78">
+                    <p className="tracking-[-0.011em] font-sans mt-3 text-pretty text-body-sm leading-[1.7] text-cream">
                       {value.body}
                     </p>
                   </div>

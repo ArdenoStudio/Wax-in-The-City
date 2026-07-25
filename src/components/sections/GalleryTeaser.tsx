@@ -15,10 +15,10 @@ export function GalleryTeaser() {
   return (
     <section
       id="gallery-teaser"
-      className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8"
+      className="relative overflow-hidden bg-cream-alt px-7 py-section-lg lg:px-8"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-40" />
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-start lg:gap-14">
+      <div className="mx-auto grid max-w-[72rem] gap-14 lg:grid-cols-[0.7fr_1.3fr] lg:items-start lg:gap-14">
         <div className="lg:sticky lg:top-28">
           <SectionHeading
             eyebrow="Visual proof"
@@ -29,10 +29,10 @@ export function GalleryTeaser() {
           />
           <Link
             href="/gallery"
-            className="mt-8 inline-flex items-center gap-2 rounded-pill bg-brand-action px-6 py-3 font-sans text-body-sm font-medium text-cream transition-colors duration-300 hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-alt"
+            className="tracking-[-0.011em] ease-[var(--ease-apple)] text-pretty mt-10 inline-flex items-center gap-2 rounded-pill bg-brand-action px-7 py-3.5 font-sans text-body-sm font-semibold text-cream transition-colors duration-300 hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-[3px] focus-visible:ring-offset-cream-alt"
           >
             View gallery
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 shrink-0" />
           </Link>
         </div>
 
@@ -56,7 +56,7 @@ export function GalleryTeaser() {
                 <Link
                   href="/gallery"
                   aria-label={`View gallery: ${photo.alt}`}
-                  className="relative block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-alt"
+                  className="relative block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-[3px] focus-visible:ring-offset-cream focus-visible:ring-offset-cream-alt"
                 >
                   <div
                     className={`relative w-full overflow-hidden bg-warm-border/40 aspect-[4/5] ${
@@ -71,7 +71,7 @@ export function GalleryTeaser() {
                       unoptimized={photo.src.startsWith("http")}
                       className="object-cover transition-transform duration-700 ease-[var(--ease-apple)] group-hover:scale-[1.03]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/18 via-transparent to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-30" />
+                    <div className="ease-[var(--ease-apple)] absolute inset-0 bg-gradient-to-t from-ink/18 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-30" />
                   </div>
                 </Link>
               </motion.div>

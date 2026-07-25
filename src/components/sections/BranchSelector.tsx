@@ -14,7 +14,7 @@ export function BranchSelector() {
       className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-40" />
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-[72rem]">
         <SectionHeading
           eyebrow="Branches"
           showEyebrow={false}
@@ -27,7 +27,7 @@ export function BranchSelector() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-11 grid gap-4 lg:mt-12 lg:grid-cols-2 lg:gap-5"
+          className="mt-11 grid gap-6 lg:mt-12 lg:grid-cols-2 lg:gap-5"
         >
           {BRANCHES.map((branch) => (
             <motion.div key={branch.slug} variants={fadeUp} className="min-w-0">

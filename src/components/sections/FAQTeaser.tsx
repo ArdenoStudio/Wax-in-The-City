@@ -61,19 +61,19 @@ export function FAQTeaser({
         </AnimatedSection>
 
         <AnimatedSection variant="fadeUpFast" delay={0.06} className="mt-9">
-          <div className="rounded-card-lg border border-warm-border/70 bg-white/60 px-1 py-1 sm:px-2 sm:py-2">
+          <div className="rounded-card-lg border border-warm-border/80 bg-white/68 px-1 py-1 sm:px-2 sm:py-2">
             <FAQAccordion groups={teaserGroups} defaultOpen="0-0" />
           </div>
         </AnimatedSection>
 
         <AnimatedSection variant="fadeUpFast" delay={0.1}>
-          <p className="mt-8 text-center">
+          <p className="mt-10 text-center">
             <Link
               href="/faq"
-              className="inline-flex items-center gap-2 font-sans text-body-sm font-medium text-brand-action transition-colors hover:text-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-alt"
+              className="tracking-[-0.011em] ease-[var(--ease-apple)] text-pretty inline-flex items-center gap-2 font-sans text-body-sm font-semibold text-brand-action transition-colors duration-300 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-[3px] focus-visible:ring-offset-cream focus-visible:ring-offset-cream-alt"
             >
               All questions
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 shrink-0" />
             </Link>
           </p>
         </AnimatedSection>

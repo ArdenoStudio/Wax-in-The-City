@@ -19,4 +19,4 @@ Patterns adapted from the bookmark set (not full kit installs):
 
 - **Display / brand:** Cal Sans (500–700)
 - **Body / UI:** Inter (400–700)
-- `font-display` replaces former Bodoni `font-serif` classes
+- `font-display` is Cal Sans (replaces former Bodoni/`font-serif` classes)

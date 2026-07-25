@@ -22,7 +22,7 @@ export default function FAQPage() {
         imageAlt={IMAGES.about.alt}
       />
 
-      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-10">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-45" />
         <div className="mx-auto max-w-3xl">
           <Suspense
@@ -30,7 +30,7 @@ export default function FAQPage() {
               <div className="space-y-3" aria-busy="true" aria-label="Loading questions">
                 <div className="h-12 animate-pulse rounded-card bg-warm-border/40" />
                 <div className="h-9 animate-pulse rounded-pill bg-warm-border/30" />
-                <p className="text-pretty font-sans pt-4 text-body text-warm-grey">Loading questions…</p>
+                <p className="tracking-[-0.011em] text-pretty font-sans pt-4 text-body text-warm-grey">Loading questions…</p>
               </div>
             }
           >

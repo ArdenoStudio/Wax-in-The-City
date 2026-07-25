@@ -41,9 +41,9 @@ export function Navbar() {
     >
       <div
         className={cn(
-          "mx-auto flex items-center justify-between gap-3 transition-all duration-500",
+          "ease-[var(--ease-apple)] mx-auto flex items-center justify-between gap-3 transition-all duration-300",
           scrolled
-            ? "mt-3 h-16 max-w-6xl rounded-pill border border-warm-border/80 bg-cream/92 px-4 shadow-[0_4px_32px_rgba(28,15,15,0.12)] backdrop-blur-xl sm:px-5"
+            ? "mt-4 h-16 max-w-6xl rounded-pill border border-warm-border/80 bg-cream/95 px-4 shadow-card backdrop-blur-2xl sm:px-6"
             : "h-16 max-w-7xl px-1 sm:h-20"
         )}
       >
@@ -56,13 +56,13 @@ export function Navbar() {
             className={cn(
               "pressable inline-flex min-h-11 shrink-0 items-center rounded-pill border px-3.5 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] sm:px-4",
               scrolled
-                ? "border-warm-border/70 bg-white/74 shadow-[0_12px_30px_rgba(53,16,23,0.10)] backdrop-blur-xl"
-                : "border-cream/16 bg-brand/52 shadow-[0_10px_28px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+                ? "border-warm-border/80 bg-white/92 shadow-card backdrop-blur-2xl"
+                : "border-cream/24 bg-brand/52 shadow-card backdrop-blur-2xl"
             )}
           >
             <span
               className={cn(
-                "font-display text-[1.25rem] font-semibold leading-none tracking-[0.01em] transition-colors sm:text-[1.42rem] lg:tracking-[0.02em]",
+                "ease-[var(--ease-apple)] font-display text-[1.2rem] font-semibold leading-[0.96] tracking-[-0.01em] transition-colors duration-300 sm:text-[1.35rem] lg:tracking-[-0.01em]",
                 onDark ? "text-cream" : "text-brand"
               )}
             >
@@ -70,8 +70,8 @@ export function Navbar() {
             </span>
             <span
               className={cn(
-                "ml-2 text-[0.56rem] font-semibold uppercase leading-none tracking-[0.16em] transition-colors sm:text-[0.6rem] lg:tracking-[0.22em]",
-                onDark ? "text-brand-light/82" : "text-brand-action/78"
+                "ease-[var(--ease-apple)] ml-2 text-[0.6rem] font-semibold uppercase leading-none tracking-[0.1em] transition-colors duration-300 sm:text-[0.6rem] lg:tracking-[0.22em]",
+                onDark ? "text-brand-light/90" : "text-brand-action/85"
               )}
             >
               In The City
@@ -81,8 +81,8 @@ export function Navbar() {
 
         <div
           className={cn(
-            "absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-pill px-1.5 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] md:flex",
-            onDark ? "border border-cream/14 bg-ink/24 backdrop-blur-xl" : "border border-warm-border/70 bg-white/72 backdrop-blur-2xl"
+            "absolute left-1/2 hidden -translate-x-1/2 items-center gap-1.5 rounded-pill px-1.5 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] md:flex",
+            onDark ? "border border-cream/24 bg-ink/24 backdrop-blur-2xl" : "border border-warm-border/80 bg-white/72 backdrop-blur-2xl"
           )}
         >
           {NAV_LINKS.map((link) => {
@@ -94,9 +94,9 @@ export function Navbar() {
                 data-active={active}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "nav-link rounded-pill px-3 py-2 text-body-sm font-medium tracking-wide lg:px-4",
-                  active && (onDark ? "bg-cream/12 text-cream" : "bg-brand-mist text-brand-action shadow-[inset_0_0_0_1px_rgba(162,15,55,0.08)]"),
-                  !active && (onDark ? "text-cream/82 hover:bg-cream/9 hover:text-cream" : "text-warm/74 hover:bg-brand-mist/70 hover:text-brand-action")
+                  "font-sans text-pretty nav-link rounded-pill px-3.5 py-2 text-body-sm font-semibold tracking-[0.04em] lg:px-4",
+                  active && (onDark ? "bg-cream/16 text-cream" : "bg-brand-mist text-brand-action shadow-[inset_0_0_0_1px_rgba(162,15,55,0.08)]"),
+                  !active && (onDark ? "text-cream hover:bg-cream/12 hover:text-cream" : "text-warm/82 hover:bg-brand-mist/70 hover:text-brand-action")
                 )}
               >
                 {link.label}
@@ -119,7 +119,7 @@ export function Navbar() {
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
               >
-                <WhatsappIcon className="h-4 w-4" />
+                <WhatsappIcon className="h-4 w-4 shrink-0" />
               </a>
             </Button>
           )}
@@ -130,7 +130,7 @@ export function Navbar() {
             className="sm:hidden"
           >
             <Link href="/book" aria-label="Book your visit">
-              <CalendarDays className="h-4 w-4" />
+              <CalendarDays className="h-4 w-4 shrink-0" />
             </Link>
           </Button>
           <Button
@@ -140,7 +140,7 @@ export function Navbar() {
             className="hidden sm:inline-flex"
           >
             <Link href="/book">
-              <CalendarDays className="h-4 w-4" />
+              <CalendarDays className="h-4 w-4 shrink-0" />
               Book
             </Link>
           </Button>
@@ -152,11 +152,11 @@ export function Navbar() {
                 aria-label="Open menu"
                 aria-expanded={open}
                 className={cn(
-                  "pressable flex h-11 w-11 items-center justify-center rounded-pill border md:hidden",
-                  onDark ? "border-cream/15 bg-cream/8 text-cream backdrop-blur-xl hover:bg-cream/14" : "border-warm-border/70 bg-white/70 text-warm backdrop-blur-xl hover:bg-brand-mist"
+                  "pressable flex h-11 w-11 items-center justify-center rounded-pill px-5 border md:hidden",
+                  onDark ? "border-cream/24 bg-cream/16 text-cream backdrop-blur-2xl hover:bg-cream/14" : "border-warm-border/80 bg-white/78 text-warm backdrop-blur-2xl hover:bg-brand-mist/90"
                 )}
               >
-                <Menu className="h-6 w-6" />
+                <Menu className="h-6 w-6 shrink-0" />
               </button>
             </SheetTrigger>
             <SheetContent title="Menu">
@@ -166,7 +166,7 @@ export function Navbar() {
                     <Link
                       href="/"
                       aria-current={pathname === "/" ? "page" : undefined}
-                      className="border-b border-warm-border/60 py-4 font-display text-h3 text-warm transition-colors hover:text-brand-action"
+                      className="ease-[var(--ease-apple)] text-balance border-b border-warm-border/75 py-5 font-display font-semibold tracking-[-0.028em] text-h3 text-warm transition-colors duration-300 hover:text-brand-action"
                     >
                       Home
                     </Link>
@@ -179,7 +179,7 @@ export function Navbar() {
                         <Link
                           href={link.href}
                           aria-current={active ? "page" : undefined}
-                          className="border-b border-warm-border/60 py-4 font-display text-h3 text-warm transition-colors hover:text-brand-action"
+                          className="ease-[var(--ease-apple)] text-balance border-b border-warm-border/75 py-5 font-display font-semibold tracking-[-0.028em] text-h3 text-warm transition-colors duration-300 hover:text-brand-action"
                         >
                           {link.label}
                         </Link>

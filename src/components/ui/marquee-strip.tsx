@@ -5,7 +5,7 @@ function Group() {
     <div className="flex shrink-0 items-center" aria-hidden>
       {MARQUEE_WORDS.map((word, i) => (
         <span key={i} className="flex items-center">
-          <span className="px-5 font-display text-h4 font-semibold tracking-[-0.02em] text-cream/88 sm:px-6">
+          <span className="text-balance px-5 font-display text-h4 font-semibold tracking-[-0.024em] text-cream sm:px-6">
             {word}
           </span>
           <span aria-hidden className="text-brand-light/70">

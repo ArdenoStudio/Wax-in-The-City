@@ -42,7 +42,7 @@ export function SectionHeading({
       {showEyebrow && eyebrow && (
         <span
           className={cn(
-            "mb-3 text-caption font-semibold uppercase tracking-[0.14em]",
+            "mb-3.5 font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em]",
             light ? "text-brand-light" : "text-brand-action"
           )}
         >
@@ -53,7 +53,7 @@ export function SectionHeading({
       <h2
         id={titleId}
         className={cn(
-          "max-w-full font-display text-[clamp(1.85rem,4vw,2.65rem)] font-semibold leading-[1.1] tracking-[-0.03em]",
+          "text-balance max-w-full font-display text-[clamp(1.75rem,3.8vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.032em]",
           light ? "text-cream" : "text-warm"
         )}
       >
@@ -63,8 +63,8 @@ export function SectionHeading({
       {subtitle && (
         <p
           className={cn(
-            "mt-4 w-full max-w-xl text-pretty text-body-lg",
-            light ? "text-cream/72" : "text-warm-grey"
+            "tracking-[-0.011em] font-sans mt-5 w-full max-w-[36rem] text-pretty text-body-lg",
+            light ? "text-cream" : "text-warm-grey"
           )}
         >
           {subtitle}

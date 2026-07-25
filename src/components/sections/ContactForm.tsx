@@ -55,10 +55,10 @@ export function ContactForm() {
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
               <Check className="h-7 w-7" />
             </span>
-            <h3 className="text-balance mt-5 font-display text-h3 font-semibold tracking-display text-warm">
+            <h3 className="text-balance mt-7 font-display text-h3 font-semibold tracking-display text-warm">
               Message sent
             </h3>
-            <p className="font-sans mt-2 max-w-sm text-pretty text-body text-warm-grey">
+            <p className="tracking-[-0.011em] font-sans mt-2 max-w-sm text-pretty text-body text-warm-grey">
               Thank you — we&apos;ll reply within 24 hours. For urgent timing,
               WhatsApp is faster.
             </p>
@@ -79,7 +79,7 @@ export function ContactForm() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="relative z-10 flex flex-col gap-5"
+            className="relative z-10 flex flex-col gap-6"
             noValidate
           >
             <p className="field-helper -mt-1">
@@ -199,7 +199,7 @@ export function ContactForm() {
 
             {serverError && (
               <p
-                className="text-pretty font-sans rounded-card bg-error/10 px-4 py-3 text-body-sm text-error"
+                className="tracking-[-0.011em] text-pretty font-sans rounded-card bg-error/10 px-6 py-4 text-body-sm text-error"
                 role="alert"
                 aria-live="polite"
               >
@@ -209,7 +209,7 @@ export function ContactForm() {
 
             <Button type="submit" size="lg" variant="primary" disabled={isSubmitting}>
               {isSubmitting ? (
-                <span className="relative z-10 inline-flex items-center gap-2 text-cream">
+                <span className="relative z-10 inline-flex items-center gap-2.5 text-cream">
                   <Loader2 className="h-5 w-5 shrink-0 animate-spin" />
                   Sending…
                 </span>
@@ -218,13 +218,13 @@ export function ContactForm() {
               )}
             </Button>
 
-            <p className="text-pretty font-sans text-center text-body-sm text-warm-grey">
+            <p className="tracking-[-0.011em] text-pretty font-sans text-center text-body-sm text-warm-grey">
               Prefer WhatsApp?{" "}
               <a
                 href={whatsappLink("Hi! I have a question.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-10 items-center gap-1 font-semibold text-brand-action underline-offset-4 hover:underline"
+                className="inline-flex min-h-11 items-center gap-1 font-semibold text-brand-action underline-offset-[3px] hover:underline"
               >
                 <WhatsappIcon className="h-4 w-4 shrink-0" />
                 Message us

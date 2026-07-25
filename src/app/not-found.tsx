@@ -15,17 +15,17 @@ export default function NotFound() {
         <p className="text-balance font-display text-[clamp(1.9rem,5.8vw,2.85rem)] font-semibold leading-[0.96] tracking-tight-display text-brand">
           {SITE.shortName}
         </p>
-        <p className="mt-5 font-sans text-caption font-semibold uppercase tracking-[0.1em] text-brand-action">
+        <p className="mt-5 font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em] text-brand-action">
           404
         </p>
         <h1 className="text-balance mt-3 font-display text-h1 font-semibold tracking-tight-display text-warm">
           This page isn&apos;t part of the studio.
         </h1>
-        <p className="font-sans mt-4 text-pretty text-body-lg text-warm-grey">
+        <p className="tracking-[-0.011em] font-sans mt-4 text-pretty text-body-lg text-warm-grey">
           The link may be outdated. Head home, book a visit, or message us on
           WhatsApp — we&apos;ll help you find what you need.
         </p>
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+        <div className="mt-10 flex flex-col gap-3.5 sm:flex-row sm:items-center sm:justify-center">
           <Button asChild size="lg" variant="primary">
             <Link href="/">Back to home</Link>
           </Button>
@@ -50,18 +50,18 @@ export default function NotFound() {
         </div>
         <nav
           aria-label="Helpful links"
-          className="text-pretty font-sans mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-body-sm font-semibold text-brand-action"
+          className="tracking-[-0.011em] text-pretty font-sans mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-body-sm font-semibold text-brand-action"
         >
-          <Link href="/services" className="underline-offset-4 hover:underline">
+          <Link href="/services" className="underline-offset-[3px] hover:underline">
             Services
           </Link>
-          <Link href="/locations" className="underline-offset-4 hover:underline">
+          <Link href="/locations" className="underline-offset-[3px] hover:underline">
             Locations
           </Link>
-          <Link href="/faq" className="underline-offset-4 hover:underline">
+          <Link href="/faq" className="underline-offset-[3px] hover:underline">
             FAQ
           </Link>
-          <Link href="/contact" className="underline-offset-4 hover:underline">
+          <Link href="/contact" className="underline-offset-[3px] hover:underline">
             Contact
           </Link>
         </nav>

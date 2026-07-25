@@ -73,7 +73,7 @@ export function PageHero({
       </motion.div>
 
       <motion.div
-        className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-12 pt-28 lg:px-8 lg:pb-16"
+        className="relative z-10 mx-auto w-full max-w-7xl px-7 pb-12 pt-28 lg:px-10 lg:pb-16"
         initial={reduceMotion ? false : { opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.06 }}
@@ -85,7 +85,7 @@ export function PageHero({
 
         {eyebrow && (
           <motion.p
-            className="mt-5 font-sans text-caption font-semibold uppercase tracking-[0.1em] text-brand-light/90"
+            className="mt-7 font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em] text-brand-light/90"
             initial={reduceMotion ? false : { opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.14 }}
@@ -94,18 +94,18 @@ export function PageHero({
           </motion.p>
         )}
 
-        <h1 className="mt-3 max-w-[15ch] break-words text-balance font-display text-[clamp(2rem,7.5vw,3.05rem)] font-semibold leading-[1.05] tracking-tight-display text-cream sm:max-w-3xl sm:text-[3.4rem] sm:leading-[1.03]">
+        <h1 className="min-w-0 mt-4 max-w-[15ch] break-words text-balance font-display text-[clamp(2rem,7.5vw,3.05rem)] font-semibold leading-[1.05] tracking-tight-display text-cream sm:max-w-3xl sm:text-[3.4rem] sm:leading-[1.03]">
           {title}
         </h1>
 
         {subtitle && (
-          <p className="font-sans mt-4 max-w-xl text-pretty text-body-lg leading-relaxed text-cream/78">
+          <p className="tracking-[-0.011em] font-sans mt-5 max-w-[36rem] text-pretty text-body-lg leading-[1.7] text-cream">
             {subtitle}
           </p>
         )}
 
         {cta && (
-          <div className="mt-7 flex flex-wrap items-center gap-3">{cta}</div>
+          <div className="mt-7 flex flex-wrap items-center gap-3.5">{cta}</div>
         )}
       </motion.div>
     </section>

@@ -19,12 +19,12 @@ export const ShimmerButton = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        "group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-pill bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] px-8 font-sans text-body-lg font-medium text-cream shadow-[0_16px_42px_rgba(162,15,55,0.32)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_22px_58px_rgba(162,15,55,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/50 focus-visible:ring-offset-2 active:scale-[0.98]",
+        "tracking-[-0.011em] text-pretty group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-pill bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] px-8 font-sans text-body-lg font-semibold text-cream shadow-card-hover transition-all duration-300 ease-out hover:-translate-y-[3px] hover:shadow-[0_22px_58px_rgba(162,15,55,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-[3px] active:scale-[0.985]",
         className
       )}
       {...props}
     >
-      <span className="relative z-10 inline-flex items-center gap-2">
+      <span className="relative z-10 inline-flex items-center gap-2.5">
         {children}
       </span>
       <span
@@ -36,7 +36,7 @@ export const ShimmerButton = React.forwardRef<
       />
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 -translate-x-[110%] skew-x-[-15deg] bg-gradient-to-r from-transparent via-cream/25 to-transparent transition-[transform] duration-500 ease-out group-hover:translate-x-[110%]"
+        className="pointer-events-none absolute inset-0 -translate-x-[110%] skew-x-[-15deg] bg-gradient-to-r from-transparent via-cream/25 to-transparent transition-[transform] duration-300 ease-out group-hover:translate-x-[110%]"
       />
     </Comp>
   );

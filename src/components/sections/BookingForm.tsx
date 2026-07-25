@@ -111,13 +111,13 @@ export function BookingForm({
   };
 
   return (
-    <div className="premium-surface rounded-card p-5 sm:p-7">
-      <div className="relative z-10 mb-6 grid gap-2 font-sans text-caption font-semibold uppercase tracking-[0.1em] text-warm-grey sm:grid-cols-2">
-        <span className="flex items-center gap-2 rounded-card border border-warm-border/70 bg-white/62 px-3 py-2">
+    <div className="premium-surface rounded-card p-7 sm:p-8">
+      <div className="relative z-10 mb-6 grid gap-2.5 font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em] text-warm-grey sm:grid-cols-2">
+        <span className="flex items-center gap-2.5 rounded-card border border-warm-border/80 bg-white/62 px-3.5 py-2">
           <ShieldCheck className="h-4 w-4 shrink-0 text-brand-action" />
           Private request
         </span>
-        <span className="sticky top-24 flex items-center gap-2 rounded-card border border-warm-border/70 bg-white/62 px-3 py-2 md:static">
+        <span className="sticky top-24 flex items-center gap-2.5 rounded-card border border-warm-border/80 bg-white/62 px-3 py-3 md:static">
           <Clock3 className="h-4 w-4 shrink-0 text-brand-action" />
           Confirmation first
         </span>
@@ -135,13 +135,13 @@ export function BookingForm({
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
               <Check className="h-7 w-7" />
             </span>
-            <h3 className="text-balance mt-5 font-display text-h3 font-semibold tracking-display text-warm">
+            <h3 className="text-balance mt-6 font-display text-h3 font-semibold tracking-display text-warm">
               Request received
             </h3>
-            <p className="font-sans mt-2 max-w-sm text-pretty text-body text-warm-grey">
+            <p className="tracking-[-0.011em] font-sans mt-2.5 max-w-sm text-pretty text-body text-warm-grey">
               We&apos;ll confirm within 24 hours. WhatsApp if timing is urgent.
             </p>
-            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col items-center gap-4 sm:flex-row">
               <Button asChild variant="outline" size="md">
                 <Link href="/services">Browse services</Link>
               </Button>
@@ -166,10 +166,10 @@ export function BookingForm({
             className="relative z-10 flex flex-col gap-5"
             noValidate
           >
-            <div className="sticky top-20 z-20 flex flex-col gap-1.5 rounded-card bg-cream/94 py-2 backdrop-blur-xl md:static md:bg-transparent md:p-0">
+            <div className="sticky top-24 z-30 flex flex-col gap-1.5 rounded-card bg-cream/94 py-3 backdrop-blur-2xl md:static md:bg-transparent md:p-0">
               <div className="flex items-center justify-between">
-                <span className="font-sans text-caption text-warm-grey">Booking details</span>
-                <span className="font-sans text-caption font-semibold tabular-nums text-brand-action">
+                <span className="font-sans text-caption leading-snug text-warm-grey">Booking details</span>
+                <span className="font-sans text-caption leading-snug font-semibold tabular-nums text-brand-action">
                   {filledCount} / 4
                 </span>
               </div>
@@ -349,7 +349,7 @@ export function BookingForm({
             </div>
 
             {serverError && (
-              <p className="text-pretty font-sans rounded-card bg-error/10 px-4 py-3 text-body-sm text-error" role="alert">
+              <p className="tracking-[-0.011em] text-pretty font-sans rounded-card bg-error/10 px-5 py-3.5 text-body-sm text-error" role="alert">
                 {serverError}
               </p>
             )}
@@ -365,14 +365,14 @@ export function BookingForm({
               )}
             </ShimmerButton>
 
-            <p className="text-center font-sans text-caption text-warm-grey">
+            <p className="text-center font-sans text-caption leading-snug text-warm-grey">
               No card required · Confirmation within 24 hours
             </p>
-            <p className="text-center font-sans text-caption text-warm-grey/85">
+            <p className="text-center font-sans text-caption leading-snug text-warm-grey/85">
               Reviewed privately by the studio — see our{" "}
               <a
                 href="/contact#privacy"
-                className="font-semibold text-brand-action underline-offset-4 hover:underline"
+                className="font-semibold text-brand-action underline-offset-[3px] hover:underline"
               >
                 privacy note
               </a>

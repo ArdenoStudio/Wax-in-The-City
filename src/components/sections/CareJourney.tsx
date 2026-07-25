@@ -40,7 +40,7 @@ export function CareJourney({
   return (
     <section
       className={cn(
-        "relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8",
+        "relative overflow-hidden bg-cream-alt px-7 py-section-lg lg:px-10",
         className
       )}
     >
@@ -54,7 +54,7 @@ export function CareJourney({
           subtitle={subtitle}
         />
         {note && (
-          <p className="mt-4 max-w-xl font-sans text-body-sm leading-relaxed text-warm-grey">
+          <p className="tracking-[-0.011em] text-pretty mt-4 max-w-[36rem] font-sans text-body-sm leading-[1.7] text-warm-grey">
             {note}
           </p>
         )}
@@ -67,19 +67,19 @@ export function CareJourney({
           {CARE_JOURNEY_STEPS.map((step, index) => (
             <li
               key={step.title}
-              className="relative flex gap-5 pb-11 last:pb-0 sm:gap-6 sm:pb-12"
+              className="relative flex gap-6 pb-11 last:pb-0 sm:gap-6 sm:pb-12"
             >
-              <span className="relative z-10 mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-brand-action/35 bg-cream-alt">
+              <span className="relative z-10 mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-brand-action/45 bg-cream-alt">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />
               </span>
               <div className="min-w-0 pt-0.5">
-                <p className="font-sans text-caption font-semibold uppercase tracking-[0.12em] text-brand-action/65">
+                <p className="font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em] text-brand-action/65">
                   {String(index + 1).padStart(2, "0")}
                 </p>
-                <h3 className="mt-1.5 font-display text-h3 font-semibold tracking-[-0.02em] text-warm">
+                <h3 className="text-balance mt-1.5 font-display text-h3 font-semibold tracking-[-0.024em] text-warm">
                   {step.title}
                 </h3>
-                <p className="mt-2 max-w-xl font-sans text-body-sm leading-relaxed text-warm-grey">
+                <p className="tracking-[-0.011em] text-pretty mt-3 max-w-xl font-sans text-body-sm leading-[1.7] text-warm-grey">
                   {step.body}
                 </p>
               </div>

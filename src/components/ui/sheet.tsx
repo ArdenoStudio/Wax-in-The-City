@@ -46,7 +46,7 @@ const SheetContent = React.forwardRef<
       <DialogPrimitive.Description className="sr-only">
         {description}
       </DialogPrimitive.Description>
-      <DialogPrimitive.Close className="ease-[var(--ease-apple)] absolute right-5 top-5 z-10 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-pill border border-warm-border/60 bg-white/70 text-warm-grey shadow-[0_8px_20px_rgba(27,14,16,0.06)] transition-colors duration-300 hover:border-brand-action/25 hover:bg-brand-mist hover:text-brand-action focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-action/40">
+      <DialogPrimitive.Close className="ease-[var(--ease-apple)] absolute right-5 top-5 z-10 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-pill px-5 border border-warm-border/75 bg-white/78 text-warm-grey shadow-card transition-colors duration-300 hover:border-brand-action/25 hover:bg-brand-mist/90 hover:text-brand-action focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-[3px] focus-visible:ring-brand-action/40">
         <X className="h-5 w-5 shrink-0" />
         <span className="sr-only">Close menu</span>
       </DialogPrimitive.Close>

@@ -65,7 +65,7 @@ export function ServiceTabs({
       <div
         role="tablist"
         aria-label="Service categories"
-        className="sticky top-20 z-20 mx-auto flex max-w-full flex-wrap justify-center gap-1.5 rounded-card border border-brand-action/16 bg-cream/92 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_18px_46px_rgba(39,19,21,0.08)] backdrop-blur-xl sm:w-fit sm:flex-nowrap sm:rounded-pill"
+        className="sticky top-24 z-30 mx-auto flex max-w-full flex-wrap justify-center gap-1.5 rounded-card border border-brand-action/22 bg-cream/95 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_18px_46px_rgba(27,14,16,0.08)] backdrop-blur-2xl sm:w-fit sm:flex-nowrap sm:rounded-pill"
       >
         {categories.map((cat, index) => {
           const isActive = active === cat.slug;
@@ -98,7 +98,7 @@ export function ServiceTabs({
               {isActive && (
                 <motion.span
                   layoutId="service-tab-indicator"
-                  className="absolute inset-0 rounded-pill bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] shadow-[0_12px_28px_rgba(162,15,55,0.22)]"
+                  className="absolute inset-0 rounded-pill bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] shadow-card-hover"
                   transition={{ type: "spring", stiffness: 360, damping: 34 }}
                 />
               )}

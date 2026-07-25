@@ -25,7 +25,7 @@ export default function GalleryPage() {
 
       <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-45" />
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[72rem]">
           <SectionHeading
             eyebrow="Gallery"
             title="Browse the studio."
@@ -36,14 +36,14 @@ export default function GalleryPage() {
           </div>
 
           <div className="mt-14 flex flex-col items-center gap-3">
-            <p className="text-pretty font-sans text-center text-body-sm text-warm-grey">
+            <p className="tracking-[-0.011em] text-pretty font-sans text-center text-body-sm text-warm-grey">
               More atmosphere lives on Instagram.
             </p>
             <a
               href={SITE.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="ease-[var(--ease-apple)] pressable inline-flex items-center gap-2 rounded-pill border border-brand-action/35 px-6 py-3 font-semibold text-brand-action transition-colors duration-300 hover:bg-brand-mist"
+              className="ease-[var(--ease-apple)] pressable inline-flex items-center gap-2.5 rounded-pill border border-brand-action/45 px-6 py-3 font-semibold text-brand-action transition-colors duration-300 hover:bg-brand-mist/90"
             >
               <InstagramIcon className="h-5 w-5 shrink-0" />
               Follow @waxinthecitylk

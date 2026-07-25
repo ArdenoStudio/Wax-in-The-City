@@ -54,24 +54,24 @@ export function BeforeAfterSlider({
           itemOne={<ReactCompareSliderImage src={beforeSrc} alt={beforeAlt} />}
           itemTwo={<ReactCompareSliderImage src={afterSrc} alt={afterAlt} />}
           aria-label={`Compare ${beforeLabel} and ${afterLabel}`}
-          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-card"
+          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-card-lg"
         />
       ) : (
         <div
-          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-card bg-brand/30"
+          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-card-lg bg-brand/30"
           aria-label={`Compare ${beforeLabel} and ${afterLabel}`}
           role="img"
         />
       )}
-      <div className="relative z-10 mt-2.5 flex items-center justify-between gap-3 px-2 pb-1">
-        <span className="font-sans text-caption font-semibold uppercase tracking-[0.1em] text-cream/70">
+      <div className="relative z-10 mt-2.5 flex items-center justify-between gap-4 px-2 pb-1">
+        <span className="font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em] text-cream">
           {beforeLabel}
         </span>
-        <span className="font-sans text-caption font-semibold uppercase tracking-[0.1em] text-cream/70">
+        <span className="font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em] text-cream">
           {afterLabel}
         </span>
       </div>
-      <p className="relative z-10 px-2 pb-1.5 font-sans text-caption text-cream/45">
+      <p className="relative z-10 px-2 pb-1.5 font-sans text-caption leading-snug text-cream">
         Illustrative care imagery
       </p>
     </div>

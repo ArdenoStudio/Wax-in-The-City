@@ -707,3 +707,1564 @@
 - [x] #679 src/app/contact/page.tsx: s2-ease add ease-[var(--ease-apple)]
 - [x] #680 src/app/locations/[branch]/page.tsx: s2-caption-sans text-caption + font-sans
 - [x] #681 src/components/global/Footer.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #682 src/app/admin/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #683 src/app/contact/page.tsx: s2-backdrop-bare backdrop-blur→backdrop-blur-xl
+- [x] #684 src/app/admin/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #685 src/app/admin/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #686 src/app/admin/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #687 src/app/admin/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #688 src/app/admin/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #689 src/app/admin/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #690 src/app/admin/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #691 src/app/admin/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #692 src/app/admin/page.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #693 src/app/admin/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #694 src/app/admin/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #695 src/app/admin/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #696 src/app/admin/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #697 src/app/admin/page.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #698 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #699 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #700 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #701 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #702 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #703 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #704 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #705 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #706 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #707 src/components/global/Navbar.tsx: s2-text-pretty add text-pretty on body
+- [x] #708 src/components/sections/AboutTeaser.tsx: s2-text-pretty add text-pretty on body
+- [x] #709 src/components/sections/BeforeAfterShowcase.tsx: s2-text-pretty add text-pretty on body
+- [x] #710 src/components/sections/BeforeAfterSlider.tsx: s2-rounded-media overflow-hidden rounded-card→rounded-card-lg
+- [x] #711 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #712 src/components/sections/CareJourney.tsx: s2-text-pretty add text-pretty on body
+- [x] #713 src/components/sections/CopyAddressButton.tsx: s2-text-pretty add text-pretty on body
+- [x] #714 src/components/sections/FAQTeaser.tsx: s2-text-pretty add text-pretty on body
+- [x] #715 src/components/sections/GalleryTeaser.tsx: s2-text-pretty add text-pretty on body
+- [x] #716 src/components/sections/HeroSection.tsx: s2-text-pretty add text-pretty on body
+- [x] #717 src/components/sections/HoursTable.tsx: s2-text-pretty add text-pretty on body
+- [x] #718 src/components/sections/ReviewThemes.tsx: s2-text-pretty add text-pretty on body
+- [x] #719 src/components/sections/ServiceTabs.tsx: s2-shadow-ink shadow rgba(39,19,21→27,14,16
+- [x] #720 src/components/sections/ServicesGrid.tsx: s2-text-pretty add text-pretty on body
+- [x] #721 src/components/sections/StatsCounter.tsx: s2-text-pretty add text-pretty on body
+- [x] #722 src/components/sections/TrustStrip.tsx: s2-text-pretty add text-pretty on body
+- [x] #723 src/components/ui/branch-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #724 src/components/ui/marquee-strip.tsx: s2-text-balance add text-balance on display
+- [x] #725 src/components/ui/section-heading.tsx: s2-text-balance add text-balance on display
+- [x] #726 src/components/ui/service-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #727 src/components/ui/shimmer-button.tsx: s2-text-pretty add text-pretty on body
+- [x] #728 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #729 src/app/contact/page.tsx: s2-backdrop-bare backdrop-blur→backdrop-blur-xl
+- [x] #730 src/components/global/Navbar.tsx: s2-text-balance add text-balance on display
+- [x] #731 src/components/sections/AboutTeaser.tsx: s2-text-pretty add text-pretty on body
+- [x] #732 src/components/sections/BeforeAfterShowcase.tsx: s2-text-pretty add text-pretty on body
+- [x] #733 src/components/sections/BeforeAfterSlider.tsx: s2-rounded-media overflow-hidden rounded-card→rounded-card-lg
+- [x] #734 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #735 src/components/sections/CareJourney.tsx: s2-text-pretty add text-pretty on body
+- [x] #736 src/components/sections/CopyAddressButton.tsx: s2-duration transition-colors + duration-300
+- [x] #737 src/components/sections/FAQTeaser.tsx: s2-duration transition-colors + duration-300
+- [x] #738 src/components/sections/GalleryTeaser.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #739 src/components/sections/HeroSection.tsx: s2-text-pretty add text-pretty on body
+- [x] #740 src/components/sections/HoursTable.tsx: s2-text-pretty add text-pretty on body
+- [x] #741 src/components/sections/ReviewThemes.tsx: s2-text-balance add text-balance on display
+- [x] #742 src/components/sections/ServicesGrid.tsx: s2-text-pretty add text-pretty on body
+- [x] #743 src/components/sections/StatsCounter.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #744 src/components/sections/TrustStrip.tsx: s2-text-pretty add text-pretty on body
+- [x] #745 src/components/ui/branch-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #746 src/components/ui/section-heading.tsx: s2-caption-sans text-caption + font-sans
+- [x] #747 src/components/ui/service-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #748 src/components/ui/shimmer-button.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #749 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #750 src/app/contact/page.tsx: s2-backdrop-bare backdrop-blur→backdrop-blur-xl
+- [x] #751 src/components/global/Navbar.tsx: s2-text-balance add text-balance on display
+- [x] #752 src/components/sections/AboutTeaser.tsx: s2-text-balance add text-balance on display
+- [x] #753 src/components/sections/BeforeAfterShowcase.tsx: s2-text-pretty add text-pretty on body
+- [x] #754 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #755 src/components/sections/CareJourney.tsx: s2-text-balance add text-balance on display
+- [x] #756 src/components/sections/CopyAddressButton.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #757 src/components/sections/FAQTeaser.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #758 src/components/sections/GalleryTeaser.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #759 src/components/sections/HeroSection.tsx: s2-text-pretty add text-pretty on body
+- [x] #760 src/components/sections/HoursTable.tsx: s2-caption-sans text-caption + font-sans
+- [x] #761 src/components/sections/ReviewThemes.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #762 src/components/sections/ServicesGrid.tsx: s2-text-pretty add text-pretty on body
+- [x] #763 src/components/sections/StatsCounter.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #764 src/components/sections/TrustStrip.tsx: s2-text-balance add text-balance on display
+- [x] #765 src/components/ui/branch-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #766 src/components/ui/service-card.tsx: s2-text-balance add text-balance on display
+- [x] #767 src/components/ui/shimmer-button.tsx: s2-misc:duration-500 duration-500→duration-300
+- [x] #768 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #769 src/components/global/Navbar.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #770 src/components/sections/AboutTeaser.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #771 src/components/sections/BeforeAfterShowcase.tsx: s2-text-balance add text-balance on display
+- [x] #772 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #773 src/components/sections/CareJourney.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #774 src/components/sections/CopyAddressButton.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #775 src/components/sections/FAQTeaser.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #776 src/components/sections/GalleryTeaser.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #777 src/components/sections/HeroSection.tsx: s2-text-balance add text-balance on display
+- [x] #778 src/components/sections/HoursTable.tsx: s2-caption-sans text-caption + font-sans
+- [x] #779 src/components/sections/ReviewThemes.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #780 src/components/sections/ServicesGrid.tsx: s2-text-pretty add text-pretty on body
+- [x] #781 src/components/sections/StatsCounter.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #782 src/components/sections/TrustStrip.tsx: s2-duration transition-colors + duration-300
+- [x] #783 src/components/ui/branch-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #784 src/components/ui/service-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #785 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #786 src/components/global/Navbar.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #787 src/components/sections/AboutTeaser.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #788 src/components/sections/BeforeAfterShowcase.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #789 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #790 src/components/sections/CopyAddressButton.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #791 src/components/sections/FAQTeaser.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #792 src/components/sections/GalleryTeaser.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #793 src/components/sections/HeroSection.tsx: s2-text-balance add text-balance on display
+- [x] #794 src/components/sections/ServicesGrid.tsx: s2-text-balance add text-balance on display
+- [x] #795 src/components/sections/TrustStrip.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #796 src/components/ui/branch-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #797 src/components/ui/service-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #798 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #799 src/components/global/Navbar.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #800 src/components/sections/AboutTeaser.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #801 src/components/sections/BeforeAfterShowcase.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #802 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #803 src/components/sections/CopyAddressButton.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #804 src/components/sections/GalleryTeaser.tsx: s2-misc:duration-500 duration-500→duration-300
+- [x] #805 src/components/sections/HeroSection.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #806 src/components/sections/ServicesGrid.tsx: s2-text-balance add text-balance on display
+- [x] #807 src/components/sections/TrustStrip.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #808 src/components/ui/branch-card.tsx: s2-text-balance add text-balance on display
+- [x] #809 src/components/ui/service-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #810 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #811 src/components/global/Navbar.tsx: s2-duration transition-colors + duration-300
+- [x] #812 src/components/sections/AboutTeaser.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #813 src/components/sections/BeforeAfterShowcase.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #814 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #815 src/components/sections/HeroSection.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #816 src/components/sections/ServicesGrid.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #817 src/components/sections/TrustStrip.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #818 src/components/ui/branch-card.tsx: s2-lead-tight display leading-tight→leading-[1.1]
+- [x] #819 src/components/ui/service-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #820 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #821 src/components/global/Navbar.tsx: s2-duration transition-colors + duration-300
+- [x] #822 src/components/sections/AboutTeaser.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #823 src/components/sections/BookingZone.tsx: s2-text-balance add text-balance on display
+- [x] #824 src/components/sections/HeroSection.tsx: s2-duration transition-colors + duration-300
+- [x] #825 src/components/sections/ServicesGrid.tsx: s2-lead-tight display leading-tight→leading-[1.1]
+- [x] #826 src/components/sections/TrustStrip.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #827 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #828 src/components/ui/service-card.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #829 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #830 src/components/global/Navbar.tsx: s2-duration transition-colors + duration-300
+- [x] #831 src/components/sections/AboutTeaser.tsx: s2-ring-offset focus-visible:ring-2 + ring-offset-2
+- [x] #832 src/components/sections/BookingZone.tsx: s2-lead-snug display leading-snug→leading-[1.15]
+- [x] #833 src/components/sections/HeroSection.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #834 src/components/sections/ServicesGrid.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #835 src/components/sections/TrustStrip.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #836 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #837 src/components/ui/service-card.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #838 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #839 src/components/global/Navbar.tsx: s2-duration transition-colors + duration-300
+- [x] #840 src/components/sections/AboutTeaser.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #841 src/components/sections/BookingZone.tsx: s2-duration transition-colors + duration-300
+- [x] #842 src/components/sections/HeroSection.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #843 src/components/sections/ServicesGrid.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #844 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #845 src/components/ui/service-card.tsx: s2-misc:duration-500 duration-500→duration-300
+- [x] #846 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #847 src/components/global/Navbar.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #848 src/components/sections/BookingZone.tsx: s2-duration transition-colors + duration-300
+- [x] #849 src/components/sections/HeroSection.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #850 src/components/sections/ServicesGrid.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #851 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #852 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #853 src/components/global/Navbar.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #854 src/components/sections/BookingZone.tsx: s2-duration transition-colors + duration-300
+- [x] #855 src/components/sections/HeroSection.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #856 src/components/sections/ServicesGrid.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #857 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #858 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #859 src/components/global/Navbar.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #860 src/components/sections/BookingZone.tsx: s2-duration transition-colors + duration-300
+- [x] #861 src/components/sections/HeroSection.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #862 src/components/sections/ServicesGrid.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #863 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #864 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #865 src/components/global/Navbar.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #866 src/components/sections/BookingZone.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #867 src/components/sections/HeroSection.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #868 src/components/sections/ServicesGrid.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #869 src/components/ui/branch-card.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #870 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #871 src/components/global/Navbar.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #872 src/components/sections/BookingZone.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #873 src/components/sections/HeroSection.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #874 src/components/sections/ServicesGrid.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #875 src/components/ui/branch-card.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #876 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #877 src/components/global/Navbar.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #878 src/components/sections/BookingZone.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #879 src/components/sections/HeroSection.tsx: s2-ring-offset focus-visible:ring-2 + ring-offset-2
+- [x] #880 src/components/sections/ServicesGrid.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #881 src/components/ui/branch-card.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #882 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #883 src/components/global/Navbar.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #884 src/components/sections/BookingZone.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #885 src/components/sections/HeroSection.tsx: s2-caption-sans text-caption + font-sans
+- [x] #886 src/components/sections/ServicesGrid.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #887 src/components/ui/branch-card.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #888 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #889 src/components/global/Navbar.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #890 src/components/sections/BookingZone.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #891 src/components/sections/HeroSection.tsx: s2-caption-sans text-caption + font-sans
+- [x] #892 src/components/sections/ServicesGrid.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #893 src/components/ui/branch-card.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #894 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #895 src/components/global/Navbar.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #896 src/components/sections/BookingZone.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #897 src/components/sections/HeroSection.tsx: s2-caption-sans text-caption + font-sans
+- [x] #898 src/components/ui/branch-card.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #899 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #900 src/components/global/Navbar.tsx: s2-misc:tracking-wide tracking-wide→tracking-[0.04em]
+- [x] #901 src/components/sections/BookingZone.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #902 src/components/sections/HeroSection.tsx: s2-caption-sans text-caption + font-sans
+- [x] #903 src/components/ui/branch-card.tsx: s2-caption-sans text-caption + font-sans
+- [x] #904 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #905 src/components/global/Navbar.tsx: s2-misc:duration-500 duration-500→duration-300
+- [x] #906 src/components/sections/BookingZone.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #907 src/components/ui/branch-card.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #908 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #909 src/components/sections/BookingZone.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #910 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #911 src/components/sections/BookingZone.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #912 src/app/admin/page.tsx: s2-text-balance add text-balance on display
+- [x] #913 src/components/sections/BookingZone.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #914 src/app/admin/page.tsx: s2-text-balance add text-balance on display
+- [x] #915 src/app/admin/page.tsx: s2-text-balance add text-balance on display
+- [x] #916 src/app/admin/page.tsx: s2-text-balance add text-balance on display
+- [x] #917 src/app/admin/page.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #918 src/app/admin/page.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #919 src/app/admin/page.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #920 src/app/admin/page.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #921 src/app/admin/page.tsx: s2-duration transition-colors + duration-300
+- [x] #922 src/app/admin/page.tsx: s2-duration transition-colors + duration-300
+- [x] #923 src/app/admin/page.tsx: s2-duration transition-colors + duration-300
+- [x] #924 src/app/admin/page.tsx: s2-duration transition-colors + duration-300
+- [x] #925 src/app/admin/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #926 src/app/admin/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #927 src/app/admin/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #928 src/app/admin/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #929 src/app/admin/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #930 src/app/admin/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #931 src/app/admin/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #932 src/app/admin/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #933 src/app/admin/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #934 src/app/admin/page.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #935 src/app/admin/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #936 src/app/admin/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #937 src/app/admin/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #938 src/app/admin/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #939 src/app/admin/page.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #940 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #941 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #942 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #943 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #944 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #945 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #946 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #947 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #948 src/app/admin/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #949 src/app/admin/page.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #950 src/app/admin/page.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #951 src/app/admin/page.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #952 src/app/admin/page.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #953 src/app/admin/page.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #954 src/app/admin/page.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #955 src/app/admin/page.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #956 src/app/admin/page.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #957 src/app/admin/page.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #958 src/app/about/page.tsx: s3-bg-cream:bg-cream/[0.06] bg-cream/[0.06]→bg-cream/[0.08]
+- [x] #959 src/app/admin/page.tsx: s3-bg-cream:bg-cream/10 bg-cream/10→bg-cream/14
+- [x] #960 src/app/book/page.tsx: s3-brand:bg-white/60 bg-white/60→bg-white/68
+- [x] #961 src/app/contact/page.tsx: s3-bg-cream:hover:bg-cream/8 hover:bg-cream/8→hover:bg-cream/12
+- [x] #962 src/app/gallery/page.tsx: s3-bd:border-brand-action/35 border-brand-action/35→border-brand-action/40
+- [x] #963 src/app/globals.css: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #964 src/app/locations/[branch]/page.tsx: s3-bd:border-brand-action/35 border-brand-action/35→border-brand-action/40
+- [x] #965 src/app/locations/page.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #966 src/app/services/[slug]/page.tsx: s3-bd:border-brand-action/28 border-brand-action/28→border-brand-action/34
+- [x] #967 src/app/services/page.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #968 src/components/global/Footer.tsx: s3-bg-cream:bg-cream/10 bg-cream/10→bg-cream/14
+- [x] #969 src/components/global/MobileBookingBar.tsx: s3-bd:border-brand-action/28 border-brand-action/28→border-brand-action/34
+- [x] #970 src/components/global/Navbar.tsx: s3-bg-cream:bg-cream/8 bg-cream/8→bg-cream/12
+- [x] #971 src/components/sections/AboutTeaser.tsx: s3-bd:border-brand-action/30 border-brand-action/30→border-brand-action/36
+- [x] #972 src/components/sections/BeforeAfterShowcase.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #973 src/components/sections/BookingForm.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #974 src/components/sections/BookingZone.tsx: s3-bg-cream:bg-cream/[0.05] bg-cream/[0.05]→bg-cream/[0.07]
+- [x] #975 src/components/sections/CareJourney.tsx: s3-bd:border-brand-action/35 border-brand-action/35→border-brand-action/40
+- [x] #976 src/components/sections/CopyAddressButton.tsx: s3-bd:border-brand-action/30 border-brand-action/30→border-brand-action/36
+- [x] #977 src/components/sections/FAQAccordion.tsx: s3-bd:border-brand-action/30 border-brand-action/30→border-brand-action/36
+- [x] #978 src/components/sections/FAQTeaser.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #979 src/components/sections/GalleryGrid.tsx: s3-bg-cream:bg-cream/10 bg-cream/10→bg-cream/14
+- [x] #980 src/components/sections/HeroSection.tsx: s3-bg-cream:bg-cream/[0.055] bg-cream/[0.055]→bg-cream/[0.08]
+- [x] #981 src/components/sections/HoursTable.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #982 src/components/sections/PageHero.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #983 src/components/sections/ReviewThemes.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #984 src/components/sections/ServiceTabs.tsx: s3-bd:border-brand-action/16 border-brand-action/16→border-brand-action/22
+- [x] #985 src/components/sections/ServicesGrid.tsx: s3-bd:border-brand-action/16 border-brand-action/16→border-brand-action/22
+- [x] #986 src/components/sections/TrustStrip.tsx: s3-bg-cream:bg-cream/[0.06] bg-cream/[0.06]→bg-cream/[0.08]
+- [x] #987 src/components/ui/accordion.tsx: s3-bd:border-warm-border/50 border-warm-border/50→border-warm-border/70
+- [x] #988 src/components/ui/branch-card.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #989 src/components/ui/button.tsx: s3-bg-cream:bg-cream/8 bg-cream/8→bg-cream/12
+- [x] #990 src/components/ui/label.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #991 src/components/ui/service-card.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #992 src/components/ui/sheet.tsx: s3-bd:border-warm-border/60 border-warm-border/60→border-warm-border/75
+- [x] #993 src/components/ui/shimmer-button.tsx: s3-focus:focus-visible:ring-brand-action/50 focus-visible:ring-brand-action/50→focus-visible:ring-brand-action/40
+- [x] #994 src/app/about/page.tsx: s3-bd:border-cream/10 border-cream/10→border-cream/14
+- [x] #995 src/app/admin/page.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #996 src/app/contact/page.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #997 src/app/gallery/page.tsx: s3-bd:border-brand-action/40 border-brand-action/40→border-brand-action/45
+- [x] #998 src/app/globals.css: s3-bd:border-brand-action/30 border-brand-action/30→border-brand-action/36
+- [x] #999 src/app/locations/[branch]/page.tsx: s3-bd:border-brand-action/40 border-brand-action/40→border-brand-action/45
+- [x] #1000 src/app/locations/page.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #1001 src/app/services/[slug]/page.tsx: s3-brand:text-brand-action/45 text-brand-action/45→text-brand-action/55
+- [x] #1002 src/app/services/page.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #1003 src/components/global/Footer.tsx: s3-bd:border-cream/10 border-cream/10→border-cream/14
+- [x] #1004 src/components/global/MobileBookingBar.tsx: s3-brand:bg-white/60 bg-white/60→bg-white/68
+- [x] #1005 src/components/global/Navbar.tsx: s3-bg-cream:hover:bg-cream/9 hover:bg-cream/9→hover:bg-cream/12
+- [x] #1006 src/components/sections/BookingForm.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #1007 src/components/sections/BookingZone.tsx: s3-bg-cream:hover:bg-cream/8 hover:bg-cream/8→hover:bg-cream/12
+- [x] #1008 src/components/sections/CareJourney.tsx: s3-bd:border-brand-action/40 border-brand-action/40→border-brand-action/45
+- [x] #1009 src/components/sections/CopyAddressButton.tsx: s3-brand:bg-white/60 bg-white/60→bg-white/68
+- [x] #1010 src/components/sections/FAQAccordion.tsx: s3-brand:text-brand-action/70 text-brand-action/70→text-brand-action/80
+- [x] #1011 src/components/sections/FAQTeaser.tsx: s3-brand:bg-white/60 bg-white/60→bg-white/68
+- [x] #1012 src/components/sections/GalleryGrid.tsx: s3-bg-cream:bg-cream/10 bg-cream/10→bg-cream/14
+- [x] #1013 src/components/sections/HeroSection.tsx: s3-bg-cream:bg-cream/[0.055] bg-cream/[0.055]→bg-cream/[0.08]
+- [x] #1014 src/components/sections/HoursTable.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #1015 src/components/sections/ReviewThemes.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #1016 src/components/sections/ServiceTabs.tsx: s3-brand:bg-cream/92 bg-cream/92→bg-cream/95
+- [x] #1017 src/components/sections/ServicesGrid.tsx: s3-bd:border-brand-action/16 border-brand-action/16→border-brand-action/22
+- [x] #1018 src/components/sections/TrustStrip.tsx: s3-bd:border-cream/10 border-cream/10→border-cream/14
+- [x] #1019 src/components/ui/accordion.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #1020 src/components/ui/branch-card.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #1021 src/components/ui/button.tsx: s3-brand:bg-white/40 bg-white/40→bg-white/55
+- [x] #1022 src/components/ui/service-card.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #1023 src/components/ui/sheet.tsx: s3-brand:bg-white/70 bg-white/70→bg-white/78
+- [x] #1024 src/app/about/page.tsx: s3-bd:border-cream/14 border-cream/14→border-cream/18
+- [x] #1025 src/app/admin/page.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1026 src/app/contact/page.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1027 src/app/globals.css: s3-brand:text-brand-action/75 text-brand-action/75→text-brand-action/80
+- [x] #1028 src/app/locations/[branch]/page.tsx: s3-brand:bg-brand-mist/70 bg-brand-mist/70→bg-brand-mist/85
+- [x] #1029 src/app/locations/page.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #1030 src/app/services/[slug]/page.tsx: s3-brand:bg-white/50 bg-white/50→bg-white/60
+- [x] #1031 src/app/services/page.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1032 src/components/global/Footer.tsx: s3-bd:border-cream/10 border-cream/10→border-cream/14
+- [x] #1033 src/components/global/Navbar.tsx: s3-bd:border-cream/14 border-cream/14→border-cream/18
+- [x] #1034 src/components/sections/BookingZone.tsx: s3-bd:border-cream/10 border-cream/10→border-cream/14
+- [x] #1035 src/components/sections/CareJourney.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #1036 src/components/sections/GalleryGrid.tsx: s3-bg-cream:bg-cream/10 bg-cream/10→bg-cream/14
+- [x] #1037 src/components/sections/HeroSection.tsx: s3-bg-cream:bg-cream/8 bg-cream/8→bg-cream/12
+- [x] #1038 src/components/sections/HoursTable.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #1039 src/components/sections/ServicesGrid.tsx: s3-brand:bg-white/70 bg-white/70→bg-white/78
+- [x] #1040 src/components/sections/TrustStrip.tsx: s3-bd:border-cream/10 border-cream/10→border-cream/14
+- [x] #1041 src/components/ui/button.tsx: s3-brand:bg-white/55 bg-white/55→bg-white/62
+- [x] #1042 src/app/about/page.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1043 src/app/admin/page.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1044 src/app/contact/page.tsx: s3-bd:border-brand-action/28 border-brand-action/28→border-brand-action/34
+- [x] #1045 src/app/globals.css: s3-brand:bg-white/50 bg-white/50→bg-white/60
+- [x] #1046 src/app/locations/page.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1047 src/app/services/[slug]/page.tsx: s3-brand:bg-white/60 bg-white/60→bg-white/68
+- [x] #1048 src/app/services/page.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1049 src/components/global/Footer.tsx: s3-bd:border-cream/10 border-cream/10→border-cream/14
+- [x] #1050 src/components/global/Navbar.tsx: s3-bd:border-cream/15 border-cream/15→border-cream/18
+- [x] #1051 src/components/sections/BookingZone.tsx: s3-bd:border-cream/14 border-cream/14→border-cream/18
+- [x] #1052 src/components/sections/CareJourney.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #1053 src/components/sections/GalleryGrid.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #1054 src/components/sections/HeroSection.tsx: s3-bg-cream:bg-cream/9 bg-cream/9→bg-cream/12
+- [x] #1055 src/components/sections/HoursTable.tsx: s3-brand:bg-white/58 bg-white/58→bg-white/65
+- [x] #1056 src/components/sections/ServicesGrid.tsx: s3-brand:bg-brand-mist/90 bg-brand-mist/90→bg-brand-mist
+- [x] #1057 src/components/sections/TrustStrip.tsx: s3-bd:border-cream/10 border-cream/10→border-cream/14
+- [x] #1058 src/app/about/page.tsx: s3-bd:border-warm-border/60 border-warm-border/60→border-warm-border/75
+- [x] #1059 src/app/admin/page.tsx: s3-bd:border-brand-action/16 border-brand-action/16→border-brand-action/22
+- [x] #1060 src/app/contact/page.tsx: s3-bd:border-brand-action/28 border-brand-action/28→border-brand-action/34
+- [x] #1061 src/app/globals.css: s3-brand:bg-white/60 bg-white/60→bg-white/68
+- [x] #1062 src/app/locations/page.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1063 src/app/services/page.tsx: s3-brand:bg-white/58 bg-white/58→bg-white/65
+- [x] #1064 src/components/global/Footer.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #1065 src/components/global/Navbar.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1066 src/components/sections/BookingZone.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1067 src/components/sections/GalleryGrid.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #1068 src/components/sections/HeroSection.tsx: s3-bg-cream:bg-cream/10 bg-cream/10→bg-cream/14
+- [x] #1069 src/components/sections/HoursTable.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #1070 src/components/sections/TrustStrip.tsx: s3-bd:border-cream/14 border-cream/14→border-cream/18
+- [x] #1071 src/app/about/page.tsx: s3-brand:bg-cream-alt/80 bg-cream-alt/80→bg-cream-alt/90
+- [x] #1072 src/app/admin/page.tsx: s3-brand:bg-cream/92 bg-cream/92→bg-cream/95
+- [x] #1073 src/app/contact/page.tsx: s3-bd:border-brand-action/28 border-brand-action/28→border-brand-action/34
+- [x] #1074 src/app/locations/page.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1075 src/app/services/page.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #1076 src/components/global/Footer.tsx: s3-bd:border-cream/14 border-cream/14→border-cream/18
+- [x] #1077 src/components/global/Navbar.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1078 src/components/sections/BookingZone.tsx: s3-bd:border-brand-action/30 border-brand-action/30→border-brand-action/36
+- [x] #1079 src/components/sections/GalleryGrid.tsx: s3-bd:border-cream/15 border-cream/15→border-cream/18
+- [x] #1080 src/components/sections/HeroSection.tsx: s3-bg-cream:bg-cream/10 bg-cream/10→bg-cream/14
+- [x] #1081 src/components/sections/HoursTable.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #1082 src/components/sections/TrustStrip.tsx: s3-bd:border-cream/14 border-cream/14→border-cream/18
+- [x] #1083 src/app/about/page.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #1084 src/app/admin/page.tsx: s3-focus:focus:ring-brand-action/20 focus:ring-brand-action/20→focus:ring-brand-action/30
+- [x] #1085 src/app/contact/page.tsx: s3-bd:border-brand-action/28 border-brand-action/28→border-brand-action/34
+- [x] #1086 src/app/locations/page.tsx: s3-bd:border-brand-action/24 border-brand-action/24→border-brand-action/30
+- [x] #1087 src/components/global/Footer.tsx: s3-bd:border-cream/14 border-cream/14→border-cream/18
+- [x] #1088 src/components/global/Navbar.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1089 src/components/sections/BookingZone.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #1090 src/components/sections/GalleryGrid.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1091 src/components/sections/HeroSection.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #1092 src/components/sections/HoursTable.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #1093 src/components/sections/TrustStrip.tsx: s3-bd:border-cream/14 border-cream/14→border-cream/18
+- [x] #1094 src/app/admin/page.tsx: s3-focus:focus:ring-brand-action/20 focus:ring-brand-action/20→focus:ring-brand-action/30
+- [x] #1095 src/app/contact/page.tsx: s3-brand:bg-white/55 bg-white/55→bg-white/62
+- [x] #1096 src/app/locations/page.tsx: s3-bd:border-brand-action/24 border-brand-action/24→border-brand-action/30
+- [x] #1097 src/components/global/Footer.tsx: s3-bd:border-cream/14 border-cream/14→border-cream/18
+- [x] #1098 src/components/global/Navbar.tsx: s3-bd:border-warm-border/60 border-warm-border/60→border-warm-border/75
+- [x] #1099 src/components/sections/BookingZone.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #1100 src/components/sections/GalleryGrid.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1101 src/components/sections/HeroSection.tsx: s3-bd:border-cream/12 border-cream/12→border-cream/16
+- [x] #1102 src/components/sections/HoursTable.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #1103 src/components/sections/TrustStrip.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1104 src/app/admin/page.tsx: s3-focus:focus:ring-brand-action/20 focus:ring-brand-action/20→focus:ring-brand-action/30
+- [x] #1105 src/app/contact/page.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #1106 src/app/locations/page.tsx: s3-bd:border-brand-action/30 border-brand-action/30→border-brand-action/36
+- [x] #1107 src/components/global/Footer.tsx: s3-bd:border-cream/14 border-cream/14→border-cream/18
+- [x] #1108 src/components/global/Navbar.tsx: s3-bd:border-warm-border/60 border-warm-border/60→border-warm-border/75
+- [x] #1109 src/components/sections/GalleryGrid.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1110 src/components/sections/HeroSection.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1111 src/components/sections/TrustStrip.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1112 src/app/admin/page.tsx: s3-focus:focus:ring-brand-action/20 focus:ring-brand-action/20→focus:ring-brand-action/30
+- [x] #1113 src/app/locations/page.tsx: s3-bd:border-brand-action/30 border-brand-action/30→border-brand-action/36
+- [x] #1114 src/components/global/Footer.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1115 src/components/global/Navbar.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #1116 src/components/sections/GalleryGrid.tsx: s3-focus:focus-visible:ring-brand-action/45 focus-visible:ring-brand-action/45→focus-visible:ring-brand-action/40
+- [x] #1117 src/components/sections/HeroSection.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1118 src/components/sections/TrustStrip.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1119 src/app/admin/page.tsx: s3-focus:focus:ring-brand-action/20 focus:ring-brand-action/20→focus:ring-brand-action/30
+- [x] #1120 src/components/global/Footer.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1121 src/components/global/Navbar.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #1122 src/components/sections/HeroSection.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1123 src/components/sections/TrustStrip.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #1124 src/app/admin/page.tsx: s3-focus:focus:ring-brand-action/20 focus:ring-brand-action/20→focus:ring-brand-action/30
+- [x] #1125 src/components/global/Footer.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1126 src/components/global/Navbar.tsx: s3-bd:border-warm-border/70 border-warm-border/70→border-warm-border/80
+- [x] #1127 src/components/sections/HeroSection.tsx: s3-bd:border-cream/16 border-cream/16→border-cream/20
+- [x] #1128 src/components/sections/TrustStrip.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #1129 src/app/admin/page.tsx: s3-focus:focus:ring-brand-action/20 focus:ring-brand-action/20→focus:ring-brand-action/30
+- [x] #1130 src/components/global/Footer.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1131 src/components/global/Navbar.tsx: s3-brand:text-brand-action/78 text-brand-action/78→text-brand-action/85
+- [x] #1132 src/components/sections/HeroSection.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1133 src/app/admin/page.tsx: s3-focus:focus:ring-brand-light/24 focus:ring-brand-light/24→focus:ring-brand-light/30
+- [x] #1134 src/components/global/Footer.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1135 src/components/global/Navbar.tsx: s3-brand:text-brand-light/82 text-brand-light/82→text-brand-light/90
+- [x] #1136 src/components/sections/HeroSection.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #1137 src/app/admin/page.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #1138 src/components/global/Footer.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1139 src/components/global/Navbar.tsx: s3-brand:text-warm/74 text-warm/74→text-warm/82
+- [x] #1140 src/components/sections/HeroSection.tsx: s3-body-lead body leading-relaxed→leading-[1.7]
+- [x] #1141 src/components/global/Footer.tsx: s3-bd:border-cream/18 border-cream/18→border-cream/22
+- [x] #1142 src/components/global/Navbar.tsx: s3-brand:bg-white/74 bg-white/74→bg-white/80
+- [x] #1143 src/components/sections/HeroSection.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #1144 src/components/global/Footer.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #1145 src/components/global/Navbar.tsx: s3-brand:bg-white/70 bg-white/70→bg-white/78
+- [x] #1146 src/components/global/Footer.tsx: s3-remaining-medium remaining font-medium→font-semibold
+- [x] #1147 src/components/global/Navbar.tsx: s3-brand:bg-cream/92 bg-cream/92→bg-cream/95
+- [x] #1148 src/app/about/page.tsx: s4-ui:opacity-50 opacity-50→opacity-55
+- [x] #1149 src/app/admin/page.tsx: s4-ui:disabled:opacity-55 disabled:opacity-55→disabled:opacity-50
+- [x] #1150 src/app/contact/page.tsx: s4-ui:opacity-50 opacity-50→opacity-55
+- [x] #1151 src/app/globals.css: s4-ui:min-h-10 min-h-10→min-h-11
+- [x] #1152 src/app/locations/[branch]/page.tsx: s4-ui:min-h-10 min-h-10→min-h-11
+- [x] #1153 src/app/services/[slug]/page.tsx: s4-ui:min-h-10 min-h-10→min-h-11
+- [x] #1154 src/app/services/page.tsx: s4-ui:opacity-50 opacity-50→opacity-55
+- [x] #1155 src/components/global/Footer.tsx: s4-ui:min-h-10 min-h-10→min-h-11
+- [x] #1156 src/components/sections/AboutTeaser.tsx: s4-mt-5 section mt-5→mt-6 (hash)
+- [x] #1157 src/components/sections/BeforeAfterShowcase.tsx: s4-gap-3 section gap-3→gap-3.5 (hash)
+- [x] #1158 src/components/sections/BookingForm.tsx: s4-gap-2 section gap-2→gap-2.5 (hash)
+- [x] #1159 src/components/sections/BookingZone.tsx: s4-mt-4 section mt-4→mt-5 (hash)
+- [x] #1160 src/components/sections/CareJourney.tsx: s4-gap-5 section gap-5→gap-6 (hash)
+- [x] #1161 src/components/sections/ContactForm.tsx: s4-gap-2 section gap-2→gap-2.5 (hash)
+- [x] #1162 src/components/sections/CopyAddressButton.tsx: s4-px-4 section px-4→px-5 (hash)
+- [x] #1163 src/components/sections/FAQAccordion.tsx: s4-h10-pill h-10 rounded-pill→h-11
+- [x] #1164 src/components/sections/FAQTeaser.tsx: s4-mt-8 section mt-8→mt-10 (hash)
+- [x] #1165 src/components/sections/GalleryGrid.tsx: s4-mt-5 section mt-5→mt-6 (hash)
+- [x] #1166 src/components/sections/GalleryTeaser.tsx: s4-gap-10 section gap-10→gap-12 (hash)
+- [x] #1167 src/components/sections/HeroSection.tsx: s4-gap-3 section gap-3→gap-3.5 (hash)
+- [x] #1168 src/components/sections/HoursTable.tsx: s4-mt-3 section mt-3→mt-3.5 (hash)
+- [x] #1169 src/components/sections/PageHero.tsx: s4-mt-5 section mt-5→mt-6 (hash)
+- [x] #1170 src/components/sections/ReviewThemes.tsx: s4-gap-3 section gap-3→gap-3.5 (hash)
+- [x] #1171 src/components/sections/ServiceTabs.tsx: s4-sticky-z sticky z-20→z-30
+- [x] #1172 src/components/sections/ServicesGrid.tsx: s4-mt-3 section mt-3→mt-3.5 (hash)
+- [x] #1173 src/components/sections/StatsCounter.tsx: s4-gap-3 section gap-3→gap-3.5 (hash)
+- [x] #1174 src/components/ui/branch-card.tsx: s4-ui:hover:text-brand-dark hover:text-brand-dark→hover:text-brand
+- [x] #1175 src/components/ui/button.tsx: s4-ui:disabled:opacity-45 disabled:opacity-45→disabled:opacity-50
+- [x] #1176 src/components/ui/label.tsx: s4-ui:peer-disabled:opacity-70 peer-disabled:opacity-70→peer-disabled:opacity-60
+- [x] #1177 src/components/ui/shimmer-button.tsx: s4-ui:active:scale-[0.98] active:scale-[0.98]→active:scale-[0.985]
+- [x] #1178 src/app/locations/[branch]/page.tsx: s4-h10-pill h-10 rounded-pill→h-11
+- [x] #1179 src/app/services/[slug]/page.tsx: s4-ui:opacity-50 opacity-50→opacity-55
+- [x] #1180 src/app/services/page.tsx: s4-ui:opacity-50 opacity-50→opacity-55
+- [x] #1181 src/components/sections/AboutTeaser.tsx: s4-px-6 section px-6→px-7 (hash)
+- [x] #1182 src/components/sections/BeforeAfterShowcase.tsx: s4-mt-4 section mt-4→mt-5 (hash)
+- [x] #1183 src/components/sections/BookingForm.tsx: s4-gap-2 section gap-2→gap-2.5 (hash)
+- [x] #1184 src/components/sections/BookingZone.tsx: s4-mt-5 section mt-5→mt-6 (hash)
+- [x] #1185 src/components/sections/CareJourney.tsx: s4-mt-2 section mt-2→mt-2.5 (hash)
+- [x] #1186 src/components/sections/ContactForm.tsx: s4-gap-5 section gap-5→gap-6 (hash)
+- [x] #1187 src/components/sections/CopyAddressButton.tsx: s4-px-5 section px-5→px-6 (hash)
+- [x] #1188 src/components/sections/FAQAccordion.tsx: s4-px-5 section px-5→px-6 (hash)
+- [x] #1189 src/components/sections/FAQTeaser.tsx: s4-ui:hover:text-brand-dark hover:text-brand-dark→hover:text-brand
+- [x] #1190 src/components/sections/GalleryGrid.tsx: s4-mt-6 section mt-6→mt-7 (hash)
+- [x] #1191 src/components/sections/GalleryTeaser.tsx: s4-mt-8 section mt-8→mt-10 (hash)
+- [x] #1192 src/components/sections/HeroSection.tsx: s4-pb-5 section pb-5→pb-6 (hash)
+- [x] #1193 src/components/sections/HoursTable.tsx: s4-p-5 section p-5→p-6 (hash)
+- [x] #1194 src/components/sections/PageHero.tsx: s4-mt-6 section mt-6→mt-7 (hash)
+- [x] #1195 src/components/sections/ReviewThemes.tsx: s4-px-5 section px-5→px-6 (hash)
+- [x] #1196 src/components/sections/ServiceTabs.tsx: s4-sticky-top sticky top-28/20→top-24
+- [x] #1197 src/components/sections/ServicesGrid.tsx: s4-ui:scroll-mt-24 scroll-mt-24→scroll-mt-28
+- [x] #1198 src/components/sections/StatsCounter.tsx: s4-p-5 section p-5→p-6 (hash)
+- [x] #1199 src/components/ui/branch-card.tsx: s4-ui:hover:text-brand-dark hover:text-brand-dark→hover:text-brand
+- [x] #1200 src/components/ui/button.tsx: s4-h10-pill h-10 rounded-pill→h-11
+- [x] #1201 src/components/ui/shimmer-button.tsx: s4-ui:hover:-translate-y-0.5 hover:-translate-y-0.5→hover:-translate-y-[3px]
+- [x] #1202 src/app/services/[slug]/page.tsx: s4-ui:opacity-50 opacity-50→opacity-55
+- [x] #1203 src/app/services/page.tsx: s4-inset-10 inset shadow 0.10→0.14
+- [x] #1204 src/components/sections/AboutTeaser.tsx: s4-mt-8 section mt-8→mt-10 (hash)
+- [x] #1205 src/components/sections/BeforeAfterShowcase.tsx: s4-py-3 section py-3→py-3.5 (hash)
+- [x] #1206 src/components/sections/BookingForm.tsx: s4-gap-2 section gap-2→gap-2.5 (hash)
+- [x] #1207 src/components/sections/BookingZone.tsx: s4-px-5 section px-5→px-6 (hash)
+- [x] #1208 src/components/sections/CareJourney.tsx: s4-px-5 section px-5→px-6 (hash)
+- [x] #1209 src/components/sections/ContactForm.tsx: s4-mt-5 section mt-5→mt-6 (hash)
+- [x] #1210 src/components/sections/CopyAddressButton.tsx: s4-h10-pill h-10 rounded-pill→h-11
+- [x] #1211 src/components/sections/FAQAccordion.tsx: s4-sticky-z sticky z-20→z-30
+- [x] #1212 src/components/sections/GalleryGrid.tsx: s4-mt-6 section mt-6→mt-7 (hash)
+- [x] #1213 src/components/sections/GalleryTeaser.tsx: s4-py-3 section py-3→py-3.5 (hash)
+- [x] #1214 src/components/sections/HeroSection.tsx: s4-px-3 section px-3→px-3.5 (hash)
+- [x] #1215 src/components/sections/PageHero.tsx: s4-px-5 section px-5→px-6 (hash)
+- [x] #1216 src/components/sections/ServicesGrid.tsx: s4-px-5 section px-5→px-6 (hash)
+- [x] #1217 src/components/sections/StatsCounter.tsx: s4-p-6 section p-6→p-7 (hash)
+- [x] #1218 src/app/services/[slug]/page.tsx: s4-sticky-top sticky top-28/20→top-24
+- [x] #1219 src/components/sections/BeforeAfterShowcase.tsx: s4-ui:opacity-50 opacity-50→opacity-55
+- [x] #1220 src/components/sections/BookingForm.tsx: s4-mt-2 section mt-2→mt-2.5 (hash)
+- [x] #1221 src/components/sections/BookingZone.tsx: s4-px-6 section px-6→px-7 (hash)
+- [x] #1222 src/components/sections/CareJourney.tsx: s4-px-6 section px-6→px-7 (hash)
+- [x] #1223 src/components/sections/ContactForm.tsx: s4-px-4 section px-4→px-5 (hash)
+- [x] #1224 src/components/sections/CopyAddressButton.tsx: s4-px-6 section px-6→px-7 (hash)
+- [x] #1225 src/components/sections/FAQAccordion.tsx: s4-sticky-top sticky top-28/20→top-24
+- [x] #1226 src/components/sections/HeroSection.tsx: s4-px-4 section px-4→px-5 (hash)
+- [x] #1227 src/components/sections/ServicesGrid.tsx: s4-px-6 section px-6→px-7 (hash)
+- [x] #1228 src/components/sections/BookingForm.tsx: s4-mt-5 section mt-5→mt-6 (hash)
+- [x] #1229 src/components/sections/BookingZone.tsx: s4-ui:min-h-10 min-h-10→min-h-11
+- [x] #1230 src/components/sections/ContactForm.tsx: s4-py-3 section py-3→py-3.5 (hash)
+- [x] #1231 src/components/sections/CopyAddressButton.tsx: s4-gap-2 section gap-2→gap-2.5 (hash)
+- [x] #1232 src/components/sections/HeroSection.tsx: s4-gap-2 section gap-2→gap-2.5 (hash)
+- [x] #1233 src/components/sections/ServicesGrid.tsx: s4-h10-pill h-10 rounded-pill→h-11
+- [x] #1234 src/components/sections/BookingForm.tsx: s4-py-2 section py-2→py-2.5 (hash)
+- [x] #1235 src/components/sections/BookingZone.tsx: s4-ui:min-h-10 min-h-10→min-h-11
+- [x] #1236 src/components/sections/ContactForm.tsx: s4-ui:min-h-10 min-h-10→min-h-11
+- [x] #1237 src/components/sections/HeroSection.tsx: s4-py-2 section py-2→py-2.5 (hash)
+- [x] #1238 src/components/sections/BookingForm.tsx: s4-px-3 section px-3→px-3.5 (hash)
+- [x] #1239 src/components/sections/HeroSection.tsx: s4-px-4 section px-4→px-5 (hash)
+- [x] #1240 src/components/sections/BookingForm.tsx: s4-sticky-z sticky z-20→z-30
+- [x] #1241 src/components/sections/HeroSection.tsx: s4-ui:saturate-[0.94] saturate-[0.94]→saturate-[0.96]
+- [x] #1242 src/components/sections/BookingForm.tsx: s4-sticky-top sticky top-28/20→top-24
+- [x] #1243 src/components/sections/HeroSection.tsx: s4-ui:object-[62%_center] object-[62%_center]→object-[58%_center]
+- [x] #1244 src/components/sections/HeroSection.tsx: s4-ui:from-ink/64 from-ink/64→from-ink/70
+- [x] #1245 src/components/sections/HeroSection.tsx: s4-h10-pill h-10 rounded-pill→h-11
+- [x] #1246 src/components/sections/HeroSection.tsx: s4-inset-12 inset shadow 0.12→0.14
+- [x] #1247 src/app/globals.css: s5-shadow-card lift card shadow
+- [x] #1248 src/app/globals.css: s5-shadow-hover lift hover shadow
+- [x] #1249 src/app/globals.css: s5-shadow-nav lift nav shadow
+- [x] #1250 src/app/globals.css: s5-radius-card tighter card radius
+- [x] #1251 src/app/globals.css: s5-radius-lg tighter card-lg
+- [x] #1252 src/app/globals.css: s5-section section spacing
+- [x] #1253 src/app/globals.css: s5-section-lg section-lg spacing
+- [x] #1254 src/app/globals.css: s5-display-ls display tracking
+- [x] #1255 src/app/globals.css: s5-body-ls body tracking
+- [x] #1256 src/app/globals.css: s5-motion-fast motion-fast
+- [x] #1257 src/app/globals.css: s5-motion-std motion-standard
+- [x] #1258 src/app/globals.css: s5-motion-slow motion-slow
+- [x] #1259 src/app/globals.css: s5-cream-muted cream-muted floor
+- [x] #1260 src/app/globals.css: s5-display-size display size
+- [x] #1261 src/app/globals.css: s5-h1-size h1 size
+- [x] #1262 src/app/globals.css: s5-h2-size h2 size
+- [x] #1263 src/app/globals.css: s5-h3-size h3 size
+- [x] #1264 src/app/globals.css: s5-body-sm-lh body-sm lh
+- [x] #1265 src/app/globals.css: s5-mobile-section mobile section
+- [x] #1266 src/app/globals.css: s5-mobile-section-lg mobile section-lg
+- [x] #1267 src/app/globals.css: s5-serif-selector drop .font-serif from heading selector
+- [x] #1268 src/app/globals.css: s5-serif-selector2 drop .font-serif from print/heading selector
+- [x] #1269 src/app/about/page.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1270 src/app/admin/page.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1271 src/app/book/page.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1272 src/app/contact/page.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1273 src/app/faq/page.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1274 src/app/gallery/page.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1275 src/app/globals.css: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1276 src/app/locations/[branch]/page.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1277 src/app/locations/page.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1278 src/app/services/[slug]/page.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1279 src/app/services/page.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1280 src/components/global/Footer.tsx: s6-max-w-sm max-w-sm→max-w-[24rem]
+- [x] #1281 src/components/global/Navbar.tsx: s6-sm:px-5 sm:px-5→sm:px-6
+- [x] #1282 src/components/sections/AboutTeaser.tsx: s6-max-w-xs max-w-xs→max-w-[20rem]
+- [x] #1283 src/components/sections/BeforeAfterShowcase.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1284 src/components/sections/BookingForm.tsx: s6-sm:p-7 sm:p-7→sm:p-8
+- [x] #1285 src/components/sections/BookingZone.tsx: s6-max-w-sm max-w-sm→max-w-[24rem]
+- [x] #1286 src/components/sections/BranchSelector.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1287 src/components/sections/CareJourney.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1288 src/components/sections/FAQAccordion.tsx: s6-max-w-sm max-w-sm→max-w-[24rem]
+- [x] #1289 src/components/sections/GalleryGrid.tsx: s6-max-w-2xl max-w-2xl→max-w-[42rem]
+- [x] #1290 src/components/sections/GalleryTeaser.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1291 src/components/sections/HeroSection.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1292 src/components/sections/PageHero.tsx: s6-lg:px-8 lg:px-8→lg:px-10
+- [x] #1293 src/components/sections/ReviewThemes.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1294 src/components/sections/ServicesGrid.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1295 src/components/sections/TrustStrip.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1296 src/components/ui/marquee-strip.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1297 src/components/ui/section-heading.tsx: s6-max-w-xl max-w-xl→max-w-[36rem]
+- [x] #1298 src/components/ui/service-card.tsx: s6-bg-white/80 bg-white/80→bg-white/85
+- [x] #1299 src/app/about/page.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1300 src/app/admin/page.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1301 src/app/contact/page.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1302 src/app/globals.css: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1303 src/app/locations/[branch]/page.tsx: s6-border-brand-action/25 border-brand-action/25→border-brand-action/30
+- [x] #1304 src/app/locations/page.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1305 src/app/services/[slug]/page.tsx: s6-max-w-3xl max-w-3xl→max-w-[48rem]
+- [x] #1306 src/app/services/page.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1307 src/components/global/Footer.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1308 src/components/global/Navbar.tsx: s6-bg-white/80 bg-white/80→bg-white/85
+- [x] #1309 src/components/sections/BeforeAfterShowcase.tsx: s6-max-w-xl max-w-xl→max-w-[36rem]
+- [x] #1310 src/components/sections/BookingZone.tsx: s6-max-w-sm max-w-sm→max-w-[24rem]
+- [x] #1311 src/components/sections/CareJourney.tsx: s6-max-w-xl max-w-xl→max-w-[36rem]
+- [x] #1312 src/components/sections/GalleryGrid.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1313 src/components/sections/HeroSection.tsx: s6-max-w-2xl max-w-2xl→max-w-[42rem]
+- [x] #1314 src/components/sections/PageHero.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1315 src/components/sections/ServicesGrid.tsx: s6-max-w-lg max-w-lg→max-w-[32rem]
+- [x] #1316 src/components/sections/TrustStrip.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1317 src/components/ui/service-card.tsx: s6-bg-white/80 bg-white/80→bg-white/85
+- [x] #1318 src/app/about/page.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1319 src/app/admin/page.tsx: s6-max-w-3xl max-w-3xl→max-w-[48rem]
+- [x] #1320 src/app/contact/page.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1321 src/app/globals.css: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1322 src/app/locations/page.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1323 src/app/services/[slug]/page.tsx: s6-max-w-3xl max-w-3xl→max-w-[48rem]
+- [x] #1324 src/app/services/page.tsx: s6-max-w-sm max-w-sm→max-w-[24rem]
+- [x] #1325 src/components/global/Footer.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1326 src/components/global/Navbar.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1327 src/components/sections/BeforeAfterShowcase.tsx: s6-max-w-xl max-w-xl→max-w-[36rem]
+- [x] #1328 src/components/sections/BookingZone.tsx: s6-max-w-sm max-w-sm→max-w-[24rem]
+- [x] #1329 src/components/sections/GalleryGrid.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1330 src/components/sections/HeroSection.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1331 src/components/sections/PageHero.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1332 src/components/sections/ServicesGrid.tsx: s6-max-w-sm max-w-sm→max-w-[24rem]
+- [x] #1333 src/components/sections/TrustStrip.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1334 src/components/ui/service-card.tsx: s6-bg-white/80 bg-white/80→bg-white/85
+- [x] #1335 src/app/about/page.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1336 src/app/admin/page.tsx: s6-max-w-2xl max-w-2xl→max-w-[42rem]
+- [x] #1337 src/app/contact/page.tsx: s6-max-w-md max-w-md→max-w-[28rem]
+- [x] #1338 src/app/globals.css: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1339 src/app/locations/page.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1340 src/app/services/page.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1341 src/components/global/Footer.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1342 src/components/global/Navbar.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1343 src/components/sections/BookingZone.tsx: s6-max-w-sm max-w-sm→max-w-[24rem]
+- [x] #1344 src/components/sections/HeroSection.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1345 src/components/sections/PageHero.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1346 src/components/sections/ServicesGrid.tsx: s6-border-brand/12 border-brand/12→border-brand/16
+- [x] #1347 src/components/sections/TrustStrip.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1348 src/components/ui/service-card.tsx: s6-bg-white/80 bg-white/80→bg-white/85
+- [x] #1349 src/app/about/page.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1350 src/app/admin/page.tsx: s6-max-w-2xl max-w-2xl→max-w-[42rem]
+- [x] #1351 src/app/contact/page.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1352 src/app/services/page.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1353 src/components/global/Footer.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1354 src/components/sections/HeroSection.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1355 src/components/sections/PageHero.tsx: s6-max-w-xl max-w-xl→max-w-[36rem]
+- [x] #1356 src/components/sections/ServicesGrid.tsx: s6-border-brand/12 border-brand/12→border-brand/16
+- [x] #1357 src/components/ui/service-card.tsx: s6-border-brand-action/18 border-brand-action/18→border-brand-action/22
+- [x] #1358 src/app/about/page.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1359 src/app/admin/page.tsx: s6-max-w-md max-w-md→max-w-[28rem]
+- [x] #1360 src/app/contact/page.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1361 src/app/services/page.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1362 src/components/global/Footer.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1363 src/components/sections/HeroSection.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1364 src/components/sections/ServicesGrid.tsx: s6-bg-brand/6 bg-brand/6→bg-brand/8
+- [x] #1365 src/components/ui/service-card.tsx: s6-border-brand-action/25 border-brand-action/25→border-brand-action/30
+- [x] #1366 src/app/contact/page.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1367 src/app/services/page.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1368 src/components/global/Footer.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1369 src/components/sections/HeroSection.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1370 src/components/sections/ServicesGrid.tsx: s6-bg-brand/6 bg-brand/6→bg-brand/8
+- [x] #1371 src/components/ui/service-card.tsx: s6-border-brand/12 border-brand/12→border-brand/16
+- [x] #1372 src/app/contact/page.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1373 src/app/services/page.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1374 src/components/global/Footer.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1375 src/components/sections/HeroSection.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1376 src/components/sections/ServicesGrid.tsx: s6-bg-sage/10 bg-sage/10→bg-sage/12
+- [x] #1377 src/components/ui/service-card.tsx: s6-border-brand/18 border-brand/18→border-brand/22
+- [x] #1378 src/app/contact/page.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1379 src/app/services/page.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1380 src/components/global/Footer.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1381 src/components/sections/HeroSection.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1382 src/components/sections/ServicesGrid.tsx: s6-bg-sage/10 bg-sage/10→bg-sage/12
+- [x] #1383 src/components/ui/service-card.tsx: s6-bg-brand/6 bg-brand/6→bg-brand/8
+- [x] #1384 src/app/contact/page.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1385 src/app/services/page.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1386 src/components/global/Footer.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1387 src/components/sections/HeroSection.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1388 src/components/sections/ServicesGrid.tsx: s6-bg-sage/12 bg-sage/12→bg-sage/14
+- [x] #1389 src/components/ui/service-card.tsx: s6-bg-sage/12 bg-sage/12→bg-sage/14
+- [x] #1390 src/app/contact/page.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1391 src/components/global/Footer.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1392 src/components/sections/HeroSection.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1393 src/components/sections/ServicesGrid.tsx: s6-bg-sage/12 bg-sage/12→bg-sage/14
+- [x] #1394 src/components/ui/service-card.tsx: s6-border-sage/30 border-sage/30→border-sage/34
+- [x] #1395 src/app/contact/page.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1396 src/components/global/Footer.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1397 src/components/sections/HeroSection.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1398 src/components/sections/ServicesGrid.tsx: s6-border-sage/25 border-sage/25→border-sage/30
+- [x] #1399 src/components/ui/service-card.tsx: s6-border-sage/35 border-sage/35→border-sage/40
+- [x] #1400 src/app/contact/page.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1401 src/components/global/Footer.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1402 src/components/sections/HeroSection.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1403 src/components/sections/ServicesGrid.tsx: s6-border-sage/25 border-sage/25→border-sage/30
+- [x] #1404 src/app/contact/page.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1405 src/components/global/Footer.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1406 src/components/sections/HeroSection.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1407 src/components/sections/ServicesGrid.tsx: s6-border-sage/28 border-sage/28→border-sage/32
+- [x] #1408 src/components/sections/HeroSection.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1409 src/components/sections/ServicesGrid.tsx: s6-border-sage/30 border-sage/30→border-sage/34
+- [x] #1410 src/components/sections/HeroSection.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1411 src/components/sections/ServicesGrid.tsx: s6-border-sage/30 border-sage/30→border-sage/34
+- [x] #1412 src/components/sections/ServicesGrid.tsx: s6-group-hover:border-sage/40 group-hover:border-sage/40→group-hover:border-sage/50
+- [x] #1413 src/app/about/page.tsx: s7-shrink6 h-6 w-6 + shrink-0
+- [x] #1414 src/app/admin/page.tsx: s7-wg-sans text-warm-grey line + font-sans
+- [x] #1415 src/app/contact/page.tsx: s7-shrink12 h-12 w-12 + shrink-0
+- [x] #1416 src/app/locations/[branch]/page.tsx: s7-g-gap-2 gap-2→gap-2.5 sparse global
+- [x] #1417 src/app/locations/page.tsx: s7-g-gap-2 gap-2→gap-2.5 sparse global
+- [x] #1418 src/app/services/[slug]/page.tsx: s7-space-y:space-y-3 space-y-3→space-y-3.5
+- [x] #1419 src/app/services/page.tsx: s7-space-y:space-y-4 space-y-4→space-y-5
+- [x] #1420 src/components/global/Footer.tsx: s7-g-gap-3 gap-3→gap-3.5 sparse global
+- [x] #1421 src/components/global/Navbar.tsx: s7-shrink6 h-6 w-6 + shrink-0
+- [x] #1422 src/components/sections/BeforeAfterSlider.tsx: s7-g-gap-3 gap-3→gap-3.5 sparse global
+- [x] #1423 src/components/sections/BookingZone.tsx: s7-shrink6 h-6 w-6 + shrink-0
+- [x] #1424 src/components/sections/FAQAccordion.tsx: s7-ease-rest remaining transition + ease
+- [x] #1425 src/components/sections/GalleryGrid.tsx: s7-shrink6 h-6 w-6 + shrink-0
+- [x] #1426 src/components/sections/HeroSection.tsx: s7-dur-all transition-* + duration-300
+- [x] #1427 src/components/sections/HoursTable.tsx: s7-wg-sans text-warm-grey line + font-sans
+- [x] #1428 src/components/sections/StatsCounter.tsx: s7-wg-sans text-warm-grey line + font-sans
+- [x] #1429 src/components/sections/TrustStrip.tsx: s7-shrink6 h-6 w-6 + shrink-0
+- [x] #1430 src/components/ui/branch-card.tsx: s7-g-gap-2 gap-2→gap-2.5 sparse global
+- [x] #1431 src/components/ui/service-card.tsx: s7-tone:bg-white/85 bg-white/85→bg-white/90
+- [x] #1432 src/app/about/page.tsx: s7-shrink12 h-12 w-12 + shrink-0
+- [x] #1433 src/app/admin/page.tsx: s7-wg-sans text-warm-grey line + font-sans
+- [x] #1434 src/app/contact/page.tsx: s7-shrink12 h-12 w-12 + shrink-0
+- [x] #1435 src/app/locations/[branch]/page.tsx: s7-g-gap-3 gap-3→gap-3.5 sparse global
+- [x] #1436 src/app/locations/page.tsx: s7-space-y:space-y-3 space-y-3→space-y-3.5
+- [x] #1437 src/app/services/page.tsx: s7-space-y:space-y-5 space-y-5→space-y-6
+- [x] #1438 src/components/global/Navbar.tsx: s7-tone:bg-white/85 bg-white/85→bg-white/90
+- [x] #1439 src/components/sections/BookingZone.tsx: s7-shrink12 h-12 w-12 + shrink-0
+- [x] #1440 src/components/sections/FAQAccordion.tsx: s7-g-gap-3 gap-3→gap-3.5 sparse global
+- [x] #1441 src/components/sections/GalleryGrid.tsx: s7-shrink6 h-6 w-6 + shrink-0
+- [x] #1442 src/components/sections/HeroSection.tsx: s7-g-gap-3 gap-3→gap-3.5 sparse global
+- [x] #1443 src/components/sections/TrustStrip.tsx: s7-shrink12 h-12 w-12 + shrink-0
+- [x] #1444 src/components/ui/branch-card.tsx: s7-space-y:space-y-2 space-y-2→space-y-2.5
+- [x] #1445 src/components/ui/service-card.tsx: s7-tone:bg-white/85 bg-white/85→bg-white/90
+- [x] #1446 src/app/about/page.tsx: s7-g-gap-2 gap-2→gap-2.5 sparse global
+- [x] #1447 src/app/admin/page.tsx: s7-wg-sans text-warm-grey line + font-sans
+- [x] #1448 src/app/contact/page.tsx: s7-shrink12 h-12 w-12 + shrink-0
+- [x] #1449 src/app/services/page.tsx: s7-space-y:space-y-6 space-y-6→space-y-7
+- [x] #1450 src/components/global/Navbar.tsx: s7-g-gap-1 gap-1→gap-1.5 sparse global
+- [x] #1451 src/components/sections/BookingZone.tsx: s7-tone:hover:bg-[#8a0d2f] hover:bg-[#8a0d2f]→hover:bg-brand-dark
+- [x] #1452 src/components/sections/GalleryGrid.tsx: s7-shrink12 h-12 w-12 + shrink-0
+- [x] #1453 src/components/sections/HeroSection.tsx: s7-space-y:space-y-3 space-y-3→space-y-3.5
+- [x] #1454 src/components/sections/TrustStrip.tsx: s7-g-gap-2 gap-2→gap-2.5 sparse global
+- [x] #1455 src/components/ui/service-card.tsx: s7-tone:bg-white/85 bg-white/85→bg-white/90
+- [x] #1456 src/app/admin/page.tsx: s7-wg-sans text-warm-grey line + font-sans
+- [x] #1457 src/app/contact/page.tsx: s7-g-gap-2 gap-2→gap-2.5 sparse global
+- [x] #1458 src/components/sections/BookingZone.tsx: s7-g-gap-3 gap-3→gap-3.5 sparse global
+- [x] #1459 src/components/sections/GalleryGrid.tsx: s7-shrink12 h-12 w-12 + shrink-0
+- [x] #1460 src/components/ui/service-card.tsx: s7-tone:bg-white/85 bg-white/85→bg-white/90
+- [x] #1461 src/app/admin/page.tsx: s7-shrink12 h-12 w-12 + shrink-0
+- [x] #1462 src/app/contact/page.tsx: s7-g-gap-2 gap-2→gap-2.5 sparse global
+- [x] #1463 src/app/admin/page.tsx: s7-g-gap-2 gap-2→gap-2.5 sparse global
+- [x] #1464 src/app/contact/page.tsx: s7-g-gap-2 gap-2→gap-2.5 sparse global
+- [x] #1465 src/app/admin/page.tsx: s7-g-gap-4 gap-4→gap-5 sparse global
+- [x] #1466 src/app/contact/page.tsx: s7-g-gap-2 gap-2→gap-2.5 sparse global
+- [x] #1467 src/app/contact/page.tsx: s7-space-y:space-y-2 space-y-2→space-y-2.5
+- [x] #1468 src/app/about/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1469 src/app/admin/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1470 src/app/contact/page.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1471 src/app/gallery/page.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1472 src/app/globals.css: s8-caption-leading caption + leading-snug
+- [x] #1473 src/app/locations/[branch]/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1474 src/app/locations/page.tsx: s8-grad:bg-[linear-gradient(135deg,#a5273f,#6f1726)] bg-[linear-gradient(135deg,#a5273f,#6f1726)]→bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))]
+- [x] #1475 src/app/not-found.tsx: s8-caption-leading caption + leading-snug
+- [x] #1476 src/app/services/[slug]/page.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1477 src/app/services/page.tsx: s8-sp-mt-2 mt-2→mt-2.5 sparse
+- [x] #1478 src/components/global/Footer.tsx: s8-caption-leading caption + leading-snug
+- [x] #1479 src/components/global/MobileBookingBar.tsx: s8-caption-leading caption + leading-snug
+- [x] #1480 src/components/global/Navbar.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1481 src/components/sections/AboutTeaser.tsx: s8-ring-offset-cream ring-offset + ring-offset-cream
+- [x] #1482 src/components/sections/BeforeAfterShowcase.tsx: s8-caption-leading caption + leading-snug
+- [x] #1483 src/components/sections/BeforeAfterSlider.tsx: s8-caption-leading caption + leading-snug
+- [x] #1484 src/components/sections/BookingForm.tsx: s8-caption-leading caption + leading-snug
+- [x] #1485 src/components/sections/BookingZone.tsx: s8-cream:text-cream/64 text-cream/64→text-cream/70
+- [x] #1486 src/components/sections/CareJourney.tsx: s8-caption-leading caption + leading-snug
+- [x] #1487 src/components/sections/CopyAddressButton.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1488 src/components/sections/FAQAccordion.tsx: s8-caption-leading caption + leading-snug
+- [x] #1489 src/components/sections/FAQTeaser.tsx: s8-ring-offset-cream ring-offset + ring-offset-cream
+- [x] #1490 src/components/sections/GalleryGrid.tsx: s8-cream:text-cream/64 text-cream/64→text-cream/70
+- [x] #1491 src/components/sections/GalleryTeaser.tsx: s8-ring-offset-cream ring-offset + ring-offset-cream
+- [x] #1492 src/components/sections/HeroSection.tsx: s8-caption-leading caption + leading-snug
+- [x] #1493 src/components/sections/HoursTable.tsx: s8-caption-leading caption + leading-snug
+- [x] #1494 src/components/sections/PageHero.tsx: s8-caption-leading caption + leading-snug
+- [x] #1495 src/components/sections/ReviewThemes.tsx: s8-caption-leading caption + leading-snug
+- [x] #1496 src/components/sections/ServicesGrid.tsx: s8-caption-leading caption + leading-snug
+- [x] #1497 src/components/sections/TrustStrip.tsx: s8-caption-leading caption + leading-snug
+- [x] #1498 src/components/ui/branch-card.tsx: s8-ring-offset-cream ring-offset + ring-offset-cream
+- [x] #1499 src/components/ui/button.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1500 src/components/ui/section-heading.tsx: s8-caption-leading caption + leading-snug
+- [x] #1501 src/components/ui/service-card.tsx: s8-ring-offset-cream ring-offset + ring-offset-cream
+- [x] #1502 src/components/ui/sheet.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1503 src/app/about/page.tsx: s8-sp-p-4 p-4→p-5 sparse
+- [x] #1504 src/app/admin/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1505 src/app/contact/page.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1506 src/app/globals.css: s8-caption-leading caption + leading-snug
+- [x] #1507 src/app/locations/[branch]/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1508 src/app/services/page.tsx: s8-sp-mt-3 mt-3→mt-3.5 sparse
+- [x] #1509 src/components/global/Footer.tsx: s8-caption-leading caption + leading-snug
+- [x] #1510 src/components/global/MobileBookingBar.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1511 src/components/global/Navbar.tsx: s8-sp-mt-3 mt-3→mt-3.5 sparse
+- [x] #1512 src/components/sections/AboutTeaser.tsx: s8-caption-leading caption + leading-snug
+- [x] #1513 src/components/sections/BeforeAfterShowcase.tsx: s8-caption-leading caption + leading-snug
+- [x] #1514 src/components/sections/BeforeAfterSlider.tsx: s8-caption-leading caption + leading-snug
+- [x] #1515 src/components/sections/BookingForm.tsx: s8-caption-leading caption + leading-snug
+- [x] #1516 src/components/sections/BookingZone.tsx: s8-cream:text-cream/64 text-cream/64→text-cream/70
+- [x] #1517 src/components/sections/FAQAccordion.tsx: s8-caption-leading caption + leading-snug
+- [x] #1518 src/components/sections/GalleryGrid.tsx: s8-ring-offset-cream ring-offset + ring-offset-cream
+- [x] #1519 src/components/sections/HeroSection.tsx: s8-caption-leading caption + leading-snug
+- [x] #1520 src/components/sections/HoursTable.tsx: s8-caption-leading caption + leading-snug
+- [x] #1521 src/components/sections/PageHero.tsx: s8-minw0 truncate/min-w flex + min-w-0
+- [x] #1522 src/components/sections/ServicesGrid.tsx: s8-caption-leading caption + leading-snug
+- [x] #1523 src/components/ui/branch-card.tsx: s8-ring-offset-cream ring-offset + ring-offset-cream
+- [x] #1524 src/components/ui/button.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1525 src/components/ui/section-heading.tsx: s8-sp-mb-3 mb-3→mb-3.5 sparse
+- [x] #1526 src/components/ui/service-card.tsx: s8-caption-leading caption + leading-snug
+- [x] #1527 src/components/ui/sheet.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1528 src/app/about/page.tsx: s8-minw0 truncate/min-w flex + min-w-0
+- [x] #1529 src/app/admin/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1530 src/app/contact/page.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1531 src/app/locations/[branch]/page.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1532 src/app/services/page.tsx: s8-minw0 truncate/min-w flex + min-w-0
+- [x] #1533 src/components/global/Footer.tsx: s8-caption-leading caption + leading-snug
+- [x] #1534 src/components/global/MobileBookingBar.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1535 src/components/global/Navbar.tsx: s8-sp-py-4 py-4→py-5 sparse
+- [x] #1536 src/components/sections/AboutTeaser.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1537 src/components/sections/BeforeAfterSlider.tsx: s8-caption-leading caption + leading-snug
+- [x] #1538 src/components/sections/BookingForm.tsx: s8-caption-leading caption + leading-snug
+- [x] #1539 src/components/sections/BookingZone.tsx: s8-caption-leading caption + leading-snug
+- [x] #1540 src/components/sections/FAQAccordion.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1541 src/components/sections/GalleryGrid.tsx: s8-ring-offset-cream ring-offset + ring-offset-cream
+- [x] #1542 src/components/sections/HeroSection.tsx: s8-caption-leading caption + leading-snug
+- [x] #1543 src/components/sections/ServicesGrid.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1544 src/components/ui/branch-card.tsx: s8-caption-leading caption + leading-snug
+- [x] #1545 src/components/ui/button.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1546 src/components/ui/service-card.tsx: s8-caption-leading caption + leading-snug
+- [x] #1547 src/app/admin/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1548 src/app/contact/page.tsx: s8-sp-mt-2 mt-2→mt-2.5 sparse
+- [x] #1549 src/app/locations/[branch]/page.tsx: s8-grad:bg-[linear-gradient(135deg,#a5273f,#6f1726)] bg-[linear-gradient(135deg,#a5273f,#6f1726)]→bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))]
+- [x] #1550 src/components/global/Footer.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1551 src/components/global/MobileBookingBar.tsx: s8-grad:bg-[linear-gradient(135deg,#a5273f,#6f1726)] bg-[linear-gradient(135deg,#a5273f,#6f1726)]→bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))]
+- [x] #1552 src/components/global/Navbar.tsx: s8-sp-py-4 py-4→py-5 sparse
+- [x] #1553 src/components/sections/BookingForm.tsx: s8-caption-leading caption + leading-snug
+- [x] #1554 src/components/sections/BookingZone.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1555 src/components/sections/FAQAccordion.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1556 src/components/sections/GalleryGrid.tsx: s8-caption-leading caption + leading-snug
+- [x] #1557 src/components/sections/HeroSection.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1558 src/components/ui/branch-card.tsx: s8-caption-leading caption + leading-snug
+- [x] #1559 src/components/ui/service-card.tsx: s8-caption-leading caption + leading-snug
+- [x] #1560 src/app/admin/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1561 src/app/contact/page.tsx: s8-sp-mt-2 mt-2→mt-2.5 sparse
+- [x] #1562 src/app/locations/[branch]/page.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1563 src/components/global/Footer.tsx: s8-sp-mt-3 mt-3→mt-3.5 sparse
+- [x] #1564 src/components/global/MobileBookingBar.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1565 src/components/global/Navbar.tsx: s8-sp-px-3 px-3→px-3.5 sparse
+- [x] #1566 src/components/sections/BookingForm.tsx: s8-caption-leading caption + leading-snug
+- [x] #1567 src/components/sections/FAQAccordion.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1568 src/components/sections/GalleryGrid.tsx: s8-caption-leading caption + leading-snug
+- [x] #1569 src/components/ui/branch-card.tsx: s8-caption-leading caption + leading-snug
+- [x] #1570 src/components/ui/service-card.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1571 src/app/admin/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1572 src/app/contact/page.tsx: s8-sp-mt-3 mt-3→mt-3.5 sparse
+- [x] #1573 src/app/locations/[branch]/page.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1574 src/components/global/Footer.tsx: s8-sp-mt-4 mt-4→mt-5 sparse
+- [x] #1575 src/components/global/Navbar.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1576 src/components/sections/GalleryGrid.tsx: s8-caption-leading caption + leading-snug
+- [x] #1577 src/app/admin/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1578 src/app/contact/page.tsx: s8-sp-mt-4 mt-4→mt-5 sparse
+- [x] #1579 src/components/global/Footer.tsx: s8-sp-p-4 p-4→p-5 sparse
+- [x] #1580 src/components/sections/GalleryGrid.tsx: s8-caption-leading caption + leading-snug
+- [x] #1581 src/app/admin/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1582 src/app/contact/page.tsx: s8-grad:bg-[linear-gradient(135deg,#a5273f,#6f1726)] bg-[linear-gradient(135deg,#a5273f,#6f1726)]→bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))]
+- [x] #1583 src/components/global/Footer.tsx: s8-hover:hover:border-brand-light hover:border-brand-light→hover:border-brand-light/80
+- [x] #1584 src/components/sections/GalleryGrid.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1585 src/app/admin/page.tsx: s8-caption-leading caption + leading-snug
+- [x] #1586 src/app/contact/page.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1587 src/components/sections/GalleryGrid.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1588 src/app/admin/page.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1589 src/app/contact/page.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1590 src/components/sections/GalleryGrid.tsx: s8-pill-px rounded-pill missing px→px-4
+- [x] #1591 src/app/admin/page.tsx: s8-sp-mt-2 mt-2→mt-2.5 sparse
+- [x] #1592 src/app/contact/page.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1593 src/app/admin/page.tsx: s8-sp-mt-2 mt-2→mt-2.5 sparse
+- [x] #1594 src/app/contact/page.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1595 src/app/admin/page.tsx: s8-sp-mt-4 mt-4→mt-5 sparse
+- [x] #1596 src/app/admin/page.tsx: s8-sp-mt-4 mt-4→mt-5 sparse
+- [x] #1597 src/app/admin/page.tsx: s8-hover:hover:bg-brand-mist hover:bg-brand-mist→hover:bg-brand-mist/90
+- [x] #1598 src/app/admin/page.tsx: d-cream:text-cream/62 text-cream/62→text-cream/70
+- [x] #1599 src/components/global/Navbar.tsx: b-track:tracking-[0.16em] tracking-[0.16em]→tracking-[0.12em]
+- [x] #1600 src/components/sections/BeforeAfterShowcase.tsx: d-cream:text-cream/70 text-cream/70→text-cream/76
+- [x] #1601 src/components/sections/BeforeAfterSlider.tsx: d-cream:text-cream/45 text-cream/45→text-cream/60
+- [x] #1602 src/components/sections/BookingZone.tsx: d-cream:text-cream/50 text-cream/50→text-cream/64
+- [x] #1603 src/components/sections/CopyAddressButton.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1604 src/components/sections/GalleryGrid.tsx: d-cream:text-cream/70 text-cream/70→text-cream/76
+- [x] #1605 src/components/sections/GalleryTeaser.tsx: j-gap-12-rhythm section gap-12→gap-10/14 by hash
+- [x] #1606 src/components/sections/HeroSection.tsx: b-track:tracking-[0.16em] tracking-[0.16em]→tracking-[0.12em]
+- [x] #1607 src/components/sections/HoursTable.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1608 src/components/sections/ReviewThemes.tsx: f-clamp:text-[2rem] text-[2rem]→text-[clamp(1.75rem,3.2vw,2rem)]
+- [x] #1609 src/components/sections/ServiceTabs.tsx: h-shadow:shadow-[0_12px_28px_rgba(162,15,55,0.22)] shadow-[0_12px_28px_rgba(162,15,55,0.22)]→shadow-card-hover
+- [x] #1610 src/components/sections/ServicesGrid.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1611 src/components/sections/StatsCounter.tsx: f-clamp:sm:text-[3.25rem] sm:text-[3.25rem]→sm:text-[clamp(2.25rem,4.5vw,3rem)]
+- [x] #1612 src/components/sections/TrustStrip.tsx: d-cream:text-cream/40 text-cream/40→text-cream-muted
+- [x] #1613 src/components/ui/section-heading.tsx: d-cream:text-cream/72 text-cream/72→text-cream/78
+- [x] #1614 src/components/ui/shimmer-button.tsx: h-shadow:shadow-[0_16px_42px_rgba(162,15,55,0.32)] shadow-[0_16px_42px_rgba(162,15,55,0.32)]→shadow-card-hover
+- [x] #1615 src/app/admin/page.tsx: d-cream:text-cream/68 text-cream/68→text-cream/74
+- [x] #1616 src/components/global/Navbar.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1617 src/components/sections/BeforeAfterShowcase.tsx: d-cream:text-cream/74 text-cream/74→text-cream/78
+- [x] #1618 src/components/sections/BeforeAfterSlider.tsx: d-cream:text-cream/60 text-cream/60→text-cream/68
+- [x] #1619 src/components/sections/BookingZone.tsx: d-cream:text-cream/55 text-cream/55→text-cream/64
+- [x] #1620 src/components/sections/HeroSection.tsx: b-track:tracking-[0.16em] tracking-[0.16em]→tracking-[0.12em]
+- [x] #1621 src/components/sections/HoursTable.tsx: i-upper-track-14 uppercase tracking-[0.14em]→0.12em
+- [x] #1622 src/components/sections/ServicesGrid.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1623 src/components/sections/StatsCounter.tsx: f-clamp:text-[2.75rem] text-[2.75rem]→text-[clamp(2.25rem,4vw,2.75rem)]
+- [x] #1624 src/components/sections/TrustStrip.tsx: d-cream:text-cream/62 text-cream/62→text-cream/70
+- [x] #1625 src/components/ui/section-heading.tsx: f-clamp:text-[clamp(1.85rem,4vw,2.65rem)] text-[clamp(1.85rem,4vw,2.65rem)]→text-[clamp(1.75rem,3.8vw,2.5rem)]
+- [x] #1626 src/app/admin/page.tsx: d-cream:text-cream/70 text-cream/70→text-cream/76
+- [x] #1627 src/components/global/Navbar.tsx: h-shadow:shadow-[0_12px_30px_rgba(53,16,23,0.10)] shadow-[0_12px_30px_rgba(53,16,23,0.10)]→shadow-card
+- [x] #1628 src/components/sections/BeforeAfterShowcase.tsx: f-clamp:sm:text-display sm:text-display→sm:text-[clamp(2.5rem,5vw,3.5rem)]
+- [x] #1629 src/components/sections/BeforeAfterSlider.tsx: d-cream:text-cream/68 text-cream/68→text-cream/74
+- [x] #1630 src/components/sections/BookingZone.tsx: d-cream:text-cream/58 text-cream/58→text-cream/66
+- [x] #1631 src/components/sections/HeroSection.tsx: b-track:tracking-[0.16em] tracking-[0.16em]→tracking-[0.12em]
+- [x] #1632 src/components/sections/TrustStrip.tsx: d-cream:text-cream/70 text-cream/70→text-cream/76
+- [x] #1633 src/components/ui/section-heading.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1634 src/app/admin/page.tsx: d-cream:text-cream/74 text-cream/74→text-cream/78
+- [x] #1635 src/components/global/Navbar.tsx: h-shadow:shadow-[0_10px_28px_rgba(0,0,0,0.24)] shadow-[0_10px_28px_rgba(0,0,0,0.24)]→shadow-card
+- [x] #1636 src/components/sections/BeforeAfterShowcase.tsx: i-upper-track-14 uppercase tracking-[0.14em]→0.12em
+- [x] #1637 src/components/sections/BeforeAfterSlider.tsx: d-cream:text-cream/70 text-cream/70→text-cream/76
+- [x] #1638 src/components/sections/BookingZone.tsx: d-cream:text-cream/58 text-cream/58→text-cream/66
+- [x] #1639 src/components/sections/HeroSection.tsx: d-cream:text-cream/70 text-cream/70→text-cream/76
+- [x] #1640 src/components/ui/section-heading.tsx: i-upper-track-14 uppercase tracking-[0.14em]→0.12em
+- [x] #1641 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1642 src/components/global/Navbar.tsx: h-shadow:shadow-[0_4px_32px_rgba(28,15,15,0.12)] shadow-[0_4px_32px_rgba(28,15,15,0.12)]→shadow-card
+- [x] #1643 src/components/sections/BeforeAfterSlider.tsx: d-cream:text-cream/70 text-cream/70→text-cream/76
+- [x] #1644 src/components/sections/BookingZone.tsx: d-cream:text-cream/66 text-cream/66→text-cream/72
+- [x] #1645 src/components/sections/HeroSection.tsx: f-clamp:text-[clamp(3.25rem,8vw,5.8rem)] text-[clamp(3.25rem,8vw,5.8rem)]→text-[clamp(3rem,7.5vw,5.4rem)]
+- [x] #1646 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1647 src/components/sections/BeforeAfterSlider.tsx: d-cream:text-cream/74 text-cream/74→text-cream/78
+- [x] #1648 src/components/sections/BookingZone.tsx: d-cream:text-cream/66 text-cream/66→text-cream/72
+- [x] #1649 src/components/sections/HeroSection.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1650 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1651 src/components/sections/BookingZone.tsx: d-cream:text-cream/70 text-cream/70→text-cream/76
+- [x] #1652 src/components/sections/HeroSection.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1653 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1654 src/components/sections/BookingZone.tsx: d-cream:text-cream/70 text-cream/70→text-cream/76
+- [x] #1655 src/components/sections/HeroSection.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1656 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1657 src/components/sections/BookingZone.tsx: d-cream:text-cream/72 text-cream/72→text-cream/78
+- [x] #1658 src/components/sections/HeroSection.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1659 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1660 src/components/sections/BookingZone.tsx: d-cream:text-cream/72 text-cream/72→text-cream/78
+- [x] #1661 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1662 src/components/sections/BookingZone.tsx: i-upper-track-14 uppercase tracking-[0.14em]→0.12em
+- [x] #1663 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1664 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1665 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1666 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1667 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1668 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1669 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1670 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1671 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1672 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1673 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #1674 src/components/global/Navbar.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #1675 src/components/sections/BeforeAfterShowcase.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #1676 src/components/sections/BookingZone.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #1677 src/components/sections/HeroSection.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #1678 src/components/sections/HoursTable.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #1679 src/components/sections/ReviewThemes.tsx: s2-text-balance add text-balance on display
+- [x] #1680 src/components/sections/StatsCounter.tsx: s2-text-balance add text-balance on display
+- [x] #1681 src/components/ui/section-heading.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #1682 src/components/sections/HeroSection.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #1683 src/components/sections/HeroSection.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #1684 src/app/locations/[branch]/page.tsx: s3-bd:border-brand-action/30 border-brand-action/30→border-brand-action/36
+- [x] #1685 src/components/ui/service-card.tsx: s3-bd:border-brand-action/30 border-brand-action/30→border-brand-action/36
+- [x] #1686 src/components/sections/AboutTeaser.tsx: s4-gap-2 section gap-2→gap-2.5
+- [x] #1687 src/components/sections/BeforeAfterShowcase.tsx: s4-mt-3 section mt-3→mt-3.5
+- [x] #1688 src/components/sections/BookingForm.tsx: s4-mt-6 section mt-6→mt-7
+- [x] #1689 src/components/sections/BookingZone.tsx: s4-gap-2 section gap-2→gap-2.5
+- [x] #1690 src/components/sections/BranchSelector.tsx: s4-gap-4 section gap-4→gap-5
+- [x] #1691 src/components/sections/ContactForm.tsx: s4-mt-6 section mt-6→mt-7
+- [x] #1692 src/components/sections/FAQAccordion.tsx: s4-mt-2 section mt-2→mt-2.5
+- [x] #1693 src/components/sections/GalleryGrid.tsx: s4-mt-3 section mt-3→mt-3.5
+- [x] #1694 src/components/sections/GalleryTeaser.tsx: s4-px-5 section px-5→px-6
+- [x] #1695 src/components/sections/HeroSection.tsx: s4-gap-2 section gap-2→gap-2.5
+- [x] #1696 src/components/sections/HoursTable.tsx: s4-mt-2 section mt-2→mt-2.5
+- [x] #1697 src/components/sections/PageHero.tsx: s4-mt-3 section mt-3→mt-3.5
+- [x] #1698 src/components/sections/ReviewThemes.tsx: s4-gap-10 section gap-10→gap-12
+- [x] #1699 src/components/sections/ServicesGrid.tsx: s4-gap-4 section gap-4→gap-5
+- [x] #1700 src/components/sections/TrustStrip.tsx: s4-p-5 section p-5→p-6
+- [x] #1701 src/components/sections/AboutTeaser.tsx: s4-gap-10 section gap-10→gap-12
+- [x] #1702 src/components/sections/BookingForm.tsx: s4-gap-3 section gap-3→gap-3.5
+- [x] #1703 src/components/sections/BookingZone.tsx: s4-mt-4 section mt-4→mt-5
+- [x] #1704 src/components/sections/BranchSelector.tsx: s4-gap-5 section gap-5→gap-6
+- [x] #1705 src/components/sections/ContactForm.tsx: s4-px-5 section px-5→px-6
+- [x] #1706 src/components/sections/FAQAccordion.tsx: s4-px-6 section px-6→px-7
+- [x] #1707 src/components/sections/GalleryGrid.tsx: s4-mb-3 section mb-3→mb-4
+- [x] #1708 src/components/sections/GalleryTeaser.tsx: s4-px-6 section px-6→px-7
+- [x] #1709 src/components/sections/HeroSection.tsx: s4-gap-10 section gap-10→gap-12
+- [x] #1710 src/components/sections/PageHero.tsx: s4-mt-4 section mt-4→mt-5
+- [x] #1711 src/components/sections/ServicesGrid.tsx: s4-gap-10 section gap-10→gap-12
+- [x] #1712 src/components/sections/AboutTeaser.tsx: s4-mt-2 section mt-2→mt-2.5
+- [x] #1713 src/components/sections/BookingForm.tsx: s4-py-2 section py-2→py-2.5
+- [x] #1714 src/components/sections/BookingZone.tsx: s4-mt-5 section mt-5→mt-6
+- [x] #1715 src/components/sections/GalleryGrid.tsx: s4-px-4 section px-4→px-5
+- [x] #1716 src/components/sections/GalleryTeaser.tsx: s4-px-6 section px-6→px-7
+- [x] #1717 src/components/sections/HeroSection.tsx: s4-mt-6 section mt-6→mt-7
+- [x] #1718 src/components/sections/PageHero.tsx: s4-px-6 section px-6→px-7
+- [x] #1719 src/components/sections/ServicesGrid.tsx: s4-px-5 section px-5→px-6
+- [x] #1720 src/components/sections/AboutTeaser.tsx: s4-py-3 section py-3→py-3.5
+- [x] #1721 src/components/sections/BookingForm.tsx: s4-px-4 section px-4→px-5
+- [x] #1722 src/components/sections/BookingZone.tsx: s4-mt-6 section mt-6→mt-7
+- [x] #1723 src/components/sections/GalleryGrid.tsx: s4-px-5 section px-5→px-6
+- [x] #1724 src/components/sections/HeroSection.tsx: s4-mt-8 section mt-8→mt-10
+- [x] #1725 src/components/sections/ServicesGrid.tsx: s4-px-6 section px-6→px-7
+- [x] #1726 src/components/sections/BookingForm.tsx: s4-py-3 section py-3→py-3.5
+- [x] #1727 src/components/sections/GalleryGrid.tsx: s4-px-6 section px-6→px-7
+- [x] #1728 src/components/sections/HeroSection.tsx: s4-pt-5 section pt-5→pt-6
+- [x] #1729 src/components/sections/ServicesGrid.tsx: s4-px-6 section px-6→px-7
+- [x] #1730 src/components/sections/BookingForm.tsx: s4-p-5 section p-5→p-6
+- [x] #1731 src/components/sections/GalleryGrid.tsx: s4-p-4 section p-4→p-5
+- [x] #1732 src/components/sections/HeroSection.tsx: s4-px-5 section px-5→px-6
+- [x] #1733 src/components/sections/BookingForm.tsx: s4-p-6 section p-6→p-7
+- [x] #1734 src/components/sections/GalleryGrid.tsx: s4-p-5 section p-5→p-6
+- [x] #1735 src/components/sections/HeroSection.tsx: s4-px-5 section px-5→px-6
+- [x] #1736 src/components/sections/HeroSection.tsx: s4-px-5 section px-5→px-6
+- [x] #1737 src/components/sections/HeroSection.tsx: s4-px-5 section px-5→px-6
+- [x] #1738 src/components/sections/HeroSection.tsx: s4-px-6 section px-6→px-7
+- [x] #1739 src/components/sections/HeroSection.tsx: s4-px-6 section px-6→px-7
+- [x] #1740 src/app/admin/page.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1741 src/components/sections/BeforeAfterShowcase.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1742 src/components/sections/BeforeAfterSlider.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1743 src/components/sections/BookingZone.tsx: s6-max-w-xs max-w-xs→max-w-[20rem]
+- [x] #1744 src/components/sections/GalleryGrid.tsx: s6-sm:px-5 sm:px-5→sm:px-6
+- [x] #1745 src/components/sections/HeroSection.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1746 src/components/sections/ReviewThemes.tsx: s6-max-w-7xl max-w-7xl→max-w-[72rem]
+- [x] #1747 src/components/sections/TrustStrip.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1748 src/components/ui/section-heading.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1749 src/app/admin/page.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1750 src/components/sections/BeforeAfterShowcase.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1751 src/components/sections/BeforeAfterSlider.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1752 src/components/sections/BookingZone.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1753 src/components/sections/GalleryGrid.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1754 src/components/sections/HeroSection.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1755 src/components/sections/TrustStrip.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1756 src/components/ui/section-heading.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1757 src/app/admin/page.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1758 src/components/sections/BeforeAfterShowcase.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1759 src/components/sections/BeforeAfterSlider.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1760 src/components/sections/BookingZone.tsx: s6-text-cream/76 text-cream/76→text-cream/80
+- [x] #1761 src/components/sections/GalleryGrid.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1762 src/components/sections/HeroSection.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1763 src/components/sections/TrustStrip.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1764 src/components/ui/section-heading.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1765 src/app/admin/page.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1766 src/components/sections/BeforeAfterShowcase.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1767 src/components/sections/BeforeAfterSlider.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1768 src/components/sections/BookingZone.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1769 src/components/sections/GalleryGrid.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1770 src/components/sections/HeroSection.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1771 src/components/sections/TrustStrip.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1772 src/app/admin/page.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1773 src/components/sections/BeforeAfterShowcase.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1774 src/components/sections/BeforeAfterSlider.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1775 src/components/sections/BookingZone.tsx: s6-text-cream/78 text-cream/78→text-cream/82
+- [x] #1776 src/components/sections/GalleryGrid.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1777 src/app/admin/page.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1778 src/components/sections/BeforeAfterShowcase.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1779 src/components/sections/BeforeAfterSlider.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1780 src/components/sections/BookingZone.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1781 src/app/admin/page.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1782 src/components/sections/BeforeAfterShowcase.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1783 src/components/sections/BeforeAfterSlider.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1784 src/components/sections/BookingZone.tsx: s6-text-cream/80 text-cream/80→text-cream/85
+- [x] #1785 src/components/sections/BeforeAfterSlider.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1786 src/components/sections/BookingZone.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1787 src/components/sections/BeforeAfterSlider.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1788 src/components/sections/BookingZone.tsx: s6-text-cream/82 text-cream/82→text-cream/88
+- [x] #1789 src/components/sections/BeforeAfterSlider.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1790 src/components/sections/BookingZone.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1791 src/components/sections/BeforeAfterSlider.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1792 src/components/sections/BookingZone.tsx: s6-text-cream/85 text-cream/85→text-cream/90
+- [x] #1793 src/components/sections/BookingZone.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1794 src/components/sections/BookingZone.tsx: s6-text-cream/88 text-cream/88→text-cream/92
+- [x] #1795 src/components/sections/BookingZone.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1796 src/components/sections/BookingZone.tsx: s6-text-cream/90 text-cream/90→text-cream/94
+- [x] #1797 src/app/admin/page.tsx: s7-g-gap-2 gap-2→gap-2.5
+- [x] #1798 src/app/gallery/page.tsx: s7-g-gap-2 gap-2→gap-2.5
+- [x] #1799 src/app/locations/[branch]/page.tsx: s7-g-gap-4 gap-4→gap-5
+- [x] #1800 src/app/locations/page.tsx: s7-g-gap-2 gap-2→gap-2.5
+- [x] #1801 src/app/not-found.tsx: s7-g-gap-3 gap-3→gap-3.5
+- [x] #1802 src/app/services/[slug]/page.tsx: s7-g-gap-4 gap-4→gap-5
+- [x] #1803 src/components/global/Footer.tsx: s7-g-gap-2 gap-2→gap-2.5
+- [x] #1804 src/components/sections/GalleryGrid.tsx: s7-g-gap-1 gap-1→gap-1.5
+- [x] #1805 src/components/sections/HeroSection.tsx: s7-g-gap-3 gap-3→gap-3.5
+- [x] #1806 src/components/sections/PageHero.tsx: s7-g-gap-3 gap-3→gap-3.5
+- [x] #1807 src/components/sections/ReviewThemes.tsx: s7-g-gap-3 gap-3→gap-3.5
+- [x] #1808 src/components/ui/branch-card.tsx: s7-g-gap-3 gap-3→gap-3.5
+- [x] #1809 src/components/ui/shimmer-button.tsx: s7-g-gap-2 gap-2→gap-2.5
+- [x] #1810 src/app/locations/page.tsx: s7-g-gap-2 gap-2→gap-2.5
+- [x] #1811 src/app/admin/page.tsx: s8-sp-mt-2 mt-2→mt-2.5
+- [x] #1812 src/app/book/page.tsx: s8-sp-mt-2 mt-2→mt-2.5
+- [x] #1813 src/components/global/Footer.tsx: s8-sp-mt-3 mt-3→mt-3.5
+- [x] #1814 src/components/sections/BookingZone.tsx: s8-cream:text-cream/64 text-cream/64→text-cream/70
+- [x] #1815 src/components/ui/branch-card.tsx: s8-sp-mt-3 mt-3→mt-3.5
+- [x] #1816 src/components/ui/section-heading.tsx: s8-sp-mt-4 mt-4→mt-5
+- [x] #1817 src/app/admin/page.tsx: s8-sp-mt-2 mt-2→mt-2.5
+- [x] #1818 src/components/sections/BookingZone.tsx: s8-cream:text-cream/64 text-cream/64→text-cream/70
+- [x] #1819 src/app/admin/page.tsx: s8-sp-px-3 px-3→px-3.5
+- [x] #1820 src/app/admin/page.tsx: s8-sp-px-3 px-3→px-3.5
+- [x] #1821 src/app/admin/page.tsx: s8-sp-px-3 px-3→px-3.5
+- [x] #1822 src/app/admin/page.tsx: s8-sp-px-3 px-3→px-3.5
+- [x] #1823 src/app/admin/page.tsx: s8-sp-px-3 px-3→px-3.5
+- [x] #1824 src/app/admin/page.tsx: s8-sp-px-3 px-3→px-3.5
+- [x] #1825 src/app/about/page.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1826 src/app/admin/page.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1827 src/app/book/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1828 src/app/contact/page.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1829 src/app/faq/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1830 src/app/gallery/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1831 src/app/globals.css: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1832 src/app/locations/[branch]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1833 src/app/locations/page.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1834 src/app/not-found.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1835 src/app/services/[slug]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1836 src/app/services/page.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1837 src/components/global/Footer.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1838 src/components/global/MobileBookingBar.tsx: s9-sp-gap-2.5 gap-2.5→gap-3
+- [x] #1839 src/components/global/Navbar.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1840 src/components/sections/AboutTeaser.tsx: s9-type:tracking-[-0.02em] tracking-[-0.02em]→tracking-[-0.024em]
+- [x] #1841 src/components/sections/BeforeAfterShowcase.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1842 src/components/sections/BeforeAfterSlider.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1843 src/components/sections/BookingForm.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1844 src/components/sections/BookingZone.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1845 src/components/sections/CareJourney.tsx: s9-type:tracking-[-0.02em] tracking-[-0.02em]→tracking-[-0.024em]
+- [x] #1846 src/components/sections/ContactForm.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1847 src/components/sections/CopyAddressButton.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1848 src/components/sections/FAQAccordion.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1849 src/components/sections/FAQTeaser.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1850 src/components/sections/GalleryGrid.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1851 src/components/sections/GalleryTeaser.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1852 src/components/sections/HeroSection.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1853 src/components/sections/HoursTable.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1854 src/components/sections/PageHero.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1855 src/components/sections/ReviewThemes.tsx: s9-type:tracking-[-0.02em] tracking-[-0.02em]→tracking-[-0.024em]
+- [x] #1856 src/components/sections/ServiceTabs.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #1857 src/components/sections/ServicesGrid.tsx: s9-type:tracking-[-0.02em] tracking-[-0.02em]→tracking-[-0.024em]
+- [x] #1858 src/components/sections/StatsCounter.tsx: s9-type:tracking-[-0.025em] tracking-[-0.025em]→tracking-[-0.028em]
+- [x] #1859 src/components/sections/TrustStrip.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1860 src/components/ui/branch-card.tsx: s9-type:tracking-[-0.02em] tracking-[-0.02em]→tracking-[-0.024em]
+- [x] #1861 src/components/ui/button.tsx: s9-cream:bg-cream/12 bg-cream/12→bg-cream/14
+- [x] #1862 src/components/ui/marquee-strip.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1863 src/components/ui/section-heading.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1864 src/components/ui/service-card.tsx: s9-type:tracking-[-0.02em] tracking-[-0.02em]→tracking-[-0.024em]
+- [x] #1865 src/components/ui/shimmer-button.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1866 src/app/about/page.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1867 src/app/admin/page.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1868 src/app/book/page.tsx: s9-sp-mt-2.5 mt-2.5→mt-3
+- [x] #1869 src/app/contact/page.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1870 src/app/globals.css: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1871 src/app/locations/[branch]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1872 src/app/locations/page.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1873 src/app/not-found.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1874 src/app/services/[slug]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1875 src/app/services/page.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1876 src/components/global/Footer.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1877 src/components/global/MobileBookingBar.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #1878 src/components/global/Navbar.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1879 src/components/sections/AboutTeaser.tsx: s9-type:tracking-[-0.03em] tracking-[-0.03em]→tracking-[-0.032em]
+- [x] #1880 src/components/sections/BeforeAfterShowcase.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1881 src/components/sections/BeforeAfterSlider.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1882 src/components/sections/BookingForm.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1883 src/components/sections/BookingZone.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1884 src/components/sections/CareJourney.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1885 src/components/sections/ContactForm.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1886 src/components/sections/CopyAddressButton.tsx: s9-sp-gap-2.5 gap-2.5→gap-3
+- [x] #1887 src/components/sections/FAQAccordion.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1888 src/components/sections/GalleryGrid.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1889 src/components/sections/HeroSection.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1890 src/components/sections/HoursTable.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1891 src/components/sections/PageHero.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1892 src/components/sections/ReviewThemes.tsx: s9-type:tracking-[-0.03em] tracking-[-0.03em]→tracking-[-0.032em]
+- [x] #1893 src/components/sections/ServicesGrid.tsx: s9-type:tracking-[-0.02em] tracking-[-0.02em]→tracking-[-0.024em]
+- [x] #1894 src/components/sections/StatsCounter.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1895 src/components/sections/TrustStrip.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1896 src/components/ui/branch-card.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1897 src/components/ui/button.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #1898 src/components/ui/marquee-strip.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1899 src/components/ui/section-heading.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1900 src/components/ui/service-card.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1901 src/app/about/page.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #1902 src/app/admin/page.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1903 src/app/contact/page.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1904 src/app/globals.css: s9-body-track body + tracking-[-0.011em]
+- [x] #1905 src/app/locations/[branch]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1906 src/app/locations/page.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #1907 src/app/not-found.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #1908 src/app/services/[slug]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1909 src/app/services/page.tsx: s9-cream:text-cream/92 text-cream/92→text-cream/94
+- [x] #1910 src/components/global/Footer.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1911 src/components/global/Navbar.tsx: s9-cream:bg-cream/12 bg-cream/12→bg-cream/14
+- [x] #1912 src/components/sections/AboutTeaser.tsx: s9-type:tracking-[-0.03em] tracking-[-0.03em]→tracking-[-0.032em]
+- [x] #1913 src/components/sections/BeforeAfterShowcase.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1914 src/components/sections/BeforeAfterSlider.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1915 src/components/sections/BookingForm.tsx: s9-sp-gap-3.5 gap-3.5→gap-4
+- [x] #1916 src/components/sections/BookingZone.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1917 src/components/sections/CareJourney.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1918 src/components/sections/ContactForm.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1919 src/components/sections/FAQAccordion.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1920 src/components/sections/GalleryGrid.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1921 src/components/sections/HeroSection.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1922 src/components/sections/PageHero.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1923 src/components/sections/ReviewThemes.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1924 src/components/sections/ServicesGrid.tsx: s9-type:tracking-[-0.03em] tracking-[-0.03em]→tracking-[-0.032em]
+- [x] #1925 src/components/sections/StatsCounter.tsx: s9-sp-gap-3.5 gap-3.5→gap-4
+- [x] #1926 src/components/sections/TrustStrip.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #1927 src/components/ui/branch-card.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1928 src/components/ui/button.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1929 src/components/ui/marquee-strip.tsx: s9-type:tracking-[-0.02em] tracking-[-0.02em]→tracking-[-0.024em]
+- [x] #1930 src/components/ui/section-heading.tsx: s9-type:tracking-[-0.03em] tracking-[-0.03em]→tracking-[-0.032em]
+- [x] #1931 src/components/ui/service-card.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1932 src/app/about/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1933 src/app/admin/page.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #1934 src/app/contact/page.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #1935 src/app/globals.css: s9-body-track body + tracking-[-0.011em]
+- [x] #1936 src/app/locations/[branch]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1937 src/app/locations/page.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #1938 src/app/not-found.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #1939 src/app/services/[slug]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1940 src/app/services/page.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1941 src/components/global/Footer.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1942 src/components/global/Navbar.tsx: s9-cream:bg-cream/12 bg-cream/12→bg-cream/14
+- [x] #1943 src/components/sections/AboutTeaser.tsx: s9-type:leading-[1.08] leading-[1.08]→leading-[1.1]
+- [x] #1944 src/components/sections/BeforeAfterShowcase.tsx: s9-type:tracking-[-0.03em] tracking-[-0.03em]→tracking-[-0.032em]
+- [x] #1945 src/components/sections/BeforeAfterSlider.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1946 src/components/sections/BookingForm.tsx: s9-sp-py-2.5 py-2.5→py-3
+- [x] #1947 src/components/sections/BookingZone.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1948 src/components/sections/CareJourney.tsx: s9-sp-mt-2.5 mt-2.5→mt-3
+- [x] #1949 src/components/sections/ContactForm.tsx: s9-sp-py-3.5 py-3.5→py-4
+- [x] #1950 src/components/sections/FAQAccordion.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1951 src/components/sections/GalleryGrid.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #1952 src/components/sections/HeroSection.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1953 src/components/sections/PageHero.tsx: s9-sp-mt-3.5 mt-3.5→mt-4
+- [x] #1954 src/components/sections/ReviewThemes.tsx: s9-sp-gap-2.5 gap-2.5→gap-3
+- [x] #1955 src/components/sections/ServicesGrid.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1956 src/components/sections/TrustStrip.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #1957 src/components/ui/branch-card.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1958 src/components/ui/button.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1959 src/components/ui/section-heading.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1960 src/components/ui/service-card.tsx: s9-sp-mt-3.5 mt-3.5→mt-4
+- [x] #1961 src/app/about/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1962 src/app/admin/page.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #1963 src/app/contact/page.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #1964 src/app/locations/[branch]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1965 src/app/locations/page.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #1966 src/app/not-found.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #1967 src/app/services/[slug]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1968 src/app/services/page.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1969 src/components/global/Footer.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1970 src/components/global/Navbar.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #1971 src/components/sections/AboutTeaser.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1972 src/components/sections/BeforeAfterShowcase.tsx: s9-type:leading-[1.08] leading-[1.08]→leading-[1.1]
+- [x] #1973 src/components/sections/BeforeAfterSlider.tsx: s9-sp-gap-3.5 gap-3.5→gap-4
+- [x] #1974 src/components/sections/BookingForm.tsx: s9-sp-py-2.5 py-2.5→py-3
+- [x] #1975 src/components/sections/BookingZone.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1976 src/components/sections/ContactForm.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #1977 src/components/sections/FAQAccordion.tsx: s9-sp-gap-3.5 gap-3.5→gap-4
+- [x] #1978 src/components/sections/GalleryGrid.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #1979 src/components/sections/HeroSection.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1980 src/components/sections/ReviewThemes.tsx: s9-sp-gap-3.5 gap-3.5→gap-4
+- [x] #1981 src/components/sections/ServicesGrid.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1982 src/components/sections/TrustStrip.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #1983 src/components/ui/branch-card.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1984 src/components/ui/button.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1985 src/app/about/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1986 src/app/admin/page.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #1987 src/app/contact/page.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #1988 src/app/locations/[branch]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1989 src/app/locations/page.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #1990 src/app/not-found.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #1991 src/app/services/[slug]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1992 src/app/services/page.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1993 src/components/global/Footer.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1994 src/components/global/Navbar.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #1995 src/components/sections/AboutTeaser.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1996 src/components/sections/BeforeAfterShowcase.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #1997 src/components/sections/BookingForm.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #1998 src/components/sections/BookingZone.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #1999 src/components/sections/FAQAccordion.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2000 src/components/sections/GalleryGrid.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #2001 src/components/sections/HeroSection.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #2002 src/components/sections/ServicesGrid.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2003 src/components/sections/TrustStrip.tsx: s9-type:tracking-[-0.02em] tracking-[-0.02em]→tracking-[-0.024em]
+- [x] #2004 src/components/ui/branch-card.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2005 src/components/ui/button.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #2006 src/app/admin/page.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2007 src/app/contact/page.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2008 src/app/locations/[branch]/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2009 src/app/locations/page.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2010 src/app/services/[slug]/page.tsx: s9-sp-gap-2.5 gap-2.5→gap-3
+- [x] #2011 src/app/services/page.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2012 src/components/global/Footer.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #2013 src/components/global/Navbar.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2014 src/components/sections/AboutTeaser.tsx: s9-sp-mt-2.5 mt-2.5→mt-3
+- [x] #2015 src/components/sections/BeforeAfterShowcase.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2016 src/components/sections/BookingForm.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2017 src/components/sections/BookingZone.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2018 src/components/sections/FAQAccordion.tsx: s9-sp-py-2.5 py-2.5→py-3
+- [x] #2019 src/components/sections/GalleryGrid.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2020 src/components/sections/HeroSection.tsx: s9-cream:text-cream/94 text-cream/94→text-cream
+- [x] #2021 src/components/sections/ServicesGrid.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2022 src/components/sections/TrustStrip.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2023 src/components/ui/button.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2024 src/app/admin/page.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2025 src/app/contact/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2026 src/app/locations/[branch]/page.tsx: s9-sp-gap-2.5 gap-2.5→gap-3
+- [x] #2027 src/app/locations/page.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2028 src/app/services/[slug]/page.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2029 src/app/services/page.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2030 src/components/global/Footer.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2031 src/components/global/Navbar.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2032 src/components/sections/AboutTeaser.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #2033 src/components/sections/BeforeAfterShowcase.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2034 src/components/sections/BookingZone.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2035 src/components/sections/GalleryGrid.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2036 src/components/sections/HeroSection.tsx: s9-cream:bg-cream/12 bg-cream/12→bg-cream/14
+- [x] #2037 src/components/sections/ServicesGrid.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #2038 src/components/sections/TrustStrip.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2039 src/components/ui/button.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2040 src/app/admin/page.tsx: s9-type:tracking-[-0.025em] tracking-[-0.025em]→tracking-[-0.028em]
+- [x] #2041 src/app/contact/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2042 src/app/locations/[branch]/page.tsx: s9-sp-gap-3.5 gap-3.5→gap-4
+- [x] #2043 src/app/locations/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2044 src/app/services/page.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2045 src/components/global/Footer.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2046 src/components/global/Navbar.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2047 src/components/sections/BeforeAfterShowcase.tsx: s9-sp-gap-2.5 gap-2.5→gap-3
+- [x] #2048 src/components/sections/BookingZone.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2049 src/components/sections/GalleryGrid.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2050 src/components/sections/HeroSection.tsx: s9-cream:bg-cream/12 bg-cream/12→bg-cream/14
+- [x] #2051 src/app/admin/page.tsx: s9-type:tracking-[-0.025em] tracking-[-0.025em]→tracking-[-0.028em]
+- [x] #2052 src/app/contact/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2053 src/app/locations/[branch]/page.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #2054 src/app/locations/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2055 src/app/services/page.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2056 src/components/global/Footer.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2057 src/components/global/Navbar.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2058 src/components/sections/BeforeAfterShowcase.tsx: s9-sp-mt-3.5 mt-3.5→mt-4
+- [x] #2059 src/components/sections/BookingZone.tsx: s9-type:tracking-[-0.02em] tracking-[-0.02em]→tracking-[-0.024em]
+- [x] #2060 src/components/sections/GalleryGrid.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2061 src/components/sections/HeroSection.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #2062 src/app/admin/page.tsx: s9-type:tracking-[-0.025em] tracking-[-0.025em]→tracking-[-0.028em]
+- [x] #2063 src/app/contact/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2064 src/app/locations/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2065 src/app/services/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2066 src/components/global/Footer.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2067 src/components/global/Navbar.tsx: s9-type:tracking-[-0.025em] tracking-[-0.025em]→tracking-[-0.028em]
+- [x] #2068 src/components/sections/BookingZone.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2069 src/components/sections/GalleryGrid.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2070 src/components/sections/HeroSection.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #2071 src/app/admin/page.tsx: s9-type:tracking-[-0.025em] tracking-[-0.025em]→tracking-[-0.028em]
+- [x] #2072 src/app/contact/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2073 src/app/locations/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2074 src/app/services/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2075 src/components/global/Footer.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2076 src/components/global/Navbar.tsx: s9-type:tracking-[-0.025em] tracking-[-0.025em]→tracking-[-0.028em]
+- [x] #2077 src/components/sections/BookingZone.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2078 src/components/sections/GalleryGrid.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2079 src/components/sections/HeroSection.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #2080 src/app/admin/page.tsx: s9-display-weight display missing font-semibold
+- [x] #2081 src/app/contact/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2082 src/app/locations/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2083 src/app/services/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2084 src/components/global/Footer.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2085 src/components/global/Navbar.tsx: s9-type:tracking-[0.01em] tracking-[0.01em]→tracking-[-0.01em]
+- [x] #2086 src/components/sections/BookingZone.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2087 src/components/sections/GalleryGrid.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2088 src/components/sections/HeroSection.tsx: s9-cream:bg-cream/14 bg-cream/14→bg-cream/16
+- [x] #2089 src/app/admin/page.tsx: s9-display-weight display missing font-semibold
+- [x] #2090 src/app/contact/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2091 src/app/locations/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2092 src/app/services/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2093 src/components/global/Footer.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2094 src/components/global/Navbar.tsx: s9-display-weight display missing font-semibold
+- [x] #2095 src/components/sections/BookingZone.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2096 src/components/sections/GalleryGrid.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2097 src/components/sections/HeroSection.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2098 src/app/admin/page.tsx: s9-display-weight display missing font-semibold
+- [x] #2099 src/app/contact/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2100 src/app/locations/page.tsx: s9-sp-gap-2.5 gap-2.5→gap-3
+- [x] #2101 src/app/services/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2102 src/components/global/Footer.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2103 src/components/global/Navbar.tsx: s9-display-weight display missing font-semibold
+- [x] #2104 src/components/sections/BookingZone.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2105 src/components/sections/GalleryGrid.tsx: s9-sp-mt-3.5 mt-3.5→mt-4
+- [x] #2106 src/components/sections/HeroSection.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2107 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2108 src/app/contact/page.tsx: s9-sp-gap-2.5 gap-2.5→gap-3
+- [x] #2109 src/app/locations/page.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #2110 src/app/services/page.tsx: s9-sp-mt-2.5 mt-2.5→mt-3
+- [x] #2111 src/components/global/Footer.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2112 src/components/global/Navbar.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2113 src/components/sections/BookingZone.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2114 src/components/sections/GalleryGrid.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2115 src/components/sections/HeroSection.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2116 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2117 src/app/contact/page.tsx: s9-sp-mt-2.5 mt-2.5→mt-3
+- [x] #2118 src/components/global/Footer.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2119 src/components/global/Navbar.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2120 src/components/sections/BookingZone.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2121 src/components/sections/HeroSection.tsx: s9-cream:border-cream/20 border-cream/20→border-cream/22
+- [x] #2122 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2123 src/app/contact/page.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #2124 src/components/global/Footer.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2125 src/components/global/Navbar.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2126 src/components/sections/BookingZone.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #2127 src/components/sections/HeroSection.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2128 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2129 src/app/contact/page.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #2130 src/components/global/Footer.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2131 src/components/global/Navbar.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2132 src/components/sections/BookingZone.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #2133 src/components/sections/HeroSection.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2134 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2135 src/app/contact/page.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2136 src/components/global/Footer.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2137 src/components/global/Navbar.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2138 src/components/sections/HeroSection.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2139 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2140 src/app/contact/page.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2141 src/components/global/Footer.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2142 src/components/global/Navbar.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2143 src/components/sections/HeroSection.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2144 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2145 src/app/contact/page.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2146 src/components/global/Footer.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2147 src/components/global/Navbar.tsx: s9-sp-mt-3.5 mt-3.5→mt-4
+- [x] #2148 src/components/sections/HeroSection.tsx: s9-cream:border-cream/22 border-cream/22→border-cream/24
+- [x] #2149 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2150 src/components/global/Footer.tsx: s9-sp-gap-3.5 gap-3.5→gap-4
+- [x] #2151 src/components/sections/HeroSection.tsx: s9-type:tracking-[-0.025em] tracking-[-0.025em]→tracking-[-0.028em]
+- [x] #2152 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2153 src/components/global/Footer.tsx: s9-misc:underline-offset-4 underline-offset-4→underline-offset-[3px]
+- [x] #2154 src/components/sections/HeroSection.tsx: s9-type:tracking-[-0.025em] tracking-[-0.025em]→tracking-[-0.028em]
+- [x] #2155 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2156 src/components/sections/HeroSection.tsx: s9-type:leading-[0.92] leading-[0.92]→leading-[0.96]
+- [x] #2157 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2158 src/components/sections/HeroSection.tsx: s9-type:leading-[1.02] leading-[1.02]→leading-[1.05]
+- [x] #2159 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2160 src/components/sections/HeroSection.tsx: s9-display-weight display missing font-semibold
+- [x] #2161 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2162 src/components/sections/HeroSection.tsx: s9-display-weight display missing font-semibold
+- [x] #2163 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2164 src/components/sections/HeroSection.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2165 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2166 src/components/sections/HeroSection.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2167 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2168 src/components/sections/HeroSection.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2169 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2170 src/components/sections/HeroSection.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2171 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2172 src/components/sections/HeroSection.tsx: s9-sp-gap-3.5 gap-3.5→gap-4
+- [x] #2173 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2174 src/components/sections/HeroSection.tsx: s9-sp-gap-3.5 gap-3.5→gap-4
+- [x] #2175 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2176 src/components/sections/HeroSection.tsx: s9-sp-py-2.5 py-2.5→py-3
+- [x] #2177 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2178 src/components/sections/HeroSection.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2179 src/app/admin/page.tsx: s9-body-track body + tracking-[-0.011em]
+- [x] #2180 src/components/sections/HeroSection.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2181 src/app/admin/page.tsx: s9-sp-gap-2.5 gap-2.5→gap-3
+- [x] #2182 src/components/sections/HeroSection.tsx: s9-misc:backdrop-blur-xl backdrop-blur-xl→backdrop-blur-2xl
+- [x] #2183 src/app/admin/page.tsx: s9-sp-mt-2.5 mt-2.5→mt-3
+- [x] #2184 src/components/sections/HeroSection.tsx: s9-sp-gap-2.5 gap-2.5→gap-3
+- [x] #2185 src/app/about/page.tsx: s10-safe:w-44 w-44→w-40
+- [x] #2186 src/app/book/page.tsx: s10-any-soft-shadow soft shadow→shadow-card
+- [x] #2187 src/app/contact/page.tsx: s10-any-hover-shadow strong shadow→shadow-card-hover
+- [x] #2188 src/app/layout.tsx: s10-outline focus-visible:outline-none inject
+- [x] #2189 src/app/locations/page.tsx: s10-any-hover-shadow strong shadow→shadow-card-hover
+- [x] #2190 src/app/not-found.tsx: s10-gap:gap-x-5 gap-x-5→gap-x-6
+- [x] #2191 src/app/services/[slug]/page.tsx: s10-any-soft-shadow soft shadow→shadow-card
+- [x] #2192 src/app/services/page.tsx: s10-safe:min-h-[360px] min-h-[360px]→min-h-[340px]
+- [x] #2193 src/components/global/Navbar.tsx: s10-safe:lg:tracking-[0.02em] lg:tracking-[0.02em]→lg:tracking-[-0.01em]
+- [x] #2194 src/components/sections/AboutTeaser.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2195 src/components/sections/BeforeAfterShowcase.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2196 src/components/sections/BookingZone.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2197 src/components/sections/FAQAccordion.tsx: s10-safe:bg-white/90 bg-white/90→bg-white/92
+- [x] #2198 src/components/sections/FAQTeaser.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2199 src/components/sections/GalleryGrid.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2200 src/components/sections/GalleryTeaser.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2201 src/components/sections/HeroSection.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2202 src/components/sections/ServicesGrid.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2203 src/components/sections/TrustStrip.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2204 src/components/ui/branch-card.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2205 src/components/ui/service-card.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2206 src/components/ui/sheet.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2207 src/components/ui/shimmer-button.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2208 src/app/about/page.tsx: s10-any-hover-shadow strong shadow→shadow-card-hover
+- [x] #2209 src/app/contact/page.tsx: s10-wrap-gap flex-wrap gap-2→gap-2.5
+- [x] #2210 src/app/not-found.tsx: s10-gap:gap-y-2 gap-y-2→gap-y-2.5
+- [x] #2211 src/app/services/page.tsx: s10-safe:min-h-[250px] min-h-[250px]→min-h-[240px]
+- [x] #2212 src/components/global/Navbar.tsx: s10-safe:sm:text-[1.42rem] sm:text-[1.42rem]→sm:text-[1.35rem]
+- [x] #2213 src/components/sections/AboutTeaser.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2214 src/components/sections/BookingZone.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2215 src/components/sections/GalleryGrid.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2216 src/components/sections/GalleryTeaser.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2217 src/components/sections/HeroSection.tsx: s10-safe:min-h-[100svh] min-h-[100svh]→min-h-[100dvh]
+- [x] #2218 src/components/sections/ServicesGrid.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2219 src/components/sections/TrustStrip.tsx: s10-safe:bg-cream/[0.04] bg-cream/[0.04]→bg-cream/[0.06]
+- [x] #2220 src/components/ui/branch-card.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2221 src/components/ui/service-card.tsx: s10-safe:bg-white/90 bg-white/90→bg-white/92
+- [x] #2222 src/components/ui/sheet.tsx: s10-any-soft-shadow soft shadow→shadow-card
+- [x] #2223 src/app/services/page.tsx: s10-any-hover-shadow strong shadow→shadow-card-hover
+- [x] #2224 src/components/global/Navbar.tsx: s10-safe:text-[1.25rem] text-[1.25rem]→text-[1.2rem]
+- [x] #2225 src/components/sections/BookingZone.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2226 src/components/sections/GalleryGrid.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2227 src/components/sections/ServicesGrid.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2228 src/components/ui/branch-card.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2229 src/components/ui/service-card.tsx: s10-safe:bg-white/90 bg-white/90→bg-white/92
+- [x] #2230 src/components/global/Navbar.tsx: s10-safe:text-[0.56rem] text-[0.56rem]→text-[0.6rem]
+- [x] #2231 src/components/sections/BookingZone.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2232 src/components/sections/GalleryGrid.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2233 src/components/sections/ServicesGrid.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2234 src/components/ui/branch-card.tsx: s10-safe:bg-white/75 bg-white/75→bg-white/80
+- [x] #2235 src/components/ui/service-card.tsx: s10-safe:bg-white/90 bg-white/90→bg-white/92
+- [x] #2236 src/components/global/Navbar.tsx: s10-safe:bg-white/90 bg-white/90→bg-white/92
+- [x] #2237 src/components/sections/BookingZone.tsx: s10-safe:bg-cream/[0.04] bg-cream/[0.04]→bg-cream/[0.06]
+- [x] #2238 src/components/sections/GalleryGrid.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2239 src/components/sections/ServicesGrid.tsx: s10-safe:focus-visible:ring-offset-2 focus-visible:ring-offset-2→focus-visible:ring-offset-[3px]
+- [x] #2240 src/components/ui/service-card.tsx: s10-safe:bg-white/90 bg-white/90→bg-white/92
+- [x] #2241 src/components/sections/ServicesGrid.tsx: s10-safe:bg-white/75 bg-white/75→bg-white/80
+- [x] #2242 src/components/ui/service-card.tsx: s10-wrap-gap flex-wrap gap-2→gap-2.5

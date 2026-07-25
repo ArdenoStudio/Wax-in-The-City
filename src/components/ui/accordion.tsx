@@ -53,7 +53,7 @@ const AccordionContent = React.forwardRef<
   >
     <div
       className={cn(
-        "relative z-10 max-w-[65ch] border-t border-warm-border/50 px-5 pb-5 pt-3.5 text-pretty leading-relaxed",
+        "relative z-10 max-w-[65ch] border-t border-warm-border/80 px-5 pb-5 pt-3.5 text-pretty leading-relaxed",
         className
       )}
     >

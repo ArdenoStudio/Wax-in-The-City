@@ -46,7 +46,7 @@ export function BookingZone({
       className={
         standalone
           ? "relative overflow-hidden bg-ink px-5 py-section-lg text-cream lg:px-8"
-          : "px-5 lg:px-8"
+          : "px-7 lg:px-8"
       }
     >
       {standalone && (
@@ -90,8 +90,8 @@ export function BookingZone({
           <p
             className={
               standalone
-                ? "mt-6 text-center font-sans text-body-sm text-cream/58"
-                : "mt-6 text-center font-sans text-body-sm text-warm-grey"
+                ? "tracking-[-0.011em] text-pretty mt-6 text-center font-sans text-body-sm text-cream"
+                : "tracking-[-0.011em] text-pretty mt-6 text-center font-sans text-body-sm text-warm-grey"
             }
           >
             Prefer to chat?{" "}
@@ -101,8 +101,8 @@ export function BookingZone({
               rel="noopener noreferrer"
               className={
                 standalone
-                  ? "inline-flex min-h-10 items-center font-medium text-brand-light underline-offset-4 hover:underline"
-                  : "inline-flex min-h-10 items-center font-medium text-brand-action underline-offset-4 hover:underline"
+                  ? "inline-flex min-h-11 items-center font-semibold text-brand-light underline-offset-[3px] hover:underline"
+                  : "inline-flex min-h-11 items-center font-semibold text-brand-action underline-offset-[3px] hover:underline"
               }
             >
               Message us on WhatsApp
@@ -117,8 +117,8 @@ export function BookingZone({
 /** Reserved wrapper for the future Dinaya embed. */
 function DinayaPlaceholder() {
   return (
-    <div className="dinaya-widget-zone flex h-[480px] items-center justify-center rounded-card-lg border border-dashed border-cream/20 bg-cream/[0.04] text-center">
-      <p className="px-6 font-sans text-body text-cream/64">
+    <div className="dinaya-widget-zone flex h-[480px] items-center justify-center rounded-card-lg border border-dashed border-cream/24 bg-cream/[0.06] text-center">
+      <p className="tracking-[-0.011em] text-pretty px-6 font-sans text-body text-cream">
         Online booking is coming soon. For now, please send a request or message us
         on WhatsApp.
       </p>
@@ -131,42 +131,42 @@ function WhatsappOnly({ standalone }: { standalone: boolean }) {
 
   if (standalone) {
     return (
-      <div className="grid overflow-hidden rounded-card-lg border border-cream/10 lg:grid-cols-[0.92fr_1.08fr]">
+      <div className="grid overflow-hidden rounded-card-lg border border-cream/24 lg:grid-cols-[0.92fr_1.08fr]">
         {/* Cult-style oxblood side panel — pearl type only */}
         <div className="relative bg-[linear-gradient(165deg,#2b0710_0%,#17070b_100%)] px-7 py-9 lg:px-9 lg:py-11">
-          <p className="font-sans text-caption font-semibold uppercase tracking-[0.14em] text-cream/50">
+          <p className="font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em] text-cream/70">
             Ladies only
           </p>
-          <p className="mt-4 max-w-sm font-display text-h3 font-semibold leading-snug tracking-[-0.02em] text-cream">
+          <p className="text-balance mt-4 max-w-[24rem] font-display text-h3 font-semibold leading-[1.15] tracking-[-0.024em] text-cream">
             A private appointment room, confirmed before you arrive.
           </p>
-          <p className="mt-4 max-w-sm font-sans text-body-sm leading-relaxed text-cream/64">
+          <p className="tracking-[-0.011em] text-pretty mt-5 max-w-[24rem] font-sans text-body-sm leading-[1.7] text-cream">
             WhatsApp is the quickest route. We&apos;ll confirm a time that works
             for you.
           </p>
         </div>
 
-        <div className="flex flex-col items-start justify-center bg-cream/[0.05] px-7 py-9 lg:px-10 lg:py-11">
+        <div className="flex flex-col items-start justify-center bg-cream/[0.07] px-7 py-9 lg:px-10 lg:py-11">
           <a
             href={wa}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 items-center gap-2 rounded-pill bg-brand-action px-6 font-sans font-medium text-cream transition-colors hover:bg-[#8a0d2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            className="ease-[var(--ease-apple)] inline-flex h-12 items-center gap-2.5 rounded-pill bg-brand-action px-6 font-sans font-semibold text-cream transition-colors duration-300 hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/40 focus-visible:ring-offset-[3px] focus-visible:ring-offset-ink"
           >
-            <WhatsappIcon className="h-4 w-4" />
+            <WhatsappIcon className="h-4 w-4 shrink-0" />
             Chat on WhatsApp
           </a>
-          <p className="mt-2.5 max-w-xs font-sans text-caption leading-relaxed text-cream/55">
+          <p className="mt-2.5 max-w-[20rem] font-sans text-caption leading-relaxed text-cream/70">
             Same-day timing? WhatsApp reaches the studio fastest — we&apos;ll confirm
             what&apos;s still open.
           </p>
           <Link
             href="/book"
-            className="mt-4 inline-flex h-12 items-center rounded-pill border border-cream/24 px-6 font-sans font-medium text-cream transition-colors hover:bg-cream/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            className="ease-[var(--ease-apple)] mt-7 inline-flex h-12 items-center rounded-pill border border-cream/24 px-6 font-sans font-semibold text-cream transition-colors duration-300 hover:bg-cream/12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/40 focus-visible:ring-offset-[3px] focus-visible:ring-offset-ink"
           >
             Send a request
           </Link>
-          <p className="mt-5 font-sans text-body-sm text-cream/58">
+          <p className="tracking-[-0.011em] text-pretty mt-6 font-sans text-body-sm text-cream">
             Ladies-only studio — private rooms, every visit.
           </p>
         </div>
@@ -176,35 +176,35 @@ function WhatsappOnly({ standalone }: { standalone: boolean }) {
 
   return (
     <div className="flex flex-col items-center rounded-card-lg border border-warm-border/80 bg-cream p-8 text-center">
-      <span className="flex h-12 w-12 items-center justify-center rounded-card border border-brand-action/15 bg-brand-mist text-brand-action">
-        <WhatsappIcon className="h-6 w-6" />
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-card border border-brand-action/15 bg-brand-mist text-brand-action">
+        <WhatsappIcon className="h-6 w-6 shrink-0" />
       </span>
-      <p className="mt-5 max-w-sm font-sans text-body text-warm-grey">
+      <p className="tracking-[-0.011em] text-pretty mt-5 max-w-[24rem] font-sans text-body text-warm-grey">
         The quickest way to book is a quick WhatsApp message. We&apos;ll confirm a
         time that works for you.
       </p>
-      <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row">
+      <div className="mt-6 flex flex-col items-center gap-3.5 sm:flex-row">
         <a
           href={wa}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex h-12 items-center gap-2 rounded-pill bg-brand-action px-6 font-sans font-medium text-cream transition-colors hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2"
+          className="ease-[var(--ease-apple)] inline-flex h-12 items-center gap-2 rounded-pill bg-brand-action px-6 font-sans font-semibold text-cream transition-colors duration-300 hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-[3px]"
         >
-          <WhatsappIcon className="h-4 w-4" />
+          <WhatsappIcon className="h-4 w-4 shrink-0" />
           Chat on WhatsApp
         </a>
         <Link
           href="/book"
-          className="inline-flex h-12 items-center rounded-pill border border-brand-action/30 px-6 font-sans font-medium text-brand-action transition-colors hover:bg-brand-mist focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2"
+          className="ease-[var(--ease-apple)] inline-flex h-12 items-center rounded-pill border border-brand-action/36 px-6 font-sans font-semibold text-brand-action transition-colors duration-300 hover:bg-brand-mist/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-[3px]"
         >
           Send a request
         </Link>
       </div>
-      <p className="mt-3 max-w-sm font-sans text-caption leading-relaxed text-warm-grey/90">
+      <p className="mt-3 max-w-[24rem] font-sans text-caption leading-relaxed text-warm-grey/90">
         Same-day timing? WhatsApp reaches the studio fastest — we&apos;ll confirm
         what&apos;s still open.
       </p>
-      <p className="mt-5 font-sans text-body-sm text-warm-grey">
+      <p className="tracking-[-0.011em] text-pretty mt-5 font-sans text-body-sm text-warm-grey">
         Ladies-only studio — private rooms, every visit.
       </p>
     </div>

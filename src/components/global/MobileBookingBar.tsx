@@ -86,13 +86,13 @@ export function MobileBookingBar() {
           data-mobile-booking-bar
           className="fixed inset-x-0 bottom-0 z-40 border-t border-warm-border/55 bg-cream/82 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-16px_44px_rgba(27,14,16,0.09)] backdrop-blur-2xl md:hidden"
         >
-          <p className="mb-2 text-center font-sans text-caption text-warm-grey/90">
+          <p className="mb-2 text-center font-sans text-caption leading-snug text-warm-grey/90">
             Request a time · WhatsApp for same-day
           </p>
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-3">
             <Link
               href="/book"
-              className="pressable flex h-12 flex-1 items-center justify-center rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] font-semibold tracking-[-0.01em] text-cream shadow-[0_14px_34px_rgba(151,35,58,0.22)]"
+              className="pressable flex h-12 flex-1 items-center justify-center rounded-pill px-5 bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] font-semibold tracking-[-0.01em] text-cream shadow-[0_14px_34px_rgba(151,35,58,0.22)]"
             >
               Request a time
             </Link>
@@ -101,7 +101,7 @@ export function MobileBookingBar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp — fastest booking"
-              className="pressable flex h-12 w-12 shrink-0 items-center justify-center rounded-pill border border-brand-action/28 bg-white/60 text-brand-action shadow-card backdrop-blur-xl hover:bg-brand-mist"
+              className="pressable flex h-12 w-12 shrink-0 items-center justify-center rounded-pill px-5 border border-brand-action/34 bg-white/68 text-brand-action shadow-card backdrop-blur-2xl hover:bg-brand-mist/90"
             >
               <WhatsappIcon className="h-5 w-5 shrink-0" />
             </a>

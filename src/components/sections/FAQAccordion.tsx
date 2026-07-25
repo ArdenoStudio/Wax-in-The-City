@@ -177,7 +177,7 @@ function FAQAccordionEnhanced({
       <div className="space-y-3">
         <div className="relative">
           <Search
-            className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 shrink-0 -translate-y-1/2 text-brand-action/70"
+            className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 shrink-0 -translate-y-1/2 text-brand-action/80"
             aria-hidden
           />
           <input
@@ -186,14 +186,14 @@ function FAQAccordionEnhanced({
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search hygiene, waxing, booking…"
             aria-label="Search FAQ questions"
-            className="text-pretty field-surface h-12 w-full rounded-card border border-warm-border/80 bg-white/90 pl-11 pr-11 font-sans text-body text-warm outline-none transition-[border-color,box-shadow] placeholder:text-warm-grey/62 focus:border-brand-action/70 focus:ring-4 focus:ring-brand-action/12"
+            className="tracking-[-0.011em] ease-[var(--ease-apple)] text-pretty field-surface h-12 w-full rounded-card border border-warm-border/80 bg-white/92 pl-11 pr-11 font-sans text-body text-warm outline-none transition-[border-color,box-shadow] placeholder:text-warm-grey/62 focus:border-brand-action/70 focus:ring-4 focus:ring-brand-action/12"
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery("")}
               aria-label="Clear search"
-              className="ease-[var(--ease-apple)] absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-pill text-warm-grey transition-colors duration-300 hover:bg-brand-mist hover:text-brand-action"
+              className="ease-[var(--ease-apple)] absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-pill text-warm-grey transition-colors duration-300 hover:bg-brand-mist/90 hover:text-brand-action"
             >
               <X className="h-4 w-4 shrink-0" />
             </button>
@@ -208,7 +208,7 @@ function FAQAccordionEnhanced({
 
       <nav
         aria-label="FAQ categories"
-        className="sticky top-20 z-20 -mx-1 overflow-x-auto px-1 py-2.5 backdrop-blur-xl"
+        className="sticky top-24 z-30 -mx-1 overflow-x-auto px-1 py-3 backdrop-blur-2xl"
       >
         <ul className="flex min-w-max gap-1.5">
           {groups.map((group) => {
@@ -222,16 +222,16 @@ function FAQAccordionEnhanced({
                 <a
                   href={`#${id}`}
                   className={cn(
-                    "ease-[var(--ease-apple)] text-pretty font-sans inline-flex h-9 items-center gap-1.5 rounded-pill border px-3.5 text-body-sm font-semibold transition-colors duration-300",
+                    "tracking-[-0.011em] ease-[var(--ease-apple)] text-pretty font-sans inline-flex h-9 items-center gap-1.5 rounded-pill border px-3.5 text-body-sm font-semibold transition-colors duration-300",
                     visible
-                      ? "chip-active hover:bg-brand-mist"
+                      ? "chip-active hover:bg-brand-mist/90"
                       : "pointer-events-none border-warm-border/45 bg-white/35 text-warm-grey/40"
                   )}
                 >
                   {group.category}
                   <span
                     className={cn(
-                      "font-sans text-caption tabular-nums",
+                      "font-sans text-caption leading-snug tabular-nums",
                       visible ? "text-brand-action/65" : "text-warm-grey/35"
                     )}
                   >
@@ -249,14 +249,14 @@ function FAQAccordionEnhanced({
           <p className="text-balance font-display text-h4 font-semibold tracking-display text-warm">
             Nothing matched that search.
           </p>
-          <p className="font-sans mx-auto mt-2 max-w-sm text-pretty text-body-sm text-warm-grey">
+          <p className="tracking-[-0.011em] font-sans mx-auto mt-2.5 max-w-[24rem] text-pretty text-body-sm text-warm-grey">
             Try one word — hygiene, waxing, or booking — or clear the search to
             browse every answer.
           </p>
           <button
             type="button"
             onClick={() => setQuery("")}
-            className="text-pretty font-sans pressable mt-5 inline-flex h-10 items-center rounded-pill border border-brand-action/30 px-5 text-body-sm font-semibold text-brand-action hover:bg-brand-mist"
+            className="tracking-[-0.011em] text-pretty font-sans pressable mt-5 inline-flex h-11 items-center rounded-pill border border-brand-action/36 px-7 text-body-sm font-semibold text-brand-action hover:bg-brand-mist/90"
           >
             Clear search
           </button>
@@ -272,14 +272,14 @@ function FAQAccordionEnhanced({
                 variant="fadeUp"
                 delay={gi * 0.04}
               >
-                <div className="mb-3.5 flex items-baseline justify-between gap-3">
+                <div className="mb-3.5 flex items-baseline justify-between gap-4">
                   <h2
                     id={catId}
                     className="text-balance scroll-mt-36 font-display text-h3 font-semibold tracking-display text-warm"
                   >
                     {group.category}
                   </h2>
-                  <span className="font-sans text-caption tabular-nums text-warm-grey">
+                  <span className="font-sans text-caption leading-snug tabular-nums text-warm-grey">
                     {group.items.length}
                   </span>
                 </div>
