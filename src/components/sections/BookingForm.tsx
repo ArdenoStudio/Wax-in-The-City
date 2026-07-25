@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import Link from "next/link";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "motion/react";
@@ -8,12 +9,13 @@ import { Check, Clock3, Loader2, ShieldCheck } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import { bookingSchema, type BookingInput } from "@/lib/booking";
 import { submitBooking } from "@/app/actions/booking";
-import { SERVICES, BRANCHES, whatsappLink, type BranchSlug } from "@/lib/site";
+import { SERVICES, BRANCHES, getBranch, whatsappLink, type BranchSlug } from "@/lib/site";
 import { fieldAriaProps, fieldErrorId } from "@/lib/form-a11y";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 import {
   Select,
   SelectContent,
@@ -28,6 +30,14 @@ interface BookingFormProps {
   serviceOptions?: string[];
 }
 
+function todayISODate(): string {
+  const d = new Date();
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
+}
+
 export function BookingForm({
   defaultBranch,
   defaultService,
@@ -40,6 +50,10 @@ export function BookingForm({
 
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+  const [successWaMessage, setSuccessWaMessage] = useState(
+    "Hi! I just sent a booking request."
+  );
+  const minDate = useMemo(() => todayISODate(), []);
 
   const {
     register,
@@ -58,13 +72,21 @@ export function BookingForm({
     control,
     name: ["name", "phone", "branch", "service_preference"],
   });
+  const selectedBranch = watchedFields[2] as BranchSlug | undefined;
   const filledCount = watchedFields.filter(Boolean).length;
   const progress = (filledCount / 4) * 100;
+  const branchHours = selectedBranch ? getBranch(selectedBranch).hours : null;
 
   const onSubmit = async (data: BookingInput) => {
     setServerError(null);
     const res = await submitBooking(data);
     if (res.ok) {
+      const parts = [
+        "Hi! I just sent a booking request.",
+        data.branch ? `Branch: ${getBranch(data.branch).name}.` : null,
+        data.service_preference ? `Looking for: ${data.service_preference}.` : null,
+      ].filter(Boolean);
+      setSuccessWaMessage(parts.join(" "));
       setSubmitted(true);
     } else {
       setServerError(res.error);
@@ -94,21 +116,25 @@ export function BookingForm({
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
               <Check className="h-7 w-7" />
             </span>
-            <h3 className="mt-5 font-serif text-h3 text-warm">Thank you!</h3>
+            <h3 className="mt-5 font-serif text-h3 text-warm">Request received</h3>
             <p className="mt-2 max-w-sm text-body text-warm-grey">
-              We&apos;ll reach out within 24 hours to confirm your booking. For
-              anything urgent, message us on WhatsApp.
+              Request received — we&apos;ll confirm next.
             </p>
-            <Button asChild variant="outline" size="md" className="mt-6">
-              <a
-                href={whatsappLink("Hi! I just sent a booking request.")}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <WhatsappIcon className="h-4 w-4" />
-                Chat on WhatsApp
-              </a>
-            </Button>
+            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row">
+              <Button asChild variant="outline" size="md">
+                <Link href="/services">Browse services</Link>
+              </Button>
+              <Button asChild variant="primary" size="md">
+                <a
+                  href={whatsappLink(successWaMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <WhatsappIcon className="h-4 w-4" />
+                  Chat on WhatsApp
+                </a>
+              </Button>
+            </div>
           </motion.div>
         ) : (
           <motion.form
@@ -124,7 +150,14 @@ export function BookingForm({
                 <span className="text-caption text-warm-grey">Booking details</span>
                 <span className="text-caption font-medium text-brand-action">{filledCount} / 4</span>
               </div>
-              <div className="h-px w-full overflow-hidden rounded-full bg-warm-border">
+              <div
+                className="h-px w-full overflow-hidden rounded-full bg-warm-border"
+                role="progressbar"
+                aria-valuenow={filledCount}
+                aria-valuemin={0}
+                aria-valuemax={4}
+                aria-label="Booking form progress"
+              >
                 <motion.div
                   className="h-full rounded-full bg-brand-action"
                   initial={{ width: "0%" }}
@@ -135,17 +168,11 @@ export function BookingForm({
             </div>
 
             <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="name">Your name</Label>
-                {watchedFields[0] && (
-                  <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
-                    <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />Done
-                  </motion.span>
-                )}
-              </div>
+              <Label htmlFor="name">Your name</Label>
               <Input
                 id="name"
                 placeholder="Your name"
+                autoComplete="name"
                 {...register("name")}
                 {...fieldAriaProps("name", errors.name)}
               />
@@ -157,18 +184,12 @@ export function BookingForm({
             </div>
 
             <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="phone">Phone</Label>
-                {watchedFields[1] && (
-                  <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
-                    <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />Done
-                  </motion.span>
-                )}
-              </div>
+              <Label htmlFor="phone">Phone</Label>
               <Input
                 id="phone"
                 type="tel"
                 inputMode="tel"
+                autoComplete="tel"
                 placeholder="Your number (we'll only call or WhatsApp)"
                 {...register("phone")}
                 {...fieldAriaProps("phone", errors.phone)}
@@ -192,7 +213,13 @@ export function BookingForm({
                         id="branch-select"
                         aria-label="Select branch location"
                         aria-invalid={errors.branch ? true : undefined}
-                        aria-describedby={errors.branch ? fieldErrorId("branch") : undefined}
+                        aria-describedby={
+                          errors.branch
+                            ? fieldErrorId("branch")
+                            : branchHours
+                              ? "branch-hours-helper"
+                              : undefined
+                        }
                       >
                         <SelectValue placeholder="Choose a branch" />
                       </SelectTrigger>
@@ -206,6 +233,11 @@ export function BookingForm({
                     </Select>
                   )}
                 />
+                {branchHours && (
+                  <p id="branch-hours-helper" className="text-caption text-warm-grey">
+                    Weekdays {branchHours.weekday} · Weekends {branchHours.weekend}
+                  </p>
+                )}
                 {errors.branch && (
                   <p id={fieldErrorId("branch")} className="text-body-sm text-error" role="alert">
                     {errors.branch.message}
@@ -241,7 +273,22 @@ export function BookingForm({
 
             <div className="flex flex-col gap-2">
               <Label htmlFor="preferred_date">When do you prefer to visit?</Label>
-              <Input id="preferred_date" type="date" {...register("preferred_date")} />
+              <Input
+                id="preferred_date"
+                type="date"
+                min={minDate}
+                {...register("preferred_date")}
+                {...fieldAriaProps("preferred_date", errors.preferred_date)}
+              />
+              {errors.preferred_date && (
+                <p
+                  id={fieldErrorId("preferred_date")}
+                  className="text-body-sm text-error"
+                  role="alert"
+                >
+                  {errors.preferred_date.message}
+                </p>
+              )}
             </div>
 
             <div className="flex flex-col gap-2">
@@ -250,7 +297,13 @@ export function BookingForm({
                 id="message"
                 placeholder="Tell us anything that helps us prepare for your visit."
                 {...register("message")}
+                {...fieldAriaProps("message", errors.message)}
               />
+              {errors.message && (
+                <p id={fieldErrorId("message")} className="text-body-sm text-error" role="alert">
+                  {errors.message.message}
+                </p>
+              )}
             </div>
 
             {serverError && (
@@ -259,7 +312,7 @@ export function BookingForm({
               </p>
             )}
 
-            <Button type="submit" size="lg" variant="primary" disabled={isSubmitting}>
+            <ShimmerButton type="submit" disabled={isSubmitting} className="w-full">
               {isSubmitting ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
@@ -268,7 +321,7 @@ export function BookingForm({
               ) : (
                 "Send My Request"
               )}
-            </Button>
+            </ShimmerButton>
 
             <p className="text-center text-caption text-warm-grey">
               No card required to enquire · We&apos;ll confirm within 24 hours

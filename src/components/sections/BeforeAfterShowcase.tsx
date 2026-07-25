@@ -6,7 +6,6 @@ import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
 const PROOF_POINTS = [
   "Private room and prep before treatment starts",
   "Clear after-care guidance before you leave",
-  "Approved result photos can replace this panel later",
 ] as const;
 
 export function BeforeAfterShowcase() {
@@ -44,15 +43,14 @@ export function BeforeAfterShowcase() {
 
           <Link
             href="/services/waxing"
-            className="mt-8 inline-flex items-center gap-2 rounded-pill bg-cream px-6 py-3 text-body-sm font-medium text-brand shadow-[0_16px_34px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-light"
+            className="mt-8 inline-flex items-center gap-2 rounded-pill bg-cream px-6 py-3 text-body-sm font-medium text-brand shadow-[0_16px_34px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand"
           >
             See treatment flow
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="relative overflow-hidden rounded-[18px]">
-          <div className="absolute -inset-4 rounded-[18px] border border-cream/10 bg-cream/[0.045]" />
+        <div className="relative overflow-hidden rounded-card">
           <BeforeAfterSlider
             beforeSrc={IMAGES.beforeAfter.waxing.before}
             afterSrc={IMAGES.beforeAfter.waxing.after}
@@ -61,6 +59,9 @@ export function BeforeAfterShowcase() {
             beforeLabel="Before care"
             afterLabel="After care"
           />
+          <p className="mt-3 text-caption text-cream/50">
+            Approved result photos can replace this panel later.
+          </p>
         </div>
       </div>
     </section>

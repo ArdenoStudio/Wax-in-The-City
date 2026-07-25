@@ -1,0 +1,44 @@
+# Improvement Loop — Wax In The City SL
+
+Completed homepage / section complement items.
+
+- [x] #41 ServicesGrid: add scroll-mt-24 on #services section.
+- [x] #42 ServicesGrid: remove Positioning premium-surface sticky card; keep heading + Full menu CTA only.
+- [x] #43 ServicesGrid: aria-label on category links with name + from price; duration teaser from shortest SERVICE in category.
+- [x] #44 ServicesGrid: focus-visible ring styles on category Links matching hover.
+- [x] #45 section-heading.tsx: add showEyebrow?: boolean default true; when false hide eyebrow.
+- [x] #46 TrustStrip / BranchSelector / ReviewThemes / GalleryTeaser / AboutTeaser: showEyebrow={false} (Trust + Services + Branches + others).
+- [x] #47 TrustStrip: h3 titles use font-serif text-h4.
+- [x] #48 TrustStrip: remove per-card 0{i+1} and gold underline grow; keep icon gold only; add Studio standard footer hairline.
+- [x] #49 TrustStrip: link under grid to /faq for hygiene room prep with sage accent.
+- [x] #50 BeforeAfterShowcase: remove meta Approved result photos from visitor PROOF_POINTS; caption footnote text-cream/50.
+- [x] #51 BeforeAfterShowcase: rounded-card (8px) not 18px; drop floating -inset-4 frame.
+- [x] #52 BeforeAfterSlider: aria-label on slider; focus styles on handle.
+- [x] #53 BeforeAfterSlider: move Before/After labels below media (not overlaid stickers).
+- [x] #54 branch-card.tsx: pending address badge using isAddressPending; hide Maps CTA when pending.
+- [x] #55 branch-card.tsx: Open in Maps link when confirmed; weekend hours in compact variant.
+- [x] #56 BranchSelector: weekend hours visible via branch-card.
+- [x] #57 ReviewThemes: soften Public reviews copy; caption disclaimer about themes vs quotes.
+- [x] #58 ReviewThemes: CTA row FAQ hygiene + Gallery links.
+- [x] #59 GalleryTeaser: wrap tiles in Link to /gallery with aria-label; mobile aspect 4/5; no row-span-2 below lg.
+- [x] #60 AboutTeaser: brand in H2; link privacy words to /faq.
+- [x] #61 page.tsx: FAQ teaser before BookingZone via FAQTeaser section.
+- [x] #62 FAQAccordion: optional groups?: FaqGroup[]; defaultOpen?: string; denser trigger text-h4.
+- [x] #63 BookingZone: WhatsApp-only dual CTAs WhatsApp + Link /book; drop empty minHeight 480 for whatsapp-only.
+- [x] #64 BookingZone: ladies-only assurance line near primary CTA.
+- [x] #65 BookingZone: Cult-style oxblood side panel polish — pearl type, no multicolor.
+- [x] #66 BookingForm: min date today on preferred_date; autocomplete name/tel; inputMode tel.
+- [x] #67 BookingForm: progressbar aria attributes; remove noisy Done chips.
+- [x] #68 BookingForm: success copy Request received — we'll confirm next.; link to /services; WhatsApp with prefilled context.
+- [x] #69 BookingForm: show selected branch hours helper under branch select.
+- [x] #70 BookingForm: use ShimmerButton only on submit.
+- [x] #71 ContactForm: aria-live polite on success/error; WhatsApp secondary on success.
+- [x] #72 PageHero: optional CTA slot; blur placeholder if missing image.
+- [x] #73 StatsCounter: respect reduced motion (instant final values).
+- [x] #74 ServiceTabs: sync hash #waxing etc and scroll into view.
+- [x] #75 service-card: include branch query when branch prop set.
+- [x] #76 GalleryGrid: trap focus in lightbox; reset active on filter change.
+- [x] #77 ui/button: focus-visible wine ring consistent.
+- [x] #78 ui/input + textarea: focus wine border + ring; placeholder plum.
+- [x] #79 ui/accordion: trigger denser on mobile.
+- [x] #80 Create FAQTeaser.tsx used on homepage with top FAQs + All questions link.

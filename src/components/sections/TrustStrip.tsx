@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "motion/react";
-import { ShieldCheck, Heart, BadgeCheck, Clock3, type LucideIcon } from "lucide-react";
+import { ShieldCheck, Heart, BadgeCheck, Clock3, ArrowRight, type LucideIcon } from "lucide-react";
 import { TRUST_PILLARS } from "@/lib/site";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { staggerContainer, scaleIn, viewportOnce } from "@/lib/animations";
@@ -17,6 +18,7 @@ export function TrustStrip() {
       <div className="relative mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Studio standard"
+          showEyebrow={false}
           title="The difference is quiet detail."
           subtitle="Hygiene, timing and comfort are treated as part of the appointment, not an afterthought."
           tone="light"
@@ -46,20 +48,27 @@ export function TrustStrip() {
                 >
                   <Icon className="h-7 w-7" />
                 </motion.span>
-                <h3 className="mt-8 text-h4 font-semibold text-cream">{pillar.title}</h3>
+                <h3 className="mt-8 font-serif text-h4 font-medium text-cream">{pillar.title}</h3>
                 <p className="mt-3 text-body-sm text-cream/64">{pillar.body}</p>
-                <div className="mt-auto pt-8">
-                  <div className="h-px w-full bg-cream/10">
-                    <div className="h-px w-10 bg-gold transition-all duration-500 group-hover:w-full" />
-                  </div>
-                  <span className="mt-4 block text-caption font-semibold uppercase tracking-[0.14em] text-brand-light">
-                    0{i + 1}
-                  </span>
-                </div>
               </motion.div>
             );
           })}
         </motion.div>
+
+        <div className="mt-10 border-t border-cream/12 pt-6">
+          <p className="text-center text-caption font-semibold uppercase tracking-[0.14em] text-cream/45">
+            Studio standard
+          </p>
+          <p className="mt-4 text-center">
+            <Link
+              href="/faq"
+              className="inline-flex items-center gap-2 text-body-sm font-medium text-sage transition-colors hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            >
+              Hygiene &amp; room prep questions
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </p>
+        </div>
       </div>
     </section>
   );

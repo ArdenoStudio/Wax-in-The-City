@@ -1,12 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "motion/react";
 import { REVIEW_THEMES } from "@/lib/site";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Button } from "@/components/ui/button";
 import { fadeUp, staggerFast, viewportOnce } from "@/lib/animations";
 
 /**
- * Public review theme section. This avoids shipping fake client testimonials
+ * Review theme section. Avoids shipping fake client testimonials
  * while still making the strongest social-proof themes visible.
  */
 export function ReviewThemes() {
@@ -14,12 +16,18 @@ export function ReviewThemes() {
     <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-        <SectionHeading
-          eyebrow="Public review themes"
-          title="The proof is not loud. It is consistent."
-          subtitle="Across public reviews, the same signals keep showing up: clean process, gentle handling, and careful product choice."
-          align="left"
-        />
+        <div>
+          <SectionHeading
+            eyebrow="What guests notice"
+            showEyebrow={false}
+            title="The proof is not loud. It is consistent."
+            subtitle="Across guest feedback, the same signals keep showing up: clean process, gentle handling, and careful product choice."
+            align="left"
+          />
+          <p className="mt-4 max-w-xl text-caption text-warm-grey/80">
+            Themes summarised from public feedback — not individual quotes.
+          </p>
+        </div>
 
         <motion.div
           variants={staggerFast}
@@ -44,6 +52,15 @@ export function ReviewThemes() {
             </motion.article>
           ))}
         </motion.div>
+      </div>
+
+      <div className="mx-auto mt-10 flex max-w-7xl flex-wrap items-center gap-3">
+        <Button asChild variant="outline" size="md">
+          <Link href="/faq">Hygiene FAQ</Link>
+        </Button>
+        <Button asChild variant="link" size="md">
+          <Link href="/gallery">Gallery</Link>
+        </Button>
       </div>
     </section>
   );

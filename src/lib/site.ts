@@ -31,6 +31,11 @@ export function whatsappLink(message?: string, number?: string): string {
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 
+/** tel: href from a display phone string. */
+export function telHref(phone: string): string {
+  return `tel:${phone.replace(/[^\d+]/g, "")}`;
+}
+
 export type BranchSlug = "battaramulla" | "nugegoda";
 
 export interface Branch {
@@ -82,6 +87,12 @@ export function getBranch(slug: BranchSlug): Branch {
   return BRANCHES.find((b) => b.slug === slug) ?? BRANCHES[0];
 }
 
+/** True when the street address is still a placeholder pending client confirmation. */
+export function isAddressPending(branch: Branch | string): boolean {
+  const address = typeof branch === "string" ? branch : branch.address;
+  return /to be confirmed|\bTBC\b|pending/i.test(address);
+}
+
 export type ServiceCategory = "waxing" | "facial" | "moroccan" | "hydra-facial";
 
 export interface ServiceCategoryMeta {
@@ -119,19 +130,24 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     name: "Moroccan",
     short: "A deep-clean ritual using black soap and clay.",
     description:
-      "A deep-cleansing ritual with authentic Moroccan black soap and clay that draws out impurities and nourishes deeply. Used for centuries across North Africa — now in Colombo.",
+      "A deep-cleansing ritual with authentic Moroccan black soap and clay that draws out impurities and nourishes the skin — a classic North African-inspired treatment, available in Colombo.",
     priceFrom: 4500,
   },
   {
     slug: "hydra-facial",
     href: "hydra-facial",
     name: "Hydra Facial",
-    short: "Cleanse, extract, hydrate — visible refresh without downtime.",
+    short: "Cleanse, extract, hydrate — a visible refresh without downtime.",
     description:
-      "A professional multi-step facial that cleanses, extracts and hydrates in under an hour. Active serums, zero downtime, visible results from the first session.",
+      "A professional multi-step facial that cleanses, extracts and hydrates in under an hour. Active serums, zero downtime, and a fresh finish many guests notice after a single visit.",
     priceFrom: 7500,
   },
 ];
+
+/** Approachable "from" price for LKR display. */
+export function formatPriceFrom(n: number): string {
+  return `From LKR ${n.toLocaleString("en-US")}`;
+}
 
 export function getCategory(href: string): ServiceCategoryMeta | undefined {
   return SERVICE_CATEGORIES.find((c) => c.href === href);
@@ -255,15 +271,15 @@ export const CARE_STANDARDS = [
 export const REVIEW_THEMES = [
   {
     title: "Cleanliness people notice",
-    body: "Guests repeatedly mention fresh tools, disposable covers, and a studio that feels looked after.",
+    body: "Guests commonly mention fresh tools, disposable covers, and a studio that feels looked after.",
   },
   {
     title: "Less fear around waxing",
-    body: "The recurring signal is comfort: first-timers and regulars both call out gentle handling.",
+    body: "Guests commonly mention comfort: first-timers and regulars both call out gentle handling.",
   },
   {
     title: "Product quality matters",
-    body: "Public reviews often mention premium wax, careful product choice, and skin-aware recommendations.",
+    body: "Guests commonly mention careful product choice, quality wax, and skin-aware recommendations.",
   },
 ] as const;
 

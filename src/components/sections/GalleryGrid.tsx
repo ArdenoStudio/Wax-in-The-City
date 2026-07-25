@@ -18,6 +18,7 @@ export function GalleryGrid() {
   const [filter, setFilter] = useState<GalleryCategory | "all">("all");
   const [active, setActive] = useState<number | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
   const closeRef = useRef<HTMLButtonElement | null>(null);
 
   const photos =
@@ -37,14 +38,41 @@ export function GalleryGrid() {
     [photos.length]
   );
 
+  const setFilterAndReset = useCallback((key: GalleryCategory | "all") => {
+    setFilter(key);
+    setActive(null);
+  }, []);
+
   useEffect(() => {
     if (active === null) return;
     closeRef.current?.focus();
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
       if (e.key === "ArrowRight") next();
       if (e.key === "ArrowLeft") prev();
+
+      if (e.key === "Tab" && dialogRef.current) {
+        const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const current = document.activeElement as HTMLElement | null;
+
+        if (e.shiftKey) {
+          if (current === first || !dialogRef.current.contains(current)) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else if (current === last || !dialogRef.current.contains(current)) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
+
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
@@ -60,11 +88,11 @@ export function GalleryGrid() {
           <button
             key={f.key}
             type="button"
-            onClick={() => setFilter(f.key)}
+            onClick={() => setFilterAndReset(f.key)}
             aria-pressed={filter === f.key}
             className={cn(
               "rounded-pill px-4 py-2.5 text-body-sm font-medium transition-colors sm:px-5",
-              "pressable",
+              "pressable focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2",
               filter === f.key
                 ? "bg-brand-action text-cream"
                 : "border border-warm-border text-warm-grey hover:text-brand-action"
@@ -103,6 +131,7 @@ export function GalleryGrid() {
       <AnimatePresence>
         {active !== null && photos[active] && (
           <motion.div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label="Image lightbox"

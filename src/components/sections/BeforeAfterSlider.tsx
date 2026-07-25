@@ -26,6 +26,7 @@ const SliderHandle = () => (
       height: 44,
       boxShadow: "0 4px 20px rgba(53,16,23,0.5)",
       transition: "transform 420ms var(--ease-apple), box-shadow 420ms var(--ease-apple)",
+      outline: "none",
     }}
     linesStyle={{ background: "rgba(53,16,23,0.5)", width: 2 }}
   />
@@ -47,23 +48,30 @@ export function BeforeAfterSlider({
   }, []);
 
   return (
-    <div className="studio-plate micro-lift overflow-hidden rounded-card p-2">
-      <div className="pointer-events-none absolute left-5 top-5 z-20 rounded-pill border border-cream/22 bg-brand/78 px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em] text-cream backdrop-blur-md">
-        {beforeLabel}
-      </div>
-      <div className="pointer-events-none absolute right-5 top-5 z-20 rounded-pill border border-cream/22 bg-brand-action/82 px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em] text-cream backdrop-blur-md">
-        {afterLabel}
-      </div>
+    <div className="studio-plate micro-lift overflow-hidden rounded-card p-2 [&_[role=slider]]:focus-visible:outline-none [&_[role=slider]]:focus-visible:ring-2 [&_[role=slider]]:focus-visible:ring-brand-action/55 [&_[role=slider]]:focus-visible:ring-offset-2 [&_[role=slider]]:focus-visible:ring-offset-brand [&_button]:focus-visible:outline-none [&_button]:focus-visible:ring-2 [&_button]:focus-visible:ring-brand-action/55 [&_button]:focus-visible:ring-offset-2 [&_button]:focus-visible:ring-offset-brand">
       {mounted ? (
         <ReactCompareSlider
           handle={<SliderHandle />}
           itemOne={<ReactCompareSliderImage src={beforeSrc} alt={beforeAlt} />}
           itemTwo={<ReactCompareSliderImage src={afterSrc} alt={afterAlt} />}
-          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[7px]"
+          aria-label={`Compare ${beforeLabel} and ${afterLabel}`}
+          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-card"
         />
       ) : (
-        <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[7px] bg-brand/18" />
+        <div
+          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-card bg-brand/18"
+          aria-label={`Compare ${beforeLabel} and ${afterLabel}`}
+          role="img"
+        />
       )}
+      <div className="relative z-10 mt-3 flex items-center justify-between gap-3 px-1">
+        <span className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/80">
+          {beforeLabel}
+        </span>
+        <span className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/80">
+          {afterLabel}
+        </span>
+      </div>
     </div>
   );
 }

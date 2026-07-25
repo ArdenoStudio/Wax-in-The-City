@@ -49,6 +49,8 @@ export function ContactForm() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             className="relative z-10 flex flex-col items-center py-8 text-center"
+            aria-live="polite"
+            role="status"
           >
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
               <Check className="h-7 w-7" />
@@ -57,6 +59,16 @@ export function ContactForm() {
             <p className="mt-2 max-w-sm text-body text-warm-grey">
               Thank you! We&apos;ll get back to you within 24 hours.
             </p>
+            <Button asChild variant="outline" size="md" className="mt-6">
+              <a
+                href={whatsappLink("Hi! I just sent a contact message.")}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <WhatsappIcon className="h-4 w-4" />
+                Chat on WhatsApp
+              </a>
+            </Button>
           </motion.div>
         ) : (
           <motion.form
@@ -73,6 +85,7 @@ export function ContactForm() {
                 <Input
                   id="c-name"
                   placeholder="Your name"
+                  autoComplete="name"
                   {...register("name")}
                   {...fieldAriaProps("name", errors.name)}
                 />
@@ -88,6 +101,7 @@ export function ContactForm() {
                   id="c-email"
                   type="email"
                   placeholder="you@example.com"
+                  autoComplete="email"
                   {...register("email")}
                   {...fieldAriaProps("email", errors.email)}
                 />
@@ -106,6 +120,7 @@ export function ContactForm() {
                   id="c-phone"
                   type="tel"
                   inputMode="tel"
+                  autoComplete="tel"
                   placeholder="Your number"
                   {...register("phone")}
                   {...fieldAriaProps("phone", errors.phone)}
@@ -165,7 +180,11 @@ export function ContactForm() {
             </div>
 
             {serverError && (
-              <p className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error" role="alert">
+              <p
+                className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error"
+                role="alert"
+                aria-live="polite"
+              >
                 {serverError}
               </p>
             )}

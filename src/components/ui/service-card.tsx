@@ -37,8 +37,18 @@ const SERVICE_CARD_TONES: Record<
   },
 };
 
-export function ServiceCard({ service }: { service: Service }) {
+export function ServiceCard({
+  service,
+  branch,
+}: {
+  service: Service;
+  /** When set, included as `branch` query on the book link. */
+  branch?: string;
+}) {
   const tone = SERVICE_CARD_TONES[service.category];
+  const bookHref = branch
+    ? `/book?service=${encodeURIComponent(service.name)}&branch=${encodeURIComponent(branch)}`
+    : `/book?service=${encodeURIComponent(service.name)}`;
 
   return (
     <div className={cn("group micro-lift studio-plate flex h-full flex-col overflow-hidden rounded-card p-6", tone.shell)}>
@@ -62,8 +72,8 @@ export function ServiceCard({ service }: { service: Service }) {
         {service.description}
       </p>
       <Link
-        href={`/book?service=${encodeURIComponent(service.name)}`}
-        className={cn("pressable icon-drift relative z-10 mt-6 inline-flex items-center gap-1.5 self-start rounded-pill border px-5 py-2.5 text-body-sm font-medium shadow-[0_10px_24px_rgba(39,19,21,0.05)]", tone.button)}
+        href={bookHref}
+        className={cn("pressable icon-drift relative z-10 mt-6 inline-flex items-center gap-1.5 self-start rounded-pill border px-5 py-2.5 text-body-sm font-medium shadow-[0_10px_24px_rgba(39,19,21,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2", tone.button)}
       >
         Book this
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

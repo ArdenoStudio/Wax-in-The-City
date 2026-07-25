@@ -50,20 +50,24 @@ export function AboutTeaser() {
           whileInView="visible"
           viewport={viewportOnce}
         >
-          <span className="text-caption font-semibold uppercase tracking-[0.18em] text-brand-action">
-            Our story
-          </span>
-          <h2 className="mt-4 text-balance font-serif text-h1 font-medium leading-tight text-warm">
-            Built around the moments most salons rush.
+          <h2 className="text-balance font-serif text-h1 font-medium leading-tight text-warm">
+            Wax In The City is built around the moments most salons rush.
           </h2>
           <p className="mt-6 max-w-md text-body-lg text-warm-grey">
-            Wax In The City is shaped around the details that make clients feel
+            We shape visits around the details that make clients feel
             comfortable: quiet timing, clean preparation and honest guidance
-            after the treatment.
+            after the treatment — including{" "}
+            <Link
+              href="/faq"
+              className="font-medium text-brand-action underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45"
+            >
+              privacy
+            </Link>{" "}
+            and room prep answers when you need them.
           </p>
           <Link
             href="/about"
-            className="mt-8 inline-flex items-center gap-2 rounded-pill border border-brand-action/35 bg-white/40 px-6 py-3 font-medium text-brand-action shadow-[0_14px_34px_rgba(39,19,21,0.05)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
+            className="mt-8 inline-flex items-center gap-2 rounded-pill border border-brand-action/35 bg-white/40 px-6 py-3 font-medium text-brand-action shadow-[0_14px_34px_rgba(39,19,21,0.05)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2"
           >
             Read our story
             <ArrowRight className="h-4 w-4" />

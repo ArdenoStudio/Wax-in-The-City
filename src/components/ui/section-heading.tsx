@@ -9,6 +9,8 @@ interface SectionHeadingProps {
   subtitle?: string;
   align?: "left" | "center";
   tone?: "dark" | "light";
+  /** When false, hides the eyebrow row even if `eyebrow` is provided. Default true. */
+  showEyebrow?: boolean;
   className?: string;
 }
 
@@ -18,6 +20,7 @@ export function SectionHeading({
   subtitle,
   align = "center",
   tone = "dark",
+  showEyebrow = true,
   className,
 }: SectionHeadingProps) {
   const light = tone === "light";
@@ -35,7 +38,7 @@ export function SectionHeading({
         className
       )}
     >
-      {eyebrow && (
+      {showEyebrow && eyebrow && (
         <span
           className={cn(
             "mb-3 inline-flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.18em]",
