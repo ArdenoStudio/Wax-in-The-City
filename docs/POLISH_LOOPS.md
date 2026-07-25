@@ -2268,3 +2268,8 @@
 - [x] #2240 src/components/ui/service-card.tsx: s10-safe:bg-white/90 bg-white/90→bg-white/92
 - [x] #2241 src/components/sections/ServicesGrid.tsx: s10-safe:bg-white/75 bg-white/75→bg-white/80
 - [x] #2242 src/components/ui/service-card.tsx: s10-wrap-gap flex-wrap gap-2→gap-2.5
+
+- [x] #2243 HeroSection: brand-first Cal Sans lockup; remove sparkles pill clutter
+- [x] #2244 HeroSection: single-line headline (no staggered Bodoni lines)
+- [x] #2245 HeroSection: static gold trust row (no pill chips)
+- [x] #2246 Navbar: single Cal Sans wordmark SITE.shortName
