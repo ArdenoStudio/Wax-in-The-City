@@ -24,6 +24,8 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
+    // Close mobile sheet when the route changes.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
   }, [pathname]);
 

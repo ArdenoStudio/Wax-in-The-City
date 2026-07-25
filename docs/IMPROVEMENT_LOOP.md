@@ -167,7 +167,7 @@ Completed homepage / section complement items.
 - [x] #154 button primary: disabled opacity via pressable + disabled styles.
 - [x] #155 shimmer-button: pause animation on prefers-reduced-motion.
 - [x] #156 Marquee: add "Private Rooms" to MARQUEE_WORDS.
-- [x] #157 REVIEW_THEMES: no star numbers rendered (theme titles only).
+- [x] #157 REVIEW_THEMES: no star numbers rendered (theme titles + editorial index only).
 - [x] #158 BeforeAfter: caption "Illustrative care imagery" always visible.
 - [x] #159 StatsCounter: format numbers with en-LK locale.
 - [x] #160 print styles in globals.css: hide nav/footer/booking bar/loading; keep serif headings.
@@ -217,11 +217,7 @@ Completed homepage / section complement items.
 
 ## Wave complete
 
-**200/200** improvement loops recorded for Wax In The City SL (wine/pearl brand).
-
-- Loops **1–120**: earlier commits on this branch
-- Loops **121–160**: parallel complement batch (section anchors, sticky service CTA, breadcrumbs, print styles, etc.)
-- Loops **161–200**: CareJourney extract, a11y/pricing/privacy/z-index/honesty polish
+**200/200** improvement loops recorded for Wax In The City SL (wine/pearl brand). Loops 1–120, 121–160, and 161–200 are all checked in this document.
 
 ### Complement sources used
 
@@ -236,6 +232,6 @@ Completed homepage / section complement items.
 | Cult UI (restrained) | Oxblood/pearl BookingZone + PageHero fields |
 | Icons (Lucide) | Gold hygiene / sage after-care trust icons |
 | Better Design Tips | Honest copy, brand-first hero, contrast |
-| 21st.dev | Booking reassurance steps, CareJourney |
+| 21st.dev | Booking reassurance steps |
 
 Rejected installs remain: DaisyUI, Tremor, Watermelon UI kits, fake reviews, purple/glow AI defaults.

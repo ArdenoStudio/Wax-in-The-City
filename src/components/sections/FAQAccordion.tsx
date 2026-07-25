@@ -135,6 +135,8 @@ function FAQAccordionEnhanced({
     );
     if (!match) return;
 
+    // Deep-link open from ?q= / hash — sync with URL search params.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpenValue(match.value);
     if (qParam && !query) setQuery(qParam);
 

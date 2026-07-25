@@ -223,6 +223,9 @@ export default async function ServiceCategoryPage({
               <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action/70">
                 Book {category.name}
               </p>
+              <p className="mt-1 text-body-sm text-warm-grey">
+                {formatPriceFrom(category.priceFrom)}
+              </p>
               <p className="mt-2 font-serif text-h4 text-warm">
                 Request a time — we confirm before you travel.
               </p>

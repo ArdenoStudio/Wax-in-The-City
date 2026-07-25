@@ -137,7 +137,13 @@ export function GalleryGrid() {
             ref={active === i ? triggerRef : undefined}
             layout
             type="button"
-            onClick={() => setActive(i)}
+            onClick={() => {
+              if (showSwipeHint) {
+                sessionStorage.setItem(SWIPE_HINT_KEY, "1");
+                setShowSwipeHint(false);
+              }
+              setActive(i);
+            }}
             aria-label={`View image: ${photo.alt}`}
             className="mb-4 block w-full break-inside-avoid overflow-hidden rounded-card-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action"
           >

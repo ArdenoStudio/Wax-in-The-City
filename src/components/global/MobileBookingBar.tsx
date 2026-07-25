@@ -34,6 +34,8 @@ export function MobileBookingBar() {
 
   useEffect(() => {
     if (hideOnBookPage) {
+      // Sync bar visibility to route — external navigation system.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShow(false);
       return;
     }
@@ -49,6 +51,7 @@ export function MobileBookingBar() {
     if (hideOnBookPage) return;
     const target = document.getElementById("book");
     if (!target) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setBookInView(false);
       return;
     }
