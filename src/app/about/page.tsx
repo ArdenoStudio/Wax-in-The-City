@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { CalendarCheck, CheckCircle2, Clock3, Heart, MapPin, ShieldCheck, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { Heart, MapPin, ShieldCheck, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -33,28 +34,24 @@ const VALUES = [
   },
 ];
 
-const CARE_FLOW = [
+const CARE_JOURNEY = [
   {
-    icon: CalendarCheck,
-    title: "Request",
-    body: "You tell us the service, branch, timing, and anything sensitive we should know before confirming.",
+    title: "Arrive",
+    body: "Check in calmly — the room is prepared for your service, not a walk-in queue.",
   },
   {
-    icon: ShieldCheck,
-    title: "Prepare",
-    body: "The room, products, tools, and therapist time are arranged around that service before you arrive.",
+    title: "Prep",
+    body: "Skin and timing are checked so the treatment can stay careful and unhurried.",
   },
   {
-    icon: Sparkles,
-    title: "Treat",
-    body: "The session stays private, skin-aware, and steady, especially for first-timers or intimate waxing.",
+    title: "Care",
+    body: "The session stays private and skin-aware, especially for first-timers or intimate waxing.",
   },
   {
-    icon: CheckCircle2,
     title: "After-care",
     body: "You leave with simple guidance for your skin instead of vague salon advice.",
   },
-];
+] as const;
 
 export default function AboutPage() {
   return (
@@ -75,11 +72,12 @@ export default function AboutPage() {
             <div className="relative">
               <div className="relative min-h-[520px] overflow-hidden rounded-card bg-brand shadow-[0_30px_90px_rgba(39,19,21,0.16)]">
                 <Image
-                  src={IMAGES.socialProof.src}
-                  alt={IMAGES.socialProof.alt}
+                  src={IMAGES.about.src}
+                  alt={IMAGES.about.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-[50%_20%]"
+                  unoptimized
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_42%,rgba(23,7,11,0.72)_100%)]" />
                 <div className="absolute bottom-0 left-0 max-w-sm p-6 text-cream">
@@ -112,13 +110,17 @@ export default function AboutPage() {
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {BRANCHES.map((branch) => (
-                <div key={branch.slug} className="rounded-card border border-warm-border bg-white/58 p-5">
+                <Link
+                  key={branch.slug}
+                  href={`/locations/${branch.slug}`}
+                  className="rounded-card border border-warm-border bg-white/58 p-5 transition-colors hover:border-brand-action/35 hover:bg-brand-mist/40"
+                >
                   <div className="flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.12em] text-brand-action">
                     <MapPin className="h-4 w-4" />
                     {branch.name}
                   </div>
                   <p className="mt-3 text-body-sm text-warm-grey">{branch.blurb}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </AnimatedSection>
@@ -157,38 +159,37 @@ export default function AboutPage() {
       <MarqueeStrip />
 
       <section className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div>
-            <SectionHeading
-              align="left"
-              eyebrow="Care flow"
-              title="The appointment has a shape."
-              subtitle="A polished studio is not only how it looks. It is how predictable and considered the visit feels."
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            align="left"
+            eyebrow="Care journey"
+            title="Arrive → Prep → Care → After-care."
+            subtitle="A quiet sequence — muted wine and gold — so the visit feels predictable without feeling theatrical."
+          />
+          <p className="mt-4 max-w-xl text-body-sm text-warm-grey">
+            Most requests are reviewed the same day when possible; allow up to about a day for confirmation if the diary is full.
+          </p>
+
+          <ol className="relative mt-12 space-y-0">
+            <div
+              aria-hidden
+              className="absolute bottom-3 left-[0.55rem] top-3 w-px bg-[linear-gradient(180deg,rgba(217,179,95,0.55),rgba(162,15,55,0.35),rgba(217,179,95,0.2))]"
             />
-            <div className="mt-8 flex items-center gap-3 text-body-sm text-warm-grey">
-              <Clock3 className="h-5 w-5 text-brand-action" />
-              Most requests are confirmed within 24 hours.
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {CARE_FLOW.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <div key={step.title} className="premium-surface rounded-card p-6">
-                  <div className="relative z-10 flex items-center justify-between gap-4">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-card bg-brand text-cream">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <span className="font-serif text-h2 text-brand-action/35">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <h3 className="relative z-10 mt-5 text-h4 font-semibold text-warm">{step.title}</h3>
-                  <p className="relative z-10 mt-2 text-body-sm text-warm-grey">{step.body}</p>
+            {CARE_JOURNEY.map((step, index) => (
+              <li key={step.title} className="relative flex gap-5 pb-10 last:pb-0">
+                <span className="relative z-10 mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#d9b35f]/70 bg-cream">
+                  <span className="h-2 w-2 rounded-full bg-brand-action/80" />
+                </span>
+                <div>
+                  <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action/70">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-1 font-serif text-h3 text-warm">{step.title}</h3>
+                  <p className="mt-2 max-w-xl text-body-sm text-warm-grey">{step.body}</p>
                 </div>
-              );
-            })}
-          </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

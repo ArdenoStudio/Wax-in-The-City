@@ -1,11 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { InstagramIcon, FacebookIcon, WhatsappIcon } from "@/components/icons";
-import { SITE, NAV_LINKS, BRANCHES, whatsappLink } from "@/lib/site";
+import {
+  SITE,
+  NAV_LINKS,
+  BRANCHES,
+  whatsappLink,
+  isAddressPending,
+} from "@/lib/site";
 import { IMAGES } from "@/lib/images";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const phoneHref = `tel:${BRANCHES[0].phone.replace(/\s/g, "")}`;
 
   return (
     <footer className="relative overflow-hidden bg-brand-footer text-cream/80">
@@ -38,9 +45,25 @@ export function Footer() {
             <p className="mt-4 max-w-xs font-serif text-h4 italic text-brand-light">
               {SITE.tagline}
             </p>
-            <p className="mt-3 max-w-xs text-body-sm text-cream/60">
+            <p className="mt-3 max-w-xs text-body-sm text-cream-muted">
               Ladies-only waxing &amp; beauty care across two Colombo branches.
             </p>
+            <a
+              href={phoneHref}
+              className="mt-3 inline-flex min-h-10 items-center text-body-sm text-cream/80 transition-colors hover:text-cream"
+            >
+              {BRANCHES[0].phone}
+            </a>
+
+            <a
+              href={whatsappLink("Hi! I'd like to book via WhatsApp.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-pill border border-cream/18 bg-cream/8 px-4 py-2 text-body-sm font-medium text-cream transition-colors hover:border-brand-light hover:bg-cream/12"
+            >
+              <WhatsappIcon className="h-4 w-4" />
+              Book via WhatsApp
+            </a>
 
             <div className="mt-6 flex items-center gap-3">
               <SocialIcon href={SITE.instagram} label="Instagram">
@@ -58,9 +81,9 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Nav */}
+          {/* Nav — FAQ & Contact via NAV_LINKS */}
           <div>
-            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50">
+            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream-muted">
               Explore
             </h3>
             <ul className="mt-3 space-y-1">
@@ -89,16 +112,31 @@ export function Footer() {
 
           {/* Branches */}
           <div>
-            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50">
+            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream-muted">
               Our Branches
             </h3>
             <div className="mt-4 grid gap-6 sm:grid-cols-2">
               {BRANCHES.map((b) => (
                 <div key={b.slug}>
-                  <p className="font-serif text-h4 text-cream">{b.name}</p>
-                  <p className="mt-1 text-body-sm text-cream/60">{b.area}</p>
-                  <p className="mt-2 text-body-sm text-cream/60">{b.hours.weekday}</p>
-                  <p className="text-caption text-cream/40">{b.hours.poya}</p>
+                  <Link
+                    href={`/locations/${b.slug}`}
+                    className="font-serif text-h4 text-cream transition-colors hover:text-brand-light"
+                  >
+                    {b.name}
+                  </Link>
+                  <p className="mt-1 text-body-sm text-cream-muted">{b.area}</p>
+                  {isAddressPending(b) && (
+                    <p className="mt-1 text-caption text-cream-muted">
+                      Exact address pending confirmation
+                    </p>
+                  )}
+                  <p className="mt-2 text-body-sm text-cream/70">
+                    Weekdays: {b.hours.weekday}
+                  </p>
+                  <p className="text-body-sm text-cream/70">
+                    Weekends: {b.hours.weekend}
+                  </p>
+                  <p className="text-caption text-cream-muted">{b.hours.poya}</p>
                   <a
                     href={whatsappLink(`Hi! I'd like to book at your ${b.name} branch.`, b.whatsapp)}
                     target="_blank"
@@ -113,8 +151,19 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-cream/10 pt-6 text-caption text-cream/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} {SITE.name}. All rights reserved.</p>
+        <div className="mt-14 flex flex-col gap-3 border-t border-cream/10 pt-6 text-caption text-cream-muted sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+            <p>© {year} {SITE.name}. All rights reserved.</p>
+            <a href={phoneHref} className="transition-colors hover:text-cream">
+              {BRANCHES[0].phone}
+            </a>
+            <Link href="/contact" className="transition-colors hover:text-cream">
+              Contact
+            </Link>
+            <Link href="/faq" className="transition-colors hover:text-cream">
+              FAQ
+            </Link>
+          </div>
           <p>
             Crafted by{" "}
             <span className="text-cream/60">Ardeno Studio</span>
@@ -140,7 +189,7 @@ function SocialIcon({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-11 w-11 items-center justify-center rounded-pill border border-cream/15 text-cream/70 transition-colors hover:border-brand-light hover:text-cream"
+      className="pressable micro-lift flex h-11 w-11 items-center justify-center rounded-pill border border-cream/15 text-cream/70 transition-colors hover:border-brand-light hover:text-cream"
     >
       {children}
     </a>

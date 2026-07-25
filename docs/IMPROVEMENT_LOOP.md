@@ -42,3 +42,46 @@ Completed homepage / section complement items.
 - [x] #78 ui/input + textarea: focus wine border + ring; placeholder plum.
 - [x] #79 ui/accordion: trigger denser on mobile.
 - [x] #80 Create FAQTeaser.tsx used on homepage with top FAQs + All questions link.
+
+## Secondary pages (81–120)
+
+- [x] #81 faq/page.tsx: hero image from IMAGES not raw Unsplash.
+- [x] #82 gallery/page.tsx: hero from IMAGES.
+- [x] #83 faq page: sticky category jump list (enhanced FAQAccordion).
+- [x] #84 FAQAccordion: support ?q= or hash deep-link open matching item.
+- [x] #85 book/page.tsx: add compact PageHero before BookingZone.
+- [x] #86 contact/page.tsx: tel: links on phones.
+- [x] #87 contact: branch cards link to /locations/[slug].
+- [x] #88 locations/page.tsx: View studio Link to detail; weekend hours on cards.
+- [x] #89 locations/[branch]: maps query use full address; sibling branch pill; address pending note.
+- [x] #90 about/page.tsx: distinct images hero vs story; branch mini-cards link to locations; soften 24h SLA copy.
+- [x] #91 services/page.tsx: demote floating label pills on tiles if cluttering.
+- [x] #92 services/[slug]: pass defaultService into BookingZone; OG images from category; after-care accordion tip.
+- [x] #93 services/[slug]: honest process strip for Moroccan/Hydra if missing before/after.
+- [x] #94 gallery page: editorial placeholder caption; events category honesty in gallery.ts.
+- [x] #95 not-found.tsx: quick links Services/Locations/FAQ; wine radial atmosphere background.
+- [x] #96 JsonLd: OfferCatalog/Service from public services with "from" prices; omit Nugegoda street if pending.
+- [x] #97 locations/[branch] generateMetadata OG per branch.
+- [x] #98 services/[slug] generateMetadata OG per category.
+- [x] #99 about: Care journey quiet steps Arrive→Prep→Care→After-care (muted gold/wine).
+- [x] #100 contact: hours table with open-today hint if easy.
+- [x] #101 book: booking reassurance 3-step Request→Review→Confirm above form.
+- [x] #102 faq: client search input filtering questions (useDeferredValue).
+- [x] #103 gallery: filter chips polish selected wine/blush.
+- [x] #104 services page: sticky category rail polish.
+- [x] #105 locations index: WhatsApp per branch prefilled.
+- [x] #106 about page: gold hairline timeline instead of cards — keep one purpose.
+- [x] #107 PageHero brand-first: SITE.shortName as strong signal.
+- [x] #108 All PageHero usages: ensure brand visible.
+- [x] #109 Mobile nav sheet: Home link.
+- [x] #110 Footer social pressable micro-lift class.
+- [x] #111 robots/sitemap already exist — verify sitemap includes all routes; fix if missing.
+- [x] #112 SkipLink target focus outline wine.
+- [x] #113 template.tsx: ensure reduced motion respected for page fade.
+- [x] #114 admin page: leave utilitarian — no Tremor; optional tiny polish only if safe.
+- [x] #115 booking.ts: zod refine preferred_date not in past if schema exists.
+- [x] #116 form-a11y.ts: ensure helpers used in forms.
+- [x] #117 ContactForm: autocomplete fields.
+- [x] #118 GalleryGrid: keyboard arrows already? add if missing.
+- [x] #119 Branch detail: copy address button with inline Copied state (no toast lib).
+- [x] #120 Homepage BookingZone id="book" for MobileBookingBar observer.

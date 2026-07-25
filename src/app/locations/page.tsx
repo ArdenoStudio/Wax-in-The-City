@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Clock, MapPin, Navigation, Phone } from "lucide-react";
-import { BRANCHES, whatsappLink } from "@/lib/site";
+import Link from "next/link";
+import { ArrowRight, Clock, MapPin, Navigation, Phone } from "lucide-react";
+import { BRANCHES, telHref, whatsappLink } from "@/lib/site";
 import { PageHero } from "@/components/sections/PageHero";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -83,34 +84,54 @@ export default function LocationsPage() {
                         <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-action" />
                         <span>{branch.address}</span>
                       </p>
-                      <p className="flex items-center gap-2">
-                        <Clock className="h-4 w-4 text-brand-action" />
-                        {branch.hours.weekday}
+                      <p className="flex items-start gap-2">
+                        <Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-action" />
+                        <span>
+                          <span className="block">Weekdays · {branch.hours.weekday}</span>
+                          <span className="block">Weekends · {branch.hours.weekend}</span>
+                        </span>
                       </p>
                       <p className="flex items-center gap-2">
                         <Phone className="h-4 w-4 text-brand-action" />
-                        {branch.phone}
+                        <a
+                          href={telHref(branch.phone)}
+                          className="text-brand-action underline-offset-4 hover:underline"
+                        >
+                          {branch.phone}
+                        </a>
                       </p>
                     </div>
-                    <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-                      <a
-                        href={whatsappLink(`Hi! I'd like to book at your ${branch.name} branch.`, branch.whatsapp)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="pressable inline-flex h-11 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)]"
-                      >
-                        <WhatsappIcon className="h-4 w-4" />
-                        WhatsApp
-                      </a>
-                      <a
-                        href={branch.googleMapsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <div className="mt-6 flex flex-col gap-2">
+                      <Link
+                        href={`/locations/${branch.slug}`}
                         className="icon-drift inline-flex h-11 items-center justify-center gap-2 rounded-pill border border-brand-action/24 px-5 text-body-sm font-medium text-brand-action"
                       >
-                        <Navigation className="h-4 w-4" />
-                        Directions
-                      </a>
+                        View studio
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                      <div className="flex flex-col gap-2 sm:flex-row">
+                        <a
+                          href={whatsappLink(
+                            `Hi! I'd like to book at your ${branch.name} branch.`,
+                            branch.whatsapp
+                          )}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="pressable inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)]"
+                        >
+                          <WhatsappIcon className="h-4 w-4" />
+                          WhatsApp
+                        </a>
+                        <a
+                          href={branch.googleMapsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="icon-drift inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-pill border border-brand-action/24 px-5 text-body-sm font-medium text-brand-action"
+                        >
+                          <Navigation className="h-4 w-4" />
+                          Directions
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </article>

@@ -94,14 +94,20 @@ export function GalleryGrid() {
               "rounded-pill px-4 py-2.5 text-body-sm font-medium transition-colors sm:px-5",
               "pressable focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2",
               filter === f.key
-                ? "bg-brand-action text-cream"
-                : "border border-warm-border text-warm-grey hover:text-brand-action"
+                ? "bg-brand-action text-cream shadow-[0_12px_28px_rgba(162,15,55,0.22)] ring-2 ring-brand-mist"
+                : "border border-warm-border bg-white/50 text-warm-grey hover:border-brand-action/30 hover:bg-brand-mist/60 hover:text-brand-action"
             )}
           >
             {f.label}
           </button>
         ))}
       </div>
+
+      {filter === "events" && (
+        <p className="mx-auto mt-5 max-w-2xl text-center text-body-sm text-warm-grey">
+          Events imagery here is atmospheric placeholder only — not coverage of a documented studio event.
+        </p>
+      )}
 
       <div className="mt-10 columns-2 gap-4 lg:columns-3">
         {photos.map((photo, i) => (
@@ -171,16 +177,23 @@ export function GalleryGrid() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative h-[80vh] w-full max-w-4xl"
+              className="relative flex h-[80vh] w-full max-w-4xl flex-col"
             >
-              <Image
-                src={photos[active].src}
-                alt={photos[active].alt}
-                fill
-                sizes="100vw"
-                unoptimized={photos[active].src.startsWith("http")}
-                className="object-contain"
-              />
+              <div className="relative min-h-0 flex-1">
+                <Image
+                  src={photos[active].src}
+                  alt={photos[active].alt}
+                  fill
+                  sizes="100vw"
+                  unoptimized={photos[active].src.startsWith("http")}
+                  className="object-contain"
+                />
+              </div>
+              {(photos[active].caption || photos[active].alt) && (
+                <p className="mt-3 text-center text-body-sm text-cream/80">
+                  {photos[active].caption ?? photos[active].alt}
+                </p>
+              )}
             </motion.div>
 
             <button

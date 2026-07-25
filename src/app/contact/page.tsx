@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { CalendarCheck, Clock, MapPin, Phone, Send } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { InstagramIcon, FacebookIcon, WhatsappIcon } from "@/components/icons";
-import { BRANCHES, SITE, whatsappLink } from "@/lib/site";
+import { BRANCHES, SITE, telHref, whatsappLink } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
+import { HoursTable } from "@/components/sections/HoursTable";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -101,13 +103,20 @@ export default function ContactPage() {
               </div>
             </div>
 
+            <HoursTable />
+
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
               {BRANCHES.map((b) => (
                 <div
                   key={b.slug}
                   className="premium-surface rounded-card p-5"
                 >
-                  <p className="relative z-10 font-serif text-h4 font-medium text-warm">{b.name}</p>
+                  <Link
+                    href={`/locations/${b.slug}`}
+                    className="relative z-10 font-serif text-h4 font-medium text-warm underline-offset-4 hover:text-brand-action hover:underline"
+                  >
+                    {b.name}
+                  </Link>
                   <div className="relative z-10 mt-3 space-y-2 text-body-sm text-warm-grey">
                     <p className="flex items-center gap-2">
                       <MapPin className="h-4 w-4 text-brand-action" />
@@ -119,18 +128,31 @@ export default function ContactPage() {
                     </p>
                     <p className="flex items-center gap-2">
                       <Phone className="h-4 w-4 text-brand-action" />
-                      {b.phone}
+                      <a
+                        href={telHref(b.phone)}
+                        className="text-brand-action underline-offset-4 hover:underline"
+                      >
+                        {b.phone}
+                      </a>
                     </p>
                   </div>
-                  <a
-                    href={whatsappLink(`Hi! I have a question about your ${b.name} branch.`, b.whatsapp)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative z-10 mt-4 inline-flex h-11 items-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)] transition-all duration-300 hover:-translate-y-0.5"
-                  >
-                    <WhatsappIcon className="h-4 w-4" />
-                    WhatsApp {b.name}
-                  </a>
+                  <div className="relative z-10 mt-4 flex flex-wrap gap-2">
+                    <Link
+                      href={`/locations/${b.slug}`}
+                      className="inline-flex h-11 items-center rounded-pill border border-brand-action/30 px-5 text-body-sm font-medium text-brand-action transition-colors hover:bg-brand-mist"
+                    >
+                      View studio
+                    </Link>
+                    <a
+                      href={whatsappLink(`Hi! I have a question about your ${b.name} branch.`, b.whatsapp)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex h-11 items-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)] transition-all duration-300 hover:-translate-y-0.5"
+                    >
+                      <WhatsappIcon className="h-4 w-4" />
+                      WhatsApp {b.name}
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
@@ -155,7 +177,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
+                  className="pressable flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:bg-brand-mist"
                 >
                   <InstagramIcon className="h-5 w-5" />
                 </a>
@@ -164,7 +186,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
+                  className="pressable flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:bg-brand-mist"
                 >
                   <FacebookIcon className="h-5 w-5" />
                 </a>
@@ -173,7 +195,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
-                  className="flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
+                  className="pressable flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:bg-brand-mist"
                 >
                   <WhatsappIcon className="h-5 w-5" />
                 </a>

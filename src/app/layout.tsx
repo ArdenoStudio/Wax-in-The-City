@@ -66,14 +66,18 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en-LK">
       <body className="min-h-screen bg-cream text-warm antialiased">
         <JsonLd />
         <SkipLink />
         <LoadingScreen />
         <SmoothScrollProvider>
           <Navbar />
-          <main id="main-content" className="flex min-h-screen flex-col">
+          <main
+            id="main-content"
+            tabIndex={-1}
+            className="flex min-h-screen flex-col pb-20 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-action md:pb-0"
+          >
             {children}
           </main>
           <Footer />

@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 import { CalendarDays, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
+import { WhatsappIcon } from "@/components/icons";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -22,6 +23,10 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
   const onDark = !scrolled;
 
   return (
@@ -36,7 +41,7 @@ export function Navbar() {
         className={cn(
           "mx-auto flex items-center justify-between gap-3 transition-all duration-500",
           scrolled
-            ? "mt-3 h-16 max-w-6xl rounded-pill border border-warm-border/50 bg-cream/92 px-4 shadow-[0_4px_32px_rgba(28,15,15,0.12)] backdrop-blur-xl sm:px-5"
+            ? "mt-3 h-16 max-w-6xl rounded-pill border border-warm-border/80 bg-cream/92 px-4 shadow-[0_4px_32px_rgba(28,15,15,0.12)] backdrop-blur-xl sm:px-5"
             : "h-16 max-w-7xl px-1 sm:h-20"
         )}
       >
@@ -55,7 +60,7 @@ export function Navbar() {
           >
             <span
               className={cn(
-                "font-serif text-[1.25rem] font-semibold italic leading-none tracking-[0.01em] transition-colors sm:text-[1.42rem]",
+                "font-serif text-[1.25rem] font-semibold italic leading-none tracking-[0.01em] transition-colors sm:text-[1.42rem] lg:tracking-[0.02em]",
                 onDark ? "text-cream" : "text-brand"
               )}
             >
@@ -63,7 +68,7 @@ export function Navbar() {
             </span>
             <span
               className={cn(
-                "ml-2 text-[0.56rem] font-semibold uppercase leading-none tracking-[0.16em] transition-colors sm:text-[0.6rem]",
+                "ml-2 text-[0.56rem] font-semibold uppercase leading-none tracking-[0.16em] transition-colors sm:text-[0.6rem] lg:tracking-[0.22em]",
                 onDark ? "text-brand-light/82" : "text-brand-action/78"
               )}
             >
@@ -99,6 +104,23 @@ export function Navbar() {
         </div>
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+          {!scrolled && (
+            <Button
+              asChild
+              size="sm"
+              variant="ghost"
+              className="hidden sm:inline-flex"
+            >
+              <a
+                href={whatsappLink("Hi! I'd like to ask about a booking.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+              >
+                <WhatsappIcon className="h-4 w-4" />
+              </a>
+            </Button>
+          )}
           <Button
             asChild
             size="sm"
@@ -114,7 +136,9 @@ export function Navbar() {
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <button
+                type="button"
                 aria-label="Open menu"
+                aria-expanded={open}
                 className={cn(
                   "pressable flex h-11 w-11 items-center justify-center rounded-pill border md:hidden",
                   onDark ? "border-cream/15 bg-cream/8 text-cream backdrop-blur-xl hover:bg-cream/14" : "border-warm-border/70 bg-white/70 text-warm backdrop-blur-xl hover:bg-brand-mist"
@@ -126,17 +150,30 @@ export function Navbar() {
             <SheetContent title="Menu">
               <div className="flex h-full flex-col px-7 pb-8 pt-20">
                 <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
-                  {NAV_LINKS.map((link) => (
-                    <SheetClose asChild key={link.href}>
-                      <Link
-                        href={link.href}
-                        aria-current={pathname === link.href ? "page" : undefined}
-                        className="border-b border-warm-border/60 py-4 font-serif text-h3 text-warm transition-colors hover:text-brand-action"
-                      >
-                        {link.label}
-                      </Link>
-                    </SheetClose>
-                  ))}
+                  <SheetClose asChild>
+                    <Link
+                      href="/"
+                      aria-current={pathname === "/" ? "page" : undefined}
+                      className="border-b border-warm-border/60 py-4 font-serif text-h3 text-warm transition-colors hover:text-brand-action"
+                    >
+                      Home
+                    </Link>
+                  </SheetClose>
+                  {NAV_LINKS.map((link) => {
+                    const active =
+                      pathname === link.href || pathname.startsWith(link.href + "/");
+                    return (
+                      <SheetClose asChild key={link.href}>
+                        <Link
+                          href={link.href}
+                          aria-current={active ? "page" : undefined}
+                          className="border-b border-warm-border/60 py-4 font-serif text-h3 text-warm transition-colors hover:text-brand-action"
+                        >
+                          {link.label}
+                        </Link>
+                      </SheetClose>
+                    );
+                  })}
                 </nav>
 
                 <div className="mt-auto flex flex-col gap-3 pt-8">

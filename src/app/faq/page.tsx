@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { PageHero } from "@/components/sections/PageHero";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { BookingZone } from "@/components/sections/BookingZone";
+import { IMAGES } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -16,17 +18,27 @@ export default function FAQPage() {
         eyebrow="Good to know"
         title="Your questions, answered."
         subtitle="Honest answers about treatments, hygiene, booking and aftercare."
-        image="https://images.unsplash.com/photo-1556760544-74068565f05c?q=80&w=1600&auto=format&fit=crop"
-        imageAlt="Calm studio detail"
+        image={IMAGES.about.src}
+        imageAlt={IMAGES.about.alt}
       />
 
       <section className="bg-cream px-5 py-section-lg lg:px-8">
         <div className="mx-auto max-w-3xl">
-          <FAQAccordion />
+          <Suspense
+            fallback={
+              <p className="text-body text-warm-grey">Loading questions…</p>
+            }
+          >
+            <FAQAccordion enhanced />
+          </Suspense>
         </div>
       </section>
 
-      <BookingZone mode="whatsapp-only" heading="Still have a question?" subtitle="Message us on WhatsApp — we're happy to help before you book." />
+      <BookingZone
+        mode="whatsapp-only"
+        heading="Still have a question?"
+        subtitle="Message us on WhatsApp — we're happy to help before you book."
+      />
     </>
   );
 }

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import {
   SERVICE_CATEGORIES,
+  SITE,
   getCategory,
 } from "@/lib/site";
 import { getPublicServiceContent } from "@/lib/service-content";
@@ -13,6 +14,12 @@ import { ServiceCard } from "@/components/ui/service-card";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const HERO_IMAGES: Record<string, string> = {
   waxing: IMAGES.services.waxing,
@@ -38,6 +45,27 @@ const BEFORE_AFTER: Partial<
   },
 };
 
+const PROCESS_STRIPS: Partial<
+  Record<string, { title: string; steps: string[] }>
+> = {
+  moroccan: {
+    title: "Honest process — Moroccan ritual",
+    steps: [
+      "Skin is assessed and the room prepared for a slower body-care pace.",
+      "Black soap cleanses and softens before clay draws impurities.",
+      "Rinse, nourish, and leave with simple after-care — no staged before/after photos claimed.",
+    ],
+  },
+  "hydra-facial": {
+    title: "Honest process — HydraFacial",
+    steps: [
+      "Cleanse and prep so extraction stays controlled.",
+      "Extract and hydrate with active serums suited to your skin.",
+      "Finish with calm skin and clear after-care — results vary; no unverified glow claims.",
+    ],
+  },
+};
+
 export function generateStaticParams() {
   return SERVICE_CATEGORIES.map((c) => ({ slug: c.href }));
 }
@@ -50,10 +78,23 @@ export async function generateMetadata({
   const { slug } = await params;
   const category = getCategory(slug);
   if (!category) return { title: "Services" };
+  const ogImage = HERO_IMAGES[category.href] ?? IMAGES.services.facials;
   return {
     title: category.name,
     description: category.description,
     alternates: { canonical: `/services/${slug}` },
+    openGraph: {
+      title: `${category.name} · ${SITE.shortName}`,
+      description: category.description,
+      url: `${SITE.url}/services/${slug}`,
+      images: [{ url: ogImage, alt: `${category.name} at ${SITE.shortName}` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${category.name} · ${SITE.shortName}`,
+      description: category.description,
+      images: [ogImage],
+    },
   };
 }
 
@@ -72,6 +113,7 @@ export default async function ServiceCategoryPage({
     (service) => service.category === category.slug
   );
   const comparison = BEFORE_AFTER[category.href];
+  const processStrip = PROCESS_STRIPS[category.href];
 
   return (
     <>
@@ -113,12 +155,49 @@ export default async function ServiceCategoryPage({
             </AnimatedSection>
           )}
 
+          {processStrip && !comparison && (
+            <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
+              <h2 className="font-serif text-h3 font-medium text-warm">
+                {processStrip.title}
+              </h2>
+              <p className="mt-2 text-body-sm text-warm-grey">
+                No staged before/after set yet — here is the real session shape instead.
+              </p>
+              <ol className="mt-6 space-y-3">
+                {processStrip.steps.map((step, index) => (
+                  <li
+                    key={step}
+                    className="flex gap-4 border-l-2 border-[#d9b35f]/55 pl-4"
+                  >
+                    <span className="font-serif text-h4 text-brand-action/45">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <p className="text-body-sm text-warm-grey">{step}</p>
+                  </li>
+                ))}
+              </ol>
+            </AnimatedSection>
+          )}
+
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => (
               <AnimatedSection key={service.slug} variant="fadeUp" delay={i * 0.05}>
                 <ServiceCard service={service} />
               </AnimatedSection>
             ))}
+          </div>
+
+          <div className="mx-auto mt-14 max-w-2xl">
+            <Accordion type="single" collapsible>
+              <AccordionItem value="after-care">
+                <AccordionTrigger>After-care tip</AccordionTrigger>
+                <AccordionContent>
+                  Keep the treated area clean, skip heavy heat and friction for the first day when
+                  advised, and follow any product guidance your therapist gives. If your skin reacts
+                  unusually, message the studio on WhatsApp before trying a new product.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </section>
@@ -141,7 +220,11 @@ export default async function ServiceCategoryPage({
         </div>
       </section>
 
-      <BookingZone defaultBranch={undefined} heading="Ready to book?" />
+      <BookingZone
+        defaultService={category.name}
+        serviceOptions={serviceContent.services.map((item) => item.name)}
+        heading="Ready to book?"
+      />
     </>
   );
 }

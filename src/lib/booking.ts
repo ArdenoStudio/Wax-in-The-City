@@ -13,7 +13,20 @@ export const bookingSchema = z.object({
     message: "Which location works for you?",
   }),
   service_preference: z.string().optional(),
-  preferred_date: z.string().optional(),
+  preferred_date: z
+    .string()
+    .optional()
+    .refine(
+      (value) => {
+        if (!value) return true;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const preferred = new Date(`${value}T00:00:00`);
+        if (Number.isNaN(preferred.getTime())) return false;
+        return preferred >= today;
+      },
+      { message: "Please choose today or a future date." }
+    ),
   message: z.string().max(500).optional(),
 });
 

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { BookingZone } from "@/components/sections/BookingZone";
+import { PageHero } from "@/components/sections/PageHero";
 import { BRANCHES, SERVICES, SERVICE_CATEGORIES, type BranchSlug } from "@/lib/site";
 import { getPublicServiceContent } from "@/lib/service-content";
+import { IMAGES } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Book Your Visit",
@@ -34,6 +36,21 @@ function resolveServicePreference(
   return decoded;
 }
 
+const BOOKING_STEPS = [
+  {
+    title: "Request",
+    body: "Share the service, branch, and timing that work for you.",
+  },
+  {
+    title: "Review",
+    body: "The studio checks room, therapist fit, and realistic availability.",
+  },
+  {
+    title: "Confirm",
+    body: "You hear back before you travel — WhatsApp is fastest if timing is tight.",
+  },
+] as const;
+
 export default async function BookPage({
   searchParams,
 }: {
@@ -49,12 +66,42 @@ export default async function BookPage({
   );
 
   return (
-    <BookingZone
-      defaultBranch={defaultBranch}
-      defaultService={defaultService}
-      serviceOptions={serviceContent.services.map((item) => item.name)}
-      heading="Book your visit."
-      subtitle="Tell us what you'd like and when — we'll confirm within 24 hours. No card required to enquire."
-    />
+    <>
+      <PageHero
+        eyebrow="Book"
+        title="Request your visit."
+        subtitle="Tell us what you need — the team reviews every request before confirming."
+        image={IMAGES.book.src}
+        imageAlt={IMAGES.book.alt}
+        size="sm"
+      />
+
+      <section className="relative overflow-hidden bg-cream px-5 py-10 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <ol className="grid gap-3 sm:grid-cols-3">
+            {BOOKING_STEPS.map((step, index) => (
+              <li
+                key={step.title}
+                className="rounded-card border border-warm-border/80 bg-white/55 px-4 py-4"
+              >
+                <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action/70">
+                  Step {index + 1}
+                </p>
+                <h2 className="mt-2 font-serif text-h4 text-warm">{step.title}</h2>
+                <p className="mt-1.5 text-body-sm text-warm-grey">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <BookingZone
+        defaultBranch={defaultBranch}
+        defaultService={defaultService}
+        serviceOptions={serviceContent.services.map((item) => item.name)}
+        heading="Book your visit."
+        subtitle="Tell us what you'd like and when — we'll confirm within 24 hours. No card required to enquire."
+      />
+    </>
   );
 }
