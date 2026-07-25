@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Multiple lockfiles exist higher up the tree; pin the workspace root here.
   turbopack: { root: __dirname },
+  allowedDevOrigins: ["127.0.0.1"],
   images: {
     // Unsplash still used for editorial placeholders in lib/images.ts.
     remotePatterns: [
