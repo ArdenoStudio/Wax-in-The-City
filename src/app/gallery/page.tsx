@@ -23,25 +23,29 @@ export default function GalleryPage() {
         imageAlt={IMAGES.hero.alt}
       />
 
-      <section className="bg-cream px-5 py-section-lg lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-45" />
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Gallery"
             title="Browse the studio."
             subtitle="Editorial placeholders until client photography is ready — not verified client results or event coverage."
           />
-          <div className="mt-12">
+          <div className="mt-11">
             <GalleryGrid />
           </div>
 
-          <div className="mt-14 flex justify-center">
+          <div className="mt-14 flex flex-col items-center gap-3">
+            <p className="text-pretty font-sans text-center text-body-sm text-warm-grey">
+              More atmosphere lives on Instagram.
+            </p>
             <a
               href={SITE.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="pressable inline-flex items-center gap-2 rounded-pill border border-brand-action/40 px-6 py-3 font-medium text-brand-action transition-colors hover:bg-brand-mist"
+              className="ease-[var(--ease-apple)] pressable inline-flex items-center gap-2 rounded-pill border border-brand-action/35 px-6 py-3 font-semibold text-brand-action transition-colors duration-300 hover:bg-brand-mist"
             >
-              <InstagramIcon className="h-5 w-5" />
+              <InstagramIcon className="h-5 w-5 shrink-0" />
               Follow @waxinthecitylk
             </a>
           </div>

@@ -67,19 +67,24 @@ export default async function BookPage({
         size="sm"
       />
 
-      <section className="relative overflow-hidden bg-cream px-5 py-10 lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-9 lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-wine opacity-70" />
         <div className="mx-auto max-w-3xl">
-          <ol className="grid gap-3 sm:grid-cols-3">
+          <ol className="grid gap-2.5 sm:grid-cols-3">
             {BOOKING_STEPS.map((step, index) => (
               <li
                 key={step.title}
-                className="rounded-card border border-warm-border/80 bg-white/55 px-4 py-4"
+                className="rounded-card border border-warm-border/75 bg-white/60 px-4 py-4 shadow-[0_10px_28px_rgba(27,14,16,0.04)]"
               >
-                <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action/70">
-                  Step {index + 1}
+                <p className="eyebrow-label">
+                  Step {String(index + 1).padStart(2, "0")}
                 </p>
-                <h2 className="mt-2 font-display text-h4 text-warm">{step.title}</h2>
-                <p className="mt-1.5 text-body-sm text-warm-grey">{step.body}</p>
+                <h2 className="text-balance mt-2 font-display text-h4 font-semibold tracking-display text-warm">
+                  {step.title}
+                </h2>
+                <p className="font-sans mt-1.5 text-pretty text-body-sm text-warm-grey">
+                  {step.body}
+                </p>
               </li>
             ))}
           </ol>

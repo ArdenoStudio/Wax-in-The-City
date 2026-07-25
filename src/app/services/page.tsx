@@ -90,7 +90,7 @@ export default async function ServicesPage() {
               title="A visual menu, not a price dump."
               subtitle="Start with the kind of care you want. Each path keeps the practical details close: starting price, timing, and how it feels in the room."
             />
-            <div className="mt-8 max-w-full rounded-card border border-cream/14 bg-cream/8 p-5 text-body-sm text-cream/74 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+            <div className="font-sans mt-8 max-w-full rounded-card border border-cream/12 bg-cream/[0.07] p-5 text-pretty text-body-sm text-cream/78 shadow-[inset_0_1px_0_rgba(255,255,255,0.10)]">
               Every service request is reviewed before confirmation, so appointments stay realistic and the studio can prepare properly.
             </div>
           </div>
@@ -102,7 +102,7 @@ export default async function ServicesPage() {
                 <Link
                   key={category.slug}
                   href={`/services/${category.href}`}
-                  className="group relative block min-h-[330px] w-full min-w-0 overflow-hidden rounded-card border border-cream/14 bg-ink shadow-[0_28px_90px_rgba(0,0,0,0.28)]"
+                  className="group relative block min-h-[320px] w-full min-w-0 overflow-hidden rounded-card-lg border border-cream/12 bg-ink shadow-[0_28px_90px_rgba(0,0,0,0.26)]"
                 >
                   <Image
                     src={visual.image}
@@ -114,19 +114,19 @@ export default async function ServicesPage() {
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,7,10,0.08)_0%,rgba(16,7,10,0.42)_46%,rgba(16,7,10,0.92)_100%)]" />
                   <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                    <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light/85">
+                    <p className="eyebrow-label-light">
                       {visual.label}
                     </p>
-                    <h2 className="mt-2 font-display text-[2rem] font-medium leading-none text-cream">
+                    <h2 className="text-balance mt-2 font-display text-[clamp(1.75rem,3.2vw,2rem)] font-semibold leading-[0.96] tracking-tight-display text-cream">
                       {category.name}
                     </h2>
-                    <p className="mt-3 max-w-sm break-words text-body-sm text-cream/72">{visual.note}</p>
-                    <p className="mt-3 text-body-sm font-medium text-cream/88">
+                    <p className="font-sans mt-3 max-w-sm break-words text-pretty text-body-sm text-cream/78">{visual.note}</p>
+                    <p className="text-pretty font-sans mt-3 text-body-sm font-medium text-cream/88">
                       {formatLKRFrom(category.priceFrom)}
                     </p>
-                    <span className="icon-drift mt-5 inline-flex items-center gap-2 text-body-sm font-semibold text-brand-light">
+                    <span className="text-pretty font-sans icon-drift mt-5 inline-flex items-center gap-2 text-body-sm font-semibold text-brand-light">
                       View {category.name}
-                      <ArrowRight className="h-4 w-4" />
+                      <ArrowRight className="h-4 w-4 shrink-0" />
                     </span>
                   </div>
                 </Link>
@@ -140,7 +140,7 @@ export default async function ServicesPage() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="grid gap-4 sm:grid-cols-[0.72fr_1fr]">
-            <div className="relative min-h-[360px] overflow-hidden rounded-card bg-ink shadow-[0_24px_70px_rgba(39,19,21,0.16)] sm:min-h-[520px]">
+            <div className="relative min-h-[360px] overflow-hidden rounded-card-lg bg-ink shadow-card-hover sm:min-h-[520px]">
               <Image
                 src={IMAGES.socialProof.src}
                 alt={IMAGES.socialProof.alt}
@@ -153,7 +153,7 @@ export default async function ServicesPage() {
               {[IMAGES.services.moroccan, IMAGES.services.hydraFacial].map((image, index) => (
                 <div
                   key={image}
-                  className="relative min-h-[250px] overflow-hidden rounded-card bg-brand shadow-[0_18px_48px_rgba(39,19,21,0.11)]"
+                  className="relative min-h-[250px] overflow-hidden rounded-card-lg bg-brand shadow-card"
                 >
                   <Image
                     src={image}
@@ -182,14 +182,14 @@ export default async function ServicesPage() {
                 return (
                   <div
                     key={item.title}
-                    className="flex gap-4 rounded-card border border-warm-border/80 bg-white/52 p-5 shadow-[0_16px_42px_rgba(39,19,21,0.05)]"
+                    className="flex gap-4 rounded-card border border-warm-border/75 bg-white/58 p-5 shadow-[0_14px_36px_rgba(27,14,16,0.045)]"
                   >
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-card bg-brand text-cream">
-                      <Icon className="h-5 w-5" />
+                      <Icon className="h-5 w-5 shrink-0" />
                     </span>
                     <div>
-                      <h3 className="text-h4 font-semibold text-warm">{item.title}</h3>
-                      <p className="mt-1 text-body-sm text-warm-grey">{item.body}</p>
+                      <h3 className="text-balance font-display text-h4 font-semibold tracking-display text-warm">{item.title}</h3>
+                      <p className="font-sans mt-1 text-pretty text-body-sm text-warm-grey">{item.body}</p>
                     </div>
                   </div>
                 );

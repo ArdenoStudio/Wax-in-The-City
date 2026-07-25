@@ -17,6 +17,9 @@ function whatsappMessageForPath(pathname: string): string {
   if (pathname.startsWith("/faq") || pathname.startsWith("/contact")) {
     return "Hi! I have a quick question before booking.";
   }
+  if (pathname.startsWith("/gallery") || pathname.startsWith("/about")) {
+    return "Hi! I'd like to book a visit after browsing the site.";
+  }
   return "Hi! I'd like to ask about a booking.";
 }
 
@@ -40,7 +43,7 @@ export function MobileBookingBar() {
       return;
     }
     const onScroll = () => {
-      setShow(window.scrollY > window.innerHeight * 0.7);
+      setShow(window.scrollY > window.innerHeight * 0.68);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -81,12 +84,15 @@ export function MobileBookingBar() {
               : { type: "spring", stiffness: 420, damping: 36, mass: 0.9 }
           }
           data-mobile-booking-bar
-          className="fixed inset-x-0 bottom-0 z-40 border-t border-warm-border/60 bg-cream/78 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-18px_48px_rgba(39,19,21,0.10)] backdrop-blur-2xl md:hidden"
+          className="fixed inset-x-0 bottom-0 z-40 border-t border-warm-border/55 bg-cream/82 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-16px_44px_rgba(27,14,16,0.09)] backdrop-blur-2xl md:hidden"
         >
-          <div className="flex items-center gap-3">
+          <p className="mb-2 text-center font-sans text-caption text-warm-grey/90">
+            Request a time · WhatsApp for same-day
+          </p>
+          <div className="flex items-center gap-2.5">
             <Link
               href="/book"
-              className="pressable flex h-12 flex-1 items-center justify-center rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] font-medium text-cream shadow-[0_14px_34px_rgba(151,35,58,0.24)]"
+              className="pressable flex h-12 flex-1 items-center justify-center rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] font-semibold tracking-[-0.01em] text-cream shadow-[0_14px_34px_rgba(151,35,58,0.22)]"
             >
               Request a time
             </Link>
@@ -95,9 +101,9 @@ export function MobileBookingBar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp — fastest booking"
-              className="pressable flex h-12 w-12 shrink-0 items-center justify-center rounded-pill border border-brand-action/30 bg-white/52 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.06)] backdrop-blur hover:bg-brand-mist"
+              className="pressable flex h-12 w-12 shrink-0 items-center justify-center rounded-pill border border-brand-action/28 bg-white/60 text-brand-action shadow-card backdrop-blur-xl hover:bg-brand-mist"
             >
-              <WhatsappIcon className="h-5 w-5" />
+              <WhatsappIcon className="h-5 w-5 shrink-0" />
             </a>
           </div>
         </motion.div>

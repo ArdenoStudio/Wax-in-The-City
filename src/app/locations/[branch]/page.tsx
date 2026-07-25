@@ -88,20 +88,21 @@ export default async function BranchPage({
         imageAlt={`${b.name} branch interior`}
       />
 
-      <section className="bg-cream px-5 py-section-lg lg:px-8">
+      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-45" />
         <div className="mx-auto max-w-5xl">
           <div className="mb-10 flex flex-wrap items-center gap-3">
             <Link
               href="/locations"
-              className="nav-link inline-flex min-h-10 items-center gap-1.5 text-body-sm font-medium text-brand-action"
+              className="text-pretty font-sans nav-link inline-flex min-h-10 items-center gap-1.5 text-body-sm font-semibold text-brand-action"
             >
-              <ArrowLeft className="h-4 w-4" />
+              <ArrowLeft className="h-4 w-4 shrink-0" />
               All locations
             </Link>
             {sibling && (
               <Link
                 href={`/locations/${sibling.slug}`}
-                className="inline-flex h-10 items-center rounded-pill border border-brand-action/28 bg-brand-mist/70 px-4 text-body-sm font-medium text-brand-action"
+                className="ease-[var(--ease-apple)] text-pretty font-sans inline-flex h-10 items-center rounded-pill border border-brand-action/25 bg-brand-mist/70 px-4 text-body-sm font-semibold text-brand-action transition-colors duration-300 hover:bg-brand-mist"
               >
                 Also in {sibling.name}
               </Link>
@@ -110,10 +111,10 @@ export default async function BranchPage({
 
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
             <div className="space-y-6">
-              <Detail icon={<MapPin className="h-5 w-5" />} label="Address">
+              <Detail icon={<MapPin className="h-5 w-5 shrink-0" />} label="Address">
                 <span className="block">{b.address}</span>
                 {pending && (
-                  <span className="mt-1 block text-body-sm text-warm-grey">
+                  <span className="text-pretty font-sans mt-1 block text-body-sm text-warm-grey">
                     Exact street address pending confirmation — WhatsApp for
                     directions.
                   </span>
@@ -122,29 +123,25 @@ export default async function BranchPage({
                   <CopyAddressButton address={b.address} className="mt-3" />
                 )}
               </Detail>
-              <Detail icon={<Clock className="h-5 w-5" />} label="Hours">
-                <dl className="space-y-2">
+              <Detail icon={<Clock className="h-5 w-5 shrink-0" />} label="Hours">
+                <dl className="space-y-2.5">
                   <div>
-                    <dt className="text-caption font-semibold uppercase tracking-[0.12em] text-brand-action/75">
-                      Weekdays
-                    </dt>
-                    <dd className="mt-0.5 text-body text-warm">{b.hours.weekday}</dd>
+                    <dt className="eyebrow-label">Weekdays</dt>
+                    <dd className="text-pretty font-sans mt-0.5 text-body text-warm">{b.hours.weekday}</dd>
                   </div>
                   <div>
-                    <dt className="text-caption font-semibold uppercase tracking-[0.12em] text-brand-action/75">
-                      Weekends
-                    </dt>
-                    <dd className="mt-0.5 text-body text-warm">{b.hours.weekend}</dd>
+                    <dt className="eyebrow-label">Weekends</dt>
+                    <dd className="text-pretty font-sans mt-0.5 text-body text-warm">{b.hours.weekend}</dd>
                   </div>
                   <div>
-                    <dt className="text-caption font-semibold uppercase tracking-[0.12em] text-warm-grey">
+                    <dt className="font-sans text-caption font-semibold uppercase tracking-[0.1em] text-warm-grey">
                       Poya &amp; holidays
                     </dt>
-                    <dd className="mt-0.5 text-body-sm text-warm-grey">{b.hours.poya}</dd>
+                    <dd className="text-pretty font-sans mt-0.5 text-body-sm text-warm-grey">{b.hours.poya}</dd>
                   </div>
                 </dl>
               </Detail>
-              <Detail icon={<Phone className="h-5 w-5" />} label="Phone">
+              <Detail icon={<Phone className="h-5 w-5 shrink-0" />} label="Phone">
                 <a
                   href={telHref(b.phone)}
                   className="text-brand-action underline-offset-4 hover:underline"
@@ -161,28 +158,28 @@ export default async function BranchPage({
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-pill bg-brand-action px-6 font-medium text-cream transition-colors hover:bg-brand-dark"
+                  className="pressable inline-flex h-12 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-6 font-semibold text-cream shadow-[0_14px_30px_rgba(151,35,58,0.2)]"
                 >
-                  <WhatsappIcon className="h-4 w-4" />
+                  <WhatsappIcon className="h-4 w-4 shrink-0" />
                   Book at {b.name}
                 </a>
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-pill border border-brand-action/40 px-6 font-medium text-brand-action transition-colors hover:bg-brand-mist"
+                  className="ease-[var(--ease-apple)] pressable inline-flex h-12 items-center justify-center gap-2 rounded-pill border border-brand-action/35 px-6 font-semibold text-brand-action transition-colors duration-300 hover:bg-brand-mist"
                 >
-                  <MapPin className="h-4 w-4" />
+                  <MapPin className="h-4 w-4 shrink-0" />
                   Open in Maps
                 </a>
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-card-lg border border-warm-border shadow-card">
+            <div className="overflow-hidden rounded-card-lg border border-warm-border/80 shadow-card">
               <iframe
                 title={`Map of ${b.name} branch`}
                 src={`https://www.google.com/maps?q=${encodeURIComponent(mapsQuery)}&output=embed`}
-                className="h-80 w-full lg:h-full"
+                className="h-80 w-full lg:h-full lg:min-h-[420px]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
@@ -210,11 +207,11 @@ function Detail({
       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-pill bg-brand-mist text-brand-action">
         {icon}
       </span>
-      <div>
-        <p className="text-caption font-semibold uppercase tracking-[0.14em] text-warm-grey">
+      <div className="min-w-0">
+        <p className="font-sans text-caption font-semibold uppercase tracking-[0.1em] text-warm-grey">
           {label}
         </p>
-        <div className="mt-1 text-body text-warm">{children}</div>
+        <div className="font-sans mt-1 text-pretty text-body text-warm">{children}</div>
       </div>
     </div>
   );

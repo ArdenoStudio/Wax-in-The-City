@@ -29,7 +29,7 @@ export default function ContactPage() {
       />
 
       <section className="relative overflow-hidden bg-brand px-5 py-section-lg text-cream lg:px-8">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(217,179,95,0.24),transparent_32%),radial-gradient(circle_at_80%_20%,rgba(255,214,222,0.14),transparent_30%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(217,179,95,0.22),transparent_32%),radial-gradient(circle_at_80%_20%,rgba(255,214,222,0.12),transparent_30%)]" />
         <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
             <SectionHeading
@@ -44,25 +44,25 @@ export default function ContactPage() {
                 href={whatsappLink("Hi! I have a question before booking.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pressable inline-flex h-14 items-center justify-center gap-2 rounded-pill bg-cream px-8 text-body font-semibold text-brand shadow-[0_18px_42px_rgba(0,0,0,0.28)]"
+                className="text-pretty font-sans pressable inline-flex h-14 items-center justify-center gap-2 rounded-pill bg-cream px-8 text-body font-semibold tracking-[-0.01em] text-brand shadow-[0_18px_42px_rgba(0,0,0,0.26)]"
               >
-                <WhatsappIcon className="h-5 w-5" />
+                <WhatsappIcon className="h-5 w-5 shrink-0" />
                 Message on WhatsApp
               </a>
               <a
                 href="#contact-form"
-                className="pressable inline-flex h-12 items-center justify-center gap-2 rounded-pill border border-cream/20 bg-transparent px-6 text-body-sm font-medium text-cream/85 hover:bg-cream/8"
+                className="text-pretty font-sans pressable inline-flex h-12 items-center justify-center gap-2 rounded-pill border border-cream/20 bg-transparent px-6 text-body-sm font-semibold text-cream/85 hover:bg-cream/8"
               >
-                <Send className="h-4 w-4" />
+                <Send className="h-4 w-4 shrink-0" />
                 Or send a note
               </a>
             </div>
-            <p className="mt-4 max-w-md text-body-sm text-cream/62">
+            <p className="font-sans mt-4 max-w-md text-pretty text-body-sm text-cream/76">
               WhatsApp is the primary path for timing and same-week questions.
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-3">
             {[
               { icon: WhatsappIcon, title: "Fast replies", body: "Best for same-week booking questions." },
               { icon: CalendarCheck, title: "Requests reviewed", body: "Forms are checked before confirmation." },
@@ -70,12 +70,17 @@ export default function ContactPage() {
             ].map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="rounded-card border border-cream/14 bg-cream/8 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.10)]">
+                <div
+                  key={item.title}
+                  className="rounded-card border border-cream/12 bg-cream/[0.07] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+                >
                   <span className="flex h-11 w-11 items-center justify-center rounded-card bg-cream text-brand">
-                    <Icon className="h-5 w-5" />
+                    <Icon className="h-5 w-5 shrink-0" />
                   </span>
-                  <h2 className="mt-5 text-h4 font-semibold text-cream">{item.title}</h2>
-                  <p className="mt-2 text-body-sm text-cream/70">{item.body}</p>
+                  <h2 className="text-balance mt-5 font-display text-h4 font-semibold tracking-display text-cream">
+                    {item.title}
+                  </h2>
+                  <p className="font-sans mt-2 text-pretty text-body-sm text-cream/76">{item.body}</p>
                 </div>
               );
             })}
@@ -87,7 +92,7 @@ export default function ContactPage() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <aside className="space-y-5">
-            <div className="relative min-h-[420px] overflow-hidden rounded-card bg-brand shadow-[0_26px_80px_rgba(39,19,21,0.16)]">
+            <div className="relative min-h-[400px] overflow-hidden rounded-card-lg bg-brand shadow-[0_26px_80px_rgba(27,14,16,0.14)]">
               <Image
                 src={IMAGES.socialProof.src}
                 alt={IMAGES.socialProof.alt}
@@ -95,12 +100,10 @@ export default function ContactPage() {
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover object-[50%_22%]"
               />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,rgba(23,7,11,0.80)_100%)]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,rgba(23,7,11,0.82)_100%)]" />
               <div className="absolute bottom-0 left-0 p-6 text-cream">
-                <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light">
-                  Private studio contact
-                </p>
-                <h2 className="mt-3 font-display text-h3 font-medium leading-tight">
+                <p className="eyebrow-label-light">Private studio contact</p>
+                <h2 className="text-balance mt-3 font-display text-h3 font-semibold tracking-display leading-[1.1]">
                   Tell us what you need before you arrive.
                 </h2>
               </div>
@@ -110,27 +113,24 @@ export default function ContactPage() {
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
               {BRANCHES.map((b) => (
-                <div
-                  key={b.slug}
-                  className="premium-surface rounded-card p-5"
-                >
+                <div key={b.slug} className="premium-surface rounded-card p-5">
                   <Link
                     href={`/locations/${b.slug}`}
-                    className="relative z-10 font-display text-h4 font-medium text-warm underline-offset-4 hover:text-brand-action hover:underline"
+                    className="text-balance relative z-10 font-display text-h4 font-semibold tracking-display text-warm underline-offset-4 hover:text-brand-action hover:underline"
                   >
                     {b.name}
                   </Link>
-                  <div className="relative z-10 mt-3 space-y-2 text-body-sm text-warm-grey">
+                  <div className="text-pretty font-sans relative z-10 mt-3 space-y-2 text-body-sm text-warm-grey">
                     <p className="flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-brand-action" />
+                      <MapPin className="h-4 w-4 shrink-0 text-brand-action" />
                       {b.area}
                     </p>
                     <p className="flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-brand-action" />
+                      <Clock className="h-4 w-4 shrink-0 text-brand-action" />
                       {b.hours.weekday}
                     </p>
                     <p className="flex items-center gap-2">
-                      <Phone className="h-4 w-4 text-brand-action" />
+                      <Phone className="h-4 w-4 shrink-0 text-brand-action" />
                       <a
                         href={telHref(b.phone)}
                         className="text-brand-action underline-offset-4 hover:underline"
@@ -142,17 +142,20 @@ export default function ContactPage() {
                   <div className="relative z-10 mt-4 flex flex-wrap gap-2">
                     <Link
                       href={`/locations/${b.slug}`}
-                      className="inline-flex h-11 items-center rounded-pill border border-brand-action/30 px-5 text-body-sm font-medium text-brand-action transition-colors hover:bg-brand-mist"
+                      className="ease-[var(--ease-apple)] text-pretty font-sans inline-flex h-11 items-center rounded-pill border border-brand-action/28 px-5 text-body-sm font-semibold text-brand-action transition-colors duration-300 hover:bg-brand-mist"
                     >
                       View studio
                     </Link>
                     <a
-                      href={whatsappLink(`Hi! I have a question about your ${b.name} branch.`, b.whatsapp)}
+                      href={whatsappLink(
+                        `Hi! I have a question about your ${b.name} branch.`,
+                        b.whatsapp
+                      )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex h-11 items-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)] transition-all duration-300 hover:-translate-y-0.5"
+                      className="text-pretty font-sans pressable inline-flex h-11 items-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-semibold text-cream shadow-[0_14px_30px_rgba(151,35,58,0.18)]"
                     >
-                      <WhatsappIcon className="h-4 w-4" />
+                      <WhatsappIcon className="h-4 w-4 shrink-0" />
                       WhatsApp {b.name}
                     </a>
                   </div>
@@ -174,10 +177,12 @@ export default function ContactPage() {
 
             <aside
               id="privacy"
-              className="mt-10 scroll-mt-28 rounded-card border border-warm-border/80 bg-white/50 px-5 py-5"
+              className="mt-10 scroll-mt-28 rounded-card border border-warm-border/80 bg-white/55 px-5 py-5"
             >
-              <h3 className="font-display text-h4 text-warm">Privacy note</h3>
-              <p className="mt-2 text-body-sm leading-relaxed text-warm-grey">
+              <h3 className="text-balance font-display text-h4 font-semibold tracking-display text-warm">
+                Privacy note
+              </h3>
+              <p className="font-sans mt-2 text-pretty text-body-sm leading-relaxed text-warm-grey">
                 Messages and booking requests are reviewed privately by the
                 studio team. We use your details only to reply and confirm
                 visits — not for public display or third-party marketing.
@@ -185,34 +190,39 @@ export default function ContactPage() {
             </aside>
 
             <div className="mt-10">
-              <h3 className="font-display text-h3 text-warm">Follow us</h3>
-              <div className="mt-4 flex gap-3">
+              <h3 className="text-balance font-display text-h3 font-semibold tracking-display text-warm">
+                Follow us
+              </h3>
+              <p className="text-pretty font-sans mt-1 text-body-sm text-warm-grey">
+                Studio updates and atmosphere — not a booking channel.
+              </p>
+              <div className="mt-4 flex gap-2.5">
                 <a
                   href={SITE.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="pressable flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:bg-brand-mist"
+                  className="ease-[var(--ease-apple)] pressable flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/28 bg-white/45 text-brand-action shadow-card backdrop-blur transition-colors duration-300 hover:bg-brand-mist"
                 >
-                  <InstagramIcon className="h-5 w-5" />
+                  <InstagramIcon className="h-5 w-5 shrink-0" />
                 </a>
                 <a
                   href={SITE.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="pressable flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:bg-brand-mist"
+                  className="ease-[var(--ease-apple)] pressable flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/28 bg-white/45 text-brand-action shadow-card backdrop-blur transition-colors duration-300 hover:bg-brand-mist"
                 >
-                  <FacebookIcon className="h-5 w-5" />
+                  <FacebookIcon className="h-5 w-5 shrink-0" />
                 </a>
                 <a
                   href={whatsappLink("Hi! I have a question.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
-                  className="pressable flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:bg-brand-mist"
+                  className="ease-[var(--ease-apple)] pressable flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/28 bg-white/45 text-brand-action shadow-card backdrop-blur-xl transition-colors duration-300 hover:bg-brand-mist"
                 >
-                  <WhatsappIcon className="h-5 w-5" />
+                  <WhatsappIcon className="h-5 w-5 shrink-0" />
                 </a>
               </div>
             </div>

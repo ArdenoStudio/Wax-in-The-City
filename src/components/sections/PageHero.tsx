@@ -18,7 +18,7 @@ interface PageHeroProps {
   cta?: ReactNode;
 }
 
-/** Reusable inner-page hero (file 08 — every page opens with a hero). */
+/** Reusable inner-page hero — brand-first Cal Sans, Cult UI oxblood field. */
 export function PageHero({
   eyebrow,
   title,
@@ -33,15 +33,15 @@ export function PageHero({
 
   return (
     <section
-      className={`relative flex min-h-[42vh] w-full items-end overflow-hidden bg-ink ${
-        size === "md" ? "sm:min-h-[560px]" : "sm:min-h-[460px]"
+      className={`relative flex min-h-[40vh] w-full items-end overflow-hidden bg-ink ${
+        size === "md" ? "sm:min-h-[540px]" : "sm:min-h-[440px]"
       }`}
     >
       <motion.div
         className="absolute inset-0"
-        initial={reduceMotion ? false : { opacity: 0.9, scale: 1.035 }}
+        initial={reduceMotion ? false : { opacity: 0.88, scale: 1.03 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.12, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
       >
         {hasImage && image ? (
           <Image
@@ -67,39 +67,46 @@ export function PageHero({
             }}
           />
         )}
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,12,13,0.94)_0%,rgba(35,12,17,0.78)_50%,rgba(35,12,17,0.42)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.22)_0%,transparent_46%,rgba(21,16,17,0.82)_100%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(162,15,55,0.28),transparent_42%),radial-gradient(circle_at_82%_70%,rgba(252,229,236,0.10),transparent_36%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(18,12,13,0.96)_0%,rgba(35,12,17,0.82)_48%,rgba(35,12,17,0.38)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.28)_0%,transparent_42%,rgba(18,6,10,0.88)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_10%,rgba(162,15,55,0.26),transparent_40%),radial-gradient(circle_at_84%_68%,rgba(252,229,236,0.08),transparent_34%)]" />
       </motion.div>
 
       <motion.div
-        className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-14 pt-28 lg:px-8 lg:pb-20"
-        initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+        className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-12 pt-28 lg:px-8 lg:pb-16"
+        initial={reduceMotion ? false : { opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.74, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.06 }}
       >
-        <p className="font-display text-[clamp(1.85rem,5.5vw,2.75rem)] font-semibold leading-none tracking-[0.01em] text-cream">
+        {/* Brand-first: Cal Sans hero signal — no italic, no floating badges */}
+        <p className="text-balance font-display text-[clamp(1.9rem,5.8vw,2.85rem)] font-semibold leading-[0.96] tracking-tight-display text-cream">
           {SITE.shortName}
         </p>
+
         {eyebrow && (
           <motion.p
-            className="mt-4 inline-flex rounded-pill border border-cream/18 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl"
-            initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+            className="mt-5 font-sans text-caption font-semibold uppercase tracking-[0.1em] text-brand-light/90"
+            initial={reduceMotion ? false : { opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.16 }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.14 }}
           >
             {eyebrow}
           </motion.p>
         )}
-        <h1 className="mt-5 max-w-[16ch] break-words text-balance font-display text-[clamp(2.1rem,8vw,3.15rem)] font-medium leading-[1.06] text-cream/96 sm:max-w-3xl sm:text-[3.6rem] sm:leading-[1.04]">
+
+        <h1 className="mt-3 max-w-[15ch] break-words text-balance font-display text-[clamp(2rem,7.5vw,3.05rem)] font-semibold leading-[1.05] tracking-tight-display text-cream sm:max-w-3xl sm:text-[3.4rem] sm:leading-[1.03]">
           {title}
         </h1>
+
         {subtitle && (
-          <p className="mt-5 max-w-xl text-balance text-body-lg text-cream/80">
+          <p className="font-sans mt-4 max-w-xl text-pretty text-body-lg leading-relaxed text-cream/78">
             {subtitle}
           </p>
         )}
-        {cta && <div className="mt-7 flex flex-wrap items-center gap-3">{cta}</div>}
+
+        {cta && (
+          <div className="mt-7 flex flex-wrap items-center gap-3">{cta}</div>
+        )}
       </motion.div>
     </section>
   );

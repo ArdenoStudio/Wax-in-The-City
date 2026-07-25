@@ -52,7 +52,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <AnimatedSection variant="slideFromLeft">
             <div className="relative">
-              <div className="relative min-h-[520px] overflow-hidden rounded-card bg-brand shadow-[0_30px_90px_rgba(39,19,21,0.16)]">
+              <div className="relative min-h-[480px] overflow-hidden rounded-card-lg bg-brand shadow-[0_30px_90px_rgba(27,14,16,0.14)] sm:min-h-[520px]">
                 <Image
                   src={IMAGES.about.src}
                   alt={IMAGES.about.alt}
@@ -61,12 +61,10 @@ export default function AboutPage() {
                   className="object-cover object-[50%_20%]"
                   unoptimized
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_42%,rgba(23,7,11,0.72)_100%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_42%,rgba(23,7,11,0.74)_100%)]" />
                 <div className="absolute bottom-0 left-0 max-w-sm p-6 text-cream">
-                  <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light">
-                    Studio standard
-                  </p>
-                  <p className="mt-3 font-display text-h3 leading-tight">
+                  <p className="eyebrow-label-light">Studio standard</p>
+                  <p className="text-balance mt-3 font-display text-h3 font-semibold tracking-display leading-[1.1]">
                     Glamour is welcome here. Pressure is not.
                   </p>
                 </div>
@@ -84,10 +82,10 @@ export default function AboutPage() {
           </AnimatedSection>
 
           <AnimatedSection variant="fadeUp">
-            <p className="max-w-full break-words text-balance font-display text-[clamp(2rem,9vw,4.9rem)] font-medium leading-[1.02] text-warm">
+            <p className="max-w-full break-words text-balance font-display text-[clamp(1.85rem,8vw,3.6rem)] font-semibold leading-[1.05] tracking-tight-display text-warm">
               Built like a private dressing room, run like a careful appointment studio.
             </p>
-            <p className="mt-8 max-w-2xl text-body-lg text-warm-grey">
+            <p className="font-sans mt-7 max-w-2xl text-pretty text-body-lg text-warm-grey">
               The site should say what the studio is trying to protect: comfort, privacy, hygiene, and trust before the first strip of wax or skincare product touches skin. That is why the appointment flow is quieter than a walk-in salon and why sensitive services are handled with more context.
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -95,13 +93,13 @@ export default function AboutPage() {
                 <Link
                   key={branch.slug}
                   href={`/locations/${branch.slug}`}
-                  className="rounded-card bg-cream-alt/80 p-5 transition-colors hover:bg-brand-mist/50"
+                  className="ease-[var(--ease-apple)] rounded-card border border-warm-border/60 bg-cream-alt/80 p-5 transition-colors duration-300 hover:border-brand-action/25 hover:bg-brand-mist/45"
                 >
-                  <div className="flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.12em] text-brand-action">
-                    <MapPin className="h-4 w-4" />
+                  <div className="flex items-center gap-2 font-sans text-caption font-semibold uppercase tracking-[0.1em] text-brand-action">
+                    <MapPin className="h-4 w-4 shrink-0" />
                     {branch.name}
                   </div>
-                  <p className="mt-3 text-body-sm text-warm-grey">{branch.blurb}</p>
+                  <p className="font-sans mt-3 text-pretty text-body-sm text-warm-grey">{branch.blurb}</p>
                 </Link>
               ))}
             </div>
@@ -110,7 +108,7 @@ export default function AboutPage() {
       </section>
 
       <section className="relative overflow-hidden bg-brand px-5 py-section-lg text-cream lg:px-8">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(217,179,95,0.22),transparent_34%),radial-gradient(circle_at_82%_18%,rgba(255,214,222,0.15),transparent_28%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(217,179,95,0.2),transparent_34%),radial-gradient(circle_at_82%_18%,rgba(255,214,222,0.13),transparent_28%)]" />
         <div className="relative mx-auto max-w-7xl">
           <SectionHeading
             align="left"
@@ -119,17 +117,21 @@ export default function AboutPage() {
             title="What should feel different when you walk in."
             subtitle="The details are practical because the services are personal."
           />
-          <div className="mt-12 grid gap-4 lg:grid-cols-3">
+          <div className="mt-12 grid gap-3.5 lg:grid-cols-3">
             {VALUES.map((value, i) => {
               const Icon = value.icon;
               return (
                 <AnimatedSection key={value.title} variant="fadeUp" delay={i * 0.08}>
-                  <div className="h-full rounded-card bg-cream/[0.06] p-6">
+                  <div className="h-full rounded-card border border-cream/10 bg-cream/[0.06] p-6">
                     <span className="flex h-12 w-12 items-center justify-center rounded-card bg-cream text-brand">
                       <Icon className="h-6 w-6" />
                     </span>
-                    <h3 className="mt-6 font-display text-h3 font-medium text-cream">{value.title}</h3>
-                    <p className="mt-3 text-body-sm leading-relaxed text-cream/72">{value.body}</p>
+                    <h3 className="text-balance mt-6 font-display text-h3 font-semibold tracking-display text-cream">
+                      {value.title}
+                    </h3>
+                    <p className="font-sans mt-3 text-pretty text-body-sm leading-relaxed text-cream/78">
+                      {value.body}
+                    </p>
                   </div>
                 </AnimatedSection>
               );

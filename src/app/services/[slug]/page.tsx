@@ -143,20 +143,20 @@ export default async function ServiceCategoryPage({
           <div className="min-w-0">
             <Link
               href="/services"
-              className="nav-link mb-10 inline-flex min-h-10 items-center gap-1.5 text-body-sm font-medium text-brand-action"
+              className="text-pretty font-sans nav-link mb-10 inline-flex min-h-10 items-center gap-1.5 text-body-sm font-semibold text-brand-action"
             >
-              <ArrowLeft className="h-4 w-4" />
+              <ArrowLeft className="h-4 w-4 shrink-0" />
               All services
             </Link>
 
-            <p className="mb-8 text-body-sm font-medium text-brand-action">
+            <p className="text-pretty font-sans mb-8 text-body-sm font-semibold tracking-[-0.01em] text-brand-action">
               {formatPriceFrom(category.priceFrom)}
             </p>
 
             {comparison && (
               <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
-                <h2 className="font-display text-h3 font-medium text-warm">Treatment flow preview</h2>
-                <p className="mt-2 text-body-sm text-warm-grey">
+                <h2 className="text-balance font-display text-h3 font-semibold tracking-display text-warm">Treatment flow preview</h2>
+                <p className="font-sans mt-2 text-pretty text-body-sm text-warm-grey">
                   An honest process preview until client-approved result photos are available.
                 </p>
                 <div className="mt-6">
@@ -174,22 +174,22 @@ export default async function ServiceCategoryPage({
 
             {processStrip && !comparison && (
               <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
-                <h2 className="font-display text-h3 font-medium text-warm">
+                <h2 className="text-balance font-display text-h3 font-semibold tracking-display text-warm">
                   {processStrip.title}
                 </h2>
-                <p className="mt-2 text-body-sm text-warm-grey">
+                <p className="font-sans mt-2 text-pretty text-body-sm text-warm-grey">
                   No staged before/after set yet — here is the real session shape instead.
                 </p>
                 <ol className="mt-6 space-y-3">
                   {processStrip.steps.map((step, index) => (
                     <li
                       key={step}
-                      className="flex gap-4 border-l-2 border-[#d9b35f]/55 pl-4"
+                      className="flex gap-4 border-l-2 border-gold/55 pl-4"
                     >
-                      <span className="font-display text-h4 text-brand-action/45">
+                      <span className="text-balance font-display text-h4 font-semibold tracking-display text-brand-action/45">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <p className="text-body-sm text-warm-grey">{step}</p>
+                      <p className="font-sans text-pretty text-body-sm text-warm-grey">{step}</p>
                     </li>
                   ))}
                 </ol>
@@ -219,20 +219,20 @@ export default async function ServiceCategoryPage({
           </div>
 
           <aside className="hidden lg:block">
-            <div className="sticky top-28 rounded-card border border-warm-border/80 bg-cream-alt/80 p-5">
-              <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action/70">
+            <div className="sticky top-28 rounded-card border border-warm-border/75 bg-cream-alt/85 p-5 shadow-[0_14px_36px_rgba(27,14,16,0.05)]">
+              <p className="eyebrow-label">
                 Book {category.name}
               </p>
-              <p className="mt-1 text-body-sm text-warm-grey">
+              <p className="text-pretty font-sans mt-1 text-body-sm text-warm-grey">
                 {formatPriceFrom(category.priceFrom)}
               </p>
-              <p className="mt-2 font-display text-h4 text-warm">
+              <p className="text-balance mt-2 font-display text-h4 font-semibold tracking-display text-warm">
                 Request a time — we confirm before you travel.
               </p>
               <div className="mt-5 flex flex-col gap-2.5">
                 <Button asChild size="md" variant="primary" className="w-full">
                   <Link href={`/book?service=${encodeURIComponent(category.name)}`}>
-                    <CalendarDays className="h-4 w-4" />
+                    <CalendarDays className="h-4 w-4 shrink-0" />
                     Request a time
                   </Link>
                 </Button>
@@ -244,7 +244,7 @@ export default async function ServiceCategoryPage({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <WhatsappIcon className="h-4 w-4" />
+                    <WhatsappIcon className="h-4 w-4 shrink-0" />
                     WhatsApp
                   </a>
                 </Button>
@@ -257,13 +257,13 @@ export default async function ServiceCategoryPage({
       <section className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="font-display text-h2 font-medium text-warm">Explore other treatments</h2>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <h2 className="text-balance font-display text-h2 font-semibold tracking-tight-display text-warm">Explore other treatments</h2>
+          <div className="mt-8 flex flex-wrap justify-center gap-2.5">
             {serviceContent.categories.filter((c) => c.slug !== category.slug).map((c) => (
               <Link
                 key={c.slug}
                 href={`/services/${c.href}`}
-                className="rounded-pill border border-brand-action/30 bg-white/42 px-5 py-2.5 text-body-sm font-medium text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
+                className="ease-[var(--ease-apple)] text-pretty font-sans pressable rounded-pill border border-brand-action/28 bg-white/50 px-5 py-2.5 text-body-sm font-semibold text-brand-action shadow-card backdrop-blur-xl transition-colors duration-300 hover:bg-brand-mist"
               >
                 {c.name}
               </Link>

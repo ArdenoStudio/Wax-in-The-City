@@ -110,3 +110,600 @@
 - [x] #108 ReviewThemes.tsx: grid ratio 0.88/1.12 for calmer type/list balance
 - [x] #109 CareJourney.tsx: step index tracking 0.14→0.12
 - [x] #110 service-card.tsx: Book this padding px-5→px-4 for quieter CTA
+
+## Secondary surfaces — globals, chrome, forms, pages
+
+### globals.css
+- [x] #111 Tighten h1/h2/h3/h4 line-heights for Cal Sans density
+- [x] #112 Tighten display letter-spacing tokens (−0.028 / −0.022 / −0.018)
+- [x] #113 Caption tracking to 0.05em for HyperUI label clarity
+- [x] #114 Add `--shadow-field` + `--shadow-field-focus` tokens
+- [x] #115 Add `--focus-ring` CSS variable
+- [x] #116 Body: moz-osx grayscale + `ss01` font feature
+- [x] #117 Headings: force `font-style: normal` (no italic)
+- [x] #118 Add `p { text-wrap: pretty }`
+- [x] #119 Include `select` in tap-highlight reset
+- [x] #120 Utility `.text-pretty`
+- [x] #121 Utility `.tracking-display` / `.tracking-tight-display`
+- [x] #122 `.font-display` forces normal style
+- [x] #123 HyperUI `.field-helper` / `.field-error` / `.field-surface`
+- [x] #124 `.eyebrow-label` + `.eyebrow-label-light`
+- [x] #125 `.footer-link` shared hover treatment
+- [x] #126 `.chip-active` / `.chip-idle` for FAQ/gallery filters
+- [x] #127 Accordion open/close uses apple easing timings
+- [x] #128 Add `witc-fade-rise` + `.animate-fade-rise`
+- [x] #129 Reduced-motion disables fade-rise
+- [x] #130 Print: force display fonts non-italic
+
+### Footer.tsx
+- [x] #131 HyperUI top band: brand + phone + WhatsApp row
+- [x] #132 Show Cal Sans `SITE.shortName` beside wordmark
+- [x] #133 Tagline uses `font-semibold tracking-display`
+- [x] #134 Brand blurb densified (privacy + reviewed bookings)
+- [x] #135 Explore column uses `.footer-link`
+- [x] #136 Book Your Visit emphasized in explore list
+- [x] #137 New Help column (FAQ, Contact, Privacy, Gallery, WA)
+- [x] #138 Branch cards: bordered cream/3 panels
+- [x] #139 Branch hours as HyperUI dl weekdays/weekends
+- [x] #140 Social icons under Explore; tighter gap
+- [x] #141 section-shell replaces max-w-7xl boilerplate
+- [x] #142 Grid pattern opacity/size refined
+- [x] #143 Bottom legal row flex-wrap polish
+
+### PageHero.tsx
+- [x] #144 Brand-first Cal Sans shortName (semibold, tight tracking)
+- [x] #145 Remove pill/badge eyebrow overlay
+- [x] #146 Eyebrow as plain uppercase caption (no float chip)
+- [x] #147 Title: semibold + tracking-tight-display (no italic)
+- [x] #148 Subtitle: pretty wrap + cream/78
+- [x] #149 Slightly shorter min-heights (40vh / 440–540)
+- [x] #150 Gradient angle + opacity polish for Cult UI field
+- [x] #151 Motion entrance y 18 / duration 0.7
+
+### MobileBookingBar.tsx
+- [x] #152 Helper caption: Request a time · WhatsApp for same-day
+- [x] #153 Scroll threshold 0.68 viewport
+- [x] #154 Cream/82 glass + softer shadow
+- [x] #155 Path-aware WA copy for /gallery and /about
+- [x] #156 CTA tracking −0.01em
+
+### LoadingScreen.tsx
+- [x] #157 Cal Sans wordmark under logo
+- [x] #158 Radial brand glow behind mark
+- [x] #159 Hold timings 360/680ms
+- [x] #160 Exit with slight y lift (ease apple)
+- [x] #161 aria-label="Loading studio"; logo alt=""
+
+### AnimatedSection.tsx
+- [x] #162 Fallback to fadeUp if unknown variant
+- [x] #163 cn() for className merge
+
+### FAQAccordion.tsx
+- [x] #164 Dense space-y-8 / accordion space-y-2.5
+- [x] #165 Search placeholder: hygiene, waxing, booking…
+- [x] #166 Clear-search (X) control
+- [x] #167 Live match count helper text
+- [x] #168 Category chips show counts
+- [x] #169 Chip height h-9 denser
+- [x] #170 Group headers with count + semibold display
+- [x] #171 Empty state Clear search CTA
+- [x] #172 field-surface on search input
+- [x] #173 Default accordion triggers drop redundant text-h4 classes
+
+### ContactForm.tsx
+- [x] #174 HyperUI helpers under every field
+- [x] #175 Intro helper: only used to reply
+- [x] #176 Placeholders refined (Anika / 07X)
+- [x] #177 Success copy mentions WhatsApp for urgency
+- [x] #178 Send message casing polish
+- [x] #179 field-error class on validation lines
+- [x] #180 Branch aria-describedby helper id
+
+### BookingForm.tsx
+- [x] #181 HyperUI helpers on name/phone/branch/service/date/notes
+- [x] #182 Progress bar height h-1 + tabular-nums
+- [x] #183 Branch helper shows hours or default copy
+- [x] #184 Service helper: refine if needed
+- [x] #185 Date helper: preferred ≠ confirmed
+- [x] #186 Success aria-live + clearer confirm copy
+- [x] #187 Submit label "Send my request"
+- [x] #188 Trust chips bg-white/62
+
+### UI primitives
+- [x] #189 button: tracking −0.01em; outline border softer hover
+- [x] #190 accordion: open border/shadow; no micro-lift bounce
+- [x] #191 accordion trigger: font-display semibold + pretty span
+- [x] #192 accordion content: hairline border-t separator
+- [x] #193 input: field-surface + aria-invalid error ring
+- [x] #194 textarea: min-h-28 + same invalid styling
+- [x] #195 select trigger: field-surface + open chevron rotate
+- [x] #196 select item: checked text-brand-action
+- [x] #197 select viewport padding 1.5
+- [x] #198 sheet: cream gradient panel + bordered close control
+- [x] #199 sheet overlay warm/48
+- [x] #200 label: tracking −0.01em
+
+### Secondary pages
+- [x] #201 book: hairline-wine + denser step cards
+- [x] #202 book: Step 01 padStart numbering
+- [x] #203 faq: search-aware subtitle; skeleton fallback
+- [x] #204 contact: display headings on trust tiles
+- [x] #205 contact: Follow us helper line
+- [x] #206 contact: branch CTA pressable gradient
+- [x] #207 about: display heading clamp refined; branch border hover
+- [x] #208 about: values bordered cream/6 panels
+- [x] #209 gallery: Instagram helper + hairline
+- [x] #210 GalleryGrid: filter counts + showing N images
+- [x] #211 GalleryGrid: hover gradient + scale polish
+- [x] #212 GalleryGrid: lightbox counter + border on controls
+- [x] #213 locations: denser commute tips; branch title semibold
+- [x] #214 locations: step numbers tracking-tight-display
+- [x] #215 branch page: eyebrow-label hours; maps min-height
+- [x] #216 branch page: gradient WhatsApp CTA + pressable maps
+- [x] #217 services: category titles semibold tight tracking
+- [x] #218 services: guide cards font-display h4 + pretty body
+- [x] #219 services/[slug]: sticky book panel shadow + eyebrow
+- [x] #220 services/[slug]: process border-gold token
+- [x] #221 services/[slug]: explore chips pressable (no lift-all)
+- [x] #222 not-found: brand tracking-tight-display + Contact link
+- [x] #223 not-found: min-h 72vh; softer radial atmosphere
+
+### Cross-cutting
+- [x] #224 Prefer `font-semibold` over `font-medium` on Cal Sans heads
+- [x] #225 Prefer `text-pretty` on supporting body blocks
+- [x] #226 Prefer `eyebrow-label*` over one-off caption stacks
+- [x] #227 Prefer `field-helper` over ad-hoc caption greys on forms
+- [x] #228 Prefer hairline dividers on secondary page sections
+- [x] #229 Prefer tabular-nums on counts/progress
+- [x] #230 Prefer pressable + gradient CTAs consistency
+- [x] #231 Prefer no italic anywhere in display system
+- [x] #232 src/app/services/page.tsx: h-shadow-card:shadow-[0_24px_70px_rgba(39,19,21,0.16)] shadow-[0_24px_70px_rgba(39,19,21,0.16)]→shadow-card-hover
+- [x] #233 src/components/sections/HeroSection.tsx: g-font-sans-body add font-sans on body copy
+- [x] #234 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #235 src/app/contact/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #236 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #237 src/app/contact/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #238 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #239 src/app/contact/page.tsx: h-shadow-card:shadow-[0_10px_24px_rgba(39,19,21,0.04)] shadow-[0_10px_24px_rgba(39,19,21,0.04)]→shadow-card
+- [x] #240 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #241 src/app/contact/page.tsx: h-shadow-card:shadow-[0_10px_24px_rgba(39,19,21,0.04)] shadow-[0_10px_24px_rgba(39,19,21,0.04)]→shadow-card
+- [x] #242 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #243 src/app/contact/page.tsx: h-shadow-card:shadow-[0_10px_24px_rgba(39,19,21,0.04)] shadow-[0_10px_24px_rgba(39,19,21,0.04)]→shadow-card
+- [x] #244 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #245 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #246 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #247 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #248 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #249 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #250 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #251 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #252 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #253 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #254 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #255 src/app/admin/page.tsx: g-font-sans-body add font-sans on body copy
+- [x] #256 src/app/about/page.tsx: s2-text-balance add text-balance on display
+- [x] #257 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #258 src/app/book/page.tsx: s2-text-balance add text-balance on display
+- [x] #259 src/app/contact/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #260 src/app/faq/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #261 src/app/gallery/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #262 src/app/globals.css: s2-text-pretty add text-pretty on body
+- [x] #263 src/app/locations/[branch]/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #264 src/app/locations/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #265 src/app/not-found.tsx: s2-text-pretty add text-pretty on body
+- [x] #266 src/app/services/[slug]/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #267 src/app/services/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #268 src/components/global/Footer.tsx: s2-text-pretty add text-pretty on body
+- [x] #269 src/components/global/LoadingScreen.tsx: s2-text-balance add text-balance on display
+- [x] #270 src/components/global/MobileBookingBar.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #271 src/components/global/Navbar.tsx: s2-text-pretty add text-pretty on body
+- [x] #272 src/components/sections/AboutTeaser.tsx: s2-text-pretty add text-pretty on body
+- [x] #273 src/components/sections/BeforeAfterShowcase.tsx: s2-text-pretty add text-pretty on body
+- [x] #274 src/components/sections/BeforeAfterSlider.tsx: s2-rounded-media overflow-hidden rounded-card→rounded-card-lg
+- [x] #275 src/components/sections/BookingForm.tsx: s2-text-pretty add text-pretty on body
+- [x] #276 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #277 src/components/sections/CareJourney.tsx: s2-text-pretty add text-pretty on body
+- [x] #278 src/components/sections/ContactForm.tsx: s2-text-pretty add text-pretty on body
+- [x] #279 src/components/sections/CopyAddressButton.tsx: s2-text-pretty add text-pretty on body
+- [x] #280 src/components/sections/FAQAccordion.tsx: s2-text-pretty add text-pretty on body
+- [x] #281 src/components/sections/FAQTeaser.tsx: s2-text-pretty add text-pretty on body
+- [x] #282 src/components/sections/GalleryGrid.tsx: s2-text-pretty add text-pretty on body
+- [x] #283 src/components/sections/GalleryTeaser.tsx: s2-text-pretty add text-pretty on body
+- [x] #284 src/components/sections/HeroSection.tsx: s2-text-pretty add text-pretty on body
+- [x] #285 src/components/sections/HoursTable.tsx: s2-text-pretty add text-pretty on body
+- [x] #286 src/components/sections/PageHero.tsx: s2-text-balance add text-balance on display
+- [x] #287 src/components/sections/ReviewThemes.tsx: s2-text-pretty add text-pretty on body
+- [x] #288 src/components/sections/ServiceTabs.tsx: s2-shadow-ink shadow rgba(39,19,21→27,14,16
+- [x] #289 src/components/sections/ServicesGrid.tsx: s2-text-pretty add text-pretty on body
+- [x] #290 src/components/sections/StatsCounter.tsx: s2-text-pretty add text-pretty on body
+- [x] #291 src/components/sections/TrustStrip.tsx: s2-text-pretty add text-pretty on body
+- [x] #292 src/components/ui/branch-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #293 src/components/ui/button.tsx: s2-text-pretty add text-pretty on body
+- [x] #294 src/components/ui/label.tsx: s2-text-pretty add text-pretty on body
+- [x] #295 src/components/ui/marquee-strip.tsx: s2-text-balance add text-balance on display
+- [x] #296 src/components/ui/section-heading.tsx: s2-text-balance add text-balance on display
+- [x] #297 src/components/ui/select.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #298 src/components/ui/service-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #299 src/components/ui/sheet.tsx: s2-duration transition-colors + duration-300
+- [x] #300 src/components/ui/shimmer-button.tsx: s2-text-pretty add text-pretty on body
+- [x] #301 src/app/about/page.tsx: s2-text-balance add text-balance on display
+- [x] #302 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #303 src/app/book/page.tsx: s2-shadow-ink shadow rgba(39,19,21→27,14,16
+- [x] #304 src/app/contact/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #305 src/app/gallery/page.tsx: s2-duration transition-colors + duration-300
+- [x] #306 src/app/globals.css: s2-text-pretty add text-pretty on body
+- [x] #307 src/app/locations/[branch]/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #308 src/app/locations/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #309 src/app/not-found.tsx: s2-text-balance add text-balance on display
+- [x] #310 src/app/services/[slug]/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #311 src/app/services/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #312 src/components/global/Footer.tsx: s2-text-pretty add text-pretty on body
+- [x] #313 src/components/global/MobileBookingBar.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #314 src/components/global/Navbar.tsx: s2-text-balance add text-balance on display
+- [x] #315 src/components/sections/AboutTeaser.tsx: s2-text-pretty add text-pretty on body
+- [x] #316 src/components/sections/BeforeAfterShowcase.tsx: s2-text-pretty add text-pretty on body
+- [x] #317 src/components/sections/BeforeAfterSlider.tsx: s2-rounded-media overflow-hidden rounded-card→rounded-card-lg
+- [x] #318 src/components/sections/BookingForm.tsx: s2-text-balance add text-balance on display
+- [x] #319 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #320 src/components/sections/CareJourney.tsx: s2-text-pretty add text-pretty on body
+- [x] #321 src/components/sections/ContactForm.tsx: s2-text-pretty add text-pretty on body
+- [x] #322 src/components/sections/CopyAddressButton.tsx: s2-duration transition-colors + duration-300
+- [x] #323 src/components/sections/FAQAccordion.tsx: s2-text-pretty add text-pretty on body
+- [x] #324 src/components/sections/FAQTeaser.tsx: s2-duration transition-colors + duration-300
+- [x] #325 src/components/sections/GalleryGrid.tsx: s2-text-pretty add text-pretty on body
+- [x] #326 src/components/sections/GalleryTeaser.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #327 src/components/sections/HeroSection.tsx: s2-text-pretty add text-pretty on body
+- [x] #328 src/components/sections/HoursTable.tsx: s2-text-pretty add text-pretty on body
+- [x] #329 src/components/sections/PageHero.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #330 src/components/sections/ReviewThemes.tsx: s2-text-balance add text-balance on display
+- [x] #331 src/components/sections/ServicesGrid.tsx: s2-text-pretty add text-pretty on body
+- [x] #332 src/components/sections/StatsCounter.tsx: s2-text-balance add text-balance on display
+- [x] #333 src/components/sections/TrustStrip.tsx: s2-text-pretty add text-pretty on body
+- [x] #334 src/components/ui/branch-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #335 src/components/ui/button.tsx: s2-text-pretty add text-pretty on body
+- [x] #336 src/components/ui/section-heading.tsx: s2-caption-sans text-caption + font-sans
+- [x] #337 src/components/ui/select.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #338 src/components/ui/service-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #339 src/components/ui/sheet.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #340 src/components/ui/shimmer-button.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #341 src/app/about/page.tsx: s2-lead-tight display leading-tight→leading-[1.1]
+- [x] #342 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #343 src/app/contact/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #344 src/app/gallery/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #345 src/app/globals.css: s2-duration transition-colors + duration-300
+- [x] #346 src/app/locations/[branch]/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #347 src/app/locations/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #348 src/app/not-found.tsx: s2-text-balance add text-balance on display
+- [x] #349 src/app/services/[slug]/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #350 src/app/services/page.tsx: s2-text-balance add text-balance on display
+- [x] #351 src/components/global/Footer.tsx: s2-text-pretty add text-pretty on body
+- [x] #352 src/components/global/MobileBookingBar.tsx: s2-shadow-ink shadow rgba(39,19,21→27,14,16
+- [x] #353 src/components/global/Navbar.tsx: s2-text-balance add text-balance on display
+- [x] #354 src/components/sections/AboutTeaser.tsx: s2-text-balance add text-balance on display
+- [x] #355 src/components/sections/BeforeAfterShowcase.tsx: s2-text-pretty add text-pretty on body
+- [x] #356 src/components/sections/BookingForm.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #357 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #358 src/components/sections/CareJourney.tsx: s2-text-balance add text-balance on display
+- [x] #359 src/components/sections/ContactForm.tsx: s2-text-balance add text-balance on display
+- [x] #360 src/components/sections/CopyAddressButton.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #361 src/components/sections/FAQAccordion.tsx: s2-text-pretty add text-pretty on body
+- [x] #362 src/components/sections/FAQTeaser.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #363 src/components/sections/GalleryGrid.tsx: s2-duration transition-colors + duration-300
+- [x] #364 src/components/sections/GalleryTeaser.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #365 src/components/sections/HeroSection.tsx: s2-text-pretty add text-pretty on body
+- [x] #366 src/components/sections/HoursTable.tsx: s2-caption-sans text-caption + font-sans
+- [x] #367 src/components/sections/PageHero.tsx: s2-caption-sans text-caption + font-sans
+- [x] #368 src/components/sections/ReviewThemes.tsx: s2-text-balance add text-balance on display
+- [x] #369 src/components/sections/ServicesGrid.tsx: s2-text-pretty add text-pretty on body
+- [x] #370 src/components/sections/StatsCounter.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #371 src/components/sections/TrustStrip.tsx: s2-text-balance add text-balance on display
+- [x] #372 src/components/ui/branch-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #373 src/components/ui/button.tsx: s2-text-pretty add text-pretty on body
+- [x] #374 src/components/ui/section-heading.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #375 src/components/ui/service-card.tsx: s2-text-balance add text-balance on display
+- [x] #376 src/components/ui/sheet.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #377 src/components/ui/shimmer-button.tsx: s2-misc:duration-500 duration-500→duration-300
+- [x] #378 src/app/about/page.tsx: s2-rounded-media overflow-hidden rounded-card→rounded-card-lg
+- [x] #379 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #380 src/app/contact/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #381 src/app/gallery/page.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #382 src/app/globals.css: s2-ease add ease-[var(--ease-apple)]
+- [x] #383 src/app/locations/[branch]/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #384 src/app/locations/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #385 src/app/not-found.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #386 src/app/services/[slug]/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #387 src/app/services/page.tsx: s2-text-balance add text-balance on display
+- [x] #388 src/components/global/Footer.tsx: s2-text-pretty add text-pretty on body
+- [x] #389 src/components/global/MobileBookingBar.tsx: s2-backdrop-bare backdrop-blur→backdrop-blur-xl
+- [x] #390 src/components/global/Navbar.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #391 src/components/sections/AboutTeaser.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #392 src/components/sections/BeforeAfterShowcase.tsx: s2-text-balance add text-balance on display
+- [x] #393 src/components/sections/BookingForm.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #394 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #395 src/components/sections/CareJourney.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #396 src/components/sections/ContactForm.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #397 src/components/sections/CopyAddressButton.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #398 src/components/sections/FAQAccordion.tsx: s2-text-balance add text-balance on display
+- [x] #399 src/components/sections/FAQTeaser.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #400 src/components/sections/GalleryGrid.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #401 src/components/sections/GalleryTeaser.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #402 src/components/sections/HeroSection.tsx: s2-text-balance add text-balance on display
+- [x] #403 src/components/sections/HoursTable.tsx: s2-caption-sans text-caption + font-sans
+- [x] #404 src/components/sections/PageHero.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #405 src/components/sections/ReviewThemes.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #406 src/components/sections/ServicesGrid.tsx: s2-text-pretty add text-pretty on body
+- [x] #407 src/components/sections/StatsCounter.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #408 src/components/sections/TrustStrip.tsx: s2-duration transition-colors + duration-300
+- [x] #409 src/components/ui/branch-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #410 src/components/ui/button.tsx: s2-shadow-ink shadow rgba(39,19,21→27,14,16
+- [x] #411 src/components/ui/service-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #412 src/components/ui/sheet.tsx: s2-ring-offset focus-visible:ring-2 + ring-offset-2
+- [x] #413 src/app/about/page.tsx: s2-duration transition-colors + duration-300
+- [x] #414 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #415 src/app/contact/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #416 src/app/gallery/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #417 src/app/globals.css: s2-caption-sans text-caption + font-sans
+- [x] #418 src/app/locations/[branch]/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #419 src/app/locations/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #420 src/app/not-found.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #421 src/app/services/[slug]/page.tsx: s2-text-balance add text-balance on display
+- [x] #422 src/app/services/page.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #423 src/components/global/Footer.tsx: s2-text-pretty add text-pretty on body
+- [x] #424 src/components/global/MobileBookingBar.tsx: s2-caption-sans text-caption + font-sans
+- [x] #425 src/components/global/Navbar.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #426 src/components/sections/AboutTeaser.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #427 src/components/sections/BeforeAfterShowcase.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #428 src/components/sections/BookingForm.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #429 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #430 src/components/sections/ContactForm.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #431 src/components/sections/CopyAddressButton.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #432 src/components/sections/FAQAccordion.tsx: s2-text-balance add text-balance on display
+- [x] #433 src/components/sections/FAQTeaser.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #434 src/components/sections/GalleryGrid.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #435 src/components/sections/GalleryTeaser.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #436 src/components/sections/HeroSection.tsx: s2-text-balance add text-balance on display
+- [x] #437 src/components/sections/HoursTable.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #438 src/components/sections/ReviewThemes.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #439 src/components/sections/ServicesGrid.tsx: s2-text-balance add text-balance on display
+- [x] #440 src/components/sections/TrustStrip.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #441 src/components/ui/branch-card.tsx: s2-text-pretty add text-pretty on body
+- [x] #442 src/components/ui/button.tsx: s2-misc:backdrop-blur-md backdrop-blur-md→backdrop-blur-xl
+- [x] #443 src/components/ui/service-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #444 src/components/ui/sheet.tsx: s2-shadow-ink shadow rgba(39,19,21→27,14,16
+- [x] #445 src/app/about/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #446 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #447 src/app/contact/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #448 src/app/globals.css: s2-caption-sans text-caption + font-sans
+- [x] #449 src/app/locations/[branch]/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #450 src/app/locations/page.tsx: s2-text-balance add text-balance on display
+- [x] #451 src/app/not-found.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #452 src/app/services/[slug]/page.tsx: s2-text-balance add text-balance on display
+- [x] #453 src/app/services/page.tsx: s2-rounded-media overflow-hidden rounded-card→rounded-card-lg
+- [x] #454 src/components/global/Footer.tsx: s2-text-balance add text-balance on display
+- [x] #455 src/components/global/Navbar.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #456 src/components/sections/AboutTeaser.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #457 src/components/sections/BeforeAfterShowcase.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #458 src/components/sections/BookingForm.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #459 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #460 src/components/sections/ContactForm.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #461 src/components/sections/CopyAddressButton.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #462 src/components/sections/FAQAccordion.tsx: s2-text-balance add text-balance on display
+- [x] #463 src/components/sections/GalleryGrid.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #464 src/components/sections/GalleryTeaser.tsx: s2-misc:duration-500 duration-500→duration-300
+- [x] #465 src/components/sections/HeroSection.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #466 src/components/sections/ServicesGrid.tsx: s2-text-balance add text-balance on display
+- [x] #467 src/components/sections/TrustStrip.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #468 src/components/ui/branch-card.tsx: s2-text-balance add text-balance on display
+- [x] #469 src/components/ui/button.tsx: s2-backdrop-bare backdrop-blur→backdrop-blur-xl
+- [x] #470 src/components/ui/service-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #471 src/app/about/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #472 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #473 src/app/contact/page.tsx: s2-text-balance add text-balance on display
+- [x] #474 src/app/globals.css: s2-caption-sans text-caption + font-sans
+- [x] #475 src/app/locations/[branch]/page.tsx: s2-duration transition-colors + duration-300
+- [x] #476 src/app/locations/page.tsx: s2-text-balance add text-balance on display
+- [x] #477 src/app/not-found.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #478 src/app/services/[slug]/page.tsx: s2-text-balance add text-balance on display
+- [x] #479 src/app/services/page.tsx: s2-rounded-media overflow-hidden rounded-card→rounded-card-lg
+- [x] #480 src/components/global/Footer.tsx: s2-text-balance add text-balance on display
+- [x] #481 src/components/global/Navbar.tsx: s2-duration transition-colors + duration-300
+- [x] #482 src/components/sections/AboutTeaser.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #483 src/components/sections/BeforeAfterShowcase.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #484 src/components/sections/BookingForm.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #485 src/components/sections/BookingZone.tsx: s2-text-pretty add text-pretty on body
+- [x] #486 src/components/sections/ContactForm.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #487 src/components/sections/FAQAccordion.tsx: s2-duration transition-colors + duration-300
+- [x] #488 src/components/sections/GalleryGrid.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #489 src/components/sections/HeroSection.tsx: s2-track-display add tracking-[-0.025em] on display
+- [x] #490 src/components/sections/ServicesGrid.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #491 src/components/sections/TrustStrip.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #492 src/components/ui/branch-card.tsx: s2-lead-tight display leading-tight→leading-[1.1]
+- [x] #493 src/components/ui/service-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #494 src/app/about/page.tsx: s2-shadow-ink shadow rgba(39,19,21→27,14,16
+- [x] #495 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #496 src/app/contact/page.tsx: s2-text-balance add text-balance on display
+- [x] #497 src/app/globals.css: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #498 src/app/locations/[branch]/page.tsx: s2-duration transition-colors + duration-300
+- [x] #499 src/app/locations/page.tsx: s2-lead-none display leading-none→leading-[0.96]
+- [x] #500 src/app/not-found.tsx: s2-caption-sans text-caption + font-sans
+- [x] #501 src/app/services/[slug]/page.tsx: s2-text-balance add text-balance on display
+- [x] #502 src/app/services/page.tsx: s2-rounded-media overflow-hidden rounded-card→rounded-card-lg
+- [x] #503 src/components/global/Footer.tsx: s2-duration transition-colors + duration-300
+- [x] #504 src/components/global/Navbar.tsx: s2-duration transition-colors + duration-300
+- [x] #505 src/components/sections/AboutTeaser.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #506 src/components/sections/BeforeAfterShowcase.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #507 src/components/sections/BookingForm.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #508 src/components/sections/BookingZone.tsx: s2-text-balance add text-balance on display
+- [x] #509 src/components/sections/FAQAccordion.tsx: s2-duration transition-colors + duration-300
+- [x] #510 src/components/sections/GalleryGrid.tsx: s2-ring-offset focus-visible:ring-2 + ring-offset-2
+- [x] #511 src/components/sections/HeroSection.tsx: s2-duration transition-colors + duration-300
+- [x] #512 src/components/sections/ServicesGrid.tsx: s2-lead-tight display leading-tight→leading-[1.1]
+- [x] #513 src/components/sections/TrustStrip.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #514 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #515 src/components/ui/service-card.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #516 src/app/about/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #517 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #518 src/app/contact/page.tsx: s2-text-balance add text-balance on display
+- [x] #519 src/app/globals.css: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #520 src/app/locations/[branch]/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #521 src/app/locations/page.tsx: s2-rounded-media overflow-hidden rounded-card→rounded-card-lg
+- [x] #522 src/app/not-found.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #523 src/app/services/[slug]/page.tsx: s2-text-balance add text-balance on display
+- [x] #524 src/app/services/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #525 src/components/global/Footer.tsx: s2-duration transition-colors + duration-300
+- [x] #526 src/components/global/Navbar.tsx: s2-duration transition-colors + duration-300
+- [x] #527 src/components/sections/AboutTeaser.tsx: s2-ring-offset focus-visible:ring-2 + ring-offset-2
+- [x] #528 src/components/sections/BookingForm.tsx: s2-misc:backdrop-blur-md backdrop-blur-md→backdrop-blur-xl
+- [x] #529 src/components/sections/BookingZone.tsx: s2-lead-snug display leading-snug→leading-[1.15]
+- [x] #530 src/components/sections/FAQAccordion.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #531 src/components/sections/GalleryGrid.tsx: s2-ring-offset focus-visible:ring-2 + ring-offset-2
+- [x] #532 src/components/sections/HeroSection.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #533 src/components/sections/ServicesGrid.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #534 src/components/sections/TrustStrip.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #535 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #536 src/components/ui/service-card.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #537 src/app/about/page.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #538 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #539 src/app/contact/page.tsx: s2-text-balance add text-balance on display
+- [x] #540 src/app/locations/[branch]/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #541 src/app/locations/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #542 src/app/services/[slug]/page.tsx: s2-duration transition-colors + duration-300
+- [x] #543 src/app/services/page.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #544 src/components/global/Footer.tsx: s2-duration transition-colors + duration-300
+- [x] #545 src/components/global/Navbar.tsx: s2-duration transition-colors + duration-300
+- [x] #546 src/components/sections/AboutTeaser.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #547 src/components/sections/BookingForm.tsx: s2-caption-sans text-caption + font-sans
+- [x] #548 src/components/sections/BookingZone.tsx: s2-duration transition-colors + duration-300
+- [x] #549 src/components/sections/FAQAccordion.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #550 src/components/sections/GalleryGrid.tsx: s2-ring-offset focus-visible:ring-2 + ring-offset-2
+- [x] #551 src/components/sections/HeroSection.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #552 src/components/sections/ServicesGrid.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #553 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #554 src/components/ui/service-card.tsx: s2-misc:duration-500 duration-500→duration-300
+- [x] #555 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #556 src/app/contact/page.tsx: s2-text-balance add text-balance on display
+- [x] #557 src/app/locations/[branch]/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #558 src/app/locations/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #559 src/app/services/[slug]/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #560 src/app/services/page.tsx: s2-shadow-ink shadow rgba(39,19,21→27,14,16
+- [x] #561 src/components/global/Footer.tsx: s2-duration transition-colors + duration-300
+- [x] #562 src/components/global/Navbar.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #563 src/components/sections/BookingForm.tsx: s2-caption-sans text-caption + font-sans
+- [x] #564 src/components/sections/BookingZone.tsx: s2-duration transition-colors + duration-300
+- [x] #565 src/components/sections/FAQAccordion.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #566 src/components/sections/GalleryGrid.tsx: s2-ring-offset focus-visible:ring-2 + ring-offset-2
+- [x] #567 src/components/sections/HeroSection.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #568 src/components/sections/ServicesGrid.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #569 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #570 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #571 src/app/contact/page.tsx: s2-lead-tight display leading-tight→leading-[1.1]
+- [x] #572 src/app/locations/[branch]/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #573 src/app/locations/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #574 src/app/services/[slug]/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #575 src/components/global/Footer.tsx: s2-duration transition-colors + duration-300
+- [x] #576 src/components/global/Navbar.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #577 src/components/sections/BookingForm.tsx: s2-caption-sans text-caption + font-sans
+- [x] #578 src/components/sections/BookingZone.tsx: s2-duration transition-colors + duration-300
+- [x] #579 src/components/sections/FAQAccordion.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #580 src/components/sections/GalleryGrid.tsx: s2-misc:duration-500 duration-500→duration-300
+- [x] #581 src/components/sections/HeroSection.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #582 src/components/sections/ServicesGrid.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #583 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #584 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #585 src/app/contact/page.tsx: s2-rounded-media overflow-hidden rounded-card→rounded-card-lg
+- [x] #586 src/app/locations/[branch]/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #587 src/app/locations/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #588 src/app/services/[slug]/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #589 src/components/global/Footer.tsx: s2-duration transition-colors + duration-300
+- [x] #590 src/components/global/Navbar.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #591 src/components/sections/BookingForm.tsx: s2-caption-sans text-caption + font-sans
+- [x] #592 src/components/sections/BookingZone.tsx: s2-duration transition-colors + duration-300
+- [x] #593 src/components/sections/FAQAccordion.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #594 src/components/sections/GalleryGrid.tsx: s2-misc:backdrop-blur-md backdrop-blur-md→backdrop-blur-xl
+- [x] #595 src/components/sections/HeroSection.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #596 src/components/sections/ServicesGrid.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #597 src/components/ui/branch-card.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #598 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #599 src/app/contact/page.tsx: s2-duration transition-colors + duration-300
+- [x] #600 src/app/locations/[branch]/page.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #601 src/app/locations/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #602 src/app/services/[slug]/page.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #603 src/components/global/Footer.tsx: s2-duration transition-colors + duration-300
+- [x] #604 src/components/global/Navbar.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #605 src/components/sections/BookingForm.tsx: s2-caption-sans text-caption + font-sans
+- [x] #606 src/components/sections/BookingZone.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #607 src/components/sections/FAQAccordion.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #608 src/components/sections/GalleryGrid.tsx: s2-caption-sans text-caption + font-sans
+- [x] #609 src/components/sections/HeroSection.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #610 src/components/sections/ServicesGrid.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #611 src/components/ui/branch-card.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #612 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #613 src/app/contact/page.tsx: s2-duration transition-colors + duration-300
+- [x] #614 src/app/locations/[branch]/page.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #615 src/app/locations/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #616 src/app/services/[slug]/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #617 src/components/global/Footer.tsx: s2-duration transition-colors + duration-300
+- [x] #618 src/components/global/Navbar.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #619 src/components/sections/BookingForm.tsx: s2-upper-10 uppercase tracking-[0.12em]→0.1em
+- [x] #620 src/components/sections/BookingZone.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #621 src/components/sections/FAQAccordion.tsx: s2-misc:backdrop-blur-md backdrop-blur-md→backdrop-blur-xl
+- [x] #622 src/components/sections/GalleryGrid.tsx: s2-caption-sans text-caption + font-sans
+- [x] #623 src/components/sections/HeroSection.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #624 src/components/sections/ServicesGrid.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #625 src/components/ui/branch-card.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #626 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #627 src/app/contact/page.tsx: s2-duration transition-colors + duration-300
+- [x] #628 src/app/locations/[branch]/page.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #629 src/app/locations/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #630 src/app/services/[slug]/page.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #631 src/components/global/Footer.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #632 src/components/global/Navbar.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #633 src/components/sections/BookingZone.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #634 src/components/sections/FAQAccordion.tsx: s2-caption-sans text-caption + font-sans
+- [x] #635 src/components/sections/GalleryGrid.tsx: s2-caption-sans text-caption + font-sans
+- [x] #636 src/components/sections/HeroSection.tsx: s2-ring-offset focus-visible:ring-2 + ring-offset-2
+- [x] #637 src/components/sections/ServicesGrid.tsx: s2-shrink5 h-5 w-5 + shrink-0
+- [x] #638 src/components/ui/branch-card.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #639 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #640 src/app/contact/page.tsx: s2-duration transition-colors + duration-300
+- [x] #641 src/app/locations/[branch]/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #642 src/app/services/[slug]/page.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #643 src/components/global/Footer.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #644 src/components/global/Navbar.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #645 src/components/sections/BookingZone.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #646 src/components/sections/FAQAccordion.tsx: s2-caption-sans text-caption + font-sans
+- [x] #647 src/components/sections/GalleryGrid.tsx: s2-caption-sans text-caption + font-sans
+- [x] #648 src/components/sections/HeroSection.tsx: s2-caption-sans text-caption + font-sans
+- [x] #649 src/components/sections/ServicesGrid.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #650 src/components/ui/branch-card.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #651 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #652 src/app/contact/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #653 src/app/locations/[branch]/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #654 src/app/services/[slug]/page.tsx: s2-shadow-ink shadow rgba(39,19,21→27,14,16
+- [x] #655 src/components/global/Footer.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #656 src/components/global/Navbar.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #657 src/components/sections/BookingZone.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #658 src/components/sections/HeroSection.tsx: s2-caption-sans text-caption + font-sans
+- [x] #659 src/components/sections/ServicesGrid.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #660 src/components/ui/branch-card.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #661 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #662 src/app/contact/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #663 src/app/locations/[branch]/page.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #664 src/app/services/[slug]/page.tsx: s2-backdrop-bare backdrop-blur→backdrop-blur-xl
+- [x] #665 src/components/global/Footer.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #666 src/components/global/Navbar.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #667 src/components/sections/BookingZone.tsx: s2-shrink4 h-4 w-4 + shrink-0
+- [x] #668 src/components/sections/HeroSection.tsx: s2-caption-sans text-caption + font-sans
+- [x] #669 src/components/ui/branch-card.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #670 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #671 src/app/contact/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #672 src/app/locations/[branch]/page.tsx: s2-link-semibold brand-action font-medium→semibold
+- [x] #673 src/components/global/Footer.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #674 src/components/global/Navbar.tsx: s2-misc:tracking-wide tracking-wide→tracking-[0.04em]
+- [x] #675 src/components/sections/BookingZone.tsx: s2-cta-semibold pill CTA font-medium→font-semibold
+- [x] #676 src/components/sections/HeroSection.tsx: s2-caption-sans text-caption + font-sans
+- [x] #677 src/components/ui/branch-card.tsx: s2-caption-sans text-caption + font-sans
+- [x] #678 src/app/admin/page.tsx: s2-text-pretty add text-pretty on body
+- [x] #679 src/app/contact/page.tsx: s2-ease add ease-[var(--ease-apple)]
+- [x] #680 src/app/locations/[branch]/page.tsx: s2-caption-sans text-caption + font-sans
+- [x] #681 src/components/global/Footer.tsx: s2-ease add ease-[var(--ease-apple)]

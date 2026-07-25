@@ -94,43 +94,65 @@ export function GalleryGrid() {
   return (
     <div>
       {showSwipeHint && (
-        <p className="mb-4 text-center text-caption text-warm-grey md:hidden">
+        <p className="mb-4 text-center font-sans text-caption text-warm-grey md:hidden">
           Tap a photo to open — swipe or use arrows to browse.
         </p>
       )}
-      <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center" role="group" aria-label="Filter gallery">
-        {FILTERS.map((f) => (
-          <button
-            key={f.key}
-            type="button"
-            onClick={() => {
-              if (showSwipeHint) {
-                sessionStorage.setItem(SWIPE_HINT_KEY, "1");
-                setShowSwipeHint(false);
-              }
-              setFilterAndReset(f.key);
-            }}
-            aria-pressed={filter === f.key}
-            className={cn(
-              "rounded-pill px-4 py-2.5 text-body-sm font-medium transition-colors sm:px-5",
-              "pressable focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2",
-              filter === f.key
-                ? "bg-brand-action text-cream shadow-[0_12px_28px_rgba(162,15,55,0.22)] ring-2 ring-brand-mist"
-                : "border border-warm-border bg-white/50 text-warm-grey hover:border-brand-action/30 hover:bg-brand-mist/60 hover:text-brand-action"
-            )}
-          >
-            {f.label}
-          </button>
-        ))}
+      <div
+        className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center"
+        role="group"
+        aria-label="Filter gallery"
+      >
+        {FILTERS.map((f) => {
+          const count =
+            f.key === "all"
+              ? GALLERY.length
+              : GALLERY.filter((p) => p.category === f.key).length;
+          return (
+            <button
+              key={f.key}
+              type="button"
+              onClick={() => {
+                if (showSwipeHint) {
+                  sessionStorage.setItem(SWIPE_HINT_KEY, "1");
+                  setShowSwipeHint(false);
+                }
+                setFilterAndReset(f.key);
+              }}
+              aria-pressed={filter === f.key}
+              className={cn(
+                "ease-[var(--ease-apple)] text-pretty font-sans inline-flex items-center justify-center gap-1.5 rounded-pill px-4 py-2.5 text-body-sm font-semibold transition-colors duration-300 sm:px-5",
+                "pressable focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2",
+                filter === f.key
+                  ? "bg-brand-action text-cream shadow-[0_12px_28px_rgba(162,15,55,0.2)]"
+                  : "chip-idle"
+              )}
+            >
+              {f.label}
+              <span
+                className={cn(
+                  "font-sans text-caption tabular-nums",
+                  filter === f.key ? "text-cream/75" : "text-warm-grey/70"
+                )}
+              >
+                {count}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       {filter === "events" && (
-        <p className="mx-auto mt-5 max-w-2xl text-center text-body-sm text-warm-grey">
+        <p className="font-sans mx-auto mt-5 max-w-2xl text-center text-pretty text-body-sm text-warm-grey">
           Events imagery here is atmospheric placeholder only — not coverage of a documented studio event.
         </p>
       )}
 
-      <div className="mt-10 columns-2 gap-4 lg:columns-3">
+      <p className="mt-6 text-center font-sans text-caption text-warm-grey" aria-live="polite">
+        Showing {photos.length} {photos.length === 1 ? "image" : "images"}
+      </p>
+
+      <div className="mt-6 columns-2 gap-3 lg:columns-3 lg:gap-4">
         {photos.map((photo, i) => (
           <motion.button
             key={`${photo.src}-${i}`}
@@ -145,7 +167,7 @@ export function GalleryGrid() {
               setActive(i);
             }}
             aria-label={`View image: ${photo.alt}`}
-            className="mb-4 block w-full break-inside-avoid overflow-hidden rounded-card-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action"
+            className="group mb-3 block w-full break-inside-avoid overflow-hidden rounded-card-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-action lg:mb-4"
           >
             <div className={cn("relative w-full", i % 3 === 1 ? "aspect-[3/4]" : "aspect-square")}>
               <Image
@@ -154,8 +176,9 @@ export function GalleryGrid() {
                 fill
                 sizes="(max-width: 1024px) 50vw, 33vw"
                 unoptimized={photo.src.startsWith("http")}
-                className="object-cover transition-transform duration-500 hover:scale-105"
+                className="object-cover transition-transform duration-700 ease-[var(--ease-apple)] group-hover:scale-[1.035]"
               />
+              <div className="ease-[var(--ease-apple)] pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
           </motion.button>
         ))}
@@ -171,18 +194,18 @@ export function GalleryGrid() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.28 }}
             onClick={close}
-            className="fixed inset-0 z-[90] flex items-center justify-center bg-warm/90 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-[90] flex items-center justify-center bg-warm/92 p-4 backdrop-blur-xl"
           >
             <button
               ref={closeRef}
               type="button"
               onClick={close}
               aria-label="Close lightbox"
-              className="absolute right-4 top-4 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-pill bg-cream/10 text-cream hover:bg-cream/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50"
+              className="absolute right-4 top-4 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-pill border border-cream/15 bg-cream/10 text-cream hover:bg-cream/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cream/50"
             >
-              <X className="h-5 w-5" />
+              <X className="h-5 w-5 shrink-0" />
             </button>
 
             <button
@@ -192,17 +215,17 @@ export function GalleryGrid() {
                 prev();
               }}
               aria-label="Previous image"
-              className="absolute left-3 flex h-12 w-12 items-center justify-center rounded-pill bg-cream/10 text-cream hover:bg-cream/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 sm:left-6"
+              className="absolute left-3 flex h-12 w-12 items-center justify-center rounded-pill border border-cream/12 bg-cream/10 text-cream hover:bg-cream/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cream/50 sm:left-6"
             >
               <ChevronLeft className="h-6 w-6" />
             </button>
 
             <motion.div
               key={photos[active].src}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.25 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.24 }}
               onClick={(e) => e.stopPropagation()}
               className="relative flex h-[80vh] w-full max-w-4xl flex-col"
             >
@@ -216,11 +239,16 @@ export function GalleryGrid() {
                   className="object-contain"
                 />
               </div>
-              {(photos[active].caption || photos[active].alt) && (
-                <p className="mt-3 text-center text-body-sm text-cream/80">
-                  {photos[active].caption ?? photos[active].alt}
+              <div className="mt-3 flex flex-col items-center gap-1">
+                {(photos[active].caption || photos[active].alt) && (
+                  <p className="text-pretty font-sans text-center text-body-sm text-cream/82">
+                    {photos[active].caption ?? photos[active].alt}
+                  </p>
+                )}
+                <p className="font-sans text-caption tabular-nums text-cream/64">
+                  {active + 1} / {photos.length}
                 </p>
-              )}
+              </div>
             </motion.div>
 
             <button
@@ -230,7 +258,7 @@ export function GalleryGrid() {
                 next();
               }}
               aria-label="Next image"
-              className="absolute right-3 flex h-12 w-12 items-center justify-center rounded-pill bg-cream/10 text-cream hover:bg-cream/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 sm:right-6"
+              className="absolute right-3 flex h-12 w-12 items-center justify-center rounded-pill border border-cream/12 bg-cream/10 text-cream hover:bg-cream/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cream/50 sm:right-6"
             >
               <ChevronRight className="h-6 w-6" />
             </button>
