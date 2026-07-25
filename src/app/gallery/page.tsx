@@ -3,6 +3,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { GalleryGrid } from "@/components/sections/GalleryGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SITE } from "@/lib/site";
+import { IMAGES } from "@/lib/images";
 import { InstagramIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -18,25 +19,33 @@ export default function GalleryPage() {
         eyebrow="A look around"
         title="Inside our studio."
         subtitle="The space, the care and the little details that make a visit feel calm."
-        image="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=1600&auto=format&fit=crop"
-        imageAlt="Soft studio interior"
+        image={IMAGES.hero.src}
+        imageAlt={IMAGES.hero.alt}
       />
 
-      <section className="bg-cream px-5 py-section-lg lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Gallery" title="Browse the studio." />
-          <div className="mt-12">
+      <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-45" />
+        <div className="mx-auto max-w-[72rem]">
+          <SectionHeading
+            eyebrow="Gallery"
+            title="Browse the studio."
+            subtitle="Editorial placeholders until client photography is ready — not verified client results or event coverage."
+          />
+          <div className="mt-11">
             <GalleryGrid />
           </div>
 
-          <div className="mt-14 flex justify-center">
+          <div className="mt-14 flex flex-col items-center gap-3">
+            <p className="tracking-[-0.011em] text-pretty font-sans text-center text-body-sm text-warm-grey">
+              More atmosphere lives on Instagram.
+            </p>
             <a
               href={SITE.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-pill border border-brand-action/40 px-6 py-3 font-medium text-brand-action transition-colors hover:bg-brand-mist"
+              className="ease-[var(--ease-apple)] pressable inline-flex items-center gap-2.5 rounded-pill border border-brand-action/45 px-6 py-3 font-semibold text-brand-action transition-colors duration-300 hover:bg-brand-mist/90"
             >
-              <InstagramIcon className="h-5 w-5" />
+              <InstagramIcon className="h-5 w-5 shrink-0" />
               Follow @waxinthecitylk
             </a>
           </div>

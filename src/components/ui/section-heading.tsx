@@ -9,6 +9,8 @@ interface SectionHeadingProps {
   subtitle?: string;
   align?: "left" | "center";
   tone?: "dark" | "light";
+  showEyebrow?: boolean;
+  titleId?: string;
   className?: string;
 }
 
@@ -18,6 +20,8 @@ export function SectionHeading({
   subtitle,
   align = "center",
   tone = "dark",
+  showEyebrow = true,
+  titleId,
   className,
 }: SectionHeadingProps) {
   const light = tone === "light";
@@ -28,52 +32,39 @@ export function SectionHeading({
       initial={false}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
         "motion-reduce-none flex flex-col",
         align === "center" ? "items-center text-center" : "items-start text-left",
         className
       )}
     >
-      {eyebrow && (
+      {showEyebrow && eyebrow && (
         <span
           className={cn(
-            "mb-3 inline-flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.18em]",
+            "mb-3.5 font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em]",
             light ? "text-brand-light" : "text-brand-action"
           )}
         >
-          <span
-            className={cn(
-              "h-px w-8",
-              light ? "bg-brand-light/70" : "bg-brand-action/60"
-            )}
-          />
           {eyebrow}
         </span>
       )}
 
-      <div className="relative inline-block min-w-24 max-w-full">
-        <h2
-          className={cn(
-            "max-w-full break-words text-balance font-serif text-h2 font-medium leading-tight sm:text-[2.65rem]",
-            light ? "text-cream" : "text-warm"
-          )}
-        >
-          {title}
-        </h2>
-        <span
-          className={cn(
-            "absolute -bottom-3 left-0 block h-px w-full hairline-gradient",
-            align === "center" && "left-1/2 w-24 -translate-x-1/2"
-          )}
-        />
-      </div>
+      <h2
+        id={titleId}
+        className={cn(
+          "text-balance max-w-full font-display text-[clamp(1.75rem,3.8vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.032em]",
+          light ? "text-cream" : "text-warm"
+        )}
+      >
+        {title}
+      </h2>
 
       {subtitle && (
         <p
           className={cn(
-            "mt-7 w-full max-w-xl break-words text-balance text-body-lg",
-            light ? "text-cream/70" : "text-warm-grey"
+            "tracking-[-0.011em] font-sans mt-5 w-full max-w-[36rem] text-pretty text-body-lg",
+            light ? "text-cream" : "text-warm-grey"
           )}
         >
           {subtitle}

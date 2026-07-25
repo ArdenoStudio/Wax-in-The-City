@@ -6,25 +6,48 @@ import Lenis from "lenis";
 
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let lenis: Lenis | null = null;
+    let raf = 0;
 
-    const lenis = new Lenis({
-      duration: 1.05,
-      easing: (t) => 1 - Math.pow(1 - t, 4),
-      smoothWheel: true,
-      wheelMultiplier: 0.86,
-    });
+    const stopLenis = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+      lenis?.destroy();
+      lenis = null;
+    };
 
-    let raf: number;
-    function animate(time: number) {
-      lenis.raf(time);
+    const startLenis = () => {
+      if (media.matches || lenis) return;
+
+      lenis = new Lenis({
+        duration: 1.05,
+        easing: (t) => 1 - Math.pow(1 - t, 4),
+        smoothWheel: true,
+        wheelMultiplier: 0.86,
+      });
+
+      // Note: Window already types `lenis` from the package ambient types — do not
+      // overwrite it. Hero / in-page anchors use native scrollIntoView({ block: "start" }).
+
+      function animate(time: number) {
+        lenis?.raf(time);
+        raf = requestAnimationFrame(animate);
+      }
       raf = requestAnimationFrame(animate);
-    }
-    raf = requestAnimationFrame(animate);
+    };
+
+    const onPreferenceChange = () => {
+      if (media.matches) stopLenis();
+      else startLenis();
+    };
+
+    onPreferenceChange();
+    media.addEventListener("change", onPreferenceChange);
 
     return () => {
-      cancelAnimationFrame(raf);
-      lenis.destroy();
+      media.removeEventListener("change", onPreferenceChange);
+      stopLenis();
     };
   }, []);
 

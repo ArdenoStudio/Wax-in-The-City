@@ -16,29 +16,29 @@ colors:
   muted-sage: "#a3a981"
 typography:
   display:
-    fontFamily: "Bodoni 72, Didot, Bodoni MT, Georgia, serif"
+    fontFamily: "Cal Sans, Inter, system-ui, sans-serif"
     fontSize: "clamp(3.2rem, 8vw, 6rem)"
-    fontWeight: 500
-    lineHeight: 0.98
-    letterSpacing: "0"
+    fontWeight: 600
+    lineHeight: 0.96
+    letterSpacing: "-0.03em"
   headline:
-    fontFamily: "Bodoni 72, Didot, Bodoni MT, Georgia, serif"
+    fontFamily: "Cal Sans, Inter, system-ui, sans-serif"
     fontSize: "clamp(2rem, 4.6vw, 4rem)"
-    fontWeight: 500
-    lineHeight: 1.05
+    fontWeight: 600
+    lineHeight: 1.08
   body:
-    fontFamily: "Avenir Next, Segoe UI, system-ui, sans-serif"
+    fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
-    lineHeight: 1.75
+    lineHeight: 1.7
   label:
-    fontFamily: "Avenir Next, Segoe UI, system-ui, sans-serif"
+    fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "0.75rem"
-    fontWeight: 700
-    lineHeight: 1.5
-    letterSpacing: "0.08em"
+    fontWeight: 600
+    lineHeight: 1.45
+    letterSpacing: "0.04em"
 rounded:
-  card: "8px"
+  card: "12px"
   pill: "9999px"
 spacing:
   section: "80px"
@@ -84,7 +84,7 @@ The site uses brand drama at the edges: the hero, booking calls to action, nav s
 
 - Dark wine brand fields with pearled blush relief.
 - Fashion-label display type paired with clean appointment-system body type.
-- Tight, quiet components with 8px cards and pill CTAs only where the action deserves it.
+- Tight, quiet components with 10px cards and pill CTAs only where the action deserves it.
 - Motion that feels like a composed reveal, not a hover toy.
 
 ## 2. Colors
@@ -121,23 +121,23 @@ The palette is a committed wine-and-pearl system: oxblood carries the brand, blu
 
 ## 3. Typography
 
-**Display Font:** Bodoni 72, Didot, Bodoni MT, Georgia, serif
-**Body Font:** Avenir Next, Segoe UI, system-ui, sans-serif
-**Label/Mono Font:** none
+**Display Font:** Cal Sans
+**Body Font:** Inter
+**Label/Mono Font:** Inter
 
-**Character:** Display type should read like a boutique beauty label: high-contrast, glamorous, and controlled. Body type should feel clear and appointment-ready, with enough line height for calm reading.
+**Character:** Display type should read like a modern private studio mark — geometric Cal Sans with tight tracking. Body type is Inter: clear, appointment-ready, calm.
 
 ### Hierarchy
 
-- **Display** (500, clamp(3.2rem, 8vw, 6rem), 0.98): hero headlines and rare first-viewport brand statements only.
-- **Headline** (500, clamp(2rem, 4.6vw, 4rem), 1.05): page heroes and major section titles.
+- **Display** (600, clamp(3.2rem, 8vw, 6rem), 0.96): hero headlines and rare first-viewport brand statements only.
+- **Headline** (600, clamp(2rem, 4.6vw, 4rem), 1.08): page heroes and major section titles.
 - **Title** (600, 1.5rem, 1.3): cards, forms, and repeated content groups.
 - **Body** (400, 1rem, 1.75): service descriptions, branch copy, FAQ answers. Keep long prose under 75ch.
 - **Label** (700, 0.75rem, 0.08em): short badges and field support labels. Do not use long all-caps sentences.
 
 ### Named Rules
 
-**The One Dramatic Voice Rule.** Let the display serif own glamour. Do not add decorative scripts, drop caps, or extra typefaces.
+**The One Dramatic Voice Rule.** Let Cal Sans own display glamour. Do not add decorative scripts, drop caps, or extra typefaces beyond Cal Sans + Inter.
 
 ## 4. Elevation
 
@@ -145,9 +145,9 @@ Elevation is hybrid: forms and cards use soft ambient lift, while the hero and n
 
 ### Shadow Vocabulary
 
-- **Card Rest** (`0 18px 55px rgba(27, 14, 16, 0.08)`): default service, branch, and form surfaces.
-- **Card Hover** (`0 26px 80px rgba(27, 14, 16, 0.16)`): hover lift for repeated cards.
-- **Nav Float** (`0 18px 50px rgba(27, 14, 16, 0.10)`): sticky nav surface after scroll.
+- **Card Rest** (`shadow-card` / `0 14px 44px rgba(27, 14, 16, 0.08)`): default service, branch, and form surfaces.
+- **Card Hover** (`shadow-card-hover` / `0 24px 70px rgba(27, 14, 16, 0.14)`): hover lift for repeated cards.
+- **Nav Float** (`shadow-nav` / `0 16px 44px rgba(27, 14, 16, 0.10)`): sticky nav surface after scroll.
 - **Hero Glass** (`inset 0 1px 0 rgba(255,255,255,0.16), 0 24px 70px rgba(0,0,0,0.22)`): dark hero panels only.
 
 ### Named Rules
@@ -170,7 +170,7 @@ Elevation is hybrid: forms and cards use soft ambient lift, while the hero and n
 
 ### Cards / Containers
 
-- **Corner Style:** 8px. Cards should feel tailored, not bubbly.
+- **Corner Style:** 10px (`rounded-card`). Cards should feel tailored, not bubbly.
 - **Background:** pearl blush or white with subtle border.
 - **Shadow Strategy:** ambient lift at rest, stronger lift only on meaningful hover.
 - **Border:** powder border, usually 1px.
@@ -184,7 +184,7 @@ Elevation is hybrid: forms and cards use soft ambient lift, while the hero and n
 
 ### Navigation
 
-- Desktop nav starts transparent over the hero, then condenses into a pill with pearl blur after scroll. Mobile uses a sheet with large serif route links and a direct booking CTA. Active links use blush or cream contrast, not underlines alone.
+- Desktop nav starts transparent over the hero, then condenses into a pill with pearl blur after scroll. Mobile uses a sheet with large Cal Sans route links and a direct booking CTA. Active links use blush or cream contrast, not underlines alone.
 
 ### Signature Component
 
@@ -196,7 +196,7 @@ The homepage hero combines full-bleed treatment-room photography, a typographic 
 
 - **Do** make the first viewport say privacy, hygiene, and appointment-led care before it says beauty.
 - **Do** use oxblood and pearl as the main brand contrast, with gold as a controlled detail.
-- **Do** keep card corners at 8px and use pill shapes only for actions, chips, and nav containers.
+- **Do** keep card corners at 10px and use pill shapes only for actions, chips, and nav containers.
 - **Do** respect reduced motion and keep motion available as enhancement, not a requirement to read content.
 - **Do** treat branch details, reviews, and photos as client-confirmed content only.
 

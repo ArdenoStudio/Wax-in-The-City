@@ -19,15 +19,15 @@ interface BeforeAfterSliderProps {
 const SliderHandle = () => (
   <ReactCompareSliderHandle
     buttonStyle={{
-      background: "var(--color-brand)",
-      border: "2.5px solid rgba(255,255,255,0.35)",
-      backdropFilter: "blur(6px)",
-      width: 44,
-      height: 44,
-      boxShadow: "0 4px 20px rgba(53,16,23,0.5)",
-      transition: "transform 420ms var(--ease-apple), box-shadow 420ms var(--ease-apple)",
+      background: "var(--color-cream)",
+      border: "2px solid rgba(43,7,16,0.55)",
+      width: 40,
+      height: 40,
+      boxShadow: "0 6px 18px rgba(0,0,0,0.22)",
+      transition: "transform 360ms var(--ease-apple), box-shadow 360ms var(--ease-apple)",
+      outline: "none",
     }}
-    linesStyle={{ background: "rgba(53,16,23,0.5)", width: 2 }}
+    linesStyle={{ background: "rgba(255,247,249,0.72)", width: 2 }}
   />
 );
 
@@ -47,23 +47,33 @@ export function BeforeAfterSlider({
   }, []);
 
   return (
-    <div className="studio-plate micro-lift overflow-hidden rounded-card p-2">
-      <div className="pointer-events-none absolute left-5 top-5 z-20 rounded-pill border border-cream/22 bg-brand/78 px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em] text-cream backdrop-blur-md">
-        {beforeLabel}
-      </div>
-      <div className="pointer-events-none absolute right-5 top-5 z-20 rounded-pill border border-cream/22 bg-brand-action/82 px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em] text-cream backdrop-blur-md">
-        {afterLabel}
-      </div>
+    <div className="overflow-hidden rounded-card-lg border border-cream/12 bg-cream/[0.04] p-1.5 [&_[role=slider]]:focus-visible:outline-none [&_[role=slider]]:focus-visible:ring-2 [&_[role=slider]]:focus-visible:ring-cream/50 [&_[role=slider]]:focus-visible:ring-offset-2 [&_[role=slider]]:focus-visible:ring-offset-brand [&_button]:focus-visible:outline-none [&_button]:focus-visible:ring-2 [&_button]:focus-visible:ring-cream/50 [&_button]:focus-visible:ring-offset-2 [&_button]:focus-visible:ring-offset-brand">
       {mounted ? (
         <ReactCompareSlider
           handle={<SliderHandle />}
           itemOne={<ReactCompareSliderImage src={beforeSrc} alt={beforeAlt} />}
           itemTwo={<ReactCompareSliderImage src={afterSrc} alt={afterAlt} />}
-          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[7px]"
+          aria-label={`Compare ${beforeLabel} and ${afterLabel}`}
+          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-card-lg"
         />
       ) : (
-        <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[7px] bg-brand/18" />
+        <div
+          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-card-lg bg-brand/30"
+          aria-label={`Compare ${beforeLabel} and ${afterLabel}`}
+          role="img"
+        />
       )}
+      <div className="relative z-10 mt-2.5 flex items-center justify-between gap-4 px-2 pb-1">
+        <span className="font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em] text-cream">
+          {beforeLabel}
+        </span>
+        <span className="font-sans text-caption leading-snug font-semibold uppercase tracking-[0.1em] text-cream">
+          {afterLabel}
+        </span>
+      </div>
+      <p className="relative z-10 px-2 pb-1.5 font-sans text-caption leading-snug text-cream">
+        Illustrative care imagery
+      </p>
     </div>
   );
 }

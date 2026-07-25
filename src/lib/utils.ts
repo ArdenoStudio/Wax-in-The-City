@@ -6,9 +6,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-/** Format an LKR amount, e.g. "LKR 2,500". */
+/** Format an LKR amount, e.g. "LKR 2,500" (en-LK grouping). */
 export function formatLKR(amount: number): string {
-  return `LKR ${amount.toLocaleString("en-US")}`;
+  return `LKR ${amount.toLocaleString("en-LK")}`;
 }
 
 /** "From LKR 2,500" — approachable pricing per the copy guide (file 09). */

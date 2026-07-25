@@ -3,7 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Multiple lockfiles exist higher up the tree; pin the workspace root here.
   turbopack: { root: __dirname },
+  allowedDevOrigins: ["127.0.0.1"],
   images: {
+    // Unsplash still used for editorial placeholders in lib/images.ts.
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       // Supabase Storage public URLs (gallery) — wildcard project ref.

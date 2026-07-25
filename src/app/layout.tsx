@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
+import { calSans, inter } from "@/lib/fonts";
 import { Navbar } from "@/components/global/Navbar";
 import { Footer } from "@/components/global/Footer";
 import { MobileBookingBar } from "@/components/global/MobileBookingBar";
@@ -10,13 +11,19 @@ import { LoadingScreen } from "@/components/global/LoadingScreen";
 import { SkipLink } from "@/components/global/SkipLink";
 import { JsonLd } from "@/components/global/JsonLd";
 
+/** Keep meta descriptions in the ~120–160 char SEO band. */
+const META_DESCRIPTION =
+  SITE.description.length >= 110 && SITE.description.length <= 170
+    ? SITE.description
+    : SITE.description.slice(0, 157).trimEnd() + "…";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
     default: `${SITE.name} — ${SITE.tagline}`,
     template: `%s · ${SITE.name}`,
   },
-  description: SITE.description,
+  description: META_DESCRIPTION,
   keywords: [
     "waxing Colombo",
     "ladies salon Colombo",
@@ -31,7 +38,7 @@ export const metadata: Metadata = {
     url: SITE.url,
     siteName: SITE.name,
     title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
+    description: META_DESCRIPTION,
     images: [
       {
         url: IMAGES.og,
@@ -44,7 +51,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
+    description: META_DESCRIPTION,
     images: [IMAGES.og],
   },
   icons: {
@@ -66,14 +73,21 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-cream text-warm antialiased">
+    <html
+      lang="en-LK"
+      className={`${calSans.variable} ${inter.variable} h-full`}
+    >
+      <body className="min-h-screen bg-cream font-sans text-warm antialiased">
         <JsonLd />
         <SkipLink />
         <LoadingScreen />
         <SmoothScrollProvider>
           <Navbar />
-          <main id="main-content" className="flex min-h-screen flex-col">
+          <main
+            id="main-content"
+            tabIndex={-1}
+            className="focus-visible:outline-none flex min-h-screen flex-col pb-20 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-action md:pb-0"
+          >
             {children}
           </main>
           <Footer />

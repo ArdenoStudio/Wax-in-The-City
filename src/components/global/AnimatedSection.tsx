@@ -1,10 +1,19 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "motion/react";
-import { fadeUp, blurFade, scaleIn, slideFromLeft, viewportOnce } from "@/lib/animations";
+import {
+  fadeUp,
+  fadeUpFast,
+  blurFade,
+  scaleIn,
+  slideFromLeft,
+  viewportOnce,
+} from "@/lib/animations";
+import { cn } from "@/lib/utils";
 
 const VARIANTS: Record<string, Variants> = {
   fadeUp,
+  fadeUpFast,
   blurFade,
   scaleIn,
   slideFromLeft,
@@ -18,7 +27,7 @@ interface AnimatedSectionProps {
   as?: "div" | "section";
 }
 
-/** Scroll-triggered entrance wrapper (file 11). Opacity + transform only. */
+/** Scroll-triggered entrance wrapper. Opacity + transform only. */
 export function AnimatedSection({
   children,
   variant = "fadeUp",
@@ -27,7 +36,7 @@ export function AnimatedSection({
   as = "div",
 }: AnimatedSectionProps) {
   const MotionTag = as === "section" ? motion.section : motion.div;
-  const base = VARIANTS[variant];
+  const base = VARIANTS[variant] ?? fadeUp;
   const reduceMotion = useReducedMotion();
 
   // Clone the variant to apply the optional delay without mutating the shared object.
@@ -44,9 +53,9 @@ export function AnimatedSection({
 
   return (
     <MotionTag
-      className={className}
+      className={cn(className)}
       variants={variants}
-      initial={false}
+      initial={reduceMotion ? false : "hidden"}
       whileInView={reduceMotion ? undefined : "visible"}
       viewport={viewportOnce}
     >

@@ -12,7 +12,7 @@ Ladies-only beauty salon website for Colombo, covering Battaramulla and Nugegoda
 - `react-hook-form` and `zod` for booking and contact forms
 - Supabase form capture as the pre-Dinaya backend
 - `react-compare-slider` for before/after imagery
-- System font stack: Bodoni/Didot-style display, Avenir/Segoe-style body, no remote font fetch required for builds
+- Font stack: Cal Sans (display) + Inter (body/UI), loaded via `next/font` in `src/lib/fonts.ts`
 
 ## Getting Started
 
