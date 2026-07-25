@@ -60,7 +60,7 @@ export function TrustStrip() {
                 >
                   <Icon className="h-7 w-7" />
                 </motion.span>
-                <h3 className="mt-8 font-serif text-h4 font-medium text-cream">{pillar.title}</h3>
+                <h3 className="mt-8 font-display text-h4 font-medium text-cream">{pillar.title}</h3>
                 <p className="mt-3 text-body-sm text-cream/64">{pillar.body}</p>
               </motion.div>
             );

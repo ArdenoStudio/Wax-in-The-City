@@ -43,7 +43,7 @@ export function ReviewThemes() {
               variants={fadeUp}
               className="premium-surface micro-lift grid gap-4 rounded-card p-5 sm:grid-cols-[72px_1fr] sm:p-6"
             >
-              <span className="relative z-10 font-serif text-[2.5rem] font-medium leading-none text-brand-action">
+              <span className="relative z-10 font-display text-[2.5rem] font-medium leading-none text-brand-action">
                 0{i + 1}
               </span>
               <div className="relative z-10">

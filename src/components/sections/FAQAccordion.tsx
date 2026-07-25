@@ -51,7 +51,7 @@ export function FAQAccordion({
       {groups.map((group, gi) => (
         <AnimatedSection key={group.category} variant="fadeUp" delay={gi * 0.05}>
           {groups.length > 1 && (
-            <h2 className="mb-5 font-serif text-h3 text-warm">{group.category}</h2>
+            <h2 className="mb-5 font-display text-h3 text-warm">{group.category}</h2>
           )}
           <Accordion
             type="single"
@@ -210,7 +210,7 @@ function FAQAccordionEnhanced({
 
       {filteredGroups.length === 0 ? (
         <div className="studio-plate rounded-card px-6 py-10 text-center">
-          <p className="font-serif text-h4 text-warm">Nothing matched that search.</p>
+          <p className="font-display text-h4 text-warm">Nothing matched that search.</p>
           <p className="mx-auto mt-2 max-w-sm text-body-sm text-warm-grey">
             Try one word — hygiene, waxing, or booking — or clear the search to
             browse every answer.
@@ -229,7 +229,7 @@ function FAQAccordionEnhanced({
               >
                 <h2
                   id={catId}
-                  className="mb-5 scroll-mt-36 font-serif text-h3 text-warm"
+                  className="mb-5 scroll-mt-36 font-display text-h3 text-warm"
                 >
                   {group.category}
                 </h2>

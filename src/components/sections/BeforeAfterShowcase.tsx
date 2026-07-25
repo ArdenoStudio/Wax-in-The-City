@@ -20,7 +20,7 @@ export function BeforeAfterShowcase() {
             <Sparkles className="h-4 w-4" />
             Before and after
           </div>
-          <h2 className="mt-6 max-w-xl font-serif text-h1 font-medium leading-tight text-cream sm:text-display">
+          <h2 className="mt-6 max-w-xl font-display text-h1 font-medium leading-tight text-cream sm:text-display">
             From unsure to looked after.
           </h2>
           <p className="mt-5 max-w-xl text-body-lg text-cream/72">

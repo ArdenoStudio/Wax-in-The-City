@@ -133,7 +133,7 @@ export function BookingForm({
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
               <Check className="h-7 w-7" />
             </span>
-            <h3 className="mt-5 font-serif text-h3 text-warm">Request received</h3>
+            <h3 className="mt-5 font-display text-h3 text-warm">Request received</h3>
             <p className="mt-2 max-w-sm text-body text-warm-grey">
               Request received — we&apos;ll confirm next.
             </p>

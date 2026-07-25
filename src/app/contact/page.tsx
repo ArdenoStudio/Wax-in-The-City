@@ -100,7 +100,7 @@ export default function ContactPage() {
                 <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light">
                   Private studio contact
                 </p>
-                <h2 className="mt-3 font-serif text-h3 font-medium leading-tight">
+                <h2 className="mt-3 font-display text-h3 font-medium leading-tight">
                   Tell us what you need before you arrive.
                 </h2>
               </div>
@@ -116,7 +116,7 @@ export default function ContactPage() {
                 >
                   <Link
                     href={`/locations/${b.slug}`}
-                    className="relative z-10 font-serif text-h4 font-medium text-warm underline-offset-4 hover:text-brand-action hover:underline"
+                    className="relative z-10 font-display text-h4 font-medium text-warm underline-offset-4 hover:text-brand-action hover:underline"
                   >
                     {b.name}
                   </Link>
@@ -176,7 +176,7 @@ export default function ContactPage() {
               id="privacy"
               className="mt-10 scroll-mt-28 rounded-card border border-warm-border/80 bg-white/50 px-5 py-5"
             >
-              <h3 className="font-serif text-h4 text-warm">Privacy note</h3>
+              <h3 className="font-display text-h4 text-warm">Privacy note</h3>
               <p className="mt-2 text-body-sm leading-relaxed text-warm-grey">
                 Messages and booking requests are reviewed privately by the
                 studio team. We use your details only to reply and confirm
@@ -185,7 +185,7 @@ export default function ContactPage() {
             </aside>
 
             <div className="mt-10">
-              <h3 className="font-serif text-h3 text-warm">Follow us</h3>
+              <h3 className="font-display text-h3 text-warm">Follow us</h3>
               <div className="mt-4 flex gap-3">
                 <a
                   href={SITE.instagram}

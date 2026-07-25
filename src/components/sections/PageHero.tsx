@@ -78,7 +78,7 @@ export function PageHero({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.74, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
       >
-        <p className="font-serif text-[clamp(1.85rem,5.5vw,2.75rem)] font-medium italic leading-none tracking-[0.01em] text-cream">
+        <p className="font-display text-[clamp(1.85rem,5.5vw,2.75rem)] font-semibold leading-none tracking-[0.01em] text-cream">
           {SITE.shortName}
         </p>
         {eyebrow && (
@@ -91,7 +91,7 @@ export function PageHero({
             {eyebrow}
           </motion.p>
         )}
-        <h1 className="mt-5 max-w-[16ch] break-words text-balance font-serif text-[clamp(2.1rem,8vw,3.15rem)] font-medium leading-[1.06] text-cream/96 sm:max-w-3xl sm:text-[3.6rem] sm:leading-[1.04]">
+        <h1 className="mt-5 max-w-[16ch] break-words text-balance font-display text-[clamp(2.1rem,8vw,3.15rem)] font-medium leading-[1.06] text-cream/96 sm:max-w-3xl sm:text-[3.6rem] sm:leading-[1.04]">
           {title}
         </h1>
         {subtitle && (

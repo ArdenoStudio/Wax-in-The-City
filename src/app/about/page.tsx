@@ -66,7 +66,7 @@ export default function AboutPage() {
                   <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light">
                     Studio standard
                   </p>
-                  <p className="mt-3 font-serif text-h3 leading-tight">
+                  <p className="mt-3 font-display text-h3 leading-tight">
                     Glamour is welcome here. Pressure is not.
                   </p>
                 </div>
@@ -84,7 +84,7 @@ export default function AboutPage() {
           </AnimatedSection>
 
           <AnimatedSection variant="fadeUp">
-            <p className="max-w-full break-words text-balance font-serif text-[clamp(2rem,9vw,4.9rem)] font-medium leading-[1.02] text-warm">
+            <p className="max-w-full break-words text-balance font-display text-[clamp(2rem,9vw,4.9rem)] font-medium leading-[1.02] text-warm">
               Built like a private dressing room, run like a careful appointment studio.
             </p>
             <p className="mt-8 max-w-2xl text-body-lg text-warm-grey">
@@ -128,7 +128,7 @@ export default function AboutPage() {
                     <span className="flex h-12 w-12 items-center justify-center rounded-card bg-cream text-brand">
                       <Icon className="h-6 w-6" />
                     </span>
-                    <h3 className="mt-6 font-serif text-h3 font-medium text-cream">{value.title}</h3>
+                    <h3 className="mt-6 font-display text-h3 font-medium text-cream">{value.title}</h3>
                     <p className="mt-3 text-body-sm leading-relaxed text-cream/72">{value.body}</p>
                   </div>
                 </AnimatedSection>

@@ -55,7 +55,7 @@ export function ContactForm() {
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
               <Check className="h-7 w-7" />
             </span>
-            <h3 className="mt-5 font-serif text-h3 text-warm">Message sent</h3>
+            <h3 className="mt-5 font-display text-h3 text-warm">Message sent</h3>
             <p className="mt-2 max-w-sm text-body text-warm-grey">
               Thank you! We&apos;ll get back to you within 24 hours.
             </p>

@@ -72,7 +72,7 @@ export default function LocationsPage() {
                       <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light">
                         {branch.area}
                       </p>
-                      <h2 className="mt-2 font-serif text-[2.25rem] font-medium leading-none">
+                      <h2 className="mt-2 font-display text-[2.25rem] font-medium leading-none">
                         {branch.name}
                       </h2>
                     </div>
@@ -152,7 +152,7 @@ export default function LocationsPage() {
           <div className="grid gap-3 sm:grid-cols-3">
             {["Choose branch", "Confirm service", "Arrive relaxed"].map((step, index) => (
               <div key={step} className="premium-surface rounded-card p-5">
-                <p className="relative z-10 font-serif text-h2 text-brand-action/40">
+                <p className="relative z-10 font-display text-h2 text-brand-action/40">
                   {String(index + 1).padStart(2, "0")}
                 </p>
                 <h3 className="relative z-10 mt-3 text-h4 font-semibold text-warm">{step}</h3>

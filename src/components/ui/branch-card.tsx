@@ -23,7 +23,7 @@ export function BranchCard({ branch, variant = "compact" }: BranchCardProps) {
           <p className="text-caption font-semibold uppercase tracking-[0.16em] text-brand-action">
             Branch
           </p>
-          <h3 className="mt-1 font-serif text-h2 font-medium leading-tight text-warm">{branch.name}</h3>
+          <h3 className="mt-1 font-display text-h2 font-medium leading-tight text-warm">{branch.name}</h3>
         </div>
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-card bg-ink text-cream shadow-[0_14px_32px_rgba(21,16,17,0.18)] transition-transform duration-500 group-hover:scale-105">
           <MapPin className="h-5 w-5" />

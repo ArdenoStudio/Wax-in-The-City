@@ -79,7 +79,7 @@ export function ServicesGrid({
       id="services"
       className="relative scroll-mt-24 overflow-hidden bg-cream px-5 py-section-lg lg:px-8"
     >
-      <span aria-hidden className="pointer-events-none absolute right-6 top-6 select-none font-serif text-[6rem] font-light leading-none text-warm/[0.035] sm:text-[9rem] lg:right-12 lg:text-[11rem]">01</span>
+      <span aria-hidden className="pointer-events-none absolute right-6 top-6 select-none font-display text-[6rem] font-light leading-none text-warm/[0.035] sm:text-[9rem] lg:right-12 lg:text-[11rem]">01</span>
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-60" />
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
         <div className="w-full min-w-0 max-w-[calc(100vw-2.5rem)] sm:max-w-full lg:sticky lg:top-28">
@@ -104,7 +104,7 @@ export function ServicesGrid({
 
         {categories.length === 0 ? (
           <div className="studio-plate rounded-card px-6 py-14 text-center">
-            <p className="font-serif text-h3 text-warm">Menu updating</p>
+            <p className="font-display text-h3 text-warm">Menu updating</p>
             <p className="mx-auto mt-3 max-w-sm text-body-sm text-warm-grey">
               Treatment categories will appear here shortly. Browse the full menu
               or message us on WhatsApp in the meantime.
@@ -147,7 +147,7 @@ export function ServicesGrid({
 
                     <div>
                       <div className="flex flex-wrap items-center gap-3">
-                        <h3 className="font-serif text-h2 font-medium leading-tight text-warm">
+                        <h3 className="font-display text-h2 font-medium leading-tight text-warm">
                           {cat.name}
                         </h3>
                         <span className={cn("rounded-pill border px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em]", tone.price)}>

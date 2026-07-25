@@ -128,7 +128,7 @@ function WhatsappOnly({ standalone }: { standalone: boolean }) {
           <p className="text-caption font-semibold uppercase tracking-[0.16em] text-cream/55">
             Ladies only
           </p>
-          <p className="mt-4 max-w-sm font-serif text-h3 font-medium leading-snug text-cream">
+          <p className="mt-4 max-w-sm font-display text-h3 font-medium leading-snug text-cream">
             A private appointment room, confirmed before you arrive.
           </p>
           <p className="mt-4 max-w-sm text-body-sm text-cream/68">

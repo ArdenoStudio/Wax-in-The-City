@@ -55,7 +55,7 @@ export default async function AdminPage({
               <ShieldCheck className="h-4 w-4" />
               Admin price editor
             </p>
-            <h1 className="mt-5 max-w-3xl font-serif text-h1 font-medium text-warm">
+            <h1 className="mt-5 max-w-3xl font-display text-h1 font-medium text-warm">
               Change service prices without editing code.
             </h1>
             <p className="mt-4 max-w-2xl text-body text-warm-grey">
@@ -85,7 +85,7 @@ export default async function AdminPage({
 
         {!supabaseReady && (
           <div className="studio-plate mt-8 rounded-card p-6">
-            <h2 className="font-serif text-h3 text-warm">Connect Supabase admin access</h2>
+            <h2 className="font-display text-h3 text-warm">Connect Supabase admin access</h2>
             <p className="mt-2 text-body-sm text-warm-grey">
               Add `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
               `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_PASSWORD`, and
@@ -96,7 +96,7 @@ export default async function AdminPage({
 
         {supabaseReady && services.length === 0 && (
           <div className="studio-plate mt-8 rounded-card p-6">
-            <h2 className="font-serif text-h3 text-warm">No services in Supabase yet</h2>
+            <h2 className="font-display text-h3 text-warm">No services in Supabase yet</h2>
             <p className="mt-2 max-w-2xl text-body-sm text-warm-grey">
               Seed the current static menu into the `services` table, then edit
               prices from this page.
@@ -266,7 +266,7 @@ function LoginPanel({ error }: { error?: string }) {
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-pill bg-cream/10 text-brand-light">
           <Lock className="h-5 w-5" />
         </div>
-        <h1 className="mt-5 text-center font-serif text-h2 text-cream">
+        <h1 className="mt-5 text-center font-display text-h2 text-cream">
           Admin access
         </h1>
         <p className="mt-2 text-center text-body-sm text-cream/68">

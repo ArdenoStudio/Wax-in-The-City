@@ -74,7 +74,7 @@ export function CareJourney({
                 <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action/70">
                   {String(index + 1).padStart(2, "0")}
                 </p>
-                <h3 className="mt-1.5 font-serif text-h3 text-warm">{step.title}</h3>
+                <h3 className="mt-1.5 font-display text-h3 text-warm">{step.title}</h3>
                 <p className="mt-2.5 max-w-xl text-body-sm leading-relaxed text-warm-grey">
                   {step.body}
                 </p>

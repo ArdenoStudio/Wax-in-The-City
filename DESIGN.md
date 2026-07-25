@@ -16,29 +16,29 @@ colors:
   muted-sage: "#a3a981"
 typography:
   display:
-    fontFamily: "Bodoni 72, Didot, Bodoni MT, Georgia, serif"
+    fontFamily: "Cal Sans, Inter, system-ui, sans-serif"
     fontSize: "clamp(3.2rem, 8vw, 6rem)"
-    fontWeight: 500
-    lineHeight: 0.98
-    letterSpacing: "0"
+    fontWeight: 600
+    lineHeight: 0.96
+    letterSpacing: "-0.03em"
   headline:
-    fontFamily: "Bodoni 72, Didot, Bodoni MT, Georgia, serif"
+    fontFamily: "Cal Sans, Inter, system-ui, sans-serif"
     fontSize: "clamp(2rem, 4.6vw, 4rem)"
-    fontWeight: 500
-    lineHeight: 1.05
+    fontWeight: 600
+    lineHeight: 1.08
   body:
-    fontFamily: "Avenir Next, Segoe UI, system-ui, sans-serif"
+    fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
-    lineHeight: 1.75
+    lineHeight: 1.7
   label:
-    fontFamily: "Avenir Next, Segoe UI, system-ui, sans-serif"
+    fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "0.75rem"
-    fontWeight: 700
-    lineHeight: 1.5
-    letterSpacing: "0.08em"
+    fontWeight: 600
+    lineHeight: 1.45
+    letterSpacing: "0.04em"
 rounded:
-  card: "8px"
+  card: "12px"
   pill: "9999px"
 spacing:
   section: "80px"
@@ -121,11 +121,11 @@ The palette is a committed wine-and-pearl system: oxblood carries the brand, blu
 
 ## 3. Typography
 
-**Display Font:** Bodoni 72, Didot, Bodoni MT, Georgia, serif
-**Body Font:** Avenir Next, Segoe UI, system-ui, sans-serif
-**Label/Mono Font:** none
+**Display Font:** Cal Sans
+**Body Font:** Inter
+**Label/Mono Font:** Inter
 
-**Character:** Display type should read like a boutique beauty label: high-contrast, glamorous, and controlled. Body type should feel clear and appointment-ready, with enough line height for calm reading.
+**Character:** Display type should read like a modern private studio mark — geometric Cal Sans with tight tracking. Body type is Inter: clear, appointment-ready, calm.
 
 ### Hierarchy
 
@@ -137,7 +137,7 @@ The palette is a committed wine-and-pearl system: oxblood carries the brand, blu
 
 ### Named Rules
 
-**The One Dramatic Voice Rule.** Let the display serif own glamour. Do not add decorative scripts, drop caps, or extra typefaces.
+**The One Dramatic Voice Rule.** Let Cal Sans own display glamour. Do not add decorative scripts, drop caps, or extra typefaces beyond Cal Sans + Inter.
 
 ## 4. Elevation
 

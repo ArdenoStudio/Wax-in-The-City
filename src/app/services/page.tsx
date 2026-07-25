@@ -117,7 +117,7 @@ export default async function ServicesPage() {
                     <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light/85">
                       {visual.label}
                     </p>
-                    <h2 className="mt-2 font-serif text-[2rem] font-medium leading-none text-cream">
+                    <h2 className="mt-2 font-display text-[2rem] font-medium leading-none text-cream">
                       {category.name}
                     </h2>
                     <p className="mt-3 max-w-sm break-words text-body-sm text-cream/72">{visual.note}</p>

@@ -1,31 +1,22 @@
-# UI Complements — Wax In The City SL
+# UI Complements — Cal Sans + Inter redesign
 
-Adopted from the bookmark set (HyperUI, FAQ sections, Footers, React Bits, Apple Cards Carousel, shadcnblocks, Cult UI panels, Icons, Better Design Tips, 21st.dev). DaisyUI / Tremor / Watermelon UI kits are **not** installed — patterns only, re-skinned to wine/pearl.
+Patterns adapted from the bookmark set (not full kit installs):
 
-## Safe complements in use
+| Source | Use on this site |
+|---|---|
+| HyperUI | Section layouts, contact/hours lists, form helper text, sticky subnav |
+| FAQ Sections | Category chips, search, accordion density, homepage FAQ teaser |
+| Footers | Branch columns, tel/WhatsApp, privacy row, explore IA |
+| React Bits | Composed reveals, marquee a11y, compare framing |
+| Apple Cards Carousel | Gallery snap rhythm, clean media planes |
+| shadcnblocks / 21st.dev | Booking steppers, success panels, contextual CTAs |
+| Cult UI (restrained) | Oxblood/pearl color fields for PageHero & booking |
+| Icons (Lucide) | Gold hygiene / sage after-care icons (jewelry rule) |
+| Better Design Tips | Brand-first type, honest copy, contrast floors |
+| DaisyUI / Tremor / Watermelon | **Patterns only** — no theme installs |
 
-| Source | Pattern | Where |
-|---|---|---|
-| HyperUI | Form helpers, tel links, contact blocks | Booking, Contact, Locations |
-| FAQ Sections | Category jump, deep-link, homepage teaser, aria-label roots | FAQ, homepage FAQTeaser |
-| Footers | Branch IA, tel, WhatsApp CTA, privacy link | Footer |
-| React Bits | Reveal motion (`fadeUpFast`), marquee a11y, compare framing | AnimatedSection, Gallery, Before/After |
-| Apple Cards Carousel | Snap gallery, clean media | GalleryTeaser / GalleryGrid |
-| shadcnblocks | Success states, contextual CTAs, privacy notes | BookingForm, ContactForm, Contact `#privacy` |
-| Cult UI (restrained) | Oxblood/pearl color fields | PageHero, BookingZone side |
-| Icons (Lucide) | Jewelry-rule gold hygiene + sage after-care icons | TrustStrip, Hero protocol |
-| Better Design Tips | Honest copy, contrast, brand-first, no fake ratings | Site-wide copy + ReviewThemes |
-| 21st.dev | Stepper / journey blocks | Booking reassurance, CareJourney |
+## Type system
 
-## Wave 161–200 additions
-
-- `CareJourney` reusable Arrive→Prep→Care→After-care timeline
-- Booking zone `aria-labelledby`, FAQ accordion root labels
-- Sheet `z-[60]` over Navbar / MobileBookingBar
-- `formatPriceFrom` with `en-LK`; robots disallow `/admin`
-- Contact `#privacy` + footer/booking privacy pointers
-- Gallery filter label **Studio** (honest categories)
-
-## Rejected installs
-
-DaisyUI theme, Tremor dashboard chrome, Watermelon UI kits, purple/glow AI defaults, fake review widgets, hero promo stickers.
+- **Display / brand:** Cal Sans (500–700)
+- **Body / UI:** Inter (400–700)
+- `font-display` replaces former Bodoni `font-serif` classes

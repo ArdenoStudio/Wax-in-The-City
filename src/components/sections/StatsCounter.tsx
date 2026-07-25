@@ -62,7 +62,7 @@ export function StatsCounter({ stats = DEFAULT_STATS }: { stats?: Stat[] }) {
           transition={reduce ? { duration: 0 } : { duration: 0.5 }}
           className="premium-surface micro-lift rounded-card p-5 text-center"
         >
-          <p className="relative z-10 font-serif text-[2.75rem] font-medium leading-none text-brand-action sm:text-[3.25rem]">
+          <p className="relative z-10 font-display text-[2.75rem] font-medium leading-none text-brand-action sm:text-[3.25rem]">
             <Ticker value={stat.value} suffix={stat.suffix} />
           </p>
           <p className="relative z-10 mt-3 text-body-sm text-warm-grey">{stat.label}</p>

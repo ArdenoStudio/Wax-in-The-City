@@ -42,7 +42,7 @@ export function Footer() {
                 />
               </span>
             </div>
-            <p className="mt-4 max-w-xs font-serif text-h4 italic text-brand-light">
+            <p className="mt-4 max-w-xs font-display text-h4 text-brand-light">
               {SITE.tagline}
             </p>
             <p className="mt-3 max-w-xs text-body-sm text-cream-muted">
@@ -120,7 +120,7 @@ export function Footer() {
                 <div key={b.slug}>
                   <Link
                     href={`/locations/${b.slug}`}
-                    className="font-serif text-h4 text-cream transition-colors hover:text-brand-light"
+                    className="font-display text-h4 text-cream transition-colors hover:text-brand-light"
                   >
                     {b.name}
                   </Link>

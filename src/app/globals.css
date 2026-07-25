@@ -2,98 +2,91 @@
 @import "tw-animate-css";
 
 /* ------------------------------------------------------------------ *
- *  WAX IN THE CITY SL — premium private studio system
+ *  WAX IN THE CITY SL — Cal Sans + Inter private studio system
+ *  Complements: HyperUI · FAQ/Footers · React Bits · Apple carousel ·
+ *  shadcnblocks · Cult UI panels · Better Design Tips (patterns only)
  * ------------------------------------------------------------------ */
 
 @theme {
   /* --- Colour: private studio system --- */
-  --color-brand: #2b0710;          /* Oxblood */
-  --color-brand-action: #a20f37;   /* Booking/action wine */
-  --color-brand-dark: #17070b;     /* Pressed/nav */
-  --color-brand-footer: #12060a;   /* Footer background */
-  --color-brand-light: #ffd6de;    /* Blush highlight */
-  --color-brand-mist: #fce5ec;     /* Soft blush surface */
-  --color-sage: #a3a981;           /* Calm contrast */
-  --color-ink: #151011;            /* Editorial dark */
-  --color-gold: #d9b35f;           /* Jewelry detail */
+  --color-brand: #2b0710;
+  --color-brand-action: #a20f37;
+  --color-brand-dark: #17070b;
+  --color-brand-footer: #12060a;
+  --color-brand-light: #ffd6de;
+  --color-brand-mist: #fce5ec;
+  --color-sage: #a3a981;
+  --color-ink: #151011;
+  --color-gold: #d9b35f;
 
-  /* --- Colour: Pearl backgrounds --- */
-  --color-cream: #fff7f9;          /* Dominant page background */
-  --color-cream-alt: #f8edf1;      /* Alternating sections */
+  --color-cream: #fff7f9;
+  --color-cream-alt: #f8edf1;
 
-  /* --- Colour: Warm neutrals --- */
-  --color-warm: #1f171a;           /* Body text, never pure black */
-  --color-warm-grey: #65565d;      /* Secondary text, captions */
-  --color-warm-border: #ead7df;    /* Card borders, dividers */
+  --color-warm: #1f171a;
+  --color-warm-grey: #65565d;
+  --color-warm-border: #ead7df;
 
-  /* --- Colour: Semantic --- */
   --color-success: #7a9e7e;
   --color-error: #c0392b;
 
-  /* --- Type scale --- */
-  --text-display: 4rem;
-  --text-display--line-height: 0.98;
-  --text-display--letter-spacing: 0;
-  --text-h1: 2.5rem;
-  --text-h1--line-height: 1.15;
-  --text-h1--letter-spacing: 0;
-  --text-h2: 2rem;
-  --text-h2--line-height: 1.25;
+  /* --- Type scale (Cal Sans display + Inter body) --- */
+  --text-display: 4.25rem;
+  --text-display--line-height: 0.96;
+  --text-display--letter-spacing: -0.03em;
+  --text-h1: 2.75rem;
+  --text-h1--line-height: 1.08;
+  --text-h1--letter-spacing: -0.025em;
+  --text-h2: 2.125rem;
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.02em;
   --text-h3: 1.5rem;
-  --text-h3--line-height: 1.3;
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.015em;
   --text-h4: 1.125rem;
-  --text-h4--line-height: 1.4;
-  --text-h4--letter-spacing: 0.01em;
+  --text-h4--line-height: 1.35;
+  --text-h4--letter-spacing: -0.01em;
   --text-body-lg: 1.125rem;
-  --text-body-lg--line-height: 1.75;
+  --text-body-lg--line-height: 1.7;
   --text-body: 1rem;
-  --text-body--line-height: 1.75;
+  --text-body--line-height: 1.7;
   --text-body-sm: 0.875rem;
-  --text-body-sm--line-height: 1.6;
+  --text-body-sm--line-height: 1.55;
   --text-caption: 0.75rem;
-  --text-caption--line-height: 1.5;
-  --text-caption--letter-spacing: 0.05em;
+  --text-caption--line-height: 1.45;
+  --text-caption--letter-spacing: 0.04em;
 
-  /* --- Spacing: section rhythm --- */
-  --spacing-section: 80px;
-  --spacing-section-lg: 120px;
+  --spacing-section: 88px;
+  --spacing-section-lg: 128px;
 
-  /* --- Radius --- */
-  --radius-card: 8px;
-  --radius-card-lg: 12px;
+  --radius-card: 12px;
+  --radius-card-lg: 16px;
   --radius-pill: 9999px;
 
-  /* --- Shadows --- */
-  --shadow-card: 0 18px 55px rgba(27, 14, 16, 0.08);
-  --shadow-card-hover: 0 26px 80px rgba(27, 14, 16, 0.16);
-  --shadow-nav: 0 18px 50px rgba(27, 14, 16, 0.10);
+  --shadow-card: 0 12px 40px rgba(27, 14, 16, 0.07);
+  --shadow-card-hover: 0 22px 64px rgba(27, 14, 16, 0.12);
+  --shadow-nav: 0 14px 40px rgba(27, 14, 16, 0.09);
 }
 
-/* Font families use local system stacks so production builds do not fetch fonts. */
 @theme inline {
-  --font-serif: var(--font-display, var(--font-display-fallback)), Georgia, serif;
-  --font-sans: var(--font-body, var(--font-body-fallback)), system-ui, sans-serif;
+  --font-display: var(--font-cal-sans), "Inter", system-ui, sans-serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  /* Alias so legacy font-serif utilities resolve to Cal Sans */
+  --font-serif: var(--font-cal-sans), "Inter", system-ui, sans-serif;
 }
-
-/* ------------------------------------------------------------------ *
- *  Base layer
- * ------------------------------------------------------------------ */
 
 :root {
-  --font-display-fallback: "Bodoni 72", Didot, "Bodoni MT", Georgia, serif;
-  --font-body-fallback: "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-apple-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-press: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --motion-fast: 180ms;
-  --motion-standard: 420ms;
-  --motion-slow: 720ms;
+  --motion-fast: 160ms;
+  --motion-standard: 380ms;
+  --motion-slow: 640ms;
 }
 
 @media (max-width: 767px) {
   :root {
-    --spacing-section: 64px;
-    --spacing-section-lg: 76px;
+    --spacing-section: 68px;
+    --spacing-section-lg: 84px;
   }
 }
 
@@ -110,8 +103,17 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
-  letter-spacing: 0;
-  font-feature-settings: "liga" 1, "kern" 1, "ss01" 1;
+  letter-spacing: -0.011em;
+  font-feature-settings: "liga" 1, "kern" 1, "cv11" 1;
+}
+
+h1, h2, h3, h4, h5, h6,
+.font-display,
+.font-serif {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 
 ::selection {
@@ -137,7 +139,6 @@ textarea {
 }
 
 @layer utilities {
-  /* Ensure sr-only exists even if Tailwind utility tree is trimmed. */
   .sr-only {
     position: absolute;
     width: 1px;
@@ -165,87 +166,73 @@ textarea {
     text-wrap: balance;
   }
 
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Keep Tailwind font-serif mapped to Cal Sans during migration */
+  .font-serif {
+    font-family: var(--font-display) !important;
+    font-style: normal !important;
+  }
+
   .premium-surface {
     isolation: isolate;
     position: relative;
-    border: 1px solid rgba(84, 56, 51, 0.12);
+    border: 1px solid rgba(84, 56, 51, 0.1);
     background:
-      linear-gradient(145deg, rgba(255, 247, 249, 0.98), rgba(252, 229, 236, 0.74)),
-      radial-gradient(circle at 18% 0%, rgba(217, 179, 95, 0.16), transparent 36%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0));
-    box-shadow: 0 20px 60px rgba(42, 20, 22, 0.09);
+      linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(252, 229, 236, 0.55)),
+      radial-gradient(circle at 12% 0%, rgba(217, 179, 95, 0.1), transparent 40%);
+    box-shadow: var(--shadow-card);
     transform: translateZ(0);
     transition:
       transform var(--motion-slow) var(--ease-apple),
       border-color var(--motion-standard) var(--ease-apple),
-      box-shadow var(--motion-slow) var(--ease-apple),
-      background-color var(--motion-standard) var(--ease-apple);
-    will-change: transform;
-  }
-
-  .premium-surface::before {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(135deg, rgba(255,255,255,0.74), transparent 34%, rgba(209,173,100,0.12));
-    opacity: 0.74;
-    transition: opacity var(--motion-slow) var(--ease-apple), transform var(--motion-slow) var(--ease-apple);
-  }
-
-  .premium-surface:hover::before {
-    opacity: 0.96;
+      box-shadow var(--motion-slow) var(--ease-apple);
   }
 
   .studio-plate {
     position: relative;
     isolation: isolate;
-    border: 1px solid rgba(234, 215, 223, 0.78);
+    border: 1px solid rgba(234, 215, 223, 0.85);
     background:
-      linear-gradient(145deg, rgba(255, 247, 249, 0.98), rgba(248, 237, 241, 0.92)),
-      radial-gradient(circle at top right, rgba(162, 15, 55, 0.12), transparent 34%);
-    box-shadow: 0 18px 55px rgba(27, 14, 16, 0.08);
+      linear-gradient(160deg, #fff, rgba(248, 237, 241, 0.92)),
+      radial-gradient(circle at top right, rgba(162, 15, 55, 0.08), transparent 36%);
+    box-shadow: var(--shadow-card);
     transform: translateZ(0);
     transition:
       transform var(--motion-slow) var(--ease-apple),
       border-color var(--motion-standard) var(--ease-apple),
-      box-shadow var(--motion-slow) var(--ease-apple),
-      background-color var(--motion-standard) var(--ease-apple);
-    will-change: transform;
+      box-shadow var(--motion-slow) var(--ease-apple);
   }
 
   .glass-panel {
-    border: 1px solid rgba(255, 250, 246, 0.18);
-    background: rgba(255, 250, 246, 0.09);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 24px 70px rgba(0,0,0,0.22);
-    backdrop-filter: blur(26px) saturate(1.25);
+    border: 1px solid rgba(255, 250, 246, 0.16);
+    background: rgba(20, 10, 12, 0.42);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 20px 60px rgba(0,0,0,0.28);
+    backdrop-filter: blur(22px) saturate(1.2);
     transition:
       transform var(--motion-slow) var(--ease-apple),
       border-color var(--motion-standard) var(--ease-apple),
-      box-shadow var(--motion-slow) var(--ease-apple),
-      background-color var(--motion-standard) var(--ease-apple);
+      box-shadow var(--motion-slow) var(--ease-apple);
   }
 
   .micro-lift {
     transition:
       transform var(--motion-slow) var(--ease-apple),
       border-color var(--motion-standard) var(--ease-apple),
-      box-shadow var(--motion-slow) var(--ease-apple),
-      background-color var(--motion-standard) var(--ease-apple),
-      filter var(--motion-standard) var(--ease-apple);
+      box-shadow var(--motion-slow) var(--ease-apple);
     will-change: transform;
   }
 
   .micro-lift:hover {
-    transform: translateY(-6px) scale(1.006);
-    box-shadow: 0 32px 90px rgba(44, 21, 25, 0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
   }
 
   .micro-lift:active {
-    transform: translateY(-2px) scale(0.997);
+    transform: translateY(-1px);
     transition-duration: var(--motion-fast);
-    transition-timing-function: var(--ease-press);
   }
 
   .pressable {
@@ -256,17 +243,15 @@ textarea {
       border-color var(--motion-standard) var(--ease-apple),
       background-color var(--motion-standard) var(--ease-apple),
       color var(--motion-standard) var(--ease-apple);
-    will-change: transform;
   }
 
   .pressable:hover {
-    transform: translateY(-2px) scale(1.01);
+    transform: translateY(-1px);
   }
 
   .pressable:active {
     transform: translateY(0) scale(0.985);
     transition-duration: var(--motion-fast);
-    transition-timing-function: var(--ease-press);
   }
 
   .icon-drift svg {
@@ -280,39 +265,41 @@ textarea {
   .image-polish {
     transform: translateZ(0);
     transition:
-      transform 1100ms var(--ease-apple),
-      filter 1100ms var(--ease-apple);
-    will-change: transform;
+      transform 900ms var(--ease-apple),
+      filter 900ms var(--ease-apple);
   }
 
   .group:hover .image-polish {
-    transform: scale(1.045);
-    filter: saturate(1.06) contrast(1.02);
+    transform: scale(1.03);
+    filter: saturate(1.04) contrast(1.02);
   }
 
   .hairline-gradient {
-    background: linear-gradient(90deg, transparent, rgba(209, 173, 100, 0.84), transparent);
+    background: linear-gradient(90deg, transparent, rgba(209, 173, 100, 0.7), transparent);
   }
 
-  /* 1px wine → powder divider for calm section seams */
   .hairline-wine {
     height: 1px;
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(162, 15, 55, 0.42) 22%,
+      rgba(162, 15, 55, 0.38) 22%,
       rgba(234, 215, 223, 0.9) 50%,
-      rgba(162, 15, 55, 0.28) 78%,
+      rgba(162, 15, 55, 0.24) 78%,
       transparent
     );
   }
 
   .text-cream-muted {
-    color: color-mix(in srgb, var(--color-cream) 72%, transparent);
+    color: color-mix(in srgb, var(--color-cream) 74%, transparent);
+  }
+
+  /* HyperUI-style calm section shell */
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-5 lg:px-8;
   }
 }
 
-/* Print: keep content + serif headings; hide chrome */
 @media print {
   nav,
   footer,
@@ -327,8 +314,8 @@ textarea {
     color: #1f171a !important;
   }
 
-  h1, h2, h3, h4, .font-serif {
-    font-family: var(--font-serif) !important;
+  h1, h2, h3, h4, .font-display, .font-serif {
+    font-family: var(--font-display) !important;
   }
 
   a[href]::after {
@@ -340,14 +327,13 @@ textarea {
   }
 }
 
-/* Marquee strip — file 10, section 6 */
 @keyframes witc-marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
 
 .animate-marquee {
-  animation: witc-marquee 30s linear infinite;
+  animation: witc-marquee 32s linear infinite;
 }
 .animate-marquee:hover,
 .animate-marquee:focus-within {
@@ -355,14 +341,13 @@ textarea {
 }
 
 .animate-marquee-slow {
-  animation: witc-marquee 50s linear infinite;
+  animation: witc-marquee 48s linear infinite;
 }
 .group:hover .animate-marquee-slow,
 .animate-marquee-slow:focus-within {
   animation-play-state: paused;
 }
 
-/* Accordion expand/collapse (Radix content-height variable) */
 @keyframes accordion-down {
   from { height: 0; }
   to   { height: var(--radix-accordion-content-height); }
@@ -371,10 +356,9 @@ textarea {
   from { height: var(--radix-accordion-content-height); }
   to   { height: 0; }
 }
-.animate-accordion-down { animation: accordion-down 0.3s ease-out; }
-.animate-accordion-up { animation: accordion-up 0.3s ease-out; }
+.animate-accordion-down { animation: accordion-down 0.28s ease-out; }
+.animate-accordion-up { animation: accordion-up 0.28s ease-out; }
 
-/* Shimmer sweep for the primary CTA */
 @keyframes witc-shimmer {
   0%   { transform: translateX(-100%); }
   60%  { transform: translateX(100%); }
@@ -383,29 +367,27 @@ textarea {
 
 @keyframes witc-sheen {
   0%   { transform: translateX(-140%) skewX(-12deg); opacity: 0; }
-  35%  { opacity: 0.7; }
+  35%  { opacity: 0.65; }
   100% { transform: translateX(140%) skewX(-12deg); opacity: 0; }
 }
 
 @keyframes witc-float {
   0%, 100% { transform: translate3d(0, 0, 0); }
-  50%      { transform: translate3d(0, -8px, 0); }
+  50%      { transform: translate3d(0, -6px, 0); }
 }
 
 .animate-float-soft {
   animation: witc-float 7s ease-in-out infinite;
 }
 
-/* Subtle scroll-indicator bob */
 @keyframes witc-bob {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(6px); }
+  50%      { transform: translateY(5px); }
 }
 .animate-bob {
-  animation: witc-bob 1.5s ease-in-out infinite;
+  animation: witc-bob 1.6s ease-in-out infinite;
 }
 
-/* Anchor sections clear the fixed nav */
 #main-content :where(section[id]) {
   scroll-margin-top: 6rem;
 }
@@ -429,7 +411,6 @@ textarea {
   }
 }
 
-/* Nav links use pill state only; no underline on active pages. */
 .nav-link {
   position: relative;
   transform: translateZ(0);

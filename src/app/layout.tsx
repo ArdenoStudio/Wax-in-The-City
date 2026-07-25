@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
+import { calSans, inter } from "@/lib/fonts";
 import { Navbar } from "@/components/global/Navbar";
 import { Footer } from "@/components/global/Footer";
 import { MobileBookingBar } from "@/components/global/MobileBookingBar";
@@ -72,8 +73,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-LK">
-      <body className="min-h-screen bg-cream text-warm antialiased">
+    <html
+      lang="en-LK"
+      className={`${calSans.variable} ${inter.variable} h-full`}
+    >
+      <body className="min-h-screen bg-cream font-sans text-warm antialiased">
         <JsonLd />
         <SkipLink />
         <LoadingScreen />

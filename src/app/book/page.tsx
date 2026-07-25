@@ -78,7 +78,7 @@ export default async function BookPage({
                 <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action/70">
                   Step {index + 1}
                 </p>
-                <h2 className="mt-2 font-serif text-h4 text-warm">{step.title}</h2>
+                <h2 className="mt-2 font-display text-h4 text-warm">{step.title}</h2>
                 <p className="mt-1.5 text-body-sm text-warm-grey">{step.body}</p>
               </li>
             ))}

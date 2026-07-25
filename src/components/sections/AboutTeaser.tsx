@@ -11,7 +11,7 @@ import { fadeUp, slideFromLeft, viewportOnce } from "@/lib/animations";
 export function AboutTeaser() {
   return (
     <section id="about-teaser" className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
-      <span aria-hidden className="pointer-events-none absolute left-6 top-6 select-none font-serif text-[6rem] font-light leading-none text-warm/[0.035] sm:text-[9rem] lg:left-12 lg:text-[11rem]">02</span>
+      <span aria-hidden className="pointer-events-none absolute left-6 top-6 select-none font-display text-[6rem] font-light leading-none text-warm/[0.035] sm:text-[9rem] lg:left-12 lg:text-[11rem]">02</span>
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
       <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
         <motion.div
@@ -38,7 +38,7 @@ export function AboutTeaser() {
             <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light">
               The feeling
             </p>
-            <p className="mt-2 font-serif text-h4 italic">
+            <p className="mt-2 font-display text-h4 font-semibold">
               Calm, private care before the first appointment begins.
             </p>
           </div>
@@ -50,7 +50,7 @@ export function AboutTeaser() {
           whileInView="visible"
           viewport={viewportOnce}
         >
-          <h2 className="text-balance font-serif text-h1 font-medium leading-tight text-warm">
+          <h2 className="text-balance font-display text-h1 font-medium leading-tight text-warm">
             Wax In The City is built around the moments most salons rush.
           </h2>
           <p className="mt-6 max-w-md text-body-lg text-warm-grey">

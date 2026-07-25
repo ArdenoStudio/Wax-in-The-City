@@ -62,7 +62,7 @@ export function Navbar() {
           >
             <span
               className={cn(
-                "font-serif text-[1.25rem] font-semibold italic leading-none tracking-[0.01em] transition-colors sm:text-[1.42rem] lg:tracking-[0.02em]",
+                "font-display text-[1.25rem] font-semibold leading-none tracking-[0.01em] transition-colors sm:text-[1.42rem] lg:tracking-[0.02em]",
                 onDark ? "text-cream" : "text-brand"
               )}
             >
@@ -166,7 +166,7 @@ export function Navbar() {
                     <Link
                       href="/"
                       aria-current={pathname === "/" ? "page" : undefined}
-                      className="border-b border-warm-border/60 py-4 font-serif text-h3 text-warm transition-colors hover:text-brand-action"
+                      className="border-b border-warm-border/60 py-4 font-display text-h3 text-warm transition-colors hover:text-brand-action"
                     >
                       Home
                     </Link>
@@ -179,7 +179,7 @@ export function Navbar() {
                         <Link
                           href={link.href}
                           aria-current={active ? "page" : undefined}
-                          className="border-b border-warm-border/60 py-4 font-serif text-h3 text-warm transition-colors hover:text-brand-action"
+                          className="border-b border-warm-border/60 py-4 font-display text-h3 text-warm transition-colors hover:text-brand-action"
                         >
                           {link.label}
                         </Link>

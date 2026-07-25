@@ -61,14 +61,14 @@ export function HeroSection() {
           >
             <Sparkles className="h-4 w-4" />
             <span>
-              <span className="font-serif normal-case tracking-normal text-cream">
+              <span className="font-display normal-case tracking-normal text-cream">
                 Wax In The City
               </span>
               {" · Ladies-only Colombo"}
             </span>
           </motion.p>
 
-          <h1 className="max-w-[10ch] font-serif text-[clamp(3.25rem,8vw,5.8rem)] font-medium leading-[0.92] text-cream">
+          <h1 className="max-w-[10ch] font-display text-[clamp(3.25rem,8vw,5.8rem)] font-medium leading-[0.92] text-cream">
             {HEADLINE_LINES.map((line, i) => (
               <motion.span
                 key={line}
@@ -201,7 +201,7 @@ export function HeroSection() {
               </li>
             ))}
           </ul>
-          <p className="mt-6 border-t border-cream/12 pt-5 font-serif text-h4 italic text-cream">
+          <p className="mt-6 border-t border-cream/12 pt-5 font-display text-h4 text-cream">
             Specialist care without the awkward salon-floor feeling.
           </p>
         </motion.aside>

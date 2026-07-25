@@ -155,7 +155,7 @@ export default async function ServiceCategoryPage({
 
             {comparison && (
               <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
-                <h2 className="font-serif text-h3 font-medium text-warm">Treatment flow preview</h2>
+                <h2 className="font-display text-h3 font-medium text-warm">Treatment flow preview</h2>
                 <p className="mt-2 text-body-sm text-warm-grey">
                   An honest process preview until client-approved result photos are available.
                 </p>
@@ -174,7 +174,7 @@ export default async function ServiceCategoryPage({
 
             {processStrip && !comparison && (
               <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
-                <h2 className="font-serif text-h3 font-medium text-warm">
+                <h2 className="font-display text-h3 font-medium text-warm">
                   {processStrip.title}
                 </h2>
                 <p className="mt-2 text-body-sm text-warm-grey">
@@ -186,7 +186,7 @@ export default async function ServiceCategoryPage({
                       key={step}
                       className="flex gap-4 border-l-2 border-[#d9b35f]/55 pl-4"
                     >
-                      <span className="font-serif text-h4 text-brand-action/45">
+                      <span className="font-display text-h4 text-brand-action/45">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <p className="text-body-sm text-warm-grey">{step}</p>
@@ -226,7 +226,7 @@ export default async function ServiceCategoryPage({
               <p className="mt-1 text-body-sm text-warm-grey">
                 {formatPriceFrom(category.priceFrom)}
               </p>
-              <p className="mt-2 font-serif text-h4 text-warm">
+              <p className="mt-2 font-display text-h4 text-warm">
                 Request a time — we confirm before you travel.
               </p>
               <div className="mt-5 flex flex-col gap-2.5">
@@ -257,7 +257,7 @@ export default async function ServiceCategoryPage({
       <section className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="font-serif text-h2 font-medium text-warm">Explore other treatments</h2>
+          <h2 className="font-display text-h2 font-medium text-warm">Explore other treatments</h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {serviceContent.categories.filter((c) => c.slug !== category.slug).map((c) => (
               <Link
