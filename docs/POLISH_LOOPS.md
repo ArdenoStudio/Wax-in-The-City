@@ -1,0 +1,112 @@
+# Cal Sans redesign polish loops
+
+- [x] #1 ServicesGrid.tsx: swap studio-plate list shell for flat white/75 bordered rounded-card-lg
+- [x] #2 ServicesGrid.tsx: remove heavy CTA shadow and hover lift on Full menu button
+- [x] #3 ServicesGrid.tsx: set category h3 to font-semibold tracking-[-0.02em]
+- [x] #4 ServicesGrid.tsx: replace facial gold hover tones with pearl/cream-alt HyperUI rows
+- [x] #5 ServicesGrid.tsx: drop inset white icon glitter shadow on category icons
+- [x] #6 ServicesGrid.tsx: shrink icon box 16→14 and strokeWidth 1.75 for quieter Lucide marks
+- [x] #7 ServicesGrid.tsx: soften hairline opacity 60→40
+- [x] #8 ServicesGrid.tsx: watermark 01 uses font-semibold tracking-[-0.03em] at lower opacity
+- [x] #9 ServicesGrid.tsx: empty state uses rounded-card-lg border instead of studio-plate
+- [x] #10 ServicesGrid.tsx: tighten row padding and transition to colors-only (no all)
+- [x] #11 ServicesGrid.tsx: price chips use font-sans + tighter tracking
+- [x] #12 ServicesGrid.tsx: body copy explicitly font-sans
+- [x] #13 ServicesGrid.tsx: widen sticky/list column gap on lg
+- [x] #14 TrustStrip.tsx: remove glass-panel + micro-lift from pillar cards
+- [x] #15 TrustStrip.tsx: use bordered cream/[0.04] Cult panels with rounded-card-lg
+- [x] #16 TrustStrip.tsx: pillar titles font-semibold tracking-[-0.02em]
+- [x] #17 TrustStrip.tsx: icon tones — gold hygiene / brand-light private / sage skin / cream timing
+- [x] #18 TrustStrip.tsx: drop rotating icon entrance animation
+- [x] #19 TrustStrip.tsx: reduce min-height 250→230 and icon box 14→12
+- [x] #20 TrustStrip.tsx: soften section gradient and hairline opacity
+- [x] #21 TrustStrip.tsx: body text font-sans with cream/62
+- [x] #22 TrustStrip.tsx: footer label tracking tightened 0.14→0.12
+- [x] #23 BeforeAfterShowcase.tsx: remove Sparkles pill badge; plain caption eyebrow
+- [x] #24 BeforeAfterShowcase.tsx: h2 font-semibold tracking-[-0.03em]
+- [x] #25 BeforeAfterShowcase.tsx: proof points as list rows (no bordered mini-cards)
+- [x] #26 BeforeAfterShowcase.tsx: ShieldCheck from gold → sage (after-care honesty)
+- [x] #27 BeforeAfterShowcase.tsx: CTA drops drop-shadow / translate lift
+- [x] #28 BeforeAfterShowcase.tsx: keep honest illustrative disclaimer copy
+- [x] #29 BeforeAfterShowcase.tsx: body + caption use font-sans
+- [x] #30 BeforeAfterShowcase.tsx: soften radial brand-light glow
+- [x] #31 BeforeAfterSlider.tsx: remove studio-plate + micro-lift wrapper
+- [x] #32 BeforeAfterSlider.tsx: pearl handle (cream fill) instead of glass-blur brand button
+- [x] #33 BeforeAfterSlider.tsx: focus rings use cream on brand offset
+- [x] #34 BeforeAfterSlider.tsx: labels font-sans tracking-[0.1em]
+- [x] #35 BeforeAfterSlider.tsx: disclaimer color cream/45 (was warm-grey on dark)
+- [x] #36 BeforeAfterSlider.tsx: outer shell rounded-card-lg border cream/12
+- [x] #37 BeforeAfterSlider.tsx: thinner padding frame p-1.5
+- [x] #38 BranchSelector.tsx: add relative overflow + top hairline
+- [x] #39 BranchSelector.tsx: tighten grid gap 5→4 with lg:gap-5
+- [x] #40 BranchSelector.tsx: motion wrappers get min-w-0 for overflow safety
+- [x] #41 BranchSelector.tsx: mt-12 → mt-11/lg:mt-12 breathing
+- [x] #42 ReviewThemes.tsx: replace premium-surface micro-lift with flat bordered articles
+- [x] #43 ReviewThemes.tsx: theme titles use font-display font-semibold tracking-[-0.02em]
+- [x] #44 ReviewThemes.tsx: index numbers padStart + tracking-[-0.03em] muted action
+- [x] #45 ReviewThemes.tsx: keep honest “not quotes or star ratings” disclaimer
+- [x] #46 ReviewThemes.tsx: hairline opacity 50→40
+- [x] #47 ReviewThemes.tsx: tighter article gap 3→2.5
+- [x] #48 ReviewThemes.tsx: body font-sans leading-relaxed
+- [x] #49 GalleryTeaser.tsx: remove premium-surface / micro-lift / image-polish wrappers
+- [x] #50 GalleryTeaser.tsx: Apple-clean media planes with rounded-card only
+- [x] #51 GalleryTeaser.tsx: CTA loses pressable/icon-drift/heavy action shadow
+- [x] #52 GalleryTeaser.tsx: hover scale 1.03 on media (slow ease-apple)
+- [x] #53 GalleryTeaser.tsx: lighter bottom gradient overlay
+- [x] #54 GalleryTeaser.tsx: grid gap tighten 3/4 → 2.5/3
+- [x] #55 GalleryTeaser.tsx: sticky column ratio 0.7/1.3 + gap-14
+- [x] #56 GalleryTeaser.tsx: CTA uses font-sans text-body-sm
+- [x] #57 AboutTeaser.tsx: remove premium-surface / glass-panel caption card
+- [x] #58 AboutTeaser.tsx: full-bleed image plane with bottom type overlay
+- [x] #59 AboutTeaser.tsx: h2 font-semibold tracking-[-0.03em]
+- [x] #60 AboutTeaser.tsx: watermark 02 font-semibold tracking-[-0.03em]
+- [x] #61 AboutTeaser.tsx: story CTA loses glass blur / white/40 / lift shadow
+- [x] #62 AboutTeaser.tsx: outline pill border-brand-action/30 on transparent
+- [x] #63 AboutTeaser.tsx: caption overlay uses font-display semibold cream
+- [x] #64 AboutTeaser.tsx: body font-sans; mt-6→mt-5
+- [x] #65 FAQTeaser.tsx: narrow max-w-3xl → max-w-2xl calm column
+- [x] #66 FAQTeaser.tsx: wrap accordion in quiet rounded-card-lg pearl plate
+- [x] #67 FAQTeaser.tsx: hairline opacity 50→35
+- [x] #68 FAQTeaser.tsx: All questions link font-sans + cream-alt ring offset
+- [x] #69 FAQTeaser.tsx: accordion top margin mt-10→mt-9
+- [x] #70 BookingZone.tsx: remove decorative hairline bar under heading
+- [x] #71 BookingZone.tsx: hide eyebrow (showEyebrow false) for cleaner hero heading
+- [x] #72 BookingZone.tsx: WhatsApp panel rounded-card-lg + border cream/10
+- [x] #73 BookingZone.tsx: panel display title font-semibold tracking-[-0.02em]
+- [x] #74 BookingZone.tsx: Dinaya placeholder rounded-card-lg quieter dashed border
+- [x] #75 BookingZone.tsx: non-standalone shell rounded-card-lg
+- [x] #76 BookingZone.tsx: WhatsApp icon tile rounded-card (not pill) + border
+- [x] #77 BookingZone.tsx: explicit font-sans on CTAs and helper copy
+- [x] #78 BookingZone.tsx: content top margin mt-12→mt-11
+- [x] #79 CareJourney.tsx: showEyebrow false; quieter subtitle (drop gold wording)
+- [x] #80 CareJourney.tsx: timeline rail wine-only (remove gold glitter gradient)
+- [x] #81 CareJourney.tsx: step markers border-brand-action (not gold)
+- [x] #82 CareJourney.tsx: step titles font-semibold tracking-[-0.02em]
+- [x] #83 CareJourney.tsx: add section top hairline
+- [x] #84 CareJourney.tsx: note + bodies font-sans; tighter vertical rhythm
+- [x] #85 service-card.tsx: remove studio-plate / micro-lift / gradient shells
+- [x] #86 service-card.tsx: flat white/80 rounded-card-lg bordered cards
+- [x] #87 service-card.tsx: facial rail gold→warm-grey (less glitter)
+- [x] #88 service-card.tsx: titles font-display font-semibold tracking-[-0.02em]
+- [x] #89 service-card.tsx: chips/buttons font-sans; drop pressable/icon-drift/shadow
+- [x] #90 service-card.tsx: duration chip cream/80 instead of white/48 glass
+- [x] #91 service-card.tsx: rail height h-px→h-0.5 with shorter rest width
+- [x] #92 branch-card.tsx: replace premium-surface micro-lift with flat pearl border card
+- [x] #93 branch-card.tsx: branch name font-semibold tracking-[-0.02em]
+- [x] #94 branch-card.tsx: WhatsApp CTA solid brand-action (no wine gradient glitter)
+- [x] #95 branch-card.tsx: pending badge gold→neutral cream-alt
+- [x] #96 branch-card.tsx: map pin tile smaller, no drop shadow
+- [x] #97 branch-card.tsx: remove icon-drift / pressable motion helpers
+- [x] #98 branch-card.tsx: hours/meta font-sans; border-t warm-border/70
+- [x] #99 marquee-strip.tsx: words font-semibold tracking-[-0.02em]
+- [x] #100 marquee-strip.tsx: add border-y brand-dark/20; py-3.5
+- [x] #101 marquee-strip.tsx: separator brand-light/70; will-change-transform on track
+- [x] #102 marquee-strip.tsx: responsive px-5/sm:px-6 on word cells
+- [x] #103 ServicesGrid.tsx: arrow control h-11→h-10 for denser HyperUI rows
+- [x] #104 TrustStrip.tsx: lg:gap-4 between pillar columns
+- [x] #105 GalleryTeaser.tsx: focus ring offset matches cream-alt ground
+- [x] #106 AboutTeaser.tsx: image hover scale 1.02 without padded frame
+- [x] #107 BookingZone.tsx: standalone gradient angle 145deg for Cult panel field
+- [x] #108 ReviewThemes.tsx: grid ratio 0.88/1.12 for calmer type/list balance
+- [x] #109 CareJourney.tsx: step index tracking 0.14→0.12
+- [x] #110 service-card.tsx: Book this padding px-5→px-4 for quieter CTA

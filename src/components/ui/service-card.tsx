@@ -3,36 +3,37 @@ import { ArrowRight, Clock3 } from "lucide-react";
 import { formatPriceFrom, type Service } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
+/** HyperUI-clean service cards — flat pearl shells, restrained category rails. */
 const SERVICE_CARD_TONES: Record<
   Service["category"],
   { shell: string; rail: string; chip: string; button: string; label: string }
 > = {
   waxing: {
-    shell: "bg-[linear-gradient(145deg,rgba(255,247,249,0.98),rgba(252,229,236,0.82))]",
+    shell: "bg-white/80",
     rail: "bg-brand-action",
-    chip: "border-brand-action/22 bg-brand-action/8 text-brand-action",
-    button: "border-brand-action/30 bg-brand-action text-cream hover:bg-brand-dark",
+    chip: "border-brand-action/18 bg-brand-mist text-brand-action",
+    button: "border-brand-action/25 bg-brand-action text-cream hover:bg-brand-dark",
     label: "Signature waxing",
   },
   facial: {
-    shell: "bg-[linear-gradient(145deg,rgba(255,247,249,0.98),rgba(246,232,226,0.9))]",
-    rail: "bg-gold",
-    chip: "border-gold/40 bg-gold/12 text-warm",
-    button: "border-gold/40 bg-white/56 text-warm hover:bg-brand-mist",
+    shell: "bg-white/80",
+    rail: "bg-warm-grey/50",
+    chip: "border-warm-border bg-cream-alt text-warm",
+    button: "border-warm-border bg-cream text-warm hover:bg-brand-mist hover:border-brand-action/25 hover:text-brand-action",
     label: "Skin care",
   },
   moroccan: {
-    shell: "bg-[linear-gradient(145deg,rgba(255,247,249,0.98),rgba(238,239,224,0.88))]",
+    shell: "bg-white/80",
     rail: "bg-sage",
-    chip: "border-sage/40 bg-sage/16 text-warm",
-    button: "border-sage/40 bg-white/56 text-warm hover:bg-sage/18",
+    chip: "border-sage/30 bg-sage/12 text-warm",
+    button: "border-sage/35 bg-cream text-warm hover:bg-sage/16",
     label: "Ritual care",
   },
   "hydra-facial": {
-    shell: "bg-[linear-gradient(145deg,rgba(255,247,249,0.98),rgba(238,230,239,0.9))]",
+    shell: "bg-white/80",
     rail: "bg-brand",
-    chip: "border-brand/16 bg-brand/8 text-brand",
-    button: "border-brand/20 bg-brand text-cream hover:bg-brand-action",
+    chip: "border-brand/12 bg-brand/6 text-brand",
+    button: "border-brand/18 bg-brand text-cream hover:bg-brand-action",
     label: "Hydration",
   },
 };
@@ -51,32 +52,52 @@ export function ServiceCard({
     : `/book?service=${encodeURIComponent(service.name)}`;
 
   return (
-    <div className={cn("group micro-lift studio-plate flex h-full flex-col overflow-hidden rounded-card p-6", tone.shell)}>
-      <div className="relative z-10">
-        <div className={cn("mb-5 h-px w-12 transition-all duration-500 group-hover:w-20", tone.rail)} />
-        <p className="mb-2 text-caption font-semibold uppercase tracking-[0.12em] text-warm-grey">
+    <div
+      className={cn(
+        "group flex h-full flex-col overflow-hidden rounded-card-lg border border-warm-border/75 p-5 transition-colors duration-300 hover:border-warm-border sm:p-6",
+        tone.shell
+      )}
+    >
+      <div>
+        <div
+          className={cn(
+            "mb-4 h-0.5 w-10 transition-all duration-500 group-hover:w-16",
+            tone.rail
+          )}
+        />
+        <p className="mb-1.5 font-sans text-caption font-semibold uppercase tracking-[0.1em] text-warm-grey">
           {tone.label}
         </p>
-        <h3 className="text-h4 font-semibold text-warm">{service.name}</h3>
+        <h3 className="font-display text-h4 font-semibold tracking-[-0.02em] text-warm">
+          {service.name}
+        </h3>
       </div>
-      <div className="relative z-10 mt-4 flex flex-wrap items-center gap-2">
-        <span className={cn("rounded-pill border px-3 py-1 text-caption font-semibold", tone.chip)}>
+      <div className="mt-3.5 flex flex-wrap items-center gap-2">
+        <span
+          className={cn(
+            "rounded-pill border px-2.5 py-0.5 font-sans text-caption font-semibold",
+            tone.chip
+          )}
+        >
           {formatPriceFrom(service.priceFrom)}
         </span>
-        <span className="inline-flex items-center gap-1.5 rounded-pill border border-warm-border/70 bg-white/48 px-3 py-1 text-caption text-warm-grey">
-          <Clock3 className="h-3.5 w-3.5 text-brand-action" />
+        <span className="inline-flex items-center gap-1.5 rounded-pill border border-warm-border/70 bg-cream/80 px-2.5 py-0.5 font-sans text-caption text-warm-grey">
+          <Clock3 className="h-3.5 w-3.5 text-brand-action" strokeWidth={1.75} />
           {service.duration}
         </span>
       </div>
-      <p className="relative z-10 mt-4 flex-1 text-body-sm leading-relaxed text-warm-grey">
+      <p className="mt-3.5 flex-1 font-sans text-body-sm leading-relaxed text-warm-grey">
         {service.description}
       </p>
       <Link
         href={bookHref}
-        className={cn("pressable icon-drift relative z-10 mt-6 inline-flex items-center gap-1.5 self-start rounded-pill border px-5 py-2.5 text-body-sm font-medium shadow-[0_10px_24px_rgba(39,19,21,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2", tone.button)}
+        className={cn(
+          "mt-5 inline-flex items-center gap-1.5 self-start rounded-pill border px-4 py-2 font-sans text-body-sm font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2",
+          tone.button
+        )}
       >
         Book this
-        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
       </Link>
     </div>
   );

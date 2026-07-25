@@ -29,13 +29,13 @@ interface CareJourneyProps {
   subtitle?: string;
 }
 
-/** Reusable Arrive → Prep → Care → After-care sequence (wine/gold timeline). */
+/** Reusable Arrive → Prep → Care → After-care sequence — wine timeline, less glitter. */
 export function CareJourney({
   className,
   note = "Most requests are reviewed the same day when possible; allow up to about a day for confirmation if the diary is full.",
   eyebrow = "Care journey",
   title = "Arrive → Prep → Care → After-care.",
-  subtitle = "A quiet sequence — muted wine and gold — so the visit feels predictable without feeling theatrical.",
+  subtitle = "A quiet sequence so the visit feels predictable without feeling theatrical.",
 }: CareJourneyProps) {
   return (
     <section
@@ -44,38 +44,42 @@ export function CareJourney({
         className
       )}
     >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-35" />
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           align="left"
           eyebrow={eyebrow}
+          showEyebrow={false}
           title={title}
           subtitle={subtitle}
         />
         {note && (
-          <p className="mt-5 max-w-xl text-body-sm leading-relaxed text-warm-grey">
+          <p className="mt-4 max-w-xl font-sans text-body-sm leading-relaxed text-warm-grey">
             {note}
           </p>
         )}
 
-        <ol className="relative mt-14 space-y-0 sm:mt-16">
+        <ol className="relative mt-12 space-y-0 sm:mt-14">
           <div
             aria-hidden
-            className="absolute bottom-4 left-[0.55rem] top-4 w-px bg-[linear-gradient(180deg,rgba(217,179,95,0.55),rgba(162,15,55,0.35),rgba(217,179,95,0.2))]"
+            className="absolute bottom-3 left-[0.55rem] top-3 w-px bg-[linear-gradient(180deg,rgba(162,15,55,0.45),rgba(162,15,55,0.18),rgba(162,15,55,0.08))]"
           />
           {CARE_JOURNEY_STEPS.map((step, index) => (
             <li
               key={step.title}
-              className="relative flex gap-5 pb-12 last:pb-0 sm:gap-6 sm:pb-14"
+              className="relative flex gap-5 pb-11 last:pb-0 sm:gap-6 sm:pb-12"
             >
-              <span className="relative z-10 mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#d9b35f]/70 bg-cream">
-                <span className="h-2 w-2 rounded-full bg-brand-action/80" />
+              <span className="relative z-10 mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-brand-action/35 bg-cream-alt">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />
               </span>
               <div className="min-w-0 pt-0.5">
-                <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action/70">
+                <p className="font-sans text-caption font-semibold uppercase tracking-[0.12em] text-brand-action/65">
                   {String(index + 1).padStart(2, "0")}
                 </p>
-                <h3 className="mt-1.5 font-display text-h3 text-warm">{step.title}</h3>
-                <p className="mt-2.5 max-w-xl text-body-sm leading-relaxed text-warm-grey">
+                <h3 className="mt-1.5 font-display text-h3 font-semibold tracking-[-0.02em] text-warm">
+                  {step.title}
+                </h3>
+                <p className="mt-2 max-w-xl font-sans text-body-sm leading-relaxed text-warm-grey">
                   {step.body}
                 </p>
               </div>

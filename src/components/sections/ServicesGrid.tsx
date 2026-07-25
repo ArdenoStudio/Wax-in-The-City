@@ -21,37 +21,38 @@ const ICONS: Record<ServiceCategory, LucideIcon> = {
   "hydra-facial": Droplets,
 };
 
+/** HyperUI-style row tones — wine/pearl first, restrained accent color. */
 const CATEGORY_TONES: Record<
   ServiceCategory,
   { row: string; icon: string; price: string; arrow: string; focus: string }
 > = {
   waxing: {
-    row: "border border-transparent hover:border-brand-action/25 hover:bg-brand-action/[0.075]",
-    icon: "border-brand-action/14 bg-brand-mist text-brand-action group-hover:bg-brand-action group-hover:text-cream",
-    price: "border-brand-action/18 bg-brand-mist/80 text-brand-action",
-    arrow: "border-brand-action/18 text-brand-action group-hover:border-brand-action group-hover:bg-brand-action group-hover:text-cream",
-    focus: "focus-visible:bg-brand-action/[0.075] focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
+    row: "border border-transparent hover:border-brand-action/20 hover:bg-brand-mist/70",
+    icon: "border-brand-action/12 bg-brand-mist text-brand-action group-hover:border-brand-action/30 group-hover:bg-brand-action group-hover:text-cream",
+    price: "border-brand-action/16 bg-brand-mist/90 text-brand-action",
+    arrow: "border-brand-action/16 text-brand-action group-hover:border-brand-action group-hover:bg-brand-action group-hover:text-cream",
+    focus: "focus-visible:bg-brand-mist/70 focus-visible:ring-2 focus-visible:ring-brand-action/35 focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
   },
   facial: {
-    row: "border border-transparent hover:border-brand-action/20 hover:bg-gold/[0.09]",
-    icon: "border-gold/30 bg-gold/12 text-warm group-hover:bg-gold group-hover:text-brand-dark",
-    price: "border-gold/35 bg-gold/12 text-warm",
-    arrow: "border-gold/30 text-warm group-hover:border-gold group-hover:bg-gold group-hover:text-brand-dark",
-    focus: "focus-visible:bg-gold/[0.09] focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
+    row: "border border-transparent hover:border-warm-border hover:bg-cream-alt/80",
+    icon: "border-warm-border bg-cream-alt text-warm group-hover:border-brand-action/25 group-hover:bg-brand-action group-hover:text-cream",
+    price: "border-warm-border bg-cream-alt text-warm",
+    arrow: "border-warm-border text-warm group-hover:border-brand-action group-hover:bg-brand-action group-hover:text-cream",
+    focus: "focus-visible:bg-cream-alt/80 focus-visible:ring-2 focus-visible:ring-brand-action/30 focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
   },
   moroccan: {
-    row: "border border-transparent hover:border-brand-action/18 hover:bg-sage/[0.12]",
-    icon: "border-sage/30 bg-sage/14 text-warm group-hover:bg-sage group-hover:text-brand-dark",
-    price: "border-sage/35 bg-sage/14 text-warm",
-    arrow: "border-sage/30 text-warm group-hover:border-sage group-hover:bg-sage group-hover:text-brand-dark",
-    focus: "focus-visible:bg-sage/[0.12] focus-visible:ring-2 focus-visible:ring-sage/50 focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
+    row: "border border-transparent hover:border-sage/25 hover:bg-sage/[0.08]",
+    icon: "border-sage/25 bg-sage/10 text-warm group-hover:border-sage/40 group-hover:bg-sage group-hover:text-brand-dark",
+    price: "border-sage/28 bg-sage/10 text-warm",
+    arrow: "border-sage/25 text-warm group-hover:border-sage group-hover:bg-sage group-hover:text-brand-dark",
+    focus: "focus-visible:bg-sage/[0.08] focus-visible:ring-2 focus-visible:ring-sage/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
   },
   "hydra-facial": {
-    row: "border border-transparent hover:border-brand-action/22 hover:bg-brand/[0.07]",
-    icon: "border-brand/12 bg-brand/8 text-brand group-hover:bg-brand group-hover:text-cream",
-    price: "border-brand/16 bg-brand/8 text-brand",
-    arrow: "border-brand/16 text-brand group-hover:border-brand group-hover:bg-brand group-hover:text-cream",
-    focus: "focus-visible:bg-brand/[0.07] focus-visible:ring-2 focus-visible:ring-brand/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
+    row: "border border-transparent hover:border-brand/14 hover:bg-brand/[0.04]",
+    icon: "border-brand/10 bg-brand/6 text-brand group-hover:border-brand/20 group-hover:bg-brand group-hover:text-cream",
+    price: "border-brand/12 bg-brand/6 text-brand",
+    arrow: "border-brand/12 text-brand group-hover:border-brand group-hover:bg-brand group-hover:text-cream",
+    focus: "focus-visible:bg-brand/[0.04] focus-visible:ring-2 focus-visible:ring-brand/35 focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
   },
 };
 
@@ -68,7 +69,7 @@ function shortestDurationTeaser(slug: ServiceCategory, services = SERVICES): str
   return `From ${shortest.duration}`;
 }
 
-/** Service category overview with a sharper menu-led layout. */
+/** Service category overview — HyperUI clear list, Cal Sans titles. */
 export function ServicesGrid({
   categories = SERVICE_CATEGORIES,
 }: {
@@ -79,9 +80,14 @@ export function ServicesGrid({
       id="services"
       className="relative scroll-mt-24 overflow-hidden bg-cream px-5 py-section-lg lg:px-8"
     >
-      <span aria-hidden className="pointer-events-none absolute right-6 top-6 select-none font-display text-[6rem] font-light leading-none text-warm/[0.035] sm:text-[9rem] lg:right-12 lg:text-[11rem]">01</span>
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-60" />
-      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+      <span
+        aria-hidden
+        className="pointer-events-none absolute right-6 top-6 select-none font-display text-[5.5rem] font-semibold leading-none tracking-[-0.03em] text-warm/[0.03] sm:text-[8rem] lg:right-12 lg:text-[10rem]"
+      >
+        01
+      </span>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-40" />
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.76fr_1.24fr] lg:items-start lg:gap-14">
         <div className="w-full min-w-0 max-w-[calc(100vw-2.5rem)] sm:max-w-full lg:sticky lg:top-28">
           <SectionHeading
             eyebrow="Treatment menu"
@@ -91,10 +97,10 @@ export function ServicesGrid({
             align="left"
             className="w-full max-w-[calc(100vw-2.5rem)] sm:max-w-full"
           />
-          <div className="mt-7">
+          <div className="mt-8">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 rounded-pill bg-ink px-5 py-3 text-body-sm font-medium text-cream shadow-[0_14px_34px_rgba(21,16,17,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-action focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+              className="inline-flex items-center gap-2 rounded-pill bg-ink px-5 py-3 text-body-sm font-medium text-cream transition-colors duration-300 hover:bg-brand-action focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
             >
               Full menu
               <ArrowRight className="h-4 w-4" />
@@ -103,9 +109,11 @@ export function ServicesGrid({
         </div>
 
         {categories.length === 0 ? (
-          <div className="studio-plate rounded-card px-6 py-14 text-center">
-            <p className="font-display text-h3 text-warm">Menu updating</p>
-            <p className="mx-auto mt-3 max-w-sm text-body-sm text-warm-grey">
+          <div className="rounded-card-lg border border-warm-border/80 bg-white/70 px-6 py-14 text-center">
+            <p className="font-display text-h3 font-semibold tracking-[-0.02em] text-warm">
+              Menu updating
+            </p>
+            <p className="mx-auto mt-3 max-w-sm font-sans text-body-sm text-warm-grey">
               Treatment categories will appear here shortly. Browse the full menu
               or message us on WhatsApp in the meantime.
             </p>
@@ -123,7 +131,7 @@ export function ServicesGrid({
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="studio-plate rounded-card p-2"
+            className="rounded-card-lg border border-warm-border/80 bg-white/75 p-1.5 sm:p-2"
           >
             {categories.map((cat, i) => {
               const Icon = ICONS[cat.slug];
@@ -136,36 +144,55 @@ export function ServicesGrid({
                     href={`/services/${cat.href}`}
                     aria-label={`${cat.name}, ${fromPrice}`}
                     className={cn(
-                      "group relative z-10 grid gap-5 rounded-card p-5 transition-all duration-500 ease-out focus-visible:outline-none sm:grid-cols-[76px_1fr_auto] sm:items-center sm:p-6",
+                      "group relative z-10 grid gap-4 rounded-card p-4 transition-colors duration-300 ease-out focus-visible:outline-none sm:grid-cols-[64px_1fr_auto] sm:items-center sm:gap-5 sm:p-5",
                       tone.row,
                       tone.focus
                     )}
                   >
-                    <span className={cn("flex h-16 w-16 items-center justify-center rounded-card border shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] transition-all duration-500", tone.icon)}>
-                        <Icon className="h-6 w-6" />
+                    <span
+                      className={cn(
+                        "flex h-14 w-14 items-center justify-center rounded-card border transition-colors duration-300",
+                        tone.icon
+                      )}
+                    >
+                      <Icon className="h-5 w-5" strokeWidth={1.75} />
                     </span>
 
-                    <div>
-                      <div className="flex flex-wrap items-center gap-3">
-                        <h3 className="font-display text-h2 font-medium leading-tight text-warm">
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        <h3 className="font-display text-h3 font-semibold leading-tight tracking-[-0.02em] text-warm sm:text-h2">
                           {cat.name}
                         </h3>
-                        <span className={cn("rounded-pill border px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em]", tone.price)}>
+                        <span
+                          className={cn(
+                            "rounded-pill border px-2.5 py-0.5 font-sans text-caption font-semibold uppercase tracking-[0.1em]",
+                            tone.price
+                          )}
+                        >
                           {fromPrice}
                         </span>
                       </div>
-                      <p className="mt-2 max-w-lg text-body-sm text-warm-grey">{cat.short}</p>
+                      <p className="mt-1.5 max-w-lg font-sans text-body-sm text-warm-grey">
+                        {cat.short}
+                      </p>
                       {durationTeaser && (
-                        <p className="mt-1.5 text-caption text-warm-grey/80">{durationTeaser}</p>
+                        <p className="mt-1 font-sans text-caption text-warm-grey/75">
+                          {durationTeaser}
+                        </p>
                       )}
                     </div>
 
-                    <span className={cn("inline-flex h-11 w-11 items-center justify-center rounded-pill border transition-all duration-300 sm:justify-self-end", tone.arrow)}>
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    <span
+                      className={cn(
+                        "inline-flex h-10 w-10 items-center justify-center rounded-pill border transition-colors duration-300 sm:justify-self-end",
+                        tone.arrow
+                      )}
+                    >
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                     </span>
                   </Link>
                   {i < categories.length - 1 && (
-                    <div className="relative z-10 mx-5 h-px bg-warm-border/70" />
+                    <div className="relative z-10 mx-4 h-px bg-warm-border/60 sm:mx-5" />
                   )}
                 </motion.div>
               );

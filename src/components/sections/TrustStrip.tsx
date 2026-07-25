@@ -10,20 +10,20 @@ import { cn } from "@/lib/utils";
 
 const ICONS: LucideIcon[] = [ShieldCheck, Heart, BadgeCheck, Clock3];
 
-/** Gold for hygiene; muted sage for skin/after-care related; gold default for the rest. */
+/** Hygiene gold; private rooms cream; skin/after-care sage; timing pearl. */
 const ICON_TONES = [
-  "text-gold", // No double dipping — hygiene
-  "text-gold", // Private rooms
-  "text-sage", // Skin-first choices — after-care / skin guidance
-  "text-gold", // Appointment led
+  "text-gold",
+  "text-brand-light",
+  "text-sage",
+  "text-cream/80",
 ] as const;
 
-/** Why-choose-us trust pillars (file 08, section 06). Clear, lightly animated. */
+/** Why-choose-us trust pillars — Cult panel fields, less glass. */
 export function TrustStrip() {
   return (
     <section id="trust" className="relative overflow-hidden bg-ink px-5 py-section-lg text-cream lg:px-8">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(53,16,23,0.76),rgba(21,16,17,0.96)_52%,rgba(19,9,13,1))]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-40" />
+      <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(43,7,16,0.92),rgba(21,16,17,0.98)_55%,rgba(18,6,10,1))]" />
       <div className="relative mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Studio standard"
@@ -38,7 +38,7 @@ export function TrustStrip() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4"
         >
           {TRUST_PILLARS.map((pillar, i) => {
             const Icon = ICONS[i];
@@ -46,35 +46,35 @@ export function TrustStrip() {
               <motion.div
                 key={pillar.title}
                 variants={scaleIn}
-                className="group glass-panel micro-lift flex min-h-[250px] flex-col rounded-card p-6"
+                className="group flex min-h-[230px] flex-col rounded-card-lg border border-cream/10 bg-cream/[0.04] p-5 transition-colors duration-300 hover:border-cream/16 hover:bg-cream/[0.07] sm:p-6"
               >
-                <motion.span
-                  initial={{ rotate: -10 }}
-                  whileInView={{ rotate: 0 }}
-                  viewport={viewportOnce}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
+                <span
                   className={cn(
-                    "flex h-14 w-14 items-center justify-center rounded-card bg-cream/10 transition-transform duration-500 group-hover:scale-105",
-                    ICON_TONES[i] ?? "text-gold"
+                    "flex h-12 w-12 items-center justify-center rounded-card border border-cream/10 bg-cream/[0.06] transition-transform duration-300 group-hover:scale-[1.03]",
+                    ICON_TONES[i] ?? "text-brand-light"
                   )}
                 >
-                  <Icon className="h-7 w-7" />
-                </motion.span>
-                <h3 className="mt-8 font-display text-h4 font-medium text-cream">{pillar.title}</h3>
-                <p className="mt-3 text-body-sm text-cream/64">{pillar.body}</p>
+                  <Icon className="h-6 w-6" strokeWidth={1.75} />
+                </span>
+                <h3 className="mt-7 font-display text-h4 font-semibold tracking-[-0.02em] text-cream">
+                  {pillar.title}
+                </h3>
+                <p className="mt-2.5 font-sans text-body-sm leading-relaxed text-cream/62">
+                  {pillar.body}
+                </p>
               </motion.div>
             );
           })}
         </motion.div>
 
-        <div className="mt-10 border-t border-cream/12 pt-6">
-          <p className="text-center text-caption font-semibold uppercase tracking-[0.14em] text-cream/45">
+        <div className="mt-10 border-t border-cream/10 pt-6">
+          <p className="text-center font-sans text-caption font-semibold uppercase tracking-[0.12em] text-cream/40">
             Studio standard
           </p>
           <p className="mt-4 text-center">
             <Link
               href="/faq"
-              className="inline-flex items-center gap-2 text-body-sm font-medium text-sage transition-colors hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              className="inline-flex items-center gap-2 font-sans text-body-sm font-medium text-sage transition-colors hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/45 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
               Hygiene &amp; room prep questions
               <ArrowRight className="h-4 w-4" />
