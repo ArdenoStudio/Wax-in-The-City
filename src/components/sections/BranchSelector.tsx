@@ -9,10 +9,11 @@ import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 /** Branch quick-selector (file 08, section 04). Surfaces the location decision early. */
 export function BranchSelector() {
   return (
-    <section className="bg-cream-alt px-5 py-section-lg lg:px-8">
+    <section id="locations-teaser" className="bg-cream-alt px-5 py-section-lg lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Branches"
+          showEyebrow={false}
           title="Choose the easiest route in."
           subtitle="Two Colombo locations with clear hours, quick WhatsApp booking and a calmer appointment flow."
         />

@@ -73,7 +73,7 @@ export default async function ServicesPage() {
       <PageHero
         eyebrow="Treatment menu"
         title="Choose the room, the ritual, the result."
-        subtitle="Waxing, skin care, Moroccan body rituals and HydraFacial work, handled with private-room care."
+        subtitle="Private-room waxing, facials, Moroccan rituals, and HydraFacial — clear choices, careful prep."
         image={IMAGES.services.facials}
         imageAlt="Soft skincare treatment close-up in a private studio"
         size="md"
@@ -114,18 +114,16 @@ export default async function ServicesPage() {
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,7,10,0.08)_0%,rgba(16,7,10,0.42)_46%,rgba(16,7,10,0.92)_100%)]" />
                   <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                    <div className="mb-4 flex max-w-full flex-wrap items-center gap-2">
-                      <span className="rounded-pill border border-cream/18 bg-cream/12 px-3 py-1 text-caption font-semibold text-brand-light backdrop-blur-xl">
-                        {visual.label}
-                      </span>
-                      <span className="shrink-0 rounded-pill bg-cream px-3 py-1 text-caption font-semibold text-brand">
-                        {formatLKRFrom(category.priceFrom)}
-                      </span>
-                    </div>
-                    <h2 className="font-serif text-[2rem] font-medium leading-none text-cream">
+                    <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light/85">
+                      {visual.label}
+                    </p>
+                    <h2 className="mt-2 font-serif text-[2rem] font-medium leading-none text-cream">
                       {category.name}
                     </h2>
                     <p className="mt-3 max-w-sm break-words text-body-sm text-cream/72">{visual.note}</p>
+                    <p className="mt-3 text-body-sm font-medium text-cream/88">
+                      {formatLKRFrom(category.priceFrom)}
+                    </p>
                     <span className="icon-drift mt-5 inline-flex items-center gap-2 text-body-sm font-semibold text-brand-light">
                       View {category.name}
                       <ArrowRight className="h-4 w-4" />

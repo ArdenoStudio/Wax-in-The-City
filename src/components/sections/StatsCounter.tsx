@@ -28,7 +28,7 @@ function Ticker({ value, suffix }: { value: number; suffix?: string }) {
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const reduce = useReducedMotion();
   const count = useMotionValue(0);
-  const display = useTransform(count, (v) => Math.round(v).toLocaleString("en-US"));
+  const display = useTransform(count, (v) => Math.round(v).toLocaleString("en-LK"));
 
   useEffect(() => {
     if (!inView) return;
@@ -49,15 +49,17 @@ function Ticker({ value, suffix }: { value: number; suffix?: string }) {
 }
 
 export function StatsCounter({ stats = DEFAULT_STATS }: { stats?: Stat[] }) {
+  const reduce = useReducedMotion();
+
   return (
     <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
       {stats.map((stat) => (
         <motion.div
           key={stat.label}
-          initial={{ opacity: 0, y: 16 }}
+          initial={reduce ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
+          transition={reduce ? { duration: 0 } : { duration: 0.5 }}
           className="premium-surface micro-lift rounded-card p-5 text-center"
         >
           <p className="relative z-10 font-serif text-[2.75rem] font-medium leading-none text-brand-action sm:text-[3.25rem]">

@@ -13,21 +13,22 @@ export function GalleryTeaser() {
   const photos = GALLERY.slice(0, 6);
 
   return (
-    <section className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
+    <section id="gallery-teaser" className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
         <div className="lg:sticky lg:top-28">
           <SectionHeading
             eyebrow="Visual proof"
+            showEyebrow={false}
             title="A closer look at the studio rhythm."
             subtitle="Treatment rooms, product details and quiet prep moments help clients understand what the visit feels like before they arrive."
             align="left"
           />
           <Link
             href="/gallery"
-            className="mt-8 inline-flex items-center gap-2 rounded-pill border border-brand-action/35 bg-white/40 px-6 py-3 font-medium text-brand-action shadow-[0_14px_34px_rgba(39,19,21,0.05)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
+            className="pressable icon-drift mt-8 inline-flex items-center gap-2 rounded-pill bg-brand-action px-7 py-3.5 font-medium text-cream shadow-[0_16px_36px_rgba(162,15,55,0.22)] transition-colors hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2"
           >
-            See full gallery
+            View gallery
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -39,27 +40,40 @@ export function GalleryTeaser() {
           viewport={viewportOnce}
           className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3"
         >
-          {photos.map((photo, i) => (
-            <motion.div
-              key={`${photo.src}-${i}`}
-              variants={scaleIn}
-              className={`group premium-surface micro-lift overflow-hidden rounded-card ${
-                i === 0 || i === 5 ? "row-span-2" : ""
-              }`}
-            >
-              <div className={`relative z-10 w-full overflow-hidden rounded-[7px] ${i === 0 || i === 5 ? "h-full min-h-[280px]" : "aspect-square"}`}>
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  sizes="(max-width: 1024px) 50vw, 33vw"
-                  unoptimized={photo.src.startsWith("http")}
-                  className="image-polish object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/24 via-transparent to-transparent opacity-70 transition-opacity group-hover:opacity-40" />
-              </div>
-            </motion.div>
-          ))}
+          {photos.map((photo, i) => {
+            const tallOnLg = i === 0 || i === 5;
+            return (
+              <motion.div
+                key={`${photo.src}-${i}`}
+                variants={scaleIn}
+                className={`group premium-surface micro-lift overflow-hidden rounded-card ${
+                  tallOnLg ? "lg:row-span-2" : ""
+                }`}
+              >
+                <Link
+                  href="/gallery"
+                  aria-label={`View gallery: ${photo.alt}`}
+                  className="relative z-10 block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-inset"
+                >
+                  <div
+                    className={`relative w-full overflow-hidden rounded-[7px] aspect-[4/5] ${
+                      tallOnLg ? "lg:aspect-auto lg:h-full lg:min-h-[280px]" : "lg:aspect-square"
+                    }`}
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 33vw"
+                      unoptimized={photo.src.startsWith("http")}
+                      className="image-polish object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/24 via-transparent to-transparent opacity-70 transition-opacity group-hover:opacity-40" />
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

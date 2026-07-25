@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Clock3 } from "lucide-react";
-import { type Service } from "@/lib/site";
-import { cn, formatLKRFrom } from "@/lib/utils";
+import { formatPriceFrom, type Service } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 const SERVICE_CARD_TONES: Record<
   Service["category"],
@@ -37,8 +37,18 @@ const SERVICE_CARD_TONES: Record<
   },
 };
 
-export function ServiceCard({ service }: { service: Service }) {
+export function ServiceCard({
+  service,
+  branch,
+}: {
+  service: Service;
+  /** When set, included as `branch` query on the book link. */
+  branch?: string;
+}) {
   const tone = SERVICE_CARD_TONES[service.category];
+  const bookHref = branch
+    ? `/book?service=${encodeURIComponent(service.name)}&branch=${encodeURIComponent(branch)}`
+    : `/book?service=${encodeURIComponent(service.name)}`;
 
   return (
     <div className={cn("group micro-lift studio-plate flex h-full flex-col overflow-hidden rounded-card p-6", tone.shell)}>
@@ -51,7 +61,7 @@ export function ServiceCard({ service }: { service: Service }) {
       </div>
       <div className="relative z-10 mt-4 flex flex-wrap items-center gap-2">
         <span className={cn("rounded-pill border px-3 py-1 text-caption font-semibold", tone.chip)}>
-          {formatLKRFrom(service.priceFrom)}
+          {formatPriceFrom(service.priceFrom)}
         </span>
         <span className="inline-flex items-center gap-1.5 rounded-pill border border-warm-border/70 bg-white/48 px-3 py-1 text-caption text-warm-grey">
           <Clock3 className="h-3.5 w-3.5 text-brand-action" />
@@ -62,8 +72,8 @@ export function ServiceCard({ service }: { service: Service }) {
         {service.description}
       </p>
       <Link
-        href={`/book?service=${encodeURIComponent(service.name)}`}
-        className={cn("pressable icon-drift relative z-10 mt-6 inline-flex items-center gap-1.5 self-start rounded-pill border px-5 py-2.5 text-body-sm font-medium shadow-[0_10px_24px_rgba(39,19,21,0.05)]", tone.button)}
+        href={bookHref}
+        className={cn("pressable icon-drift relative z-10 mt-6 inline-flex items-center gap-1.5 self-start rounded-pill border px-5 py-2.5 text-body-sm font-medium shadow-[0_10px_24px_rgba(39,19,21,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/45 focus-visible:ring-offset-2", tone.button)}
       >
         Book this
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
