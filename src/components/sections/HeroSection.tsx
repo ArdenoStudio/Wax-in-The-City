@@ -11,21 +11,22 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { WhatsappIcon } from "@/components/icons";
 import { IMAGES, BLUR_DATA_URL } from "@/lib/images";
-import { CARE_STANDARDS } from "@/lib/site";
+import { CARE_STANDARDS, whatsappLink } from "@/lib/site";
 
 const HEADLINE_LINES = ["Private", "waxing,", "quietly", "perfected."];
 const HERO_TRUST_POINTS = ["Fresh wax setup", "Private rooms", "Confirmation first"];
 
 function scrollToServices() {
-  document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+  document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative flex min-h-[760px] w-full items-end overflow-hidden bg-ink text-cream">
+    <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden bg-ink text-cream">
       <motion.div
         initial={{ opacity: 0, scale: 1.06 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -36,6 +37,7 @@ export function HeroSection() {
           src={IMAGES.hero.src}
           alt={IMAGES.hero.alt}
           fill
+          priority
           loading="eager"
           fetchPriority="high"
           sizes="100vw"
@@ -58,7 +60,12 @@ export function HeroSection() {
             className="mb-6 inline-flex items-center gap-2 rounded-pill border border-cream/18 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-xl"
           >
             <Sparkles className="h-4 w-4" />
-            Ladies-only private studio · Colombo
+            <span>
+              <span className="font-serif normal-case tracking-normal text-cream">
+                Wax In The City
+              </span>
+              {" · Ladies-only Colombo"}
+            </span>
           </motion.p>
 
           <h1 className="max-w-[10ch] font-serif text-[clamp(3.25rem,8vw,5.8rem)] font-medium leading-[0.92] text-cream">
@@ -85,9 +92,9 @@ export function HeroSection() {
             transition={{ duration: 0.65, delay: 0.36, ease: [0.16, 1, 0.3, 1] }}
             className="mt-7 w-full max-w-[34rem] text-pretty text-body-lg text-cream/78"
           >
-            A calmer appointment experience for waxing, facials and skin care,
-            designed around privacy, prep, hygiene and after-care that feels
-            considered.
+            Private rooms, fresh wax for every guest, and a confirmation before
+            you arrive — so waxing, facials and skin care feel calm from the
+            first message.
           </motion.p>
 
           <motion.div
@@ -103,6 +110,16 @@ export function HeroSection() {
               </Link>
             </Button>
             <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto">
+              <a
+                href={whatsappLink("Hi! I'd like to ask about a booking.")}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <WhatsappIcon className="h-5 w-5" />
+                WhatsApp
+              </a>
+            </Button>
+            <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto">
               <Link href="/services">
                 View Menu
                 <ArrowRight className="h-4 w-4" />
@@ -114,13 +131,14 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 flex max-w-2xl flex-wrap gap-2"
+            className="mt-10 flex max-w-2xl flex-col gap-2 sm:flex-row sm:flex-wrap"
           >
             {HERO_TRUST_POINTS.map((point) => (
               <li
                 key={point}
-                className="pressable rounded-pill border border-cream/16 bg-cream/9 px-4 py-2 text-body-sm font-medium text-cream/78 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl"
+                className="inline-flex items-center gap-2 rounded-pill border border-cream/16 bg-cream/9 px-4 py-2 text-body-sm font-medium text-cream/78 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl"
               >
+                <ShieldCheck className="h-4 w-4 shrink-0 text-gold" aria-hidden />
                 {point}
               </li>
             ))}
@@ -160,14 +178,14 @@ export function HeroSection() {
           initial={{ opacity: 0, x: 28 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.78, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
-          className="glass-panel animate-float-soft hidden self-end rounded-card p-6 lg:block"
+          className={`glass-panel hidden self-end rounded-card p-6 lg:block ${reduceMotion ? "" : "animate-float-soft"}`}
         >
-          <div className="flex items-center justify-between border-b border-cream/12 pb-5">
+          <div className="flex flex-col gap-3 border-b border-cream/12 pb-5">
             <p className="text-caption font-semibold uppercase tracking-[0.16em] text-brand-light">
               Studio protocol
             </p>
-            <span className="rounded-pill bg-cream/10 px-3 py-1 text-caption text-cream/70">
-              04 steps
+            <span className="inline-flex w-fit rounded-pill bg-cream/10 px-3 py-1 text-caption leading-snug text-cream/70">
+              Confirmation within 24h · WhatsApp for same-day
             </span>
           </div>
           <ul className="mt-5 space-y-3">

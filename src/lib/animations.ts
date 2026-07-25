@@ -10,7 +10,16 @@ export const fadeUp: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.72, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+export const fadeUpFast: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -65,7 +74,7 @@ export const drawUnderline: Variants = {
 };
 
 /** Standard viewport config for whileInView section entrances. */
-export const viewportOnce = { once: true, margin: "-80px" } as const;
+export const viewportOnce = { once: true, margin: "-10% 0px" } as const;
 
 /** Character-level curtain reveal — wrap each char in overflow-hidden span. */
 export const charVariant: Variants = {

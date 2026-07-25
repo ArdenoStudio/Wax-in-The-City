@@ -8,6 +8,8 @@ import { IMAGES } from "@/lib/images";
 
 const SESSION_KEY = "witc-loaded";
 
+type NetworkInformation = { saveData?: boolean };
+
 /**
  * Full-screen brand reveal on first visit of a session (file 10, section 1).
  * Logo fades + scales in on maroon, holds briefly, then the screen lifts away.
@@ -22,6 +24,8 @@ export function LoadingScreen() {
   useEffect(() => {
     if (!isHome) return;
     if (typeof window === "undefined") return;
+    const conn = (navigator as Navigator & { connection?: NetworkInformation }).connection;
+    if (conn?.saveData) return;
     const seen = sessionStorage.getItem(SESSION_KEY);
     if (seen) return;
 
@@ -31,7 +35,7 @@ export function LoadingScreen() {
     setVisible(true);
     sessionStorage.setItem(SESSION_KEY, "1");
 
-    const hold = reduce ? 400 : 1300;
+    const hold = reduce ? 400 : 700;
     const timer = window.setTimeout(() => setVisible(false), hold);
     return () => window.clearTimeout(timer);
   }, [isHome, reduce]);
@@ -56,6 +60,9 @@ export function LoadingScreen() {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-brand"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.4, ease: "easeIn" } }}
+          aria-busy="true"
+          aria-live="polite"
+          role="status"
         >
           <motion.div
             initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.94 }}

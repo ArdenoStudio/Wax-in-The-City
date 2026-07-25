@@ -263,6 +263,10 @@ textarea {
   .hairline-gradient {
     background: linear-gradient(90deg, transparent, rgba(209, 173, 100, 0.84), transparent);
   }
+
+  .text-cream-muted {
+    color: color-mix(in srgb, var(--color-cream) 72%, transparent);
+  }
 }
 
 /* Marquee strip — file 10, section 6 */
@@ -274,14 +278,16 @@ textarea {
 .animate-marquee {
   animation: witc-marquee 30s linear infinite;
 }
-.animate-marquee:hover {
+.animate-marquee:hover,
+.animate-marquee:focus-within {
   animation-play-state: paused;
 }
 
 .animate-marquee-slow {
   animation: witc-marquee 50s linear infinite;
 }
-.group:hover .animate-marquee-slow {
+.group:hover .animate-marquee-slow,
+.animate-marquee-slow:focus-within {
   animation-play-state: paused;
 }
 
@@ -328,9 +334,15 @@ textarea {
   animation: witc-bob 1.5s ease-in-out infinite;
 }
 
+/* Anchor sections clear the fixed nav */
+#main-content :where(section[id]) {
+  scroll-margin-top: 6rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .animate-marquee,
+  .animate-marquee-slow,
   .animate-bob,
   .animate-float-soft { animation: none; }
   .motion-reduce-none {

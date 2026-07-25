@@ -17,8 +17,9 @@ function Group() {
 
 export function MarqueeStrip() {
   return (
-    <div className="w-full select-none overflow-hidden bg-brand py-4" aria-hidden>
-      <div className="flex w-max animate-marquee">
+    <div className="w-full select-none overflow-hidden bg-brand py-4">
+      <p className="sr-only">{MARQUEE_WORDS.join(" · ")}</p>
+      <div className="flex w-max animate-marquee" aria-hidden>
         <Group />
         <Group />
       </div>

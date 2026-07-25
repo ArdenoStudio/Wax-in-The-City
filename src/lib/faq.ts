@@ -28,6 +28,16 @@ export const FAQ_GROUPS: FaqGroup[] = [
         answer:
           "Yes — always. Our space is private and women-only, so you can feel completely at ease.",
       },
+      {
+        question: "I'm a first-time waxer — what should I expect?",
+        answer:
+          "We'll walk you through prep, pressure, and after-care before we begin. Private rooms, fresh wax, and a calm pace are the baseline — you can ask questions at any point.",
+      },
+      {
+        question: "What should I bring?",
+        answer:
+          "Just yourself in comfortable clothing. If you have a preferred product or a note about sensitive skin, mention it when you book so we can plan ahead.",
+      },
     ],
   },
   {
@@ -36,7 +46,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "Will it hurt?",
         answer:
-          "Waxing can be uncomfortable, but our gentle technique and premium soft wax are designed to keep it as comfortable as possible — even for sensitive skin.",
+          "Waxing can feel uncomfortable — especially in sensitive areas. We work with a careful technique and skin-aware wax choices to keep the experience as manageable as possible.",
       },
       {
         question: "Do you use fresh wax for every guest?",
@@ -67,6 +77,11 @@ export const FAQ_GROUPS: FaqGroup[] = [
         question: "Can I book online?",
         answer:
           "Online booking is coming soon. For now, send a request through the site or message us on WhatsApp and we'll find a time that works for you.",
+      },
+      {
+        question: "What is your cancellation policy?",
+        answer:
+          "Please message us as soon as you know you need to change or cancel. We ask for notice when you can — ideally the day before — so we can offer the slot to another guest.",
       },
     ],
   },

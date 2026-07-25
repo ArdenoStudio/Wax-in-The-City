@@ -15,6 +15,9 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       wheelMultiplier: 0.86,
     });
 
+    // Note: Window already types `lenis` from the package ambient types — do not
+    // overwrite it. Hero / in-page anchors use native scrollIntoView({ block: "start" }).
+
     let raf: number;
     function animate(time: number) {
       lenis.raf(time);

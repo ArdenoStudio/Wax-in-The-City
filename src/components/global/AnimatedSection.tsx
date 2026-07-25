@@ -46,7 +46,7 @@ export function AnimatedSection({
     <MotionTag
       className={className}
       variants={variants}
-      initial={false}
+      initial={reduceMotion ? false : "hidden"}
       whileInView={reduceMotion ? undefined : "visible"}
       viewport={viewportOnce}
     >

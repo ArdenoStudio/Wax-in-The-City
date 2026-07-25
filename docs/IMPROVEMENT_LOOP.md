@@ -1,4 +1,47 @@
-# Improvement Loop — Wax In The City SL
+# Improvement Loop (target 200)
+
+## Completed
+
+- [x] #1 layout.tsx: `lang="en-LK"`; main `pb-20 md:pb-0`
+- [x] #2 globals.css: section scroll-margin; `.text-cream-muted`; marquee focus-within pause; marquee-slow in reduced-motion
+- [x] #3 HeroSection: brand-first eyebrow `Wax In The City · Ladies-only Colombo` (serif on brand)
+- [x] #4 HeroSection: supporting copy — private rooms, fresh wax, confirmation
+- [x] #5 HeroSection: static trust list + ShieldCheck gold icons (no pressable/hover lift)
+- [x] #6 HeroSection: WhatsApp ghost CTA via whatsappLink + WhatsappIcon
+- [x] #7 HeroSection: protocol badge `Confirmation within 24h · WhatsApp for same-day`
+- [x] #8 HeroSection: `min-h-[100svh]` (padding kept)
+- [x] #9 HeroSection: gate `animate-float-soft` with `!reduceMotion`
+- [x] #10 HeroSection: Image `priority`; ServicesGrid `#services` + `scroll-mt-24` (also global section scroll-margin)
+- [x] #11 LoadingScreen: hold 700ms (400 reduce); aria-busy + aria-live; skip on saveData
+- [x] #12 Navbar: close sheet on pathname change; aria-expanded on menu button
+- [x] #13 Navbar: mobile aria-current uses startsWith like desktop
+- [x] #14 Navbar: desktop WhatsApp ghost icon when `!scrolled` on sm+
+- [x] #15 Navbar: scrolled pill `border-warm-border/80`
+- [x] #16 Navbar: Wax / In The City tracking polish on lg+
+- [x] #17 MobileBookingBar: hide on `/book` via usePathname
+- [x] #18 MobileBookingBar: label "Request a time"; WhatsApp aria-label "WhatsApp — fastest booking"
+- [x] #19 MobileBookingBar: role="region" aria-label="Quick booking"; pathname-aware WhatsApp message
+- [x] #20 MobileBookingBar: hide when `#book` in view (IntersectionObserver)
+- [x] #21 AnimatedSection: `initial={reduceMotion ? false : "hidden"}`
+- [x] #22 animations.ts: viewportOnce margin `-10% 0px`; fadeUp duration 0.55
+- [x] #23 animations.ts: add fadeUpFast (duration 0.45)
+- [x] #24 marquee-strip.tsx: sr-only words; focus-within pause class; decorative tracks aria-hidden
+- [x] #25 page.tsx: MarqueeStrip between Hero and ServicesGrid
+- [x] #26 Footer: branch names → `/locations/[slug]`; tel: link in brand column
+- [x] #27 Footer: WhatsApp pill CTA "Book via WhatsApp" in brand column
+- [x] #28 Footer: weekend hours; Nugegoda pending-address caption; text-cream-muted for low-contrast lines
+- [x] #29 Footer: bottom band — copyright, tel, /contact, /faq; Ardeno credit kept
+- [x] #30 Footer: Contact under Explore via NAV_LINKS (already present; FAQ/Contact visible)
+- [x] #31 SkipLink: wine focus styles already present — polished ring/border
+- [x] #32 JsonLd.tsx: FAQPage schema from FAQ_GROUPS
+- [x] #33 faq.ts: softened comfort claims; first-time, cancellation, what-to-bring FAQs
+- [x] #34 site.ts REVIEW_THEMES: "Guests commonly mention" (not "Public reviews often")
+- [x] #35 site.ts: softened Moroccan / Hydra claims
+- [x] #36 site.ts: TRUST_PILLARS titles stay; bodies already clear
+- [x] #37 site.ts: `isAddressPending(branch)` helper (already present — kept broader matcher)
+- [x] #38 site.ts: `formatPriceFrom(n)` LKR helper
+- [x] #39 images.ts: BLUR_DATA_URL tinted to #2b0710 wine
+- [x] #40 SmoothScrollProvider: comment only (Window.lenis typed by package); Hero uses native scrollIntoView block start
 
 Completed homepage / section complement items.
 
