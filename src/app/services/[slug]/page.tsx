@@ -12,6 +12,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { ServiceCard } from "@/components/ui/service-card";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
+import { WaxPriceMatrix } from "@/components/sections/WaxPriceMatrix";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 
 export const revalidate = 3600;
@@ -115,13 +116,19 @@ export default async function ServiceCategoryPage({
             </AnimatedSection>
           )}
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, i) => (
-              <AnimatedSection key={service.slug} variant="fadeUp" delay={i * 0.05}>
-                <ServiceCard service={service} />
-              </AnimatedSection>
-            ))}
-          </div>
+          {category.slug === "waxing" ? (
+            <div className="space-y-12">
+              <WaxPriceMatrix />
+            </div>
+          ) : (
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {services.map((service, i) => (
+                <AnimatedSection key={service.slug} variant="fadeUp" delay={i * 0.05}>
+                  <ServiceCard service={service} />
+                </AnimatedSection>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
