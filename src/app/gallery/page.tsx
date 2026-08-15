@@ -27,7 +27,11 @@ export default function GalleryPage() {
 
       <section className="bg-cream px-5 py-section-lg lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Gallery" title="Browse the studio." />
+          <SectionHeading
+            eyebrow="Gallery"
+            title="Browse the studio."
+            subtitle="Indicative studio atmosphere and treatment prep visuals. Verified client photography is updated with guest consent."
+          />
           <div className="mt-12">
             <GalleryGrid />
           </div>
