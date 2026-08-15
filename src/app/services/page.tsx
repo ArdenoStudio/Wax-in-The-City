@@ -11,6 +11,8 @@ import { IMAGES } from "@/lib/images";
 import { type ServiceCategory } from "@/lib/site";
 import { formatLKRFrom } from "@/lib/utils";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Services",
   description:

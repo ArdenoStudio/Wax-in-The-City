@@ -14,6 +14,8 @@ import { BookingZone } from "@/components/sections/BookingZone";
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 
+export const revalidate = 3600;
+
 const HERO_IMAGES: Record<string, string> = {
   waxing: IMAGES.services.waxing,
   facials: IMAGES.services.facials,

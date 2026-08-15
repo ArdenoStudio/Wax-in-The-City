@@ -9,6 +9,8 @@ import { AboutTeaser } from "@/components/sections/AboutTeaser";
 import { BeforeAfterShowcase } from "@/components/sections/BeforeAfterShowcase";
 import { getPublicServiceContent } from "@/lib/service-content";
 
+export const revalidate = 3600;
+
 export default async function HomePage() {
   const serviceContent = await getPublicServiceContent();
 
