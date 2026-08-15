@@ -87,6 +87,8 @@ export function BookingForm({
         {submitted ? (
           <motion.div
             key="success"
+            role="status"
+            aria-live="polite"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             className="relative z-10 flex flex-col items-center py-8 text-center"

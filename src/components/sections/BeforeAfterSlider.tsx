@@ -47,7 +47,14 @@ export function BeforeAfterSlider({
   }, []);
 
   return (
-    <div className="studio-plate micro-lift overflow-hidden rounded-card p-2">
+    <div
+      role="region"
+      aria-label="Before and after treatment comparison"
+      className="studio-plate micro-lift overflow-hidden rounded-card p-2"
+    >
+      <span className="sr-only">
+        Interactive comparison between {beforeLabel} and {afterLabel}. Drag or slide the handle horizontally to compare results.
+      </span>
       <div className="pointer-events-none absolute left-5 top-5 z-20 rounded-pill border border-cream/22 bg-brand/78 px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em] text-cream backdrop-blur-md">
         {beforeLabel}
       </div>

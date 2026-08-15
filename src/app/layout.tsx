@@ -76,7 +76,7 @@ export default function RootLayout({
         <LoadingScreen />
         <SmoothScrollProvider>
           <Navbar />
-          <main id="main-content" className="flex min-h-screen flex-col">
+          <main id="main-content" tabIndex={-1} className="flex min-h-screen flex-col focus:outline-none">
             {children}
           </main>
           <Footer />
