@@ -6,6 +6,8 @@ import { z } from "zod";
 import {
   clearAdminSession,
   isAdminAuthenticated,
+  isLoginRateLimited,
+  setAdminFlashMessage,
   setAdminSession,
   verifyAdminPassword,
 } from "@/lib/admin-auth";
@@ -25,21 +27,28 @@ const serviceUpdateSchema = z.object({
   featured: z.coerce.boolean().optional(),
 });
 
-function adminError(message: string): never {
-  redirect(`/admin?error=${encodeURIComponent(message)}`);
+async function adminError(message: string): Promise<never> {
+  await setAdminFlashMessage(message, "error");
+  redirect("/admin");
 }
 
 async function requireAdminMutation() {
   if (!(await isAdminAuthenticated())) {
-    adminError("Please sign in again before making changes.");
+    await adminError("Please sign in again before making changes.");
   }
 }
 
 export async function loginAdmin(formData: FormData) {
+  const { limited, retryAfterSec } = isLoginRateLimited();
+  if (limited) {
+    await adminError(`Too many failed login attempts. Please wait ${retryAfterSec ?? 900} seconds before trying again.`);
+  }
+
   const password = String(formData.get("password") ?? "");
 
-  if (!verifyAdminPassword(password)) {
-    adminError("The admin password is not correct.");
+  const isValid = await verifyAdminPassword(password);
+  if (!isValid) {
+    await adminError("The admin password is not correct.");
   }
 
   await setAdminSession();
@@ -56,7 +65,8 @@ export async function seedServices() {
 
   const supabase = createAdminClient();
   if (!supabase) {
-    adminError("Supabase admin env vars are not configured.");
+    await adminError("Supabase admin env vars are not configured.");
+    return;
   }
 
   const rows = SERVICES.map((service, index) => ({
@@ -76,11 +86,13 @@ export async function seedServices() {
     .upsert(rows, { onConflict: "slug" });
 
   if (error) {
-    adminError("Could not seed services. Check the Supabase schema first.");
+    await adminError("Could not seed services. Check the Supabase schema first.");
+    return;
   }
 
   revalidatePath("/", "layout");
-  redirect("/admin?seeded=1");
+  await setAdminFlashMessage("Service seed rows were added to Supabase.", "success");
+  redirect("/admin");
 }
 
 export async function updateService(formData: FormData) {
@@ -88,7 +100,8 @@ export async function updateService(formData: FormData) {
 
   const supabase = createAdminClient();
   if (!supabase) {
-    adminError("Supabase admin env vars are not configured.");
+    await adminError("Supabase admin env vars are not configured.");
+    return;
   }
 
   const parsed = serviceUpdateSchema.safeParse({
@@ -105,7 +118,8 @@ export async function updateService(formData: FormData) {
   });
 
   if (!parsed.success) {
-    adminError("Please check the service fields and try again.");
+    await adminError("Please check the service fields and try again.");
+    return;
   }
 
   const service = parsed.data;
@@ -125,9 +139,11 @@ export async function updateService(formData: FormData) {
     .eq("id", service.id);
 
   if (error) {
-    adminError("Could not update the service. Check Supabase permissions.");
+    await adminError("Could not update the service. Check Supabase permissions.");
+    return;
   }
 
   revalidatePath("/", "layout");
-  redirect(`/admin?updated=${encodeURIComponent(service.slug)}`);
+  await setAdminFlashMessage(`Service "${service.name}" updated successfully.`, "success");
+  redirect("/admin");
 }

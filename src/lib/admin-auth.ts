@@ -1,36 +1,101 @@
-import { createHmac, timingSafeEqual } from "crypto";
+import { createHash, createHmac, timingSafeEqual } from "crypto";
 import { cookies } from "next/headers";
 
 const COOKIE_NAME = "witc_admin_session";
+const FLASH_COOKIE_NAME = "witc_admin_flash";
 const SESSION_TTL_MS = 12 * 60 * 60 * 1000;
+
+// In-memory rate limiting for login attempts
+interface AttemptRecord {
+  count: number;
+  lockedUntil: number;
+}
+const loginAttempts = new Map<string, AttemptRecord>();
+const MAX_FAILED_ATTEMPTS = 5;
+const LOCKOUT_DURATION_MS = 15 * 60 * 1000; // 15 minutes
 
 function adminPassword() {
   return process.env.ADMIN_PASSWORD ?? "";
 }
 
 function sessionSecret() {
-  return process.env.ADMIN_SESSION_SECRET || adminPassword();
+  const secret = process.env.ADMIN_SESSION_SECRET;
+  if (!secret) {
+    if (process.env.NODE_ENV === "production") {
+      console.error("[SECURITY WARNING] ADMIN_SESSION_SECRET is not set in production.");
+    }
+    return adminPassword();
+  }
+  return secret;
 }
 
 function sign(value: string) {
-  return createHmac("sha256", sessionSecret()).update(value).digest("hex");
+  const secret = sessionSecret();
+  if (!secret) return "";
+  return createHmac("sha256", secret).update(value).digest("hex");
 }
 
-function safeEqual(a: string, b: string) {
-  const aBuffer = Buffer.from(a);
-  const bBuffer = Buffer.from(b);
-  if (aBuffer.length !== bBuffer.length) return false;
-  return timingSafeEqual(aBuffer, bBuffer);
+function safeEqual(a: string, b: string): boolean {
+  if (!a || !b) return false;
+  // Hash both to fixed 32-byte digests to prevent length leakage via timing
+  const aHash = createHash("sha256").update(a).digest();
+  const bHash = createHash("sha256").update(b).digest();
+  return timingSafeEqual(aHash, bHash);
 }
 
 export function isAdminPasswordConfigured() {
   return Boolean(adminPassword());
 }
 
-export function verifyAdminPassword(value: string) {
+export function isLoginRateLimited(identifier: string = "global"): { limited: boolean; retryAfterSec?: number } {
+  const now = Date.now();
+  const record = loginAttempts.get(identifier);
+  if (!record) return { limited: false };
+
+  if (record.lockedUntil > now) {
+    return { limited: true, retryAfterSec: Math.ceil((record.lockedUntil - now) / 1000) };
+  }
+
+  if (record.lockedUntil <= now && record.count >= MAX_FAILED_ATTEMPTS) {
+    loginAttempts.delete(identifier);
+  }
+
+  return { limited: false };
+}
+
+export function recordFailedLogin(identifier: string = "global") {
+  const now = Date.now();
+  const record = loginAttempts.get(identifier) ?? { count: 0, lockedUntil: 0 };
+  record.count += 1;
+  if (record.count >= MAX_FAILED_ATTEMPTS) {
+    record.lockedUntil = now + LOCKOUT_DURATION_MS;
+  }
+  loginAttempts.set(identifier, record);
+}
+
+export function recordSuccessfulLogin(identifier: string = "global") {
+  loginAttempts.delete(identifier);
+}
+
+export async function verifyAdminPassword(value: string, identifier: string = "global") {
   const expected = adminPassword();
-  if (!expected || !value) return false;
-  return safeEqual(value, expected);
+  if (!expected || !value) {
+    // Artificial delay on invalid attempt
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    recordFailedLogin(identifier);
+    return false;
+  }
+
+  const isValid = safeEqual(value, expected);
+  if (!isValid) {
+    // Minimum 1 second penalty on wrong password
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    recordFailedLogin(identifier);
+    return false;
+  }
+
+  recordSuccessfulLogin(identifier);
+  return true;
 }
 
 export async function setAdminSession() {
@@ -40,7 +105,7 @@ export async function setAdminSession() {
 
   cookieStore.set(COOKIE_NAME, `v1.${issuedAt}.${signature}`, {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: "strict",
     secure: process.env.NODE_ENV === "production",
     path: "/admin",
     maxAge: SESSION_TTL_MS / 1000,
@@ -51,11 +116,45 @@ export async function clearAdminSession() {
   const cookieStore = await cookies();
   cookieStore.set(COOKIE_NAME, "", {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: "strict",
     secure: process.env.NODE_ENV === "production",
     path: "/admin",
     maxAge: 0,
   });
+}
+
+export async function setAdminFlashMessage(message: string, tone: "error" | "success" = "error") {
+  const cookieStore = await cookies();
+  cookieStore.set(FLASH_COOKIE_NAME, JSON.stringify({ message, tone, ts: Date.now() }), {
+    httpOnly: true,
+    sameSite: "strict",
+    secure: process.env.NODE_ENV === "production",
+    path: "/admin",
+    maxAge: 30, // 30 seconds expiry
+  });
+}
+
+export async function getAndClearAdminFlash(): Promise<{ message: string; tone: "error" | "success" } | null> {
+  const cookieStore = await cookies();
+  const flashCookie = cookieStore.get(FLASH_COOKIE_NAME)?.value;
+  if (!flashCookie) return null;
+
+  // Clear cookie immediately
+  cookieStore.set(FLASH_COOKIE_NAME, "", {
+    httpOnly: true,
+    sameSite: "strict",
+    secure: process.env.NODE_ENV === "production",
+    path: "/admin",
+    maxAge: 0,
+  });
+
+  try {
+    const parsed = JSON.parse(flashCookie);
+    if (Date.now() - (parsed.ts ?? 0) > 30000) return null;
+    return { message: parsed.message, tone: parsed.tone ?? "error" };
+  } catch {
+    return null;
+  }
 }
 
 export async function isAdminAuthenticated() {
@@ -74,5 +173,8 @@ export async function isAdminAuthenticated() {
     return false;
   }
 
-  return safeEqual(signature, sign(issuedAt));
+  const expectedSignature = sign(issuedAt);
+  if (!expectedSignature) return false;
+
+  return safeEqual(signature, expectedSignature);
 }

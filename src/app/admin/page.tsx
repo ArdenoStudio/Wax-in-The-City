@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import { Lock, LogOut, ShieldCheck, Sparkles } from "lucide-react";
 import { loginAdmin, logoutAdmin, seedServices, updateService } from "@/app/admin/actions";
-import { isAdminAuthenticated, isAdminPasswordConfigured } from "@/lib/admin-auth";
+import { getAndClearAdminFlash, isAdminAuthenticated, isAdminPasswordConfigured } from "@/lib/admin-auth";
 import { isAdminSupabaseConfigured } from "@/lib/supabase/admin";
 import { getAdminServices } from "@/lib/service-content";
 import { SERVICE_CATEGORIES } from "@/lib/site";
@@ -20,16 +20,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function AdminPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ error?: string; seeded?: string; updated?: string }>;
-}) {
-  const params = await searchParams;
+export default async function AdminPage() {
+  const flash = await getAndClearAdminFlash();
   const authenticated = await isAdminAuthenticated();
 
   if (!authenticated) {
-    return <LoginPanel error={params.error} />;
+    return <LoginPanel flash={flash} />;
   }
 
   const supabaseReady = isAdminSupabaseConfigured();
@@ -75,13 +71,9 @@ export default async function AdminPage({
           </form>
         </div>
 
-        {params.seeded && (
-          <StatusMessage tone="success">Service seed rows were added to Supabase.</StatusMessage>
+        {flash && (
+          <StatusMessage tone={flash.tone}>{flash.message}</StatusMessage>
         )}
-        {params.updated && (
-          <StatusMessage tone="success">Service updated. Public pages will use the new value when Supabase is connected.</StatusMessage>
-        )}
-        {params.error && <StatusMessage tone="error">{params.error}</StatusMessage>}
 
         {!supabaseReady && (
           <div className="studio-plate mt-8 rounded-card p-6">
@@ -245,7 +237,11 @@ export default async function AdminPage({
   );
 }
 
-function LoginPanel({ error }: { error?: string }) {
+function LoginPanel({
+  flash,
+}: {
+  flash: { message: string; tone: "error" | "success" } | null;
+}) {
   const configured = isAdminPasswordConfigured();
 
   return (
@@ -278,9 +274,15 @@ function LoginPanel({ error }: { error?: string }) {
             Set `ADMIN_PASSWORD` before using this page.
           </p>
         )}
-        {error && (
-          <p className="mt-5 rounded-card border border-brand-light/20 bg-brand-light/10 px-4 py-3 text-body-sm text-brand-light">
-            {error}
+        {flash && (
+          <p
+            className={
+              flash.tone === "success"
+                ? "mt-5 rounded-card border border-success/20 bg-success/10 px-4 py-3 text-body-sm text-cream"
+                : "mt-5 rounded-card border border-brand-light/20 bg-brand-light/10 px-4 py-3 text-body-sm text-brand-light"
+            }
+          >
+            {flash.message}
           </p>
         )}
 
