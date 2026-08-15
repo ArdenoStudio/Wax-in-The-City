@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Waxing, facials, Moroccan treatments and hydra facials — done with genuine care at our ladies-only studios in Battaramulla and Nugegoda.",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 const CATEGORY_VISUALS: Record<

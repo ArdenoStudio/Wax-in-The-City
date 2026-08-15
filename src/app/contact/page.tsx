@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Get in touch with Wax In The City — message us on WhatsApp, send a note, or find our Battaramulla and Nugegoda branch details.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

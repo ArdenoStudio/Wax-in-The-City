@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Book Your Visit",
   description:
     "Book your visit to Wax In The City — send a request and we'll confirm within 24 hours, or reach us instantly on WhatsApp.",
+  alternates: {
+    canonical: "/book",
+  },
 };
 
 function isBranchSlug(value?: string): value is BranchSlug {

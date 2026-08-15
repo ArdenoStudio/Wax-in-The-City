@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Gallery",
   description:
     "A look inside our Colombo studios — the space, the details and the results.",
+  alternates: {
+    canonical: "/gallery",
+  },
 };
 
 export default function GalleryPage() {

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Locations",
   description:
     "Two ladies-only Wax In The City studios in Colombo — Battaramulla and Nugegoda. Find hours, directions and WhatsApp booking.",
+  alternates: {
+    canonical: "/locations",
+  },
 };
 
 const BRANCH_IMAGES = {

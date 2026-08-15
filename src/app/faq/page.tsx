@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "FAQ",
   description:
     "Your questions about waxing, facials, hygiene, booking and aftercare — honestly answered.",
+  alternates: {
+    canonical: "/faq",
+  },
 };
 
 export default function FAQPage() {

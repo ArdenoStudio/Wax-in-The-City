@@ -40,6 +40,7 @@ export interface Branch {
   address: string; // TBC — placeholder
   phone: string;
   whatsapp: string; // digits only, country code first
+  geo: { latitude: number; longitude: number };
   hours: { weekday: string; weekend: string; poya: string };
   googleMapsUrl: string;
   blurb: string;
@@ -53,6 +54,7 @@ export const BRANCHES: Branch[] = [
     address: "15, 3 Centre Rd, Battaramulla 10120, Sri Lanka",
     phone: "+94 77 946 9437",
     whatsapp: DEFAULT_WHATSAPP,
+    geo: { latitude: 6.8972, longitude: 79.9186 },
     hours: {
       weekday: "9:00 AM – 6:00 PM",
       weekend: "9:00 AM – 5:00 PM",
@@ -68,6 +70,7 @@ export const BRANCHES: Branch[] = [
     address: "Nugegoda, Colombo (exact address to be confirmed)",
     phone: "+94 77 946 9437",
     whatsapp: DEFAULT_WHATSAPP,
+    geo: { latitude: 6.8649, longitude: 79.8997 },
     hours: {
       weekday: "9:00 AM – 6:00 PM",
       weekend: "9:00 AM – 5:00 PM",

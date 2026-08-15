@@ -12,6 +12,9 @@ import { JsonLd } from "@/components/global/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: `${SITE.name} — ${SITE.tagline}`,
     template: `%s · ${SITE.name}`,

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "A studio built by women, for women. The story and values behind Wax In The City — honest, private, genuinely kind beauty care in Colombo.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const VALUES = [
