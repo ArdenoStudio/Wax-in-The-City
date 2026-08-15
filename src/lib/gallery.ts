@@ -14,13 +14,28 @@ export interface GalleryImage {
  */
 export const GALLERY: GalleryImage[] = [
   {
-    src: IMAGES.hero.src,
-    alt: "Calm spa treatment room with soft lighting",
+    src: IMAGES.studio.reception,
+    alt: "Wax In The City Battaramulla reception area with soft lighting and clean decor",
     category: "salon",
   },
   {
-    src: IMAGES.book.src,
-    alt: "Warm towels and spa essentials laid out",
+    src: IMAGES.studio.hygiene,
+    alt: "Spotless and sanitized treatment preparation tray and towels",
+    category: "salon",
+  },
+  {
+    src: IMAGES.studio.service,
+    alt: "Private waxing and treatment room with pristine linens",
+    category: "salon",
+  },
+  {
+    src: IMAGES.studio.confidence,
+    alt: "Relaxing skincare and facial treatment moment",
+    category: "results",
+  },
+  {
+    src: IMAGES.studio.square,
+    alt: "Wax In The City studio branding and treatment room",
     category: "salon",
   },
   {
@@ -29,24 +44,9 @@ export const GALLERY: GalleryImage[] = [
     category: "results",
   },
   {
-    src: IMAGES.about.src,
-    alt: "Soft, inviting treatment area",
-    category: "salon",
-  },
-  {
-    src: IMAGES.services.facials,
-    alt: "Facial care detail with natural light",
-    category: "results",
-  },
-  {
     src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=900&auto=format&fit=crop",
     alt: "Botanical detail in the studio",
     category: "events",
-  },
-  {
-    src: IMAGES.services.waxing,
-    alt: "Soft neutral spa interior",
-    category: "salon",
   },
   {
     src: IMAGES.beforeAfter.waxing.after,

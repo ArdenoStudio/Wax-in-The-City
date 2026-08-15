@@ -9,22 +9,29 @@ export const IMAGES = {
     alt: "A warm, calm treatment room at Wax In The City",
   },
   about: {
-    src: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1600&auto=format&fit=crop",
-    alt: "Soft neutral spa interior at Wax In The City",
+    src: "/images/studio/reception.jpg",
+    alt: "Wax In The City studio reception area in Battaramulla",
   },
   book: {
-    src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop",
-    alt: "Calm treatment space ready for a visit",
+    src: "/images/studio/hygiene.jpg",
+    alt: "Hygienic and private treatment preparation setup",
   },
   services: {
-    waxing: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1600&auto=format&fit=crop",
-    facials: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1600&auto=format&fit=crop",
+    waxing: "/images/studio/service.jpg",
+    facials: "/images/studio/confidence.jpg",
     moroccan: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop",
     hydraFacial: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=1600&auto=format&fit=crop",
   },
   branches: {
-    battaramulla: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1600&auto=format&fit=crop",
-    nugegoda: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop",
+    battaramulla: "/images/studio/reception.jpg",
+    nugegoda: "/images/studio/service.jpg",
+  },
+  studio: {
+    reception: "/images/studio/reception.jpg",
+    hygiene: "/images/studio/hygiene.jpg",
+    service: "/images/studio/service.jpg",
+    confidence: "/images/studio/confidence.jpg",
+    square: "/images/studio/studio-square.jpg",
   },
   beforeAfter: {
     waxing: {
@@ -41,8 +48,8 @@ export const IMAGES = {
   wordmark: "/images/witc-wordmark.jpg",
   logoMark: "/images/witc-logo.png",
   socialProof: {
-    src: "/images/witc-social-proof.jpg",
-    alt: "A polished Wax In The City guest seated inside the studio",
+    src: "/images/studio/studio-square.jpg",
+    alt: "Wax In The City studio branding and treatment room",
   },
 } as const;
 

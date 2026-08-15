@@ -66,8 +66,8 @@ export default function AboutPage() {
         eyebrow="About the studio"
         title="Private care, without the salon rush."
         subtitle="Wax In The City is built for women who want beauty care to feel careful, clean, and calm."
-        image={IMAGES.socialProof.src}
-        imageAlt={IMAGES.socialProof.alt}
+        image={IMAGES.about.src}
+        imageAlt={IMAGES.about.alt}
         size="md"
       />
 
@@ -78,11 +78,11 @@ export default function AboutPage() {
             <div className="relative">
               <div className="relative min-h-[520px] overflow-hidden rounded-card bg-brand shadow-[0_30px_90px_rgba(39,19,21,0.16)]">
                 <Image
-                  src={IMAGES.socialProof.src}
-                  alt={IMAGES.socialProof.alt}
+                  src={IMAGES.studio.hygiene}
+                  alt="Spotless and sanitized treatment preparation setup"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-[50%_20%]"
+                  className="object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_42%,rgba(23,7,11,0.72)_100%)]" />
                 <div className="absolute bottom-0 left-0 max-w-sm p-6 text-cream">
