@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Check, Sparkles, HelpCircle, MessageSquare } from "lucide-react";
+import { Check } from "lucide-react";
 import {
   WAX_PRICE_ROWS,
   WAX_PACKAGES,
-  WAX_PRODUCTS,
   type WaxPriceRow,
   type WaxPackage,
 } from "@/lib/pricing";
@@ -63,11 +62,11 @@ export function WaxPriceMatrix() {
           <span className="rounded-pill border border-brand-action/25 bg-brand-mist/50 px-3.5 py-1 text-caption font-semibold uppercase tracking-[0.14em] text-brand-action">
             Curated Bundles
           </span>
-          <h3 className="mt-3 font-serif text-h3 text-warm">
+          <h3 className="mt-3 font-serif text-h3 text-warm text-balance">
             Popular Wax Packages
           </h3>
-          <p className="mt-2 max-w-lg text-body text-warm-grey">
-            Complete multi-area waxing packages bundled for convenience and savings.
+          <p className="mt-2 max-w-lg text-body text-warm-grey text-pretty">
+            Complete multi area waxing packages bundled for convenience and savings.
           </p>
         </div>
 
@@ -85,10 +84,10 @@ export function WaxPriceMatrix() {
             <span className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-action">
               Detailed Menu
             </span>
-            <h3 className="mt-1 font-serif text-h3 text-warm">
+            <h3 className="mt-1 font-serif text-h3 text-warm text-balance">
               Waxing by Treatment Area
             </h3>
-            <p className="mt-1 text-body-sm text-warm-grey">
+            <p className="mt-1 text-body-sm text-warm-grey text-pretty">
               Choose from Australia&apos;s award-winning Lycon wax or Italy&apos;s gentle Rica wax.
             </p>
           </div>
@@ -102,9 +101,9 @@ export function WaxPriceMatrix() {
                 onClick={() => setFilter(f.id)}
                 aria-pressed={filter === f.id}
                 className={cn(
-                  "rounded-pill px-3.5 py-1.5 text-caption font-medium transition-all",
+                  "rounded-pill min-h-11 px-3.5 py-1.5 text-caption font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2",
                   filter === f.id
-                    ? "bg-brand text-cream shadow-sm"
+                    ? "bg-brand text-cream shadow-[0_2px_8px_rgba(43,7,16,0.14)]"
                     : "border border-warm-border/80 bg-white/50 text-warm-grey hover:bg-cream hover:text-warm"
                 )}
               >
@@ -121,8 +120,8 @@ export function WaxPriceMatrix() {
               L
             </span>
             <div>
-              <p className="text-body-sm font-semibold text-warm">Lycon (Australia)</p>
-              <p className="text-caption text-warm-grey">Pinkini & Superberry hot wax for delicate, sensitive skin.</p>
+              <p className="text-body-sm font-semibold text-warm text-pretty">Lycon (Australia)</p>
+              <p className="text-caption text-warm-grey text-pretty">Pinkini & Superberry hot wax for delicate, sensitive skin.</p>
             </div>
           </div>
           <div className="flex items-start gap-2.5">
@@ -130,17 +129,17 @@ export function WaxPriceMatrix() {
               R
             </span>
             <div>
-              <p className="text-body-sm font-semibold text-warm">Rica (Italy)</p>
-              <p className="text-caption text-warm-grey">White chocolate strip wax for gentle, flawless body waxing.</p>
+              <p className="text-body-sm font-semibold text-warm text-pretty">Rica (Italy)</p>
+              <p className="text-caption text-warm-grey text-pretty">White chocolate strip wax for gentle, flawless body waxing.</p>
             </div>
           </div>
           <div className="flex items-start gap-2.5">
-            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/25 text-caption font-bold text-gold-dark">
+            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/25 text-caption font-bold text-gold">
               B
             </span>
             <div>
-              <p className="text-body-sm font-semibold text-warm">Biahu Gold</p>
-              <p className="text-caption text-warm-grey">Reliable, smooth standard body wax option.</p>
+              <p className="text-body-sm font-semibold text-warm text-pretty">Biahu Gold</p>
+              <p className="text-caption text-warm-grey text-pretty">Reliable, smooth standard body wax option.</p>
             </div>
           </div>
         </div>
@@ -169,8 +168,8 @@ export function WaxPriceMatrix() {
           </div>
         </div>
 
-        <p className="mt-3 text-caption text-warm-grey">
-          * All intimate and facial waxing uses fresh, single-use wooden spatulas with strict zero double-dipping.
+        <p className="mt-3 text-caption text-warm-grey text-pretty">
+          * All intimate and facial waxing uses fresh, single use wooden spatulas with strict zero double dipping.
         </p>
       </div>
     </div>
@@ -185,10 +184,6 @@ function MatrixRow({ row }: { row: WaxPriceRow }) {
     row.prices["lycon-superberry"] ??
     row.prices["lycon-aloe-vera"];
 
-  const lowestPrice = Math.min(
-    ...Object.values(row.prices).filter((p): p is number => p != null)
-  );
-
   const bookText = `Hi Wax In The City! I'd like to book ${row.area} waxing.`;
 
   return (
@@ -197,6 +192,7 @@ function MatrixRow({ row }: { row: WaxPriceRow }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
       className="transition-colors hover:bg-cream/40"
     >
       <td className="px-5 py-3.5 font-medium text-warm">
@@ -219,7 +215,7 @@ function MatrixRow({ row }: { row: WaxPriceRow }) {
           href={whatsappLink(bookText)}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 rounded-pill border border-brand-action/30 bg-brand-mist/30 px-3 py-1 text-caption font-medium text-brand-action transition-all hover:bg-brand-action hover:text-cream"
+          className="inline-flex min-h-10 items-center gap-1 rounded-pill border border-brand-action/30 bg-brand-mist/30 px-3 py-1 text-caption font-medium text-brand-action transition-all hover:bg-brand-action hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2"
         >
           <WhatsappIcon className="h-3 w-3" />
           <span>Book</span>
@@ -233,23 +229,23 @@ function PackageCard({ pkg }: { pkg: WaxPackage }) {
   const whatsappMsg = `Hi Wax In The City! I'd like to book the ${pkg.name} package.`;
 
   return (
-    <div className="premium-surface relative flex flex-col justify-between rounded-card p-6 shadow-card transition-transform duration-300 hover:-translate-y-1">
+    <div className="premium-surface relative flex flex-col justify-between rounded-2xl p-6 shadow-card transition-transform duration-300 hover:-translate-y-1">
       {pkg.tag && (
-        <div className="absolute -top-3 right-6 rounded-pill bg-brand px-3 py-0.5 text-caption font-semibold uppercase tracking-[0.12em] text-cream shadow-sm">
+        <div className="absolute -top-3 right-6 rounded-pill bg-brand px-3 py-0.5 text-caption font-semibold uppercase tracking-[0.12em] text-cream shadow-[0_2px_8px_rgba(43,7,16,0.14)]">
           {pkg.tag}
         </div>
       )}
 
       <div>
         <div className="flex items-baseline justify-between">
-          <h4 className="font-serif text-h4 text-warm">{pkg.name}</h4>
+          <h4 className="font-serif text-h4 text-warm text-balance">{pkg.name}</h4>
           <span className="text-caption font-medium text-warm-grey">{pkg.duration}</span>
         </div>
-        <p className="mt-2 text-body-sm text-warm-grey">{pkg.description}</p>
+        <p className="mt-2 text-body-sm text-warm-grey text-pretty">{pkg.description}</p>
 
         {/* Inclusions list */}
         <div className="mt-5 border-t border-warm-border/60 pt-4">
-          <p className="text-caption font-semibold uppercase tracking-[0.1em] text-warm-grey">
+          <p className="text-caption font-semibold uppercase tracking-[0.1em] text-warm-grey text-pretty">
             Includes:
           </p>
           <ul className="mt-2 space-y-1.5">
@@ -267,7 +263,7 @@ function PackageCard({ pkg }: { pkg: WaxPackage }) {
       <div className="mt-6 border-t border-warm-border/60 pt-4">
         <div className="grid grid-cols-2 gap-2 rounded-card bg-brand-mist/30 p-3 text-center">
           <div>
-            <span className="block text-caption text-warm-grey">With Butiza</span>
+            <span className="block text-caption text-warm-grey">With Biahu Gold</span>
             <span className="font-serif text-h4 font-medium text-warm">
               {formatLKR(pkg.prices.essential)}
             </span>

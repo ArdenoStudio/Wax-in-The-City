@@ -26,10 +26,10 @@ export function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -60, opacity: 0 }}
+      initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1], delay: 0.06 }}
-      className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6"
+      transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1], delay: 0.04 }}
+      className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6 will-change-transform"
       aria-label="Main navigation"
     >
       <div
@@ -43,19 +43,19 @@ export function Navbar() {
         <Link
           href="/"
           aria-label={`${SITE.name} home`}
-          className="relative z-10 flex min-w-0 items-center"
+          className="relative z-10 flex min-w-0 items-center rounded-pill focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
         >
           <span
             className={cn(
               "pressable inline-flex min-h-11 shrink-0 items-center rounded-pill border px-3.5 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] sm:px-4",
               scrolled
                 ? "border-warm-border/70 bg-white/74 shadow-[0_12px_30px_rgba(53,16,23,0.10)] backdrop-blur-xl"
-                : "border-cream/16 bg-brand/52 shadow-[0_10px_28px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+                : "border-cream/16 bg-brand/52 shadow-[0_10px_28px_rgba(27,14,16,0.22)] backdrop-blur-xl"
             )}
           >
             <span
               className={cn(
-                "font-serif text-[1.25rem] font-semibold italic leading-none tracking-[0.01em] transition-colors sm:text-[1.42rem]",
+                "font-serif text-xl font-semibold leading-none tracking-[0.01em] transition-colors sm:text-2xl",
                 onDark ? "text-cream" : "text-brand"
               )}
             >
@@ -63,7 +63,7 @@ export function Navbar() {
             </span>
             <span
               className={cn(
-                "ml-2 text-[0.56rem] font-semibold uppercase leading-none tracking-[0.16em] transition-colors sm:text-[0.6rem]",
+                "ml-2 text-xs font-semibold uppercase leading-none tracking-[0.16em] transition-colors sm:text-xs",
                 onDark ? "text-brand-light/82" : "text-brand-action/78"
               )}
             >
@@ -87,7 +87,10 @@ export function Navbar() {
                 data-active={active}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "nav-link rounded-pill px-3 py-2 text-body-sm font-medium tracking-wide lg:px-4",
+                  "nav-link rounded-pill px-3 py-2 text-body-sm font-medium tracking-wide lg:px-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+                  onDark
+                    ? "focus-visible:ring-cream/50 focus-visible:ring-offset-ink"
+                    : "focus-visible:ring-brand-action/40 focus-visible:ring-offset-cream",
                   active && (onDark ? "bg-cream/12 text-cream" : "bg-brand-mist text-brand-action shadow-[inset_0_0_0_1px_rgba(162,15,55,0.08)]"),
                   !active && (onDark ? "text-cream/82 hover:bg-cream/9 hover:text-cream" : "text-warm/74 hover:bg-brand-mist/70 hover:text-brand-action")
                 )}
@@ -116,8 +119,10 @@ export function Navbar() {
               <button
                 aria-label="Open menu"
                 className={cn(
-                  "pressable flex h-11 w-11 items-center justify-center rounded-pill border md:hidden",
-                  onDark ? "border-cream/15 bg-cream/8 text-cream backdrop-blur-xl hover:bg-cream/14" : "border-warm-border/70 bg-white/70 text-warm backdrop-blur-xl hover:bg-brand-mist"
+                  "pressable flex h-11 w-11 items-center justify-center rounded-pill border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:hidden",
+                  onDark
+                    ? "border-cream/15 bg-cream/8 text-cream backdrop-blur-xl hover:bg-cream/14 focus-visible:ring-cream/50 focus-visible:ring-offset-ink"
+                    : "border-warm-border/70 bg-white/70 text-warm backdrop-blur-xl hover:bg-brand-mist focus-visible:ring-brand-action/40 focus-visible:ring-offset-cream"
                 )}
               >
                 <Menu className="h-6 w-6" />

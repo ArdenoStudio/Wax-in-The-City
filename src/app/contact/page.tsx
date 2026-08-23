@@ -23,14 +23,14 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Questions before you book? Start here."
-        subtitle="WhatsApp is best for urgent timing. Use the form for non-urgent questions and branch details."
+        subtitle="WhatsApp is best for urgent timing. Use the form for general questions and branch details."
         image={IMAGES.book.src}
         imageAlt={IMAGES.book.alt}
         size="md"
+        priority
       />
 
       <section className="relative overflow-hidden bg-brand px-5 py-section-lg text-cream lg:px-8">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(217,179,95,0.24),transparent_32%),radial-gradient(circle_at_80%_20%,rgba(255,214,222,0.14),transparent_30%)]" />
         <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
             <SectionHeading
@@ -45,7 +45,7 @@ export default function ContactPage() {
                 href={whatsappLink("Hi! I have a question before booking.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pressable inline-flex h-12 items-center justify-center gap-2 rounded-pill bg-cream px-6 text-body-sm font-semibold text-brand shadow-[0_18px_42px_rgba(0,0,0,0.24)]"
+                className="pressable inline-flex h-12 items-center justify-center gap-2 rounded-pill bg-cream px-6 text-body-sm font-semibold text-brand shadow-[0_14px_34px_rgba(162,15,55,0.22)]"
               >
                 <WhatsappIcon className="h-5 w-5" />
                 Message WhatsApp
@@ -62,7 +62,7 @@ export default function ContactPage() {
 
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { icon: WhatsappIcon, title: "Fast replies", body: "Best for same-week booking questions." },
+              { icon: WhatsappIcon, title: "Fast replies", body: "Best for same week booking questions." },
               { icon: CalendarCheck, title: "Requests reviewed", body: "Forms are checked before confirmation." },
               { icon: Phone, title: "One number", body: "Use the same contact path for both branches." },
             ].map((item) => {
@@ -72,8 +72,8 @@ export default function ContactPage() {
                   <span className="flex h-11 w-11 items-center justify-center rounded-card bg-cream text-brand">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <h2 className="mt-5 text-h4 font-semibold text-cream">{item.title}</h2>
-                  <p className="mt-2 text-body-sm text-cream/70">{item.body}</p>
+                  <h2 className="mt-5 text-h4 font-semibold text-cream text-balance">{item.title}</h2>
+                  <p className="mt-2 text-body-sm text-cream/70 text-pretty">{item.body}</p>
                 </div>
               );
             })}
@@ -95,10 +95,10 @@ export default function ContactPage() {
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,rgba(23,7,11,0.80)_100%)]" />
               <div className="absolute bottom-0 left-0 p-6 text-cream">
-                <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light">
+                <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light text-pretty">
                   Private studio contact
                 </p>
-                <h2 className="mt-3 font-serif text-h3 font-medium leading-tight">
+                <h2 className="mt-3 font-serif text-h3 font-medium leading-tight text-balance">
                   Tell us what you need before you arrive.
                 </h2>
               </div>
@@ -110,26 +110,28 @@ export default function ContactPage() {
                   key={b.slug}
                   className="premium-surface rounded-card p-5"
                 >
-                  <p className="relative z-10 font-serif text-h4 font-medium text-warm">{b.name}</p>
+                  <p className="relative z-10 font-serif text-h4 font-medium text-warm text-pretty">{b.name}</p>
                   <div className="relative z-10 mt-3 space-y-2 text-body-sm text-warm-grey">
-                    <p className="flex items-center gap-2">
+                    <p className="flex items-center gap-2 text-pretty">
                       <MapPin className="h-4 w-4 text-brand-action" />
                       {b.area}
                     </p>
-                    <p className="flex items-center gap-2">
+                    <p className="flex items-center gap-2 text-pretty">
                       <Clock className="h-4 w-4 text-brand-action" />
                       {b.hours.weekday}
                     </p>
-                    <p className="flex items-center gap-2">
+                    <p className="flex items-center gap-2 text-pretty">
                       <Phone className="h-4 w-4 text-brand-action" />
-                      {b.phone}
+                      <a href={`tel:${b.phone.replace(/\s/g, "")}`} className="hover:underline">
+                        {b.phone}
+                      </a>
                     </p>
                   </div>
                   <a
                     href={whatsappLink(`Hi! I have a question about your ${b.name} branch.`, b.whatsapp)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative z-10 mt-4 inline-flex h-11 items-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)] transition-all duration-300 hover:-translate-y-0.5"
+                    className="relative z-10 mt-4 inline-flex h-11 items-center gap-2 rounded-pill bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)] transition-all duration-300 hover:-translate-y-0.5"
                   >
                     <WhatsappIcon className="h-4 w-4" />
                     WhatsApp {b.name}
@@ -151,7 +153,7 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-10">
-              <h3 className="font-serif text-h3 text-warm">Follow us</h3>
+              <h3 className="font-serif text-h3 text-warm text-balance">Follow us</h3>
               <div className="mt-4 flex gap-3">
                 <a
                   href={SITE.instagram}

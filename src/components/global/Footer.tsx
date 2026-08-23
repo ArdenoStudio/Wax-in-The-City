@@ -35,11 +35,11 @@ export function Footer() {
                 />
               </span>
             </div>
-            <p className="mt-4 max-w-xs font-serif text-h4 italic text-brand-light">
+            <p className="mt-4 max-w-xs font-serif text-h4 text-brand-light text-pretty">
               {SITE.tagline}
             </p>
-            <p className="mt-3 max-w-xs text-body-sm text-cream/60">
-              Ladies-only waxing &amp; beauty care across two Colombo branches.
+            <p className="mt-3 max-w-xs text-body-sm text-cream/60 text-pretty">
+              Ladies only waxing &amp; beauty care across two Colombo branches.
             </p>
 
             <div className="mt-6 flex items-center gap-3">
@@ -60,12 +60,12 @@ export function Footer() {
 
           {/* Nav */}
           <div>
-            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50">
+            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50 text-balance">
               Explore
             </h3>
             <ul className="mt-3 space-y-1">
               <li>
-                <Link href="/" className="inline-flex min-h-10 min-w-10 items-center text-body-sm transition-colors hover:text-cream">
+                <Link href="/" className="inline-flex min-h-10 min-w-10 items-center rounded-pill px-2 text-body-sm transition-colors hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer">
                   Home
                 </Link>
               </li>
@@ -73,14 +73,14 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="inline-flex min-h-10 min-w-10 items-center text-body-sm transition-colors hover:text-cream"
+                    className="inline-flex min-h-10 min-w-10 items-center rounded-pill px-2 text-body-sm transition-colors hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/book" className="inline-flex min-h-10 min-w-10 items-center text-body-sm transition-colors hover:text-cream">
+                <Link href="/book" className="inline-flex min-h-10 min-w-10 items-center rounded-pill px-2 text-body-sm transition-colors hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer">
                   Book Your Visit
                 </Link>
               </li>
@@ -89,21 +89,27 @@ export function Footer() {
 
           {/* Branches */}
           <div>
-            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50">
+            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50 text-balance">
               Our Branches
             </h3>
             <div className="mt-4 grid gap-6 sm:grid-cols-2">
               {BRANCHES.map((b) => (
                 <div key={b.slug}>
-                  <p className="font-serif text-h4 text-cream">{b.name}</p>
-                  <p className="mt-1 text-body-sm text-cream/60">{b.area}</p>
-                  <p className="mt-2 text-body-sm text-cream/60">{b.hours.weekday}</p>
-                  <p className="text-caption text-cream/40">{b.hours.poya}</p>
+                  <p className="font-serif text-h4 text-cream text-pretty">{b.name}</p>
+                  <p className="mt-1 text-body-sm text-cream/60 text-pretty">{b.area}</p>
+                  <a
+                    href={`tel:${b.phone.replace(/\s/g, "")}`}
+                    className="mt-1 inline-block text-body-sm text-cream/60 hover:text-cream hover:underline"
+                  >
+                    {b.phone}
+                  </a>
+                  <p className="mt-2 text-body-sm text-cream/60 text-pretty">{b.hours.weekday}</p>
+                  <p className="text-caption text-cream/70 text-pretty">{b.hours.poya}</p>
                   <a
                     href={whatsappLink(`Hi! I'd like to book at your ${b.name} branch.`, b.whatsapp)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-2 inline-flex min-h-10 items-center text-body-sm text-brand-light underline-offset-4 hover:underline"
+                    className="mt-2 inline-flex min-h-10 items-center rounded-pill px-2 text-body-sm text-brand-light underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer"
                   >
                     WhatsApp {b.name}
                   </a>
@@ -113,9 +119,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-cream/10 pt-6 text-caption text-cream/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} {SITE.name}. All rights reserved.</p>
-          <p>
+        <div className="mt-14 flex flex-col gap-3 border-t border-cream/10 pt-6 text-caption text-cream/60 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-pretty">© {year} {SITE.name}. All rights reserved.</p>
+          <p className="text-pretty">
             Crafted by{" "}
             <span className="text-cream/60">Ardeno Studio</span>
           </p>
@@ -140,7 +146,7 @@ function SocialIcon({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-11 w-11 items-center justify-center rounded-pill border border-cream/15 text-cream/70 transition-colors hover:border-brand-light hover:text-cream"
+      className="flex h-11 w-11 items-center justify-center rounded-pill border border-cream/15 text-cream/70 transition-colors hover:border-brand-light hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer"
     >
       {children}
     </a>

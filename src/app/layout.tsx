@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
@@ -9,6 +10,22 @@ import { SmoothScrollProvider } from "@/components/global/SmoothScrollProvider";
 import { LoadingScreen } from "@/components/global/LoadingScreen";
 import { SkipLink } from "@/components/global/SkipLink";
 import { JsonLd } from "@/components/global/JsonLd";
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-display",
+  preload: true,
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-body",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -63,20 +80,21 @@ export const viewport: Viewport = {
   themeColor: "#2b0710",
   width: "device-width",
   initialScale: 1,
+  colorScheme: "light",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-cream text-warm antialiased">
+    <html lang="en-LK" className={`${fraunces.variable} ${jakarta.variable}`}>
+      <body className="min-h-[100dvh] bg-cream text-warm antialiased">
         <JsonLd />
         <SkipLink />
         <LoadingScreen />
         <SmoothScrollProvider>
           <Navbar />
-          <main id="main-content" tabIndex={-1} className="flex min-h-screen flex-col focus:outline-none">
+          <main id="main-content" tabIndex={-1} className="flex min-h-[100dvh] flex-col focus:outline-none">
             {children}
           </main>
           <Footer />

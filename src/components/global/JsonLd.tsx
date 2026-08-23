@@ -28,7 +28,7 @@ export function JsonLd() {
         },
         address: {
           "@type": "PostalAddress",
-          streetAddress: branch.address,
+          ...(branch.address.includes("(") ? {} : { streetAddress: branch.address }),
           addressLocality: branch.area,
           addressCountry: "LK",
         },
@@ -59,7 +59,7 @@ export function JsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
     />
   );
 }

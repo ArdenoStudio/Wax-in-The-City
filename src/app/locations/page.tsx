@@ -12,7 +12,7 @@ import { IMAGES } from "@/lib/images";
 export const metadata: Metadata = {
   title: "Locations",
   description:
-    "Two ladies-only Wax In The City studios in Colombo — Battaramulla and Nugegoda. Find hours, directions and WhatsApp booking.",
+    "Two ladies only Wax In The City studios in Colombo — Battaramulla and Nugegoda. Find hours, directions and WhatsApp booking.",
   alternates: {
     canonical: "/locations",
   },
@@ -29,14 +29,14 @@ export default function LocationsPage() {
       <PageHero
         eyebrow="Visit us"
         title="Choose the studio that fits your day."
-        subtitle="Two ladies-only Colombo locations with the same private-room standard."
+        subtitle="Two ladies only Colombo locations with the same private room standard."
         image={IMAGES.branches.battaramulla}
         imageAlt="Calm private studio room prepared for an appointment"
         size="md"
+        priority
       />
 
       <section className="relative overflow-hidden bg-brand px-5 py-section-lg text-cream lg:px-8">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(217,179,95,0.22),transparent_34%),radial-gradient(circle_at_80%_34%,rgba(255,214,222,0.14),transparent_30%)]" />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
           <div>
             <SectionHeading
@@ -59,7 +59,7 @@ export default function LocationsPage() {
           <div className="grid gap-5 md:grid-cols-2">
             {BRANCHES.map((branch, i) => (
               <AnimatedSection key={branch.slug} variant="fadeUp" delay={i * 0.08}>
-                <article className="group h-full overflow-hidden rounded-card border border-cream/14 bg-cream text-warm shadow-[0_28px_90px_rgba(0,0,0,0.28)]">
+                <article className="group h-full overflow-hidden rounded-card border border-cream/14 bg-cream text-warm shadow-[0_26px_80px_rgba(27,14,16,0.18)]">
                   <div className="relative min-h-[260px] overflow-hidden bg-ink">
                     <Image
                       src={BRANCH_IMAGES[branch.slug]}
@@ -71,28 +71,37 @@ export default function LocationsPage() {
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_25%,rgba(23,7,11,0.72)_100%)]" />
                     <div className="absolute bottom-0 left-0 p-5 text-cream">
-                      <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light">
+                      <p className="text-caption font-semibold uppercase tracking-[0.14em] text-brand-light text-pretty">
                         {branch.area}
                       </p>
-                      <h2 className="mt-2 font-serif text-[2.25rem] font-medium leading-none">
+                      <h2 className="mt-2 text-balance font-serif text-4xl font-medium leading-none">
                         {branch.name}
                       </h2>
                     </div>
                   </div>
                   <div className="p-5 sm:p-6">
-                    <p className="text-body-sm text-warm-grey">{branch.blurb}</p>
+                    <p className="text-body-sm text-warm-grey text-pretty">{branch.blurb}</p>
                     <div className="mt-5 space-y-3 border-t border-warm-border pt-5 text-body-sm text-warm-grey">
-                      <p className="flex gap-2">
+                      <p className="flex gap-2 text-pretty">
                         <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-action" />
-                        <span>{branch.address}</span>
+                        <span>
+                          {branch.address.includes("(")
+                            ? "Address — final details to be confirmed. WhatsApp us for directions."
+                            : branch.address}
+                        </span>
                       </p>
-                      <p className="flex items-center gap-2">
+                      <p className="flex items-center gap-2 text-pretty">
                         <Clock className="h-4 w-4 text-brand-action" />
                         {branch.hours.weekday}
                       </p>
-                      <p className="flex items-center gap-2">
+                      <p className="flex items-center gap-2 text-pretty">
                         <Phone className="h-4 w-4 text-brand-action" />
-                        {branch.phone}
+                        <a
+                          href={`tel:${branch.phone.replace(/\s/g, "")}`}
+                          className="hover:underline"
+                        >
+                          {branch.phone}
+                        </a>
                       </p>
                     </div>
                     <div className="mt-6 flex flex-col gap-2 sm:flex-row">
@@ -100,7 +109,7 @@ export default function LocationsPage() {
                         href={whatsappLink(`Hi! I'd like to book at your ${branch.name} branch.`, branch.whatsapp)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="pressable inline-flex h-11 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,#a5273f,#6f1726)] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)]"
+                        className="pressable inline-flex h-11 items-center justify-center gap-2 rounded-pill bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] px-5 text-body-sm font-medium text-cream shadow-[0_14px_30px_rgba(151,35,58,0.20)]"
                       >
                         <WhatsappIcon className="h-4 w-4" />
                         WhatsApp
@@ -134,10 +143,10 @@ export default function LocationsPage() {
           <div className="grid gap-3 sm:grid-cols-3">
             {["Choose branch", "Confirm service", "Arrive relaxed"].map((step, index) => (
               <div key={step} className="premium-surface rounded-card p-5">
-                <p className="relative z-10 font-serif text-h2 text-brand-action/40">
+                <p className="relative z-10 font-serif text-h2 text-brand-action/40 text-pretty">
                   {String(index + 1).padStart(2, "0")}
                 </p>
-                <h3 className="relative z-10 mt-3 text-h4 font-semibold text-warm">{step}</h3>
+                <h3 className="relative z-10 mt-3 text-h4 font-semibold text-warm text-balance">{step}</h3>
               </div>
             ))}
           </div>

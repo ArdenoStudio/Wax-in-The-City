@@ -1,46 +1,46 @@
 /**
- * Central image manifest — swap URLs here when client photography arrives.
- * Keeps placeholders honest and deduplicated until real assets are ready.
+ * Central image + video manifest — all assets are local client photography.
+ * Imagery is ambience and studio protocol only; no procedural or result claims.
  */
 
 export const IMAGES = {
   hero: {
-    src: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=1600&auto=format&fit=crop",
-    alt: "A warm, calm treatment room at Wax In The City",
+    src: "/images/studio/brand-wall.jpg",
+    alt: "The Wax In The City brand wall with certificates and premium wax products",
   },
   about: {
-    src: "/images/studio/reception.jpg",
-    alt: "Wax In The City studio reception area in Battaramulla",
+    src: "/images/studio/reception-warm.jpg",
+    alt: "Warm private reception lounge at the Battaramulla studio",
   },
   book: {
-    src: "/images/studio/hygiene.jpg",
-    alt: "Hygienic and private treatment preparation setup",
+    src: "/images/studio/service-prep.jpg",
+    alt: "Treatment room prepared with fresh linens before an appointment",
   },
   services: {
-    waxing: "/images/studio/service.jpg",
-    facials: "/images/studio/confidence.jpg",
-    moroccan: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop",
-    hydraFacial: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=1600&auto=format&fit=crop",
+    waxing: "/images/studio/service-prep.jpg",
+    facials: "/images/gallery/g-reception-02.jpg",
+    moroccan: "/images/studio/product-shelf.jpg",
+    hydraFacial: "/images/studio/product-shelf.jpg",
   },
   branches: {
-    battaramulla: "/images/studio/reception.jpg",
-    nugegoda: "/images/studio/service.jpg",
+    battaramulla: "/images/studio/exterior-sign.jpg",
+    nugegoda: "/images/studio/reception-warm.jpg",
   },
   studio: {
-    reception: "/images/studio/reception.jpg",
-    hygiene: "/images/studio/hygiene.jpg",
-    service: "/images/studio/service.jpg",
-    confidence: "/images/studio/confidence.jpg",
+    reception: "/images/studio/reception-desk.jpg",
+    hygiene: "/images/studio/service-prep.jpg",
+    service: "/images/studio/service-prep.jpg",
+    confidence: "/images/studio/product-shelf.jpg",
     square: "/images/studio/studio-square.jpg",
   },
   beforeAfter: {
     waxing: {
-      before: "https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=900&auto=format&fit=crop",
-      after: "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?q=80&w=900&auto=format&fit=crop",
+      before: "/images/studio/service-prep.jpg",
+      after: "/images/studio/brand-wall.jpg",
     },
     facial: {
-      before: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=900&auto=format&fit=crop",
-      after: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=900&auto=format&fit=crop",
+      before: "/images/studio/product-shelf.jpg",
+      after: "/images/gallery/g-reception-02.jpg",
     },
   },
   og: "/images/og-image.jpg",
@@ -50,6 +50,35 @@ export const IMAGES = {
   socialProof: {
     src: "/images/studio/studio-square.jpg",
     alt: "Wax In The City studio branding and treatment room",
+  },
+} as const;
+
+/** Local muted loop videos with poster frames for reduced-motion fallbacks. */
+export const VIDEOS = {
+  brandSting: {
+    src: "/videos/brand-sting.mp4",
+    poster: "/videos/brand-sting.poster.jpg",
+    alt: "Brand sting for Wax In The City",
+  },
+  prep: {
+    src: "/videos/prep-fresh-setup.mp4",
+    poster: "/videos/prep-fresh-setup.poster.jpg",
+    alt: "A fresh treatment setup being prepared in the studio",
+  },
+  wax: {
+    src: "/videos/wax-melting.mp4",
+    poster: "/videos/wax-melting.poster.jpg",
+    alt: "Premium wax warming before an appointment",
+  },
+  care: {
+    src: "/videos/treatment-care.mp4",
+    poster: "/videos/treatment-care.poster.jpg",
+    alt: "Calm, gentle treatment care in the private room",
+  },
+  wall: {
+    src: "/videos/brand-wall.mp4",
+    poster: "/videos/brand-wall.poster.jpg",
+    alt: "The Wax In The City brand wall inside the Battaramulla studio",
   },
 } as const;
 

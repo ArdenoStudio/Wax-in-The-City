@@ -47,7 +47,7 @@ export function GalleryTeaser() {
                 i === 0 || i === 5 ? "row-span-2" : ""
               }`}
             >
-              <div className={`relative z-10 w-full overflow-hidden rounded-[7px] ${i === 0 || i === 5 ? "h-full min-h-[280px]" : "aspect-square"}`}>
+              <div className={`relative z-10 w-full overflow-hidden rounded-card ${i === 0 || i === 5 ? "h-full min-h-[280px]" : "aspect-square"}`}>
                 <Image
                   src={photo.src}
                   alt={photo.alt}

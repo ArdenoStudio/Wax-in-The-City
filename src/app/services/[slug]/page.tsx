@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import {
   SERVICE_CATEGORIES,
+  SITE,
   getCategory,
 } from "@/lib/site";
 import { getPublicServiceContent } from "@/lib/service-content";
@@ -30,14 +31,14 @@ const BEFORE_AFTER: Partial<
   waxing: {
     before: IMAGES.beforeAfter.waxing.before,
     after: IMAGES.beforeAfter.waxing.after,
-    beforeAlt: "Illustrative clean preparation before a waxing visit",
-    afterAlt: "Illustrative smooth finish after a waxing visit",
+    beforeAlt: "Treatment room prepared ahead of a waxing visit",
+    afterAlt: "Wax In The City brand wall inside the studio",
   },
   facials: {
     before: IMAGES.beforeAfter.facial.before,
     after: IMAGES.beforeAfter.facial.after,
-    beforeAlt: "Illustrative facial preparation before treatment",
-    afterAlt: "Illustrative calm skin-care finish after treatment",
+    beforeAlt: "Skin care products stocked for facial appointments",
+    afterAlt: "Calm reception corner where facial guests settle in",
   },
 };
 
@@ -57,6 +58,18 @@ export async function generateMetadata({
     title: category.name,
     description: category.description,
     alternates: { canonical: `/services/${slug}` },
+    openGraph: {
+      title: category.name,
+      description: category.description,
+      url: `${SITE.url}/services/${slug}`,
+      images: [{ url: IMAGES.og, width: 1200, height: 630, alt: `${category.name} — ${SITE.name}` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: category.name,
+      description: category.description,
+      images: [IMAGES.og],
+    },
   };
 }
 
@@ -84,6 +97,7 @@ export default async function ServiceCategoryPage({
         subtitle={category.description}
         image={HERO_IMAGES[category.href] ?? HERO_IMAGES.facials}
         imageAlt={`${category.name} at Wax In The City`}
+        priority
       />
 
       <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">
@@ -99,8 +113,8 @@ export default async function ServiceCategoryPage({
 
           {comparison && (
             <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
-              <h2 className="font-serif text-h3 font-medium text-warm">Treatment flow preview</h2>
-              <p className="mt-2 text-body-sm text-warm-grey">
+              <h2 className="font-serif text-h3 font-medium text-warm text-balance">Treatment flow preview</h2>
+              <p className="mt-2 text-body-sm text-warm-grey text-pretty">
                 An honest process preview until client-approved result photos are available.
               </p>
               <div className="mt-6">
@@ -109,8 +123,8 @@ export default async function ServiceCategoryPage({
                   afterSrc={comparison.after}
                   beforeAlt={comparison.beforeAlt}
                   afterAlt={comparison.afterAlt}
-                  beforeLabel="Before care"
-                  afterLabel="After care"
+                  beforeLabel="Prep room"
+                  afterLabel="Studio standard"
                 />
               </div>
             </AnimatedSection>
@@ -135,7 +149,7 @@ export default async function ServiceCategoryPage({
       <section className="relative overflow-hidden bg-cream-alt px-5 py-section-lg lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="font-serif text-h2 font-medium text-warm">Explore other treatments</h2>
+          <h2 className="font-serif text-h2 font-medium text-warm text-balance">Explore other treatments</h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {serviceContent.categories.filter((c) => c.slug !== category.slug).map((c) => (
               <Link

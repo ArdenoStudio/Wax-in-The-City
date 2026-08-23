@@ -18,7 +18,7 @@ interface AnimatedSectionProps {
   as?: "div" | "section";
 }
 
-/** Scroll-triggered entrance wrapper (file 11). Opacity + transform only. */
+/** Scroll-triggered entrance wrapper (file 11). GPU only: opacity + transform. */
 export function AnimatedSection({
   children,
   variant = "fadeUp",
@@ -37,17 +37,22 @@ export function AnimatedSection({
       ...(base.visible as object),
       transition: {
         ...((base.visible as { transition?: object }).transition ?? {}),
-        delay,
+        ...(delay ? { delay } : {}),
       },
     },
   };
+
+  if (reduceMotion) {
+    const Tag = as === "section" ? "section" : "div";
+    return <Tag className={className}>{children}</Tag>;
+  }
 
   return (
     <MotionTag
       className={className}
       variants={variants}
-      initial={false}
-      whileInView={reduceMotion ? undefined : "visible"}
+      initial="hidden"
+      whileInView="visible"
       viewport={viewportOnce}
     >
       {children}

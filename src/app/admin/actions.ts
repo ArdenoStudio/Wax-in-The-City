@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import {
   clearAdminSession,
+  getLoginIdentifier,
   isAdminAuthenticated,
   isLoginRateLimited,
   setAdminFlashMessage,
@@ -39,14 +40,16 @@ async function requireAdminMutation() {
 }
 
 export async function loginAdmin(formData: FormData) {
-  const { limited, retryAfterSec } = isLoginRateLimited();
+  // Per-IP rate limiting via x-forwarded-for (falls back to "global" when header unavailable)
+  const identifier = await getLoginIdentifier();
+  const { limited, retryAfterSec } = isLoginRateLimited(identifier);
   if (limited) {
     await adminError(`Too many failed login attempts. Please wait ${retryAfterSec ?? 900} seconds before trying again.`);
   }
 
   const password = String(formData.get("password") ?? "");
 
-  const isValid = await verifyAdminPassword(password);
+  const isValid = await verifyAdminPassword(password, identifier);
   if (!isValid) {
     await adminError("The admin password is not correct.");
   }

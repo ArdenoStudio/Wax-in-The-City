@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 const FILTERS: { key: GalleryCategory | "all"; label: string }[] = [
   { key: "all", label: "All" },
   { key: "salon", label: "Salon" },
-  { key: "results", label: "Results" },
+  { key: "results", label: "Studio" },
   { key: "events", label: "Events" },
 ];
 
@@ -88,7 +88,7 @@ export function GalleryGrid() {
             onClick={() => setFilter(f.key)}
             aria-pressed={filter === f.key}
             className={cn(
-              "rounded-pill px-4 py-2.5 text-body-sm font-medium transition-colors sm:px-5",
+              "rounded-pill min-h-11 px-4 py-2.5 text-body-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream sm:px-5",
               "pressable",
               filter === f.key
                 ? "bg-brand-action text-cream"
@@ -109,7 +109,8 @@ export function GalleryGrid() {
             type="button"
             onClick={() => setActive(i)}
             aria-label={`View image: ${photo.alt}`}
-            className="mb-4 block w-full break-inside-avoid overflow-hidden rounded-card-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action"
+            transition={{ type: "spring", stiffness: 380, damping: 32 }}
+            className="mb-4 block w-full break-inside-avoid overflow-hidden rounded-card-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action will-change-transform"
           >
             <div className={cn("relative w-full", i % 3 === 1 ? "aspect-[3/4]" : "aspect-square")}>
               <Image
@@ -118,7 +119,7 @@ export function GalleryGrid() {
                 fill
                 sizes="(max-width: 1024px) 50vw, 33vw"
                 unoptimized={photo.src.startsWith("http")}
-                className="object-cover transition-transform duration-500 hover:scale-105"
+                className="object-cover transition-transform duration-500 ease-[var(--ease-apple)] hover:scale-[1.02] will-change-transform"
               />
             </div>
           </motion.button>
@@ -135,7 +136,7 @@ export function GalleryGrid() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             onClick={close}
             className="fixed inset-0 z-[90] flex items-center justify-center bg-warm/90 p-4 backdrop-blur-sm"
           >
@@ -163,12 +164,12 @@ export function GalleryGrid() {
 
             <motion.div
               key={photos[active].src}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.25 }}
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative h-[80vh] w-full max-w-4xl"
+              className="relative h-[80dvh] max-h-[80dvh] w-full max-w-4xl will-change-transform"
             >
               <Image
                 src={photos[active].src}

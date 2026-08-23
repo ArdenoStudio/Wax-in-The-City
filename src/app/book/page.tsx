@@ -22,7 +22,12 @@ function resolveServicePreference(
   categories = SERVICE_CATEGORIES
 ): string | undefined {
   if (!value) return undefined;
-  const decoded = decodeURIComponent(value);
+  let decoded: string;
+  try {
+    decoded = decodeURIComponent(value);
+  } catch {
+    decoded = value;
+  }
   const byName = services.find(
     (s) => s.name.toLowerCase() === decoded.toLowerCase()
   );

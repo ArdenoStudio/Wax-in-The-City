@@ -32,7 +32,7 @@ export default async function AdminPage() {
   const services = supabaseReady ? await getAdminServices() : [];
 
   return (
-    <section className="min-h-screen bg-cream px-5 pb-20 pt-28 lg:px-8">
+    <section className="min-h-[100dvh] bg-cream px-5 pb-20 pt-28 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-6 border-b border-warm-border pb-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -51,10 +51,10 @@ export default async function AdminPage() {
               <ShieldCheck className="h-4 w-4" />
               Admin price editor
             </p>
-            <h1 className="mt-5 max-w-3xl font-serif text-h1 font-medium text-warm">
+            <h1 className="mt-5 max-w-3xl font-serif text-h1 font-medium text-warm text-balance">
               Change service prices without editing code.
             </h1>
-            <p className="mt-4 max-w-2xl text-body text-warm-grey">
+            <p className="mt-4 max-w-2xl text-body text-warm-grey text-pretty">
               This is intentionally narrow: update services, prices, durations,
               visibility, and sort order. Booking requests remain private.
             </p>
@@ -77,8 +77,8 @@ export default async function AdminPage() {
 
         {!supabaseReady && (
           <div className="studio-plate mt-8 rounded-card p-6">
-            <h2 className="font-serif text-h3 text-warm">Connect Supabase admin access</h2>
-            <p className="mt-2 text-body-sm text-warm-grey">
+            <h2 className="font-serif text-h3 text-warm text-balance">Connect Supabase admin access</h2>
+            <p className="mt-2 text-body-sm text-warm-grey text-pretty">
               Add `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
               `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_PASSWORD`, and
               `ADMIN_SESSION_SECRET` to enable editing.
@@ -88,8 +88,8 @@ export default async function AdminPage() {
 
         {supabaseReady && services.length === 0 && (
           <div className="studio-plate mt-8 rounded-card p-6">
-            <h2 className="font-serif text-h3 text-warm">No services in Supabase yet</h2>
-            <p className="mt-2 max-w-2xl text-body-sm text-warm-grey">
+            <h2 className="font-serif text-h3 text-warm text-balance">No services in Supabase yet</h2>
+            <p className="mt-2 max-w-2xl text-body-sm text-warm-grey text-pretty">
               Seed the current static menu into the `services` table, then edit
               prices from this page.
             </p>
@@ -245,8 +245,7 @@ function LoginPanel({
   const configured = isAdminPasswordConfigured();
 
   return (
-    <section className="flex min-h-screen items-center justify-center bg-brand px-5 py-20 text-cream">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,214,222,0.16),transparent_38%),linear-gradient(135deg,rgba(43,7,16,1),rgba(23,7,11,1))]" />
+    <section className="flex min-h-[100dvh] items-center justify-center bg-brand px-5 py-20 text-cream">
       <div className="glass-panel relative w-full max-w-md rounded-card p-6">
         <div className="relative mx-auto mb-6 h-20 w-20 rounded-pill border border-cream/12 bg-brand p-1">
           <Image
@@ -262,10 +261,10 @@ function LoginPanel({
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-pill bg-cream/10 text-brand-light">
           <Lock className="h-5 w-5" />
         </div>
-        <h1 className="mt-5 text-center font-serif text-h2 text-cream">
+        <h1 className="mt-5 text-center font-serif text-h2 text-cream text-balance">
           Admin access
         </h1>
-        <p className="mt-2 text-center text-body-sm text-cream/68">
+        <p className="mt-2 text-center text-body-sm text-cream/68 text-pretty">
           Manage service prices and menu details from the site backend.
         </p>
 

@@ -63,11 +63,15 @@ export function BookingForm({
 
   const onSubmit = async (data: BookingInput) => {
     setServerError(null);
-    const res = await submitBooking(data);
-    if (res.ok) {
-      setSubmitted(true);
-    } else {
-      setServerError(res.error);
+    try {
+      const res = await submitBooking(data);
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setServerError(res.error);
+      }
+    } catch {
+      setServerError("Network issue — please retry or message us on WhatsApp.");
     }
   };
 
@@ -89,15 +93,16 @@ export function BookingForm({
             key="success"
             role="status"
             aria-live="polite"
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative z-10 flex flex-col items-center py-8 text-center"
+            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            className="relative z-10 flex flex-col items-center py-8 text-center will-change-transform"
           >
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
               <Check className="h-7 w-7" />
             </span>
-            <h3 className="mt-5 font-serif text-h3 text-warm">Thank you!</h3>
-            <p className="mt-2 max-w-sm text-body text-warm-grey">
+            <h3 className="mt-5 font-serif text-h3 text-warm text-balance">Thank you!</h3>
+            <p className="mt-2 max-w-sm text-body text-warm-grey text-pretty">
               We&apos;ll reach out within 24 hours to confirm your booking. For
               anything urgent, message us on WhatsApp.
             </p>
@@ -128,10 +133,10 @@ export function BookingForm({
               </div>
               <div className="h-px w-full overflow-hidden rounded-full bg-warm-border">
                 <motion.div
-                  className="h-full rounded-full bg-brand-action"
+                  className="h-full rounded-full bg-brand-action will-change-transform"
                   initial={{ width: "0%" }}
                   animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  transition={{ duration: 0.36, ease: [0.16, 1, 0.3, 1] }}
                 />
               </div>
             </div>
@@ -140,19 +145,20 @@ export function BookingForm({
               <div className="flex items-center justify-between">
                 <Label htmlFor="name">Your name</Label>
                 {watchedFields[0] && (
-                  <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
+                  <motion.span initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
                     <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />Done
                   </motion.span>
                 )}
               </div>
               <Input
                 id="name"
+                autoComplete="name"
                 placeholder="Your name"
                 {...register("name")}
                 {...fieldAriaProps("name", errors.name)}
               />
               {errors.name && (
-                <p id={fieldErrorId("name")} className="text-body-sm text-error" role="alert">
+                <p id={fieldErrorId("name")} className="text-body-sm text-error text-pretty" role="alert">
                   {errors.name.message}
                 </p>
               )}
@@ -162,7 +168,7 @@ export function BookingForm({
               <div className="flex items-center justify-between">
                 <Label htmlFor="phone">Phone</Label>
                 {watchedFields[1] && (
-                  <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
+                  <motion.span initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
                     <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />Done
                   </motion.span>
                 )}
@@ -171,12 +177,13 @@ export function BookingForm({
                 id="phone"
                 type="tel"
                 inputMode="tel"
+                autoComplete="tel"
                 placeholder="Your number (we'll only call or WhatsApp)"
                 {...register("phone")}
                 {...fieldAriaProps("phone", errors.phone)}
               />
               {errors.phone && (
-                <p id={fieldErrorId("phone")} className="text-body-sm text-error" role="alert">
+                <p id={fieldErrorId("phone")} className="text-body-sm text-error text-pretty" role="alert">
                   {errors.phone.message}
                 </p>
               )}
@@ -209,7 +216,7 @@ export function BookingForm({
                   )}
                 />
                 {errors.branch && (
-                  <p id={fieldErrorId("branch")} className="text-body-sm text-error" role="alert">
+                  <p id={fieldErrorId("branch")} className="text-body-sm text-error text-pretty" role="alert">
                     {errors.branch.message}
                   </p>
                 )}
@@ -225,6 +232,8 @@ export function BookingForm({
                       <SelectTrigger
                         id="service-select"
                         aria-label="Select treatment type"
+                        aria-invalid={!!errors.service_preference}
+                        aria-describedby={errors.service_preference ? "service_preference-error" : undefined}
                       >
                         <SelectValue placeholder="Choose a treatment" />
                       </SelectTrigger>
@@ -238,12 +247,17 @@ export function BookingForm({
                     </Select>
                   )}
                 />
+                {errors.service_preference && (
+                  <p id={fieldErrorId("service_preference")} className="text-body-sm text-error text-pretty" role="alert">
+                    {errors.service_preference.message}
+                  </p>
+                )}
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
               <Label htmlFor="preferred_date">When do you prefer to visit?</Label>
-              <Input id="preferred_date" type="date" {...register("preferred_date")} />
+              <Input id="preferred_date" type="date" autoComplete="off" {...register("preferred_date")} />
             </div>
 
             <div className="flex flex-col gap-2">
@@ -252,11 +266,17 @@ export function BookingForm({
                 id="message"
                 placeholder="Tell us anything that helps us prepare for your visit."
                 {...register("message")}
+                {...fieldAriaProps("message", errors.message)}
               />
+              {errors.message && (
+                <p id={fieldErrorId("message")} className="text-body-sm text-error text-pretty" role="alert">
+                  {errors.message.message}
+                </p>
+              )}
             </div>
 
             {serverError && (
-              <p className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error" role="alert">
+              <p className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error text-pretty" role="alert">
                 {serverError}
               </p>
             )}
@@ -272,7 +292,7 @@ export function BookingForm({
               )}
             </Button>
 
-            <p className="text-center text-caption text-warm-grey">
+            <p className="text-center text-caption text-warm-grey text-pretty">
               No card required to enquire · We&apos;ll confirm within 24 hours
             </p>
           </motion.form>

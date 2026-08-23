@@ -35,9 +35,13 @@ export function ContactForm() {
 
   const onSubmit = async (data: ContactInput) => {
     setServerError(null);
-    const res = await submitContact(data);
-    if (res.ok) setSubmitted(true);
-    else setServerError(res.error);
+    try {
+      const res = await submitContact(data);
+      if (res.ok) setSubmitted(true);
+      else setServerError(res.error);
+    } catch {
+      setServerError("Network issue — please retry or message us on WhatsApp.");
+    }
   };
 
   return (
@@ -48,15 +52,16 @@ export function ContactForm() {
             key="ok"
             role="status"
             aria-live="polite"
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative z-10 flex flex-col items-center py-8 text-center"
+            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            className="relative z-10 flex flex-col items-center py-8 text-center will-change-transform"
           >
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
               <Check className="h-7 w-7" />
             </span>
-            <h3 className="mt-5 font-serif text-h3 text-warm">Message sent</h3>
-            <p className="mt-2 max-w-sm text-body text-warm-grey">
+            <h3 className="mt-5 font-serif text-h3 text-warm text-balance">Message sent</h3>
+            <p className="mt-2 max-w-sm text-body text-warm-grey text-pretty">
               Thank you! We&apos;ll get back to you within 24 hours.
             </p>
           </motion.div>
@@ -74,12 +79,13 @@ export function ContactForm() {
                 <Label htmlFor="c-name">Your name</Label>
                 <Input
                   id="c-name"
+                  autoComplete="name"
                   placeholder="Your name"
                   {...register("name")}
                   {...fieldAriaProps("name", errors.name)}
                 />
                 {errors.name && (
-                  <p id={fieldErrorId("name")} className="text-body-sm text-error" role="alert">
+                  <p id={fieldErrorId("name")} className="text-body-sm text-error text-pretty" role="alert">
                     {errors.name.message}
                   </p>
                 )}
@@ -89,12 +95,13 @@ export function ContactForm() {
                 <Input
                   id="c-email"
                   type="email"
+                  autoComplete="email"
                   placeholder="you@example.com"
                   {...register("email")}
                   {...fieldAriaProps("email", errors.email)}
                 />
                 {errors.email && (
-                  <p id={fieldErrorId("email")} className="text-body-sm text-error" role="alert">
+                  <p id={fieldErrorId("email")} className="text-body-sm text-error text-pretty" role="alert">
                     {errors.email.message}
                   </p>
                 )}
@@ -108,12 +115,13 @@ export function ContactForm() {
                   id="c-phone"
                   type="tel"
                   inputMode="tel"
+                  autoComplete="tel"
                   placeholder="Your number"
                   {...register("phone")}
                   {...fieldAriaProps("phone", errors.phone)}
                 />
                 {errors.phone && (
-                  <p id={fieldErrorId("phone")} className="text-body-sm text-error" role="alert">
+                  <p id={fieldErrorId("phone")} className="text-body-sm text-error text-pretty" role="alert">
                     {errors.phone.message}
                   </p>
                 )}
@@ -144,7 +152,7 @@ export function ContactForm() {
                   )}
                 />
                 {errors.branch && (
-                  <p id={fieldErrorId("branch")} className="text-body-sm text-error" role="alert">
+                  <p id={fieldErrorId("branch")} className="text-body-sm text-error text-pretty" role="alert">
                     {errors.branch.message}
                   </p>
                 )}
@@ -160,14 +168,14 @@ export function ContactForm() {
                 {...fieldAriaProps("message", errors.message)}
               />
               {errors.message && (
-                <p id={fieldErrorId("message")} className="text-body-sm text-error" role="alert">
+                <p id={fieldErrorId("message")} className="text-body-sm text-error text-pretty" role="alert">
                   {errors.message.message}
                 </p>
               )}
             </div>
 
             {serverError && (
-              <p className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error" role="alert">
+              <p className="rounded-card bg-error/10 px-4 py-3 text-body-sm text-error text-pretty" role="alert">
                 {serverError}
               </p>
             )}
@@ -183,7 +191,7 @@ export function ContactForm() {
               )}
             </Button>
 
-            <p className="text-center text-body-sm text-warm-grey">
+            <p className="text-center text-body-sm text-warm-grey text-pretty">
               Prefer WhatsApp?{" "}
               <a
                 href={whatsappLink("Hi! I have a question.")}

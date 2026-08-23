@@ -46,7 +46,7 @@ export const WAX_PRODUCTS: WaxProductDef[] = [
     label: "Lycon Aloe Vera",
     short: "Aloe Vera",
     origin: "Australia",
-    description: "Ultra-calming wax for sensitive underarm and bikini skin.",
+    description: "Ultra calming wax for sensitive underarm and bikini skin.",
   },
   {
     id: "rica-white-choc",
@@ -151,7 +151,7 @@ export const WAX_PRICE_ROWS: WaxPriceRow[] = [
   {
     area: "Full Brazilian",
     prices: { "lycon-aloe-vera": 6500, "lycon-pinkini": 10500 },
-    note: "Strict no double-dipping protocol with fresh spatulas.",
+    note: "Strict no double dipping protocol with fresh spatulas.",
   },
   {
     area: "Brazilian + Underarm",
@@ -177,7 +177,7 @@ export const WAX_PACKAGES: WaxPackage[] = [
   {
     id: "full-body",
     name: "Full Body Wax",
-    description: "The complete head-to-toe smooth ritual covering all essential body zones.",
+    description: "The complete full body smooth ritual covering all essential body zones.",
     inclusions: ["Full Leg", "Full Arms", "Underarms", "Full Brazilian"],
     prices: {
       essential: 10000,

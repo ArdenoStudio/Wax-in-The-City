@@ -6,7 +6,9 @@
     "dev": "node node_modules/next/dist/bin/next dev",
     "build": "node node_modules/next/dist/bin/next build",
     "start": "node node_modules/next/dist/bin/next start",
-    "lint": "eslint"
+    "lint": "node node_modules/eslint/bin/eslint.js \"src/**/*.{ts,tsx}\"",
+    "test": "node scripts/e2e-audit.mjs",
+    "test:all": "node --test tests/tier1-feature-coverage.test.mjs tests/tier2-boundary-cases.test.mjs tests/tier3-cross-feature.test.mjs tests/tier4-workload-scenarios.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",

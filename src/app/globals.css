@@ -30,13 +30,13 @@
   --color-success: #7a9e7e;
   --color-error: #c0392b;
 
-  /* --- Type scale --- */
+  /* --- Type scale — tuned for Fraunces soft display (low-contrast, less tightening) --- */
   --text-display: 4rem;
-  --text-display--line-height: 0.98;
-  --text-display--letter-spacing: 0;
+  --text-display--line-height: 0.99;
+  --text-display--letter-spacing: -0.012em;
   --text-h1: 2.5rem;
   --text-h1--line-height: 1.15;
-  --text-h1--letter-spacing: 0;
+  --text-h1--letter-spacing: -0.01em;
   --text-h2: 2rem;
   --text-h2--line-height: 1.25;
   --text-h3: 1.5rem;
@@ -69,10 +69,10 @@
   --shadow-nav: 0 18px 50px rgba(27, 14, 16, 0.10);
 }
 
-/* Font families use local system stacks so production builds do not fetch fonts. */
+/* Font families — soft luxury pairing: Fraunces (display) + Plus Jakarta Sans (body) via next/font variable. */
 @theme inline {
-  --font-serif: var(--font-display, var(--font-display-fallback)), Georgia, serif;
-  --font-sans: var(--font-body, var(--font-body-fallback)), system-ui, sans-serif;
+  --font-serif: var(--font-display), var(--font-display-fallback), Georgia, serif;
+  --font-sans: var(--font-body), var(--font-body-fallback), system-ui, sans-serif;
 }
 
 /* ------------------------------------------------------------------ *
@@ -80,8 +80,10 @@
  * ------------------------------------------------------------------ */
 
 :root {
-  --font-display-fallback: "Bodoni 72", Didot, "Bodoni MT", Georgia, serif;
-  --font-body-fallback: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-display-fallback: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  --font-body-fallback: "Inter", "Segoe UI", system-ui, sans-serif;
+  /* Fraunces is soft semi-serif with inflated forms & optical sizes — needs less tightening than Cormorant;
+     Plus Jakarta Sans is warm/ultra-clean with high x-height — keep body tracking near 0 for smooth readability. */
   --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-apple-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-press: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -111,7 +113,27 @@ body {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
   letter-spacing: 0;
-  font-feature-settings: "liga" 1, "kern" 1, "ss01" 1;
+  font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+  font-optical-sizing: auto;
+}
+
+/* Soft luxury refinements — Fraunces inflated soft-serif with optical sizing.
+    Lighter tracking than Cormorant: Fraunces/Jakarta need less tightening; keeps
+    "Private waxing, quietly perfected." calm at 1280px and smooth at 390px without stiffness. */
+.font-serif {
+  font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+  font-optical-sizing: auto;
+}
+h1.font-serif,
+h2.font-serif {
+  letter-spacing: -0.012em;
+}
+h3.font-serif,
+h4.font-serif,
+.font-serif.text-h4,
+.font-serif.text-h3,
+.font-serif.text-h2 {
+  letter-spacing: -0.008em;
 }
 
 ::selection {
@@ -126,6 +148,21 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.text-balance {
+  text-wrap: balance;
+}
+
+p,
+.text-pretty {
+  text-wrap: pretty;
+}
+
 :where(a, button, input, textarea, select, [role="button"]) {
   transition-timing-function: var(--ease-apple);
 }
@@ -133,6 +170,10 @@ textarea {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
   }
 
   .premium-surface {
@@ -188,7 +229,7 @@ textarea {
   .glass-panel {
     border: 1px solid rgba(255, 250, 246, 0.18);
     background: rgba(255, 250, 246, 0.09);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 24px 70px rgba(0,0,0,0.22);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 24px 70px rgba(27,14,16,0.24);
     backdrop-filter: blur(26px) saturate(1.25);
     transition:
       transform var(--motion-slow) var(--ease-apple),
@@ -256,8 +297,8 @@ textarea {
   }
 
   .group:hover .image-polish {
-    transform: scale(1.045);
-    filter: saturate(1.06) contrast(1.02);
+    transform: scale(1.02);
+    filter: saturate(1.04) contrast(1.01);
   }
 
   .hairline-gradient {
@@ -265,24 +306,31 @@ textarea {
   }
 }
 
-/* Marquee strip — file 10, section 6 */
+/* Marquee strip — GPU transform only; respects reduced-motion. file 10, section 6 */
 @keyframes witc-marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 
-.animate-marquee {
-  animation: witc-marquee 30s linear infinite;
+@media (prefers-reduced-motion: no-preference) {
+  .animate-marquee {
+    animation: witc-marquee 30s linear infinite;
+    will-change: transform;
+  }
+  .animate-marquee-slow {
+    animation: witc-marquee 50s linear infinite;
+    will-change: transform;
+  }
 }
 .animate-marquee:hover {
   animation-play-state: paused;
 }
-
-.animate-marquee-slow {
-  animation: witc-marquee 50s linear infinite;
-}
 .group:hover .animate-marquee-slow {
   animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-slow { animation: none !important; }
 }
 
 /* Accordion expand/collapse (Radix content-height variable) */
@@ -312,20 +360,33 @@ textarea {
 
 @keyframes witc-float {
   0%, 100% { transform: translate3d(0, 0, 0); }
-  50%      { transform: translate3d(0, -8px, 0); }
+  50%      { transform: translate3d(0, -4px, 0); }
 }
 
-.animate-float-soft {
-  animation: witc-float 7s ease-in-out infinite;
+/* Subtle 12s float — only when the user allows motion; GPU transform only. */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-float-soft {
+    animation: witc-float 12s var(--ease-apple-soft, cubic-bezier(0.22, 1, 0.36, 1)) infinite;
+    will-change: transform;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-soft { animation: none !important; }
 }
 
 /* Subtle scroll-indicator bob */
 @keyframes witc-bob {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(6px); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, 4px, 0); }
 }
-.animate-bob {
-  animation: witc-bob 1.5s ease-in-out infinite;
+@media (prefers-reduced-motion: no-preference) {
+  .animate-bob {
+    animation: witc-bob 1.8s var(--ease-apple-soft, cubic-bezier(0.22, 1, 0.36, 1)) infinite;
+    will-change: transform;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-bob { animation: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -363,6 +424,21 @@ textarea {
 .nav-link:active {
   transform: translateY(0) scale(0.985);
   transition-duration: var(--motion-fast);
+}
+
+/* Global focus-visible fallback — ensures every interactive element has a visible ring
+   even if a component missed the Tailwind focus-visible: classes. Light surfaces use
+   brand-action/40; dark surfaces (footer/ink) override to cream/50 via higher specificity. */
+:where(a, button, input, textarea, select, [role="button"], [role="tab"], [tabindex]):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-brand-action) 42%, transparent);
+  outline-offset: 2px;
+}
+:where(a, button, input, textarea, select, [role="button"], [role="tab"]):focus:not(:focus-visible) {
+  outline: none;
+}
+.bg-brand-footer :where(a, button):focus-visible,
+.bg-ink :where(a, button):focus-visible {
+  outline-color: color-mix(in srgb, var(--color-cream) 55%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import {
   ReactCompareSlider,
   ReactCompareSliderHandle,
-  ReactCompareSliderImage,
 } from "react-compare-slider";
 
 interface BeforeAfterSliderProps {
@@ -49,11 +49,11 @@ export function BeforeAfterSlider({
   return (
     <div
       role="region"
-      aria-label="Before and after treatment comparison"
-      className="studio-plate micro-lift overflow-hidden rounded-card p-2"
+      aria-label="Studio standard comparison"
+      className="studio-plate micro-lift overflow-hidden rounded-2xl p-2"
     >
       <span className="sr-only">
-        Interactive comparison between {beforeLabel} and {afterLabel}. Drag or slide the handle horizontally to compare results.
+        Interactive comparison between {beforeLabel} and {afterLabel}. Drag or slide the handle horizontally to see both sides of our studio standard.
       </span>
       <div className="pointer-events-none absolute left-5 top-5 z-20 rounded-pill border border-cream/22 bg-brand/78 px-3 py-1 text-caption font-semibold uppercase tracking-[0.12em] text-cream backdrop-blur-md">
         {beforeLabel}
@@ -64,12 +64,34 @@ export function BeforeAfterSlider({
       {mounted ? (
         <ReactCompareSlider
           handle={<SliderHandle />}
-          itemOne={<ReactCompareSliderImage src={beforeSrc} alt={beforeAlt} />}
-          itemTwo={<ReactCompareSliderImage src={afterSrc} alt={afterAlt} />}
-          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[7px]"
+          itemOne={
+            <div className="relative h-full w-full">
+              <Image
+                src={beforeSrc}
+                alt={beforeAlt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
+                className="object-cover"
+              />
+            </div>
+          }
+          itemTwo={
+            <div className="relative h-full w-full">
+              <Image
+                src={afterSrc}
+                alt={afterAlt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
+                className="object-cover"
+              />
+            </div>
+          }
+          className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-card"
         />
       ) : (
-        <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[7px] bg-brand/18" />
+        <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-card bg-brand/10 animate-pulse" />
       )}
     </div>
   );

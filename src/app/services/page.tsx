@@ -16,7 +16,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Waxing, facials, Moroccan treatments and hydra facials — done with genuine care at our ladies-only studios in Battaramulla and Nugegoda.",
+    "Waxing, facials, Moroccan treatments and hydra facials — done with genuine care at our ladies only studios in Battaramulla and Nugegoda.",
   alternates: {
     canonical: "/services",
   },
@@ -30,23 +30,23 @@ const CATEGORY_VISUALS: Record<
     image: IMAGES.services.waxing,
     alt: "A calm private treatment room prepared for waxing",
     label: "Signature smooth",
-    note: "Fresh wax setup, private handling, clear after-care.",
+    note: "Fresh wax setup, private handling, clear aftercare.",
   },
   facial: {
     image: IMAGES.services.facials,
-    alt: "A facial treatment with soft studio light",
+    alt: "Soft studio reception where facial guests are welcomed",
     label: "Skin reset",
     note: "Cleanse, calm, brighten, and keep the skin barrier respected.",
   },
   moroccan: {
     image: IMAGES.services.moroccan,
-    alt: "Spa treatment products arranged for a Moroccan ritual",
+    alt: "Body care products arranged on the studio shelf",
     label: "Deep ritual",
-    note: "Black soap, clay, and slower body-care pacing.",
+    note: "Black soap, clay, and slower body care pacing.",
   },
   "hydra-facial": {
     image: IMAGES.services.hydraFacial,
-    alt: "Close-up of skincare tools and hydrated skin treatment",
+    alt: "Skin care products stocked on the studio shelf",
     label: "Visible refresh",
     note: "Cleanse, extract, hydrate, and leave without downtime.",
   },
@@ -78,14 +78,14 @@ export default async function ServicesPage() {
       <PageHero
         eyebrow="Treatment menu"
         title="Choose the room, the ritual, the result."
-        subtitle="Waxing, skin care, Moroccan body rituals and HydraFacial work, handled with private-room care."
+        subtitle="Waxing, skin care, Moroccan body rituals and HydraFacial work, handled with private room care."
         image={IMAGES.services.facials}
-        imageAlt="Soft skincare treatment close-up in a private studio"
+        imageAlt="Soft light in the private studio reception"
         size="md"
+        priority
       />
 
       <section className="relative overflow-hidden bg-brand px-5 py-section-lg text-cream lg:px-8">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(217,179,95,0.22),transparent_32%),radial-gradient(circle_at_88%_24%,rgba(255,214,222,0.16),transparent_30%)]" />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
           <div className="min-w-0">
             <SectionHeading
@@ -95,7 +95,7 @@ export default async function ServicesPage() {
               title="A visual menu, not a price dump."
               subtitle="Start with the kind of care you want. Each path keeps the practical details close: starting price, timing, and how it feels in the room."
             />
-            <div className="mt-8 max-w-full rounded-card border border-cream/14 bg-cream/8 p-5 text-body-sm text-cream/74 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+            <div className="mt-8 max-w-full rounded-card border border-cream/14 bg-cream/8 p-5 text-body-sm text-cream/74 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] text-pretty">
               Every service request is reviewed before confirmation, so appointments stay realistic and the studio can prepare properly.
             </div>
           </div>
@@ -107,7 +107,7 @@ export default async function ServicesPage() {
                 <Link
                   key={category.slug}
                   href={`/services/${category.href}`}
-                  className="group relative block min-h-[330px] w-full min-w-0 overflow-hidden rounded-card border border-cream/14 bg-ink shadow-[0_28px_90px_rgba(0,0,0,0.28)]"
+                  className="group relative block min-h-[330px] w-full min-w-0 overflow-hidden rounded-card border border-cream/14 bg-ink shadow-[0_26px_80px_rgba(27,14,16,0.18)]"
                 >
                   <Image
                     src={visual.image}
@@ -127,10 +127,10 @@ export default async function ServicesPage() {
                         {formatLKRFrom(category.priceFrom)}
                       </span>
                     </div>
-                    <h2 className="font-serif text-[2rem] font-medium leading-none text-cream">
+                    <h2 className="text-balance font-serif text-h2 font-medium leading-none text-cream">
                       {category.name}
                     </h2>
-                    <p className="mt-3 max-w-sm break-words text-body-sm text-cream/72">{visual.note}</p>
+                    <p className="mt-3 max-w-sm break-words text-body-sm text-cream/72 text-pretty">{visual.note}</p>
                     <span className="icon-drift mt-5 inline-flex items-center gap-2 text-body-sm font-semibold text-brand-light">
                       View {category.name}
                       <ArrowRight className="h-4 w-4" />
@@ -164,7 +164,7 @@ export default async function ServicesPage() {
                 >
                   <Image
                     src={image}
-                    alt={index === 0 ? "Moroccan body-care products in warm light" : "Hydrating facial treatment detail"}
+                    alt={index === 0 ? "Moroccan body care products in warm light" : "Skin care shelf detail inside the studio"}
                     fill
                     sizes="(max-width: 768px) 100vw, 32vw"
                     className="image-polish object-cover"
@@ -195,8 +195,8 @@ export default async function ServicesPage() {
                       <Icon className="h-5 w-5" />
                     </span>
                     <div>
-                      <h3 className="text-h4 font-semibold text-warm">{item.title}</h3>
-                      <p className="mt-1 text-body-sm text-warm-grey">{item.body}</p>
+                      <h3 className="text-h4 font-semibold text-warm text-balance">{item.title}</h3>
+                      <p className="mt-1 text-body-sm text-warm-grey text-pretty">{item.body}</p>
                     </div>
                   </div>
                 );

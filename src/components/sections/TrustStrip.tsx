@@ -13,7 +13,6 @@ export function TrustStrip() {
   return (
     <section className="relative overflow-hidden bg-ink px-5 py-section-lg text-cream lg:px-8">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-50" />
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(53,16,23,0.76),rgba(21,16,17,0.96)_52%,rgba(19,9,13,1))]" />
       <div className="relative mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Studio standard"
@@ -35,19 +34,19 @@ export function TrustStrip() {
               <motion.div
                 key={pillar.title}
                 variants={scaleIn}
-                className="group glass-panel micro-lift flex min-h-[250px] flex-col rounded-card p-6"
+                className="group glass-panel micro-lift flex min-h-[250px] flex-col rounded-2xl p-6"
               >
                 <motion.span
-                  initial={{ rotate: -10 }}
+                  initial={{ rotate: -8 }}
                   whileInView={{ rotate: 0 }}
                   viewport={viewportOnce}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="flex h-14 w-14 items-center justify-center rounded-card bg-cream/10 text-gold transition-transform duration-500 group-hover:scale-105"
+                  transition={{ duration: 0.44, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex h-14 w-14 items-center justify-center rounded-card bg-cream/10 text-gold transition-transform duration-500 group-hover:scale-105 will-change-transform"
                 >
                   <Icon className="h-7 w-7" />
                 </motion.span>
-                <h3 className="mt-8 text-h4 font-semibold text-cream">{pillar.title}</h3>
-                <p className="mt-3 text-body-sm text-cream/64">{pillar.body}</p>
+                <h3 className="mt-8 text-h4 font-semibold text-cream text-balance">{pillar.title}</h3>
+                <p className="mt-3 text-body-sm text-cream/90 text-pretty">{pillar.body}</p>
                 <div className="mt-auto pt-8">
                   <div className="h-px w-full bg-cream/10">
                     <div className="h-px w-10 bg-gold transition-all duration-500 group-hover:w-full" />

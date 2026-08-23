@@ -47,7 +47,6 @@ export function BookingZone({
     >
       {standalone && (
         <>
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(53,16,23,0.84),rgba(21,16,17,0.98)_56%,rgba(19,9,13,1))]" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline-gradient opacity-60" />
         </>
       )}
@@ -79,7 +78,7 @@ export function BookingZone({
           )}
         </div>
 
-        <p className={standalone ? "mt-6 text-center text-body-sm text-cream/60" : "mt-6 text-center text-body-sm text-warm-grey"}>
+        <p className={standalone ? "mt-6 text-center text-body-sm text-cream/60 text-pretty" : "mt-6 text-center text-body-sm text-warm-grey text-pretty"}>
           Prefer to chat?{" "}
           <a
             href={whatsappLink("Hi! I'd like to ask about a booking.")}
@@ -99,7 +98,7 @@ export function BookingZone({
 function DinayaPlaceholder() {
   return (
     <div className="dinaya-widget-zone flex h-[480px] items-center justify-center border border-dashed border-cream/24 bg-cream/5 text-center">
-      <p className="px-6 text-body text-cream/66">
+      <p className="px-6 text-body text-cream/66 text-pretty">
         Online booking is coming soon. For now, please send a request or message us
         on WhatsApp.
       </p>
@@ -113,7 +112,7 @@ function WhatsappOnly() {
       <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-cream/10 text-brand-light">
         <WhatsappIcon className="h-7 w-7" />
       </span>
-      <p className="mt-5 max-w-sm text-body text-cream/66">
+      <p className="mt-5 max-w-sm text-body text-cream/66 text-pretty">
         The quickest way to book is a quick WhatsApp message. We&apos;ll confirm a
         time that works for you.
       </p>

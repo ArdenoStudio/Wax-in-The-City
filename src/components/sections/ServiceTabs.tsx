@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   SERVICE_CATEGORIES,
@@ -23,18 +23,27 @@ export function ServiceTabs({
 }) {
   const [active, setActive] = useState<ServiceCategory>(initial);
   const activeServices = services.filter((service) => service.category === active);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const focusTab = (idx: number) => {
+    tabRefs.current[idx]?.focus();
+  };
+
   return (
     <div>
       <div
         role="tablist"
         aria-label="Service categories"
-        className="mx-auto flex max-w-full flex-wrap justify-center gap-1.5 rounded-card border border-warm-border/70 bg-white/58 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_18px_46px_rgba(39,19,21,0.06)] backdrop-blur-xl sm:w-fit sm:flex-nowrap sm:rounded-pill"
+        className="mx-auto flex max-w-full flex-wrap justify-center gap-1.5 rounded-pill border border-warm-border/70 bg-white/58 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_18px_46px_rgba(39,19,21,0.06)] backdrop-blur-xl sm:w-fit sm:flex-nowrap"
       >
         {categories.map((cat, index) => {
           const isActive = active === cat.slug;
           return (
             <button
               key={cat.slug}
+              ref={(el) => {
+                tabRefs.current[index] = el;
+              }}
               type="button"
               role="tab"
               id={`service-tab-${cat.slug}`}
@@ -45,16 +54,31 @@ export function ServiceTabs({
               onKeyDown={(e) => {
                 if (e.key === "ArrowRight") {
                   e.preventDefault();
-                  const next = categories[(index + 1) % categories.length];
+                  const nextIdx = (index + 1) % categories.length;
+                  const next = categories[nextIdx];
                   setActive(next.slug);
-                }
-                if (e.key === "ArrowLeft") {
+                  // move focus to next tab after state update
+                  requestAnimationFrame(() => focusTab(nextIdx));
+                } else if (e.key === "ArrowLeft") {
                   e.preventDefault();
-                  const prev = categories[(index - 1 + categories.length) % categories.length];
+                  const prevIdx = (index - 1 + categories.length) % categories.length;
+                  const prev = categories[prevIdx];
                   setActive(prev.slug);
+                  requestAnimationFrame(() => focusTab(prevIdx));
+                } else if (e.key === "Home") {
+                  e.preventDefault();
+                  const first = categories[0];
+                  setActive(first.slug);
+                  requestAnimationFrame(() => focusTab(0));
+                } else if (e.key === "End") {
+                  e.preventDefault();
+                  const lastIdx = categories.length - 1;
+                  const last = categories[lastIdx];
+                  setActive(last.slug);
+                  requestAnimationFrame(() => focusTab(lastIdx));
                 }
               }}
-              className={`pressable relative shrink-0 rounded-pill px-4 py-2.5 text-body-sm font-medium transition-colors sm:px-5 ${
+              className={`pressable relative shrink-0 min-h-11 rounded-pill px-4 py-2.5 text-body-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream sm:px-5 ${
                 isActive ? "text-cream" : "text-warm-grey hover:text-brand-action"
               }`}
             >
@@ -81,8 +105,8 @@ export function ServiceTabs({
           variants={staggerFast}
           initial="hidden"
           animate="visible"
-          exit={{ opacity: 0, transition: { duration: 0.2 } }}
-          className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          exit={{ opacity: 0, transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] } }}
+          className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2"
         >
           {activeServices.map((service) => (
             <motion.div key={service.slug} variants={fadeUp}>

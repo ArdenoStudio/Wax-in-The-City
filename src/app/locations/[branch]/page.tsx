@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin, Clock, Phone } from "lucide-react";
-import { BRANCHES, getBranch, whatsappLink, type BranchSlug } from "@/lib/site";
+import { BRANCHES, SITE, getBranch, whatsappLink, type BranchSlug } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
 import { WhatsappIcon } from "@/components/icons";
 import { PageHero } from "@/components/sections/PageHero";
@@ -30,9 +30,21 @@ export async function generateMetadata({
   if (!isBranchSlug(branch)) return { title: "Locations" };
   const b = getBranch(branch);
   return {
-    title: `${b.name} branch`,
+    title: `${b.name} branch — ${SITE.name}`,
     description: `Visit our ${b.name} studio in Colombo. ${b.blurb}`,
     alternates: { canonical: `/locations/${branch}` },
+    openGraph: {
+      title: `${b.name} branch — ${SITE.name}`,
+      description: `Visit our ${b.name} studio in Colombo. ${b.blurb}`,
+      url: `${SITE.url}/locations/${branch}`,
+      images: [{ url: IMAGES.og, width: 1200, height: 630, alt: `${b.name} branch — ${SITE.name}` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${b.name} branch — ${SITE.name}`,
+      description: `Visit our ${b.name} studio in Colombo. ${b.blurb}`,
+      images: [IMAGES.og],
+    },
   };
 }
 
@@ -53,6 +65,7 @@ export default async function BranchPage({
         subtitle={b.blurb}
         image={BRANCH_IMAGES[b.slug]}
         imageAlt={`${b.name} branch interior`}
+        priority
       />
 
       <section className="bg-cream px-5 py-section-lg lg:px-8">
@@ -69,7 +82,9 @@ export default async function BranchPage({
             {/* Details */}
             <div className="space-y-6">
               <Detail icon={<MapPin className="h-5 w-5" />} label="Address">
-                {b.address}
+                {b.address.includes("(")
+                  ? "Address — final details to be confirmed. WhatsApp us for directions."
+                  : b.address}
               </Detail>
               <Detail icon={<Clock className="h-5 w-5" />} label="Hours">
                 <span className="block">Weekdays · {b.hours.weekday}</span>
@@ -77,7 +92,9 @@ export default async function BranchPage({
                 <span className="block text-warm-grey">{b.hours.poya}</span>
               </Detail>
               <Detail icon={<Phone className="h-5 w-5" />} label="Phone">
-                {b.phone}
+                <a href={`tel:${b.phone.replace(/\s/g, "")}`} className="hover:underline">
+                  {b.phone}
+                </a>
               </Detail>
 
               <div className="flex flex-col gap-3 pt-2 sm:flex-row">
@@ -136,10 +153,10 @@ function Detail({
         {icon}
       </span>
       <div>
-        <p className="text-caption font-semibold uppercase tracking-[0.14em] text-warm-grey">
+        <p className="text-caption font-semibold uppercase tracking-[0.14em] text-warm-grey text-pretty">
           {label}
         </p>
-        <div className="mt-1 text-body text-warm">{children}</div>
+        <div className="mt-1 text-body text-warm text-pretty">{children}</div>
       </div>
     </div>
   );

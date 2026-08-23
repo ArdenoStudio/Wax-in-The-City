@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { BookingZone } from "@/components/sections/BookingZone";
+import { FaqJsonLd } from "@/components/global/FaqJsonLd";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -15,12 +16,14 @@ export const metadata: Metadata = {
 export default function FAQPage() {
   return (
     <>
+      <FaqJsonLd />
       <PageHero
         eyebrow="Good to know"
         title="Your questions, answered."
         subtitle="Honest answers about treatments, hygiene, booking and aftercare."
-        image="https://images.unsplash.com/photo-1556760544-74068565f05c?q=80&w=1600&auto=format&fit=crop"
+        image="/images/studio/reception-warm.jpg"
         imageAlt="Calm studio detail"
+        priority
       />
 
       <section className="bg-cream px-5 py-section-lg lg:px-8">

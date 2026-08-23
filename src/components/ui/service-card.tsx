@@ -44,10 +44,10 @@ export function ServiceCard({ service }: { service: Service }) {
     <div className={cn("group micro-lift studio-plate flex h-full flex-col overflow-hidden rounded-card p-6", tone.shell)}>
       <div className="relative z-10">
         <div className={cn("mb-5 h-px w-12 transition-all duration-500 group-hover:w-20", tone.rail)} />
-        <p className="mb-2 text-caption font-semibold uppercase tracking-[0.12em] text-warm-grey">
+        <p className="mb-2 text-caption font-semibold uppercase tracking-[0.12em] text-warm-grey text-pretty">
           {tone.label}
         </p>
-        <h3 className="text-h4 font-semibold text-warm">{service.name}</h3>
+        <h3 className="text-h4 font-semibold text-warm text-balance">{service.name}</h3>
       </div>
       <div className="relative z-10 mt-4 flex flex-wrap items-center gap-2">
         <span className={cn("rounded-pill border px-3 py-1 text-caption font-semibold", tone.chip)}>
@@ -58,12 +58,12 @@ export function ServiceCard({ service }: { service: Service }) {
           {service.duration}
         </span>
       </div>
-      <p className="relative z-10 mt-4 flex-1 text-body-sm leading-relaxed text-warm-grey">
+      <p className="relative z-10 mt-4 flex-1 text-body-sm leading-relaxed text-warm-grey text-pretty">
         {service.description}
       </p>
       <Link
         href={`/book?service=${encodeURIComponent(service.name)}`}
-        className={cn("pressable icon-drift relative z-10 mt-6 inline-flex items-center gap-1.5 self-start rounded-pill border px-5 py-2.5 text-body-sm font-medium shadow-[0_10px_24px_rgba(39,19,21,0.05)]", tone.button)}
+        className={cn("pressable icon-drift relative z-10 mt-6 inline-flex min-h-11 items-center gap-1.5 self-start rounded-pill border px-5 py-2.5 text-body-sm font-medium shadow-[0_10px_24px_rgba(39,19,21,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2", tone.button)}
       >
         Book this
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

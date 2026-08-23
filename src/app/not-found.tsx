@@ -1,19 +1,24 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { CalendarDays } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { SITE, whatsappLink } from "@/lib/site";
 
+export const metadata: Metadata = {
+  robots: { index: false },
+};
+
 export default function NotFound() {
   return (
-    <section className="flex min-h-[70vh] flex-col items-center justify-center bg-cream px-5 py-section-lg text-center lg:px-8">
+    <section className="flex min-h-[70dvh] flex-col items-center justify-center bg-cream px-5 py-section-lg text-center lg:px-8">
       <p className="text-caption font-semibold uppercase tracking-[0.18em] text-brand-action">
         404
       </p>
-      <h1 className="mt-4 max-w-lg font-serif text-h1 font-medium text-warm">
+      <h1 className="mt-4 max-w-lg font-serif text-h1 font-medium text-warm text-balance">
         This page isn&apos;t part of the studio.
       </h1>
-      <p className="mt-4 max-w-md text-body-lg text-warm-grey">
+      <p className="mt-4 max-w-md text-body-lg text-warm-grey text-pretty">
         The link may be outdated. Head back home, book a visit, or message us on
         WhatsApp — we&apos;ll help you find what you need.
       </p>

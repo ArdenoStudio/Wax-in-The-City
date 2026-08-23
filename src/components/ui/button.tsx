@@ -16,12 +16,12 @@ const buttonVariants = cva(
           "border border-brand-action/35 bg-white/35 text-brand-action backdrop-blur hover:border-brand-action/60 hover:bg-brand-mist hover:shadow-[0_16px_36px_rgba(39,19,21,0.08)]",
         // Ghost on dark hero — cream outline over photography
         ghost:
-          "border border-cream/30 bg-cream/8 text-cream backdrop-blur-md hover:bg-cream/14 hover:shadow-[0_16px_34px_rgba(0,0,0,0.18)]",
+          "border border-cream/30 bg-cream/8 text-cream backdrop-blur-md hover:bg-cream/14 hover:shadow-[0_16px_34px_rgba(27,14,16,0.16)]",
         // Subtle text button
         link: "text-brand-action underline-offset-4 hover:underline",
         // Inverted — cream button on maroon sections
         inverted:
-          "bg-cream text-brand-action shadow-[0_14px_34px_rgba(0,0,0,0.18)] hover:bg-brand-mist hover:shadow-[0_18px_44px_rgba(0,0,0,0.20)]",
+          "bg-cream text-brand-action shadow-[0_14px_34px_rgba(162,15,55,0.20)] hover:bg-brand-mist hover:shadow-[0_18px_44px_rgba(162,15,55,0.26)]",
       },
       size: {
         sm: "h-10 rounded-pill px-4 text-body-sm",

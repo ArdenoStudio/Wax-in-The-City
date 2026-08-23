@@ -1,5 +1,5 @@
 import { createHash, createHmac, timingSafeEqual } from "crypto";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 
 const COOKIE_NAME = "witc_admin_session";
 const FLASH_COOKIE_NAME = "witc_admin_flash";
@@ -22,11 +22,34 @@ function sessionSecret() {
   const secret = process.env.ADMIN_SESSION_SECRET;
   if (!secret) {
     if (process.env.NODE_ENV === "production") {
-      console.error("[SECURITY WARNING] ADMIN_SESSION_SECRET is not set in production.");
+      throw new Error("ADMIN_SESSION_SECRET must be set in production");
     }
+    console.error(
+      "[SECURITY WARNING] ADMIN_SESSION_SECRET is not set — falling back to ADMIN_PASSWORD. Set ADMIN_SESSION_SECRET in production."
+    );
     return adminPassword();
   }
   return secret;
+}
+
+/**
+ * Resolve per-IP rate-limit identifier from x-forwarded-for when available.
+ * Falls back to "global" when headers are unavailable (e.g. tests).
+ */
+export async function getLoginIdentifier(): Promise<string> {
+  try {
+    const h = await headers();
+    const forwarded = h.get("x-forwarded-for");
+    if (forwarded) {
+      const ip = forwarded.split(",")[0]?.trim();
+      if (ip) return `ip:${ip}`;
+    }
+    const realIp = h.get("x-real-ip");
+    if (realIp?.trim()) return `ip:${realIp.trim()}`;
+    return "global";
+  } catch {
+    return "global";
+  }
 }
 
 function sign(value: string) {

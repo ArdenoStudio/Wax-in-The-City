@@ -11,8 +11,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { IMAGES, BLUR_DATA_URL } from "@/lib/images";
+import { IMAGES, VIDEOS, BLUR_DATA_URL } from "@/lib/images";
 import { CARE_STANDARDS } from "@/lib/site";
+import { VideoLoop } from "@/components/ui/video-loop";
 
 const HEADLINE_LINES = ["Private", "waxing,", "quietly", "perfected."];
 const HERO_TRUST_POINTS = ["Fresh wax setup", "Private rooms", "Confirmation first"];
@@ -25,24 +26,22 @@ export function HeroSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative flex min-h-[760px] w-full items-end overflow-hidden bg-ink text-cream">
+    <section className="relative flex min-h-[100dvh] sm:min-h-[760px] w-full items-end overflow-hidden bg-ink text-cream">
       <motion.div
-        initial={{ opacity: 0, scale: 1.06 }}
+        initial={reduceMotion ? false : { opacity: 0, scale: 1.025 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0"
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute inset-0 will-change-transform"
       >
         <Image
           src={IMAGES.hero.src}
           alt={IMAGES.hero.alt}
           fill
-          loading="eager"
-          fetchPriority="high"
+          priority
           sizes="100vw"
           placeholder="blur"
           blurDataURL={BLUR_DATA_URL}
-          unoptimized={IMAGES.hero.src.startsWith("http")}
-          className="object-cover object-[62%_center] saturate-[0.94]"
+          className="object-cover object-center saturate-[0.94]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,12,13,0.94)_0%,rgba(35,12,17,0.82)_42%,rgba(35,12,17,0.36)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.20)_0%,transparent_42%,rgba(21,16,17,0.82)_100%)]" />
@@ -52,25 +51,25 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 px-5 pb-24 pt-28 sm:pb-28 lg:grid-cols-[minmax(0,1fr)_390px] lg:px-8 lg:pb-24">
         <div className="min-w-0 max-w-3xl">
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-6 inline-flex items-center gap-2 rounded-pill border border-cream/18 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-xl"
+            transition={{ duration: 0.48, delay: reduceMotion ? 0 : 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6 inline-flex items-center gap-2 rounded-pill border border-cream/18 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-xl text-pretty will-change-transform"
           >
             <Sparkles className="h-4 w-4" />
-            Ladies-only private studio · Colombo
+            Ladies only private studio · Colombo
           </motion.p>
 
-          <h1 className="max-w-[10ch] font-serif text-[clamp(3.25rem,8vw,5.8rem)] font-medium leading-[0.92] text-cream">
+          <h1 className="max-w-[10ch] text-balance font-serif text-5xl font-medium leading-[0.92] bg-gradient-to-r from-cream via-pearl-blush to-cream/90 bg-clip-text text-transparent sm:text-7xl lg:text-8xl">
             {HEADLINE_LINES.map((line, i) => (
               <motion.span
                 key={line}
-                className="block leading-[1.02]"
-                initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+                className="block leading-[1.02] will-change-transform"
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  duration: 0.82,
-                  delay: 0.16 + i * 0.07,
+                  duration: 0.54,
+                  delay: reduceMotion ? 0 : 0.14 + i * 0.06,
                   ease: [0.16, 1, 0.3, 1],
                 }}
               >
@@ -80,41 +79,43 @@ export function HeroSection() {
           </h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.36, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-7 w-full max-w-[34rem] text-pretty text-body-lg text-cream/78"
+            transition={{ duration: 0.48, delay: reduceMotion ? 0 : 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-7 w-full max-w-[34rem] text-pretty text-body-lg text-cream/78 will-change-transform"
           >
             A calmer appointment experience for waxing, facials and skin care,
-            designed around privacy, prep, hygiene and after-care that feels
+            designed around privacy, prep, hygiene and aftercare that feels
             considered.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-9 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:items-center"
+            transition={{ duration: 0.48, delay: reduceMotion ? 0 : 0.38, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center will-change-transform"
           >
-            <Button asChild size="lg" variant="primary" className="w-full sm:w-auto">
-              <Link href="/book">
-                <CalendarDays className="h-5 w-5" />
-                Book Your Visit
-              </Link>
-            </Button>
-            <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto">
-              <Link href="/services">
-                View Menu
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
+              <Button asChild size="lg" variant="primary" className="w-full sm:w-auto">
+                <Link href="/book">
+                  <CalendarDays className="h-5 w-5" />
+                  Book Your Visit
+                </Link>
+              </Button>
+              <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto">
+                <Link href="/services">
+                  View Menu
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </motion.div>
 
           <motion.ul
-            initial={{ opacity: 0, y: 16 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 flex max-w-2xl flex-wrap gap-2"
+            transition={{ duration: 0.44, delay: reduceMotion ? 0 : 0.46, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-10 flex max-w-2xl flex-wrap gap-2 will-change-transform"
           >
             {HERO_TRUST_POINTS.map((point) => (
               <li
@@ -128,10 +129,10 @@ export function HeroSection() {
 
           {/* Mobile studio protocol */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.72, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-8 lg:hidden"
+            transition={{ duration: 0.44, delay: reduceMotion ? 0 : 0.52, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-8 lg:hidden will-change-transform"
           >
             <Accordion type="single" collapsible className="glass-panel rounded-card">
               <AccordionItem value="protocol" className="border-none">
@@ -157,19 +158,25 @@ export function HeroSection() {
         </div>
 
         <motion.aside
-          initial={{ opacity: 0, x: 28 }}
+          initial={reduceMotion ? false : { opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.78, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
-          className="glass-panel animate-float-soft hidden self-end rounded-card p-6 lg:block"
+          transition={{ duration: 0.56, delay: reduceMotion ? 0 : 0.28, ease: [0.16, 1, 0.3, 1] }}
+          className={`glass-panel hidden self-end rounded-2xl p-6 lg:block will-change-transform ${reduceMotion ? "" : "animate-float-soft"}`}
         >
           <div className="flex items-center justify-between border-b border-cream/12 pb-5">
-            <p className="text-caption font-semibold uppercase tracking-[0.16em] text-brand-light">
+            <p className="text-caption font-semibold uppercase tracking-[0.16em] text-brand-light text-pretty">
               Studio protocol
             </p>
             <span className="rounded-pill bg-cream/10 px-3 py-1 text-caption text-cream/70">
               04 steps
             </span>
           </div>
+          <VideoLoop
+            src={VIDEOS.brandSting.src}
+            poster={VIDEOS.brandSting.poster}
+            alt={VIDEOS.brandSting.alt}
+            className="mt-5 aspect-[9/16] max-h-[280px] w-full rounded-none border border-cream/12"
+          />
           <ul className="mt-5 space-y-3">
             {CARE_STANDARDS.map((item) => (
               <li key={item} className="group flex gap-3 rounded-card bg-cream/[0.055] p-3 text-body-sm leading-relaxed text-cream/76 transition-colors hover:bg-cream/[0.085]">
@@ -178,16 +185,16 @@ export function HeroSection() {
               </li>
             ))}
           </ul>
-          <p className="mt-6 border-t border-cream/12 pt-5 font-serif text-h4 italic text-cream">
-            Specialist care without the awkward salon-floor feeling.
+          <p className="mt-6 border-t border-cream/12 pt-5 font-serif text-h4 font-medium text-cream text-pretty">
+            Specialist care without the awkward salon floor feeling.
           </p>
         </motion.aside>
       </div>
 
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={reduceMotion ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.2 }}
+        transition={{ duration: 0.42, delay: reduceMotion ? 0 : 0.9, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-x-0 bottom-6 z-10 flex justify-center"
       >
         <button

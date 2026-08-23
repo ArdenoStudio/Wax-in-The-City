@@ -10,7 +10,7 @@ export const SITE = {
   shortName: "Wax In The City",
   tagline: "Private waxing, done properly.",
   description:
-    "Ladies-only waxing and skin care in Colombo — known for careful hygiene, premium products, and private appointment-led care.",
+    "Ladies only waxing and skin care in Colombo — known for careful hygiene, premium products, and private appointment led care.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://waxinthecitylk.com",
   locale: "en_LK",
   instagram: "https://instagram.com/waxinthecitylk",
@@ -61,7 +61,7 @@ export const BRANCHES: Branch[] = [
       poya: "Closed on Poya days & public holidays",
     },
     googleMapsUrl: "https://maps.google.com/?q=Battaramulla+Colombo",
-    blurb: "A private appointment-led studio with calm rooms and careful treatment flow.",
+    blurb: "A private appointment led studio with calm rooms and careful treatment flow.",
   },
   {
     slug: "nugegoda",
@@ -102,9 +102,9 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     slug: "waxing",
     href: "waxing",
     name: "Waxing",
-    short: "Root-clean hair removal with Lycon (Australia) and Rica (Italy).",
+    short: "Root clean hair removal with Lycon (Australia) and Rica (Italy).",
     description:
-      "A focused waxing menu for women who care about hygiene as much as the final result. Fresh wax, no double-dipping, and private treatment rooms — every time.",
+      "A focused waxing menu for women who care about hygiene as much as the final result. Fresh wax, no double dipping, and private treatment rooms — every time.",
     priceFrom: 700,
   },
   {
@@ -120,9 +120,9 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     slug: "moroccan",
     href: "moroccan",
     name: "Moroccan",
-    short: "A deep-clean ritual using authentic black soap and clay.",
+    short: "A deep cleanse ritual using authentic black soap and clay.",
     description:
-      "A deep-cleansing ritual with authentic Moroccan black soap and clay that draws out impurities and nourishes deeply. Used for centuries across North Africa — now in Colombo.",
+      "A deep cleansing ritual with authentic Moroccan black soap and clay that draws out impurities and nourishes deeply. Used for centuries across North Africa — now in Colombo.",
     priceFrom: 4500,
   },
   {
@@ -131,7 +131,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     name: "Hydra Facial",
     short: "Cleanse, extract, hydrate — visible refresh without downtime.",
     description:
-      "A professional multi-step facial that cleanses, extracts and hydrates in under an hour. Active serums, zero downtime, visible results from the first session.",
+      "A professional multi step facial that cleanses, extracts and hydrates in under an hour. Active serums, zero downtime, visible results from the first session.",
     priceFrom: 7500,
   },
 ];
@@ -152,15 +152,15 @@ export interface Service {
 /** Complete verified salon services matching the price list. */
 export const SERVICES: Service[] = [
   // Packages
-  { name: "Full Body Wax Package", category: "waxing", duration: "90 min", priceFrom: 10000, slug: "full-body-wax-package", description: "Complete head-to-toe smoothness including Full Leg, Full Arms, Underarms & Full Brazilian." },
-  { name: "Neck to Toe Package", category: "waxing", duration: "120 min", priceFrom: 15000, slug: "neck-to-toe-package", description: "All-inclusive body and face waxing: Full Body, Full Face, Full Back, Chest & Neck." },
+  { name: "Full Body Wax Package", category: "waxing", duration: "90 min", priceFrom: 10000, slug: "full-body-wax-package", description: "Complete full body smoothness including Full Leg, Full Arms, Underarms & Full Brazilian." },
+  { name: "Neck to Toe Package", category: "waxing", duration: "120 min", priceFrom: 15000, slug: "neck-to-toe-package", description: "Complete body and face waxing: Full Body, Full Face, Full Back, Chest & Neck." },
   { name: "Beach Body Package", category: "waxing", duration: "100 min", priceFrom: 13000, slug: "beach-body-package", description: "Getaway and swimwear ready: Full Body, Back, and Stomach waxing." },
   // Waxing - Intimate & Body
-  { name: "Full Brazilian", category: "waxing", duration: "35 min", priceFrom: 6500, slug: "full-brazilian", description: "Private, judgement-free Brazilian waxing with soothing Lycon Aloe Vera or Pinkini hot wax." },
+  { name: "Full Brazilian", category: "waxing", duration: "35 min", priceFrom: 6500, slug: "full-brazilian", description: "Private, welcoming Brazilian waxing with soothing Lycon Aloe Vera or Pinkini hot wax." },
   { name: "Brazilian + Underarm", category: "waxing", duration: "45 min", priceFrom: 7500, slug: "brazilian-underarm", description: "Our most requested combo using premium Lycon hot wax with fresh spatulas every dip." },
   { name: "Underarms", category: "waxing", duration: "15 min", priceFrom: 2500, slug: "underarms", description: "Fast, soothing Lycon hot wax underarm care that leaves skin soft and smooth." },
-  { name: "Full Leg", category: "waxing", duration: "40 min", priceFrom: 5000, slug: "full-leg", description: "Root-clean leg waxing from thigh to ankle using Rica White Chocolate or Biahu Gold." },
-  { name: "Half Leg", category: "waxing", duration: "25 min", priceFrom: 3000, slug: "half-leg", description: "Smooth lower legs, cleanly waxed at the root for a longer-lasting finish." },
+  { name: "Full Leg", category: "waxing", duration: "40 min", priceFrom: 5000, slug: "full-leg", description: "Root clean leg waxing from thigh to ankle using Rica White Chocolate or Biahu Gold." },
+  { name: "Half Leg", category: "waxing", duration: "25 min", priceFrom: 3000, slug: "half-leg", description: "Smooth lower legs, cleanly waxed at the root for a longer lasting finish." },
   { name: "Full Arms", category: "waxing", duration: "30 min", priceFrom: 2500, slug: "full-arms", description: "Full arm waxing with gentle Rica White Chocolate or Biahu Gold strip wax." },
   { name: "Half Arms", category: "waxing", duration: "20 min", priceFrom: 1500, slug: "half-arms", description: "Quick, gentle forearm waxing with minimal fuss and clean finishing." },
   { name: "Full Back", category: "waxing", duration: "30 min", priceFrom: 2500, slug: "full-back", description: "Thorough back waxing for clean skin and even texture." },
@@ -168,18 +168,18 @@ export const SERVICES: Service[] = [
   // Waxing - Facial Areas (Lycon Superberry)
   { name: "Full Face Wax", category: "waxing", duration: "30 min", priceFrom: 6500, slug: "full-face-wax", description: "Complete facial hair removal with gentle Lycon Superberry hot wax." },
   { name: "Eyebrow Shaping", category: "waxing", duration: "15 min", priceFrom: 1000, slug: "eyebrow-shaping", description: "Considered brow shaping that flatters your features with zero skin redness." },
-  { name: "Upper Lips", category: "waxing", duration: "10 min", priceFrom: 700, slug: "upper-lips", description: "Quick, gentle upper-lip wax using Lycon Superberry hot wax." },
+  { name: "Upper Lips", category: "waxing", duration: "10 min", priceFrom: 700, slug: "upper-lips", description: "Quick, gentle upper lip wax using Lycon Superberry hot wax." },
   { name: "Eyebrow + Upper Lips", category: "waxing", duration: "20 min", priceFrom: 1500, slug: "eyebrow-upper-lips", description: "Convenient face duo for instant facial clarity." },
-  { name: "Forehead / Nose / Chin", category: "waxing", duration: "15 min", priceFrom: 1100, slug: "forehead-nose-chin", description: "Focused delicate area waxing with ultra-calming Lycon wax." },
+  { name: "Forehead / Nose / Chin", category: "waxing", duration: "15 min", priceFrom: 1100, slug: "forehead-nose-chin", description: "Focused delicate area waxing with ultra calming Lycon wax." },
   // Facials
   { name: "Classic Facial", category: "facial", duration: "45 min", priceFrom: 3500, slug: "classic-facial", description: "A cleansing, balancing facial that leaves your skin fresh and calm." },
-  { name: "Deep Cleanse Facial", category: "facial", duration: "60 min", priceFrom: 4500, slug: "deep-cleanse-facial", description: "A thorough deep-clean for congested skin, with gentle extraction and hydration." },
+  { name: "Deep Cleanse Facial", category: "facial", duration: "60 min", priceFrom: 4500, slug: "deep-cleanse-facial", description: "A thorough deep cleanse for congested skin, with gentle extraction and hydration." },
   { name: "Brightening Facial", category: "facial", duration: "60 min", priceFrom: 5500, slug: "brightening-facial", description: "A targeted treatment to even tone and bring back a natural glow." },
   // Moroccan
-  { name: "Moroccan Black Soap Treatment", category: "moroccan", duration: "60 min", priceFrom: 4500, slug: "moroccan-black-soap", description: "An authentic black-soap ritual that exfoliates and softens for radiant skin." },
-  { name: "Moroccan Clay Mask", category: "moroccan", duration: "45 min", priceFrom: 4000, slug: "moroccan-clay-mask", description: "A mineral-rich clay mask that draws out impurities and nourishes deeply." },
+  { name: "Moroccan Black Soap Treatment", category: "moroccan", duration: "60 min", priceFrom: 4500, slug: "moroccan-black-soap", description: "An authentic black soap ritual that exfoliates and softens for radiant skin." },
+  { name: "Moroccan Clay Mask", category: "moroccan", duration: "45 min", priceFrom: 4000, slug: "moroccan-clay-mask", description: "A mineral rich clay mask that draws out impurities and nourishes deeply." },
   // Hydra Facial
-  { name: "HydraFacial MD", category: "hydra-facial", duration: "50 min", priceFrom: 12500, slug: "hydrafacial-md", description: "The full multi-step HydraFacial — cleanse, extract, hydrate, with active serums and zero downtime." },
+  { name: "HydraFacial MD", category: "hydra-facial", duration: "50 min", priceFrom: 12500, slug: "hydrafacial-md", description: "The complete multi step HydraFacial — cleanse, extract, hydrate, with active serums and zero downtime." },
   { name: "Express HydraFacial", category: "hydra-facial", duration: "30 min", priceFrom: 7500, slug: "express-hydrafacial", description: "A focused HydraFacial for a quick, visible refresh between busy days." },
 ];
 
@@ -223,7 +223,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "A ladies-only space makes such a difference. Warm, calm and professional from start to finish.",
+      "A ladies only space makes such a difference. Warm, calm and professional from start to finish.",
     name: "Hashini W.",
     branch: "Battaramulla",
     rating: 5,
@@ -254,17 +254,17 @@ export const NAV_LINKS = [
 ] as const;
 
 export const TRUST_PILLARS = [
-  { title: "No double dipping", body: "Spatulas and strips are treated as single-use once they touch skin." },
-  { title: "Private rooms", body: "Ladies-only spaces designed for calm, comfortable appointments." },
-  { title: "Skin-first choices", body: "Therapists match products and pressure to your skin and service." },
+  { title: "No double dipping", body: "Spatulas and strips are treated as single use once they touch skin." },
+  { title: "Private rooms", body: "Ladies only spaces designed for calm, comfortable appointments." },
+  { title: "Skin first choices", body: "Therapists match products and pressure to your skin and service." },
   { title: "Appointment led", body: "Requests are reviewed before confirmation so visits do not feel rushed." },
 ] as const;
 
 export const CARE_STANDARDS = [
   "Fresh wax setup before every guest",
   "Disposable covers and clean prep surfaces",
-  "Clear after-care guidance before you leave",
-  "Quiet rooms, no rushed open-floor service",
+  "Clear aftercare guidance before you leave",
+  "Quiet rooms, no rushed open floor service",
 ] as const;
 
 export const REVIEW_THEMES = [
@@ -274,11 +274,11 @@ export const REVIEW_THEMES = [
   },
   {
     title: "Less fear around waxing",
-    body: "The recurring signal is comfort: first-timers and regulars both call out gentle handling.",
+    body: "The recurring signal is comfort: first time guests and regulars both call out gentle handling.",
   },
   {
     title: "Product quality matters",
-    body: "Public reviews often mention premium wax, careful product choice, and skin-aware recommendations.",
+    body: "Public reviews often mention premium wax, careful product choice, and skin aware recommendations.",
   },
 ] as const;
 

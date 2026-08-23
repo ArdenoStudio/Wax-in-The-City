@@ -24,9 +24,9 @@ export const FAQ_GROUPS: FaqGroup[] = [
           "We recommend it, especially on weekends. The quickest way to book is a WhatsApp message, or you can send a request through the site and we'll confirm within 24 hours.",
       },
       {
-        question: "Is the studio really ladies-only?",
+        question: "Is the studio really ladies only?",
         answer:
-          "Yes — always. Our space is private and women-only, so you can feel completely at ease.",
+          "Yes — always. Our space is private and women only, so you can feel completely at ease.",
       },
     ],
   },

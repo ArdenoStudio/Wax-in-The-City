@@ -1,5 +1,3 @@
-import { IMAGES } from "@/lib/images";
-
 export type GalleryCategory = "salon" | "results" | "events";
 
 export interface GalleryImage {
@@ -9,53 +7,58 @@ export interface GalleryImage {
 }
 
 /**
- * Placeholder gallery — swap entries in this array when client photos arrive.
- * Imagery is editorial and interior-focused until real studio photography is ready.
+ * Client studio photography — exteriors, brand details and reception spaces.
+ * Ambience only; no procedural or result imagery.
  */
 export const GALLERY: GalleryImage[] = [
   {
-    src: IMAGES.studio.reception,
-    alt: "Wax In The City Battaramulla reception area with soft lighting and clean decor",
+    src: "/images/gallery/g-exterior-01.jpg",
+    alt: "Wax In The City studio signage on a quiet Colombo street",
     category: "salon",
   },
   {
-    src: IMAGES.studio.hygiene,
-    alt: "Spotless and sanitized treatment preparation tray and towels",
+    src: "/images/gallery/g-path.jpg",
+    alt: "Walkway leading to the private studio entrance",
     category: "salon",
   },
   {
-    src: IMAGES.studio.service,
-    alt: "Private waxing and treatment room with pristine linens",
+    src: "/images/gallery/g-door.jpg",
+    alt: "Private entrance door to the ladies only studio",
     category: "salon",
   },
   {
-    src: IMAGES.studio.confidence,
-    alt: "Relaxing skincare and facial treatment moment",
+    src: "/images/gallery/g-brand-wall-01.jpg",
+    alt: "Wax In The City brand wall styled inside the studio",
     category: "results",
   },
   {
-    src: IMAGES.studio.square,
-    alt: "Wax In The City studio branding and treatment room",
-    category: "salon",
-  },
-  {
-    src: IMAGES.beforeAfter.waxing.before,
-    alt: "Skincare products on a clean surface",
-    category: "results",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=900&auto=format&fit=crop",
-    alt: "Botanical detail in the studio",
+    src: "/images/gallery/g-reception-01.jpg",
+    alt: "Warm reception lounge where arriving guests are welcomed",
     category: "events",
   },
   {
-    src: IMAGES.beforeAfter.waxing.after,
-    alt: "Glowing, healthy skin result",
+    src: "/images/gallery/g-exterior-02.jpg",
+    alt: "Street view of the studio entrance in daylight",
+    category: "salon",
+  },
+  {
+    src: "/images/gallery/g-products-01.jpg",
+    alt: "Premium wax and skin care products on the studio shelf",
     category: "results",
   },
   {
-    src: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=900&auto=format&fit=crop",
-    alt: "Relaxing studio corner with candles",
+    src: "/images/gallery/g-reception-02.jpg",
+    alt: "Reception corner with soft lighting and calm decor",
     category: "events",
+  },
+  {
+    src: "/images/gallery/g-brand-wall-02.jpg",
+    alt: "Detail of the branded studio wall and lighting",
+    category: "results",
+  },
+  {
+    src: "/images/gallery/g-products-02.jpg",
+    alt: "Product bottles arranged neatly in the studio",
+    category: "results",
   },
 ];

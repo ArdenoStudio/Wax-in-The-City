@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { BranchSelector } from "@/components/sections/BranchSelector";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { TrustStrip } from "@/components/sections/TrustStrip";
+import { StudioReel } from "@/components/sections/StudioReel";
 import { ReviewThemes } from "@/components/sections/ReviewThemes";
 import { GalleryTeaser } from "@/components/sections/GalleryTeaser";
 import { BookingZone } from "@/components/sections/BookingZone";
@@ -19,6 +20,7 @@ export default async function HomePage() {
       <HeroSection />
       <ServicesGrid categories={serviceContent.categories} />
       <TrustStrip />
+      <StudioReel />
       <BeforeAfterShowcase />
       <BranchSelector />
       <ReviewThemes />
