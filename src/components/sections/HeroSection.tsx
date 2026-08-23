@@ -175,7 +175,7 @@ export function HeroSection() {
             src={VIDEOS.brandSting.src}
             poster={VIDEOS.brandSting.poster}
             alt={VIDEOS.brandSting.alt}
-            className="mt-5 aspect-[9/16] max-h-[280px] w-full rounded-none border border-cream/12"
+            className="mt-5 aspect-[6/5] w-full rounded-none border border-cream/12"
           />
           <ul className="mt-5 space-y-3">
             {CARE_STANDARDS.map((item) => (
