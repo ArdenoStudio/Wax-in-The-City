@@ -87,9 +87,25 @@ export default async function BranchPage({
                   : b.address}
               </Detail>
               <Detail icon={<Clock className="h-5 w-5" />} label="Hours">
-                <span className="block">Weekdays · {b.hours.weekday}</span>
-                <span className="block">Weekends · {b.hours.weekend}</span>
-                <span className="block text-warm-grey">{b.hours.poya}</span>
+                {/* BeWAXed MON–SUN 9–18 clarity — single Mon–Sun line when weekday==weekend */}
+                {b.hours.weekday === b.hours.weekend ? (
+                  <>
+                    <span className="block tabular-nums">Mon–Sun · {b.hours.weekday}</span>
+                    <span className="mt-1 flex items-center gap-1.5 text-caption text-warm-grey/80">
+                      <span aria-hidden className="h-1 w-1 rounded-full bg-warm-grey/40" />
+                      {b.hours.poya}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="block tabular-nums">Mon–Fri · {b.hours.weekday}</span>
+                    <span className="block tabular-nums">Sat–Sun · {b.hours.weekend}</span>
+                    <span className="mt-1 flex items-center gap-1.5 text-caption text-warm-grey/80">
+                      <span aria-hidden className="h-1 w-1 rounded-full bg-warm-grey/40" />
+                      {b.hours.poya}
+                    </span>
+                  </>
+                )}
               </Detail>
               <Detail icon={<Phone className="h-5 w-5" />} label="Phone">
                 <a href={`tel:${b.phone.replace(/\s/g, "")}`} className="hover:underline">

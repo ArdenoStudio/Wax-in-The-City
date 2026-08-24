@@ -8,7 +8,14 @@ import { GALLERY } from "@/lib/gallery";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { staggerFast, scaleIn, viewportOnce } from "@/lib/animations";
 
-/** Gallery teaser (file 08, section 09). 6 photos, masonry-ish columns. */
+/**
+ * Gallery teaser (file 08, section 09). 6 photos, masonry-ish columns.
+ * NOTE: Current gallery library is ambience/reception/brand-wall only — procedural
+ * waxing imagery is limited to `service-prep.jpg` (gloved hands, fresh wax,
+ * single-use spatula, private room) used on Services/Book. Swap in
+ * client-approved procedural shots when available to match BeWAXed-style
+ * procedural proof without making result claims.
+ */
 export function GalleryTeaser() {
   const photos = GALLERY.slice(0, 6);
 

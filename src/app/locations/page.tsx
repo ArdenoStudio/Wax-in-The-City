@@ -90,15 +90,20 @@ export default function LocationsPage() {
                             : branch.address}
                         </span>
                       </p>
+                      {/* BeWAXed-style hours: Mon–Sun prefix for instant scan + Poya note */}
                       <p className="flex items-center gap-2 text-pretty">
-                        <Clock className="h-4 w-4 text-brand-action" />
-                        {branch.hours.weekday}
+                        <Clock className="h-4 w-4 shrink-0 text-brand-action" />
+                        <span className="tabular-nums">Mon–Sun · {branch.hours.weekday}</span>
+                      </p>
+                      <p className="flex items-center gap-1.5 pl-6 text-caption text-warm-grey/75 text-pretty">
+                        <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-warm-grey/40" />
+                        {branch.hours.poya}
                       </p>
                       <p className="flex items-center gap-2 text-pretty">
-                        <Phone className="h-4 w-4 text-brand-action" />
+                        <Phone className="h-4 w-4 shrink-0 text-brand-action" />
                         <a
                           href={`tel:${branch.phone.replace(/\s/g, "")}`}
-                          className="hover:underline"
+                          className="tabular-nums hover:underline"
                         >
                           {branch.phone}
                         </a>

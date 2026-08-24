@@ -51,22 +51,31 @@ function Ticker({ value, suffix }: { value: number; suffix?: string }) {
 
 export function StatsCounter({ stats = DEFAULT_STATS }: { stats?: Stat[] }) {
   return (
-    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-      {stats.map((stat) => (
-        <motion.div
-          key={stat.label}
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="premium-surface micro-lift rounded-card p-5 text-center will-change-transform"
-        >
-          <p className="relative z-10 font-serif text-5xl font-medium leading-none text-brand-action sm:text-6xl">
-            <Ticker value={stat.value} suffix={stat.suffix} />
-          </p>
-          <p className="relative z-10 mt-3 text-body-sm text-warm-grey text-pretty">{stat.label}</p>
-        </motion.div>
-      ))}
+    <div className="relative">
+      {/* BeWAXed stats inspiration — editorial hairline + boutique credential */}
+      <p className="mb-8 text-center text-caption font-semibold uppercase tracking-[0.18em] text-warm/45">
+        Two studios · Colombo · Ladies only
+      </p>
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
+        {stats.map((stat) => (
+          <motion.div
+            key={stat.label}
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="premium-surface micro-lift rounded-2xl p-6 text-center will-change-transform sm:p-7"
+          >
+            <p className="relative z-10 font-serif text-5xl font-medium leading-none tracking-[-0.02em] text-brand-action sm:text-6xl">
+              <Ticker value={stat.value} suffix={stat.suffix} />
+            </p>
+            <span aria-hidden className="mx-auto mt-4 block h-px w-10 hairline-gradient opacity-60" />
+            <p className="relative z-10 mt-4 text-caption font-semibold uppercase tracking-[0.16em] text-warm-grey text-pretty">
+              {stat.label}
+            </p>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }

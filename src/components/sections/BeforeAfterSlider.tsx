@@ -73,6 +73,7 @@ export function BeforeAfterSlider({
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 loading="lazy"
                 className="object-cover"
+                unoptimized={beforeSrc.startsWith("http")}
               />
             </div>
           }
@@ -85,6 +86,7 @@ export function BeforeAfterSlider({
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 loading="lazy"
                 className="object-cover"
+                unoptimized={afterSrc.startsWith("http")}
               />
             </div>
           }

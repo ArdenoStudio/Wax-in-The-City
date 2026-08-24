@@ -99,12 +99,13 @@ export function Footer() {
                   <p className="mt-1 text-body-sm text-cream/60 text-pretty">{b.area}</p>
                   <a
                     href={`tel:${b.phone.replace(/\s/g, "")}`}
-                    className="mt-1 inline-block text-body-sm text-cream/60 hover:text-cream hover:underline"
+                    className="mt-1 inline-block text-body-sm tabular-nums text-cream/60 hover:text-cream hover:underline"
                   >
                     {b.phone}
                   </a>
-                  <p className="mt-2 text-body-sm text-cream/60 text-pretty">{b.hours.weekday}</p>
-                  <p className="text-caption text-cream/70 text-pretty">{b.hours.poya}</p>
+                  {/* BeWAXed hours clarity — Mon–Sun prefix + Poya note */}
+                  <p className="mt-2 text-body-sm tabular-nums text-cream/60 text-pretty">Mon–Sun · {b.hours.weekday}</p>
+                  <p className="text-caption text-cream/60 text-pretty">{b.hours.poya}</p>
                   <a
                     href={whatsappLink(`Hi! I'd like to book at your ${b.name} branch.`, b.whatsapp)}
                     target="_blank"

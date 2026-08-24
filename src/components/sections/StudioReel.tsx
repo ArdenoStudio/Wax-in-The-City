@@ -29,7 +29,13 @@ const REEL = [
   },
 ] as const;
 
-/** Homepage reel: honest studio ambience clips tied to the trust pillars. */
+/**
+ * Homepage reel: honest studio ambience clips tied to the trust pillars.
+ * NOTE: Clips are ambience/protocol (prep, wax warming, care, brand wall) — not
+ * procedural close-ups. Only `service-prep.jpg` in the image library is a true
+ * waxing procedural shot (limited asset library). Replace/extend with
+ * client-approved procedural imagery when available; keep hygiene-first framing.
+ */
 export function StudioReel() {
   return (
     <section className="relative overflow-hidden bg-cream px-5 py-section-lg lg:px-8">

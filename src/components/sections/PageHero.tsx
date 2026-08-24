@@ -46,6 +46,7 @@ export function PageHero({
           priority={priority}
           sizes="100vw"
           className="object-cover object-center"
+          unoptimized={image.startsWith("http")}
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,12,13,0.94)_0%,rgba(35,12,17,0.78)_50%,rgba(35,12,17,0.42)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.22)_0%,transparent_46%,rgba(21,16,17,0.82)_100%)]" />

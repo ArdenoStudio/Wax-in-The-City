@@ -31,14 +31,14 @@ const BEFORE_AFTER: Partial<
   waxing: {
     before: IMAGES.beforeAfter.waxing.before,
     after: IMAGES.beforeAfter.waxing.after,
-    beforeAlt: "Treatment room prepared ahead of a waxing visit",
-    afterAlt: "Wax In The City brand wall inside the studio",
+    beforeAlt: "Treatment room prepared with fresh single-use linen in a private studio room — hygienic setup before a waxing visit (studio/service-prep.jpg)",
+    afterAlt: "Premium RICA and Lycon wax inventory on the warm wood console beneath the Battaramulla brand wall — authentic range (wax-real-optimized/Battaramulla_7.8.26_IMG_9784.jpg)",
   },
   facials: {
     before: IMAGES.beforeAfter.facial.before,
     after: IMAGES.beforeAfter.facial.after,
-    beforeAlt: "Skin care products stocked for facial appointments",
-    afterAlt: "Calm reception corner where facial guests settle in",
+    beforeAlt: "Premium skin-care products arranged for facial treatments — curated product display (studio/product-shelf.jpg)",
+    afterAlt: "Warm private reception lounge where facial guests settle in — calm, ladies-only space (studio/reception-warm.jpg)",
   },
 };
 

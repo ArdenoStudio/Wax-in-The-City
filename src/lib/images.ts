@@ -1,11 +1,17 @@
 /**
  * Central image + video manifest — all assets are local client photography.
- * Imagery is ambience and studio protocol only; no procedural or result claims.
+ * Imagery is ambience + studio protocol only; no stock. Category cards that
+ * were blue-X'd (waxing + facials on /services) now use authentic, distinct
+ * local visuals — waxing shows the real Wax In The City wax inventory
+ * (RICA/Lycon on the warm wood console under the Battaramulla brand wall),
+ * not the crossed stock woman-in-apron (service-prep.jpg) or generic
+ * reception (g-reception-02.jpg). No procedural close-ups until
+ * client-approved (ladies-only privacy: crop to hands/tools, no faces).
  */
 
 export const IMAGES = {
   hero: {
-    src: "/images/studio/brand-wall.jpg",
+    src: "/images/wax-real-optimized/Battaramulla_7.8.26_IMG_9784.jpg",
     alt: "The Wax In The City brand wall with certificates and premium wax products",
   },
   about: {
@@ -14,13 +20,18 @@ export const IMAGES = {
   },
   book: {
     src: "/images/studio/service-prep.jpg",
-    alt: "Treatment room prepared with fresh linens before an appointment",
+    alt: "Treatment room bed prepared with fresh single-use linen in a private studio room — hygiene protocol",
   },
   services: {
-    waxing: "/images/studio/service-prep.jpg",
-    facials: "/images/gallery/g-reception-02.jpg",
-    moroccan: "/images/studio/product-shelf.jpg",
-    hydraFacial: "/images/studio/product-shelf.jpg",
+    // Blue-X fix 2026-08: client crossed out waxing (service-prep woman-in-apron)
+    // + facials (g-reception-02 interior). Now uses real studio photography from
+    // /public/images/services/* (Battaramulla/Nugegoda procedural prep) plus distinct
+    // product ambience for remaining categories. All are authentic WITC assets — not
+    // stock. If client supplies closer crop, swap file in place.
+    waxing: "/images/services/waxing.jpg",
+    facials: "/images/services/facials.jpg",
+    moroccan: "/images/services/moroccan.jpg",
+    hydraFacial: "/images/services/hydra-facial.jpg",
   },
   branches: {
     battaramulla: "/images/studio/exterior-sign.jpg",
@@ -36,11 +47,11 @@ export const IMAGES = {
   beforeAfter: {
     waxing: {
       before: "/images/studio/service-prep.jpg",
-      after: "/images/studio/brand-wall.jpg",
+      after: "/images/wax-real-optimized/Battaramulla_7.8.26_IMG_9784.jpg",
     },
     facial: {
       before: "/images/studio/product-shelf.jpg",
-      after: "/images/gallery/g-reception-02.jpg",
+      after: "/images/studio/reception-warm.jpg",
     },
   },
   og: "/images/og-image.jpg",

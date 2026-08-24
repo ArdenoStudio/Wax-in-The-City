@@ -57,10 +57,10 @@ export const WAX_PRODUCTS: WaxProductDef[] = [
   },
   {
     id: "biahu-gold",
-    label: "Biahu Gold",
-    short: "Biahu Gold",
+    label: "Brazil Gold",
+    short: "Brazil Gold",
     origin: "Professional",
-    description: "Reliable, thorough standard body waxing.",
+    description: "Everyday gold wax for thorough, smooth body waxing.",
   },
   {
     id: "lycon-with-rica",

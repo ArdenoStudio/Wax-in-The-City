@@ -60,15 +60,68 @@ export function BookingZone({
           tone={standalone ? "light" : "dark"}
         />
 
+        {/* BeWAXed hygiene proximity — impossible to miss at the point of booking */}
         <div
-          className="mt-12"
+          className={
+            standalone
+              ? "mt-8 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 rounded-2xl border border-cream/10 bg-cream/[0.06] px-4 py-3 backdrop-blur-sm"
+              : "mt-8 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 rounded-2xl border border-warm-border/70 bg-white px-4 py-3"
+          }
+        >
+          <span
+            className={
+              standalone
+                ? "inline-flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.14em] text-cream/80"
+                : "inline-flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.14em] text-warm-grey"
+            }
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-gold/90" aria-hidden />
+            Fresh wax setup
+          </span>
+          <span className={standalone ? "hidden text-cream/18 sm:inline" : "hidden text-warm-border sm:inline"} aria-hidden>
+            ·
+          </span>
+          <span
+            className={
+              standalone
+                ? "inline-flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.14em] text-cream/80"
+                : "inline-flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.14em] text-warm-grey"
+            }
+          >
+            Single-use spatulas
+          </span>
+          <span className={standalone ? "hidden text-cream/18 sm:inline" : "hidden text-warm-border sm:inline"} aria-hidden>
+            ·
+          </span>
+          <span
+            className={
+              standalone
+                ? "inline-flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.14em] text-cream/80"
+                : "inline-flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.14em] text-warm-grey"
+            }
+          >
+            Private rooms
+          </span>
+        </div>
+        <p
+          className={
+            standalone
+              ? "mt-3 text-center text-caption leading-relaxed text-cream/45 text-pretty"
+              : "mt-3 text-center text-caption leading-relaxed text-warm-grey/70 text-pretty"
+          }
+        >
+          Premium Lycon (Australia) & Rica (Italy) · No double dipping · Aftercare + next-visit note before you leave
+        </p>
+
+        <div
+          className="mt-10"
           // Reserve the Dinaya widget footprint so the swap-in causes no reflow.
           style={{ minHeight: 480 }}
         >
           {resolvedMode === "dinaya" ? (
             <DinayaPlaceholder />
           ) : resolvedMode === "whatsapp-only" ? (
-            <WhatsappOnly />
+            <WhatsappOnly standalone={standalone} />
           ) : (
             <BookingForm
               defaultBranch={defaultBranch}
@@ -89,6 +142,17 @@ export function BookingZone({
             Message us on WhatsApp
           </a>
         </p>
+
+        {/* BeWAXed aftercare retention cue — mirrors "Pain & Sensitivity / Aftercare Tips / Next Appointment" */}
+        <p
+          className={
+            standalone
+              ? "mt-4 text-center text-caption leading-relaxed text-cream/38 text-pretty"
+              : "mt-4 text-center text-caption leading-relaxed text-warm-grey/60 text-pretty"
+          }
+        >
+          Aftercare tips + next appointment guidance included with every visit · Mon–Sun check
+        </p>
       </div>
     </section>
   );
@@ -106,13 +170,25 @@ function DinayaPlaceholder() {
   );
 }
 
-function WhatsappOnly() {
+function WhatsappOnly({ standalone = true }: { standalone?: boolean }) {
   return (
-    <div className="flex flex-col items-center border border-cream/12 bg-cream/5 p-8 text-center">
-      <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-cream/10 text-brand-light">
+    <div
+      className={
+        standalone
+          ? "flex flex-col items-center rounded-2xl border border-cream/12 bg-cream/5 p-8 text-center backdrop-blur-sm"
+          : "flex flex-col items-center rounded-2xl border border-warm-border bg-white p-8 text-center"
+      }
+    >
+      <span
+        className={
+          standalone
+            ? "flex h-14 w-14 items-center justify-center rounded-pill bg-cream/10 text-brand-light"
+            : "flex h-14 w-14 items-center justify-center rounded-pill bg-brand-action/10 text-brand-action"
+        }
+      >
         <WhatsappIcon className="h-7 w-7" />
       </span>
-      <p className="mt-5 max-w-sm text-body text-cream/66 text-pretty">
+      <p className={standalone ? "mt-5 max-w-sm text-body text-cream/66 text-pretty" : "mt-5 max-w-sm text-body text-warm-grey text-pretty"}>
         The quickest way to book is a quick WhatsApp message. We&apos;ll confirm a
         time that works for you.
       </p>

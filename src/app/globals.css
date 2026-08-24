@@ -58,9 +58,9 @@
   --spacing-section: 80px;
   --spacing-section-lg: 120px;
 
-  /* --- Radius --- */
-  --radius-card: 8px;
-  --radius-card-lg: 12px;
+  /* --- Radius --- BeWAXed editorial: 16–20px feels modern, airy, not clinical */
+  --radius-card: 16px;
+  --radius-card-lg: 20px;
   --radius-pill: 9999px;
 
   /* --- Shadows --- */
@@ -303,6 +303,30 @@ p,
 
   .hairline-gradient {
     background: linear-gradient(90deg, transparent, rgba(209, 173, 100, 0.84), transparent);
+  }
+
+  /* BeWAXed editorial air — soft card rise, editorial image, premium whitespace */
+  .card-rise {
+    transition:
+      transform 650ms var(--ease-apple),
+      box-shadow 650ms var(--ease-apple),
+      border-color 420ms var(--ease-apple);
+    will-change: transform;
+  }
+  .card-rise:hover {
+    transform: translateY(-4px);
+  }
+
+  .editorial-image {
+    transform: translateZ(0);
+    transition:
+      transform 1200ms var(--ease-apple),
+      filter 900ms var(--ease-apple);
+    will-change: transform;
+  }
+  .group:hover .editorial-image {
+    transform: scale(1.03);
+    filter: saturate(1.03) contrast(1.02);
   }
 }
 

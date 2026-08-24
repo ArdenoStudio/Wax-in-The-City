@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { CalendarDays, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
@@ -14,6 +15,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -45,31 +47,105 @@ export function Navbar() {
           aria-label={`${SITE.name} home`}
           className="relative z-10 flex min-w-0 items-center rounded-pill focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
         >
-          <span
+          {/* Pill container — preserves original styling; layout animates width between image/text */}
+          <motion.span
+            layout={!shouldReduceMotion}
+            transition={
+              shouldReduceMotion ? { duration: 0 } : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+            }
             className={cn(
-              "pressable inline-flex min-h-11 shrink-0 items-center rounded-pill border px-3.5 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] sm:px-4",
+              "pressable inline-flex shrink-0 items-center justify-center overflow-hidden rounded-pill border shadow-[inset_0_1px_0_rgba(255,255,255,0.14)]",
               scrolled
-                ? "border-warm-border/70 bg-white/74 shadow-[0_12px_30px_rgba(53,16,23,0.10)] backdrop-blur-xl"
-                : "border-cream/16 bg-brand/52 shadow-[0_10px_28px_rgba(27,14,16,0.22)] backdrop-blur-xl"
+                ? "min-h-11 border-warm-border/70 bg-white/74 px-3.5 py-2 shadow-[0_12px_30px_rgba(53,16,23,0.10)] backdrop-blur-xl sm:px-4"
+                : "min-h-11 border-cream/16 bg-brand/52 p-1.5 pr-3 shadow-[0_10px_28px_rgba(27,14,16,0.22)] backdrop-blur-xl sm:p-1.5 sm:pr-3.5"
             )}
           >
-            <span
-              className={cn(
-                "font-serif text-xl font-semibold leading-none tracking-[0.01em] transition-colors sm:text-2xl",
-                onDark ? "text-cream" : "text-brand"
+            {/* Cross-fade: circular logo (white on dark hero) ↔ text wordmark (dark on light scrolled nav) — 400ms fade/slide + blur, popLayout avoids gap */}
+            <AnimatePresence mode="popLayout" initial={false}>
+              {!scrolled ? (
+                <motion.span
+                  key="logo-image"
+                  layout={!shouldReduceMotion}
+                  initial={
+                    shouldReduceMotion
+                      ? { opacity: 0 }
+                      : { opacity: 0, scale: 0.94, y: 4, filter: "blur(6px)" }
+                  }
+                  animate={
+                    shouldReduceMotion
+                      ? { opacity: 1 }
+                      : { opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }
+                  }
+                  exit={
+                    shouldReduceMotion
+                      ? { opacity: 0 }
+                      : { opacity: 0, scale: 0.94, y: -4, filter: "blur(6px)" }
+                  }
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0.01 }
+                      : { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+                  }
+                  className="flex items-center justify-center"
+                >
+                  <Image
+                    src="/images/witc-logo-white.png"
+                    alt="Wax In The City logo"
+                    width={120}
+                    height={120}
+                    priority
+                    sizes="120px"
+                    className="h-10 w-auto object-contain sm:h-11"
+                    // witc-logo-white.png is white circular (1218x1210, RGBA) — crisp on dark hero at top; 120px source covers 2x for 44px display
+                    // scrolled state uses text "Wax In The City" instead per spec (bewaxedglobal.com fade pattern)
+                  />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="logo-text"
+                  layout={!shouldReduceMotion}
+                  initial={
+                    shouldReduceMotion
+                      ? { opacity: 0 }
+                      : { opacity: 0, scale: 0.96, y: 4, filter: "blur(6px)" }
+                  }
+                  animate={
+                    shouldReduceMotion
+                      ? { opacity: 1 }
+                      : { opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }
+                  }
+                  exit={
+                    shouldReduceMotion
+                      ? { opacity: 0 }
+                      : { opacity: 0, scale: 0.96, y: -4, filter: "blur(6px)" }
+                  }
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0.01 }
+                      : { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+                  }
+                  className="flex items-center"
+                >
+                  <span
+                    className={cn(
+                      "font-serif text-xl font-semibold leading-none tracking-[0.01em] sm:text-2xl",
+                      onDark ? "text-cream" : "text-brand"
+                    )}
+                  >
+                    Wax
+                  </span>
+                  <span
+                    className={cn(
+                      "ml-2 text-xs font-semibold uppercase leading-none tracking-[0.16em] sm:text-xs",
+                      onDark ? "text-brand-light/82" : "text-brand-action/78"
+                    )}
+                  >
+                    In The City
+                  </span>
+                </motion.span>
               )}
-            >
-              Wax
-            </span>
-            <span
-              className={cn(
-                "ml-2 text-xs font-semibold uppercase leading-none tracking-[0.16em] transition-colors sm:text-xs",
-                onDark ? "text-brand-light/82" : "text-brand-action/78"
-              )}
-            >
-              In The City
-            </span>
-          </span>
+            </AnimatePresence>
+          </motion.span>
         </Link>
 
         <div
@@ -102,6 +178,7 @@ export function Navbar() {
         </div>
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+          {/* BeWAXed: Book Appointment CTAs everywhere — keep Navbar CTA prominent but responsive */}
           <Button
             asChild
             size="sm"
@@ -110,7 +187,8 @@ export function Navbar() {
           >
             <Link href="/book">
               <CalendarDays className="h-4 w-4" />
-              Book
+              <span className="hidden lg:inline">Book Appointment</span>
+              <span className="lg:hidden">Book</span>
             </Link>
           </Button>
 

@@ -61,4 +61,35 @@ export const GALLERY: GalleryImage[] = [
     alt: "Product bottles arranged neatly in the studio",
     category: "results",
   },
+  // Real studio photography from client ASSETS (Battaramulla 6.27 + 7.8) — actual treatment rooms
+  {
+    src: "/images/services/waxing.jpg",
+    alt: "Private waxing treatment room prepared with fresh linen — actual Battaramulla studio",
+    category: "results",
+  },
+  {
+    src: "/images/services/facials.jpg",
+    alt: "Facial treatment setup in the private studio — calm, hygienic preparation",
+    category: "results",
+  },
+  {
+    src: "/images/services/moroccan.jpg",
+    alt: "Body ritual treatment bed — authentic studio interior",
+    category: "results",
+  },
+  {
+    src: "/images/services/hydra-facial.jpg",
+    alt: "Hydra facial treatment area — premium products and prepared linen",
+    category: "results",
+  },
+  {
+    src: "/images/wax-real-optimized/Battaramulla_6.27.2026_IMG_9060.jpg",
+    alt: "Treatment room detail — client photography, Battaramulla",
+    category: "salon",
+  },
+  {
+    src: "/images/wax-real-optimized/Battaramulla_7.8.26_IMG_9782.jpg",
+    alt: "Studio interior vignette — real Battaramulla photography",
+    category: "salon",
+  },
 ];

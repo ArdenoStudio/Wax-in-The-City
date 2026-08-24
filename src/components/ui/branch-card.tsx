@@ -9,7 +9,7 @@ interface BranchCardProps {
   variant?: "compact" | "full";
 }
 
-export function BranchCard({ branch, variant = "compact" }: BranchCardProps) {
+export function BranchCard({ branch }: BranchCardProps) {
   const wa = whatsappLink(
     `Hi! I'd like to book at your ${branch.name} branch.`,
     branch.whatsapp
@@ -31,24 +31,26 @@ export function BranchCard({ branch, variant = "compact" }: BranchCardProps) {
 
       <p className="relative z-10 mt-3 text-body-sm text-warm-grey text-pretty">{branch.blurb}</p>
 
-      <div className="relative z-10 mt-6 space-y-2 border-t border-warm-border/80 pt-5 text-body-sm text-warm-grey">
+      {/* BeWAXed-inspired hours pill — MON–SUN instant scan, distinct per branch */}
+      <div className="relative z-10 mt-4 inline-flex flex-wrap items-center gap-2 rounded-pill border border-brand-action/15 bg-brand-mist/70 px-3 py-1.5">
+        <Clock className="h-3.5 w-3.5 shrink-0 text-brand-action" />
+        <span className="text-caption font-semibold uppercase tracking-[0.12em] text-brand-action tabular-nums">
+          Mon–Sun · {branch.hours.weekday}
+        </span>
+      </div>
+
+      <div className="relative z-10 mt-4 space-y-2 border-t border-warm-border/80 pt-5 text-body-sm text-warm-grey">
         <p className="text-pretty">{branch.area}</p>
         <p className="flex items-center gap-2 text-pretty">
-          <Clock className="h-4 w-4 text-brand-action" />
-          <span>{branch.hours.weekday}</span>
-        </p>
-        <p className="flex items-center gap-2 text-pretty">
           <Phone className="h-4 w-4 text-brand-action" />
-          <a href={`tel:${branch.phone.replace(/\s/g, "")}`} className="hover:underline">
+          <a href={`tel:${branch.phone.replace(/\s/g, "")}`} className="font-medium tabular-nums text-warm hover:underline">
             {branch.phone}
           </a>
         </p>
-        {variant === "full" && (
-          <>
-            <p className="pl-6 text-pretty">Weekends · {branch.hours.weekend}</p>
-            <p className="pl-6 text-caption text-pretty">{branch.hours.poya}</p>
-          </>
-        )}
+        <p className="flex items-center gap-1.5 text-caption text-warm-grey/75 text-pretty">
+          <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-warm-grey/40" />
+          {branch.hours.poya}
+        </p>
       </div>
 
       <div className="relative z-10 mt-auto flex flex-col gap-2 pt-7 sm:flex-row sm:items-center">

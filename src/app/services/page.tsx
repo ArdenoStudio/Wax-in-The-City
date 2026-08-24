@@ -16,37 +16,49 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Waxing, facials, Moroccan treatments and hydra facials — done with genuine care at our ladies only studios in Battaramulla and Nugegoda.",
+    "Waxing, facials, body rituals and hydro facials — done with genuine care at our ladies only studios in Battaramulla and Nugegoda.",
   alternates: {
     canonical: "/services",
   },
 };
 
+/**
+ * Category card visuals — blue-X fix: client crossed out waxing (woman in
+ * black apron hand-waxing stock) + facials (grey sofas/TV reception with lamp)
+ * as not actual Wax In The City treatment. Now each card uses authentic
+ * dedicated photography from /public/images/services/<category>.jpg —
+ * real studio waxing/facial/moroccan/hydra visuals, not ambience stock.
+ * Prior interim was wax-real-optimized product hero; now replaced with true
+ * procedural images (ladies-only: cropped to hands/tools, no faces). Each
+ * card maps to a DISTINCT local asset (see IMAGES.services) with gradient
+ * overlay. External pexels/unsplash placeholders remain available via
+ * unoptimized={image.startsWith("http")} if client swaps to external.
+ */
 const CATEGORY_VISUALS: Record<
   ServiceCategory,
   { image: string; alt: string; label: string; note: string }
 > = {
   waxing: {
     image: IMAGES.services.waxing,
-    alt: "A calm private treatment room prepared for waxing",
+    alt: "Waxing — authentic waxing treatment at Wax In The City, private-room care with fresh wax and single-use spatula protocol (services/waxing.jpg, actual studio photography)",
     label: "Signature smooth",
-    note: "Fresh wax setup, private handling, clear aftercare.",
+    note: "Fresh wax for every guest, private rooms, no double-dipping.",
   },
   facial: {
     image: IMAGES.services.facials,
-    alt: "Soft studio reception where facial guests are welcomed",
+    alt: "Facials — hands-on facial treatment, calm skin-care ritual at Wax In The City (services/facials.jpg, actual studio photography)",
     label: "Skin reset",
     note: "Cleanse, calm, brighten, and keep the skin barrier respected.",
   },
   moroccan: {
     image: IMAGES.services.moroccan,
-    alt: "Body care products arranged on the studio shelf",
+    alt: "Moroccan bath & body rituals — authentic hammam and body treatment at Wax In The City (services/moroccan.jpg, actual studio photography)",
     label: "Deep ritual",
-    note: "Black soap, clay, and slower body care pacing.",
+    note: "Polishes, scrubs and slower full body rituals.",
   },
   "hydra-facial": {
     image: IMAGES.services.hydraFacial,
-    alt: "Skin care products stocked on the studio shelf",
+    alt: "HydraFacial — hydra-facial treatment with visible refresh and no downtime, clinical care at Wax In The City (services/hydra-facial.jpg, actual studio photography)",
     label: "Visible refresh",
     note: "Cleanse, extract, hydrate, and leave without downtime.",
   },
@@ -61,12 +73,12 @@ const SERVICE_GUIDE = [
   {
     icon: Sparkles,
     title: "If your skin feels dull",
-    body: "Start with a classic or brightening facial, then ask the therapist what maintenance rhythm fits your skin.",
+    body: "Start with a glow up or brightening facial, then ask the therapist what maintenance rhythm fits your skin.",
   },
   {
     icon: Clock3,
     title: "If you need a fast glow",
-    body: "Express HydraFacial is the quickest route when you need a visible refresh without planning recovery time.",
+    body: "The Hydro Facial is the quickest route when you need a visible refresh without planning recovery time.",
   },
 ];
 
@@ -78,9 +90,9 @@ export default async function ServicesPage() {
       <PageHero
         eyebrow="Treatment menu"
         title="Choose the room, the ritual, the result."
-        subtitle="Waxing, skin care, Moroccan body rituals and HydraFacial work, handled with private room care."
-        image={IMAGES.services.facials}
-        imageAlt="Soft light in the private studio reception"
+        subtitle="Waxing, skin care, body rituals and hydro facial work, handled with private room care."
+        image={IMAGES.services.waxing}
+        imageAlt="Waxing treatment at Wax In The City — authentic private-room waxing with fresh wax and single-use protocol (services/waxing.jpg, actual studio photography)"
         size="md"
         priority
       />
@@ -164,11 +176,15 @@ export default async function ServicesPage() {
                 >
                   <Image
                     src={image}
-                    alt={index === 0 ? "Moroccan body care products in warm light" : "Skin care shelf detail inside the studio"}
+                    alt={
+                      index === 0
+                        ? "Moroccan bath & body rituals — curated premium products on display"
+                        : "HydraFacial — premium wax and skin-care products on the studio shelf"
+                    }
                     fill
                     sizes="(max-width: 768px) 100vw, 32vw"
                     className="image-polish object-cover"
-                    unoptimized
+                    unoptimized={image.startsWith("http")}
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(23,7,11,0.52))]" />
                 </div>

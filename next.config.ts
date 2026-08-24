@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       // Supabase Storage public URLs (gallery) — wildcard project ref (Security review: consider pinning to <project>.supabase.co).
       { protocol: "https", hostname: "*.supabase.co" },
+      // Temporary external treatment placeholders — replace with client-approved photography.
+      // Unsplash + Pexels are used for actual waxing/facial treatment imagery until local procedural photos exist.
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "images.pexels.com" },
     ],
   },
   async headers() {
@@ -28,7 +32,7 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: https://*.supabase.co",
+              "img-src 'self' data: https://*.supabase.co https://images.unsplash.com https://images.pexels.com",
               "font-src 'self'",
               "connect-src 'self' https://*.supabase.co",
               "frame-src https://www.google.com",

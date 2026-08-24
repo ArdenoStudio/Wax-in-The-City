@@ -16,7 +16,10 @@ import { CARE_STANDARDS } from "@/lib/site";
 import { VideoLoop } from "@/components/ui/video-loop";
 
 const HEADLINE_LINES = ["Private", "waxing,", "quietly", "perfected."];
-const HERO_TRUST_POINTS = ["Fresh wax setup", "Private rooms", "Confirmation first"];
+// BeWAXed-inspired luxury triad — boutique adaptation of "Luxurious. Effective. Conscious."
+// WITC voice: calm, deliberate, editorial — not chain-scale boasting.
+const HERO_TRUST_POINTS = ["Hygiene you can trust", "Fresh wax setup", "Private rooms", "Premium products"];
+const HERO_DESCRIPTOR = "Private · Precise · Considered";
 
 function scrollToServices() {
   document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
@@ -57,7 +60,7 @@ export function HeroSection() {
             className="mb-6 inline-flex items-center gap-2 rounded-pill border border-cream/18 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-xl text-pretty will-change-transform"
           >
             <Sparkles className="h-4 w-4" />
-            Ladies only private studio · Colombo
+            Ladies only · Battaramulla & Nugegoda · Colombo
           </motion.p>
 
           <h1 className="max-w-[10ch] text-balance font-serif text-5xl font-medium leading-[0.92] bg-gradient-to-r from-cream via-pearl-blush to-cream/90 bg-clip-text text-transparent sm:text-7xl lg:text-8xl">
@@ -78,15 +81,26 @@ export function HeroSection() {
             ))}
           </h1>
 
+          {/* BeWAXed-inspired editorial triad: airy luxury credential, boutique-scaled vs chain */}
+          <motion.p
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.44, delay: reduceMotion ? 0 : 0.26, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-5 inline-flex items-center gap-3 text-caption font-semibold uppercase tracking-[0.22em] text-brand-light/90 will-change-transform"
+          >
+            <span className="hidden h-px w-8 bg-brand-light/50 sm:block" aria-hidden />
+            {HERO_DESCRIPTOR}
+          </motion.p>
+
           <motion.p
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.48, delay: reduceMotion ? 0 : 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-7 w-full max-w-[34rem] text-pretty text-body-lg text-cream/78 will-change-transform"
+            transition={{ duration: 0.48, delay: reduceMotion ? 0 : 0.32, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-4 w-full max-w-[34rem] text-pretty text-body-lg leading-relaxed text-cream/78 will-change-transform"
           >
-            A calmer appointment experience for waxing, facials and skin care,
-            designed around privacy, prep, hygiene and aftercare that feels
-            considered.
+            Luxurious where it matters, considered everywhere else. Waxing,
+            facials and skin care shaped around privacy, fresh preparation and
+            aftercare that feels unhurried — never rushed.
           </motion.p>
 
           <motion.div

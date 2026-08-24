@@ -53,31 +53,31 @@ export const BRANCHES: Branch[] = [
     area: "Battaramulla, Colombo",
     address: "15, 3 Centre Rd, Battaramulla 10120, Sri Lanka",
     phone: "+94 77 946 9437",
-    whatsapp: DEFAULT_WHATSAPP,
+    whatsapp: "94779469437",
     geo: { latitude: 6.8972, longitude: 79.9186 },
     hours: {
-      weekday: "9:00 AM – 6:00 PM",
-      weekend: "9:00 AM – 5:00 PM",
+      weekday: "9:00 AM – 10:00 PM",
+      weekend: "9:00 AM – 10:00 PM",
       poya: "Closed on Poya days & public holidays",
     },
     googleMapsUrl: "https://maps.google.com/?q=Battaramulla+Colombo",
-    blurb: "A private appointment led studio with calm rooms and careful treatment flow.",
+    blurb: "A private appointment led studio with calm rooms and careful treatment flow. Open daily 9 AM – 10 PM.",
   },
   {
     slug: "nugegoda",
     name: "Nugegoda",
     area: "Nugegoda, Colombo",
     address: "Nugegoda, Colombo (exact address to be confirmed)",
-    phone: "+94 77 946 9437",
-    whatsapp: DEFAULT_WHATSAPP,
+    phone: "+94 76 494 8107",
+    whatsapp: "94764948107",
     geo: { latitude: 6.8649, longitude: 79.8997 },
     hours: {
       weekday: "9:00 AM – 6:00 PM",
-      weekend: "9:00 AM – 5:00 PM",
+      weekend: "9:00 AM – 6:00 PM",
       poya: "Closed on Poya days & public holidays",
     },
     googleMapsUrl: "https://maps.google.com/?q=Nugegoda+Colombo",
-    blurb: "A convenient second studio for guests closer to the High Level Road side.",
+    blurb: "A convenient second studio for guests closer to the High Level Road side. Open daily 9 AM – 6 PM.",
   },
 ];
 
@@ -111,19 +111,19 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     slug: "facial",
     href: "facials",
     name: "Facials",
-    short: "Calm skin work for glow, texture, and barrier maintenance.",
+    short: "Glow ups and brightening care for rested, radiant skin.",
     description:
-      "Facial care designed around your skin — from a classic cleanse to a brightening treatment that leaves you glowing, without the hard sell.",
-    priceFrom: 3500,
+      "Facial care designed around your skin — a quick glow up or a deep brightening treatment that leaves you glowing, without the hard sell.",
+    priceFrom: 5000,
   },
   {
     slug: "moroccan",
     href: "moroccan",
-    name: "Moroccan",
-    short: "A deep cleanse ritual using authentic black soap and clay.",
+    name: "Body Rituals",
+    short: "Polishes, scrubs and signature bed rituals for full body renewal.",
     description:
-      "A deep cleansing ritual with authentic Moroccan black soap and clay that draws out impurities and nourishes deeply. Used for centuries across North Africa — now in Colombo.",
-    priceFrom: 4500,
+      "Slow, full body rituals — the authentic Moroccan body polish, a Spa Cylon full body scrub, and our Japanese spa bed treatment that pairs facial care with a Moroccan polish.",
+    priceFrom: 15000,
   },
   {
     slug: "hydra-facial",
@@ -132,7 +132,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryMeta[] = [
     short: "Cleanse, extract, hydrate — visible refresh without downtime.",
     description:
       "A professional multi step facial that cleanses, extracts and hydrates in under an hour. Active serums, zero downtime, visible results from the first session.",
-    priceFrom: 7500,
+    priceFrom: 10000,
   },
 ];
 
@@ -172,15 +172,16 @@ export const SERVICES: Service[] = [
   { name: "Eyebrow + Upper Lips", category: "waxing", duration: "20 min", priceFrom: 1500, slug: "eyebrow-upper-lips", description: "Convenient face duo for instant facial clarity." },
   { name: "Forehead / Nose / Chin", category: "waxing", duration: "15 min", priceFrom: 1100, slug: "forehead-nose-chin", description: "Focused delicate area waxing with ultra calming Lycon wax." },
   // Facials
-  { name: "Classic Facial", category: "facial", duration: "45 min", priceFrom: 3500, slug: "classic-facial", description: "A cleansing, balancing facial that leaves your skin fresh and calm." },
-  { name: "Deep Cleanse Facial", category: "facial", duration: "60 min", priceFrom: 4500, slug: "deep-cleanse-facial", description: "A thorough deep cleanse for congested skin, with gentle extraction and hydration." },
-  { name: "Brightening Facial", category: "facial", duration: "60 min", priceFrom: 5500, slug: "brightening-facial", description: "A targeted treatment to even tone and bring back a natural glow." },
-  // Moroccan
-  { name: "Moroccan Black Soap Treatment", category: "moroccan", duration: "60 min", priceFrom: 4500, slug: "moroccan-black-soap", description: "An authentic black soap ritual that exfoliates and softens for radiant skin." },
-  { name: "Moroccan Clay Mask", category: "moroccan", duration: "45 min", priceFrom: 4000, slug: "moroccan-clay-mask", description: "A mineral rich clay mask that draws out impurities and nourishes deeply." },
+  { name: "Glow Up Facial", category: "facial", duration: "45 min", priceFrom: 5000, slug: "glow-up-facial", description: "A freshening glow up facial that revives dull, tired skin before an event or between visits." },
+  { name: "Whitening & Brightening Facial", category: "facial", duration: "60 min", priceFrom: 8500, slug: "whitening-brightening-facial", description: "A targeted brightening facial that evens tone and restores a rested, luminous look." },
+  // Body Rituals
+  { name: "Moroccan Body Polish", category: "moroccan", duration: "60 min", priceFrom: 15000, slug: "moroccan-body-polish", description: "The authentic full body Moroccan polish that exfoliates, draws out impurities and leaves skin soft and radiant." },
+  { name: "Moroccan Body Polish + Full Body Wax", category: "moroccan", duration: "150 min", priceFrom: 20000, slug: "moroccan-polish-full-body-wax", description: "The full Moroccan polish followed by complete body waxing with Brazil Gold wax." },
+  { name: "Moroccan Body Polish + Full Body Wax Rica", category: "moroccan", duration: "150 min", priceFrom: 26500, slug: "moroccan-polish-full-body-wax-rica", description: "The signature pairing: full Moroccan polish with premium Rica White Chocolate full body waxing." },
+  { name: "Full Body Scrub — Spa Cylon", category: "moroccan", duration: "60 min", priceFrom: 15000, slug: "full-body-scrub-spa-cylon", description: "A full body exfoliating scrub using the Spa Cylon line for smooth, refreshed skin." },
+  { name: "Japanese Spa Bed Treatment", category: "moroccan", duration: "90 min", priceFrom: 19000, slug: "japanese-spa-bed-treatment", description: "Our 90 minute signature ritual pairing a facial with the Moroccan body polish on the spa bed." },
   // Hydra Facial
-  { name: "HydraFacial MD", category: "hydra-facial", duration: "50 min", priceFrom: 12500, slug: "hydrafacial-md", description: "The complete multi step HydraFacial — cleanse, extract, hydrate, with active serums and zero downtime." },
-  { name: "Express HydraFacial", category: "hydra-facial", duration: "30 min", priceFrom: 7500, slug: "express-hydrafacial", description: "A focused HydraFacial for a quick, visible refresh between busy days." },
+  { name: "Hydro Facial", category: "hydra-facial", duration: "50 min", priceFrom: 10000, slug: "hydro-facial", description: "The multi step hydro facial that cleanses, extracts and hydrates in one visit — active serums, zero downtime." },
 ];
 
 export function servicesByCategory(category: ServiceCategory): Service[] {
@@ -246,25 +247,25 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const NAV_LINKS = [
   { label: "Services", href: "/services" },
-  { label: "Locations", href: "/locations" },
-  { label: "About", href: "/about" },
   { label: "Gallery", href: "/gallery" },
-  { label: "FAQ", href: "/faq" },
+  { label: "Locations", href: "/locations" },
   { label: "Contact", href: "/contact" },
+  { label: "FAQ", href: "/faq" },
+  { label: "About", href: "/about" },
 ] as const;
 
 export const TRUST_PILLARS = [
-  { title: "No double dipping", body: "Spatulas and strips are treated as single use once they touch skin." },
-  { title: "Private rooms", body: "Ladies only spaces designed for calm, comfortable appointments." },
-  { title: "Skin first choices", body: "Therapists match products and pressure to your skin and service." },
-  { title: "Appointment led", body: "Requests are reviewed before confirmation so visits do not feel rushed." },
+  { title: "Hygiene you can trust", body: "Fresh wax, fresh spatula every dip — strict no double dipping and single-use hygiene, every appointment." },
+  { title: "Private, personalised care", body: "Ladies only private rooms with therapist-matched care — pressure, product and pace chosen for your skin, never an open floor." },
+  { title: "Premium products", body: "Lycon (Australia) & Rica (Italy) chosen by area and sensitivity — the same premium waxes BeWAXed-grade studios trust worldwide." },
+  { title: "Professional expertise", body: "Appointment led and reviewed before confirmation — timing, room and therapist prepared so your visit never feels rushed." },
 ] as const;
 
 export const CARE_STANDARDS = [
-  "Fresh wax setup before every guest",
+  "Fresh wax, no double dipping — new spatula every dip",
   "Disposable covers and clean prep surfaces",
   "Clear aftercare guidance before you leave",
-  "Quiet rooms, no rushed open floor service",
+  "Quiet, private rooms — no rushed open floor service",
 ] as const;
 
 export const REVIEW_THEMES = [

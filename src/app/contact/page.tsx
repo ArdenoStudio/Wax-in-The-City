@@ -64,7 +64,7 @@ export default function ContactPage() {
             {[
               { icon: WhatsappIcon, title: "Fast replies", body: "Best for same week booking questions." },
               { icon: CalendarCheck, title: "Requests reviewed", body: "Forms are checked before confirmation." },
-              { icon: Phone, title: "One number", body: "Use the same contact path for both branches." },
+              { icon: Phone, title: "Branch direct", body: "Dedicated phone & WhatsApp per branch — message the studio you plan to visit." },
             ].map((item) => {
               const Icon = item.icon;
               return (
