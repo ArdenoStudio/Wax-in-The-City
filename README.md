@@ -2,9 +2,11 @@
 
 Ladies-only beauty salon website for Colombo, covering Battaramulla and Nugegoda. Built by Ardeno Studio around a sharper private-studio glamour direction: privacy, hygiene, confident service discovery, and low-friction booking.
 
+**Live:** https://wax-in-the-city-website.vercel.app (Vercel production, deploys from `main`)
+
 ## Stack
 
-- Next.js 16 App Router and TypeScript
+- Next.js 16 App Router and TypeScript (Turbopack builds)
 - Tailwind CSS v4 tokens in `src/app/globals.css`
 - `motion/react` for page and component transitions
 - Lenis for smooth wheel scrolling, disabled for reduced-motion users
@@ -27,6 +29,17 @@ Local app URL:
 ```text
 http://localhost:3000
 ```
+
+## Scripts
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Local dev server on port 3000 |
+| `npm run build` | Production build (`next build`) |
+| `npm run start` | Serve the production build locally |
+| `npm run lint` | ESLint over `src/**/*.{ts,tsx}` |
+| `npm run test` | E2E audit script (`scripts/e2e-audit.mjs`) |
+| `npm run test:all` | Tiered feature/boundary/cross-feature/workload test suites |
 
 ## Environment Variables
 
@@ -52,6 +65,22 @@ If Supabase env vars are missing, `BookingZone` automatically renders the WhatsA
 
 If the `services` table is empty, sign in and use **Seed current service menu** to copy the static fallback menu into Supabase. Public service cards will use Supabase rows when available and fall back to `src/lib/site.ts` when Supabase is missing or empty.
 
+## Imagery & Media
+
+All site imagery is authentic client photography from the Battaramulla and Nugegoda studios — no stock. Assets are centralized in:
+
+- `src/lib/images.ts` — image + video manifest (hero, services, branches, studio, gallery)
+- `src/lib/gallery.ts` — curated gallery set
+- `public/images/wax-real-optimized/` — optimized studio photography
+- `public/images/services/` — category card visuals (waxing shows real RICA/Lycon inventory)
+- `public/videos/wax-studio-real.mp4` — hero/studio reel video
+
+Privacy rule for ladies-only positioning: procedural imagery crops to hands/tools only — no faces — until client-approved close-ups exist.
+
+## Deployment
+
+Production deploys to Vercel via `vercel deploy --prod` (or automatically when connected through the Vercel dashboard). The latest production build compiles cleanly with Next.js 16 / Turbopack: all routes are static or SSG with 1h ISR revalidation except `/admin`, `/book`, and server actions.
+
 ## Impeccable Context
 
 - `PRODUCT.md` captures the brand strategy, register, audience, anti-references, and accessibility bar.
@@ -67,34 +96,35 @@ src/
   components/global/       Navbar, Footer, MobileBookingBar, smooth scroll
   components/sections/     homepage, services, booking, gallery, trust sections
   components/ui/           shared primitives and cards
-  lib/                     content, booking schemas, Supabase clients, utilities
+  lib/                     content (site.ts), images/gallery manifests, booking schemas, Supabase clients, pricing
+public/
+  images/                  client photography (studio, services, optimized sets)
+  videos/                  studio reel video
 supabase/
   schema.sql               pre-Dinaya database setup
+tests/                     tier1–tier4 feature coverage suites
 ```
 
 ## Content Still Needing Client Confirmation
 
 - Final Nugegoda address
-- Real salon photography
 - Real testimonials or approved Google review quotes
-- Final service menu and pricing
 - Production Supabase env vars
-- Custom domain and metadata URL alignment
 - Dinaya booking widget when ready
 
 ## Launch Checklist
 
 Before handing this off as a finished client site, confirm:
 
-- [ ] `NEXT_PUBLIC_SITE_URL` set to the real production domain in Vercel (not left on the `waxinthecitylk.com` fallback if that isn't the final domain)
+- [x] Real salon/service photography integrated across the site (`src/lib/images.ts`)
+- [x] Final service menu and pricing confirmed against `src/lib/site.ts` / `src/lib/pricing.ts`
+- [x] Production build passes cleanly on Vercel
+- [ ] `NEXT_PUBLIC_SITE_URL` set to the real production domain in Vercel
 - [ ] Nugegoda address confirmed and `googleMapsUrl` in `src/lib/site.ts` updated to a precise place link (not a generic search URL)
 - [ ] Battaramulla `googleMapsUrl` also switched to a precise place link
-- [ ] Real salon/service photography replacing the Unsplash placeholders in `src/lib/images.ts`
 - [ ] Real, client-approved testimonials before enabling any review carousel
-- [ ] Final service menu and pricing confirmed against `src/lib/site.ts` / Supabase `services` table
 - [ ] Production Supabase project provisioned, `supabase/schema.sql` run, and env vars set in Vercel — otherwise booking stays WhatsApp-only by design
 - [ ] `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` set to strong, unique production values
 - [ ] Dinaya booking widget wired in and `BookingZone` mode switched over, once available
-- [ ] `npm run build` and `npm run lint` pass cleanly
 
 Crafted by Ardeno Studio.
