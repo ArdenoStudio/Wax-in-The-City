@@ -6,15 +6,14 @@ import { VideoLoop } from "@/components/ui/video-loop";
 import { SITE } from "@/lib/site";
 import { IMAGES, VIDEOS } from "@/lib/images";
 import { InstagramIcon } from "@/components/icons";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Gallery",
   description:
     "A look inside our Colombo studios — the space, the details and the care.",
-  alternates: {
-    canonical: "/gallery",
-  },
-};
+  path: "/gallery",
+});
 
 const REEL = [
   { video: VIDEOS.prep, caption: "Fresh setup" },

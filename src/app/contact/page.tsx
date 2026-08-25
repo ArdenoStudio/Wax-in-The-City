@@ -7,15 +7,14 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { InstagramIcon, FacebookIcon, WhatsappIcon } from "@/components/icons";
 import { BRANCHES, SITE, whatsappLink } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Contact",
   description:
     "Get in touch with Wax In The City — message us on WhatsApp, send a note, or find our Battaramulla and Nugegoda branch details.",
-  alternates: {
-    canonical: "/contact",
-  },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -72,7 +71,7 @@ export default function ContactPage() {
                   <span className="flex h-11 w-11 items-center justify-center rounded-card bg-cream text-brand">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <h2 className="mt-5 text-h4 font-semibold text-cream text-balance">{item.title}</h2>
+                  <h3 className="mt-5 text-h4 font-semibold text-cream text-balance">{item.title}</h3>
                   <p className="mt-2 text-body-sm text-cream/70 text-pretty">{item.body}</p>
                 </div>
               );
@@ -110,7 +109,7 @@ export default function ContactPage() {
                   key={b.slug}
                   className="premium-surface rounded-card p-5"
                 >
-                  <p className="relative z-10 font-serif text-h4 font-medium text-warm text-pretty">{b.name}</p>
+                  <h3 className="relative z-10 font-serif text-h4 font-medium text-warm text-pretty">{b.name}</h3>
                   <div className="relative z-10 mt-3 space-y-2 text-body-sm text-warm-grey">
                     <p className="flex items-center gap-2 text-pretty">
                       <MapPin className="h-4 w-4 text-brand-action" />
@@ -118,7 +117,11 @@ export default function ContactPage() {
                     </p>
                     <p className="flex items-center gap-2 text-pretty">
                       <Clock className="h-4 w-4 text-brand-action" />
-                      {b.hours.weekday}
+                      <span className="tabular-nums">Mon–Sun · {b.hours.weekday}</span>
+                    </p>
+                    <p className="flex items-center gap-1.5 pl-6 text-caption text-warm-grey/75 text-pretty">
+                      <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-warm-grey/40" />
+                      {b.hours.poya}
                     </p>
                     <p className="flex items-center gap-2 text-pretty">
                       <Phone className="h-4 w-4 text-brand-action" />

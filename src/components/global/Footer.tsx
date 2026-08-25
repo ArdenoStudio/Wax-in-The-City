@@ -24,16 +24,22 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3">
-              <span className="relative block h-16 w-16 rounded-pill border border-cream/10 bg-brand p-1">
-                <Image
-                  src={IMAGES.wordmark}
-                  alt={SITE.name}
-                  fill
-                  sizes="64px"
-                  loading="eager"
-                  className="object-contain"
-                />
-              </span>
+              <Link
+                href="/"
+                aria-label={`${SITE.name} home`}
+                className="inline-flex rounded-pill focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer"
+              >
+                <span className="relative block h-16 w-16 rounded-pill border border-cream/10 bg-brand p-1">
+                  <Image
+                    src={IMAGES.wordmark}
+                    alt={SITE.name}
+                    fill
+                    sizes="64px"
+                    loading="eager"
+                    className="object-contain"
+                  />
+                </span>
+              </Link>
             </div>
             <p className="mt-4 max-w-xs font-serif text-h4 text-brand-light text-pretty">
               {SITE.tagline}
@@ -81,7 +87,7 @@ export function Footer() {
               ))}
               <li>
                 <Link href="/book" className="inline-flex min-h-10 min-w-10 items-center rounded-pill px-2 text-body-sm transition-colors hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer">
-                  Book Your Visit
+                  Book your visit
                 </Link>
               </li>
             </ul>
@@ -99,7 +105,7 @@ export function Footer() {
                   <p className="mt-1 text-body-sm text-cream/60 text-pretty">{b.area}</p>
                   <a
                     href={`tel:${b.phone.replace(/\s/g, "")}`}
-                    className="mt-1 inline-block text-body-sm tabular-nums text-cream/60 hover:text-cream hover:underline"
+                    className="mt-1 inline-flex min-h-11 items-center text-body-sm tabular-nums text-cream/60 hover:text-cream hover:underline"
                   >
                     {b.phone}
                   </a>

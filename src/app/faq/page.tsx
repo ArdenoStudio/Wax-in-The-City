@@ -3,15 +3,14 @@ import { PageHero } from "@/components/sections/PageHero";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { FaqJsonLd } from "@/components/global/FaqJsonLd";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "FAQ",
   description:
     "Your questions about waxing, facials, hygiene, booking and aftercare — honestly answered.",
-  alternates: {
-    canonical: "/faq",
-  },
-};
+  path: "/faq",
+});
 
 export default function FAQPage() {
   return (

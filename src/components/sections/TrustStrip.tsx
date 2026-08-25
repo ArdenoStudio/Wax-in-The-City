@@ -25,7 +25,7 @@ export function TrustStrip() {
           tone="light"
         />
         {/* Boutique presence line — echoes BeWAXed regional presence but for 2-studio intimacy */}
-        <p className="mx-auto mt-6 max-w-xl text-center text-caption font-medium uppercase tracking-[0.18em] text-cream/45">
+        <p className="mx-auto mt-6 max-w-xl text-center text-caption font-medium uppercase tracking-[0.18em] text-cream/60">
           Two studios · One standard · Colombo
         </p>
 
@@ -53,11 +53,11 @@ export function TrustStrip() {
                     whileInView={{ rotate: 0 }}
                     viewport={viewportOnce}
                     transition={{ duration: 0.44, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex h-[60px] w-[60px] items-center justify-center rounded-2xl border border-cream/12 bg-gradient-to-br from-cream/[0.14] to-cream/[0.06] text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-transform duration-500 group-hover:scale-[1.03] will-change-transform"
+                    className="flex h-[60px] w-[60px] items-center justify-center rounded-2xl border border-cream/12 bg-gradient-to-br from-cream/[0.14] to-cream/[0.06] text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_10px_24px_rgba(21,16,17,0.18)] backdrop-blur-sm transition-transform duration-500 group-hover:scale-[1.03] will-change-transform"
                   >
                     <Icon className="h-[26px] w-[26px]" strokeWidth={1.75} />
                   </motion.span>
-                  <span className="font-serif text-[2rem] font-light leading-none tracking-[-0.03em] text-cream/[0.14]">
+                  <span aria-hidden className="font-serif text-h2 font-light leading-none tracking-[-0.03em] text-cream/[0.14]">
                     0{i + 1}
                   </span>
                 </div>
@@ -66,13 +66,13 @@ export function TrustStrip() {
                   className="mt-7 h-px w-10 bg-gradient-to-r from-gold/70 to-transparent transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-14"
                   aria-hidden
                 />
-                <h3 className="mt-4 font-serif text-[1.32rem] font-medium leading-[1.18] tracking-[-0.015em] text-cream text-balance">{pillar.title}</h3>
+                <h3 className="mt-4 font-serif text-h3 font-medium leading-[1.18] tracking-[-0.015em] text-cream text-balance">{pillar.title}</h3>
                 <p className="mt-3 text-body-sm leading-[1.7] text-cream/72 text-pretty">{pillar.body}</p>
                 <div className="mt-auto pt-7">
                   <div className="h-px w-full bg-cream/10">
                     <div className="h-px w-10 bg-gold/80 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full group-hover:bg-gold" />
                   </div>
-                  <span className="mt-3 block text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-cream/40">
+                  <span className="mt-3 block text-caption font-semibold uppercase tracking-[0.18em] text-cream/60">
                     Studio pillar · 0{i + 1} / 04
                   </span>
                 </div>

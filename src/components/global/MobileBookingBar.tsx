@@ -38,7 +38,7 @@ export function MobileBookingBar() {
               href="/book"
               className="pressable flex h-12 flex-1 items-center justify-center rounded-pill bg-[linear-gradient(135deg,var(--color-brand-action),var(--color-brand-dark))] font-medium text-cream shadow-[0_14px_34px_rgba(151,35,58,0.24)]"
             >
-              Book Appointment
+              Book appointment
             </Link>
             <a
               href={whatsappLink("Hi! I'd like to ask about a booking.")}

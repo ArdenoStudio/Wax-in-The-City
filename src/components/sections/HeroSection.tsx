@@ -86,7 +86,7 @@ export function HeroSection() {
             initial={reduceMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.44, delay: reduceMotion ? 0 : 0.26, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-5 inline-flex items-center gap-3 text-caption font-semibold uppercase tracking-[0.22em] text-brand-light/90 will-change-transform"
+            className="mt-5 inline-flex items-center gap-3 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light/90 will-change-transform"
           >
             <span className="hidden h-px w-8 bg-brand-light/50 sm:block" aria-hidden />
             {HERO_DESCRIPTOR}
@@ -200,7 +200,7 @@ export function HeroSection() {
             ))}
           </ul>
           <p className="mt-6 border-t border-cream/12 pt-5 font-serif text-h4 font-medium text-cream text-pretty">
-            Specialist care without the awkward salon floor feeling.
+            Specialist care without the busy salon floor.
           </p>
         </motion.aside>
       </div>

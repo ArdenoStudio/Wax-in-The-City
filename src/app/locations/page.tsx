@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Clock, MapPin, Navigation, Phone } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Clock, MapPin, Navigation, Phone } from "lucide-react";
 import { BRANCHES, whatsappLink } from "@/lib/site";
 import { PageHero } from "@/components/sections/PageHero";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 import { WhatsappIcon } from "@/components/icons";
-import { IMAGES } from "@/lib/images";
+import { BLUR_DATA_URL, IMAGES } from "@/lib/images";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Locations",
   description:
     "Two ladies only Wax In The City studios in Colombo — Battaramulla and Nugegoda. Find hours, directions and WhatsApp booking.",
-  alternates: {
-    canonical: "/locations",
-  },
-};
+  path: "/locations",
+});
 
 const BRANCH_IMAGES = {
   battaramulla: IMAGES.branches.battaramulla,
@@ -57,17 +57,22 @@ export default function LocationsPage() {
           </div>
 
           <div className="grid gap-5 md:grid-cols-2">
-            {BRANCHES.map((branch, i) => (
+            {BRANCHES.map((branch, i) => {
+              const image = BRANCH_IMAGES[branch.slug];
+              const isRemote = image.startsWith("http");
+              return (
               <AnimatedSection key={branch.slug} variant="fadeUp" delay={i * 0.08}>
                 <article className="group h-full overflow-hidden rounded-card border border-cream/14 bg-cream text-warm shadow-[0_26px_80px_rgba(27,14,16,0.18)]">
                   <div className="relative min-h-[260px] overflow-hidden bg-ink">
                     <Image
-                      src={BRANCH_IMAGES[branch.slug]}
+                      src={image}
                       alt={`${branch.name} studio atmosphere`}
                       fill
                       sizes="(max-width: 768px) 100vw, 34vw"
                       className="image-polish object-cover"
-                      unoptimized
+                      unoptimized={isRemote}
+                      placeholder={isRemote ? undefined : "blur"}
+                      blurDataURL={BLUR_DATA_URL}
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_25%,rgba(23,7,11,0.72)_100%)]" />
                     <div className="absolute bottom-0 left-0 p-5 text-cream">
@@ -129,10 +134,18 @@ export default function LocationsPage() {
                         Directions
                       </a>
                     </div>
+                    <Link
+                      href={`/locations/${branch.slug}`}
+                      className="icon-drift mt-4 inline-flex h-11 items-center gap-1.5 rounded-pill px-2 text-body-sm font-medium text-brand-action transition-colors duration-500 ease-[var(--ease-apple)] hover:text-brand-dark"
+                    >
+                      Branch details
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </Link>
                   </div>
                 </article>
               </AnimatedSection>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

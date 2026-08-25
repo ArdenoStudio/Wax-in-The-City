@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { GALLERY, type GalleryCategory } from "@/lib/gallery";
+import { BLUR_DATA_URL } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
 const FILTERS: { key: GalleryCategory | "all"; label: string }[] = [
@@ -118,6 +119,8 @@ export function GalleryGrid() {
                 alt={photo.alt}
                 fill
                 sizes="(max-width: 1024px) 50vw, 33vw"
+                placeholder={photo.src.startsWith("/") ? "blur" : "empty"}
+                blurDataURL={BLUR_DATA_URL}
                 unoptimized={photo.src.startsWith("http")}
                 className="object-cover transition-transform duration-500 ease-[var(--ease-apple)] hover:scale-[1.02] will-change-transform"
               />
@@ -176,6 +179,8 @@ export function GalleryGrid() {
                 alt={photos[active].alt}
                 fill
                 sizes="100vw"
+                placeholder={photos[active].src.startsWith("/") ? "blur" : "empty"}
+                blurDataURL={BLUR_DATA_URL}
                 unoptimized={photos[active].src.startsWith("http")}
                 className="object-contain"
               />

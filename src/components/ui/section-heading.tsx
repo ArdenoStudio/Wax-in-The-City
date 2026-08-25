@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 interface SectionHeadingProps {
   eyebrow?: string;
   title: string;
+  titleAs?: "h1" | "h2";
   subtitle?: string;
   align?: "left" | "center";
   tone?: "dark" | "light";
@@ -15,6 +16,7 @@ interface SectionHeadingProps {
 export function SectionHeading({
   eyebrow,
   title,
+  titleAs = "h2",
   subtitle,
   align = "center",
   tone = "dark",
@@ -22,6 +24,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   const light = tone === "light";
   const reduceMotion = useReducedMotion();
+  const TitleTag = titleAs;
 
   if (reduceMotion) {
     return (
@@ -44,7 +47,7 @@ export function SectionHeading({
           </span>
         )}
         <div className="relative inline-block min-w-24 max-w-full">
-          <h2 className={cn("max-w-full break-words text-balance font-serif text-h2 font-medium leading-tight sm:text-h1", light ? "text-cream" : "text-warm")}>{title}</h2>
+          <TitleTag className={cn("max-w-full break-words text-balance font-serif text-h2 font-medium leading-tight sm:text-h1", light ? "text-cream" : "text-warm")}>{title}</TitleTag>
           <span className={cn("absolute -bottom-3 left-0 block h-px w-full hairline-gradient", align === "center" && "left-1/2 w-24 -translate-x-1/2")} />
         </div>
         {subtitle && <p className={cn("mt-7 w-full max-w-xl break-words text-pretty text-body-lg", light ? "text-cream/70" : "text-warm-grey")}>{subtitle}</p>}
@@ -82,14 +85,14 @@ export function SectionHeading({
       )}
 
       <div className="relative inline-block min-w-24 max-w-full">
-        <h2
+        <TitleTag
           className={cn(
             "max-w-full break-words text-balance font-serif text-h2 font-medium leading-tight sm:text-h1",
             light ? "text-cream" : "text-warm"
           )}
         >
           {title}
-        </h2>
+        </TitleTag>
         <span
           className={cn(
             "absolute -bottom-3 left-0 block h-px w-full hairline-gradient",

@@ -5,7 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, Loader2 } from "lucide-react";
-import { contactSchema, type ContactInput } from "@/lib/booking";
+import { contactSchema } from "@/lib/booking";
 import { submitContact } from "@/app/actions/booking";
 import { BRANCHES, whatsappLink } from "@/lib/site";
 import { fieldAriaProps, fieldErrorId } from "@/lib/form-a11y";
@@ -21,6 +21,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { z } from "zod";
+
+const contactFormSchema = contactSchema.extend({ company: z.string().optional() });
+type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -31,9 +35,9 @@ export function ContactForm() {
     handleSubmit,
     control,
     formState: { errors, isSubmitting },
-  } = useForm<ContactInput>({ resolver: zodResolver(contactSchema) });
+  } = useForm<ContactFormValues>({ resolver: zodResolver(contactFormSchema) });
 
-  const onSubmit = async (data: ContactInput) => {
+  const onSubmit = async (data: ContactFormValues) => {
     setServerError(null);
     try {
       const res = await submitContact(data);
@@ -81,6 +85,7 @@ export function ContactForm() {
                   id="c-name"
                   autoComplete="name"
                   placeholder="Your name"
+                  aria-required="true"
                   {...register("name")}
                   {...fieldAriaProps("name", errors.name)}
                 />
@@ -117,6 +122,7 @@ export function ContactForm() {
                   inputMode="tel"
                   autoComplete="tel"
                   placeholder="Your number"
+                  aria-required="true"
                   {...register("phone")}
                   {...fieldAriaProps("phone", errors.phone)}
                 />
@@ -136,6 +142,7 @@ export function ContactForm() {
                       <SelectTrigger
                         id="c-branch"
                         aria-label="Select branch location"
+                        aria-required="true"
                         aria-invalid={errors.branch ? true : undefined}
                         aria-describedby={errors.branch ? fieldErrorId("branch") : undefined}
                       >
@@ -164,6 +171,7 @@ export function ContactForm() {
               <Textarea
                 id="c-message"
                 placeholder="Tell us what you'd like to ask."
+                aria-required="true"
                 {...register("message")}
                 {...fieldAriaProps("message", errors.message)}
               />
@@ -179,6 +187,11 @@ export function ContactForm() {
                 {serverError}
               </p>
             )}
+
+            <div className="hidden" aria-hidden="true">
+              <Label htmlFor="company">Company</Label>
+              <Input id="company" tabIndex={-1} autoComplete="off" {...register("company")} />
+            </div>
 
             <Button type="submit" size="lg" variant="primary" disabled={isSubmitting}>
               {isSubmitting ? (

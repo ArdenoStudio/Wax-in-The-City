@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Multiple lockfiles exist higher up the tree; pin the workspace root here.
   turbopack: { root: __dirname },
+  // Enables React <ViewTransition> integration for buttery-smooth client-side navigations.
+  experimental: {
+    viewTransition: true,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 85],
@@ -10,10 +14,6 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       // Supabase Storage public URLs (gallery) — wildcard project ref (Security review: consider pinning to <project>.supabase.co).
       { protocol: "https", hostname: "*.supabase.co" },
-      // Temporary external treatment placeholders — replace with client-approved photography.
-      // Unsplash + Pexels are used for actual waxing/facial treatment imagery until local procedural photos exist.
-      { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "images.pexels.com" },
     ],
   },
   async headers() {
@@ -32,7 +32,7 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: https://*.supabase.co https://images.unsplash.com https://images.pexels.com",
+              "img-src 'self' data: https://*.supabase.co https://lh3.googleusercontent.com",
               "font-src 'self'",
               "connect-src 'self' https://*.supabase.co",
               "frame-src https://www.google.com",

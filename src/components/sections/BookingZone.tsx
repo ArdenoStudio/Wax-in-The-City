@@ -1,7 +1,7 @@
 import { WhatsappIcon } from "@/components/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { BookingForm } from "@/components/sections/BookingForm";
-import { whatsappLink, type BranchSlug } from "@/lib/site";
+import { getBranch, whatsappLink, type BranchSlug } from "@/lib/site";
 import { isSupabaseConfigured } from "@/lib/supabase/client";
 
 interface BookingZoneProps {
@@ -19,6 +19,8 @@ interface BookingZoneProps {
   subtitle?: string;
   /** Adds the top section padding + cream background. False when embedded in a page. */
   standalone?: boolean;
+  /** Heading tag for the section title — "h1" when this is the page's primary heading. */
+  titleAs?: "h1" | "h2";
 }
 
 /**
@@ -34,8 +36,15 @@ export function BookingZone({
   heading = "Ready when you are.",
   subtitle = "Send a request and the team will confirm before your visit. For urgent slots, WhatsApp is still the fastest route.",
   standalone = true,
+  titleAs = "h2",
 }: BookingZoneProps) {
   const resolvedMode = mode ?? (isSupabaseConfigured() ? "form" : "whatsapp-only");
+  const whatsappMessage =
+    defaultService && defaultBranch
+      ? `Hi! I'd like to book ${defaultService} at the ${getBranch(defaultBranch).name} branch`
+      : defaultService
+        ? `Hi! I'd like to book ${defaultService}`
+        : "Hi! I'd like to book a visit.";
   return (
     <section
       id="book"
@@ -56,6 +65,7 @@ export function BookingZone({
         <SectionHeading
           eyebrow="Book your visit"
           title={heading}
+          titleAs={titleAs}
           subtitle={subtitle}
           tone={standalone ? "light" : "dark"}
         />
@@ -106,22 +116,22 @@ export function BookingZone({
         <p
           className={
             standalone
-              ? "mt-3 text-center text-caption leading-relaxed text-cream/45 text-pretty"
+              ? "mt-3 text-center text-caption leading-relaxed text-cream/60 text-pretty"
               : "mt-3 text-center text-caption leading-relaxed text-warm-grey/70 text-pretty"
           }
         >
-          Premium Lycon (Australia) & Rica (Italy) · No double dipping · Aftercare + next-visit note before you leave
+          Premium Lycon (Australia) & Rica (Italy) · No double dipping · Aftercare + next-visit note before you leave.
         </p>
 
         <div
           className="mt-10"
           // Reserve the Dinaya widget footprint so the swap-in causes no reflow.
-          style={{ minHeight: 480 }}
+          style={resolvedMode === "whatsapp-only" ? undefined : { minHeight: 480 }}
         >
           {resolvedMode === "dinaya" ? (
             <DinayaPlaceholder />
           ) : resolvedMode === "whatsapp-only" ? (
-            <WhatsappOnly standalone={standalone} />
+            <WhatsappOnly standalone={standalone} message={whatsappMessage} />
           ) : (
             <BookingForm
               defaultBranch={defaultBranch}
@@ -147,11 +157,11 @@ export function BookingZone({
         <p
           className={
             standalone
-              ? "mt-4 text-center text-caption leading-relaxed text-cream/38 text-pretty"
+              ? "mt-4 text-center text-caption leading-relaxed text-cream/60 text-pretty"
               : "mt-4 text-center text-caption leading-relaxed text-warm-grey/60 text-pretty"
           }
         >
-          Aftercare tips + next appointment guidance included with every visit · Mon–Sun check
+          Aftercare tips + next appointment guidance included with every visit
         </p>
       </div>
     </section>
@@ -170,7 +180,13 @@ function DinayaPlaceholder() {
   );
 }
 
-function WhatsappOnly({ standalone = true }: { standalone?: boolean }) {
+function WhatsappOnly({
+  standalone = true,
+  message = "Hi! I'd like to book a visit.",
+}: {
+  standalone?: boolean;
+  message?: string;
+}) {
   return (
     <div
       className={
@@ -189,11 +205,11 @@ function WhatsappOnly({ standalone = true }: { standalone?: boolean }) {
         <WhatsappIcon className="h-7 w-7" />
       </span>
       <p className={standalone ? "mt-5 max-w-sm text-body text-cream/66 text-pretty" : "mt-5 max-w-sm text-body text-warm-grey text-pretty"}>
-        The quickest way to book is a quick WhatsApp message. We&apos;ll confirm a
+        The quickest way to book is a WhatsApp message. We&apos;ll confirm a
         time that works for you.
       </p>
       <a
-        href={whatsappLink("Hi! I'd like to book a visit.")}
+        href={whatsappLink(message)}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-6 inline-flex h-12 items-center gap-2 rounded-pill bg-brand-action px-6 font-medium text-cream transition-colors hover:bg-brand-dark"

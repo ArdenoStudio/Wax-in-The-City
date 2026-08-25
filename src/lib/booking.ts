@@ -16,6 +16,16 @@ export const bookingSchema = z.object({
   preferred_date: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .refine(
+      (value) => {
+        const date = new Date(`${value}T00:00:00`);
+        if (Number.isNaN(date.getTime())) return false;
+        const startOfToday = new Date();
+        startOfToday.setHours(0, 0, 0, 0);
+        return date.getTime() >= startOfToday.getTime();
+      },
+      { message: "Please pick a valid date from today onwards." }
+    )
     .optional()
     .or(z.literal("")),
   message: z.string().max(500).optional(),

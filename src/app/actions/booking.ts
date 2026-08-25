@@ -1,11 +1,50 @@
 "use server";
 
+import { headers } from "next/headers";
+import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import {
   bookingSchema,
   contactSchema,
   type BookingResult,
 } from "@/lib/booking";
+
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const submissionTimes = new Map<string, number[]>();
+
+const bookingSchemaWithGuard = bookingSchema.extend({
+  company: z.string().optional(),
+});
+const contactSchemaWithGuard = contactSchema.extend({
+  company: z.string().optional(),
+});
+
+async function clientKey(): Promise<string> {
+  const headerList = await headers();
+  return headerList.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+}
+
+function rateLimited(key: string): boolean {
+  const now = Date.now();
+  const recent = (submissionTimes.get(key) ?? []).filter(
+    (time) => now - time < RATE_LIMIT_WINDOW_MS
+  );
+  if (recent.length >= RATE_LIMIT_MAX) {
+    submissionTimes.set(key, recent);
+    return true;
+  }
+  if (submissionTimes.size > 256) {
+    for (const [k, times] of submissionTimes) {
+      if (!times.some((time) => now - time < RATE_LIMIT_WINDOW_MS)) {
+        submissionTimes.delete(k);
+      }
+    }
+  }
+  recent.push(now);
+  submissionTimes.set(key, recent);
+  return false;
+}
 
 /**
  * Server action: capture a booking request into Supabase `booking_requests`.
@@ -16,9 +55,18 @@ import {
 export async function submitBooking(
   raw: unknown
 ): Promise<BookingResult> {
-  const parsed = bookingSchema.safeParse(raw);
+  const key = await clientKey();
+  if (rateLimited(key)) {
+    return { ok: false, error: "Please check the form and try again." };
+  }
+
+  const parsed = bookingSchemaWithGuard.safeParse(raw);
   if (!parsed.success) {
     return { ok: false, error: "Please check the form and try again." };
+  }
+
+  if (parsed.data.company?.trim()) {
+    return { ok: true };
   }
 
   const supabase = await createClient();
@@ -57,9 +105,18 @@ export async function submitBooking(
  * message so we keep a single table pre-Dinaya.
  */
 export async function submitContact(raw: unknown): Promise<BookingResult> {
-  const parsed = contactSchema.safeParse(raw);
+  const key = await clientKey();
+  if (rateLimited(key)) {
+    return { ok: false, error: "Please check the form and try again." };
+  }
+
+  const parsed = contactSchemaWithGuard.safeParse(raw);
   if (!parsed.success) {
     return { ok: false, error: "Please check the form and try again." };
+  }
+
+  if (parsed.data.company?.trim()) {
+    return { ok: true };
   }
 
   const { name, email, phone, branch, message } = parsed.data;

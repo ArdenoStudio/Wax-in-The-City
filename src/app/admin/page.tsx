@@ -22,7 +22,13 @@ export const metadata: Metadata = {
 
 export default async function AdminPage() {
   const flash = await getAndClearAdminFlash();
-  const authenticated = await isAdminAuthenticated();
+
+  let authenticated = false;
+  try {
+    authenticated = await isAdminAuthenticated();
+  } catch {
+    return <SetupPanel />;
+  }
 
   if (!authenticated) {
     return <LoginPanel flash={flash} />;
@@ -79,9 +85,11 @@ export default async function AdminPage() {
           <div className="studio-plate mt-8 rounded-card p-6">
             <h2 className="font-serif text-h3 text-warm text-balance">Connect Supabase admin access</h2>
             <p className="mt-2 text-body-sm text-warm-grey text-pretty">
-              Add `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
-              `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_PASSWORD`, and
-              `ADMIN_SESSION_SECRET` to enable editing.
+              Add <EnvVar name="NEXT_PUBLIC_SUPABASE_URL" />,{" "}
+              <EnvVar name="NEXT_PUBLIC_SUPABASE_ANON_KEY" />,{" "}
+              <EnvVar name="SUPABASE_SERVICE_ROLE_KEY" />,{" "}
+              <EnvVar name="ADMIN_PASSWORD" />, and{" "}
+              <EnvVar name="ADMIN_SESSION_SECRET" /> to enable editing.
             </p>
           </div>
         )}
@@ -270,7 +278,7 @@ function LoginPanel({
 
         {!configured && (
           <p className="mt-5 rounded-card border border-gold/20 bg-gold/10 px-4 py-3 text-body-sm text-brand-light">
-            Set `ADMIN_PASSWORD` before using this page.
+            Set <EnvVar name="ADMIN_PASSWORD" /> before using this page.
           </p>
         )}
         {flash && (
@@ -325,5 +333,29 @@ function StatusMessage({
     >
       {children}
     </p>
+  );
+}
+
+function EnvVar({ name }: { name: string }) {
+  return (
+    <code className="rounded-md bg-brand-mist px-1.5 py-0.5 font-mono text-caption text-warm-grey">
+      {name}
+    </code>
+  );
+}
+
+function SetupPanel() {
+  return (
+    <section className="flex min-h-[100dvh] items-center justify-center bg-cream px-5 py-20">
+      <div className="studio-plate w-full max-w-xl rounded-card p-6">
+        <h1 className="font-serif text-h3 text-warm text-balance">Server environment setup required</h1>
+        <p className="mt-2 text-body-sm text-warm-grey text-pretty">
+          This admin area cannot start until the hosting environment provides its
+          required server variables. Set <EnvVar name="ADMIN_SESSION_SECRET" />{" "}
+          and <EnvVar name="ADMIN_PASSWORD" /> on your deployment provider, then
+          reload this page.
+        </p>
+      </div>
+    </section>
   );
 }

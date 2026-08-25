@@ -1,12 +1,9 @@
 /**
  * Central image + video manifest — all assets are local client photography.
- * Imagery is ambience + studio protocol only; no stock. Category cards that
- * were blue-X'd (waxing + facials on /services) now use authentic, distinct
- * local visuals — waxing shows the real Wax In The City wax inventory
- * (RICA/Lycon on the warm wood console under the Battaramulla brand wall),
- * not the crossed stock woman-in-apron (service-prep.jpg) or generic
- * reception (g-reception-02.jpg). No procedural close-ups until
- * client-approved (ladies-only privacy: crop to hands/tools, no faces).
+ * Imagery is ambience + studio protocol only; no stock. Waxing contexts use
+ * real procedural frames captured from client clips (Battaramulla 7.8.26):
+ * melted RICA wax poured into the warmer, gloved application on skin, tin
+ * handling — cropped to hands/tools only, no faces (ladies-only privacy).
  */
 
 export const IMAGES = {
@@ -23,12 +20,9 @@ export const IMAGES = {
     alt: "Treatment room bed prepared with fresh single-use linen in a private studio room — hygiene protocol",
   },
   services: {
-    // Blue-X fix 2026-08: client crossed out waxing (service-prep woman-in-apron)
-    // + facials (g-reception-02 interior). Now uses real studio photography from
-    // /public/images/services/* (Battaramulla/Nugegoda procedural prep) plus distinct
-    // product ambience for remaining categories. All are authentic WITC assets — not
-    // stock. If client supplies closer crop, swap file in place.
-    waxing: "/images/services/waxing.jpg",
+    // Waxing card/hero shows a real procedural frame from client clips
+    // (melted RICA wax poured into the warmer, hands/tools only, no faces).
+    waxing: "/images/waxing/wax-pour-warmer.jpg",
     facials: "/images/services/facials.jpg",
     moroccan: "/images/services/moroccan.jpg",
     hydraFacial: "/images/services/hydra-facial.jpg",
@@ -57,7 +51,6 @@ export const IMAGES = {
   og: "/images/og-image.jpg",
   logo: "/images/witc-wordmark-square.jpg",
   wordmark: "/images/witc-wordmark.jpg",
-  logoMark: "/images/witc-logo.png",
   socialProof: {
     src: "/images/studio/studio-square.jpg",
     alt: "Wax In The City studio branding and treatment room",

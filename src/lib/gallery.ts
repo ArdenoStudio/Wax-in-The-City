@@ -22,7 +22,7 @@ export const GALLERY: GalleryImage[] = [
     category: "salon",
   },
   {
-    src: "/images/gallery/g-door.jpg",
+    src: "/images/studio/reception-desk.jpg",
     alt: "Private entrance door to the ladies only studio",
     category: "salon",
   },
@@ -88,7 +88,7 @@ export const GALLERY: GalleryImage[] = [
     category: "salon",
   },
   {
-    src: "/images/wax-real-optimized/Battaramulla_7.8.26_IMG_9782.jpg",
+    src: "/images/services/facials.jpg",
     alt: "Studio interior vignette — real Battaramulla photography",
     category: "salon",
   },

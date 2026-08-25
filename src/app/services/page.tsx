@@ -10,17 +10,16 @@ import { getPublicServiceContent } from "@/lib/service-content";
 import { IMAGES } from "@/lib/images";
 import { type ServiceCategory } from "@/lib/site";
 import { formatLKRFrom } from "@/lib/utils";
+import { buildPageMetadata } from "@/lib/seo";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Services",
   description:
-    "Waxing, facials, body rituals and hydro facials — done with genuine care at our ladies only studios in Battaramulla and Nugegoda.",
-  alternates: {
-    canonical: "/services",
-  },
-};
+    "Waxing, facials, body rituals and hydra facials — done with genuine care at our ladies only studios in Battaramulla and Nugegoda.",
+  path: "/services",
+});
 
 /**
  * Category card visuals — blue-X fix: client crossed out waxing (woman in
@@ -40,25 +39,25 @@ const CATEGORY_VISUALS: Record<
 > = {
   waxing: {
     image: IMAGES.services.waxing,
-    alt: "Waxing — authentic waxing treatment at Wax In The City, private-room care with fresh wax and single-use spatula protocol (services/waxing.jpg, actual studio photography)",
+    alt: "Waxing — authentic waxing treatment at Wax In The City, private-room care with fresh wax and single-use spatula protocol",
     label: "Signature smooth",
-    note: "Fresh wax for every guest, private rooms, no double-dipping.",
+    note: "Fresh wax for every guest, private rooms, no double dipping.",
   },
   facial: {
     image: IMAGES.services.facials,
-    alt: "Facials — hands-on facial treatment, calm skin-care ritual at Wax In The City (services/facials.jpg, actual studio photography)",
+    alt: "Facials — hands-on facial treatment, calm skin-care ritual at Wax In The City",
     label: "Skin reset",
     note: "Cleanse, calm, brighten, and keep the skin barrier respected.",
   },
   moroccan: {
     image: IMAGES.services.moroccan,
-    alt: "Moroccan bath & body rituals — authentic hammam and body treatment at Wax In The City (services/moroccan.jpg, actual studio photography)",
+    alt: "Moroccan bath & body rituals — authentic hammam and body treatment at Wax In The City",
     label: "Deep ritual",
     note: "Polishes, scrubs and slower full body rituals.",
   },
   "hydra-facial": {
     image: IMAGES.services.hydraFacial,
-    alt: "HydraFacial — hydra-facial treatment with visible refresh and no downtime, clinical care at Wax In The City (services/hydra-facial.jpg, actual studio photography)",
+    alt: "Hydra Facial — hydra facial treatment with visible refresh and no downtime, clinical care at Wax In The City",
     label: "Visible refresh",
     note: "Cleanse, extract, hydrate, and leave without downtime.",
   },
@@ -78,7 +77,7 @@ const SERVICE_GUIDE = [
   {
     icon: Clock3,
     title: "If you need a fast glow",
-    body: "The Hydro Facial is the quickest route when you need a visible refresh without planning recovery time.",
+    body: "The Hydra Facial is the quickest route when you need a visible refresh without planning recovery time.",
   },
 ];
 
@@ -90,9 +89,9 @@ export default async function ServicesPage() {
       <PageHero
         eyebrow="Treatment menu"
         title="Choose the room, the ritual, the result."
-        subtitle="Waxing, skin care, body rituals and hydro facial work, handled with private room care."
+        subtitle="Waxing, skin care, body rituals and Hydra Facial work, handled with private room care."
         image={IMAGES.services.waxing}
-        imageAlt="Waxing treatment at Wax In The City — authentic private-room waxing with fresh wax and single-use protocol (services/waxing.jpg, actual studio photography)"
+        imageAlt="Waxing treatment at Wax In The City — authentic private-room waxing with fresh wax and single-use protocol"
         size="md"
         priority
       />
@@ -179,7 +178,7 @@ export default async function ServicesPage() {
                     alt={
                       index === 0
                         ? "Moroccan bath & body rituals — curated premium products on display"
-                        : "HydraFacial — premium wax and skin-care products on the studio shelf"
+                        : "Hydra Facial — premium wax and skin-care products on the studio shelf"
                     }
                     fill
                     sizes="(max-width: 768px) 100vw, 32vw"

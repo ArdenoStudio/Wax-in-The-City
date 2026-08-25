@@ -40,7 +40,7 @@ async function requireAdminMutation() {
 }
 
 export async function loginAdmin(formData: FormData) {
-  // Per-IP rate limiting via x-forwarded-for (falls back to "global" when header unavailable)
+  // Per-client rate limiting keyed on IP + user agent (falls back to "global" when headers unavailable)
   const identifier = await getLoginIdentifier();
   const { limited, retryAfterSec } = isLoginRateLimited(identifier);
   if (limited) {

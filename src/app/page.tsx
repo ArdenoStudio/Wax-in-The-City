@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { BranchSelector } from "@/components/sections/BranchSelector";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
@@ -12,8 +14,19 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { StatsCounter } from "@/components/sections/StatsCounter";
 import { getPublicServiceContent } from "@/lib/service-content";
+import { buildPageMetadata } from "@/lib/seo";
+import { SITE } from "@/lib/site";
 
 export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  ...buildPageMetadata({
+    title: `${SITE.name} — ${SITE.tagline}`,
+    description: SITE.description,
+    path: "/",
+  }),
+  title: { absolute: `${SITE.name} — ${SITE.tagline}` },
+};
 
 export default async function HomePage() {
   const serviceContent = await getPublicServiceContent();
@@ -36,12 +49,16 @@ export default async function HomePage() {
       <AboutTeaser />
       <section className="bg-cream px-5 py-section-lg lg:px-8">
         <div className="mx-auto max-w-3xl">
-          <SectionHeading
-            eyebrow="Good to know"
-            title="Questions, answered."
-            subtitle="Honest answers about treatments, hygiene and booking — the full list lives on the FAQ page."
-            className="mb-14"
-          />
+          <div className="mb-14">
+            <SectionHeading eyebrow="Good to know" title="Questions, answered." />
+            <p className="mx-auto mt-7 w-full max-w-xl break-words text-center text-pretty text-body-lg text-warm-grey">
+              Honest answers about treatments, hygiene and booking — the full list lives on the{" "}
+              <Link href="/faq" className="font-medium text-brand-action underline-offset-4 hover:underline">
+                FAQ page
+              </Link>
+              .
+            </p>
+          </div>
           <FAQAccordion />
         </div>
       </section>

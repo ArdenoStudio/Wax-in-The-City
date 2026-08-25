@@ -45,6 +45,7 @@ export const metadata: Metadata = {
     "Battaramulla salon",
     "Nugegoda salon",
   ],
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: SITE.locale,

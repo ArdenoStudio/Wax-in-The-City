@@ -66,7 +66,6 @@ export function Navbar() {
                 alt="Wax In The City logo"
                 width={120}
                 height={120}
-                priority
                 sizes="56px"
                 className={cn(
                   "h-full w-full object-contain transition-opacity duration-500",
@@ -79,7 +78,6 @@ export function Navbar() {
                 aria-hidden
                 width={120}
                 height={120}
-                priority
                 sizes="56px"
                 className={cn(
                   "absolute inset-0 h-full w-full object-contain transition-opacity duration-500",
@@ -129,7 +127,7 @@ export function Navbar() {
           >
             <Link href="/book">
               <CalendarDays className="h-4 w-4" />
-              <span className="hidden lg:inline">Book Appointment</span>
+              <span className="hidden lg:inline">Book appointment</span>
               <span className="lg:hidden">Book</span>
             </Link>
           </Button>
@@ -137,7 +135,7 @@ export function Navbar() {
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <button
-                aria-label="Open menu"
+                aria-label={open ? "Close menu" : "Open menu"}
                 className={cn(
                   "pressable flex h-11 w-11 items-center justify-center rounded-pill border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:hidden",
                   onDark

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { SITE, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
+  title: "Page not found",
   robots: { index: false },
 };
 

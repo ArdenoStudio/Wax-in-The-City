@@ -14,10 +14,9 @@ export function JsonLd() {
         description: SITE.description,
       },
       ...BRANCHES.map((branch) => {
-        // Per-branch closes derived from BRANCHES hours — Battaramulla 10pm (22:00), Nugegoda 6pm (18:00).
-        // Keep parsing fallback so future hour edits don't silently desync structured data.
-        const weekdayCloses = branch.hours.weekday.includes("10:00") ? "22:00" : "18:00";
-        const weekendCloses = branch.hours.weekend.includes("10:00") ? "22:00" : "18:00";
+        const fallbackCloses = branch.hours.weekday.includes("10:00") ? "22:00" : "18:00";
+        const opens = branch.hoursOpen ?? "09:00";
+        const closes = branch.hoursClose ?? fallbackCloses;
         return {
           "@type": ["HealthAndBeautyBusiness", "BeautySalon"],
           "@id": `${SITE.url}/locations/${branch.slug}#salon`,
@@ -27,7 +26,7 @@ export function JsonLd() {
           telephone: branch.phone,
           currenciesAccepted: "LKR",
           paymentAccepted: "Cash, Card, Bank Transfer",
-          priceRange: "$$",
+          priceRange: "LKR",
           parentOrganization: {
             "@id": `${SITE.url}#organization`,
           },
@@ -46,14 +45,14 @@ export function JsonLd() {
             {
               "@type": "OpeningHoursSpecification",
               dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              opens: "09:00",
-              closes: weekdayCloses,
+              opens,
+              closes,
             },
             {
               "@type": "OpeningHoursSpecification",
               dayOfWeek: ["Saturday", "Sunday"],
-              opens: "09:00",
-              closes: weekendCloses,
+              opens,
+              closes,
             },
           ],
           image: `${SITE.url}/images/og-image.jpg`,

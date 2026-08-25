@@ -31,14 +31,14 @@ const BEFORE_AFTER: Partial<
   waxing: {
     before: IMAGES.beforeAfter.waxing.before,
     after: IMAGES.beforeAfter.waxing.after,
-    beforeAlt: "Treatment room prepared with fresh single-use linen in a private studio room — hygienic setup before a waxing visit (studio/service-prep.jpg)",
-    afterAlt: "Premium RICA and Lycon wax inventory on the warm wood console beneath the Battaramulla brand wall — authentic range (wax-real-optimized/Battaramulla_7.8.26_IMG_9784.jpg)",
+    beforeAlt: "Treatment room prepared with fresh single-use linen in a private studio room — hygienic setup before a waxing visit",
+    afterAlt: "Premium RICA and Lycon wax inventory on the warm wood console beneath the Battaramulla brand wall — authentic range",
   },
   facials: {
     before: IMAGES.beforeAfter.facial.before,
     after: IMAGES.beforeAfter.facial.after,
-    beforeAlt: "Premium skin-care products arranged for facial treatments — curated product display (studio/product-shelf.jpg)",
-    afterAlt: "Warm private reception lounge where facial guests settle in — calm, ladies-only space (studio/reception-warm.jpg)",
+    beforeAlt: "Premium skin-care products arranged for facial treatments — curated product display",
+    afterAlt: "Warm private reception lounge where facial guests settle in — calm, ladies only space",
   },
 };
 
@@ -135,12 +135,15 @@ export default async function ServiceCategoryPage({
               <WaxPriceMatrix />
             </div>
           ) : (
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((service, i) => (
-                <AnimatedSection key={service.slug} variant="fadeUp" delay={i * 0.05}>
-                  <ServiceCard service={service} />
-                </AnimatedSection>
-              ))}
+            <div>
+              <h2 className="font-serif text-h3 font-medium text-warm text-balance">Available treatments</h2>
+              <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {services.map((service, i) => (
+                  <AnimatedSection key={service.slug} variant="fadeUp" delay={i * 0.05}>
+                    <ServiceCard service={service} />
+                  </AnimatedSection>
+                ))}
+              </div>
             </div>
           )}
         </div>

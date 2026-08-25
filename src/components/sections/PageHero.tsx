@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
+import { BLUR_DATA_URL } from "@/lib/images";
 
 interface PageHeroProps {
   eyebrow?: string;
@@ -45,6 +46,8 @@ export function PageHero({
           fill
           priority={priority}
           sizes="100vw"
+          placeholder={image.startsWith("/") ? "blur" : "empty"}
+          blurDataURL={BLUR_DATA_URL}
           className="object-cover object-center"
           unoptimized={image.startsWith("http")}
         />

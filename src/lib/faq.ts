@@ -61,7 +61,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "How do I see prices?",
         answer:
-          "Each treatment shows a 'from' price on our Services pages. Final pricing depends on the treatment and area — we'll always be clear before we begin.",
+          "Each treatment shows a from-price on our Services pages. Final pricing depends on the treatment and area — we'll always be clear before we begin.",
       },
       {
         question: "Can I book online?",

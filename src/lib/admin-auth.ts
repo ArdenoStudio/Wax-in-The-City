@@ -33,20 +33,26 @@ function sessionSecret() {
 }
 
 /**
- * Resolve per-IP rate-limit identifier from x-forwarded-for when available.
+ * Resolve per-IP rate-limit identifier from x-forwarded-for when available,
+ * composited with the user-agent header so a spoofable IP alone cannot rotate keys.
  * Falls back to "global" when headers are unavailable (e.g. tests).
  */
 export async function getLoginIdentifier(): Promise<string> {
   try {
     const h = await headers();
     const forwarded = h.get("x-forwarded-for");
+    const realIp = h.get("x-real-ip");
+    let base = "global";
     if (forwarded) {
       const ip = forwarded.split(",")[0]?.trim();
-      if (ip) return `ip:${ip}`;
+      if (ip) base = `ip:${ip}`;
+    } else if (realIp?.trim()) {
+      base = `ip:${realIp.trim()}`;
     }
-    const realIp = h.get("x-real-ip");
-    if (realIp?.trim()) return `ip:${realIp.trim()}`;
-    return "global";
+    const userAgent = h.get("user-agent")?.trim();
+    if (!userAgent) return base;
+    const uaFingerprint = createHash("sha256").update(userAgent).digest("hex").slice(0, 32);
+    return `${base}|ua:${uaFingerprint}`;
   } catch {
     return "global";
   }

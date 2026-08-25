@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, Clock3, Loader2, ShieldCheck } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
-import { bookingSchema, type BookingInput } from "@/lib/booking";
+import { bookingSchema } from "@/lib/booking";
 import { submitBooking } from "@/app/actions/booking";
 import { SERVICES, BRANCHES, whatsappLink, type BranchSlug } from "@/lib/site";
 import { fieldAriaProps, fieldErrorId } from "@/lib/form-a11y";
@@ -21,12 +21,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { z } from "zod";
 
 interface BookingFormProps {
   defaultBranch?: BranchSlug;
   defaultService?: string;
   serviceOptions?: string[];
 }
+
+const bookingFormSchema = bookingSchema.extend({ company: z.string().optional() });
+type BookingFormValues = z.infer<typeof bookingFormSchema>;
 
 export function BookingForm({
   defaultBranch,
@@ -46,8 +50,8 @@ export function BookingForm({
     handleSubmit,
     control,
     formState: { errors, isSubmitting },
-  } = useForm<BookingInput>({
-    resolver: zodResolver(bookingSchema),
+  } = useForm<BookingFormValues>({
+    resolver: zodResolver(bookingFormSchema),
     defaultValues: {
       branch: defaultBranch ?? undefined,
       service_preference: defaultService ?? undefined,
@@ -61,7 +65,7 @@ export function BookingForm({
   const filledCount = watchedFields.filter(Boolean).length;
   const progress = (filledCount / 4) * 100;
 
-  const onSubmit = async (data: BookingInput) => {
+  const onSubmit = async (data: BookingFormValues) => {
     setServerError(null);
     try {
       const res = await submitBooking(data);
@@ -154,6 +158,7 @@ export function BookingForm({
                 id="name"
                 autoComplete="name"
                 placeholder="Your name"
+                aria-required="true"
                 {...register("name")}
                 {...fieldAriaProps("name", errors.name)}
               />
@@ -179,6 +184,7 @@ export function BookingForm({
                 inputMode="tel"
                 autoComplete="tel"
                 placeholder="Your number (we'll only call or WhatsApp)"
+                aria-required="true"
                 {...register("phone")}
                 {...fieldAriaProps("phone", errors.phone)}
               />
@@ -200,6 +206,7 @@ export function BookingForm({
                       <SelectTrigger
                         id="branch-select"
                         aria-label="Select branch location"
+                        aria-required="true"
                         aria-invalid={errors.branch ? true : undefined}
                         aria-describedby={errors.branch ? fieldErrorId("branch") : undefined}
                       >
@@ -257,7 +264,18 @@ export function BookingForm({
 
             <div className="flex flex-col gap-2">
               <Label htmlFor="preferred_date">When do you prefer to visit?</Label>
-              <Input id="preferred_date" type="date" autoComplete="off" {...register("preferred_date")} />
+              <Input
+                id="preferred_date"
+                type="date"
+                autoComplete="off"
+                {...register("preferred_date")}
+                {...fieldAriaProps("preferred_date", errors.preferred_date)}
+              />
+              {errors.preferred_date && (
+                <p id={fieldErrorId("preferred_date")} className="text-body-sm text-error text-pretty" role="alert">
+                  {errors.preferred_date.message}
+                </p>
+              )}
             </div>
 
             <div className="flex flex-col gap-2">
@@ -280,6 +298,11 @@ export function BookingForm({
                 {serverError}
               </p>
             )}
+
+            <div className="hidden" aria-hidden="true">
+              <Label htmlFor="company">Company</Label>
+              <Input id="company" tabIndex={-1} autoComplete="off" {...register("company")} />
+            </div>
 
             <Button type="submit" size="lg" variant="primary" disabled={isSubmitting}>
               {isSubmitting ? (

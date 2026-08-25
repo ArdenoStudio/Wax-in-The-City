@@ -20,6 +20,7 @@
   /* --- Colour: Pearl backgrounds --- */
   --color-cream: #fff7f9;          /* Dominant page background */
   --color-cream-alt: #f8edf1;      /* Alternating sections */
+  --color-pearl-blush: #f4c3d0;    /* Blush gradient mid-tone */
 
   /* --- Colour: Warm neutrals --- */
   --color-warm: #1f171a;           /* Body text, never pure black */
@@ -44,6 +45,10 @@
   --text-h4: 1.125rem;
   --text-h4--line-height: 1.4;
   --text-h4--letter-spacing: 0.01em;
+  --text-h5: 0.875rem;
+  --text-h5--line-height: 1.5;
+  --text-h6: 0.8125rem;
+  --text-h6--line-height: 1.5;
   --text-body-lg: 1.125rem;
   --text-body-lg--line-height: 1.75;
   --text-body: 1rem;

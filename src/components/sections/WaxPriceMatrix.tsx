@@ -138,7 +138,7 @@ export function WaxPriceMatrix() {
               B
             </span>
             <div>
-              <p className="text-body-sm font-semibold text-warm text-pretty">Biahu Gold</p>
+              <p className="text-body-sm font-semibold text-warm text-pretty">Brazil Gold</p>
               <p className="text-caption text-warm-grey text-pretty">Reliable, smooth standard body wax option.</p>
             </div>
           </div>
@@ -151,9 +151,9 @@ export function WaxPriceMatrix() {
               <thead>
                 <tr className="border-b border-warm-border/80 bg-brand-mist/50 text-caption font-semibold uppercase tracking-[0.1em] text-warm">
                   <th className="px-5 py-3.5">Treatment Area</th>
-                  <th className="px-4 py-3.5 text-right">Standard (Biahu)</th>
+                  <th className="px-4 py-3.5 text-right">Standard (Brazil Gold)</th>
                   <th className="px-4 py-3.5 text-right">Rica (Italy)</th>
-                  <th className="px-4 py-3.5 text-right">Lycon (Australia)</th>
+                  <th className="px-4 py-3.5 text-right">Lycon hot wax</th>
                   <th className="px-4 py-3.5 text-center">Action</th>
                 </tr>
               </thead>
@@ -169,7 +169,7 @@ export function WaxPriceMatrix() {
         </div>
 
         <p className="mt-3 text-caption text-warm-grey text-pretty">
-          * All intimate and facial waxing uses fresh, single use wooden spatulas with strict zero double dipping.
+          * All intimate and facial waxing uses fresh, single-use wooden spatulas with strict zero double dipping.
         </p>
       </div>
     </div>
@@ -263,7 +263,7 @@ function PackageCard({ pkg }: { pkg: WaxPackage }) {
       <div className="mt-6 border-t border-warm-border/60 pt-4">
         <div className="grid grid-cols-2 gap-2 rounded-card bg-brand-mist/30 p-3 text-center">
           <div>
-            <span className="block text-caption text-warm-grey">With Biahu Gold</span>
+            <span className="block text-caption text-warm-grey">With Brazil Gold</span>
             <span className="font-serif text-h4 font-medium text-warm">
               {formatLKR(pkg.prices.essential)}
             </span>

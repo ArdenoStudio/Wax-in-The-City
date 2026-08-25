@@ -77,7 +77,6 @@ export function LoadingScreen() {
               alt="Wax In The City"
               fill
               loading="eager"
-              fetchPriority="high"
               sizes="128px"
               className="object-contain"
             />

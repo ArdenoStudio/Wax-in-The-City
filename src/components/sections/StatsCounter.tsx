@@ -9,6 +9,7 @@ import {
   useTransform,
   animate,
 } from "motion/react";
+import { SERVICES } from "@/lib/site";
 
 interface Stat {
   value: number;
@@ -20,7 +21,7 @@ const DEFAULT_STATS: Stat[] = [
   { value: 2, label: "Colombo branches" },
   { value: 135, suffix: "+", label: "Public reviews found" },
   { value: 100, suffix: "%", label: "Ladies only space" },
-  { value: 14, suffix: "+", label: "Treatments" },
+  { value: SERVICES.length, suffix: "+", label: "Treatments" },
 ];
 
 function Ticker({ value, suffix }: { value: number; suffix?: string }) {

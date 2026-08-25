@@ -8,15 +8,14 @@ import { AnimatedSection } from "@/components/global/AnimatedSection";
 import { MarqueeStrip } from "@/components/ui/marquee-strip";
 import { IMAGES } from "@/lib/images";
 import { BRANCHES } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "About",
   description:
     "A studio built by women, for women. The story and values behind Wax In The City — honest, private, genuinely kind beauty care in Colombo.",
-  alternates: {
-    canonical: "/about",
-  },
-};
+  path: "/about",
+});
 
 const VALUES = [
   {
@@ -100,7 +99,7 @@ export default function AboutPage() {
                   src={IMAGES.wordmark}
                   alt="Wax In The City wordmark"
                   width={320}
-                  height={120}
+                  height={320}
                   className="h-auto w-full rounded-[6px]"
                 />
               </div>
@@ -196,7 +195,7 @@ export default function AboutPage() {
       </section>
 
       <BookingZone
-        heading="Visit the studio that fits your day."
+        heading="Two studios, one standard of care."
         subtitle="Choose Battaramulla or Nugegoda and tell us what you need before you arrive."
       />
     </>

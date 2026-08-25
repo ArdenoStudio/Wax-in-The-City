@@ -2,15 +2,14 @@ import type { Metadata } from "next";
 import { BookingZone } from "@/components/sections/BookingZone";
 import { BRANCHES, SERVICES, SERVICE_CATEGORIES, type BranchSlug } from "@/lib/site";
 import { getPublicServiceContent } from "@/lib/service-content";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Book Your Visit",
   description:
     "Book your visit to Wax In The City — send a request and we'll confirm within 24 hours, or reach us instantly on WhatsApp.",
-  alternates: {
-    canonical: "/book",
-  },
-};
+  path: "/book",
+});
 
 function isBranchSlug(value?: string): value is BranchSlug {
   return Boolean(value) && BRANCHES.some((b) => b.slug === value);
@@ -63,6 +62,7 @@ export default async function BookPage({
       serviceOptions={serviceContent.services.map((item) => item.name)}
       heading="Book your visit."
       subtitle="Tell us what you'd like and when — we'll confirm within 24 hours. No card required to enquire."
+      titleAs="h1"
     />
   );
 }

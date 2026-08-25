@@ -1,6 +1,6 @@
 /**
  * Complete verified salon pricing from the Wax In The City menu sheet.
- * Includes product-specific options (Lycon, Rica, Biahu Gold) and curated package bundles.
+ * Includes product-specific options (Lycon, Rica, Brazil Gold) and curated package bundles.
  */
 
 export interface WaxPriceRow {
@@ -39,7 +39,7 @@ export const WAX_PRODUCTS: WaxProductDef[] = [
     label: "Lycon Pinkini",
     short: "Pinkini",
     origin: "Australia",
-    description: "Specialized gentle hybrid hot wax formulated for intimate waxing.",
+    description: "Specialised gentle hybrid hot wax formulated for intimate waxing.",
   },
   {
     id: "lycon-aloe-vera",
@@ -81,7 +81,7 @@ export const WAX_PRODUCTS: WaxProductDef[] = [
 /** Individual wax areas with verified per-product pricing (LKR). */
 export const WAX_PRICE_ROWS: WaxPriceRow[] = [
   {
-    area: "Upper Lips",
+    area: "Upper Lip",
     prices: { "lycon-superberry": 700 },
   },
   {
@@ -97,7 +97,7 @@ export const WAX_PRICE_ROWS: WaxPriceRow[] = [
     prices: { "lycon-superberry": 1500 },
   },
   {
-    area: "Eyebrow + Upper Lips",
+    area: "Eyebrow + Upper Lip",
     prices: { "lycon-superberry": 1500 },
   },
   {

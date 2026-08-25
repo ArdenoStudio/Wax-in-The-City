@@ -8,10 +8,10 @@
 export const SITE = {
   name: "Wax In The City SL",
   shortName: "Wax In The City",
-  tagline: "Private waxing, done properly.",
+  tagline: "Private waxing, quietly perfected.",
   description:
     "Ladies only waxing and skin care in Colombo — known for careful hygiene, premium products, and private appointment led care.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://waxinthecitylk.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://wax-in-the-city-website.vercel.app",
   locale: "en_LK",
   instagram: "https://instagram.com/waxinthecitylk",
   facebook: "https://facebook.com/waxinthecitylk",
@@ -42,6 +42,8 @@ export interface Branch {
   whatsapp: string; // digits only, country code first
   geo: { latitude: number; longitude: number };
   hours: { weekday: string; weekend: string; poya: string };
+  hoursOpen: string;
+  hoursClose: string;
   googleMapsUrl: string;
   blurb: string;
 }
@@ -60,6 +62,8 @@ export const BRANCHES: Branch[] = [
       weekend: "9:00 AM – 10:00 PM",
       poya: "Closed on Poya days & public holidays",
     },
+    hoursOpen: "09:00",
+    hoursClose: "22:00",
     googleMapsUrl: "https://maps.google.com/?q=Battaramulla+Colombo",
     blurb: "A private appointment led studio with calm rooms and careful treatment flow. Open daily 9 AM – 10 PM.",
   },
@@ -76,6 +80,8 @@ export const BRANCHES: Branch[] = [
       weekend: "9:00 AM – 6:00 PM",
       poya: "Closed on Poya days & public holidays",
     },
+    hoursOpen: "09:00",
+    hoursClose: "18:00",
     googleMapsUrl: "https://maps.google.com/?q=Nugegoda+Colombo",
     blurb: "A convenient second studio for guests closer to the High Level Road side. Open daily 9 AM – 6 PM.",
   },
@@ -159,17 +165,17 @@ export const SERVICES: Service[] = [
   { name: "Full Brazilian", category: "waxing", duration: "35 min", priceFrom: 6500, slug: "full-brazilian", description: "Private, welcoming Brazilian waxing with soothing Lycon Aloe Vera or Pinkini hot wax." },
   { name: "Brazilian + Underarm", category: "waxing", duration: "45 min", priceFrom: 7500, slug: "brazilian-underarm", description: "Our most requested combo using premium Lycon hot wax with fresh spatulas every dip." },
   { name: "Underarms", category: "waxing", duration: "15 min", priceFrom: 2500, slug: "underarms", description: "Fast, soothing Lycon hot wax underarm care that leaves skin soft and smooth." },
-  { name: "Full Leg", category: "waxing", duration: "40 min", priceFrom: 5000, slug: "full-leg", description: "Root clean leg waxing from thigh to ankle using Rica White Chocolate or Biahu Gold." },
+  { name: "Full Leg", category: "waxing", duration: "40 min", priceFrom: 5000, slug: "full-leg", description: "Root clean leg waxing from thigh to ankle using Rica White Chocolate or Brazil Gold." },
   { name: "Half Leg", category: "waxing", duration: "25 min", priceFrom: 3000, slug: "half-leg", description: "Smooth lower legs, cleanly waxed at the root for a longer lasting finish." },
-  { name: "Full Arms", category: "waxing", duration: "30 min", priceFrom: 2500, slug: "full-arms", description: "Full arm waxing with gentle Rica White Chocolate or Biahu Gold strip wax." },
+  { name: "Full Arms", category: "waxing", duration: "30 min", priceFrom: 2500, slug: "full-arms", description: "Full arm waxing with gentle Rica White Chocolate or Brazil Gold strip wax." },
   { name: "Half Arms", category: "waxing", duration: "20 min", priceFrom: 1500, slug: "half-arms", description: "Quick, gentle forearm waxing with minimal fuss and clean finishing." },
   { name: "Full Back", category: "waxing", duration: "30 min", priceFrom: 2500, slug: "full-back", description: "Thorough back waxing for clean skin and even texture." },
   { name: "Chest / Stomach", category: "waxing", duration: "25 min", priceFrom: 2000, slug: "chest-stomach", description: "Gentle torso waxing using soothing strip wax." },
   // Waxing - Facial Areas (Lycon Superberry)
   { name: "Full Face Wax", category: "waxing", duration: "30 min", priceFrom: 6500, slug: "full-face-wax", description: "Complete facial hair removal with gentle Lycon Superberry hot wax." },
   { name: "Eyebrow Shaping", category: "waxing", duration: "15 min", priceFrom: 1000, slug: "eyebrow-shaping", description: "Considered brow shaping that flatters your features with zero skin redness." },
-  { name: "Upper Lips", category: "waxing", duration: "10 min", priceFrom: 700, slug: "upper-lips", description: "Quick, gentle upper lip wax using Lycon Superberry hot wax." },
-  { name: "Eyebrow + Upper Lips", category: "waxing", duration: "20 min", priceFrom: 1500, slug: "eyebrow-upper-lips", description: "Convenient face duo for instant facial clarity." },
+  { name: "Upper Lip", category: "waxing", duration: "10 min", priceFrom: 700, slug: "upper-lips", description: "Quick, gentle upper lip wax using Lycon Superberry hot wax." },
+  { name: "Eyebrow + Upper Lip", category: "waxing", duration: "20 min", priceFrom: 1500, slug: "eyebrow-upper-lips", description: "Convenient face duo for instant facial clarity." },
   { name: "Forehead / Nose / Chin", category: "waxing", duration: "15 min", priceFrom: 1100, slug: "forehead-nose-chin", description: "Focused delicate area waxing with ultra calming Lycon wax." },
   // Facials
   { name: "Glow Up Facial", category: "facial", duration: "45 min", priceFrom: 5000, slug: "glow-up-facial", description: "A freshening glow up facial that revives dull, tired skin before an event or between visits." },
@@ -181,7 +187,7 @@ export const SERVICES: Service[] = [
   { name: "Full Body Scrub — Spa Cylon", category: "moroccan", duration: "60 min", priceFrom: 15000, slug: "full-body-scrub-spa-cylon", description: "A full body exfoliating scrub using the Spa Cylon line for smooth, refreshed skin." },
   { name: "Japanese Spa Bed Treatment", category: "moroccan", duration: "90 min", priceFrom: 19000, slug: "japanese-spa-bed-treatment", description: "Our 90 minute signature ritual pairing a facial with the Moroccan body polish on the spa bed." },
   // Hydra Facial
-  { name: "Hydro Facial", category: "hydra-facial", duration: "50 min", priceFrom: 10000, slug: "hydro-facial", description: "The multi step hydro facial that cleanses, extracts and hydrates in one visit — active serums, zero downtime." },
+  { name: "Hydra Facial", category: "hydra-facial", duration: "50 min", priceFrom: 10000, slug: "hydro-facial", description: "The multi step Hydra Facial that cleanses, extracts and hydrates in one visit — active serums, zero downtime." },
 ];
 
 export function servicesByCategory(category: ServiceCategory): Service[] {
@@ -217,7 +223,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "The HydraFacial left my skin glowing for days and there was zero downtime. Booked my next session before I even left.",
+      "The Hydra Facial left my skin glowing for days and there was zero downtime. Booked my next session before I even left.",
     name: "Sapna M.",
     branch: "Nugegoda",
     rating: 5,
