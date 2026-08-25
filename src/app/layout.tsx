@@ -1,15 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { ViewTransition } from "react";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
-import { Navbar } from "@/components/global/Navbar";
-import { Footer } from "@/components/global/Footer";
-import { MobileBookingBar } from "@/components/global/MobileBookingBar";
 import { SmoothScrollProvider } from "@/components/global/SmoothScrollProvider";
-import { LoadingScreen } from "@/components/global/LoadingScreen";
 import { SkipLink } from "@/components/global/SkipLink";
-import { JsonLd } from "@/components/global/JsonLd";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -78,7 +74,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2b0710",
+  themeColor: "#fff7f9",
   width: "device-width",
   initialScale: 1,
   colorScheme: "light",
@@ -88,18 +84,17 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-LK" className={`${fraunces.variable} ${jakarta.variable}`}>
+    <html
+      lang="en-LK"
+      data-scroll-behavior="smooth"
+      className={`${fraunces.variable} ${jakarta.variable}`}
+    >
       <body className="min-h-[100dvh] bg-cream text-warm antialiased">
-        <JsonLd />
         <SkipLink />
-        <LoadingScreen />
         <SmoothScrollProvider>
-          <Navbar />
           <main id="main-content" tabIndex={-1} className="flex min-h-[100dvh] flex-col focus:outline-none">
-            {children}
+            <ViewTransition default="none">{children}</ViewTransition>
           </main>
-          <Footer />
-          <MobileBookingBar />
         </SmoothScrollProvider>
       </body>
     </html>

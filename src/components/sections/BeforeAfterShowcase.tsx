@@ -66,9 +66,9 @@ export function BeforeAfterShowcase() {
             beforeSrc={IMAGES.beforeAfter.waxing.before}
             afterSrc={IMAGES.beforeAfter.waxing.after}
             beforeAlt="Treatment room prepared with fresh single-use linen in a private studio room — hygienic setup before a waxing appointment"
-            afterAlt="Premium RICA and Lycon wax inventory on the warm wood console beneath the Battaramulla brand wall — authentic wax range at the studio"
+            afterAlt="Waxing in progress — precise gloved application on skin with fresh spatula protocol at the Battaramulla studio"
             beforeLabel="Fresh prep"
-            afterLabel="Brand wall"
+            afterLabel="The treatment"
           />
         </div>
       </div>

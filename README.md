@@ -59,11 +59,48 @@ Run `supabase/schema.sql` in the Supabase SQL editor before relying on the forms
 
 If Supabase env vars are missing, `BookingZone` automatically renders the WhatsApp-only CTA instead of the request form, so the primary booking route is never a form that's guaranteed to fail. Once `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set, it switches back to the form automatically. Pass an explicit `mode` prop to `BookingZone` to override this.
 
-## Admin Service Editor
+## Admin Panel
 
-`/admin` is a lightweight backend surface for changing services, durations, visibility, sort order, and prices. It uses an HTTP-only signed cookie after `ADMIN_PASSWORD` login and performs every mutation in a Server Action. The Supabase service-role key must stay server-only and must never use a `NEXT_PUBLIC_` prefix.
+`/admin` is a hidden dashboard (no nav link, `robots` disallowed, noindex) for bookings inbox, services, gallery, and testimonials. Auth is identity based via Supabase with a legacy password fallback.
 
-If the `services` table is empty, sign in and use **Seed current service menu** to copy the static fallback menu into Supabase. Public service cards will use Supabase rows when available and fall back to `src/lib/site.ts` when Supabase is missing or empty.
+### 1. Run the SQL
+
+In the Supabase SQL editor, run `supabase/schema.sql`, then `supabase/admin-auth.sql`. The second script creates:
+
+- `admin_users` — the email allowlist. RLS is enabled with **no** policies on purpose; only the service-role key reads it, and enforcement happens server side after every sign in.
+- The public `gallery` storage bucket plus read/write policies.
+- An `active` flag column on `gallery`.
+
+If the bucket INSERT errors on your project version, create it manually: Storage > New bucket > name `gallery`, Public ON.
+
+### 2. Add Google OAuth
+
+1. Google Cloud Console > APIs & Services > Credentials > Create OAuth client ID (Web application).
+2. Authorized redirect URI: `https://<project-ref>.supabase.co/auth/v1/callback`.
+3. Supabase Dashboard > Authentication > Providers > Google: paste the client ID and secret, enable.
+4. Also enable the Email provider in the same list.
+5. Set `NEXT_PUBLIC_SITE_URL` so the app redirects back to `<site>/api/auth/callback` correctly (localhost for dev).
+
+### 3. Approve admins
+
+```sql
+insert into admin_users (email, role, note)
+values ('owner@example.com', 'owner', 'Studio owner')
+on conflict (email) do nothing;
+```
+
+Only allowlisted emails can finish sign in (Google or email/password). Sign up from the login card works only for pre approved emails.
+
+### 4. Legacy fallback
+
+When Supabase auth env vars are absent, `/admin` falls back to the original signed-cookie `ADMIN_PASSWORD` flow (12h session, rate limited). Both paths satisfy the same server-side `isAdminAuthenticated()` check that guards every mutation; the service-role key never reaches the browser.
+
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Base url used for the OAuth redirect |
+| `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase project + browser auth |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-only reads/writes (bookings inbox, gallery storage) |
+| `ADMIN_PASSWORD` / `ADMIN_SESSION_SECRET` | Legacy fallback only |
 
 ## Imagery & Media
 

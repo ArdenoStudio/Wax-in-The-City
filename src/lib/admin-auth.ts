@@ -1,5 +1,6 @@
 import { createHash, createHmac, timingSafeEqual } from "crypto";
 import { cookies, headers } from "next/headers";
+import { getAdminIdentity } from "@/lib/admin-access";
 
 const COOKIE_NAME = "witc_admin_session";
 const FLASH_COOKIE_NAME = "witc_admin_flash";
@@ -186,24 +187,33 @@ export async function getAndClearAdminFlash(): Promise<{ message: string; tone: 
   }
 }
 
-export async function isAdminAuthenticated() {
-  const secret = sessionSecret();
-  if (!secret) return false;
+export async function hasLegacyAdminSession() {
+  try {
+    const secret = sessionSecret();
+    if (!secret) return false;
 
-  const cookieStore = await cookies();
-  const value = cookieStore.get(COOKIE_NAME)?.value;
-  if (!value) return false;
+    const cookieStore = await cookies();
+    const value = cookieStore.get(COOKIE_NAME)?.value;
+    if (!value) return false;
 
-  const [version, issuedAt, signature] = value.split(".");
-  if (version !== "v1" || !issuedAt || !signature) return false;
+    const [version, issuedAt, signature] = value.split(".");
+    if (version !== "v1" || !issuedAt || !signature) return false;
 
-  const issued = Number(issuedAt);
-  if (!Number.isFinite(issued) || Date.now() - issued > SESSION_TTL_MS) {
+    const issued = Number(issuedAt);
+    if (!Number.isFinite(issued) || Date.now() - issued > SESSION_TTL_MS) {
+      return false;
+    }
+
+    const expectedSignature = sign(issuedAt);
+    if (!expectedSignature) return false;
+
+    return safeEqual(signature, expectedSignature);
+  } catch {
     return false;
   }
+}
 
-  const expectedSignature = sign(issuedAt);
-  if (!expectedSignature) return false;
-
-  return safeEqual(signature, expectedSignature);
+export async function isAdminAuthenticated() {
+  if (await hasLegacyAdminSession()) return true;
+  return Boolean(await getAdminIdentity());
 }

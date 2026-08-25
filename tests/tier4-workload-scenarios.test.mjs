@@ -28,16 +28,16 @@ describe('Tier 4: Real-World Workload Scenarios Test Suite', () => {
 
   it('W2: Core Site Page Route Completeness (19 Route Structure)', () => {
     const requiredPages = [
-      'app/page.tsx',
-      'app/about/page.tsx',
-      'app/book/page.tsx',
-      'app/contact/page.tsx',
-      'app/faq/page.tsx',
-      'app/gallery/page.tsx',
-      'app/locations/page.tsx',
-      'app/locations/[branch]/page.tsx',
-      'app/services/page.tsx',
-      'app/services/[slug]/page.tsx',
+      'app/(site)/page.tsx',
+      'app/(site)/about/page.tsx',
+      'app/(site)/book/page.tsx',
+      'app/(site)/contact/page.tsx',
+      'app/(site)/faq/page.tsx',
+      'app/(site)/gallery/page.tsx',
+      'app/(site)/locations/page.tsx',
+      'app/(site)/locations/[branch]/page.tsx',
+      'app/(site)/services/page.tsx',
+      'app/(site)/services/[slug]/page.tsx',
       'app/admin/page.tsx',
       'app/not-found.tsx',
       'app/layout.tsx'
@@ -54,19 +54,19 @@ describe('Tier 4: Real-World Workload Scenarios Test Suite', () => {
     }
   });
 
-  it('W3: Design Token & Layout Sanity across Root Layout & Template', () => {
+  it('W3: Design Token & Layout Sanity across Root Layout & View Transitions', () => {
     const layoutPath = path.join(SRC_DIR, 'app', 'layout.tsx');
-    const templatePath = path.join(SRC_DIR, 'app', 'template.tsx');
     assert.ok(fs.existsSync(layoutPath), 'src/app/layout.tsx must exist');
-    assert.ok(fs.existsSync(templatePath), 'src/app/template.tsx must exist');
 
     const layoutContent = fs.readFileSync(layoutPath, 'utf-8');
-    const templateContent = fs.readFileSync(templatePath, 'utf-8');
 
     // Check no static min-h-screen in layout
     assert.ok(!layoutContent.includes('min-h-screen'), 'layout.tsx should use min-h-[100dvh] instead of min-h-screen');
 
-    // Check motion easing in template
-    assert.ok(!templateContent.includes('"easeInOut"'), 'template.tsx should use standard cubic-bezier curve instead of "easeInOut"');
+    // template.tsx was removed (it remounted every navigation and caused route-change flash);
+    // navigation smoothness now comes from native React ViewTransitions in the root layout.
+    assert.ok(!fs.existsSync(path.join(SRC_DIR, 'app', 'template.tsx')), 'template.tsx must not be reintroduced (causes per-navigation remount flash)');
+    assert.ok(layoutContent.includes('ViewTransition'), 'root layout.tsx must wrap children in ViewTransition for smooth crossfade navigation');
+    assert.ok(layoutContent.includes('data-scroll-behavior="smooth"'), 'html tag must declare data-scroll-behavior="smooth" (Next 16 requirement with CSS smooth scrolling)');
   });
 });

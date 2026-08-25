@@ -32,7 +32,7 @@ const BEFORE_AFTER: Partial<
     before: IMAGES.beforeAfter.waxing.before,
     after: IMAGES.beforeAfter.waxing.after,
     beforeAlt: "Treatment room prepared with fresh single-use linen in a private studio room — hygienic setup before a waxing visit",
-    afterAlt: "Premium RICA and Lycon wax inventory on the warm wood console beneath the Battaramulla brand wall — authentic range",
+    afterAlt: "Waxing in progress — precise gloved application on skin with fresh spatula protocol at the Battaramulla studio",
   },
   facials: {
     before: IMAGES.beforeAfter.facial.before,

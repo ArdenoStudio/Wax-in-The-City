@@ -41,7 +41,9 @@ export const IMAGES = {
   beforeAfter: {
     waxing: {
       before: "/images/studio/service-prep.jpg",
-      after: "/images/wax-real-optimized/Battaramulla_7.8.26_IMG_9784.jpg",
+      // "After" side shows real waxing in progress — frame from client clips,
+      // gloved application on skin, cropped to hands/limb (no faces).
+      after: "/images/waxing/leg-wax-application.jpg",
     },
     facial: {
       before: "/images/studio/product-shelf.jpg",

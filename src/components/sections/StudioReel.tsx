@@ -31,10 +31,9 @@ const REEL = [
 
 /**
  * Homepage reel: honest studio ambience clips tied to the trust pillars.
- * NOTE: Clips are ambience/protocol (prep, wax warming, care, brand wall) — not
- * procedural close-ups. Only `service-prep.jpg` in the image library is a true
- * waxing procedural shot (limited asset library). Replace/extend with
- * client-approved procedural imagery when available; keep hygiene-first framing.
+ * Clips are ambience/protocol (prep, wax warming, care, brand wall); real
+ * procedural stills now live in /images/waxing/ and are used across services,
+ * gallery and the before/after slider — hands/tools crops, no faces.
  */
 export function StudioReel() {
   return (

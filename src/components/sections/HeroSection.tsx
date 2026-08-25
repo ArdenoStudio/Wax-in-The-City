@@ -33,7 +33,7 @@ export function HeroSection() {
       <motion.div
         initial={reduceMotion ? false : { opacity: 0, scale: 1.025 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0 will-change-transform"
       >
         <Image
@@ -56,7 +56,7 @@ export function HeroSection() {
           <motion.p
             initial={reduceMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.48, delay: reduceMotion ? 0 : 0.08, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.42, delay: reduceMotion ? 0 : 0.04, ease: [0.16, 1, 0.3, 1] }}
             className="mb-6 inline-flex items-center gap-2 rounded-pill border border-cream/18 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-xl text-pretty will-change-transform"
           >
             <Sparkles className="h-4 w-4" />
@@ -71,8 +71,8 @@ export function HeroSection() {
                 initial={reduceMotion ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  duration: 0.54,
-                  delay: reduceMotion ? 0 : 0.14 + i * 0.06,
+                  duration: 0.46,
+                  delay: reduceMotion ? 0 : 0.05 + i * 0.03,
                   ease: [0.16, 1, 0.3, 1],
                 }}
               >
@@ -85,7 +85,7 @@ export function HeroSection() {
           <motion.p
             initial={reduceMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.44, delay: reduceMotion ? 0 : 0.26, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.12, ease: [0.16, 1, 0.3, 1] }}
             className="mt-5 inline-flex items-center gap-3 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light/90 will-change-transform"
           >
             <span className="hidden h-px w-8 bg-brand-light/50 sm:block" aria-hidden />
@@ -95,7 +95,7 @@ export function HeroSection() {
           <motion.p
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.48, delay: reduceMotion ? 0 : 0.32, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.16, ease: [0.16, 1, 0.3, 1] }}
             className="mt-4 w-full max-w-[34rem] text-pretty text-body-lg leading-relaxed text-cream/78 will-change-transform"
           >
             Luxurious where it matters, considered everywhere else. Waxing,
@@ -106,7 +106,7 @@ export function HeroSection() {
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.48, delay: reduceMotion ? 0 : 0.38, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center will-change-transform"
           >
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
@@ -128,7 +128,7 @@ export function HeroSection() {
           <motion.ul
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.44, delay: reduceMotion ? 0 : 0.46, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.38, delay: reduceMotion ? 0 : 0.22, ease: [0.16, 1, 0.3, 1] }}
             className="mt-10 flex max-w-2xl flex-wrap gap-2 will-change-transform"
           >
             {HERO_TRUST_POINTS.map((point) => (
@@ -145,7 +145,7 @@ export function HeroSection() {
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.44, delay: reduceMotion ? 0 : 0.52, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.36, delay: reduceMotion ? 0 : 0.26, ease: [0.16, 1, 0.3, 1] }}
             className="mt-8 lg:hidden will-change-transform"
           >
             <Accordion type="single" collapsible className="glass-panel rounded-card">
@@ -174,7 +174,7 @@ export function HeroSection() {
         <motion.aside
           initial={reduceMotion ? false : { opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.56, delay: reduceMotion ? 0 : 0.28, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.44, delay: reduceMotion ? 0 : 0.16, ease: [0.16, 1, 0.3, 1] }}
           className={`glass-panel hidden self-end rounded-2xl p-6 lg:block will-change-transform ${reduceMotion ? "" : "animate-float-soft"}`}
         >
           <div className="flex items-center justify-between border-b border-cream/12 pb-5">
@@ -208,7 +208,7 @@ export function HeroSection() {
       <motion.div
         initial={reduceMotion ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.42, delay: reduceMotion ? 0 : 0.9, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.32, delay: reduceMotion ? 0 : 0.3, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-x-0 bottom-6 z-10 flex justify-center"
       >
         <button

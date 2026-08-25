@@ -295,9 +295,9 @@ export function checkMotionEasings(files) {
  * Check that src/app/page.tsx mounts FAQAccordion and StatsCounter
  */
 export function checkHomepageConversionComponents() {
-  const pagePath = path.join(SRC_DIR, 'app', 'page.tsx');
+  const pagePath = path.join(SRC_DIR, 'app', '(site)', 'page.tsx');
   if (!fs.existsSync(pagePath)) {
-    return { mounted: false, reason: 'src/app/page.tsx does not exist' };
+    return { mounted: false, reason: 'src/app/(site)/page.tsx does not exist' };
   }
 
   const content = fs.readFileSync(pagePath, 'utf-8');

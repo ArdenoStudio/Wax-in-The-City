@@ -303,16 +303,16 @@ recordTest(
 
 // W2: Core Site Page Route Completeness (19 Route Structure)
 const requiredRoutes = [
-  'app/page.tsx',
-  'app/about/page.tsx',
-  'app/book/page.tsx',
-  'app/contact/page.tsx',
-  'app/faq/page.tsx',
-  'app/gallery/page.tsx',
-  'app/locations/page.tsx',
-  'app/locations/[branch]/page.tsx',
-  'app/services/page.tsx',
-  'app/services/[slug]/page.tsx',
+  'app/(site)/page.tsx',
+  'app/(site)/about/page.tsx',
+  'app/(site)/book/page.tsx',
+  'app/(site)/contact/page.tsx',
+  'app/(site)/faq/page.tsx',
+  'app/(site)/gallery/page.tsx',
+  'app/(site)/locations/page.tsx',
+  'app/(site)/locations/[branch]/page.tsx',
+  'app/(site)/services/page.tsx',
+  'app/(site)/services/[slug]/page.tsx',
   'app/admin/page.tsx',
   'app/not-found.tsx',
   'app/layout.tsx'
@@ -325,17 +325,17 @@ recordTest(
   missingRoutes.length > 0 ? missingRoutes : null
 );
 
-// W3: Layout & Template Motion / Viewport Sanity
+// W3: Root Layout & View Transition Sanity
 const layoutPath = path.join(SRC_DIR, 'app', 'layout.tsx');
-const templatePath = path.join(SRC_DIR, 'app', 'template.tsx');
 const layoutContent = fs.existsSync(layoutPath) ? fs.readFileSync(layoutPath, 'utf-8') : '';
-const templateContent = fs.existsSync(templatePath) ? fs.readFileSync(templatePath, 'utf-8') : '';
-const w3Passed = !layoutContent.includes('min-h-screen') && !templateContent.includes('"easeInOut"');
+const w3Passed = !layoutContent.includes('min-h-screen')
+  && layoutContent.includes('ViewTransition')
+  && layoutContent.includes('data-scroll-behavior="smooth"');
 recordTest(
   'tier4',
-  'Root Layout & Template Sanity (min-h-[100dvh] & cubic-bezier template transitions)',
+  'Root Layout & ViewTransition Sanity (min-h-[100dvh], crossfade nav, smooth-scroll override)',
   w3Passed,
-  w3Passed ? null : ['layout.tsx uses min-h-screen or template.tsx uses "easeInOut"']
+  w3Passed ? null : ['layout.tsx uses min-h-screen or lacks ViewTransition / data-scroll-behavior="smooth"']
 );
 
 // ----------------------------------------------------------------------------

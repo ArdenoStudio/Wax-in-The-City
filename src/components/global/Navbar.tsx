@@ -31,6 +31,7 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1], delay: 0.04 }}
       className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6 will-change-transform"
+      style={{ viewTransitionName: "site-header" }}
       aria-label="Main navigation"
     >
       <div

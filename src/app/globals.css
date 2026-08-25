@@ -106,6 +106,7 @@
 
 html {
   scroll-behavior: auto;
+  background-color: var(--color-cream);
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
 }
@@ -481,5 +482,51 @@ p,
     transform: none !important;
     transition-duration: 0.01ms !important;
     will-change: auto;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ *  Route crossfade — native View Transitions (React <ViewTransition>)
+ *  Asymmetric per Next guide: old leaves fast, new arrives gently.
+ *  Opacity-only, ~300ms total — buttery, never flashy.
+ * ------------------------------------------------------------------ */
+:root {
+  --vt-exit: 140ms;
+  --vt-enter: 200ms;
+}
+
+::view-transition-old(root) {
+  animation: var(--vt-exit) ease-out both vt-fade-out;
+}
+::view-transition-new(root) {
+  animation:
+    var(--vt-enter) ease-out calc(var(--vt-exit) - 40ms) both vt-fade-in;
+}
+
+@keyframes vt-fade-out {
+  to { opacity: 0; }
+}
+@keyframes vt-fade-in {
+  from { opacity: 0; }
+}
+
+/* Anchored chrome — the navbar must not move or double-flash during transitions. */
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
   }
 }

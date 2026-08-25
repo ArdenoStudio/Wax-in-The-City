@@ -7,14 +7,30 @@ export interface GalleryImage {
 }
 
 /**
- * Client studio photography — exteriors, brand details and reception spaces.
- * Ambience only; no procedural or result imagery.
+ * Client studio photography — exteriors, brand details, reception spaces and
+ * real waxing protocol frames captured from client clips (Battaramulla 7.8.26).
+ * Procedural frames are cropped to hands/tools only, no faces.
  */
 export const GALLERY: GalleryImage[] = [
   {
     src: "/images/gallery/g-exterior-01.jpg",
     alt: "Wax In The City studio signage on a quiet Colombo street",
     category: "salon",
+  },
+  {
+    src: "/images/waxing/wax-pour-close.jpg",
+    alt: "Melted RICA wax poured into the studio warmer — fresh wax prepared for every guest",
+    category: "results",
+  },
+  {
+    src: "/images/waxing/rica-tin-warmer.jpg",
+    alt: "Gloved hands placing a fresh RICA wax tin into the warmer — single-brand premium wax",
+    category: "results",
+  },
+  {
+    src: "/images/waxing/leg-wax-application.jpg",
+    alt: "Waxing in progress — precise gloved application on skin with fresh spatula protocol",
+    category: "results",
   },
   {
     src: "/images/gallery/g-path.jpg",
@@ -63,8 +79,8 @@ export const GALLERY: GalleryImage[] = [
   },
   // Real studio photography from client ASSETS (Battaramulla 6.27 + 7.8) — actual treatment rooms
   {
-    src: "/images/services/waxing.jpg",
-    alt: "Private waxing treatment room prepared with fresh linen — actual Battaramulla studio",
+    src: "/images/waxing/fresh-strips-bowl.jpg",
+    alt: "Fresh single-use wax strips in a lined bowl — hygiene protocol before an appointment",
     category: "results",
   },
   {
