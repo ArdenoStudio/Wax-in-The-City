@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
   // Exclude @vercel/og wasm (1346 KiB resvg.wasm + 70 KiB yoga.wasm) - not used (no ImageResponse in src)
   // This saves ~1.4 MiB raw / ~300 KiB gzipped and is safe when not using next/og.
   serverExternalPackages: ["@vercel/og"],
+  // Further exclude the compiled wasm from file tracing (OpenNext copies traced files into handler)
+  // Without this, resvg.wasm is still bundled into handler.mjs (9584 KiB) and pushes gzip over 3 MiB free limit
+  outputFileTracingExcludes: {
+    "*": ["./node_modules/next/dist/compiled/@vercel/og/**"],
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 85],
