@@ -2,11 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // Multiple lockfiles exist higher up the tree; pin the workspace root here.
-  turbopack: { root: __dirname },
-  // Enables React <ViewTransition> integration for buttery-smooth client-side navigations.
-  experimental: {
-    viewTransition: true,
-  },
+  // Use import.meta.dirname (Node 22+) for ESM compatibility; fallback to process.cwd() for safety.
+  turbopack: { root: (import.meta as unknown as { dirname: string }).dirname ?? process.cwd() },
+  // React <ViewTransition> is available in Next 16.3+ without experimental flag
+  // (was `experimental.viewTransition` in 16.2). Remove invalid key to avoid config warning.
+  experimental: {},
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 85],
