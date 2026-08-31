@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { adminSignOutAction } from "@/app/admin/auth-actions";
 
 interface AdminTopBarProps {
@@ -17,11 +18,12 @@ export function AdminTopBar({ email, provider, avatarUrl }: AdminTopBarProps) {
         <div className="flex flex-wrap items-center gap-3">
           <span className="inline-flex items-center gap-2 rounded-pill border border-cream/12 bg-cream/8 px-4 py-2">
             {avatarUrl ? (
-              <img
+              <Image
                 src={avatarUrl}
                 alt=""
                 width={24}
                 height={24}
+                unoptimized
                 referrerPolicy="no-referrer"
                 className="h-6 w-6 rounded-pill object-cover"
               />

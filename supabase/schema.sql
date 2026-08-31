@@ -91,25 +91,32 @@ alter table services        enable row level security;
 alter table testimonials    enable row level security;
 alter table gallery         enable row level security;
 
--- Anonymous users can submit booking & contact enquiries
+-- Public users (anon and authenticated) can submit booking & contact enquiries
 drop policy if exists "anon can submit booking requests" on booking_requests;
-create policy "anon can submit booking requests"
+drop policy if exists "anyone can submit booking requests" on booking_requests;
+create policy "anyone can submit booking requests"
   on booking_requests for insert
-  to anon
+  to anon, authenticated
   with check (true);
 
 -- Public, read-only content tables
 drop policy if exists "public can read services" on services;
 create policy "public can read services"
-  on services for select to anon using (coalesce(active, true));
+  on services for select
+  to anon, authenticated
+  using (coalesce(active, true));
 
 drop policy if exists "public can read testimonials" on testimonials;
 create policy "public can read testimonials"
-  on testimonials for select to anon using (coalesce(featured, false) = true);
+  on testimonials for select
+  to anon, authenticated
+  using (coalesce(featured, false) = true);
 
 drop policy if exists "public can read gallery" on gallery;
 create policy "public can read gallery"
-  on gallery for select to anon using (coalesce(featured, false) = true);
+  on gallery for select
+  to anon, authenticated
+  using (coalesce(featured, false) = true);
 
 -- Note: booking_requests has NO anon select policy on purpose — only the
 -- service-role key (Supabase dashboard / admin) can read submissions.

@@ -11,7 +11,7 @@ export const SITE = {
   tagline: "Private waxing, quietly perfected.",
   description:
     "Ladies only waxing and skin care in Colombo — known for careful hygiene, premium products, and private appointment led care.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://wax-in-the-city-website.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://wax-in-the-city.netlify.app",
   locale: "en_LK",
   instagram: "https://instagram.com/waxinthecitylk",
   facebook: "https://facebook.com/waxinthecitylk",
@@ -20,13 +20,21 @@ export const SITE = {
 /** Default WhatsApp number — overridable via NEXT_PUBLIC_WHATSAPP_NUMBER. */
 const DEFAULT_WHATSAPP = "94779469437";
 
+export function normalizeWhatsApp(phone: string): string {
+  const digits = phone.replace(/\D/g, "");
+  if (digits.startsWith("94")) return digits;
+  if (digits.startsWith("0")) return `94${digits.slice(1)}`;
+  if (digits.length === 9) return `94${digits}`;
+  return digits;
+}
+
 export function whatsappNumber(): string {
   return process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? DEFAULT_WHATSAPP;
 }
 
 /** Build a WhatsApp deep link with an optional prefilled message. */
 export function whatsappLink(message?: string, number?: string): string {
-  const n = (number ?? whatsappNumber()).replace(/[^\d]/g, "");
+  const n = normalizeWhatsApp(number ?? whatsappNumber());
   const base = `https://wa.me/${n}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }

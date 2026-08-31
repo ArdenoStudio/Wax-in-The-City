@@ -30,7 +30,7 @@ export async function generateMetadata({
   if (!isBranchSlug(branch)) return { title: "Locations" };
   const b = getBranch(branch);
   return {
-    title: `${b.name} branch — ${SITE.name}`,
+    title: `${b.name} Branch`,
     description: `Visit our ${b.name} studio in Colombo. ${b.blurb}`,
     alternates: { canonical: `/locations/${branch}` },
     openGraph: {

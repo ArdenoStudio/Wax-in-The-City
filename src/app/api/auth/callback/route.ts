@@ -7,8 +7,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 export const dynamic = "force-dynamic";
 
 function adminUrl(request: NextRequest): string {
-  const base = process.env.NEXT_PUBLIC_SITE_URL;
-  return new URL("/admin", base || request.url).toString();
+  return new URL("/admin", request.nextUrl.origin).toString();
 }
 
 async function reject(

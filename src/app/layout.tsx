@@ -92,9 +92,7 @@ export default function RootLayout({
       <body className="min-h-[100dvh] bg-cream text-warm antialiased">
         <SkipLink />
         <SmoothScrollProvider>
-          <main id="main-content" tabIndex={-1} className="flex min-h-[100dvh] flex-col focus:outline-none">
-            <ViewTransition default="none">{children}</ViewTransition>
-          </main>
+          <ViewTransition default="none">{children}</ViewTransition>
         </SmoothScrollProvider>
       </body>
     </html>

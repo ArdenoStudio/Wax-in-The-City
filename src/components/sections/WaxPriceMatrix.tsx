@@ -117,7 +117,7 @@ export function WaxPriceMatrix() {
 
         {/* Product Guide Legend */}
         <div className="mb-6 grid gap-3 rounded-card border border-warm-border/60 bg-white/60 p-3 sm:grid-cols-3">
-          <div className="flex items-center gap-3 rounded-lg border border-warm-border/50 bg-white/70 p-2.5 shadow-sm">
+          <div className="flex items-center gap-3 rounded-lg border border-warm-border/50 bg-white/70 p-2.5 shadow-[0_4px_12px_rgba(27,14,16,0.06)]">
             <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-md border border-rose-200/60 bg-rose-50/60 p-1">
               <Image
                 src={IMAGES.waxProducts.lycon.src}
@@ -129,7 +129,7 @@ export function WaxPriceMatrix() {
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
                 <span className="text-body-sm font-semibold text-warm">Lycon</span>
-                <span className="rounded-pill border border-rose-200 bg-rose-50 px-1.5 py-0.2 text-[10px] font-semibold text-rose-700">
+                <span className="rounded-pill border border-rose-200 bg-rose-50 px-1.5 py-0.5 text-caption font-semibold text-rose-700">
                   Australia 🇦🇺
                 </span>
               </div>
@@ -137,7 +137,7 @@ export function WaxPriceMatrix() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 rounded-lg border border-warm-border/50 bg-white/70 p-2.5 shadow-sm">
+          <div className="flex items-center gap-3 rounded-lg border border-warm-border/50 bg-white/70 p-2.5 shadow-[0_4px_12px_rgba(27,14,16,0.06)]">
             <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-md border border-amber-200/60 bg-amber-50/60 p-1">
               <Image
                 src={IMAGES.waxProducts.rica.src}
@@ -149,7 +149,7 @@ export function WaxPriceMatrix() {
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
                 <span className="text-body-sm font-semibold text-warm">Rica</span>
-                <span className="rounded-pill border border-amber-200 bg-amber-50 px-1.5 py-0.2 text-[10px] font-semibold text-amber-800">
+                <span className="rounded-pill border border-amber-200 bg-amber-50 px-1.5 py-0.5 text-caption font-semibold text-amber-800">
                   Italy 🇮🇹
                 </span>
               </div>
@@ -157,7 +157,7 @@ export function WaxPriceMatrix() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 rounded-lg border border-warm-border/50 bg-white/70 p-2.5 shadow-sm">
+          <div className="flex items-center gap-3 rounded-lg border border-warm-border/50 bg-white/70 p-2.5 shadow-[0_4px_12px_rgba(27,14,16,0.06)]">
             <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-md border border-yellow-200/60 bg-yellow-50/60 p-1">
               <Image
                 src={IMAGES.waxProducts.brazilGold.src}
@@ -169,7 +169,7 @@ export function WaxPriceMatrix() {
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
                 <span className="text-body-sm font-semibold text-warm">Brazil Gold</span>
-                <span className="rounded-pill border border-yellow-200 bg-yellow-50 px-1.5 py-0.2 text-[10px] font-semibold text-yellow-800">
+                <span className="rounded-pill border border-yellow-200 bg-yellow-50 px-1.5 py-0.5 text-caption font-semibold text-yellow-800">
                   Standard ✨
                 </span>
               </div>
@@ -236,13 +236,13 @@ function MatrixRow({ row }: { row: WaxPriceRow }) {
         )}
       </td>
       <td className="px-4 py-3.5 text-right font-medium tabular-nums text-warm">
-        {biahuPrice ? formatLKR(biahuPrice) : <span className="text-warm-grey/40">—</span>}
+        {biahuPrice ? formatLKR(biahuPrice) : (<><span className="sr-only">Not offered</span><span aria-hidden="true" className="text-warm-grey/40">—</span></>)}
       </td>
       <td className="px-4 py-3.5 text-right font-medium tabular-nums text-warm">
-        {ricaPrice ? formatLKR(ricaPrice) : <span className="text-warm-grey/40">—</span>}
+        {ricaPrice ? formatLKR(ricaPrice) : (<><span className="sr-only">Not offered</span><span aria-hidden="true" className="text-warm-grey/40">—</span></>)}
       </td>
       <td className="px-4 py-3.5 text-right font-semibold tabular-nums text-brand-action">
-        {lyconPrice ? formatLKR(lyconPrice) : <span className="text-warm-grey/40">—</span>}
+        {lyconPrice ? formatLKR(lyconPrice) : (<><span className="sr-only">Not offered</span><span aria-hidden="true" className="text-warm-grey/40">—</span></>)}
       </td>
       <td className="px-4 py-3.5 text-center">
         <a

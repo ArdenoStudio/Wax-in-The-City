@@ -54,7 +54,7 @@ export function StatsCounter({ stats = DEFAULT_STATS }: { stats?: Stat[] }) {
   return (
     <div className="relative">
       {/* BeWAXed stats inspiration — editorial hairline + boutique credential */}
-      <p className="mb-8 text-center text-caption font-semibold uppercase tracking-[0.18em] text-warm/45">
+      <p className="mb-8 text-center text-caption font-semibold uppercase tracking-[0.18em] text-warm-grey">
         Two studios · Colombo · Ladies only
       </p>
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">

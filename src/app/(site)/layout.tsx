@@ -12,7 +12,9 @@ export default function SiteLayout({
       <JsonLd />
       <LoadingScreen />
       <Navbar />
-      {children}
+      <main id="main-content" tabIndex={-1} className="flex min-h-[100dvh] flex-col focus:outline-none">
+        {children}
+      </main>
       <Footer />
       <MobileBookingBar />
     </>

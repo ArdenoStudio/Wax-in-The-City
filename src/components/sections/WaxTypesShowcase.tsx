@@ -95,7 +95,7 @@ export function WaxTypesShowcase() {
               </div>
 
               {/* Official Product Image Box */}
-              <div className="relative my-5 flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl border border-warm-border/50 bg-gradient-to-b from-cream/60 to-white/90 p-4 shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
+              <div className="relative my-5 flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl border border-warm-border/50 bg-gradient-to-b from-cream/60 to-white/90 p-4 shadow-[inset_0_1px_3px_rgba(27,14,16,0.04)]">
                 <div className="relative h-full w-full">
                   <Image
                     src={data.src}
@@ -134,7 +134,7 @@ export function WaxTypesShowcase() {
 
             {/* Bottom: Recommended Treatment Areas */}
             <div className="mt-6 border-t border-warm-border/60 pt-4">
-              <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-warm-grey">
+              <span className="text-caption font-bold uppercase tracking-[0.1em] text-warm-grey">
                 Recommended For:
               </span>
               <div className="mt-2 flex flex-wrap gap-1.5">

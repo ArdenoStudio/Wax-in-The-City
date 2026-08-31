@@ -7,10 +7,10 @@ export function FaqJsonLd() {
     mainEntity: FAQ_GROUPS.flatMap((group) =>
       group.items.map((item) => ({
         "@type": "Question",
-        name: (item as unknown as { q: string }).q ?? item.question,
+        name: item.question,
         acceptedAnswer: {
           "@type": "Answer",
-          text: (item as unknown as { a: string }).a ?? item.answer,
+          text: item.answer,
         },
       }))
     ),

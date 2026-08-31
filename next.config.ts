@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   // Multiple lockfiles exist higher up the tree; pin the workspace root here.
   // Use import.meta.dirname (Node 22+) for ESM compatibility; fallback to process.cwd() for safety.
   turbopack: { root: (import.meta as unknown as { dirname: string }).dirname ?? process.cwd() },
@@ -68,6 +69,17 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+    ];
+  },
+  async redirects() {
+    return [
+      { source: "/booking", destination: "/book", permanent: true },
+      { source: "/pricing", destination: "/services", permanent: true },
+      { source: "/wax-types", destination: "/services/waxing", permanent: true },
+      { source: "/treatments", destination: "/services", permanent: true },
+      { source: "/services/body-waxing", destination: "/services/waxing", permanent: true },
+      { source: "/services/facial-waxing", destination: "/services/waxing", permanent: true },
+      { source: "/services/intimate-waxing", destination: "/services/waxing", permanent: true },
     ];
   },
 };

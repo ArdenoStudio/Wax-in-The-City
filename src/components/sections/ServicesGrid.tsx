@@ -144,7 +144,7 @@ export function ServicesGrid({
                     </div>
                     <p className="mt-2 max-w-lg text-body-sm text-warm-grey text-pretty">{cat.short}</p>
                     {cat.slug === "waxing" && (
-                      <span className="mt-2 block text-caption font-medium uppercase tracking-[0.12em] text-warm/45">
+                      <span className="mt-2 block text-caption font-medium uppercase tracking-[0.12em] text-warm-grey">
                         Hygiene you can trust · fresh wax · no double dipping · appointment led
                       </span>
                     )}

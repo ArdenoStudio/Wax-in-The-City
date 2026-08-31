@@ -16,7 +16,7 @@ const BeforeAfterSlider = dynamic(
 const PROOF_POINTS = [
   "Private room and prep before treatment starts",
   "Clear aftercare guidance before you leave",
-  "Approved result photos can replace this panel later",
+  "Gentle technique tailored to individual skin sensitivity",
 ] as const;
 
 export function BeforeAfterShowcase() {

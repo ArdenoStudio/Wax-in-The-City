@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   addGalleryImage,
   deleteGalleryImage,
@@ -166,13 +167,15 @@ export async function GallerySection() {
       {rows.map((row) => (
         <AdminPlate key={row.id}>
           <div className="flex flex-col gap-5 lg:flex-row">
-            <img
-              src={row.url}
-              alt={row.alt_text ?? ""}
-              loading="lazy"
-              referrerPolicy="no-referrer"
-              className="h-24 w-full rounded-card border border-cream/10 object-cover sm:w-40"
-            />
+            <div className="relative h-24 w-full shrink-0 overflow-hidden rounded-card border border-cream/10 sm:w-40">
+              <Image
+                src={row.url}
+                alt={row.alt_text ?? ""}
+                fill
+                unoptimized
+                className="object-cover"
+              />
+            </div>
             <div className="min-w-0 flex-1">
               <form action={updateGalleryRow} className="grid gap-4">
                 <input type="hidden" name="id" value={row.id} />
