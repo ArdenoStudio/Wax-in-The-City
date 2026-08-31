@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node node_modules/next/dist/bin/next dev",
+    "dev": "node node_modules/next/dist/bin/next dev --webpack",
     "build": "node scripts/build.mjs",
     "build:next": "node node_modules/next/dist/bin/next build",
     "build:cf": "node node_modules/@opennextjs/cloudflare/dist/cli/index.js build",

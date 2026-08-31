@@ -12,8 +12,8 @@ import { IMAGES } from "@/lib/images";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServiceCard } from "@/components/ui/service-card";
 import { BookingZone } from "@/components/sections/BookingZone";
-import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
 import { WaxPriceMatrix } from "@/components/sections/WaxPriceMatrix";
+import { WaxTypesShowcase } from "@/components/sections/WaxTypesShowcase";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 
 export const revalidate = 3600;
@@ -23,23 +23,6 @@ const HERO_IMAGES: Record<string, string> = {
   facials: IMAGES.services.facials,
   moroccan: IMAGES.services.moroccan,
   "hydra-facial": IMAGES.services.hydraFacial,
-};
-
-const BEFORE_AFTER: Partial<
-  Record<string, { before: string; after: string; beforeAlt: string; afterAlt: string }>
-> = {
-  waxing: {
-    before: IMAGES.beforeAfter.waxing.before,
-    after: IMAGES.beforeAfter.waxing.after,
-    beforeAlt: "Treatment room prepared with fresh single-use linen in a private studio room — hygienic setup before a waxing visit",
-    afterAlt: "Waxing in progress — precise gloved application on skin with fresh spatula protocol at the Battaramulla studio",
-  },
-  facials: {
-    before: IMAGES.beforeAfter.facial.before,
-    after: IMAGES.beforeAfter.facial.after,
-    beforeAlt: "Premium skin-care products arranged for facial treatments — curated product display",
-    afterAlt: "Warm private reception lounge where facial guests settle in — calm, ladies only space",
-  },
 };
 
 export function generateStaticParams() {
@@ -87,7 +70,6 @@ export default async function ServiceCategoryPage({
   const services = serviceContent.services.filter(
     (service) => service.category === category.slug
   );
-  const comparison = BEFORE_AFTER[category.href];
 
   return (
     <>
@@ -111,27 +93,9 @@ export default async function ServiceCategoryPage({
             All services
           </Link>
 
-          {comparison && (
-            <AnimatedSection variant="fadeUp" className="mb-12 max-w-3xl">
-              <h2 className="font-serif text-h3 font-medium text-warm text-balance">Treatment flow preview</h2>
-              <p className="mt-2 text-body-sm text-warm-grey text-pretty">
-                An honest process preview until client-approved result photos are available.
-              </p>
-              <div className="mt-6">
-                <BeforeAfterSlider
-                  beforeSrc={comparison.before}
-                  afterSrc={comparison.after}
-                  beforeAlt={comparison.beforeAlt}
-                  afterAlt={comparison.afterAlt}
-                  beforeLabel="Prep room"
-                  afterLabel="Studio standard"
-                />
-              </div>
-            </AnimatedSection>
-          )}
-
           {category.slug === "waxing" ? (
-            <div className="space-y-12">
+            <div className="space-y-16">
+              <WaxTypesShowcase />
               <WaxPriceMatrix />
             </div>
           ) : (
