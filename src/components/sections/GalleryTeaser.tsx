@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { GALLERY } from "@/lib/gallery";
+import { BLUR_DATA_URL } from "@/lib/images";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { staggerFast, scaleIn, viewportOnce } from "@/lib/animations";
 
@@ -57,6 +58,8 @@ export function GalleryTeaser() {
                   alt={photo.alt}
                   fill
                   sizes="(max-width: 1024px) 50vw, 33vw"
+                  placeholder={photo.src.startsWith("/") ? "blur" : "empty"}
+                  blurDataURL={BLUR_DATA_URL}
                   unoptimized={photo.src.startsWith("http")}
                   className="image-polish object-cover"
                 />

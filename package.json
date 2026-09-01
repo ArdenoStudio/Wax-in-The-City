@@ -8,6 +8,7 @@
     "build:next": "node node_modules/next/dist/bin/next build",
     "start": "node node_modules/next/dist/bin/next start",
     "lint": "node node_modules/eslint/bin/eslint.js \"src/**/*.{ts,tsx}\"",
+    "typecheck": "node node_modules/typescript/bin/tsc --noEmit",
     "test": "node scripts/e2e-audit.mjs",
     "test:all": "node --test tests/tier1-feature-coverage.test.mjs tests/tier2-boundary-cases.test.mjs tests/tier3-cross-feature.test.mjs tests/tier4-workload-scenarios.test.mjs"
   },

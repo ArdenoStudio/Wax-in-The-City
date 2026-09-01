@@ -1,5 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 
+// Cosmetic UX gate only — cookie presence is not authentication.
+// Real admin enforcement happens in src/lib/admin-auth.ts
+// isAdminAuthenticated() and requireAdminMutation() server-side.
+
 const LEGACY_SESSION_COOKIE = "witc_admin_session";
 
 export function proxy(request: NextRequest) {

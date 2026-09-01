@@ -18,11 +18,8 @@ export const bookingSchema = z.object({
     .regex(/^\d{4}-\d{2}-\d{2}$/)
     .refine(
       (value) => {
-        const date = new Date(`${value}T00:00:00`);
-        if (Number.isNaN(date.getTime())) return false;
-        const startOfToday = new Date();
-        startOfToday.setHours(0, 0, 0, 0);
-        return date.getTime() >= startOfToday.getTime();
+        const today = new Date().toLocaleDateString("en-CA");
+        return value >= today;
       },
       { message: "Please pick a valid date from today onwards." }
     )
@@ -58,3 +55,12 @@ export const contactSchema = z.object({
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;
+
+/** Extend a schema with the hidden `company` honeypot field. */
+export function withHoneypot<Shape extends z.ZodRawShape>(
+  schema: z.ZodObject<Shape>
+) {
+  return schema.extend({
+    company: z.string().optional(),
+  });
+}

@@ -33,7 +33,7 @@ export function LoadingScreen() {
     setVisible(true);
     sessionStorage.setItem(SESSION_KEY, "1");
 
-    const hold = 400; // capped at 400ms max — removes +1.3s artificial LCP delay (was reduce ? 400 : 1300)
+    const hold = 0;
     const timer = window.setTimeout(() => setVisible(false), hold);
     return () => window.clearTimeout(timer);
   }, [isHome, reduce]);

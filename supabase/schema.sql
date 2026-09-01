@@ -49,6 +49,9 @@ create table if not exists gallery (
   alt_text text,
   category text check (category in ('salon','before-after','results','events')),
   featured boolean default false,
+  -- active flag: fresh installs get it here; admin-auth.sql ALTERs it in
+  -- for pre-existing installs that ran schema.sql before this column existed.
+  active boolean not null default true,
   sort_order integer default 0,
   created_at timestamptz default now()
 );

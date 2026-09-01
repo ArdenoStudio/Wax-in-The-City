@@ -11,7 +11,7 @@ async function headRequest(path) {
       path,
       method: 'HEAD',
       headers: {
-        'User-Agent': 'Mozilla/5.0 NetlifyAuditor/1.0',
+        'User-Agent': 'Mozilla/5.0 (compatible; WITC-Auditor/1.0)',
         'Accept': 'image/avif,image/webp,image/*,*/*'
       }
     }, (res) => {

@@ -69,7 +69,7 @@ async function fetchRoute(path) {
       path: path,
       method: 'GET',
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 NetlifyAuditor/1.0',
+        'User-Agent': 'Mozilla/5.0 (compatible; WITC-Auditor/1.0)',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
         'Accept-Encoding': 'gzip, deflate, br'
       }
@@ -136,9 +136,7 @@ async function main() {
     'Cache-Control': root.headers['cache-control'],
     'Age / CDN Caching': {
       'age': root.headers['age'],
-      'etag': root.headers['etag'],
-      'x-nf-request-id': root.headers['x-nf-request-id'],
-      'netlify-vary': root.headers['netlify-vary']
+      'etag': root.headers['etag']
     }
   };
   console.log(JSON.stringify(secHeaders, null, 2));

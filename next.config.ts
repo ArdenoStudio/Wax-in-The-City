@@ -28,7 +28,7 @@ const nextConfig: NextConfig = {
     qualities: [75, 85],
     deviceSizes: [640, 1080, 1920],
     remotePatterns: [
-      // Supabase Storage public URLs (gallery) — wildcard project ref (Security review: consider pinning to <project>.supabase.co).
+      // Supabase Storage public URLs (gallery) — wildcard project ref; must be pinned to <project>.supabase.co before public launch.
       { protocol: "https", hostname: "*.supabase.co" },
     ],
   },
@@ -43,10 +43,14 @@ const nextConfig: NextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
           { key: "X-DNS-Prefetch-Control", value: "off" },
           {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+          {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+              "script-src 'self' 'unsafe-inline'",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: https://*.supabase.co https://lh3.googleusercontent.com",
               "font-src 'self'",
@@ -55,6 +59,8 @@ const nextConfig: NextConfig = {
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",
+              "object-src 'none'",
+              "upgrade-insecure-requests",
             ].join("; "),
           },
         ],

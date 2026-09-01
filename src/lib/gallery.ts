@@ -1,4 +1,4 @@
-export type GalleryCategory = "salon" | "results" | "events";
+export type GalleryCategory = "salon" | "before-after" | "results" | "events";
 
 export interface GalleryImage {
   src: string;

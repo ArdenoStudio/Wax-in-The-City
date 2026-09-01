@@ -82,6 +82,7 @@ export function Navbar() {
                 width={120}
                 height={120}
                 sizes="56px"
+                loading="lazy"
                 className={cn(
                   "absolute inset-0 h-full w-full object-contain transition-opacity duration-500",
                   scrolled ? "opacity-100" : "opacity-0"

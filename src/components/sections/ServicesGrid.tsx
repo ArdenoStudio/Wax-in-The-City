@@ -24,6 +24,13 @@ const CATEGORY_IMAGES: Record<ServiceCategory, string> = {
   "hydra-facial": IMAGES.services.hydraFacial,
 };
 
+const CATEGORY_ALTS: Record<ServiceCategory, string> = {
+  waxing: "Melted wax poured into a warmer during a professional waxing treatment",
+  facial: "Facial treatment products and setup at the studio",
+  moroccan: "Moroccan bath ritual products and preparation at the studio",
+  "hydra-facial": "HydraFacial treatment device and care setup at the studio",
+};
+
 const CATEGORY_TONES: Record<
   ServiceCategory,
   { row: string; icon: string; price: string; arrow: string }
@@ -120,7 +127,7 @@ export function ServicesGrid({
                   <span className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-card border border-warm-border/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
                     <Image
                       src={thumb}
-                      alt=""
+                      alt={`${cat.name} — ${CATEGORY_ALTS[cat.slug]}`}
                       fill
                       sizes="64px"
                       className="object-cover"

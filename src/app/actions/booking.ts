@@ -1,11 +1,11 @@
 "use server";
 
 import { headers } from "next/headers";
-import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import {
   bookingSchema,
   contactSchema,
+  withHoneypot,
   type BookingResult,
 } from "@/lib/booking";
 
@@ -13,12 +13,8 @@ const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const submissionTimes = new Map<string, number[]>();
 
-const bookingSchemaWithGuard = bookingSchema.extend({
-  company: z.string().optional(),
-});
-const contactSchemaWithGuard = contactSchema.extend({
-  company: z.string().optional(),
-});
+const bookingSchemaWithGuard = withHoneypot(bookingSchema);
+const contactSchemaWithGuard = withHoneypot(contactSchema);
 
 async function clientKey(): Promise<string> {
   const headerList = await headers();

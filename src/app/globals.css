@@ -197,7 +197,6 @@ p,
       border-color var(--motion-standard) var(--ease-apple),
       box-shadow var(--motion-slow) var(--ease-apple),
       background-color var(--motion-standard) var(--ease-apple);
-    will-change: transform;
   }
 
   .premium-surface::before {
@@ -229,7 +228,6 @@ p,
       border-color var(--motion-standard) var(--ease-apple),
       box-shadow var(--motion-slow) var(--ease-apple),
       background-color var(--motion-standard) var(--ease-apple);
-    will-change: transform;
   }
 
   .glass-panel {
@@ -251,10 +249,10 @@ p,
       box-shadow var(--motion-slow) var(--ease-apple),
       background-color var(--motion-standard) var(--ease-apple),
       filter var(--motion-standard) var(--ease-apple);
-    will-change: transform;
   }
 
   .micro-lift:hover {
+    will-change: transform;
     transform: translateY(-6px) scale(1.006);
     box-shadow: 0 32px 90px rgba(44, 21, 25, 0.15);
   }
@@ -273,10 +271,10 @@ p,
       border-color var(--motion-standard) var(--ease-apple),
       background-color var(--motion-standard) var(--ease-apple),
       color var(--motion-standard) var(--ease-apple);
-    will-change: transform;
   }
 
   .pressable:hover {
+    will-change: transform;
     transform: translateY(-2px) scale(1.01);
   }
 
@@ -299,10 +297,10 @@ p,
     transition:
       transform 1100ms var(--ease-apple),
       filter 1100ms var(--ease-apple);
-    will-change: transform;
   }
 
   .group:hover .image-polish {
+    will-change: transform;
     transform: scale(1.02);
     filter: saturate(1.04) contrast(1.01);
   }
@@ -317,9 +315,9 @@ p,
       transform 650ms var(--ease-apple),
       box-shadow 650ms var(--ease-apple),
       border-color 420ms var(--ease-apple);
-    will-change: transform;
   }
   .card-rise:hover {
+    will-change: transform;
     transform: translateY(-4px);
   }
 
@@ -328,9 +326,9 @@ p,
     transition:
       transform 1200ms var(--ease-apple),
       filter 900ms var(--ease-apple);
-    will-change: transform;
   }
   .group:hover .editorial-image {
+    will-change: transform;
     transform: scale(1.03);
     filter: saturate(1.03) contrast(1.02);
   }

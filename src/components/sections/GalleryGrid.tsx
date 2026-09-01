@@ -102,7 +102,7 @@ export function GalleryGrid() {
         ))}
       </div>
 
-      <div className="mt-10 columns-2 gap-4 lg:columns-3">
+      <div className="mt-10 columns-1 min-[480px]:columns-2 gap-4 lg:columns-3">
         {photos.map((photo, i) => (
           <motion.button
             key={`${photo.src}-${i}`}

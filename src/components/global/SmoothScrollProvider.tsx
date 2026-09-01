@@ -9,8 +9,9 @@ import { MotionConfig } from "motion/react";
 import Lenis from "lenis";
 
 /**
- * Apple inertial scroll — Lenis is destroyed when prefers-reduced-motion
- * is active, and re-created if the user toggles the preference mid-session.
+ * Apple inertial scroll — Lenis only runs on fine-pointer desktops ≥1024px
+ * with prefers-reduced-motion off, and is destroyed/re-created live when any
+ * gate flips (media change or resize).
  * Tuning: duration 1.0 + wheelMultiplier 0.92 = iOS-like momentum without
  * the "wading through honey" drag. GPU rAF, smoothWheel only.
  */
@@ -26,6 +27,10 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const fine = window.matchMedia("(pointer: fine)");
+
+    const shouldRun = () =>
+      !media.matches && fine.matches && window.innerWidth >= 1024;
 
     const start = () => {
       if (lenisRef.current) return;
@@ -53,16 +58,21 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       lenisRef.current = null;
     };
 
-    if (!media.matches) start();
-
-    const onChange = (e: MediaQueryListEvent) => {
-      if (e.matches) stop();
-      else start();
+    const sync = () => {
+      if (shouldRun()) start();
+      else stop();
     };
-    media.addEventListener("change", onChange);
+
+    sync();
+
+    media.addEventListener("change", sync);
+    fine.addEventListener("change", sync);
+    window.addEventListener("resize", sync);
 
     return () => {
-      media.removeEventListener("change", onChange);
+      media.removeEventListener("change", sync);
+      fine.removeEventListener("change", sync);
+      window.removeEventListener("resize", sync);
       stop();
     };
   }, []);

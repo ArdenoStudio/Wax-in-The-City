@@ -4,7 +4,7 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fff7f9",
-  "theme_color": "#2b0710",
+  "theme_color": "#fff7f9",
   "icons": [
     {
       "src": "/images/witc-logo.svg",
@@ -15,7 +15,14 @@
     {
       "src": "/images/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/witc-wordmark-square.jpg",
+      "sizes": "636x592",
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ]
 }

@@ -71,7 +71,7 @@ export function Footer() {
             </h2>
             <ul className="mt-3 space-y-1">
               <li>
-                <Link href="/" className="inline-flex min-h-10 min-w-10 items-center rounded-pill px-2 text-body-sm transition-colors hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer">
+                <Link href="/" className="inline-flex min-h-10 min-w-10 items-center rounded-pill px-2 text-body-sm transition-colors hover:text-cream hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer">
                   Home
                 </Link>
               </li>
@@ -79,14 +79,14 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="inline-flex min-h-10 min-w-10 items-center rounded-pill px-2 text-body-sm transition-colors hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer"
+                    className="inline-flex min-h-10 min-w-10 items-center rounded-pill px-2 text-body-sm transition-colors hover:text-cream hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/book" className="inline-flex min-h-10 min-w-10 items-center rounded-pill px-2 text-body-sm transition-colors hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer">
+                <Link href="/book" className="inline-flex min-h-10 min-w-10 items-center rounded-pill px-2 text-body-sm transition-colors hover:text-cream hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer">
                   Book your visit
                 </Link>
               </li>

@@ -1,6 +1,5 @@
 "use server";
 
-import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import {
@@ -22,12 +21,7 @@ async function siteBaseUrl(): Promise<string> {
   const configured = process.env.NEXT_PUBLIC_SITE_URL;
   if (configured) return configured.replace(/\/$/, "");
 
-  const h = await headers();
-  const host = h.get("host");
-  if (!host) return "http://localhost:3000";
-
-  const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  return `${proto}://${host}`;
+  return "https://wax-in-the-city-website.vercel.app";
 }
 
 export async function signInWithPasswordAction(formData: FormData) {

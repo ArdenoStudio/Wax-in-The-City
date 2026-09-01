@@ -11,6 +11,8 @@ import { WhatsappIcon } from "@/components/icons";
 import { BLUR_DATA_URL, IMAGES } from "@/lib/images";
 import { buildPageMetadata } from "@/lib/seo";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = buildPageMetadata({
   title: "Locations",
   description:

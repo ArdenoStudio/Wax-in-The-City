@@ -76,7 +76,7 @@ export function VideoLoop({ src, poster, alt, className }: VideoLoopProps) {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           aria-hidden
           tabIndex={-1}
           className="absolute inset-0 h-full w-full object-cover"

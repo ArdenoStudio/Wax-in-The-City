@@ -1,5 +1,6 @@
 import { updateBookingStatus } from "@/app/admin/dashboard-actions";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { normalizeWhatsApp } from "@/lib/site";
 import {
   AdminFieldLabel,
   AdminPlate,
@@ -25,14 +26,6 @@ const STATUS_OPTIONS = [
   { value: "confirmed", label: "Confirmed" },
   { value: "cancelled", label: "Cancelled" },
 ];
-
-function normalizeWhatsApp(phone: string): string {
-  const digits = phone.replace(/\D/g, "");
-  if (digits.startsWith("94")) return digits;
-  if (digits.startsWith("0")) return `94${digits.slice(1)}`;
-  if (digits.length === 9) return `94${digits}`;
-  return digits;
-}
 
 function formatTimestamp(value: string): string {
   return new Intl.DateTimeFormat("en-GB", {

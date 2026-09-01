@@ -8,6 +8,8 @@ import { IMAGES, VIDEOS } from "@/lib/images";
 import { InstagramIcon } from "@/components/icons";
 import { buildPageMetadata } from "@/lib/seo";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = buildPageMetadata({
   title: "Gallery",
   description:

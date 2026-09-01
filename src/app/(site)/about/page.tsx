@@ -10,6 +10,8 @@ import { IMAGES } from "@/lib/images";
 import { BRANCHES } from "@/lib/site";
 import { buildPageMetadata } from "@/lib/seo";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = buildPageMetadata({
   title: "About",
   description:

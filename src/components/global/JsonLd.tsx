@@ -26,13 +26,13 @@ export function JsonLd() {
           telephone: branch.phone,
           currenciesAccepted: "LKR",
           paymentAccepted: "Cash, Card, Bank Transfer",
-          priceRange: "LKR",
+          priceRange: "LKR 700 - LKR 26,500",
           parentOrganization: {
             "@id": `${SITE.url}#organization`,
           },
           address: {
             "@type": "PostalAddress",
-            ...(branch.address.includes("(") ? {} : { streetAddress: branch.address }),
+            streetAddress: branch.address.replace(/\s*\([^)]*\)/g, "").trim(),
             addressLocality: branch.area,
             addressCountry: "LK",
           },
