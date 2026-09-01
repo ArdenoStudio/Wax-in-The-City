@@ -1,6 +1,6 @@
 import https from 'https';
 
-const DOMAIN = 'wax-in-the-city.netlify.app';
+const DOMAIN = 'wax-in-the-city-website.vercel.app';
 
 async function headRequest(path) {
   return new Promise((resolve) => {

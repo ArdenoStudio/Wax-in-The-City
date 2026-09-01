@@ -2,7 +2,7 @@ import https from 'https';
 import dns from 'dns';
 import tls from 'tls';
 
-const DOMAIN = 'wax-in-the-city.netlify.app';
+const DOMAIN = 'wax-in-the-city-website.vercel.app';
 const BASE_URL = `https://${DOMAIN}`;
 
 const routes = [
@@ -97,7 +97,7 @@ async function fetchRoute(path) {
 
 async function main() {
   console.log('===============================================================');
-  console.log(` AUDITING NETLIFY LIVE DEPLOYMENT: ${BASE_URL}`);
+  console.log(` AUDITING LIVE DEPLOYMENT: ${BASE_URL}`);
   console.log('===============================================================');
 
   // DNS & SSL
@@ -134,7 +134,7 @@ async function main() {
     'X-Powered-By': root.headers['x-powered-by'],
     'X-Robots-Tag': root.headers['x-robots-tag'],
     'Cache-Control': root.headers['cache-control'],
-    'Age / Netlify Caching': {
+    'Age / CDN Caching': {
       'age': root.headers['age'],
       'etag': root.headers['etag'],
       'x-nf-request-id': root.headers['x-nf-request-id'],

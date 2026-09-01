@@ -1,7 +1,7 @@
 import https from 'https';
 import zlib from 'zlib';
 
-const DOMAIN = 'wax-in-the-city.netlify.app';
+const DOMAIN = 'wax-in-the-city-website.vercel.app';
 
 function decompress(buffer, encoding) {
   if (!encoding) return buffer;
