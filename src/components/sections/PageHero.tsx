@@ -1,5 +1,7 @@
 "use client";
 
+import { EASE_APPLE } from "@/lib/animations";
+
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { BLUR_DATA_URL } from "@/lib/images";
@@ -38,7 +40,7 @@ export function PageHero({
         className="absolute inset-0 will-change-transform"
         initial={reduceMotion ? false : { opacity: 0.9, scale: 1.02 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.45, ease: EASE_APPLE }}
       >
         <Image
           src={image}
@@ -59,14 +61,14 @@ export function PageHero({
         className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-14 pt-28 lg:px-8 lg:pb-20 will-change-transform"
         initial={reduceMotion ? false : { opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.44, ease: [0.16, 1, 0.3, 1], delay: reduceMotion ? 0 : 0.05 }}
+        transition={{ duration: 0.44, ease: EASE_APPLE, delay: reduceMotion ? 0 : 0.05 }}
       >
         {eyebrow && (
           <motion.p
             className="mb-5 inline-flex rounded-pill border border-cream/18 bg-cream/10 px-4 py-2 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl will-change-transform"
             initial={reduceMotion ? false : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1], delay: reduceMotion ? 0 : 0.1 }}
+            transition={{ duration: 0.38, ease: EASE_APPLE, delay: reduceMotion ? 0 : 0.1 }}
           >
             {eyebrow}
           </motion.p>

@@ -103,9 +103,4 @@ export const GALLERY: GalleryImage[] = [
     alt: "Treatment room detail — client photography, Battaramulla",
     category: "salon",
   },
-  {
-    src: "/images/services/facials.jpg",
-    alt: "Studio interior vignette — real Battaramulla photography",
-    category: "salon",
-  },
 ];

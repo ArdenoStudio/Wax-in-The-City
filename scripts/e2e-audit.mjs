@@ -15,10 +15,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {
-  PROJECT_ROOT,
   SRC_DIR,
   getSourceFiles,
-  relPath,
   checkArbitraryFontSizes,
   checkItalicStyling,
   checkHyphenatedCopy,

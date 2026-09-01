@@ -66,9 +66,9 @@ export function Footer() {
 
           {/* Nav */}
           <div>
-            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50 text-balance">
+            <h2 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50 text-balance">
               Explore
-            </h3>
+            </h2>
             <ul className="mt-3 space-y-1">
               <li>
                 <Link href="/" className="inline-flex min-h-10 min-w-10 items-center rounded-pill px-2 text-body-sm transition-colors hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer">
@@ -95,9 +95,9 @@ export function Footer() {
 
           {/* Branches */}
           <div>
-            <h3 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50 text-balance">
+            <h2 className="text-caption font-semibold uppercase tracking-[0.12em] text-cream/50 text-balance">
               Our Branches
-            </h3>
+            </h2>
             <div className="mt-4 grid gap-6 sm:grid-cols-2">
               {BRANCHES.map((b) => (
                 <div key={b.slug}>

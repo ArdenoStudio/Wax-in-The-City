@@ -1,5 +1,7 @@
 "use client";
 
+import { EASE_APPLE } from "@/lib/animations";
+
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -60,7 +62,7 @@ export function SectionHeading({
       initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.52, ease: EASE_APPLE }}
       className={cn(
         "motion-reduce-none flex flex-col will-change-transform",
         align === "center" ? "items-center text-center" : "items-start text-left",

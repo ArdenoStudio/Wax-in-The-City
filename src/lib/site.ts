@@ -99,6 +99,10 @@ export function getBranch(slug: BranchSlug): Branch {
   return BRANCHES.find((b) => b.slug === slug) ?? BRANCHES[0];
 }
 
+export function isBranchSlug(value: string | undefined): value is BranchSlug {
+  return typeof value === "string" && BRANCHES.some((b) => b.slug === value);
+}
+
 export type ServiceCategory = "waxing" | "facial" | "moroccan" | "hydra-facial";
 
 export interface ServiceCategoryMeta {
@@ -195,68 +199,7 @@ export const SERVICES: Service[] = [
   { name: "Full Body Scrub — Spa Cylon", category: "moroccan", duration: "60 min", priceFrom: 15000, slug: "full-body-scrub-spa-cylon", description: "A full body exfoliating scrub using the Spa Cylon line for smooth, refreshed skin." },
   { name: "Japanese Spa Bed Treatment", category: "moroccan", duration: "90 min", priceFrom: 19000, slug: "japanese-spa-bed-treatment", description: "Our 90 minute signature ritual pairing a facial with the Moroccan body polish on the spa bed." },
   // Hydra Facial
-  { name: "Hydra Facial", category: "hydra-facial", duration: "50 min", priceFrom: 10000, slug: "hydro-facial", description: "The multi step Hydra Facial that cleanses, extracts and hydrates in one visit — active serums, zero downtime." },
-];
-
-export function servicesByCategory(category: ServiceCategory): Service[] {
-  return SERVICES.filter((s) => s.category === category);
-}
-
-export interface Testimonial {
-  quote: string;
-  name: string;
-  branch: string;
-  rating: number;
-}
-
-/**
- * Placeholder reviews — not rendered on the site until client-verified.
- * Homepage uses REVIEW_THEMES instead to avoid shipping unverified quotes.
- * Swap into ReviewThemes or a carousel once testimonials are confirmed.
- */
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    quote:
-      "I've always been nervous about waxing, but the team made me feel completely at ease. Fresh wax, private room, no judgement. I won't go anywhere else now.",
-    name: "Nimasha P.",
-    branch: "Nugegoda",
-    rating: 5,
-  },
-  {
-    quote:
-      "Genuinely the most careful and clean salon I've been to in Colombo. You can tell they take hygiene seriously.",
-    name: "Dilini R.",
-    branch: "Battaramulla",
-    rating: 5,
-  },
-  {
-    quote:
-      "The Hydra Facial left my skin glowing for days and there was zero downtime. Booked my next session before I even left.",
-    name: "Sapna M.",
-    branch: "Nugegoda",
-    rating: 5,
-  },
-  {
-    quote:
-      "A ladies only space makes such a difference. Warm, calm and professional from start to finish.",
-    name: "Hashini W.",
-    branch: "Battaramulla",
-    rating: 5,
-  },
-  {
-    quote:
-      "The Moroccan treatment was something else — my skin felt so soft afterwards. Such lovely, honest people too.",
-    name: "Ayesha F.",
-    branch: "Nugegoda",
-    rating: 5,
-  },
-  {
-    quote:
-      "Quick, gentle and always on time. They genuinely care about getting it right for sensitive skin.",
-    name: "Tharushi S.",
-    branch: "Battaramulla",
-    rating: 5,
-  },
+  { name: "Hydra Facial", category: "hydra-facial", duration: "50 min", priceFrom: 10000, slug: "hydra-facial", description: "The multi step Hydra Facial that cleanses, extracts and hydrates in one visit — active serums, zero downtime." },
 ];
 
 export const NAV_LINKS = [

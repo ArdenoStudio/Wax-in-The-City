@@ -29,10 +29,9 @@ export const metadata: Metadata = buildPageMetadata({
  * real studio waxing/facial/moroccan/hydra visuals, not ambience stock.
  * Prior interim was wax-real-optimized product hero; now replaced with true
  * procedural images (ladies-only: cropped to hands/tools, no faces). Each
- * card maps to a DISTINCT local asset (see IMAGES.services) with gradient
- * overlay. External pexels/unsplash placeholders remain available via
- * unoptimized={image.startsWith("http")} if client swaps to external.
- */
+  * card maps to a DISTINCT local asset (see IMAGES.services) with gradient
+  * overlay.
+  */
 const CATEGORY_VISUALS: Record<
   ServiceCategory,
   { image: string; alt: string; label: string; note: string }

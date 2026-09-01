@@ -107,9 +107,9 @@ export default function AboutPage() {
           </AnimatedSection>
 
           <AnimatedSection variant="fadeUp">
-            <p className="max-w-full break-words text-balance font-serif text-4xl font-medium leading-[1.02] text-warm sm:text-6xl lg:text-7xl">
+            <h2 className="max-w-full break-words text-balance font-serif text-4xl font-medium leading-[1.02] text-warm sm:text-6xl lg:text-7xl">
               Built like a private dressing room, run like a careful appointment studio.
-            </p>
+            </h2>
             <p className="mt-8 max-w-2xl text-body-lg text-warm-grey text-pretty">
               Comfort, privacy and hygiene are protected at every step — from fresh wax and covered surfaces to a clear, confirmed booking before you travel.
             </p>

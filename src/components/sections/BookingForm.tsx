@@ -1,5 +1,7 @@
 "use client";
 
+import { EASE_APPLE } from "@/lib/animations";
+
 import { useState } from "react";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -44,6 +46,12 @@ export function BookingForm({
 
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+
+  const focusFirstInvalid = () => {
+    requestAnimationFrame(() => {
+      document.querySelector<HTMLElement>('#booking-form [aria-invalid="true"]')?.focus();
+    });
+  };
 
   const {
     register,
@@ -99,7 +107,7 @@ export function BookingForm({
             aria-live="polite"
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.38, ease: EASE_APPLE }}
             className="relative z-10 flex flex-col items-center py-8 text-center will-change-transform"
           >
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
@@ -124,9 +132,10 @@ export function BookingForm({
         ) : (
           <motion.form
             key="form"
+            id="booking-form"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit, focusFirstInvalid)}
             className="relative z-10 flex flex-col gap-5"
             noValidate
           >
@@ -140,7 +149,7 @@ export function BookingForm({
                   className="h-full rounded-full bg-brand-action will-change-transform"
                   initial={{ width: "0%" }}
                   animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.36, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.36, ease: EASE_APPLE }}
                 />
               </div>
             </div>
@@ -149,7 +158,7 @@ export function BookingForm({
               <div className="flex items-center justify-between">
                 <Label htmlFor="name">Your name</Label>
                 {watchedFields[0] && (
-                  <motion.span initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
+                  <motion.span initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.22, ease: EASE_APPLE }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
                     <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />Done
                   </motion.span>
                 )}
@@ -173,7 +182,7 @@ export function BookingForm({
               <div className="flex items-center justify-between">
                 <Label htmlFor="phone">Phone</Label>
                 {watchedFields[1] && (
-                  <motion.span initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
+                  <motion.span initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.22, ease: EASE_APPLE }} className="flex items-center gap-1 text-caption font-medium text-brand-action">
                     <span className="h-1.5 w-1.5 rounded-full bg-brand-action" />Done
                   </motion.span>
                 )}
@@ -205,7 +214,6 @@ export function BookingForm({
                     <Select value={field.value} onValueChange={field.onChange}>
                       <SelectTrigger
                         id="branch-select"
-                        aria-label="Select branch location"
                         aria-required="true"
                         aria-invalid={errors.branch ? true : undefined}
                         aria-describedby={errors.branch ? fieldErrorId("branch") : undefined}
@@ -238,7 +246,6 @@ export function BookingForm({
                     <Select value={field.value} onValueChange={field.onChange}>
                       <SelectTrigger
                         id="service-select"
-                        aria-label="Select treatment type"
                         aria-invalid={!!errors.service_preference}
                         aria-describedby={errors.service_preference ? "service_preference-error" : undefined}
                       >

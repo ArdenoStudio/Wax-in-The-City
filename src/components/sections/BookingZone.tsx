@@ -6,12 +6,11 @@ import { isSupabaseConfigured } from "@/lib/supabase/client";
 
 interface BookingZoneProps {
   /**
-   * 'form' = Supabase-backed request form, 'dinaya' = embedded widget (future),
-   * 'whatsapp-only' = WhatsApp CTA only. Defaults to 'whatsapp-only' whenever
-   * Supabase isn't configured, so the primary booking route never points at a
-   * form that's guaranteed to fail.
+   * 'form' = Supabase-backed request form, 'whatsapp-only' = WhatsApp CTA only.
+   * Defaults to 'whatsapp-only' whenever Supabase isn't configured, so the
+   * primary booking route never points at a form that's guaranteed to fail.
    */
-  mode?: "form" | "dinaya" | "whatsapp-only";
+  mode?: "form" | "whatsapp-only";
   defaultBranch?: BranchSlug;
   defaultService?: string;
   serviceOptions?: string[];
@@ -24,9 +23,8 @@ interface BookingZoneProps {
 }
 
 /**
- * Booking CTA / Dinaya zone (file 08, section 10).
- * The form is the working fallback; the reserved zone keeps the layout ready
- * for the Dinaya widget (~30 days out) with no reflow.
+ * Booking CTA zone (file 08, section 10).
+ * The form is the working fallback; WhatsApp stays the fastest confirmed route.
  */
 export function BookingZone({
   mode,
@@ -117,7 +115,7 @@ export function BookingZone({
           className={
             standalone
               ? "mt-3 text-center text-caption leading-relaxed text-cream/60 text-pretty"
-              : "mt-3 text-center text-caption leading-relaxed text-warm-grey/70 text-pretty"
+              : "mt-3 text-center text-caption leading-relaxed text-warm-grey text-pretty"
           }
         >
           Premium Lycon (Australia) & Rica (Italy) · No double dipping · Aftercare + next-visit note before you leave.
@@ -125,12 +123,9 @@ export function BookingZone({
 
         <div
           className="mt-10"
-          // Reserve the Dinaya widget footprint so the swap-in causes no reflow.
           style={resolvedMode === "whatsapp-only" ? undefined : { minHeight: 480 }}
         >
-          {resolvedMode === "dinaya" ? (
-            <DinayaPlaceholder />
-          ) : resolvedMode === "whatsapp-only" ? (
+          {resolvedMode === "whatsapp-only" ? (
             <WhatsappOnly standalone={standalone} message={whatsappMessage} />
           ) : (
             <BookingForm
@@ -158,25 +153,13 @@ export function BookingZone({
           className={
             standalone
               ? "mt-4 text-center text-caption leading-relaxed text-cream/60 text-pretty"
-              : "mt-4 text-center text-caption leading-relaxed text-warm-grey/60 text-pretty"
+              : "mt-4 text-center text-caption leading-relaxed text-warm-grey text-pretty"
           }
         >
           Aftercare tips + next appointment guidance included with every visit
         </p>
       </div>
     </section>
-  );
-}
-
-/** Reserved wrapper for the future Dinaya embed. */
-function DinayaPlaceholder() {
-  return (
-    <div className="dinaya-widget-zone flex h-[480px] items-center justify-center border border-dashed border-cream/24 bg-cream/5 text-center">
-      <p className="px-6 text-body text-cream/66 text-pretty">
-        Online booking is coming soon. For now, please send a request or message us
-        on WhatsApp.
-      </p>
-    </div>
   );
 }
 

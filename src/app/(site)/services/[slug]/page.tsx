@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import {
   SERVICE_CATEGORIES,
-  SITE,
   getCategory,
 } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/seo";
 import { getPublicServiceContent } from "@/lib/service-content";
 import { IMAGES } from "@/lib/images";
 import { PageHero } from "@/components/sections/PageHero";
@@ -15,6 +15,8 @@ import { BookingZone } from "@/components/sections/BookingZone";
 import { WaxPriceMatrix } from "@/components/sections/WaxPriceMatrix";
 import { WaxTypesShowcase } from "@/components/sections/WaxTypesShowcase";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
+import { BreadcrumbJsonLd } from "@/components/global/BreadcrumbJsonLd";
+import { ServiceCatalogJsonLd } from "@/components/global/ServiceCatalogJsonLd";
 
 export const revalidate = 3600;
 
@@ -37,23 +39,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const category = getCategory(slug);
   if (!category) return { title: "Services" };
-  return {
+  return buildPageMetadata({
     title: category.name,
     description: category.description,
-    alternates: { canonical: `/services/${slug}` },
-    openGraph: {
-      title: category.name,
-      description: category.description,
-      url: `${SITE.url}/services/${slug}`,
-      images: [{ url: IMAGES.og, width: 1200, height: 630, alt: `${category.name} — ${SITE.name}` }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: category.name,
-      description: category.description,
-      images: [IMAGES.og],
-    },
-  };
+    path: `/services/${slug}`,
+  });
 }
 
 export default async function ServiceCategoryPage({
@@ -73,6 +63,20 @@ export default async function ServiceCategoryPage({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: category.name, path: `/services/${category.href}` },
+        ]}
+      />
+      <ServiceCatalogJsonLd
+        category={category.name}
+        services={services.map((service) => ({
+          name: service.name,
+          priceFrom: service.priceFrom,
+        }))}
+      />
       <PageHero
         eyebrow="Treatments"
         title={category.name}
@@ -131,7 +135,7 @@ export default async function ServiceCategoryPage({
         </div>
       </section>
 
-      <BookingZone defaultBranch={undefined} heading="Ready to book?" />
+      <BookingZone heading="Ready to book?" />
     </>
   );
 }

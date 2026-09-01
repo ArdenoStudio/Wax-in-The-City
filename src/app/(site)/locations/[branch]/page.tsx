@@ -2,20 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin, Clock, Phone } from "lucide-react";
-import { BRANCHES, SITE, getBranch, whatsappLink, type BranchSlug } from "@/lib/site";
+import { BRANCHES, getBranch, isBranchSlug, whatsappLink } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/seo";
 import { IMAGES } from "@/lib/images";
 import { WhatsappIcon } from "@/components/icons";
 import { PageHero } from "@/components/sections/PageHero";
 import { BookingZone } from "@/components/sections/BookingZone";
-
-const BRANCH_IMAGES: Record<BranchSlug, string> = {
-  battaramulla: IMAGES.branches.battaramulla,
-  nugegoda: IMAGES.branches.nugegoda,
-};
-
-function isBranchSlug(value: string): value is BranchSlug {
-  return BRANCHES.some((b) => b.slug === value);
-}
+import { BreadcrumbJsonLd } from "@/components/global/BreadcrumbJsonLd";
 
 export function generateStaticParams() {
   return BRANCHES.map((b) => ({ branch: b.slug }));
@@ -29,23 +22,11 @@ export async function generateMetadata({
   const { branch } = await params;
   if (!isBranchSlug(branch)) return { title: "Locations" };
   const b = getBranch(branch);
-  return {
+  return buildPageMetadata({
     title: `${b.name} Branch`,
     description: `Visit our ${b.name} studio in Colombo. ${b.blurb}`,
-    alternates: { canonical: `/locations/${branch}` },
-    openGraph: {
-      title: `${b.name} branch — ${SITE.name}`,
-      description: `Visit our ${b.name} studio in Colombo. ${b.blurb}`,
-      url: `${SITE.url}/locations/${branch}`,
-      images: [{ url: IMAGES.og, width: 1200, height: 630, alt: `${b.name} branch — ${SITE.name}` }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${b.name} branch — ${SITE.name}`,
-      description: `Visit our ${b.name} studio in Colombo. ${b.blurb}`,
-      images: [IMAGES.og],
-    },
-  };
+    path: `/locations/${branch}`,
+  });
 }
 
 export default async function BranchPage({
@@ -59,11 +40,18 @@ export default async function BranchPage({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Locations", path: "/locations" },
+          { name: `${b.name} Branch`, path: `/locations/${b.slug}` },
+        ]}
+      />
       <PageHero
         eyebrow="Our studio"
         title={`${b.name}.`}
         subtitle={b.blurb}
-        image={BRANCH_IMAGES[b.slug]}
+        image={IMAGES.branches[b.slug]}
         imageAlt={`${b.name} branch interior`}
         priority
       />
@@ -91,7 +79,7 @@ export default async function BranchPage({
                 {b.hours.weekday === b.hours.weekend ? (
                   <>
                     <span className="block tabular-nums">Mon–Sun · {b.hours.weekday}</span>
-                    <span className="mt-1 flex items-center gap-1.5 text-caption text-warm-grey/80">
+                    <span className="mt-1 flex items-center gap-1.5 text-caption text-warm-grey">
                       <span aria-hidden className="h-1 w-1 rounded-full bg-warm-grey/40" />
                       {b.hours.poya}
                     </span>
@@ -100,7 +88,7 @@ export default async function BranchPage({
                   <>
                     <span className="block tabular-nums">Mon–Fri · {b.hours.weekday}</span>
                     <span className="block tabular-nums">Sat–Sun · {b.hours.weekend}</span>
-                    <span className="mt-1 flex items-center gap-1.5 text-caption text-warm-grey/80">
+                    <span className="mt-1 flex items-center gap-1.5 text-caption text-warm-grey">
                       <span aria-hidden className="h-1 w-1 rounded-full bg-warm-grey/40" />
                       {b.hours.poya}
                     </span>

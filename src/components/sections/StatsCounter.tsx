@@ -1,5 +1,7 @@
 "use client";
 
+import { EASE_APPLE } from "@/lib/animations";
+
 import { useEffect, useRef } from "react";
 import {
   motion,
@@ -38,7 +40,7 @@ function Ticker({ value, suffix }: { value: number; suffix?: string }) {
       return;
     }
     // Apple-timed ticker: 1.0s feels crisp vs the prior 1.4s drag.
-    const controls = animate(count, value, { duration: 1.0, ease: [0.16, 1, 0.3, 1] });
+    const controls = animate(count, value, { duration: 1.0, ease: EASE_APPLE });
     return () => controls.stop();
   }, [inView, value, reduce, count]);
 
@@ -64,7 +66,7 @@ export function StatsCounter({ stats = DEFAULT_STATS }: { stats?: Stat[] }) {
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, ease: EASE_APPLE }}
             className="premium-surface micro-lift rounded-2xl p-6 text-center will-change-transform sm:p-7"
           >
             <p className="relative z-10 font-serif text-5xl font-medium leading-none tracking-[-0.02em] text-brand-action sm:text-6xl">

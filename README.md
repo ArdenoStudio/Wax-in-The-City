@@ -2,11 +2,11 @@
 
 Ladies-only beauty salon website for Colombo, covering Battaramulla and Nugegoda. Built by Ardeno Studio around a sharper private-studio glamour direction: privacy, hygiene, confident service discovery, and low-friction booking.
 
-**Live:** https://wax-in-the-city-website.vercel.app (Vercel production, deploys from `main`)
+**Live:** https://wax-in-the-city.netlify.app (Netlify production, deploys from `main`)
 
 ## Stack
 
-- Next.js 16 App Router and TypeScript (Turbopack builds)
+- Next.js 16 App Router and TypeScript
 - Tailwind CSS v4 tokens in `src/app/globals.css`
 - `motion/react` for page and component transitions
 - Lenis for smooth wheel scrolling, disabled for reduced-motion users
@@ -14,7 +14,7 @@ Ladies-only beauty salon website for Colombo, covering Battaramulla and Nugegoda
 - `react-hook-form` and `zod` for booking and contact forms
 - Supabase form capture as the pre-Dinaya backend
 - `react-compare-slider` for before/after imagery
-- System font stack: Bodoni/Didot-style display, Avenir/Segoe-style body, no remote font fetch required for builds
+- Google Fonts via `next/font`: Fraunces (display, variable) + Plus Jakarta Sans (body, variable)
 
 ## Getting Started
 
@@ -34,24 +34,27 @@ http://localhost:3000
 
 | Command | Purpose |
 | --- | --- |
-| `npm run dev` | Local dev server on port 3000 |
+| `npm run dev` | Local dev server on port 3000 (webpack) |
 | `npm run build` | Production build (`next build`) |
+| `npm run build:next` | Same production build (used by Netlify) |
 | `npm run start` | Serve the production build locally |
 | `npm run lint` | ESLint over `src/**/*.{ts,tsx}` |
-| `npm run test` | E2E audit script (`scripts/e2e-audit.mjs`) |
+| `npm run test` | Static audit script (`scripts/e2e-audit.mjs`) |
 | `npm run test:all` | Tiered feature/boundary/cross-feature/workload test suites |
 
 ## Environment Variables
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical site URL used for metadata, Open Graph, JSON-LD, sitemap, and robots. Set this per-environment (staging vs. production) so metadata doesn't point at the wrong domain. Falls back to `https://waxinthecitylk.com`. |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL used for metadata, Open Graph, JSON-LD, sitemap, and robots. Set this per-environment (staging vs. production) so metadata doesn't point at the wrong domain. Falls back to `https://wax-in-the-city.netlify.app`. |
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key for public form inserts |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number, digits only, for example `94771234567` |
 | `SUPABASE_SERVICE_ROLE_KEY` | Server-only Supabase key used by `/admin` to update service rows |
 | `ADMIN_PASSWORD` | Password for the lightweight `/admin` service editor |
 | `ADMIN_SESSION_SECRET` | Long random value used to sign the admin session cookie |
+
+Build-time vars (`NEXT_PUBLIC_*`) must be set in the **Netlify build environment**; runtime-only vars (`SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`) go in the Netlify runtime environment.
 
 ## Booking Capture
 
@@ -61,7 +64,7 @@ If Supabase env vars are missing, `BookingZone` automatically renders the WhatsA
 
 ## Admin Panel
 
-`/admin` is a hidden dashboard (no nav link, `robots` disallowed, noindex) for bookings inbox, services, gallery, and testimonials. Auth is identity based via Supabase with a legacy password fallback.
+`/admin` is a hidden dashboard (no nav link, `robots` disallowed, noindex metadata) for bookings inbox, services, gallery, and testimonials. Auth is identity based via Supabase with a legacy password fallback.
 
 ### 1. Run the SQL
 
@@ -116,7 +119,7 @@ Privacy rule for ladies-only positioning: procedural imagery crops to hands/tool
 
 ## Deployment
 
-Production deploys to Vercel via `vercel deploy --prod` (or automatically when connected through the Vercel dashboard). The latest production build compiles cleanly with Next.js 16 / Turbopack: all routes are static or SSG with 1h ISR revalidation except `/admin`, `/book`, and server actions.
+Production deploys to **Netlify** from `main` (`netlify.toml` + `@netlify/plugin-nextjs`). The latest production build compiles cleanly with Next.js 16: all routes are static or SSG with 1h ISR revalidation except `/admin`, `/book`, and server actions. A GitHub Actions CI workflow runs lint, typecheck, the static audit, and the build on every push/PR.
 
 ## Impeccable Context
 
@@ -155,12 +158,12 @@ Before handing this off as a finished client site, confirm:
 
 - [x] Real salon/service photography integrated across the site (`src/lib/images.ts`)
 - [x] Final service menu and pricing confirmed against `src/lib/site.ts` / `src/lib/pricing.ts`
-- [x] Production build passes cleanly on Vercel
-- [ ] `NEXT_PUBLIC_SITE_URL` set to the real production domain in Vercel
+- [x] Production build passes cleanly on Netlify
+- [x] `NEXT_PUBLIC_SITE_URL` set to the production domain (`netlify.toml`)
 - [ ] Nugegoda address confirmed and `googleMapsUrl` in `src/lib/site.ts` updated to a precise place link (not a generic search URL)
 - [ ] Battaramulla `googleMapsUrl` also switched to a precise place link
 - [ ] Real, client-approved testimonials before enabling any review carousel
-- [ ] Production Supabase project provisioned, `supabase/schema.sql` run, and env vars set in Vercel — otherwise booking stays WhatsApp-only by design
+- [ ] Production Supabase project provisioned, `supabase/schema.sql` run, and env vars set in Netlify — otherwise booking stays WhatsApp-only by design
 - [ ] `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` set to strong, unique production values
 - [ ] Dinaya booking widget wired in and `BookingZone` mode switched over, once available
 

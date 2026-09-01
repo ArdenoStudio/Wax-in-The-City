@@ -1,5 +1,7 @@
 "use client";
 
+import { EASE_APPLE } from "@/lib/animations";
+
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,6 +32,12 @@ export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
+  const focusFirstInvalid = () => {
+    requestAnimationFrame(() => {
+      document.querySelector<HTMLElement>('#contact-form [aria-invalid="true"]')?.focus();
+    });
+  };
+
   const {
     register,
     handleSubmit,
@@ -58,7 +66,7 @@ export function ContactForm() {
             aria-live="polite"
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.38, ease: EASE_APPLE }}
             className="relative z-10 flex flex-col items-center py-8 text-center will-change-transform"
           >
             <span className="flex h-14 w-14 items-center justify-center rounded-pill bg-success/15 text-success">
@@ -72,9 +80,10 @@ export function ContactForm() {
         ) : (
           <motion.form
             key="form"
+            id="contact-form"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit, focusFirstInvalid)}
             className="relative z-10 flex flex-col gap-5"
             noValidate
           >
@@ -141,7 +150,6 @@ export function ContactForm() {
                     <Select value={field.value} onValueChange={field.onChange}>
                       <SelectTrigger
                         id="c-branch"
-                        aria-label="Select branch location"
                         aria-required="true"
                         aria-invalid={errors.branch ? true : undefined}
                         aria-describedby={errors.branch ? fieldErrorId("branch") : undefined}

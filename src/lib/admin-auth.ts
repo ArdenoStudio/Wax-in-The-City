@@ -14,6 +14,9 @@ interface AttemptRecord {
 const loginAttempts = new Map<string, AttemptRecord>();
 const MAX_FAILED_ATTEMPTS = 5;
 const LOCKOUT_DURATION_MS = 15 * 60 * 1000; // 15 minutes
+const MAX_TRACKED_IDENTIFIERS = 1000;
+
+let warnedMissingSecret = false;
 
 function adminPassword() {
   return process.env.ADMIN_PASSWORD ?? "";
@@ -25,9 +28,12 @@ function sessionSecret() {
     if (process.env.NODE_ENV === "production") {
       throw new Error("ADMIN_SESSION_SECRET must be set in production");
     }
-    console.error(
-      "[SECURITY WARNING] ADMIN_SESSION_SECRET is not set — falling back to ADMIN_PASSWORD. Set ADMIN_SESSION_SECRET in production."
-    );
+    if (!warnedMissingSecret) {
+      warnedMissingSecret = true;
+      console.error(
+        "[SECURITY WARNING] ADMIN_SESSION_SECRET is not set — falling back to ADMIN_PASSWORD. Set ADMIN_SESSION_SECRET in production."
+      );
+    }
     return adminPassword();
   }
   return secret;
@@ -101,6 +107,13 @@ export function recordFailedLogin(identifier: string = "global") {
     record.lockedUntil = now + LOCKOUT_DURATION_MS;
   }
   loginAttempts.set(identifier, record);
+
+  if (loginAttempts.size > MAX_TRACKED_IDENTIFIERS) {
+    for (const [key, entry] of loginAttempts) {
+      if (entry.lockedUntil <= now) loginAttempts.delete(key);
+      if (loginAttempts.size <= MAX_TRACKED_IDENTIFIERS) break;
+    }
+  }
 }
 
 export function recordSuccessfulLogin(identifier: string = "global") {

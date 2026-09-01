@@ -18,66 +18,6 @@ export type WaxProduct =
   | "lycon-with-rica"
   | "lycon-with-butiza";
 
-export interface WaxProductDef {
-  id: WaxProduct;
-  label: string;
-  short: string;
-  origin: string;
-  description: string;
-}
-
-export const WAX_PRODUCTS: WaxProductDef[] = [
-  {
-    id: "lycon-superberry",
-    label: "Lycon Superberry",
-    short: "Superberry",
-    origin: "Australia",
-    description: "Premium soothing wax for facial and delicate areas.",
-  },
-  {
-    id: "lycon-pinkini",
-    label: "Lycon Pinkini",
-    short: "Pinkini",
-    origin: "Australia",
-    description: "Specialised gentle hybrid hot wax formulated for intimate waxing.",
-  },
-  {
-    id: "lycon-aloe-vera",
-    label: "Lycon Aloe Vera",
-    short: "Aloe Vera",
-    origin: "Australia",
-    description: "Ultra calming wax for sensitive underarm and bikini skin.",
-  },
-  {
-    id: "rica-white-choc",
-    label: "Rica White Chocolate",
-    short: "Rica",
-    origin: "Italy",
-    description: "Liposoluble gentle strip wax for smooth arm, leg, and body waxing.",
-  },
-  {
-    id: "biahu-gold",
-    label: "Brazil Gold",
-    short: "Brazil Gold",
-    origin: "Professional",
-    description: "Everyday gold wax for thorough, smooth body waxing.",
-  },
-  {
-    id: "lycon-with-rica",
-    label: "Lycon with Rica",
-    short: "Lycon + Rica",
-    origin: "Premium Combo",
-    description: "Lycon for intimate & delicate zones + Rica for body & limbs.",
-  },
-  {
-    id: "lycon-with-butiza",
-    label: "Lycon with Butiza",
-    short: "Lycon + Butiza",
-    origin: "Essential Combo",
-    description: "Lycon for delicate zones + standard wax for body & limbs.",
-  },
-];
-
 /** Individual wax areas with verified per-product pricing (LKR). */
 export const WAX_PRICE_ROWS: WaxPriceRow[] = [
   {
@@ -210,12 +150,3 @@ export const WAX_PACKAGES: WaxPackage[] = [
     duration: "100 min",
   },
 ];
-
-export function productsForRow(row: WaxPriceRow): WaxProduct[] {
-  return WAX_PRODUCTS.filter((p) => row.prices[p.id] != null).map((p) => p.id);
-}
-
-export function minPriceForRow(row: WaxPriceRow): number {
-  const prices = Object.values(row.prices).filter((p): p is number => p != null);
-  return prices.length > 0 ? Math.min(...prices) : 0;
-}

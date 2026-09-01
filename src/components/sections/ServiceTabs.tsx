@@ -1,5 +1,7 @@
 "use client";
 
+import { EASE_APPLE } from "@/lib/animations";
+
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -105,7 +107,7 @@ export function ServiceTabs({
           variants={staggerFast}
           initial="hidden"
           animate="visible"
-          exit={{ opacity: 0, transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] } }}
+          exit={{ opacity: 0, transition: { duration: 0.22, ease: EASE_APPLE } }}
           className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2"
         >
           {activeServices.map((service) => (

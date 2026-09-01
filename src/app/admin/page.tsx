@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ShieldCheck } from "lucide-react";
 import { getAndClearAdminFlash, hasLegacyAdminSession, isAdminPasswordConfigured } from "@/lib/admin-auth";
 import { getAdminIdentity, isSupabaseAuthConfigured } from "@/lib/admin-access";
@@ -11,6 +12,10 @@ import { TestimonialsSection } from "@/components/admin/testimonials-section";
 import { AdminEnvVar, AdminStatusMessage } from "@/components/admin/primitives";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 const TABS = [
   { slug: "overview", label: "Overview" },

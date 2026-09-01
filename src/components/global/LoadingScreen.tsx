@@ -1,5 +1,7 @@
 "use client";
 
+import { EASE_APPLE } from "@/lib/animations";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -57,7 +59,7 @@ export function LoadingScreen() {
           key="witc-loader"
           className="fixed inset-0 z-[100] flex items-center justify-center bg-brand"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.32, ease: [0.16, 1, 0.3, 1] } }}
+          exit={{ opacity: 0, transition: { duration: 0.32, ease: EASE_APPLE } }}
         >
           <motion.div
             initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.97 }}
@@ -67,7 +69,7 @@ export function LoadingScreen() {
             }}
             transition={
               reduce
-                ? { duration: 0.2, ease: [0.16, 1, 0.3, 1] }
+                ? { duration: 0.2, ease: EASE_APPLE }
                 : { type: "spring", stiffness: 320, damping: 28, mass: 0.9 }
             }
             className="relative h-28 w-28 sm:h-32 sm:w-32 will-change-transform"

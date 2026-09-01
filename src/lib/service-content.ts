@@ -24,7 +24,6 @@ type ServiceRow = {
 export interface ServiceContent {
   categories: ServiceCategoryMeta[];
   services: Service[];
-  source: "supabase" | "fallback";
 }
 
 export interface AdminService extends Service {
@@ -81,7 +80,6 @@ export async function getPublicServiceContent(): Promise<ServiceContent> {
   const fallback = {
     categories: SERVICE_CATEGORIES,
     services: SERVICES,
-    source: "fallback" as const,
   };
 
   const supabase = await createClient();
@@ -105,7 +103,6 @@ export async function getPublicServiceContent(): Promise<ServiceContent> {
   return {
     categories: categoriesFromServices(services),
     services,
-    source: "supabase",
   };
 }
 

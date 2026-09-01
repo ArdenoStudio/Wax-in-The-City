@@ -7,8 +7,6 @@ const nextConfig: NextConfig = {
   turbopack: { root: (import.meta as unknown as { dirname: string }).dirname ?? process.cwd() },
   // React <ViewTransition> is available in Next 16.3+ without experimental flag
   // (was `experimental.viewTransition` in 16.2). Remove invalid key to avoid config warning.
-  // Keep experimental.optimizePackageImports to trim Worker bundle for Cloudflare 3 MiB free limit
-  // (handler was 9584 KiB + resvg.wasm 1346 KiB -> gzip 3121 KiB >3 MiB). This is safe, only improves tree-shaking.
   experimental: {
     optimizePackageImports: [
       "motion",
@@ -24,14 +22,6 @@ const nextConfig: NextConfig = {
       "react-hook-form",
       "@hookform/resolvers",
     ],
-  },
-  // Exclude @vercel/og wasm (1346 KiB resvg.wasm + 70 KiB yoga.wasm) - not used (no ImageResponse in src)
-  // This saves ~1.4 MiB raw / ~300 KiB gzipped and is safe when not using next/og.
-  serverExternalPackages: ["@vercel/og"],
-  // Further exclude the compiled wasm from file tracing (OpenNext copies traced files into handler)
-  // Without this, resvg.wasm is still bundled into handler.mjs (9584 KiB) and pushes gzip over 3 MiB free limit
-  outputFileTracingExcludes: {
-    "*": ["./node_modules/next/dist/compiled/@vercel/og/**"],
   },
   images: {
     formats: ["image/avif", "image/webp"],

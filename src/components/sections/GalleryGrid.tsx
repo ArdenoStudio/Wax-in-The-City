@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { GALLERY, type GalleryCategory } from "@/lib/gallery";
 import { BLUR_DATA_URL } from "@/lib/images";
+import { EASE_APPLE } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
 const FILTERS: { key: GalleryCategory | "all"; label: string }[] = [
@@ -139,10 +140,13 @@ export function GalleryGrid() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.28, ease: EASE_APPLE }}
             onClick={close}
             className="fixed inset-0 z-[90] flex items-center justify-center bg-warm/90 p-4 backdrop-blur-sm"
           >
+            <span className="sr-only" aria-live="polite">
+              {`Image ${active + 1} of ${photos.length}: ${photos[active].alt}`}
+            </span>
             <button
               ref={closeRef}
               type="button"
@@ -170,7 +174,7 @@ export function GalleryGrid() {
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.28, ease: EASE_APPLE }}
               onClick={(e) => e.stopPropagation()}
               className="relative h-[80dvh] max-h-[80dvh] w-full max-w-4xl will-change-transform"
             >

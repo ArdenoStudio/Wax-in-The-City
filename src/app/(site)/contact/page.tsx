@@ -119,7 +119,7 @@ export default function ContactPage() {
                       <Clock className="h-4 w-4 text-brand-action" />
                       <span className="tabular-nums">Mon–Sun · {b.hours.weekday}</span>
                     </p>
-                    <p className="flex items-center gap-1.5 pl-6 text-caption text-warm-grey/75 text-pretty">
+                    <p className="flex items-center gap-1.5 pl-6 text-caption text-warm-grey text-pretty">
                       <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-warm-grey/40" />
                       {b.hours.poya}
                     </p>

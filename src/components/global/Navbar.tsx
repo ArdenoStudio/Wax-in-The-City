@@ -1,11 +1,13 @@
 "use client";
 
+import { EASE_APPLE } from "@/lib/animations";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
-import { CalendarDays, Menu } from "lucide-react";
+import { CalendarDays, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
@@ -29,7 +31,7 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1], delay: 0.04 }}
+      transition={{ duration: 0.52, ease: EASE_APPLE, delay: 0.04 }}
       className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6 will-change-transform"
       style={{ viewTransitionName: "site-header" }}
       aria-label="Main navigation"
@@ -144,7 +146,7 @@ export function Navbar() {
                     : "border-warm-border/70 bg-white/70 text-warm backdrop-blur-xl hover:bg-brand-mist focus-visible:ring-brand-action/40 focus-visible:ring-offset-cream"
                 )}
               >
-                <Menu className="h-6 w-6" />
+                {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
             </SheetTrigger>
             <SheetContent title="Menu">

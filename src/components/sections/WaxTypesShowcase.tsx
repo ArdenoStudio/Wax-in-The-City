@@ -1,5 +1,7 @@
 "use client";
 
+import { EASE_APPLE } from "@/lib/animations";
+
 import Image from "next/image";
 import { motion } from "motion/react";
 import { Sparkles, ShieldCheck, CheckCircle2, HeartHandshake } from "lucide-react";
@@ -71,7 +73,7 @@ export function WaxTypesShowcase() {
             transition={{
               duration: 0.5,
               delay: idx * 0.12,
-              ease: [0.16, 1, 0.3, 1],
+              ease: EASE_APPLE,
             }}
             className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border ${borderAccent} bg-white/70 p-6 shadow-card backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover`}
           >
@@ -89,7 +91,7 @@ export function WaxTypesShowcase() {
                   <span>{data.flag}</span>
                   <span>{data.origin}</span>
                 </span>
-                <span className="text-caption font-medium text-warm-grey/80">
+                <span className="text-caption font-medium text-warm-grey">
                   {data.type}
                 </span>
               </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BookingZone } from "@/components/sections/BookingZone";
-import { BRANCHES, SERVICES, SERVICE_CATEGORIES, type BranchSlug } from "@/lib/site";
+import { SERVICES, SERVICE_CATEGORIES, isBranchSlug } from "@/lib/site";
 import { getPublicServiceContent } from "@/lib/service-content";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -10,10 +10,6 @@ export const metadata: Metadata = buildPageMetadata({
     "Book your visit to Wax In The City — send a request and we'll confirm within 24 hours, or reach us instantly on WhatsApp.",
   path: "/book",
 });
-
-function isBranchSlug(value?: string): value is BranchSlug {
-  return Boolean(value) && BRANCHES.some((b) => b.slug === value);
-}
 
 function resolveServicePreference(
   value: string | undefined,

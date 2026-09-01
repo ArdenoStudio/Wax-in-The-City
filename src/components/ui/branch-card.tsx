@@ -47,7 +47,7 @@ export function BranchCard({ branch }: BranchCardProps) {
             {branch.phone}
           </a>
         </p>
-        <p className="flex items-center gap-1.5 text-caption text-warm-grey/75 text-pretty">
+        <p className="flex items-center gap-1.5 text-caption text-warm-grey text-pretty">
           <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-warm-grey/40" />
           {branch.hours.poya}
         </p>

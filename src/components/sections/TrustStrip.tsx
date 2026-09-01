@@ -1,5 +1,7 @@
 "use client";
 
+import { EASE_APPLE } from "@/lib/animations";
+
 import { motion } from "motion/react";
 import { ShieldCheck, Heart, BadgeCheck, Clock3, type LucideIcon } from "lucide-react";
 import { TRUST_PILLARS } from "@/lib/site";
@@ -52,7 +54,7 @@ export function TrustStrip() {
                     initial={{ rotate: -8 }}
                     whileInView={{ rotate: 0 }}
                     viewport={viewportOnce}
-                    transition={{ duration: 0.44, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.44, ease: EASE_APPLE }}
                     className="flex h-[60px] w-[60px] items-center justify-center rounded-2xl border border-cream/12 bg-gradient-to-br from-cream/[0.14] to-cream/[0.06] text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_10px_24px_rgba(21,16,17,0.18)] backdrop-blur-sm transition-transform duration-500 group-hover:scale-[1.03] will-change-transform"
                   >
                     <Icon className="h-[26px] w-[26px]" strokeWidth={1.75} />

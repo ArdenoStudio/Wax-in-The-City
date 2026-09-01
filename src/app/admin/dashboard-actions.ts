@@ -65,7 +65,9 @@ export async function updateBookingStatus(formData: FormData) {
       .update({ status: parsed.data.status })
       .eq("id", parsed.data.id);
     outcome = error ? fail("Could not update the booking status.") : ok;
-  } catch {
+    if (error) console.error("[admin] booking status update:", error);
+  } catch (error) {
+    console.error("[admin] booking status update failed:", error);
     outcome = fail("Could not reach Supabase to update the booking.");
   }
 
@@ -109,7 +111,9 @@ export async function addGalleryImage(formData: FormData) {
       active: true,
     });
     outcome = error ? fail("Could not add the image. Check the Supabase schema first.") : ok;
-  } catch {
+    if (error) console.error("[admin] gallery add:", error);
+  } catch (error) {
+    console.error("[admin] gallery add failed:", error);
     outcome = fail("Could not reach Supabase to add the image.");
   }
 
@@ -159,12 +163,14 @@ export async function uploadGalleryImage(formData: FormData) {
       .upload(path, bytes, { contentType: file.type, upsert: false });
 
     if (error) {
+      console.error("[admin] gallery upload:", error);
       outcome = fail("Upload failed. Confirm the gallery storage bucket exists and is public.");
     } else {
       publicUrl = supabase.storage.from("gallery").getPublicUrl(path).data.publicUrl;
       outcome = ok;
     }
-  } catch {
+  } catch (error) {
+    console.error("[admin] gallery upload failed:", error);
     outcome = fail("Could not reach Supabase storage for the upload.");
   }
 
@@ -185,7 +191,9 @@ export async function uploadGalleryImage(formData: FormData) {
       active: true,
     });
     insertOutcome = error ? fail("Uploaded the file but could not save the gallery row.") : ok;
-  } catch {
+    if (error) console.error("[admin] gallery row save:", error);
+  } catch (error) {
+    console.error("[admin] gallery row save failed:", error);
     insertOutcome = fail("Could not reach Supabase to save the gallery row.");
   }
 
@@ -231,7 +239,9 @@ export async function updateGalleryRow(formData: FormData) {
       })
       .eq("id", parsed.data.id);
     outcome = error ? fail("Could not update the gallery image.") : ok;
-  } catch {
+    if (error) console.error("[admin] gallery update:", error);
+  } catch (error) {
+    console.error("[admin] gallery update failed:", error);
     outcome = fail("Could not reach Supabase to update the image.");
   }
 
@@ -252,7 +262,9 @@ export async function deleteGalleryImage(formData: FormData) {
     const supabase = supabaseOrThrow();
     const { error } = await supabase.from("gallery").delete().eq("id", id.data);
     outcome = error ? fail("Could not delete the gallery image.") : ok;
-  } catch {
+    if (error) console.error("[admin] gallery delete:", error);
+  } catch (error) {
+    console.error("[admin] gallery delete failed:", error);
     outcome = fail("Could not reach Supabase to delete the image.");
   }
 
@@ -280,7 +292,9 @@ export async function seedGalleryFromStatic() {
     outcome = error
       ? fail("Could not seed the gallery. Check the Supabase schema first.")
       : ok;
-  } catch {
+    if (error) console.error("[admin] gallery seed:", error);
+  } catch (error) {
+    console.error("[admin] gallery seed failed:", error);
     outcome = fail("Could not reach Supabase to seed the gallery.");
   }
 
@@ -323,7 +337,9 @@ export async function addTestimonial(formData: FormData) {
       featured: parsed.data.featured,
     });
     outcome = error ? fail("Could not add the testimonial.") : ok;
-  } catch {
+    if (error) console.error("[admin] testimonial add:", error);
+  } catch (error) {
+    console.error("[admin] testimonial add failed:", error);
     outcome = fail("Could not reach Supabase to add the testimonial.");
   }
 
@@ -348,7 +364,9 @@ export async function toggleTestimonialFeatured(formData: FormData) {
       .update({ featured })
       .eq("id", id.data);
     outcome = error ? fail("Could not update the testimonial.") : ok;
-  } catch {
+    if (error) console.error("[admin] testimonial update:", error);
+  } catch (error) {
+    console.error("[admin] testimonial update failed:", error);
     outcome = fail("Could not reach Supabase to update the testimonial.");
   }
 
@@ -374,7 +392,9 @@ export async function deleteTestimonial(formData: FormData) {
     const supabase = supabaseOrThrow();
     const { error } = await supabase.from("testimonials").delete().eq("id", id.data);
     outcome = error ? fail("Could not delete the testimonial.") : ok;
-  } catch {
+    if (error) console.error("[admin] testimonial delete:", error);
+  } catch (error) {
+    console.error("[admin] testimonial delete failed:", error);
     outcome = fail("Could not reach Supabase to delete the testimonial.");
   }
 

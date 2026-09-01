@@ -18,11 +18,6 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/locations",
 });
 
-const BRANCH_IMAGES = {
-  battaramulla: IMAGES.branches.battaramulla,
-  nugegoda: IMAGES.branches.nugegoda,
-} as const;
-
 export default function LocationsPage() {
   return (
     <>
@@ -58,7 +53,7 @@ export default function LocationsPage() {
 
           <div className="grid gap-5 md:grid-cols-2">
             {BRANCHES.map((branch, i) => {
-              const image = BRANCH_IMAGES[branch.slug];
+              const image = IMAGES.branches[branch.slug];
               const isRemote = image.startsWith("http");
               return (
               <AnimatedSection key={branch.slug} variant="fadeUp" delay={i * 0.08}>
@@ -100,7 +95,7 @@ export default function LocationsPage() {
                         <Clock className="h-4 w-4 shrink-0 text-brand-action" />
                         <span className="tabular-nums">Mon–Sun · {branch.hours.weekday}</span>
                       </p>
-                      <p className="flex items-center gap-1.5 pl-6 text-caption text-warm-grey/75 text-pretty">
+                      <p className="flex items-center gap-1.5 pl-6 text-caption text-warm-grey text-pretty">
                         <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-warm-grey/40" />
                         {branch.hours.poya}
                       </p>

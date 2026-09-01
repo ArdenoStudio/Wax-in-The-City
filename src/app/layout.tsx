@@ -9,7 +9,6 @@ import { SkipLink } from "@/components/global/SkipLink";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-display",
   preload: true,
@@ -17,7 +16,6 @@ const fraunces = Fraunces({
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-body",
   preload: true,
@@ -33,14 +31,6 @@ export const metadata: Metadata = {
     template: `%s · ${SITE.name}`,
   },
   description: SITE.description,
-  keywords: [
-    "waxing Colombo",
-    "ladies salon Colombo",
-    "Brazilian wax Colombo",
-    "hydra facial Sri Lanka",
-    "Battaramulla salon",
-    "Nugegoda salon",
-  ],
   manifest: "/site.webmanifest",
   openGraph: {
     type: "website",

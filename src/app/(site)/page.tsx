@@ -12,6 +12,7 @@ import { AboutTeaser } from "@/components/sections/AboutTeaser";
 import { BeforeAfterShowcase } from "@/components/sections/BeforeAfterShowcase";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
+import { FaqJsonLd } from "@/components/global/FaqJsonLd";
 import { StatsCounter } from "@/components/sections/StatsCounter";
 import { getPublicServiceContent } from "@/lib/service-content";
 import { buildPageMetadata } from "@/lib/seo";
@@ -33,6 +34,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <FaqJsonLd />
       <HeroSection />
       <ServicesGrid categories={serviceContent.categories} />
       <TrustStrip />

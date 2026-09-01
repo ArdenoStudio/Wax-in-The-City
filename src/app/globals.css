@@ -375,19 +375,6 @@ p,
 .animate-accordion-down { animation: accordion-down 0.3s ease-out; }
 .animate-accordion-up { animation: accordion-up 0.3s ease-out; }
 
-/* Shimmer sweep for the primary CTA */
-@keyframes witc-shimmer {
-  0%   { transform: translateX(-100%); }
-  60%  { transform: translateX(100%); }
-  100% { transform: translateX(100%); }
-}
-
-@keyframes witc-sheen {
-  0%   { transform: translateX(-140%) skewX(-12deg); opacity: 0; }
-  35%  { opacity: 0.7; }
-  100% { transform: translateX(140%) skewX(-12deg); opacity: 0; }
-}
-
 @keyframes witc-float {
   0%, 100% { transform: translate3d(0, 0, 0); }
   50%      { transform: translate3d(0, -4px, 0); }
@@ -469,6 +456,18 @@ p,
 .bg-brand-footer :where(a, button):focus-visible,
 .bg-ink :where(a, button):focus-visible {
   outline-color: color-mix(in srgb, var(--color-cream) 55%, transparent);
+}
+
+/* Forced-colors (Windows High Contrast) fallback — gradient-clipped text
+   loses its background image, which would render transparent headings invisible. */
+@media (forced-colors: active) {
+  h1.bg-clip-text {
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    background-image: none;
+    -webkit-text-fill-color: CanvasText;
+    color: CanvasText;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

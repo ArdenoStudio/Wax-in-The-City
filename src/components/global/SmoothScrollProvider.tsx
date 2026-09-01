@@ -1,5 +1,7 @@
 "use client";
 
+import { EASE_APPLE } from "@/lib/animations";
+
 import "lenis/dist/lenis.css";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
@@ -68,7 +70,7 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   return (
     <MotionConfig
       reducedMotion="user"
-      transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.52, ease: EASE_APPLE }}
     >
       {children}
     </MotionConfig>

@@ -4,16 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "node node_modules/next/dist/bin/next dev --webpack",
-    "build": "node scripts/build.mjs",
+    "build": "node node_modules/next/dist/bin/next build",
     "build:next": "node node_modules/next/dist/bin/next build",
-    "build:cf": "node node_modules/@opennextjs/cloudflare/dist/cli/index.js build",
-    "build:worker": "node node_modules/@opennextjs/cloudflare/dist/cli/index.js build",
-    "preview": "node node_modules/@opennextjs/cloudflare/dist/cli/index.js preview",
-    "deploy": "node node_modules/@opennextjs/cloudflare/dist/cli/index.js deploy",
-    "deploy:cf": "node node_modules/@opennextjs/cloudflare/dist/cli/index.js deploy",
-    "cf:build": "node node_modules/@opennextjs/cloudflare/dist/cli/index.js build",
-    "cf:preview": "node node_modules/@opennextjs/cloudflare/dist/cli/index.js preview",
-    "cf:deploy": "node node_modules/@opennextjs/cloudflare/dist/cli/index.js deploy",
     "start": "node node_modules/next/dist/bin/next start",
     "lint": "node node_modules/eslint/bin/eslint.js \"src/**/*.{ts,tsx}\"",
     "test": "node scripts/e2e-audit.mjs",
@@ -45,7 +37,6 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.20.4",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -53,7 +44,6 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.3",
     "tailwindcss": "^4",
-    "typescript": "^5",
-    "wrangler": "^4.127.0"
+    "typescript": "^5"
   }
 }
