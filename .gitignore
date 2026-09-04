@@ -42,12 +42,12 @@ yarn-error.log*
 
 # cloudflare / opennext
 .open-next/
+.wrangler/
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
-.next-start.*.log
 
 # Local agent orchestration scratch.agents/
 .agents/

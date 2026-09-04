@@ -119,7 +119,12 @@ Privacy rule for ladies-only positioning: procedural imagery crops to hands/tool
 
 ## Deployment
 
-Production deploys to **Vercel** from `main` (project `wax-in-the-city-website`, configured in `vercel.json`). The latest production build compiles cleanly with Next.js 16: all routes are static or SSG with 1h ISR revalidation except `/admin`, `/book`, and server actions. A GitHub Actions CI workflow runs lint, typecheck, the static audit, and the build on every push/PR.
+Production deploys to **Cloudflare Workers** via OpenNext (`@opennextjs/cloudflare`, configured in `wrangler.jsonc` and `open-next.config.ts`).
+
+- **Build**: `npm run build:cf` produces `.open-next/worker.js` and `.open-next/assets`.
+- **Preview**: `npm run preview` runs local Wrangler preview on workerd.
+- **Deploy**: `npm run deploy:cf` deploys directly to Cloudflare Workers via Wrangler CLI.
+- **CI/CD**: `.github/workflows/deploy.yml` automatically builds and deploys to Cloudflare on push to `main` when `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets are configured.
 
 ## Impeccable Context
 
@@ -158,12 +163,12 @@ Before handing this off as a finished client site, confirm:
 
 - [x] Real salon/service photography integrated across the site (`src/lib/images.ts`)
 - [x] Final service menu and pricing confirmed against `src/lib/site.ts` / `src/lib/pricing.ts`
-- [x] Production build passes cleanly on Vercel
-- [x] `NEXT_PUBLIC_SITE_URL` set to the production domain (falls back to the vercel.app URL)
+- [x] Production build passes cleanly on Cloudflare (`npm run build:cf`)
+- [x] `NEXT_PUBLIC_SITE_URL` set to the production domain (falls back to the workers.dev URL)
 - [ ] Nugegoda address confirmed and `googleMapsUrl` in `src/lib/site.ts` updated to a precise place link (not a generic search URL)
 - [ ] Battaramulla `googleMapsUrl` also switched to a precise place link
 - [ ] Real, client-approved testimonials before enabling any review carousel
-- [ ] Production Supabase project provisioned, `supabase/schema.sql` run, and env vars set in Vercel — otherwise booking stays WhatsApp-only by design
+- [ ] Production Supabase project provisioned, `supabase/schema.sql` run, and env vars set in Cloudflare — otherwise booking stays WhatsApp-only by design
 - [ ] `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` set to strong, unique production values
 - [ ] Dinaya booking widget wired in and `BookingZone` mode switched over, once available
 

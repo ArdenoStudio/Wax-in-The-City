@@ -11,7 +11,7 @@ export const SITE = {
   tagline: "Private waxing, quietly perfected.",
   description:
     "Ladies only waxing and skin care in Colombo — known for careful hygiene, premium products, and private appointment led care.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://wax-in-the-city-website.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://wax-in-the-city.suvenseoras.workers.dev",
   locale: "en_LK",
   instagram: "https://instagram.com/waxinthecitylk",
   facebook: "https://facebook.com/waxinthecitylk",
