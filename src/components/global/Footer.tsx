@@ -4,6 +4,7 @@ import { InstagramIcon, FacebookIcon, WhatsappIcon } from "@/components/icons";
 import { SITE, NAV_LINKS, BRANCHES, whatsappLink } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
 import { WhatsAppBranchPicker } from "@/components/sections/WhatsAppBranchPicker";
+import { ArdenoProductionCredit } from "./ArdenoProductionCredit";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -20,7 +21,7 @@ export function Footer() {
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 pb-28 pt-16 md:py-16 lg:px-8 lg:py-20">
+      <div className="relative mx-auto max-w-7xl px-5 pb-32 pt-16 md:pb-16 md:pt-16 lg:px-8 lg:pb-20 lg:pt-20">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1.4fr]">
           {/* Brand */}
           <div>
@@ -127,13 +128,17 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-cream/10 pt-6 text-caption text-cream/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-cream/10 pt-6 text-caption text-cream/60 sm:flex-row">
           <p className="text-pretty">© {year} {SITE.name}. All rights reserved.</p>
-          <p className="text-pretty">
-            Crafted by{" "}
-            <span className="text-cream/60">Ardeno Studio</span>
-          </p>
+          <div className="flex gap-4 text-cream/50">
+            <span>Colombo</span>
+            <span>·</span>
+            <span>Battaramulla</span>
+          </div>
         </div>
+
+        {/* Production Credit */}
+        <ArdenoProductionCredit color="#fff7f9" />
       </div>
     </footer>
   );
