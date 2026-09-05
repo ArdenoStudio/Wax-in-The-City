@@ -1,7 +1,7 @@
 import { WhatsappIcon } from "@/components/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { BookingForm } from "@/components/sections/BookingForm";
-import { WhatsAppBranchPicker } from "@/components/sections/WhatsAppBranchPicker";
+import { WhatsAppBranchPicker, StudioWhatsAppChoices } from "@/components/sections/WhatsAppBranchPicker";
 import { getBranch, type BranchSlug } from "@/lib/site";
 import { isSupabaseConfigured } from "@/lib/supabase/client";
 
@@ -170,9 +170,7 @@ function WhatsappOnly({
   defaultBranch?: BranchSlug;
   defaultService?: string;
 }) {
-  const studioNote = defaultBranch
-    ? `We'll open WhatsApp for ${getBranch(defaultBranch).name}.`
-    : "You'll pick Battaramulla or Nugegoda next so the right studio can confirm.";
+  const chosenStudio = defaultBranch ? getBranch(defaultBranch) : undefined;
 
   return (
     <div
@@ -195,23 +193,43 @@ function WhatsappOnly({
         The quickest way to book is a WhatsApp message. We&apos;ll confirm a
         time that works for you.
       </p>
-      <p
-        className={
-          standalone
-            ? "mt-3 max-w-sm text-caption leading-relaxed text-cream/55 text-pretty"
-            : "mt-3 max-w-sm text-caption leading-relaxed text-warm-grey text-pretty"
-        }
-      >
-        {studioNote}
-      </p>
-      <WhatsAppBranchPicker
-        defaultBranch={defaultBranch}
-        service={defaultService}
-        className="mt-6 inline-flex h-12 items-center gap-2 rounded-pill bg-brand-action px-6 font-medium text-cream transition-colors hover:bg-brand-dark"
-      >
-        <WhatsappIcon className="h-4 w-4" />
-        Chat on WhatsApp
-      </WhatsAppBranchPicker>
+      {chosenStudio ? (
+        <>
+          <p
+            className={
+              standalone
+                ? "mt-3 max-w-sm text-caption leading-relaxed text-cream/55 text-pretty"
+                : "mt-3 max-w-sm text-caption leading-relaxed text-warm-grey text-pretty"
+            }
+          >
+            We&apos;ll open WhatsApp for {chosenStudio.name}.
+          </p>
+          <WhatsAppBranchPicker
+            defaultBranch={chosenStudio.slug}
+            service={defaultService}
+            className="mt-6 inline-flex h-12 items-center gap-2 rounded-pill bg-brand-action px-6 font-medium text-cream transition-colors hover:bg-brand-dark"
+          >
+            <WhatsappIcon className="h-4 w-4" />
+            Chat on WhatsApp
+          </WhatsAppBranchPicker>
+        </>
+      ) : (
+        <>
+          <p
+            className={
+              standalone
+                ? "mt-3 max-w-sm text-caption leading-relaxed text-cream/55 text-pretty"
+                : "mt-3 max-w-sm text-caption leading-relaxed text-warm-grey text-pretty"
+            }
+          >
+            Choose Battaramulla or Nugegoda so the right studio can confirm.
+          </p>
+          <StudioWhatsAppChoices
+            service={defaultService}
+            className="mt-6 grid w-full gap-3 sm:grid-cols-2"
+          />
+        </>
+      )}
     </div>
   );
 }

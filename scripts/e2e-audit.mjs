@@ -290,7 +290,7 @@ const siteLibContent = fs.existsSync(siteLibPath) ? fs.readFileSync(siteLibPath,
 const pickerPassed =
   pickerContent.includes('BRANCHES') &&
   pickerContent.includes('branch.whatsapp') &&
-  bookingZoneContent.includes('WhatsAppBranchPicker') &&
+  bookingZoneContent.includes('StudioWhatsAppChoices') &&
   siteLibContent.includes('slug: "nugegoda"') &&
   siteLibContent.includes('bookingWhatsAppMessage');
 recordTest(

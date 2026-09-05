@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, type ButtonHTMLAttributes, type ReactNode } from "react";
-import { Clock, MapPin } from "lucide-react";
+import { useId, type ButtonHTMLAttributes, type ReactNode } from "react";
+import { Clock, MapPin, X } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import {
   BRANCHES,
@@ -11,13 +11,6 @@ import {
   type Branch,
   type BranchSlug,
 } from "@/lib/site";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 interface WhatsAppBranchPickerProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
   defaultBranch?: BranchSlug;
@@ -32,14 +25,14 @@ function branchHref(branch: Branch, service?: string): string {
   );
 }
 
-function BranchWhatsAppOption({
+export function BranchWhatsAppOption({
   branch,
   service,
   onNavigate,
 }: {
   branch: Branch;
   service?: string;
-  onNavigate: () => void;
+  onNavigate?: () => void;
 }) {
   return (
     <a
@@ -47,7 +40,7 @@ function BranchWhatsAppOption({
       target="_blank"
       rel="noopener noreferrer"
       onClick={onNavigate}
-      className="pressable group flex flex-col rounded-card border border-warm-border/80 bg-white/74 p-4 text-left shadow-[0_10px_24px_rgba(39,19,21,0.05)] transition-[border-color,background-color,box-shadow,transform] duration-500 ease-[var(--ease-apple)] hover:-translate-y-0.5 hover:border-brand-action/35 hover:bg-white hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40"
+      className="pressable group flex flex-col rounded-card border border-warm-border/80 bg-white/90 p-4 text-left shadow-[0_10px_24px_rgba(39,19,21,0.05)] transition-[border-color,background-color,box-shadow,transform] duration-500 ease-[var(--ease-apple)] hover:-translate-y-0.5 hover:border-brand-action/35 hover:bg-white hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40"
     >
       <span className="flex items-start justify-between gap-3">
         <span>
@@ -70,9 +63,35 @@ function BranchWhatsAppOption({
   );
 }
 
+export function StudioWhatsAppChoices({
+  service,
+  onNavigate,
+  className,
+}: {
+  service?: string;
+  onNavigate?: () => void;
+  className?: string;
+}) {
+  return (
+    <div className={className ?? "grid gap-3 sm:grid-cols-2"}>
+      {BRANCHES.map((branch) => (
+        <BranchWhatsAppOption
+          key={branch.slug}
+          branch={branch}
+          service={service}
+          onNavigate={onNavigate}
+        />
+      ))}
+    </div>
+  );
+}
+
 /**
- * WhatsApp booking CTA that asks for Battaramulla or Nugegoda when the
+ * Compact WhatsApp CTA that asks for Battaramulla or Nugegoda when the
  * studio is not already known, then opens that branch's number.
+ *
+ * Uses the native Popover API so the studio choice still appears even when
+ * client JavaScript is blocked.
  */
 export function WhatsAppBranchPicker({
   defaultBranch,
@@ -81,7 +100,8 @@ export function WhatsAppBranchPicker({
   children,
   ...triggerProps
 }: WhatsAppBranchPickerProps) {
-  const [open, setOpen] = useState(false);
+  const reactId = useId();
+  const popoverId = `studio-picker-${reactId.replace(/:/g, "")}`;
   const knownBranch = defaultBranch ? getBranch(defaultBranch) : undefined;
   const ariaLabel = triggerProps["aria-label"];
 
@@ -100,36 +120,42 @@ export function WhatsAppBranchPicker({
   }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <button
-          type="button"
-          aria-haspopup="dialog"
-          aria-expanded={open}
-          className={className}
-          {...triggerProps}
-        >
-          {children}
-        </button>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogTitle className="pr-12 font-serif text-h2 text-warm text-balance">
-          Which studio?
-        </DialogTitle>
-        <DialogDescription className="mt-2 text-body-sm text-warm-grey text-pretty">
-          Pick Battaramulla or Nugegoda and we will open WhatsApp for that branch.
-        </DialogDescription>
-        <div className="mt-6 grid gap-3">
-          {BRANCHES.map((branch) => (
-            <BranchWhatsAppOption
-              key={branch.slug}
-              branch={branch}
-              service={service}
-              onNavigate={() => setOpen(false)}
-            />
-          ))}
+    <>
+      <button
+        type="button"
+        {...triggerProps}
+        popoverTarget={popoverId}
+        aria-haspopup="dialog"
+        className={className}
+      >
+        {children}
+      </button>
+      <div
+        id={popoverId}
+        popover="auto"
+        role="dialog"
+        aria-label="Which studio?"
+        className="w-[min(calc(100vw-2rem),28rem)] rounded-card-lg border border-warm-border/80 bg-cream p-6 text-warm shadow-card-hover [&::backdrop]:bg-warm/44 [&::backdrop]:backdrop-blur-md"
+      >
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="font-serif text-h2 text-warm text-balance">Which studio?</p>
+            <p className="mt-2 text-body-sm text-warm-grey text-pretty">
+              Pick Battaramulla or Nugegoda and we will open WhatsApp for that branch.
+            </p>
+          </div>
+          <button
+            type="button"
+            popoverTarget={popoverId}
+            popoverTargetAction="hide"
+            aria-label="Close"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-pill text-warm-grey transition-colors hover:bg-brand-mist hover:text-brand-action focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40"
+          >
+            <X className="h-5 w-5" />
+          </button>
         </div>
-      </DialogContent>
-    </Dialog>
+        <StudioWhatsAppChoices service={service} className="mt-6 grid gap-3" />
+      </div>
+    </>
   );
 }

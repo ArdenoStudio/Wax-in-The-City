@@ -98,7 +98,7 @@ describe('Tier 3: Cross-Feature Integration Test Suite', () => {
 
     assert.ok(picker.includes('BRANCHES'), 'Picker must render from BRANCHES so Nugegoda stays in the list');
     assert.ok(picker.includes('branch.whatsapp'), 'Picker must open the selected studio WhatsApp number');
-    assert.ok(zone.includes('WhatsAppBranchPicker'), 'BookingZone must use the studio picker for WhatsApp booking');
+    assert.ok(zone.includes('StudioWhatsAppChoices'), 'BookingZone must show Battaramulla and Nugegoda as booking choices');
     assert.ok(site.includes('slug: "nugegoda"'), 'Site data must still include the Nugegoda branch');
     assert.ok(site.includes('bookingWhatsAppMessage'), 'Prefill helper must mention the chosen studio');
   });
