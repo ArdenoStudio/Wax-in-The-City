@@ -9,7 +9,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { Check, Loader2 } from "lucide-react";
 import { contactSchema } from "@/lib/booking";
 import { submitContact } from "@/app/actions/booking";
-import { BRANCHES, whatsappLink } from "@/lib/site";
+import { BRANCHES } from "@/lib/site";
+import { WhatsAppBranchPicker } from "@/components/sections/WhatsAppBranchPicker";
 import { fieldAriaProps, fieldErrorId } from "@/lib/form-a11y";
 import { WhatsappIcon } from "@/components/icons";
 import { Input } from "@/components/ui/input";
@@ -214,15 +215,12 @@ export function ContactForm() {
 
             <p className="text-center text-body-sm text-warm-grey text-pretty">
               Prefer WhatsApp?{" "}
-              <a
-                href={whatsappLink("Hi! I have a question.")}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppBranchPicker
                 className="inline-flex min-h-10 items-center gap-1 font-medium text-brand-action underline-offset-4 hover:underline"
               >
                 <WhatsappIcon className="h-4 w-4" />
                 Message us
-              </a>
+              </WhatsAppBranchPicker>
             </p>
           </motion.form>
         )}

@@ -83,4 +83,23 @@ describe('Tier 3: Cross-Feature Integration Test Suite', () => {
     assert.ok(!mobileContent.includes('#a5273f'), 'MobileBookingBar must not use off-palette #a5273f');
     assert.ok(!mobileContent.includes('#6f1726'), 'MobileBookingBar must not use off-palette #6f1726');
   });
+
+  it('C6: Booking WhatsApp picker lets guests choose Nugegoda', () => {
+    const pickerPath = path.join(SRC_DIR, 'components', 'sections', 'WhatsAppBranchPicker.tsx');
+    const zonePath = path.join(SRC_DIR, 'components', 'sections', 'BookingZone.tsx');
+    const sitePath = path.join(SRC_DIR, 'lib', 'site.ts');
+
+    assert.ok(fs.existsSync(pickerPath), 'WhatsAppBranchPicker.tsx must exist');
+    assert.ok(fs.existsSync(zonePath), 'BookingZone.tsx must exist');
+
+    const picker = fs.readFileSync(pickerPath, 'utf-8');
+    const zone = fs.readFileSync(zonePath, 'utf-8');
+    const site = fs.readFileSync(sitePath, 'utf-8');
+
+    assert.ok(picker.includes('BRANCHES'), 'Picker must render from BRANCHES so Nugegoda stays in the list');
+    assert.ok(picker.includes('branch.whatsapp'), 'Picker must open the selected studio WhatsApp number');
+    assert.ok(zone.includes('StudioWhatsAppChoices'), 'BookingZone must show Battaramulla and Nugegoda as booking choices');
+    assert.ok(site.includes('slug: "nugegoda"'), 'Site data must still include the Nugegoda branch');
+    assert.ok(site.includes('bookingWhatsAppMessage'), 'Prefill helper must mention the chosen studio');
+  });
 });

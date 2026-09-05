@@ -39,6 +39,25 @@ export function whatsappLink(message?: string, number?: string): string {
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 
+/** Prefill copy for a booking WhatsApp, including studio when known. */
+export function bookingWhatsAppMessage(options?: {
+  branchName?: string;
+  service?: string;
+}): string {
+  const service = options?.service?.trim();
+  const branchName = options?.branchName?.trim();
+  if (service && branchName) {
+    return `Hi! I'd like to book ${service} at the ${branchName} branch`;
+  }
+  if (service) {
+    return `Hi! I'd like to book ${service}`;
+  }
+  if (branchName) {
+    return `Hi! I'd like to book at your ${branchName} branch.`;
+  }
+  return "Hi! I'd like to book a visit.";
+}
+
 export type BranchSlug = "battaramulla" | "nugegoda";
 
 export interface Branch {

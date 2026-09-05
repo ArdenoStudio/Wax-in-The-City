@@ -3,6 +3,7 @@ import Image from "next/image";
 import { InstagramIcon, FacebookIcon, WhatsappIcon } from "@/components/icons";
 import { SITE, NAV_LINKS, BRANCHES, whatsappLink } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
+import { WhatsAppBranchPicker } from "@/components/sections/WhatsAppBranchPicker";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -55,12 +56,12 @@ export function Footer() {
               <SocialIcon href={SITE.facebook} label="Facebook">
                 <FacebookIcon className="h-5 w-5" />
               </SocialIcon>
-              <SocialIcon
-                href={whatsappLink("Hi! I'd like to ask about a booking.")}
-                label="WhatsApp"
+              <WhatsAppBranchPicker
+                aria-label="WhatsApp"
+                className="flex h-11 w-11 items-center justify-center rounded-pill border border-cream/15 text-cream/70 transition-colors hover:border-brand-light hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-footer"
               >
                 <WhatsappIcon className="h-5 w-5" />
-              </SocialIcon>
+              </WhatsAppBranchPicker>
             </div>
           </div>
 

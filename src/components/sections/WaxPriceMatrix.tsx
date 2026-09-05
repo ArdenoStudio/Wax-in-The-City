@@ -13,9 +13,9 @@ import {
 } from "@/lib/pricing";
 import { EASE_APPLE } from "@/lib/animations";
 import { formatLKR, cn } from "@/lib/utils";
-import { whatsappLink } from "@/lib/site";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { WhatsappIcon } from "@/components/icons";
+import { WhatsAppBranchPicker } from "@/components/sections/WhatsAppBranchPicker";
 
 type CategoryFilter = "all" | "face" | "body" | "intimate";
 
@@ -205,8 +205,6 @@ function MatrixRow({ row }: { row: WaxPriceRow }) {
     row.prices["lycon-superberry"] ??
     row.prices["lycon-aloe-vera"];
 
-  const bookText = `Hi Wax In The City! I'd like to book ${row.area} waxing.`;
-
   return (
     <motion.tr
       layout
@@ -232,22 +230,19 @@ function MatrixRow({ row }: { row: WaxPriceRow }) {
         {lyconPrice ? formatLKR(lyconPrice) : (<><span className="sr-only">Not offered</span><span aria-hidden="true" className="text-warm-grey/70">—</span></>)}
       </td>
       <td className="px-4 py-3.5 text-center">
-        <a
-          href={whatsappLink(bookText)}
-          target="_blank"
-          rel="noopener noreferrer"
+        <WhatsAppBranchPicker
+          service={`${row.area} waxing`}
           className="inline-flex min-h-10 items-center gap-1 rounded-pill border border-brand-action/30 bg-brand-mist/30 px-3 py-1 text-caption font-medium text-brand-action transition-all hover:bg-brand-action hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-action/40 focus-visible:ring-offset-2"
         >
           <WhatsappIcon className="h-3 w-3" />
           <span>Book</span>
-        </a>
+        </WhatsAppBranchPicker>
       </td>
     </motion.tr>
   );
 }
 
 function PackageCard({ pkg }: { pkg: WaxPackage }) {
-  const whatsappMsg = `Hi Wax In The City! I'd like to book the ${pkg.name} package.`;
 
   return (
     <div className="premium-surface relative flex flex-col justify-between rounded-2xl p-6 shadow-card transition-transform duration-300 hover:-translate-y-1">
@@ -297,12 +292,13 @@ function PackageCard({ pkg }: { pkg: WaxPackage }) {
           </div>
         </div>
 
-        <Button asChild className="mt-4 w-full" size="md">
-          <a href={whatsappLink(whatsappMsg)} target="_blank" rel="noopener noreferrer">
-            <WhatsappIcon className="h-4 w-4" />
-            Book This Package
-          </a>
-        </Button>
+        <WhatsAppBranchPicker
+          service={`the ${pkg.name} package`}
+          className={cn(buttonVariants({ size: "md" }), "mt-4 w-full")}
+        >
+          <WhatsappIcon className="h-4 w-4" />
+          Book This Package
+        </WhatsAppBranchPicker>
       </div>
     </div>
   );

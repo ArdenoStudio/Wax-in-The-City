@@ -10,12 +10,14 @@ import { Check, Clock3, Loader2, ShieldCheck } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons";
 import { bookingSchema } from "@/lib/booking";
 import { submitBooking } from "@/app/actions/booking";
-import { SERVICES, BRANCHES, whatsappLink, type BranchSlug } from "@/lib/site";
+import { SERVICES, BRANCHES, type BranchSlug } from "@/lib/site";
+import { WhatsAppBranchPicker } from "@/components/sections/WhatsAppBranchPicker";
+import { cn } from "@/lib/utils";
 import { fieldAriaProps, fieldErrorId } from "@/lib/form-a11y";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -45,6 +47,7 @@ export function BookingForm({
       : serviceOptions;
 
   const [submitted, setSubmitted] = useState(false);
+  const [submittedBranch, setSubmittedBranch] = useState<BranchSlug | undefined>(defaultBranch);
   const [serverError, setServerError] = useState<string | null>(null);
 
   const focusFirstInvalid = () => {
@@ -78,6 +81,7 @@ export function BookingForm({
     try {
       const res = await submitBooking(data);
       if (res.ok) {
+        setSubmittedBranch(data.branch);
         setSubmitted(true);
       } else {
         setServerError(res.error);
@@ -118,16 +122,14 @@ export function BookingForm({
               We&apos;ll reach out within 24 hours to confirm your booking. For
               anything urgent, message us on WhatsApp.
             </p>
-            <Button asChild variant="outline" size="md" className="mt-6">
-              <a
-                href={whatsappLink("Hi! I just sent a booking request.")}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <WhatsappIcon className="h-4 w-4" />
-                Chat on WhatsApp
-              </a>
-            </Button>
+            <WhatsAppBranchPicker
+              defaultBranch={submittedBranch}
+              service={defaultService}
+              className={cn(buttonVariants({ variant: "outline", size: "md" }), "mt-6")}
+            >
+              <WhatsappIcon className="h-4 w-4" />
+              Chat on WhatsApp
+            </WhatsAppBranchPicker>
           </motion.div>
         ) : (
           <motion.form
