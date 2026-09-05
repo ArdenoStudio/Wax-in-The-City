@@ -1,175 +1,227 @@
-# Wax In The City SL Website
+# Wax In The City SL
 
-Ladies-only beauty salon website for Colombo, covering Battaramulla and Nugegoda. Built by Ardeno Studio around a sharper private-studio glamour direction: privacy, hygiene, confident service discovery, and low-friction booking.
+> **"Private waxing, quietly perfected."**  
+> Dedicated ladies-only private waxing and aesthetic skin therapy sanctuary across two Colombo studios (Battaramulla &amp; Nugegoda). Crafted with bespoke luxury editorial direction by [Ardeno Studio](https://ardeno-studio-website.vercel.app/).
 
-**Live:** https://wax-in-the-city-website.vercel.app (Vercel production, deploys from `main`)
+[![Deployment](https://img.shields.io/badge/Deployed%20on-Cloudflare%20Workers-f38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://wax-in-the-city.suvenseoras.workers.dev)
+[![Framework](https://img.shields.io/badge/Next.js-16.3.3-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-v4-38bdf8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)]()
 
-## Stack
+---
 
-- Next.js 16 App Router and TypeScript
-- Tailwind CSS v4 tokens in `src/app/globals.css`
-- `motion/react` for page and component transitions
-- Lenis for smooth wheel scrolling, disabled for reduced-motion users
-- Radix UI primitives with shadcn-style components in `src/components/ui`
-- `react-hook-form` and `zod` for booking and contact forms
-- Supabase form capture as the pre-Dinaya backend
-- `react-compare-slider` for before/after imagery
-- Google Fonts via `next/font`: Fraunces (display, variable) + Plus Jakarta Sans (body, variable)
+## 🌐 Live Environments
 
-## Getting Started
+- **Production (Cloudflare Workers):** [https://wax-in-the-city.suvenseoras.workers.dev](https://wax-in-the-city.suvenseoras.workers.dev)
+- **Vercel Mirror:** [https://wax-in-the-city-website.vercel.app](https://wax-in-the-city-website.vercel.app)
+- **Instagram:** [@waxinthecitylk](https://instagram.com/waxinthecitylk)
+- **Facebook:** [facebook.com/waxinthecitylk](https://facebook.com/waxinthecitylk)
 
-```bash
-npm install
-cp .env.example .env.local
-npm run dev
-```
+---
 
-Local app URL:
+## 💎 Brand & Creative Direction
+
+**Creative North Star: "The Private Dressing Room"**
+
+Designed to evoke the discreet intimacy of stepping behind a velvet curtain into an immaculate private suite:
+- **Palette:** Deep Oxblood (`#2b0710`), Wine Action (`#a20f37`), Oxblood Noir (`#0e0407`), Pearl Blush (`#fff7f9`), and Antique Jewelry Gold (`#d9b35f`).
+- **Typography:** Soft luxury pairing featuring **Fraunces** (optical-size display serif) and **Plus Jakarta Sans** (clean, ultra-legible body).
+- **Guest Privacy:** Strict procedural imagery standard — authentic photography cropped to hands and tools only, zero faces, honoring the sanctuary's ladies-only confidential positioning.
+- **Formulations:** Authentic Australian **Lycon** stripless hot wax and Italian **Rica** liposoluble strip waxes with strict zero double-dipping protocols.
+
+---
+
+## ⚡ Key Highlights & Architecture
+
+### 1. Dual-Branch Studio Booking Engine
+- **Atelier System:** Seamless branch switching between the **Battaramulla Main Studio** and **Nugegoda Boutique Studio**.
+- **Contextual WhatsApp Deep-Links:** Generates branch-specific and service-specific booking messages with localized studio operating hours.
+- **Fail-Safe Booking Zone:** Intelligent hybrid form. When Supabase environment variables are connected, public insert-only booking requests are captured directly; if offline or unconfigured, it gracefully falls back to instant WhatsApp concierge without breaking UX.
+
+### 2. Luxury Editorial Footer
+- **Official White Insignia:** Features the crisp circular white emblem housed in a frosted glass jewel container with ambient radial glow.
+- **Pre-Footer Sanctuary Banner:** Editorial reservation call-to-action with live status indicators and dual booking actions.
+- **Studio Atelier Cards:** Glassmorphic branch cards displaying real-time opening status (`🟢 Open Daily`), hours, one-tap calling, and dedicated WhatsApp triggers.
+- **Ardeno Production Credit:** Bespoke animated credit featuring an IntersectionObserver auto-shine light sweep on scroll and continuous fluid shine on hover.
+
+### 3. Edge-Native Cloudflare Architecture
+- Powered by **OpenNext** (`@opennextjs/cloudflare`) on **Cloudflare Workers**.
+- Static assets, edge rendering, and sub-second global response times across Cloudflare's edge network.
+- Automated CI/CD pipeline via GitHub Actions (`.github/workflows/deploy.yml`) on every push to `main`.
+
+### 4. Hidden Admin Sanctuary (`/admin`)
+- Concealed, unindexed dashboard protected from crawlers (`robots.txt` disallow, `noindex`).
+- **Authentication:** Dual-mode auth supporting Supabase Google OAuth with an email allowlist (`admin_users`) plus signed-cookie legacy password fallback (`ADMIN_PASSWORD`).
+- **Capabilities:** Review inbound booking requests, manage service pricing, update testimonials, and curate gallery assets.
+
+---
+
+## 🛠 Tech Stack
+
+| Domain | Technologies |
+| :--- | :--- |
+| **Framework** | [Next.js 16 (App Router)](https://nextjs.org/), React 19, TypeScript 5 |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/), `@tailwindcss/postcss`, CSS Variables |
+| **Animation & Motion** | [Motion (`motion/react`)](https://motion.dev/), Lenis Smooth Scroll, Custom CSS Keyframes |
+| **UI Components** | [Radix UI](https://www.radix-ui.com/), `lucide-react`, Custom SVG Icons, `react-compare-slider` |
+| **Form Management** | `react-hook-form`, [Zod](https://zod.dev/) validation schemas |
+| **Database & Auth** | [Supabase](https://supabase.com/) (`@supabase/ssr`, `@supabase/supabase-js`), Google Cloud OAuth |
+| **Edge Deployment** | [Cloudflare Workers](https://workers.cloudflare.com/) via OpenNext (`@opennextjs/cloudflare`), Wrangler CLI |
+| **CI/CD** | GitHub Actions (`deploy.yml`, `ci.yml`) |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 20+ or 22+ (LTS recommended)
+- npm 10+
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ArdenoStudio/Wax-in-The-City-website.git
+   cd Wax-in-The-City-website/Wax-in-The-City-website-main
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment variables:**
+   ```bash
+   cp .env.example .env.local
+   ```
+
+4. **Launch development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 📜 Available Scripts
+
+| Command | Description |
+| :--- | :--- |
+| `npm run dev` | Starts local Next.js dev server with Webpack on port 3000 |
+| `npm run build` | Builds OpenNext bundle for Cloudflare Workers |
+| `npm run build:next` | Compiles standard Next.js production build |
+| `npm run build:cf` | Generates Cloudflare worker output (`.open-next/worker.js`) |
+| `npm run preview` | Runs local Wrangler preview in workerd runtime |
+| `npm run deploy:cf` | Deploys build bundle directly to Cloudflare Workers |
+| `npm run lint` | Runs ESLint across `src/**/*.{ts,tsx}` |
+| `npm run typecheck` | Validates TypeScript with `tsc --noEmit` |
+| `npm run test` | Executes end-to-end static audit (`scripts/e2e-audit.mjs`) |
+| `npm run test:all` | Executes full 4-tier integration test suite |
+
+---
+
+## 🔐 Environment Variables
+
+| Variable | Scope | Purpose |
+| :--- | :--- | :--- |
+| `NEXT_PUBLIC_SITE_URL` | Public / Build | Canonical domain for SEO, OpenGraph, JSON-LD, sitemaps, and OAuth redirects. Defaults to `https://wax-in-the-city.suvenseoras.workers.dev`. |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Public | Primary studio WhatsApp contact in international format (e.g. `94779469437`). |
+| `NEXT_PUBLIC_SUPABASE_URL` | Public | Supabase project API endpoint. |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public | Supabase anonymous API key for public booking request inserts. |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-Only | Supabase elevated key for admin mutations and private dashboard access. |
+| `ADMIN_PASSWORD` | Server-Only | Secret password for legacy admin authentication fallback. |
+| `ADMIN_SESSION_SECRET` | Server-Only | Cryptographic secret for signing admin session cookies. |
+| `CLOUDFLARE_API_TOKEN` | CI / Secret | Cloudflare API token used in GitHub Actions deployment. |
+| `CLOUDFLARE_ACCOUNT_ID` | CI / Secret | Cloudflare Account ID for Workers deployment. |
+
+---
+
+## 🗄 Database & Security Setup
+
+The backend schema lives in `supabase/`:
+
+1. **Core Schema (`supabase/schema.sql`):**
+   - Tables: `services`, `booking_requests`, `testimonials`, `gallery`.
+   - Row-Level Security (RLS) policies configured for public insert-only booking submissions.
+
+2. **Admin Authentication (`supabase/admin-auth.sql`):**
+   - Table: `admin_users` (email allowlist).
+   - Storage bucket: `gallery` (with authenticated write and public read policies).
+
+3. **Google OAuth Authorization:**
+   - Configure OAuth 2.0 Web Client in Google Cloud Console.
+   - Authorized Redirect URI: `https://<supabase-project-id>.supabase.co/auth/v1/callback`.
+   - Enable Google & Email providers under Supabase Auth.
+   - Insert authorized administrator emails into `admin_users`:
+     ```sql
+     insert into admin_users (email, role, note)
+     values ('owner@example.com', 'owner', 'Studio Owner')
+     on conflict (email) do nothing;
+     ```
+
+---
+
+## 📂 Project Structure
 
 ```text
-http://localhost:3000
+├── .github/workflows/         # CI/CD pipelines (deploy.yml, ci.yml)
+├── public/
+│   ├── images/                # Optimized studio photography, logos, icons
+│   │   ├── services/          # RICA & Lycon product visuals
+│   │   ├── studio/            # Studio suites, reception, protocol imagery
+│   │   └── witc-logo-white.png# Official high-res circular white insignia
+│   └── videos/                # Studio atmosphere reel videos
+├── src/
+│   ├── app/                   # App Router pages, layouts, server actions, API routes
+│   │   ├── (site)/            # Public pages: home, about, services, locations, gallery, book, faq, contact
+│   │   ├── admin/             # Hidden admin dashboard & actions
+│   │   ├── api/auth/callback/ # Supabase OAuth redirect handler
+│   │   ├── globals.css        # Tailwind v4 theme definitions and font pairings
+│   │   └── layout.tsx         # Root layout with JsonLd and SmoothScroll
+│   ├── components/
+│   │   ├── global/            # Navbar, Footer, MobileBookingBar, ArdenoProductionCredit
+│   │   ├── sections/          # HeroSection, BookingZone, ServicesGrid, StudioReel, etc.
+│   │   ├── ui/                # Accessible Radix primitives and shared buttons/inputs
+│   │   └── icons.tsx          # Optimized brand SVG glyphs (Instagram, Facebook, WhatsApp)
+│   └── lib/
+│       ├── site.ts            # Single source of truth for site content & branches
+│       ├── images.ts          # Central client media manifest
+│       ├── pricing.ts         # Service pricing and treatment categories
+│       └── supabase.ts        # Supabase client instances (client & server)
+├── supabase/                  # PostgreSQL schema and migration scripts
+├── tests/                     # Tier 1–4 boundary and feature test suites
+├── open-next.config.ts        # OpenNext configuration for Cloudflare Workers
+└── wrangler.jsonc             # Cloudflare Workers configuration file
 ```
 
-## Scripts
+---
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Local dev server on port 3000 (webpack) |
-| `npm run build` | Production build (`next build`) |
-| `npm run build:next` | Same production build (used by Vercel) |
-| `npm run start` | Serve the production build locally |
-| `npm run lint` | ESLint over `src/**/*.{ts,tsx}` |
-| `npm run test` | Static audit script (`scripts/e2e-audit.mjs`) |
-| `npm run test:all` | Tiered feature/boundary/cross-feature/workload test suites |
+## 🚢 Continuous Deployment
 
-## Environment Variables
+Every commit pushed to the `main` branch automatically triggers the **Deploy to Cloudflare Workers** GitHub Action:
+1. Checks out repository and configures Node.js 22.
+2. Installs dependencies (`npm ci`).
+3. Compiles the OpenNext bundle (`npx @opennextjs/cloudflare build`).
+4. Deploys to Cloudflare Workers (`npx @opennextjs/cloudflare deploy`).
 
-| Variable | Purpose |
-| --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical site URL used for metadata, Open Graph, JSON-LD, sitemap, and robots. Set this per-environment (staging vs. production) so metadata doesn't point at the wrong domain. Falls back to `https://wax-in-the-city-website.vercel.app`. |
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key for public form inserts |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number, digits only, for example `94771234567` |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server-only Supabase key used by `/admin` to update service rows |
-| `ADMIN_PASSWORD` | Password for the lightweight `/admin` service editor |
-| `ADMIN_SESSION_SECRET` | Long random value used to sign the admin session cookie |
+---
 
-Build-time vars (`NEXT_PUBLIC_*`) must be set in the **Vercel project environment** (Production/Preview); runtime-only vars (`SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`) go in the same project environment.
+## 📋 Launch & Production Checklist
 
-## Booking Capture
+- [x] Authentic client photography integrated across all sections (`src/lib/images.ts`)
+- [x] Full treatment matrix and pricing synchronized (`src/lib/pricing.ts`)
+- [x] Luxury editorial footer with official white insignia and studio atelier cards
+- [x] Ardeno Production Credit animation with auto-shine and hover effects
+- [x] Production OpenNext build passing with 0 TypeScript/ESLint errors
+- [x] Cloudflare Workers deployment active and healthy
+- [ ] Confirm exact Google Maps Place URL for Nugegoda branch in `src/lib/site.ts`
+- [ ] Set production Supabase credentials in Cloudflare dashboard
+- [ ] Add client's production Google OAuth credentials for the `/admin` portal
 
-Run `supabase/schema.sql` in the Supabase SQL editor before relying on the forms. It creates `services`, `booking_requests`, `testimonials`, and `gallery`, with RLS policies for public insert-only booking requests.
+---
 
-If Supabase env vars are missing, `BookingZone` automatically renders the WhatsApp-only CTA instead of the request form, so the primary booking route is never a form that's guaranteed to fail. Once `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set, it switches back to the form automatically. Pass an explicit `mode` prop to `BookingZone` to override this.
+## 🖋 Credits
 
-## Admin Panel
-
-`/admin` is a hidden dashboard (no nav link, `robots` disallowed, noindex metadata) for bookings inbox, services, gallery, and testimonials. Auth is identity based via Supabase with a legacy password fallback.
-
-### 1. Run the SQL
-
-In the Supabase SQL editor, run `supabase/schema.sql`, then `supabase/admin-auth.sql`. The second script creates:
-
-- `admin_users` — the email allowlist. RLS is enabled with **no** policies on purpose; only the service-role key reads it, and enforcement happens server side after every sign in.
-- The public `gallery` storage bucket plus read/write policies.
-- An `active` flag column on `gallery`.
-
-If the bucket INSERT errors on your project version, create it manually: Storage > New bucket > name `gallery`, Public ON.
-
-### 2. Add Google OAuth
-
-1. Google Cloud Console > APIs & Services > Credentials > Create OAuth client ID (Web application).
-2. Authorized redirect URI: `https://<project-ref>.supabase.co/auth/v1/callback`.
-3. Supabase Dashboard > Authentication > Providers > Google: paste the client ID and secret, enable.
-4. Also enable the Email provider in the same list.
-5. Set `NEXT_PUBLIC_SITE_URL` so the app redirects back to `<site>/api/auth/callback` correctly (localhost for dev).
-
-### 3. Approve admins
-
-```sql
-insert into admin_users (email, role, note)
-values ('owner@example.com', 'owner', 'Studio owner')
-on conflict (email) do nothing;
-```
-
-Only allowlisted emails can finish sign in (Google or email/password). Sign up from the login card works only for pre approved emails.
-
-### 4. Legacy fallback
-
-When Supabase auth env vars are absent, `/admin` falls back to the original signed-cookie `ADMIN_PASSWORD` flow (12h session, rate limited). Both paths satisfy the same server-side `isAdminAuthenticated()` check that guards every mutation; the service-role key never reaches the browser.
-
-| Variable | Purpose |
-| --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Base url used for the OAuth redirect |
-| `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase project + browser auth |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server-only reads/writes (bookings inbox, gallery storage) |
-| `ADMIN_PASSWORD` / `ADMIN_SESSION_SECRET` | Legacy fallback only |
-
-## Imagery & Media
-
-All site imagery is authentic client photography from the Battaramulla and Nugegoda studios — no stock. Assets are centralized in:
-
-- `src/lib/images.ts` — image + video manifest (hero, services, branches, studio, gallery)
-- `src/lib/gallery.ts` — curated gallery set
-- `public/images/wax-real-optimized/` — optimized studio photography
-- `public/images/services/` — category card visuals (waxing shows real RICA/Lycon inventory)
-- `public/videos/wax-studio-real.mp4` — hero/studio reel video
-
-Privacy rule for ladies-only positioning: procedural imagery crops to hands/tools only — no faces — until client-approved close-ups exist.
-
-## Deployment
-
-Production deploys to **Cloudflare Workers** via OpenNext (`@opennextjs/cloudflare`, configured in `wrangler.jsonc` and `open-next.config.ts`).
-
-- **Build**: `npm run build:cf` produces `.open-next/worker.js` and `.open-next/assets`.
-- **Preview**: `npm run preview` runs local Wrangler preview on workerd.
-- **Deploy**: `npm run deploy:cf` deploys directly to Cloudflare Workers via Wrangler CLI.
-- **CI/CD**: `.github/workflows/deploy.yml` automatically builds and deploys to Cloudflare on push to `main` when `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets are configured.
-
-## Impeccable Context
-
-- `PRODUCT.md` captures the brand strategy, register, audience, anti-references, and accessibility bar.
-- `DESIGN.md` captures the extracted visual system in DESIGN.md format.
-- `.impeccable/design.json` powers the local impeccable design sidecar.
-- `.impeccable/live/config.json` is configured for the Next App Router layout.
-
-## Project Structure
-
-```text
-src/
-  app/                     routes, metadata, server actions, sitemap, robots
-  components/global/       Navbar, Footer, MobileBookingBar, smooth scroll
-  components/sections/     homepage, services, booking, gallery, trust sections
-  components/ui/           shared primitives and cards
-  lib/                     content (site.ts), images/gallery manifests, booking schemas, Supabase clients, pricing
-public/
-  images/                  client photography (studio, services, optimized sets)
-  videos/                  studio reel video
-supabase/
-  schema.sql               pre-Dinaya database setup
-tests/                     tier1–tier4 feature coverage suites
-```
-
-## Content Still Needing Client Confirmation
-
-- Final Nugegoda address
-- Real testimonials or approved Google review quotes
-- Production Supabase env vars
-- Dinaya booking widget when ready
-
-## Launch Checklist
-
-Before handing this off as a finished client site, confirm:
-
-- [x] Real salon/service photography integrated across the site (`src/lib/images.ts`)
-- [x] Final service menu and pricing confirmed against `src/lib/site.ts` / `src/lib/pricing.ts`
-- [x] Production build passes cleanly on Cloudflare (`npm run build:cf`)
-- [x] `NEXT_PUBLIC_SITE_URL` set to the production domain (falls back to the workers.dev URL)
-- [ ] Nugegoda address confirmed and `googleMapsUrl` in `src/lib/site.ts` updated to a precise place link (not a generic search URL)
-- [ ] Battaramulla `googleMapsUrl` also switched to a precise place link
-- [ ] Real, client-approved testimonials before enabling any review carousel
-- [ ] Production Supabase project provisioned, `supabase/schema.sql` run, and env vars set in Cloudflare — otherwise booking stays WhatsApp-only by design
-- [ ] `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` set to strong, unique production values
-- [ ] Dinaya booking widget wired in and `BookingZone` mode switched over, once available
-
-Crafted by Ardeno Studio.
+Crafted with dedication by **[Ardeno Studio](https://ardeno-studio-website.vercel.app/)**.  
+*Based in LK.*
