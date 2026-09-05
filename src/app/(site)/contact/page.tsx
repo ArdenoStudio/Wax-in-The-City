@@ -8,6 +8,7 @@ import { InstagramIcon, FacebookIcon, WhatsappIcon } from "@/components/icons";
 import { BRANCHES, SITE, whatsappLink } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
 import { buildPageMetadata } from "@/lib/seo";
+import { WhatsAppBranchPicker } from "@/components/sections/WhatsAppBranchPicker";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Contact",
@@ -40,15 +41,12 @@ export default function ContactPage() {
               subtitle="A WhatsApp message lets the studio confirm the right branch, service length, and available room before you travel."
             />
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={whatsappLink("Hi! I have a question before booking.")}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppBranchPicker
                 className="pressable inline-flex h-12 items-center justify-center gap-2 rounded-pill bg-cream px-6 text-body-sm font-semibold text-brand shadow-[0_14px_34px_rgba(162,15,55,0.22)]"
               >
                 <WhatsappIcon className="h-5 w-5" />
                 Message WhatsApp
-              </a>
+              </WhatsAppBranchPicker>
               <a
                 href="#contact-form"
                 className="pressable inline-flex h-12 items-center justify-center gap-2 rounded-pill border border-cream/20 bg-cream/8 px-6 text-body-sm font-semibold text-cream"
@@ -176,15 +174,12 @@ export default function ContactPage() {
                 >
                   <FacebookIcon className="h-5 w-5" />
                 </a>
-                <a
-                  href={whatsappLink("Hi! I have a question.")}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <WhatsAppBranchPicker
                   aria-label="WhatsApp"
                   className="flex h-12 w-12 items-center justify-center rounded-pill border border-brand-action/30 bg-white/42 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-mist"
                 >
                   <WhatsappIcon className="h-5 w-5" />
-                </a>
+                </WhatsAppBranchPicker>
               </div>
             </div>
           </div>

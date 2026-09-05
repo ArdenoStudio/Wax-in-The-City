@@ -281,6 +281,25 @@ recordTest(
   navPassed ? null : ['Navbar contains italic class or MobileBookingBar uses unapproved hex']
 );
 
+const pickerPath = path.join(SRC_DIR, 'components', 'sections', 'WhatsAppBranchPicker.tsx');
+const bookingZonePath = path.join(SRC_DIR, 'components', 'sections', 'BookingZone.tsx');
+const siteLibPath = path.join(SRC_DIR, 'lib', 'site.ts');
+const pickerContent = fs.existsSync(pickerPath) ? fs.readFileSync(pickerPath, 'utf-8') : '';
+const bookingZoneContent = fs.existsSync(bookingZonePath) ? fs.readFileSync(bookingZonePath, 'utf-8') : '';
+const siteLibContent = fs.existsSync(siteLibPath) ? fs.readFileSync(siteLibPath, 'utf-8') : '';
+const pickerPassed =
+  pickerContent.includes('BRANCHES') &&
+  pickerContent.includes('branch.whatsapp') &&
+  bookingZoneContent.includes('WhatsAppBranchPicker') &&
+  siteLibContent.includes('slug: "nugegoda"') &&
+  siteLibContent.includes('bookingWhatsAppMessage');
+recordTest(
+  'tier3',
+  'Booking WhatsApp picker (Battaramulla and Nugegoda studio choice)',
+  pickerPassed,
+  pickerPassed ? null : ['WhatsApp booking path does not let guests pick Nugegoda']
+);
+
 // ----------------------------------------------------------------------------
 // TIER 4 CHECKS
 // ----------------------------------------------------------------------------

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { WhatsappIcon } from "@/components/icons";
-import { whatsappLink } from "@/lib/site";
+import { WhatsAppBranchPicker } from "@/components/sections/WhatsAppBranchPicker";
 
 /**
  * Fixed bottom booking bar — mobile only (file 10, section 11).
@@ -40,15 +40,12 @@ export function MobileBookingBar() {
             >
               Book appointment
             </Link>
-            <a
-              href={whatsappLink("Hi! I'd like to ask about a booking.")}
-              target="_blank"
-              rel="noopener noreferrer"
+            <WhatsAppBranchPicker
               aria-label="Chat on WhatsApp"
               className="pressable flex h-12 w-12 shrink-0 items-center justify-center rounded-pill border border-brand-action/30 bg-white/52 text-brand-action shadow-[0_10px_24px_rgba(39,19,21,0.06)] backdrop-blur hover:bg-brand-mist"
             >
               <WhatsappIcon className="h-5 w-5" />
-            </a>
+            </WhatsAppBranchPicker>
           </div>
         </motion.div>
       )}

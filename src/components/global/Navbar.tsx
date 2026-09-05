@@ -9,9 +9,10 @@ import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { CalendarDays, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
+import { NAV_LINKS, SITE } from "@/lib/site";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { WhatsAppBranchPicker } from "@/components/sections/WhatsAppBranchPicker";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -172,15 +173,11 @@ export function Navbar() {
                       <Link href="/book">Book Your Visit</Link>
                     </Button>
                   </SheetClose>
-                  <Button asChild size="lg" variant="outline">
-                    <a
-                      href={whatsappLink("Hi! I'd like to ask about a booking.")}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Chat on WhatsApp
-                    </a>
-                  </Button>
+                  <WhatsAppBranchPicker
+                    className={cn(buttonVariants({ size: "lg", variant: "outline" }), "w-full")}
+                  >
+                    Chat on WhatsApp
+                  </WhatsAppBranchPicker>
                 </div>
               </div>
             </SheetContent>

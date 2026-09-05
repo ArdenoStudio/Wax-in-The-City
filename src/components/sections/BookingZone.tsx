@@ -1,7 +1,8 @@
 import { WhatsappIcon } from "@/components/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { BookingForm } from "@/components/sections/BookingForm";
-import { getBranch, whatsappLink, type BranchSlug } from "@/lib/site";
+import { WhatsAppBranchPicker } from "@/components/sections/WhatsAppBranchPicker";
+import { getBranch, type BranchSlug } from "@/lib/site";
 import { isSupabaseConfigured } from "@/lib/supabase/client";
 
 interface BookingZoneProps {
@@ -37,12 +38,6 @@ export function BookingZone({
   titleAs = "h2",
 }: BookingZoneProps) {
   const resolvedMode = mode ?? (isSupabaseConfigured() ? "form" : "whatsapp-only");
-  const whatsappMessage =
-    defaultService && defaultBranch
-      ? `Hi! I'd like to book ${defaultService} at the ${getBranch(defaultBranch).name} branch`
-      : defaultService
-        ? `Hi! I'd like to book ${defaultService}`
-        : "Hi! I'd like to book a visit.";
   return (
     <section
       id="book"
@@ -126,7 +121,11 @@ export function BookingZone({
           style={resolvedMode === "whatsapp-only" ? undefined : { minHeight: 480 }}
         >
           {resolvedMode === "whatsapp-only" ? (
-            <WhatsappOnly standalone={standalone} message={whatsappMessage} />
+            <WhatsappOnly
+              standalone={standalone}
+              defaultBranch={defaultBranch}
+              defaultService={defaultService}
+            />
           ) : (
             <BookingForm
               defaultBranch={defaultBranch}
@@ -138,14 +137,13 @@ export function BookingZone({
 
         <p className={standalone ? "mt-6 text-center text-body-sm text-cream/60 text-pretty" : "mt-6 text-center text-body-sm text-warm-grey text-pretty"}>
           Prefer to chat?{" "}
-          <a
-            href={whatsappLink("Hi! I'd like to ask about a booking.")}
-            target="_blank"
-            rel="noopener noreferrer"
+          <WhatsAppBranchPicker
+            defaultBranch={defaultBranch}
+            service={defaultService}
             className={standalone ? "inline-flex min-h-10 items-center font-medium text-brand-light underline-offset-4 hover:underline" : "inline-flex min-h-10 items-center font-medium text-brand-action underline-offset-4 hover:underline"}
           >
             Message us on WhatsApp
-          </a>
+          </WhatsAppBranchPicker>
         </p>
 
         {/* BeWAXed aftercare retention cue — mirrors "Pain & Sensitivity / Aftercare Tips / Next Appointment" */}
@@ -165,11 +163,17 @@ export function BookingZone({
 
 function WhatsappOnly({
   standalone = true,
-  message = "Hi! I'd like to book a visit.",
+  defaultBranch,
+  defaultService,
 }: {
   standalone?: boolean;
-  message?: string;
+  defaultBranch?: BranchSlug;
+  defaultService?: string;
 }) {
+  const studioNote = defaultBranch
+    ? `We'll open WhatsApp for ${getBranch(defaultBranch).name}.`
+    : "You'll pick Battaramulla or Nugegoda next so the right studio can confirm.";
+
   return (
     <div
       className={
@@ -191,15 +195,23 @@ function WhatsappOnly({
         The quickest way to book is a WhatsApp message. We&apos;ll confirm a
         time that works for you.
       </p>
-      <a
-        href={whatsappLink(message)}
-        target="_blank"
-        rel="noopener noreferrer"
+      <p
+        className={
+          standalone
+            ? "mt-3 max-w-sm text-caption leading-relaxed text-cream/55 text-pretty"
+            : "mt-3 max-w-sm text-caption leading-relaxed text-warm-grey text-pretty"
+        }
+      >
+        {studioNote}
+      </p>
+      <WhatsAppBranchPicker
+        defaultBranch={defaultBranch}
+        service={defaultService}
         className="mt-6 inline-flex h-12 items-center gap-2 rounded-pill bg-brand-action px-6 font-medium text-cream transition-colors hover:bg-brand-dark"
       >
         <WhatsappIcon className="h-4 w-4" />
         Chat on WhatsApp
-      </a>
+      </WhatsAppBranchPicker>
     </div>
   );
 }
