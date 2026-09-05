@@ -8,6 +8,7 @@ import { isAdminAuthenticated, setAdminFlashMessage } from "@/lib/admin-auth";
 import { adminError } from "@/lib/admin-access";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { GALLERY } from "@/lib/gallery";
+import { WAX_PRICE_ROWS, WAX_PACKAGES } from "@/lib/pricing";
 
 async function requireAdminMutation() {
   if (!(await isAdminAuthenticated())) {
@@ -399,4 +400,209 @@ export async function deleteTestimonial(formData: FormData) {
   }
 
   await finish(outcome, "Testimonial deleted.", TESTIMONIALS_TAB, true);
+}
+
+const PRICING_TAB = "pricing";
+
+const waxPriceUpdateSchema = z.object({
+  id: z.string().uuid(),
+  area: z.string().trim().min(1).max(100),
+  category: z.enum(["face", "body", "intimate"]),
+  lyconPinkini: z.coerce.number().int().min(0).optional().nullable(),
+  lyconSuperberry: z.coerce.number().int().min(0).optional().nullable(),
+  lyconAloeVera: z.coerce.number().int().min(0).optional().nullable(),
+  ricaWhiteChoc: z.coerce.number().int().min(0).optional().nullable(),
+  biahuGold: z.coerce.number().int().min(0).optional().nullable(),
+  note: z.string().trim().max(300).optional().nullable(),
+  sortOrder: z.coerce.number().int().min(0).max(999),
+  active: z.boolean(),
+});
+
+export async function updateWaxPrice(formData: FormData) {
+  await requireAdminMutation();
+
+  const parseNum = (val: FormDataEntryValue | null) => {
+    if (!val || String(val).trim() === "") return null;
+    const n = Number(val);
+    return Number.isFinite(n) && n > 0 ? n : null;
+  };
+
+  const parsed = waxPriceUpdateSchema.safeParse({
+    id: formData.get("id"),
+    area: formData.get("area"),
+    category: formData.get("category"),
+    lyconPinkini: parseNum(formData.get("lyconPinkini")),
+    lyconSuperberry: parseNum(formData.get("lyconSuperberry")),
+    lyconAloeVera: parseNum(formData.get("lyconAloeVera")),
+    ricaWhiteChoc: parseNum(formData.get("ricaWhiteChoc")),
+    biahuGold: parseNum(formData.get("biahuGold")),
+    note: formData.get("note") ? String(formData.get("note")).trim() : null,
+    sortOrder: formData.get("sortOrder"),
+    active: formData.get("active") === "on",
+  });
+
+  if (!parsed.success) {
+    await adminError("Check the pricing fields and try again.", PRICING_TAB);
+    return;
+  }
+
+  let outcome: Outcome;
+  try {
+    const supabase = supabaseOrThrow();
+    const { error } = await supabase
+      .from("wax_prices")
+      .update({
+        area: parsed.data.area,
+        category: parsed.data.category,
+        lycon_pinkini: parsed.data.lyconPinkini,
+        lycon_superberry: parsed.data.lyconSuperberry,
+        lycon_aloe_vera: parsed.data.lyconAloeVera,
+        rica_white_choc: parsed.data.ricaWhiteChoc,
+        biahu_gold: parsed.data.biahuGold,
+        note: parsed.data.note,
+        sort_order: parsed.data.sortOrder,
+        active: parsed.data.active,
+      })
+      .eq("id", parsed.data.id);
+    outcome = error ? fail("Could not update the wax pricing row.") : ok;
+    if (error) console.error("[admin] wax price update:", error);
+  } catch (error) {
+    console.error("[admin] wax price update failed:", error);
+    outcome = fail("Could not reach Supabase to update wax pricing.");
+  }
+
+  await finish(outcome, `Wax pricing for ${parsed.data.area} updated.`, PRICING_TAB, true);
+}
+
+const waxPackageUpdateSchema = z.object({
+  id: z.string().min(1).max(100),
+  name: z.string().trim().min(1).max(120),
+  description: z.string().trim().min(1).max(500),
+  inclusions: z.string().trim(),
+  priceEssential: z.coerce.number().int().min(0),
+  pricePremium: z.coerce.number().int().min(0),
+  duration: z.string().trim().min(1).max(50),
+  tag: z.string().trim().max(50).optional().nullable(),
+  sortOrder: z.coerce.number().int().min(0).max(999),
+  active: z.boolean(),
+});
+
+export async function updateWaxPackage(formData: FormData) {
+  await requireAdminMutation();
+
+  const parsed = waxPackageUpdateSchema.safeParse({
+    id: formData.get("id"),
+    name: formData.get("name"),
+    description: formData.get("description"),
+    inclusions: formData.get("inclusions"),
+    priceEssential: formData.get("priceEssential"),
+    pricePremium: formData.get("pricePremium"),
+    duration: formData.get("duration"),
+    tag: formData.get("tag") ? String(formData.get("tag")).trim() : null,
+    sortOrder: formData.get("sortOrder"),
+    active: formData.get("active") === "on",
+  });
+
+  if (!parsed.success) {
+    await adminError("Check the package fields and try again.", PRICING_TAB);
+    return;
+  }
+
+  const inclusionsArray = parsed.data.inclusions
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  let outcome: Outcome;
+  try {
+    const supabase = supabaseOrThrow();
+    const { error } = await supabase
+      .from("wax_packages")
+      .update({
+        name: parsed.data.name,
+        description: parsed.data.description,
+        inclusions: inclusionsArray,
+        price_essential: parsed.data.priceEssential,
+        price_premium: parsed.data.pricePremium,
+        duration: parsed.data.duration,
+        tag: parsed.data.tag,
+        sort_order: parsed.data.sortOrder,
+        active: parsed.data.active,
+      })
+      .eq("id", parsed.data.id);
+    outcome = error ? fail("Could not update the wax package.") : ok;
+    if (error) console.error("[admin] wax package update:", error);
+  } catch (error) {
+    console.error("[admin] wax package update failed:", error);
+    outcome = fail("Could not reach Supabase to update wax package.");
+  }
+
+  await finish(outcome, `Package ${parsed.data.name} updated.`, PRICING_TAB, true);
+}
+
+export async function seedWaxPricingFromStatic() {
+  await requireAdminMutation();
+
+  function detectCategory(area: string): "face" | "body" | "intimate" {
+    const lower = area.toLowerCase();
+    if (lower.includes("brazilian") || lower.includes("underarm")) return "intimate";
+    if (
+      lower.includes("lip") ||
+      lower.includes("eyebrow") ||
+      lower.includes("forehead") ||
+      lower.includes("nose") ||
+      lower.includes("chin") ||
+      lower.includes("face")
+    ) {
+      return "face";
+    }
+    return "body";
+  }
+
+  const priceRows = WAX_PRICE_ROWS.map((row, index) => ({
+    area: row.area,
+    category: detectCategory(row.area),
+    lycon_pinkini: row.prices["lycon-pinkini"] ?? null,
+    lycon_superberry: row.prices["lycon-superberry"] ?? null,
+    lycon_aloe_vera: row.prices["lycon-aloe-vera"] ?? null,
+    rica_white_choc: row.prices["rica-white-choc"] ?? null,
+    biahu_gold: row.prices["biahu-gold"] ?? null,
+    note: row.note ?? null,
+    sort_order: (index + 1) * 10,
+    active: true,
+  }));
+
+  const packageRows = WAX_PACKAGES.map((pkg, index) => ({
+    id: pkg.id,
+    name: pkg.name,
+    description: pkg.description,
+    inclusions: pkg.inclusions,
+    price_essential: pkg.prices.essential,
+    price_premium: pkg.prices.premium,
+    duration: pkg.duration,
+    tag: pkg.tag ?? null,
+    sort_order: (index + 1) * 10,
+    active: true,
+  }));
+
+  let outcome: Outcome;
+  try {
+    const supabase = supabaseOrThrow();
+    const [pRes, pkgRes] = await Promise.all([
+      supabase.from("wax_prices").upsert(priceRows, { onConflict: "area" }),
+      supabase.from("wax_packages").upsert(packageRows, { onConflict: "id" }),
+    ]);
+
+    if (pRes.error || pkgRes.error) {
+      console.error("[admin] wax pricing seed error:", pRes.error || pkgRes.error);
+      outcome = fail("Could not seed pricing. Confirm the Supabase migration script was executed.");
+    } else {
+      outcome = ok;
+    }
+  } catch (error) {
+    console.error("[admin] wax pricing seed failed:", error);
+    outcome = fail("Could not reach Supabase to seed pricing.");
+  }
+
+  await finish(outcome, "Wax pricing and packages seeded from static menu.", PRICING_TAB, true);
 }

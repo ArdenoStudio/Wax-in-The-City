@@ -150,8 +150,36 @@ h4.font-serif,
 button,
 a,
 input,
-textarea {
+textarea,
+select,
+[role="button"] {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Prevent unwanted iOS Safari auto-zoom on form inputs */
+@media (max-width: 639px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Safe area padding for mobile notches and home indicators */
+.pb-safe {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+}
+
+.pt-safe {
+  padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+}
+
+/* Ensure mobile pages have space above the mobile sticky action bar */
+@media (max-width: 1023px) {
+  footer {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
 }
 
 h1,

@@ -165,8 +165,17 @@ export function WaxPriceMatrix() {
           ))}
         </div>
 
-        {/* Table Container */}
-        <div className="overflow-hidden rounded-card border border-warm-border bg-white/65 shadow-card">
+        {/* Mobile View: Clean Card List (< 640px) */}
+        <div className="space-y-3 sm:hidden">
+          <AnimatePresence mode="popLayout">
+            {filteredRows.map((row) => (
+              <MobileMatrixCard key={row.area} row={row} />
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Desktop View: Comprehensive Matrix Table (>= 640px) */}
+        <div className="hidden sm:block overflow-hidden rounded-card border border-warm-border bg-white/65 shadow-card">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[580px] text-left text-body-sm">
               <thead>
@@ -194,6 +203,63 @@ export function WaxPriceMatrix() {
         </p>
       </div>
     </div>
+  );
+}
+
+function MobileMatrixCard({ row }: { row: WaxPriceRow }) {
+  const biahuPrice = row.prices["biahu-gold"];
+  const ricaPrice = row.prices["rica-white-choc"];
+  const lyconPrice =
+    row.prices["lycon-pinkini"] ??
+    row.prices["lycon-superberry"] ??
+    row.prices["lycon-aloe-vera"];
+
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2, ease: EASE_APPLE }}
+      className="rounded-card border border-warm-border/80 bg-white/80 p-3.5 shadow-sm"
+    >
+      <div className="flex items-start justify-between gap-2">
+        <div className="min-w-0 flex-1">
+          <h4 className="font-serif text-body font-semibold text-warm leading-snug">{row.area}</h4>
+          {row.note && (
+            <p className="mt-0.5 text-caption text-warm-grey leading-tight">{row.note}</p>
+          )}
+        </div>
+        <WhatsAppBranchPicker
+          service={`${row.area} waxing`}
+          className="pressable inline-flex min-h-9 shrink-0 items-center gap-1 rounded-pill border border-brand-action/35 bg-brand-mist/40 px-3 py-1 text-caption font-semibold text-brand-action active:bg-brand-action active:text-cream"
+        >
+          <WhatsappIcon className="h-3 w-3" />
+          <span>Book</span>
+        </WhatsAppBranchPicker>
+      </div>
+
+      <div className="mt-3 grid grid-cols-3 gap-1.5 border-t border-warm-border/40 pt-2.5 text-center">
+        <div className="rounded-md border border-yellow-200/50 bg-yellow-50/60 px-1 py-1.5">
+          <span className="block text-[10px] font-semibold uppercase tracking-wider text-warm-grey">Brazil Gold</span>
+          <span className="mt-0.5 block text-caption font-semibold text-warm">
+            {biahuPrice ? formatLKR(biahuPrice) : "—"}
+          </span>
+        </div>
+        <div className="rounded-md border border-amber-200/50 bg-amber-50/60 px-1 py-1.5">
+          <span className="block text-[10px] font-semibold uppercase tracking-wider text-amber-800">Rica Italy</span>
+          <span className="mt-0.5 block text-caption font-semibold text-warm">
+            {ricaPrice ? formatLKR(ricaPrice) : "—"}
+          </span>
+        </div>
+        <div className="rounded-md border border-rose-200/60 bg-rose-50/70 px-1 py-1.5">
+          <span className="block text-[10px] font-semibold uppercase tracking-wider text-rose-700">Lycon Hot</span>
+          <span className="mt-0.5 block text-caption font-semibold text-brand-action">
+            {lyconPrice ? formatLKR(lyconPrice) : "—"}
+          </span>
+        </div>
+      </div>
+    </motion.div>
   );
 }
 

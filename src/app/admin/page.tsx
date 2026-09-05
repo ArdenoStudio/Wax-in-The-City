@@ -9,6 +9,8 @@ import { BookingsSection } from "@/components/admin/bookings-section";
 import { ServicesSection } from "@/components/admin/services-section";
 import { GallerySection } from "@/components/admin/gallery-section";
 import { TestimonialsSection } from "@/components/admin/testimonials-section";
+import { PricingSection } from "@/components/admin/pricing-section";
+import { AnalyticsSection } from "@/components/admin/analytics-section";
 import { AdminEnvVar, AdminStatusMessage } from "@/components/admin/primitives";
 
 export const dynamic = "force-dynamic";
@@ -19,6 +21,8 @@ export const metadata: Metadata = {
 
 const TABS = [
   { slug: "overview", label: "Overview" },
+  { slug: "analytics", label: "Analytics & Devices" },
+  { slug: "pricing", label: "Wax Pricing & Packages" },
   { slug: "bookings", label: "Bookings" },
   { slug: "services", label: "Services" },
   { slug: "gallery", label: "Gallery" },
@@ -114,6 +118,8 @@ export default async function AdminPage({
 
         <div className="mt-8">
           {activeTab === "overview" && <OverviewSection />}
+          {activeTab === "analytics" && <AnalyticsSection />}
+          {activeTab === "pricing" && <PricingSection />}
           {activeTab === "bookings" && <BookingsSection />}
           {activeTab === "services" && <ServicesSection />}
           {activeTab === "gallery" && <GallerySection />}

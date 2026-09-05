@@ -119,7 +119,7 @@ export function GalleryGrid() {
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                sizes="(max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 placeholder={photo.src.startsWith("/") ? "blur" : "empty"}
                 blurDataURL={BLUR_DATA_URL}
                 unoptimized={photo.src.startsWith("http")}

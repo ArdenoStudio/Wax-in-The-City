@@ -6,6 +6,8 @@ import { SITE } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
 import { SmoothScrollProvider } from "@/components/global/SmoothScrollProvider";
 import { SkipLink } from "@/components/global/SkipLink";
+import { MobileStickyActionBar } from "@/components/mobile/MobileStickyActionBar";
+import { AnalyticsTracker } from "@/components/analytics/AnalyticsTracker";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -32,6 +34,14 @@ export const metadata: Metadata = {
   },
   description: SITE.description,
   manifest: "/site.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: SITE.name,
+  },
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     locale: SITE.locale,
@@ -64,9 +74,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fff7f9",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fff7f9" },
+    { media: "(prefers-color-scheme: dark)", color: "#17070b" },
+  ],
   width: "device-width",
   initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
   colorScheme: "light",
 };
 
@@ -81,9 +96,11 @@ export default function RootLayout({
     >
       <body className="min-h-[100dvh] bg-cream text-warm antialiased">
         <SkipLink />
+        <AnalyticsTracker />
         <SmoothScrollProvider>
           <ViewTransition default="none">{children}</ViewTransition>
         </SmoothScrollProvider>
+        <MobileStickyActionBar />
       </body>
     </html>
   );
