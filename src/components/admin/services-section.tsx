@@ -1,6 +1,7 @@
 import { seedServices, updateService } from "@/app/admin/actions";
 import { getAdminServices } from "@/lib/service-content";
 import { isSupabaseAuthConfigured } from "@/lib/admin-access";
+import { isDbConfigured } from "@/lib/db";
 import { SERVICE_CATEGORIES } from "@/lib/site";
 import { formatLKRFrom } from "@/lib/utils";
 import {
@@ -15,21 +16,21 @@ import {
 const CATEGORY_VALUES = SERVICE_CATEGORIES.map((category) => category.slug);
 
 export async function ServicesSection() {
-  const supabaseReady = isSupabaseAuthConfigured();
-  const services = supabaseReady ? await getAdminServices() : [];
+  const dbReady = isDbConfigured() || isSupabaseAuthConfigured();
+  const services = dbReady ? await getAdminServices() : [];
 
   return (
     <div className="grid gap-5">
-      {!supabaseReady && (
+      {!dbReady && (
         <AdminStatusMessage tone="error">
-          Add the Supabase env vars to enable service editing.
+          Database credentials must be configured to enable service editing.
         </AdminStatusMessage>
       )}
 
-      {supabaseReady && services.length === 0 && (
+      {dbReady && services.length === 0 && (
         <AdminPlate>
           <h2 className="font-serif text-h3 text-cream text-balance">
-            No services in Supabase yet
+            No services in database yet
           </h2>
           <p className="mt-2 max-w-2xl text-body-sm text-warm-grey text-pretty">
             Seed the current static menu into the services table, then edit prices from this page.

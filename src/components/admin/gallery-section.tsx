@@ -7,6 +7,7 @@ import {
   uploadGalleryImage,
 } from "@/app/admin/dashboard-actions";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getDb } from "@/lib/db";
 import {
   AdminFieldLabel,
   AdminPlate,
@@ -45,24 +46,46 @@ async function probeGalleryStorage(
 }
 
 export async function GallerySection() {
+  const sql = getDb();
   const admin = createAdminClient();
   let rows: GalleryRow[] = [];
-  let loadError = !admin;
+  let loadError = false;
   let storageReady = false;
 
-  if (admin) {
+  // 1. Neon Database Support
+  if (sql) {
     try {
-      const [{ data, error }, bucketReady] = await Promise.all([
-        admin
-          .from("gallery")
-          .select("id, url, alt_text, category, featured, active, sort_order")
-          .order("sort_order", { ascending: true }),
-        probeGalleryStorage(admin),
-      ]);
-      loadError = Boolean(error);
-      rows = (data as GalleryRow[] | null) ?? [];
-      storageReady = bucketReady;
-    } catch {
+      const data = await sql`
+        SELECT id, url, alt_text, category, featured, active, sort_order
+        FROM gallery
+        ORDER BY sort_order ASC, created_at DESC
+      `;
+      rows = data as GalleryRow[];
+      loadError = false;
+    } catch (e) {
+      console.error("[neon] gallery query error:", e);
+      loadError = true;
+    }
+  }
+
+  // 2. Supabase Fallback
+  if (!sql) {
+    if (admin) {
+      try {
+        const [{ data, error }, bucketReady] = await Promise.all([
+          admin
+            .from("gallery")
+            .select("id, url, alt_text, category, featured, active, sort_order")
+            .order("sort_order", { ascending: true }),
+          probeGalleryStorage(admin),
+        ]);
+        loadError = Boolean(error);
+        rows = (data as GalleryRow[] | null) ?? [];
+        storageReady = bucketReady;
+      } catch {
+        loadError = true;
+      }
+    } else {
       loadError = true;
     }
   }
@@ -71,17 +94,17 @@ export async function GallerySection() {
     <div className="grid gap-5">
       {loadError && (
         <AdminStatusMessage tone="error">
-          Could not load the gallery. The service role env vars and schema must be configured.
+          Could not load the gallery. Database credentials must be configured.
         </AdminStatusMessage>
       )}
 
       {!loadError && rows.length === 0 && (
         <AdminPlate>
           <h2 className="font-serif text-h3 text-cream text-balance">
-            No gallery rows in Supabase yet
+            No gallery rows in database yet
           </h2>
           <p className="mt-2 max-w-2xl text-body-sm text-warm-grey text-pretty">
-            Seed the curated static gallery into Supabase to start managing it from here.
+            Seed the curated static gallery into the database to start managing it from here.
           </p>
           <form action={seedGalleryFromStatic} className="mt-5">
             <button type="submit" className={ADMIN_PRIMARY_BUTTON_CLASS}>

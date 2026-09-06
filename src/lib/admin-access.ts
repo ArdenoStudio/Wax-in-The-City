@@ -4,6 +4,8 @@ import { setAdminFlashMessage } from "@/lib/admin-auth";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 
+import { getDb } from "@/lib/db";
+
 export interface AdminIdentity {
   email: string;
   provider: string;
@@ -18,10 +20,23 @@ export function isSupabaseAuthConfigured(): boolean {
 }
 
 export async function isEmailAllowed(email: string): Promise<boolean> {
+  const normalized = email.trim().toLowerCase();
+
+  const sql = getDb();
+  if (sql) {
+    try {
+      const rows = await sql`
+        SELECT email FROM admin_users WHERE LOWER(email) = ${normalized} LIMIT 1
+      `;
+      return rows.length > 0;
+    } catch (e) {
+      console.error("[neon] isEmailAllowed error:", e);
+    }
+  }
+
   const supabase = createAdminClient();
   if (!supabase) return false;
 
-  const normalized = email.trim().toLowerCase();
   const { data, error } = await supabase
     .from("admin_users")
     .select("email")

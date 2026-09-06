@@ -109,20 +109,36 @@ export async function addGalleryImage(formData: FormData) {
 
   let outcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const { error } = await supabase.from("gallery").insert({
-      url: parsed.data.url,
-      alt_text: parsed.data.altText ?? null,
-      category: parsed.data.category,
-      sort_order: parsed.data.sortOrder,
-      featured: parsed.data.featured,
-      active: true,
-    });
-    outcome = error ? fail("Could not add the image. Check the Supabase schema first.") : ok;
-    if (error) console.error("[admin] gallery add:", error);
+    const sql = getDb();
+    if (sql) {
+      await sql`
+        INSERT INTO gallery (url, alt_text, category, sort_order, featured, active)
+        VALUES (
+          ${parsed.data.url},
+          ${parsed.data.altText ?? null},
+          ${parsed.data.category},
+          ${parsed.data.sortOrder},
+          ${parsed.data.featured},
+          true
+        )
+      `;
+      outcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const { error } = await supabase.from("gallery").insert({
+        url: parsed.data.url,
+        alt_text: parsed.data.altText ?? null,
+        category: parsed.data.category,
+        sort_order: parsed.data.sortOrder,
+        featured: parsed.data.featured,
+        active: true,
+      });
+      outcome = error ? fail("Could not add the image. Check the database schema first.") : ok;
+      if (error) console.error("[admin] gallery add:", error);
+    }
   } catch (error) {
     console.error("[admin] gallery add failed:", error);
-    outcome = fail("Could not reach Supabase to add the image.");
+    outcome = fail("Could not reach database to add the image.");
   }
 
   await finish(outcome, "Gallery image added.", GALLERY_TAB, true);
@@ -179,7 +195,7 @@ export async function uploadGalleryImage(formData: FormData) {
     }
   } catch (error) {
     console.error("[admin] gallery upload failed:", error);
-    outcome = fail("Could not reach Supabase storage for the upload.");
+    outcome = fail("Could not reach Supabase storage for the upload. Use URL input instead.");
   }
 
   if (!outcome.ok || !publicUrl) {
@@ -189,20 +205,36 @@ export async function uploadGalleryImage(formData: FormData) {
 
   let insertOutcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const { error } = await supabase.from("gallery").insert({
-      url: publicUrl,
-      alt_text: altText || null,
-      category: categoryValue,
-      sort_order: sortOrder,
-      featured: false,
-      active: true,
-    });
-    insertOutcome = error ? fail("Uploaded the file but could not save the gallery row.") : ok;
-    if (error) console.error("[admin] gallery row save:", error);
+    const sql = getDb();
+    if (sql) {
+      await sql`
+        INSERT INTO gallery (url, alt_text, category, sort_order, featured, active)
+        VALUES (
+          ${publicUrl},
+          ${altText || null},
+          ${categoryValue},
+          ${sortOrder},
+          false,
+          true
+        )
+      `;
+      insertOutcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const { error } = await supabase.from("gallery").insert({
+        url: publicUrl,
+        alt_text: altText || null,
+        category: categoryValue,
+        sort_order: sortOrder,
+        featured: false,
+        active: true,
+      });
+      insertOutcome = error ? fail("Uploaded the file but could not save the gallery row.") : ok;
+      if (error) console.error("[admin] gallery row save:", error);
+    }
   } catch (error) {
     console.error("[admin] gallery row save failed:", error);
-    insertOutcome = fail("Could not reach Supabase to save the gallery row.");
+    insertOutcome = fail("Could not reach database to save the gallery row.");
   }
 
   await finish(insertOutcome, "Image uploaded and added to the gallery.", GALLERY_TAB, true);
@@ -235,22 +267,36 @@ export async function updateGalleryRow(formData: FormData) {
 
   let outcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const { error } = await supabase
-      .from("gallery")
-      .update({
-        alt_text: parsed.data.altText || null,
-        category: parsed.data.category,
-        sort_order: parsed.data.sortOrder,
-        featured: parsed.data.featured,
-        active: parsed.data.active,
-      })
-      .eq("id", parsed.data.id);
-    outcome = error ? fail("Could not update the gallery image.") : ok;
-    if (error) console.error("[admin] gallery update:", error);
+    const sql = getDb();
+    if (sql) {
+      await sql`
+        UPDATE gallery SET
+          alt_text = ${parsed.data.altText || null},
+          category = ${parsed.data.category},
+          sort_order = ${parsed.data.sortOrder},
+          featured = ${parsed.data.featured},
+          active = ${parsed.data.active}
+        WHERE id = ${parsed.data.id}
+      `;
+      outcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const { error } = await supabase
+        .from("gallery")
+        .update({
+          alt_text: parsed.data.altText || null,
+          category: parsed.data.category,
+          sort_order: parsed.data.sortOrder,
+          featured: parsed.data.featured,
+          active: parsed.data.active,
+        })
+        .eq("id", parsed.data.id);
+      outcome = error ? fail("Could not update the gallery image.") : ok;
+      if (error) console.error("[admin] gallery update:", error);
+    }
   } catch (error) {
     console.error("[admin] gallery update failed:", error);
-    outcome = fail("Could not reach Supabase to update the image.");
+    outcome = fail("Could not reach database to update the image.");
   }
 
   await finish(outcome, "Gallery image updated.", GALLERY_TAB, true);
@@ -267,13 +313,19 @@ export async function deleteGalleryImage(formData: FormData) {
 
   let outcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const { error } = await supabase.from("gallery").delete().eq("id", id.data);
-    outcome = error ? fail("Could not delete the gallery image.") : ok;
-    if (error) console.error("[admin] gallery delete:", error);
+    const sql = getDb();
+    if (sql) {
+      await sql`DELETE FROM gallery WHERE id = ${id.data}`;
+      outcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const { error } = await supabase.from("gallery").delete().eq("id", id.data);
+      outcome = error ? fail("Could not delete the gallery image.") : ok;
+      if (error) console.error("[admin] gallery delete:", error);
+    }
   } catch (error) {
     console.error("[admin] gallery delete failed:", error);
-    outcome = fail("Could not reach Supabase to delete the image.");
+    outcome = fail("Could not reach database to delete the image.");
   }
 
   await finish(outcome, "Gallery image deleted.", GALLERY_TAB, true);
@@ -293,20 +345,37 @@ export async function seedGalleryFromStatic() {
 
   let outcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const { error } = await supabase
-      .from("gallery")
-      .upsert(rows, { onConflict: "url", ignoreDuplicates: true });
-    outcome = error
-      ? fail("Could not seed the gallery. Check the Supabase schema first.")
-      : ok;
-    if (error) console.error("[admin] gallery seed:", error);
+    const sql = getDb();
+    if (sql) {
+      for (const row of rows) {
+        await sql`
+          INSERT INTO gallery (url, alt_text, category, sort_order, featured, active)
+          VALUES (${row.url}, ${row.alt_text}, ${row.category}, ${row.sort_order}, ${row.featured}, ${row.active})
+          ON CONFLICT (url) DO UPDATE SET
+            alt_text = EXCLUDED.alt_text,
+            category = EXCLUDED.category,
+            sort_order = EXCLUDED.sort_order,
+            featured = EXCLUDED.featured,
+            active = EXCLUDED.active;
+        `;
+      }
+      outcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const { error } = await supabase
+        .from("gallery")
+        .upsert(rows, { onConflict: "url", ignoreDuplicates: true });
+      outcome = error
+        ? fail("Could not seed the gallery. Check the Supabase schema first.")
+        : ok;
+      if (error) console.error("[admin] gallery seed:", error);
+    }
   } catch (error) {
     console.error("[admin] gallery seed failed:", error);
-    outcome = fail("Could not reach Supabase to seed the gallery.");
+    outcome = fail("Could not reach database to seed the gallery.");
   }
 
-  await finish(outcome, "Static gallery rows were seeded into Supabase.", GALLERY_TAB, true);
+  await finish(outcome, "Static gallery rows were seeded into database.", GALLERY_TAB, true);
 }
 
 const BRANCH_VALUES = ["battaramulla", "nugegoda"] as const;
@@ -336,19 +405,34 @@ export async function addTestimonial(formData: FormData) {
 
   let outcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const { error } = await supabase.from("testimonials").insert({
-      client_name: parsed.data.clientName,
-      quote: parsed.data.quote,
-      branch: parsed.data.branch === "" ? null : parsed.data.branch,
-      rating: parsed.data.rating,
-      featured: parsed.data.featured,
-    });
-    outcome = error ? fail("Could not add the testimonial.") : ok;
-    if (error) console.error("[admin] testimonial add:", error);
+    const sql = getDb();
+    if (sql) {
+      await sql`
+        INSERT INTO testimonials (client_name, quote, branch, rating, featured)
+        VALUES (
+          ${parsed.data.clientName},
+          ${parsed.data.quote},
+          ${parsed.data.branch === "" ? null : parsed.data.branch},
+          ${parsed.data.rating},
+          ${parsed.data.featured}
+        )
+      `;
+      outcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const { error } = await supabase.from("testimonials").insert({
+        client_name: parsed.data.clientName,
+        quote: parsed.data.quote,
+        branch: parsed.data.branch === "" ? null : parsed.data.branch,
+        rating: parsed.data.rating,
+        featured: parsed.data.featured,
+      });
+      outcome = error ? fail("Could not add the testimonial.") : ok;
+      if (error) console.error("[admin] testimonial add:", error);
+    }
   } catch (error) {
     console.error("[admin] testimonial add failed:", error);
-    outcome = fail("Could not reach Supabase to add the testimonial.");
+    outcome = fail("Could not reach database to add the testimonial.");
   }
 
   await finish(outcome, "Testimonial added.", TESTIMONIALS_TAB, true);
@@ -366,16 +450,26 @@ export async function toggleTestimonialFeatured(formData: FormData) {
 
   let outcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const { error } = await supabase
-      .from("testimonials")
-      .update({ featured })
-      .eq("id", id.data);
-    outcome = error ? fail("Could not update the testimonial.") : ok;
-    if (error) console.error("[admin] testimonial update:", error);
+    const sql = getDb();
+    if (sql) {
+      await sql`
+        UPDATE testimonials
+        SET featured = ${featured}
+        WHERE id = ${id.data}
+      `;
+      outcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const { error } = await supabase
+        .from("testimonials")
+        .update({ featured })
+        .eq("id", id.data);
+      outcome = error ? fail("Could not update the testimonial.") : ok;
+      if (error) console.error("[admin] testimonial update:", error);
+    }
   } catch (error) {
     console.error("[admin] testimonial update failed:", error);
-    outcome = fail("Could not reach Supabase to update the testimonial.");
+    outcome = fail("Could not reach database to update the testimonial.");
   }
 
   await finish(
@@ -397,13 +491,19 @@ export async function deleteTestimonial(formData: FormData) {
 
   let outcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const { error } = await supabase.from("testimonials").delete().eq("id", id.data);
-    outcome = error ? fail("Could not delete the testimonial.") : ok;
-    if (error) console.error("[admin] testimonial delete:", error);
+    const sql = getDb();
+    if (sql) {
+      await sql`DELETE FROM testimonials WHERE id = ${id.data}`;
+      outcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const { error } = await supabase.from("testimonials").delete().eq("id", id.data);
+      outcome = error ? fail("Could not delete the testimonial.") : ok;
+      if (error) console.error("[admin] testimonial delete:", error);
+    }
   } catch (error) {
     console.error("[admin] testimonial delete failed:", error);
-    outcome = fail("Could not reach Supabase to delete the testimonial.");
+    outcome = fail("Could not reach database to delete the testimonial.");
   }
 
   await finish(outcome, "Testimonial deleted.", TESTIMONIALS_TAB, true);
@@ -631,21 +731,58 @@ export async function seedWaxPricingFromStatic() {
 
   let outcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const [pRes, pkgRes] = await Promise.all([
-      supabase.from("wax_prices").upsert(priceRows, { onConflict: "area" }),
-      supabase.from("wax_packages").upsert(packageRows, { onConflict: "id" }),
-    ]);
-
-    if (pRes.error || pkgRes.error) {
-      console.error("[admin] wax pricing seed error:", pRes.error || pkgRes.error);
-      outcome = fail("Could not seed pricing. Confirm the Supabase migration script was executed.");
-    } else {
+    const sql = getDb();
+    if (sql) {
+      for (const row of priceRows) {
+        await sql`
+          INSERT INTO wax_prices (area, category, lycon_pinkini, lycon_superberry, lycon_aloe_vera, rica_white_choc, biahu_gold, note, sort_order, active)
+          VALUES (${row.area}, ${row.category}, ${row.lycon_pinkini}, ${row.lycon_superberry}, ${row.lycon_aloe_vera}, ${row.rica_white_choc}, ${row.biahu_gold}, ${row.note}, ${row.sort_order}, ${row.active})
+          ON CONFLICT (area) DO UPDATE SET
+            category = EXCLUDED.category,
+            lycon_pinkini = EXCLUDED.lycon_pinkini,
+            lycon_superberry = EXCLUDED.lycon_superberry,
+            lycon_aloe_vera = EXCLUDED.lycon_aloe_vera,
+            rica_white_choc = EXCLUDED.rica_white_choc,
+            biahu_gold = EXCLUDED.biahu_gold,
+            note = EXCLUDED.note,
+            sort_order = EXCLUDED.sort_order,
+            active = EXCLUDED.active;
+        `;
+      }
+      for (const pkg of packageRows) {
+        await sql`
+          INSERT INTO wax_packages (id, name, description, inclusions, price_essential, price_premium, duration, tag, sort_order, active)
+          VALUES (${pkg.id}, ${pkg.name}, ${pkg.description}, ${pkg.inclusions}, ${pkg.price_essential}, ${pkg.price_premium}, ${pkg.duration}, ${pkg.tag}, ${pkg.sort_order}, ${pkg.active})
+          ON CONFLICT (id) DO UPDATE SET
+            name = EXCLUDED.name,
+            description = EXCLUDED.description,
+            inclusions = EXCLUDED.inclusions,
+            price_essential = EXCLUDED.price_essential,
+            price_premium = EXCLUDED.price_premium,
+            duration = EXCLUDED.duration,
+            tag = EXCLUDED.tag,
+            sort_order = EXCLUDED.sort_order,
+            active = EXCLUDED.active;
+        `;
+      }
       outcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const [pRes, pkgRes] = await Promise.all([
+        supabase.from("wax_prices").upsert(priceRows, { onConflict: "area" }),
+        supabase.from("wax_packages").upsert(packageRows, { onConflict: "id" }),
+      ]);
+
+      if (pRes.error || pkgRes.error) {
+        console.error("[admin] wax pricing seed error:", pRes.error || pkgRes.error);
+        outcome = fail("Could not seed pricing. Confirm the database migration script was executed.");
+      } else {
+        outcome = ok;
+      }
     }
   } catch (error) {
     console.error("[admin] wax pricing seed failed:", error);
-    outcome = fail("Could not reach Supabase to seed pricing.");
+    outcome = fail("Could not reach database to seed pricing.");
   }
 
   await finish(outcome, "Wax pricing and packages seeded from static menu.", PRICING_TAB, true);

@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
+import { getDb } from "@/lib/db";
 import {
   bookingSchema,
   contactSchema,
@@ -65,6 +66,32 @@ export async function submitBooking(
     return { ok: true };
   }
 
+  // 1. Neon Database Support
+  const sql = getDb();
+  if (sql) {
+    try {
+      await sql`
+        INSERT INTO booking_requests (name, phone, branch, service_preference, preferred_date, message)
+        VALUES (
+          ${parsed.data.name},
+          ${parsed.data.phone},
+          ${parsed.data.branch},
+          ${parsed.data.service_preference || null},
+          ${parsed.data.preferred_date || null},
+          ${parsed.data.message || null}
+        )
+      `;
+      return { ok: true };
+    } catch (err) {
+      console.error("[neon booking] insert failed:", err);
+      return {
+        ok: false,
+        error: "Something went wrong on our side. Please try WhatsApp instead.",
+      };
+    }
+  }
+
+  // 2. Supabase Fallback
   const supabase = await createClient();
 
   if (!supabase) {
@@ -118,6 +145,31 @@ export async function submitContact(raw: unknown): Promise<BookingResult> {
   const { name, email, phone, branch, message } = parsed.data;
   const composed = email ? `${message}\n\nEmail: ${email}` : message;
 
+  // 1. Neon Database Support
+  const sql = getDb();
+  if (sql) {
+    try {
+      await sql`
+        INSERT INTO booking_requests (name, phone, branch, service_preference, message)
+        VALUES (
+          ${name},
+          ${phone},
+          ${branch},
+          ${"General enquiry"},
+          ${composed}
+        )
+      `;
+      return { ok: true };
+    } catch (err) {
+      console.error("[neon contact] insert failed:", err);
+      return {
+        ok: false,
+        error: "Something went wrong on our side. Please try WhatsApp instead.",
+      };
+    }
+  }
+
+  // 2. Supabase Fallback
   const supabase = await createClient();
   if (!supabase) {
     console.warn("[contact] Supabase not configured; message not persisted");

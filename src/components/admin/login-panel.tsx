@@ -157,7 +157,7 @@ export function LoginPanel({ flash, supabaseReady, legacyReady }: LoginPanelProp
         {!supabaseReady && legacyReady && (
           <form action={loginAdmin} className="mt-6 grid gap-4">
             <p className="rounded-card border border-gold/20 bg-gold/10 px-4 py-3 text-body-sm text-brand-light text-pretty">
-              Supabase authentication is not configured, so the legacy studio password is active.
+              Studio administrator password sign-in is active.
             </p>
             <AdminFieldLabel label="Studio password">
               <input

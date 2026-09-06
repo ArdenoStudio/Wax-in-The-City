@@ -1,5 +1,6 @@
 import { updateBookingStatus } from "@/app/admin/dashboard-actions";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getDb } from "@/lib/db";
 import { normalizeWhatsApp } from "@/lib/site";
 import {
   AdminFieldLabel,
@@ -35,22 +36,45 @@ function formatTimestamp(value: string): string {
 }
 
 export async function BookingsSection() {
-  const admin = createAdminClient();
+  const sql = getDb();
   let rows: BookingRow[] = [];
-  let loadError = !admin;
+  let loadError = false;
 
-  if (admin) {
+  // 1. Neon Database Support
+  if (sql) {
     try {
-      const { data, error } = await admin
-        .from("booking_requests")
-        .select(
-          "id, name, phone, branch, service_preference, preferred_date, message, status, created_at"
-        )
-        .order("created_at", { ascending: false })
-        .limit(50);
-      loadError = Boolean(error);
-      rows = (data as BookingRow[] | null) ?? [];
-    } catch {
+      const data = await sql`
+        SELECT id, name, phone, branch, service_preference, preferred_date, message, status, created_at
+        FROM booking_requests
+        ORDER BY created_at DESC
+        LIMIT 50
+      `;
+      rows = data as BookingRow[];
+      loadError = false;
+    } catch (e) {
+      console.error("[neon] bookings query error:", e);
+      loadError = true;
+    }
+  }
+
+  // 2. Supabase Fallback
+  if (!sql) {
+    const admin = createAdminClient();
+    if (admin) {
+      try {
+        const { data, error } = await admin
+          .from("booking_requests")
+          .select(
+            "id, name, phone, branch, service_preference, preferred_date, message, status, created_at"
+          )
+          .order("created_at", { ascending: false })
+          .limit(50);
+        loadError = Boolean(error);
+        rows = (data as BookingRow[] | null) ?? [];
+      } catch {
+        loadError = true;
+      }
+    } else {
       loadError = true;
     }
   }
@@ -59,7 +83,7 @@ export async function BookingsSection() {
     <div className="grid gap-5">
       {loadError && (
         <AdminStatusMessage tone="error">
-          Could not load booking requests. The service role env vars and schema must be configured.
+          Could not load booking requests. Check database credentials and schema.
         </AdminStatusMessage>
       )}
 

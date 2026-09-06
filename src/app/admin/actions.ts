@@ -13,6 +13,7 @@ import {
   verifyAdminPassword,
 } from "@/lib/admin-auth";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getDb } from "@/lib/db";
 import { SERVICES } from "@/lib/site";
 
 const serviceUpdateSchema = z.object({
@@ -66,12 +67,6 @@ export async function logoutAdmin() {
 export async function seedServices() {
   await requireAdminMutation();
 
-  const supabase = createAdminClient();
-  if (!supabase) {
-    await adminError("Supabase admin env vars are not configured.");
-    return;
-  }
-
   const rows = SERVICES.map((service, index) => ({
     name: service.name,
     category: service.category,
@@ -84,28 +79,55 @@ export async function seedServices() {
     sort_order: index + 1,
   }));
 
+  const sql = getDb();
+  if (sql) {
+    try {
+      for (const service of rows) {
+        await sql`
+          INSERT INTO services (name, category, description, duration_min, price_from, slug, active, featured, sort_order)
+          VALUES (${service.name}, ${service.category}, ${service.description}, ${service.duration_min}, ${service.price_from}, ${service.slug}, ${service.active}, ${service.featured}, ${service.sort_order})
+          ON CONFLICT (slug) DO UPDATE SET
+            name = EXCLUDED.name,
+            category = EXCLUDED.category,
+            description = EXCLUDED.description,
+            duration_min = EXCLUDED.duration_min,
+            price_from = EXCLUDED.price_from,
+            active = EXCLUDED.active,
+            featured = EXCLUDED.featured,
+            sort_order = EXCLUDED.sort_order;
+        `;
+      }
+      revalidatePath("/", "layout");
+      await setAdminFlashMessage("Service seed rows were added to the database.", "success");
+      redirect("/admin?tab=services");
+    } catch (error) {
+      console.error("[admin] services seed error:", error);
+      await adminError("Could not seed services into database.");
+    }
+  }
+
+  const supabase = createAdminClient();
+  if (!supabase) {
+    await adminError("Database credentials are not configured.");
+    return;
+  }
+
   const { error } = await supabase
     .from("services")
     .upsert(rows, { onConflict: "slug" });
 
   if (error) {
-    await adminError("Could not seed services. Check the Supabase schema first.");
+    await adminError("Could not seed services. Check the database schema first.");
     return;
   }
 
   revalidatePath("/", "layout");
-  await setAdminFlashMessage("Service seed rows were added to Supabase.", "success");
-  redirect("/admin");
+  await setAdminFlashMessage("Service seed rows were added to the database.", "success");
+  redirect("/admin?tab=services");
 }
 
 export async function updateService(formData: FormData) {
   await requireAdminMutation();
-
-  const supabase = createAdminClient();
-  if (!supabase) {
-    await adminError("Supabase admin env vars are not configured.");
-    return;
-  }
 
   const parsed = serviceUpdateSchema.safeParse({
     id: formData.get("id"),
@@ -126,6 +148,39 @@ export async function updateService(formData: FormData) {
   }
 
   const service = parsed.data;
+
+  const sql = getDb();
+  if (sql) {
+    try {
+      await sql`
+        UPDATE services
+        SET
+          name = ${service.name},
+          slug = ${service.slug},
+          category = ${service.category},
+          description = ${service.description},
+          duration_min = ${service.duration},
+          price_from = ${service.priceFrom},
+          active = ${service.active ?? false},
+          featured = ${service.featured ?? false},
+          sort_order = ${service.sortOrder}
+        WHERE id = ${service.id}
+      `;
+      revalidatePath("/", "layout");
+      await setAdminFlashMessage(`Service "${service.name}" updated successfully.`, "success");
+      redirect("/admin?tab=services");
+    } catch (error) {
+      console.error("[admin] service update error:", error);
+      await adminError("Could not update the service in database.");
+    }
+  }
+
+  const supabase = createAdminClient();
+  if (!supabase) {
+    await adminError("Database credentials are not configured.");
+    return;
+  }
+
   const { error } = await supabase
     .from("services")
     .update({
@@ -142,11 +197,11 @@ export async function updateService(formData: FormData) {
     .eq("id", service.id);
 
   if (error) {
-    await adminError("Could not update the service. Check Supabase permissions.");
+    await adminError("Could not update the service. Check database permissions.");
     return;
   }
 
   revalidatePath("/", "layout");
   await setAdminFlashMessage(`Service "${service.name}" updated successfully.`, "success");
-  redirect("/admin");
+  redirect("/admin?tab=services");
 }

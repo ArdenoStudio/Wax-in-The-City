@@ -1,4 +1,5 @@
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getDb } from "@/lib/db";
 import { whatsappLink } from "@/lib/site";
 import { AdminPlate, AdminStatusMessage } from "@/components/admin/primitives";
 
@@ -48,6 +49,7 @@ interface LatestBookingRow {
 
 export async function OverviewSection() {
   const admin = createAdminClient();
+  const sql = getDb();
 
   const stats = [
     { label: "Pending bookings", value: 0 },
@@ -56,9 +58,40 @@ export async function OverviewSection() {
     { label: "Featured gallery items", value: 0 },
   ];
   let connected = false;
+  let databaseName = "Database";
   let latest: LatestBookingRow[] = [];
 
-  if (admin) {
+  // 1. Neon Database Support
+  if (sql) {
+    try {
+      const [pendingRes, totalRes, servicesRes, galleryRes] = await Promise.all([
+        sql`SELECT COUNT(*)::int AS count FROM booking_requests WHERE status = 'pending'`,
+        sql`SELECT COUNT(*)::int AS count FROM booking_requests`,
+        sql`SELECT COUNT(*)::int AS count FROM services WHERE active = true`,
+        sql`SELECT COUNT(*)::int AS count FROM gallery WHERE featured = true`,
+      ]);
+
+      connected = true;
+      databaseName = "Neon Database";
+      stats[0].value = pendingRes[0]?.count ?? 0;
+      stats[1].value = totalRes[0]?.count ?? 0;
+      stats[2].value = servicesRes[0]?.count ?? 0;
+      stats[3].value = galleryRes[0]?.count ?? 0;
+
+      const latestRows = await sql`
+        SELECT name, phone, branch, service_preference, status, created_at
+        FROM booking_requests
+        ORDER BY created_at DESC
+        LIMIT 5
+      `;
+      latest = latestRows as LatestBookingRow[];
+    } catch (e) {
+      console.error("[neon] overview query error:", e);
+    }
+  }
+
+  // 2. Supabase Fallback
+  if (!connected && admin) {
     try {
       const [pending, total, services, galleryFeatured] = await Promise.all([
         countRows(admin, "booking_requests", { status: "pending" }),
@@ -68,6 +101,7 @@ export async function OverviewSection() {
       ]);
 
       connected = !pending.error && !total.error && !services.error && !galleryFeatured.error;
+      databaseName = "Supabase";
 
       stats[0].value = pending.count ?? 0;
       stats[1].value = total.count ?? 0;
@@ -100,7 +134,7 @@ export async function OverviewSection() {
           <span
             className={`h-2 w-2 rounded-pill ${connected ? "bg-success" : "bg-error"}`}
           />
-          {connected ? "Supabase connected" : "Supabase offline"}
+          {connected ? `${databaseName} connected` : "Database offline"}
         </span>
       </div>
 
@@ -112,14 +146,14 @@ export async function OverviewSection() {
 
       <AdminPlate>
         <h2 className="font-serif text-h3 text-cream text-balance">Latest booking requests</h2>
-        {!admin && (
+        {!connected && (
           <div className="mt-4">
             <AdminStatusMessage tone="error">
-              Supabase service role env vars are not configured, so the inbox is unavailable.
+              Database is offline or not configured, so the inbox is unavailable.
             </AdminStatusMessage>
           </div>
         )}
-        {admin && latest.length === 0 && (
+        {connected && latest.length === 0 && (
           <p className="mt-3 text-body-sm text-cream/60">
             No booking requests have arrived yet.
           </p>

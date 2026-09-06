@@ -6,6 +6,7 @@ import {
 import { getAdminWaxPricing } from "@/lib/pricing-content";
 
 import { isSupabaseAuthConfigured } from "@/lib/admin-access";
+import { isDbConfigured } from "@/lib/db";
 import {
   AdminFieldLabel,
   AdminPlate,
@@ -17,27 +18,27 @@ import {
 import { Sparkles, Package, ShieldCheck } from "lucide-react";
 
 export async function PricingSection() {
-  const supabaseReady = isSupabaseAuthConfigured();
-  const { prices, packages } = supabaseReady
+  const dbReady = isDbConfigured() || isSupabaseAuthConfigured();
+  const { prices, packages } = dbReady
     ? await getAdminWaxPricing()
     : { prices: [], packages: [] };
 
   return (
     <div className="grid gap-8">
-      {!supabaseReady && (
+      {!dbReady && (
         <AdminStatusMessage tone="error">
-          Add the Supabase env vars to enable database-persisted wax pricing & packages.
+          Database credentials must be configured to enable database-persisted wax pricing & packages.
         </AdminStatusMessage>
       )}
 
-      {supabaseReady && prices.length === 0 && (
+      {dbReady && prices.length === 0 && (
         <AdminPlate>
           <div className="flex items-center gap-2 text-brand-light">
             <Sparkles className="h-5 w-5" />
             <span className="text-caption font-semibold uppercase tracking-wider">Initialize Menu</span>
           </div>
           <h2 className="mt-2 font-serif text-h3 text-cream text-balance">
-            No wax pricing records in Supabase yet
+            No wax pricing records in database yet
           </h2>
           <p className="mt-2 max-w-2xl text-body-sm text-warm-grey text-pretty">
             Seed the full verified static pricing menu (all 18 treatment areas and 3 curated bundles)

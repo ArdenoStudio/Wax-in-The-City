@@ -4,6 +4,7 @@ import {
   toggleTestimonialFeatured,
 } from "@/app/admin/dashboard-actions";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getDb } from "@/lib/db";
 import {
   AdminFieldLabel,
   AdminPlate,
@@ -29,19 +30,41 @@ const BRANCH_OPTIONS = [
 ];
 
 export async function TestimonialsSection() {
-  const admin = createAdminClient();
+  const sql = getDb();
   let rows: TestimonialRow[] = [];
-  let loadError = !admin;
+  let loadError = false;
 
-  if (admin) {
+  // 1. Neon Database Support
+  if (sql) {
     try {
-      const { data, error } = await admin
-        .from("testimonials")
-        .select("id, client_name, quote, branch, rating, featured")
-        .order("created_at", { ascending: false });
-      loadError = Boolean(error);
-      rows = (data as TestimonialRow[] | null) ?? [];
-    } catch {
+      const data = await sql`
+        SELECT id, client_name, quote, branch, rating, featured
+        FROM testimonials
+        ORDER BY created_at DESC
+      `;
+      rows = data as TestimonialRow[];
+      loadError = false;
+    } catch (e) {
+      console.error("[neon] testimonials query error:", e);
+      loadError = true;
+    }
+  }
+
+  // 2. Supabase Fallback
+  if (!sql) {
+    const admin = createAdminClient();
+    if (admin) {
+      try {
+        const { data, error } = await admin
+          .from("testimonials")
+          .select("id, client_name, quote, branch, rating, featured")
+          .order("created_at", { ascending: false });
+        loadError = Boolean(error);
+        rows = (data as TestimonialRow[] | null) ?? [];
+      } catch {
+        loadError = true;
+      }
+    } else {
       loadError = true;
     }
   }
@@ -50,7 +73,7 @@ export async function TestimonialsSection() {
     <div className="grid gap-5">
       {loadError && (
         <AdminStatusMessage tone="error">
-          Could not load testimonials. The service role env vars and schema must be configured.
+          Could not load testimonials. Database credentials must be configured.
         </AdminStatusMessage>
       )}
 
