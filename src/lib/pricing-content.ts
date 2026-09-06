@@ -187,6 +187,39 @@ export async function getPublicWaxPricing(): Promise<WaxPricingContent> {
   }
 }
 
+function getStaticAdminPricingFallback(): {
+  prices: AdminWaxPrice[];
+  packages: AdminWaxPackage[];
+} {
+  return {
+    prices: WAX_PRICE_ROWS.map((row, idx) => ({
+      id: `static-${idx}`,
+      area: row.area,
+      category: "body",
+      lyconPinkini: row.prices["lycon-pinkini"] ?? null,
+      lyconSuperberry: row.prices["lycon-superberry"] ?? null,
+      lyconAloeVera: row.prices["lycon-aloe-vera"] ?? null,
+      ricaWhiteChoc: row.prices["rica-white-choc"] ?? null,
+      biahuGold: row.prices["biahu-gold"] ?? null,
+      note: row.note ?? null,
+      sortOrder: (idx + 1) * 10,
+      active: true,
+    })),
+    packages: WAX_PACKAGES.map((pkg, idx) => ({
+      id: pkg.id,
+      name: pkg.name,
+      description: pkg.description,
+      inclusions: pkg.inclusions,
+      priceEssential: pkg.prices.essential,
+      pricePremium: pkg.prices.premium,
+      duration: pkg.duration,
+      tag: pkg.tag ?? null,
+      sortOrder: (idx + 1) * 10,
+      active: true,
+    })),
+  };
+}
+
 export async function getAdminWaxPricing(): Promise<{
   prices: AdminWaxPrice[];
   packages: AdminWaxPackage[];
@@ -200,10 +233,12 @@ export async function getAdminWaxPricing(): Promise<{
         sql`SELECT * FROM wax_packages ORDER BY sort_order ASC`,
       ]);
 
-      return {
-        prices: (priceRows as DBWaxPriceRow[]).map(mapRowToAdminWaxPrice),
-        packages: (packageRows as DBWaxPackageRow[]).map(mapRowToAdminWaxPackage),
-      };
+      const prices = (priceRows as DBWaxPriceRow[]).map(mapRowToAdminWaxPrice);
+      const packages = (packageRows as DBWaxPackageRow[]).map(mapRowToAdminWaxPackage);
+
+      if (prices.length > 0) {
+        return { prices, packages };
+      }
     } catch (error) {
       console.error("[neon] admin wax pricing query failed:", error);
     }
@@ -211,19 +246,23 @@ export async function getAdminWaxPricing(): Promise<{
 
   // 2. Supabase Fallback
   const admin = createAdminClient();
-  if (!admin) return { prices: [], packages: [] };
+  if (admin) {
+    try {
+      const [pricesRes, packagesRes] = await Promise.all([
+        admin.from("wax_prices").select("*").order("sort_order", { ascending: true }),
+        admin.from("wax_packages").select("*").order("sort_order", { ascending: true }),
+      ]);
 
-  try {
-    const [pricesRes, packagesRes] = await Promise.all([
-      admin.from("wax_prices").select("*").order("sort_order", { ascending: true }),
-      admin.from("wax_packages").select("*").order("sort_order", { ascending: true }),
-    ]);
-
-    return {
-      prices: (pricesRes.data as DBWaxPriceRow[] | null)?.map(mapRowToAdminWaxPrice) ?? [],
-      packages: (packagesRes.data as DBWaxPackageRow[] | null)?.map(mapRowToAdminWaxPackage) ?? [],
-    };
-  } catch {
-    return { prices: [], packages: [] };
+      const prices = (pricesRes.data as DBWaxPriceRow[] | null)?.map(mapRowToAdminWaxPrice) ?? [];
+      const packages = (packagesRes.data as DBWaxPackageRow[] | null)?.map(mapRowToAdminWaxPackage) ?? [];
+      if (prices.length > 0) {
+        return { prices, packages };
+      }
+    } catch {
+      // Fall through to static fallback
+    }
   }
+
+  // 3. Resilient Static Fallback (Guarantees UI never renders empty or crashes)
+  return getStaticAdminPricingFallback();
 }

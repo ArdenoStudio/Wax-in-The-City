@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { ShieldCheck } from "lucide-react";
 import { getAndClearAdminFlash, hasLegacyAdminSession, isAdminPasswordConfigured } from "@/lib/admin-auth";
@@ -12,6 +11,7 @@ import { TestimonialsSection } from "@/components/admin/testimonials-section";
 import { PricingSection } from "@/components/admin/pricing-section";
 import { AnalyticsSection } from "@/components/admin/analytics-section";
 import { AdminEnvVar, AdminStatusMessage } from "@/components/admin/primitives";
+import { AdminTabsNav } from "@/components/admin/admin-tabs-nav";
 
 export const dynamic = "force-dynamic";
 
@@ -90,25 +90,7 @@ export default async function AdminPage({
           </h1>
         </div>
 
-        <nav className="mt-6 flex flex-wrap gap-2" aria-label="Dashboard sections">
-          {TABS.map((tab) => {
-            const isActive = tab.slug === activeTab;
-            return (
-              <Link
-                key={tab.slug}
-                href={`/admin?tab=${tab.slug}`}
-                aria-current={isActive ? "page" : undefined}
-                className={`inline-flex h-10 items-center rounded-pill border px-4 text-body-sm font-medium transition-colors ${
-                  isActive
-                    ? "border-brand-action bg-brand-action text-cream"
-                    : "border-cream/16 text-cream/75 hover:bg-cream/10"
-                }`}
-              >
-                {tab.label}
-              </Link>
-            );
-          })}
-        </nav>
+        <AdminTabsNav tabs={TABS} activeTab={activeTab} />
 
         {flash && (
           <div className="mt-6">
