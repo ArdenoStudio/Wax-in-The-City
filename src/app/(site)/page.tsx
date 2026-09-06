@@ -35,21 +35,33 @@ export default async function HomePage() {
   return (
     <>
       <FaqJsonLd />
-      <HeroSection />
-      <ServicesGrid categories={serviceContent.categories} />
+      <div data-analytics-section="hero">
+        <HeroSection />
+      </div>
+      <div data-analytics-section="services-grid">
+        <ServicesGrid categories={serviceContent.categories} />
+      </div>
       <TrustStrip />
       <StudioReel />
-      <BeforeAfterShowcase />
-      <BranchSelector />
-      <ReviewThemes />
+      <div data-analytics-section="before-after">
+        <BeforeAfterShowcase />
+      </div>
+      <div data-analytics-section="branches">
+        <BranchSelector />
+      </div>
+      <div data-analytics-section="reviews-testimonials">
+        <ReviewThemes />
+      </div>
       <section className="px-5 py-section-lg lg:px-8">
         <div className="mx-auto max-w-7xl">
           <StatsCounter />
         </div>
       </section>
-      <GalleryTeaser />
+      <div data-analytics-section="gallery">
+        <GalleryTeaser />
+      </div>
       <AboutTeaser />
-      <section className="bg-cream px-5 py-section-lg lg:px-8">
+      <section className="bg-cream px-5 py-section-lg lg:px-8" data-analytics-section="faq">
         <div className="mx-auto max-w-3xl">
           <div className="mb-14">
             <SectionHeading eyebrow="Good to know" title="Questions, answered." />
@@ -64,7 +76,9 @@ export default async function HomePage() {
           <FAQAccordion />
         </div>
       </section>
-      <BookingZone />
+      <div data-analytics-section="booking-zone">
+        <BookingZone />
+      </div>
     </>
   );
 }

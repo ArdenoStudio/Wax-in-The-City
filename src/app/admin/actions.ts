@@ -205,3 +205,96 @@ export async function updateService(formData: FormData) {
   await setAdminFlashMessage(`Service "${service.name}" updated successfully.`, "success");
   redirect("/admin?tab=services");
 }
+
+const serviceCreateSchema = z.object({
+  name: z.string().trim().min(2).max(100),
+  slug: z.string().trim().min(2).max(120),
+  category: z.enum(["waxing", "facial", "moroccan", "hydra-facial"]),
+  duration: z.string().trim().min(2).max(40),
+  priceFrom: z.coerce.number().int().min(0).max(500000),
+  description: z.string().trim().min(5).max(500),
+  sortOrder: z.coerce.number().int().min(0).max(999).default(99),
+  featured: z.coerce.boolean().optional(),
+});
+
+export async function createService(formData: FormData) {
+  await requireAdminMutation();
+
+  let slug = String(formData.get("slug") || "").trim().toLowerCase();
+  if (!slug) {
+    slug = String(formData.get("name") || "")
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
+  const parsed = serviceCreateSchema.safeParse({
+    name: formData.get("name"),
+    slug,
+    category: formData.get("category"),
+    duration: formData.get("duration"),
+    priceFrom: formData.get("priceFrom"),
+    description: formData.get("description"),
+    sortOrder: formData.get("sortOrder") || 99,
+    featured: formData.get("featured") === "on",
+  });
+
+  if (!parsed.success) {
+    await adminError("Please check all service fields and try again.");
+    return;
+  }
+
+  const s = parsed.data;
+  const sql = getDb();
+  if (sql) {
+    try {
+      await sql`
+        INSERT INTO services (name, slug, category, duration_min, price_from, description, sort_order, active, featured)
+        VALUES (${s.name}, ${s.slug}, ${s.category}, ${s.duration}, ${s.priceFrom}, ${s.description}, ${s.sortOrder}, true, ${s.featured ?? false})
+        ON CONFLICT (slug) DO UPDATE SET
+          name = EXCLUDED.name,
+          category = EXCLUDED.category,
+          duration_min = EXCLUDED.duration_min,
+          price_from = EXCLUDED.price_from,
+          description = EXCLUDED.description,
+          sort_order = EXCLUDED.sort_order,
+          active = true,
+          featured = EXCLUDED.featured;
+      `;
+      revalidatePath("/", "layout");
+      await setAdminFlashMessage(`New service "${s.name}" added successfully.`, "success");
+      redirect("/admin?tab=services");
+    } catch (e) {
+      console.error("[admin] createService error:", e);
+      await adminError("Could not add new service. Slug may already exist.");
+    }
+  }
+
+  await adminError("Database not connected.");
+}
+
+export async function deleteService(formData: FormData) {
+  await requireAdminMutation();
+
+  const id = String(formData.get("id") ?? "").trim();
+  if (!id) {
+    await adminError("Invalid service reference.");
+    return;
+  }
+
+  const sql = getDb();
+  if (sql) {
+    try {
+      await sql`DELETE FROM services WHERE id = ${id}`;
+      revalidatePath("/", "layout");
+      await setAdminFlashMessage("Service deleted successfully.", "success");
+      redirect("/admin?tab=services");
+    } catch (e) {
+      console.error("[admin] deleteService error:", e);
+      await adminError("Could not delete service.");
+    }
+  }
+
+  await adminError("Database not connected.");
+}

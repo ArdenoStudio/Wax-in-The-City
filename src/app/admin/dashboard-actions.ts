@@ -787,3 +787,221 @@ export async function seedWaxPricingFromStatic() {
 
   await finish(outcome, "Wax pricing and packages seeded from static menu.", PRICING_TAB, true);
 }
+
+const waxPriceCreateSchema = z.object({
+  area: z.string().trim().min(1).max(100),
+  category: z.enum(["face", "body", "intimate"]),
+  lyconPinkini: z.coerce.number().int().min(0).optional().nullable(),
+  lyconSuperberry: z.coerce.number().int().min(0).optional().nullable(),
+  lyconAloeVera: z.coerce.number().int().min(0).optional().nullable(),
+  ricaWhiteChoc: z.coerce.number().int().min(0).optional().nullable(),
+  biahuGold: z.coerce.number().int().min(0).optional().nullable(),
+  note: z.string().trim().max(300).optional().nullable(),
+  sortOrder: z.coerce.number().int().min(0).max(999).default(99),
+});
+
+export async function createWaxPrice(formData: FormData) {
+  await requireAdminMutation();
+
+  const parseNum = (val: FormDataEntryValue | null) => {
+    if (!val || String(val).trim() === "") return null;
+    const n = Number(val);
+    return Number.isFinite(n) && n > 0 ? n : null;
+  };
+
+  const parsed = waxPriceCreateSchema.safeParse({
+    area: formData.get("area"),
+    category: formData.get("category"),
+    lyconPinkini: parseNum(formData.get("lyconPinkini")),
+    lyconSuperberry: parseNum(formData.get("lyconSuperberry")),
+    lyconAloeVera: parseNum(formData.get("lyconAloeVera")),
+    ricaWhiteChoc: parseNum(formData.get("ricaWhiteChoc")),
+    biahuGold: parseNum(formData.get("biahuGold")),
+    note: formData.get("note") ? String(formData.get("note")).trim() : null,
+    sortOrder: formData.get("sortOrder") || 99,
+  });
+
+  if (!parsed.success) {
+    await adminError("Check the treatment area fields and try again.", PRICING_TAB);
+    return;
+  }
+
+  let outcome: Outcome;
+  try {
+    const sql = getDb();
+    if (sql) {
+      await sql`
+        INSERT INTO wax_prices (area, category, lycon_pinkini, lycon_superberry, lycon_aloe_vera, rica_white_choc, biahu_gold, note, sort_order, active)
+        VALUES (
+          ${parsed.data.area},
+          ${parsed.data.category},
+          ${parsed.data.lyconPinkini},
+          ${parsed.data.lyconSuperberry},
+          ${parsed.data.lyconAloeVera},
+          ${parsed.data.ricaWhiteChoc},
+          ${parsed.data.biahuGold},
+          ${parsed.data.note},
+          ${parsed.data.sortOrder},
+          true
+        )
+        ON CONFLICT (area) DO UPDATE SET
+          category = EXCLUDED.category,
+          lycon_pinkini = EXCLUDED.lycon_pinkini,
+          lycon_superberry = EXCLUDED.lycon_superberry,
+          lycon_aloe_vera = EXCLUDED.lycon_aloe_vera,
+          rica_white_choc = EXCLUDED.rica_white_choc,
+          biahu_gold = EXCLUDED.biahu_gold,
+          note = EXCLUDED.note,
+          sort_order = EXCLUDED.sort_order,
+          active = true;
+      `;
+      outcome = ok;
+    } else {
+      outcome = fail("Database not connected.");
+    }
+  } catch (error) {
+    console.error("[admin] wax price create failed:", error);
+    outcome = fail("Could not add treatment area.");
+  }
+
+  await finish(outcome, `Treatment area "${parsed.data.area}" added to price menu.`, PRICING_TAB, true);
+}
+
+export async function deleteWaxPrice(formData: FormData) {
+  await requireAdminMutation();
+
+  const id = z.string().uuid().safeParse(formData.get("id"));
+  if (!id.success) {
+    await adminError("Invalid treatment area reference.", PRICING_TAB);
+    return;
+  }
+
+  let outcome: Outcome;
+  try {
+    const sql = getDb();
+    if (sql) {
+      await sql`DELETE FROM wax_prices WHERE id = ${id.data}`;
+      outcome = ok;
+    } else {
+      outcome = fail("Database not connected.");
+    }
+  } catch (error) {
+    console.error("[admin] wax price delete failed:", error);
+    outcome = fail("Could not delete treatment area.");
+  }
+
+  await finish(outcome, "Treatment area removed from pricing.", PRICING_TAB, true);
+}
+
+const waxPackageCreateSchema = z.object({
+  id: z.string().min(1).max(100),
+  name: z.string().trim().min(1).max(120),
+  description: z.string().trim().min(1).max(500),
+  inclusions: z.string().trim(),
+  priceEssential: z.coerce.number().int().min(0),
+  pricePremium: z.coerce.number().int().min(0),
+  duration: z.string().trim().min(1).max(50),
+  tag: z.string().trim().max(50).optional().nullable(),
+  sortOrder: z.coerce.number().int().min(0).max(999).default(99),
+});
+
+export async function createWaxPackage(formData: FormData) {
+  await requireAdminMutation();
+
+  let id = String(formData.get("id") || "").trim().toLowerCase();
+  if (!id) {
+    id = String(formData.get("name") || "")
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
+  const parsed = waxPackageCreateSchema.safeParse({
+    id,
+    name: formData.get("name"),
+    description: formData.get("description"),
+    inclusions: formData.get("inclusions"),
+    priceEssential: formData.get("priceEssential"),
+    pricePremium: formData.get("pricePremium"),
+    duration: formData.get("duration"),
+    tag: formData.get("tag") ? String(formData.get("tag")).trim() : null,
+    sortOrder: formData.get("sortOrder") || 99,
+  });
+
+  if (!parsed.success) {
+    await adminError("Check the package bundle fields and try again.", PRICING_TAB);
+    return;
+  }
+
+  const inclusionsArray = parsed.data.inclusions
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  let outcome: Outcome;
+  try {
+    const sql = getDb();
+    if (sql) {
+      await sql`
+        INSERT INTO wax_packages (id, name, description, inclusions, price_essential, price_premium, duration, tag, sort_order, active)
+        VALUES (
+          ${parsed.data.id},
+          ${parsed.data.name},
+          ${parsed.data.description},
+          ${inclusionsArray},
+          ${parsed.data.priceEssential},
+          ${parsed.data.pricePremium},
+          ${parsed.data.duration},
+          ${parsed.data.tag},
+          ${parsed.data.sortOrder},
+          true
+        )
+        ON CONFLICT (id) DO UPDATE SET
+          name = EXCLUDED.name,
+          description = EXCLUDED.description,
+          inclusions = EXCLUDED.inclusions,
+          price_essential = EXCLUDED.price_essential,
+          price_premium = EXCLUDED.price_premium,
+          duration = EXCLUDED.duration,
+          tag = EXCLUDED.tag,
+          sort_order = EXCLUDED.sort_order,
+          active = true;
+      `;
+      outcome = ok;
+    } else {
+      outcome = fail("Database not connected.");
+    }
+  } catch (error) {
+    console.error("[admin] wax package create failed:", error);
+    outcome = fail("Could not add package bundle.");
+  }
+
+  await finish(outcome, `Package bundle "${parsed.data.name}" added to menu.`, PRICING_TAB, true);
+}
+
+export async function deleteWaxPackage(formData: FormData) {
+  await requireAdminMutation();
+
+  const id = String(formData.get("id") ?? "").trim();
+  if (!id) {
+    await adminError("Invalid package reference.", PRICING_TAB);
+    return;
+  }
+
+  let outcome: Outcome;
+  try {
+    const sql = getDb();
+    if (sql) {
+      await sql`DELETE FROM wax_packages WHERE id = ${id}`;
+      outcome = ok;
+    } else {
+      outcome = fail("Database not connected.");
+    }
+  } catch (error) {
+    console.error("[admin] wax package delete failed:", error);
+    outcome = fail("Could not delete package bundle.");
+  }
+
+  await finish(outcome, "Package bundle deleted.", PRICING_TAB, true);
+}

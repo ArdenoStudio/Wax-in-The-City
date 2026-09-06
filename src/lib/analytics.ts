@@ -1,7 +1,15 @@
 export type DeviceType = "ios" | "android" | "desktop";
 
 export interface AnalyticsEventPayload {
-  eventType: "page_view" | "whatsapp_click" | "book_click" | "booking_submit" | "matrix_filter";
+  eventType:
+    | "page_view"
+    | "section_view"
+    | "impression"
+    | "whatsapp_click"
+    | "book_click"
+    | "booking_submit"
+    | "matrix_filter"
+    | "system_error";
   path?: string;
   branch?: string;
   deviceType?: DeviceType;
@@ -53,6 +61,14 @@ export function trackPageView(path: string) {
   trackEvent({ eventType: "page_view", path });
 }
 
+export function trackSectionImpression(sectionName: string, path?: string) {
+  trackEvent({
+    eventType: "section_view",
+    path: path || (typeof window !== "undefined" ? window.location.pathname : "/"),
+    metadata: { section: sectionName },
+  });
+}
+
 export function trackWhatsAppClick(branchOrSource: string) {
   trackEvent({
     eventType: "whatsapp_click",
@@ -74,3 +90,4 @@ export function trackBookingSubmit(branch: string, service?: string) {
     metadata: { service },
   });
 }
+

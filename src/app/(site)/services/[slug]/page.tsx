@@ -100,7 +100,9 @@ export default async function ServiceCategoryPage({
           {category.slug === "waxing" ? (
             <div className="space-y-16">
               <WaxTypesShowcase />
-              <WaxPriceMatrix />
+              <div data-analytics-section="wax-price-matrix">
+                <WaxPriceMatrix />
+              </div>
             </div>
           ) : (
             <div>

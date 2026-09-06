@@ -2,6 +2,10 @@ import {
   updateWaxPrice,
   updateWaxPackage,
   seedWaxPricingFromStatic,
+  createWaxPrice,
+  deleteWaxPrice,
+  createWaxPackage,
+  deleteWaxPackage,
 } from "@/app/admin/dashboard-actions";
 import { getAdminWaxPricing } from "@/lib/pricing-content";
 
@@ -15,7 +19,7 @@ import {
   ADMIN_PRIMARY_BUTTON_CLASS,
   ADMIN_SELECT_CLASS,
 } from "@/components/admin/primitives";
-import { Sparkles, Package, ShieldCheck } from "lucide-react";
+import { Sparkles, Package, ShieldCheck, Plus, Trash2 } from "lucide-react";
 
 export async function PricingSection() {
   const dbReady = isDbConfigured() || isSupabaseAuthConfigured();
@@ -53,18 +57,67 @@ export async function PricingSection() {
       )}
 
       {/* 1. Bundled Packages Editor */}
-      {packages.length > 0 && (
-        <div>
-          <div className="mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Package className="h-5 w-5 text-brand-light" />
-              <h2 className="font-serif text-h3 text-cream">Curated Bundle Packages</h2>
-            </div>
-            <span className="text-caption font-semibold uppercase tracking-wider text-warm-grey">
-              {packages.length} Packages
-            </span>
+      <div>
+        <div className="mb-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Package className="h-5 w-5 text-brand-light" />
+            <h2 className="font-serif text-h3 text-cream">Curated Bundle Packages</h2>
           </div>
+          <span className="text-caption font-semibold uppercase tracking-wider text-warm-grey">
+            {packages.length} Packages
+          </span>
+        </div>
 
+        {/* Add New Package Bundle */}
+        <details className="mb-6 rounded-card border border-cream/10 bg-cream/[0.03] p-4">
+          <summary className="flex cursor-pointer items-center justify-between font-serif text-body-lg text-cream">
+            <span className="flex items-center gap-2">
+              <Plus className="h-4 w-4 text-brand-light" />
+              Add New Package Bundle
+            </span>
+            <span className="text-caption text-warm-grey">Click to expand</span>
+          </summary>
+          <form action={createWaxPackage} className="mt-4 space-y-4">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <AdminFieldLabel label="Package Name">
+                <input name="name" required placeholder="e.g. Silk & Smooth Glow Bundle" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+              <AdminFieldLabel label="Package ID / Slug (Optional)">
+                <input name="id" placeholder="e.g. silk-smooth-bundle" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              <AdminFieldLabel label="Essential Price (LKR)">
+                <input name="priceEssential" type="number" min="0" required placeholder="15000" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+              <AdminFieldLabel label="Premium Price (LKR)">
+                <input name="pricePremium" type="number" min="0" required placeholder="18500" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+              <AdminFieldLabel label="Duration">
+                <input name="duration" required placeholder="e.g. 75 mins" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <AdminFieldLabel label="Tag / Badge (Optional)">
+                <input name="tag" placeholder="e.g. Best Value" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+              <AdminFieldLabel label="Sort Order">
+                <input name="sortOrder" type="number" defaultValue={50} min="0" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+            </div>
+            <AdminFieldLabel label="Description">
+              <textarea name="description" required rows={2} placeholder="Brief summary of what this bundle provides" className={`${ADMIN_INPUT_CLASS} py-2`} />
+            </AdminFieldLabel>
+            <AdminFieldLabel label="Inclusions (Comma separated)">
+              <input name="inclusions" required placeholder="Full Brazilian, Underarms, Half Leg" className={`${ADMIN_INPUT_CLASS} h-10`} />
+            </AdminFieldLabel>
+            <button type="submit" className={ADMIN_PRIMARY_BUTTON_CLASS}>
+              Create Package Bundle
+            </button>
+          </form>
+        </details>
+
+        {packages.length > 0 && (
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {packages.map((pkg) => (
               <AdminPlate key={pkg.id} className="flex flex-col justify-between">
@@ -159,25 +212,89 @@ export async function PricingSection() {
                     </button>
                   </div>
                 </form>
+
+                <form action={deleteWaxPackage} className="mt-3 flex justify-end border-t border-cream/5 pt-2">
+                  <input type="hidden" name="id" value={pkg.id} />
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-1 text-caption text-warm-grey hover:text-error transition-colors"
+                  >
+                    <Trash2 className="h-3.5 w-3.5" />
+                    Delete package
+                  </button>
+                </form>
               </AdminPlate>
             ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* 2. Treatment Areas Price Matrix */}
-      {prices.length > 0 && (
-        <div>
-          <div className="mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="h-5 w-5 text-brand-light" />
-              <h2 className="font-serif text-h3 text-cream">Treatment Area & Product Pricing</h2>
-            </div>
-            <span className="text-caption font-semibold uppercase tracking-wider text-warm-grey">
-              {prices.length} Treatment Areas
-            </span>
+      <div>
+        <div className="mb-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="h-5 w-5 text-brand-light" />
+            <h2 className="font-serif text-h3 text-cream">Treatment Area & Product Pricing</h2>
           </div>
+          <span className="text-caption font-semibold uppercase tracking-wider text-warm-grey">
+            {prices.length} Treatment Areas
+          </span>
+        </div>
 
+        {/* Add New Treatment Area / Product */}
+        <details className="mb-6 rounded-card border border-cream/10 bg-cream/[0.03] p-4">
+          <summary className="flex cursor-pointer items-center justify-between font-serif text-body-lg text-cream">
+            <span className="flex items-center gap-2">
+              <Plus className="h-4 w-4 text-brand-light" />
+              Add New Treatment Area / Wax Product
+            </span>
+            <span className="text-caption text-warm-grey">Click to expand</span>
+          </summary>
+          <form action={createWaxPrice} className="mt-4 space-y-4">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <AdminFieldLabel label="Treatment Area Name">
+                <input name="area" required placeholder="e.g. Nose & Ears" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+              <AdminFieldLabel label="Category">
+                <select name="category" defaultValue="body" className={`${ADMIN_SELECT_CLASS} h-10`}>
+                  <option value="face">Face</option>
+                  <option value="body">Body</option>
+                  <option value="intimate">Intimate</option>
+                </select>
+              </AdminFieldLabel>
+            </div>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+              <AdminFieldLabel label="Lycon Pinkini (LKR)">
+                <input name="lyconPinkini" type="number" min="0" placeholder="Optional" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+              <AdminFieldLabel label="Lycon Superberry (LKR)">
+                <input name="lyconSuperberry" type="number" min="0" placeholder="Optional" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+              <AdminFieldLabel label="Lycon Aloe Vera (LKR)">
+                <input name="lyconAloeVera" type="number" min="0" placeholder="Optional" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+              <AdminFieldLabel label="Rica White Choc (LKR)">
+                <input name="ricaWhiteChoc" type="number" min="0" placeholder="Optional" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+              <AdminFieldLabel label="Brazil Gold (LKR)">
+                <input name="biahuGold" type="number" min="0" placeholder="Optional" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-[1fr_120px]">
+              <AdminFieldLabel label="Protocol Note (Optional)">
+                <input name="note" placeholder="e.g. Strictly disposable strip protocol" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+              <AdminFieldLabel label="Sort Order">
+                <input name="sortOrder" type="number" defaultValue={99} min="0" className={`${ADMIN_INPUT_CLASS} h-10`} />
+              </AdminFieldLabel>
+            </div>
+            <button type="submit" className={ADMIN_PRIMARY_BUTTON_CLASS}>
+              Add Treatment Area to Menu
+            </button>
+          </form>
+        </details>
+
+        {prices.length > 0 && (
           <div className="grid gap-4">
             {prices.map((p) => (
               <AdminPlate key={p.id}>
@@ -294,11 +411,22 @@ export async function PricingSection() {
                     </div>
                   </div>
                 </form>
+
+                <form action={deleteWaxPrice} className="mt-3 flex justify-end border-t border-cream/5 pt-2">
+                  <input type="hidden" name="id" value={p.id} />
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-1 text-caption text-warm-grey hover:text-error transition-colors"
+                  >
+                    <Trash2 className="h-3.5 w-3.5" />
+                    Delete treatment area
+                  </button>
+                </form>
               </AdminPlate>
             ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

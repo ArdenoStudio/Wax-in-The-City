@@ -2,6 +2,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { getDb } from "@/lib/db";
 import { whatsappLink } from "@/lib/site";
 import { AdminPlate, AdminStatusMessage } from "@/components/admin/primitives";
+import { Activity, CheckCircle2, AlertTriangle, Database, Server, Layers } from "lucide-react";
 
 interface StatCardProps {
   label: string;
@@ -47,6 +48,12 @@ interface LatestBookingRow {
   created_at: string;
 }
 
+interface TableAudit {
+  name: string;
+  count: number;
+  description: string;
+}
+
 export async function OverviewSection() {
   const admin = createAdminClient();
   const sql = getDb();
@@ -59,17 +66,25 @@ export async function OverviewSection() {
   ];
   let connected = false;
   let databaseName = "Database";
+  let latencyMs: number | null = null;
   let latest: LatestBookingRow[] = [];
+  let tableAudits: TableAudit[] = [];
 
   // 1. Neon Database Support
   if (sql) {
     try {
-      const [pendingRes, totalRes, servicesRes, galleryRes] = await Promise.all([
+      const startTime = performance.now();
+      const [pendingRes, totalRes, servicesRes, galleryRes, pricesRes, packagesRes, reviewsRes, analyticsRes] = await Promise.all([
         sql`SELECT COUNT(*)::int AS count FROM booking_requests WHERE status = 'pending'`,
         sql`SELECT COUNT(*)::int AS count FROM booking_requests`,
         sql`SELECT COUNT(*)::int AS count FROM services WHERE active = true`,
         sql`SELECT COUNT(*)::int AS count FROM gallery WHERE featured = true`,
+        sql`SELECT COUNT(*)::int AS count FROM wax_prices WHERE active = true`,
+        sql`SELECT COUNT(*)::int AS count FROM wax_packages WHERE active = true`,
+        sql`SELECT COUNT(*)::int AS count FROM testimonials`,
+        sql`SELECT COUNT(*)::int AS count FROM analytics_events`,
       ]);
+      latencyMs = Math.round(performance.now() - startTime);
 
       connected = true;
       databaseName = "Neon Database";
@@ -77,6 +92,15 @@ export async function OverviewSection() {
       stats[1].value = totalRes[0]?.count ?? 0;
       stats[2].value = servicesRes[0]?.count ?? 0;
       stats[3].value = galleryRes[0]?.count ?? 0;
+
+      tableAudits = [
+        { name: "Wax Price Matrix", count: pricesRes[0]?.count ?? 0, description: "Active body & facial areas" },
+        { name: "Bundled Packages", count: packagesRes[0]?.count ?? 0, description: "Curated waxing bundles" },
+        { name: "Services Menu", count: servicesRes[0]?.count ?? 0, description: "Spa & facial treatments" },
+        { name: "Customer Bookings", count: totalRes[0]?.count ?? 0, description: "Total online requests" },
+        { name: "Testimonials", count: reviewsRes[0]?.count ?? 0, description: "Published client quotes" },
+        { name: "Analytics Events", count: analyticsRes[0]?.count ?? 0, description: "Tracked visitor interactions" },
+      ];
 
       const latestRows = await sql`
         SELECT name, phone, branch, service_preference, status, created_at
@@ -93,12 +117,14 @@ export async function OverviewSection() {
   // 2. Supabase Fallback
   if (!connected && admin) {
     try {
+      const startTime = performance.now();
       const [pending, total, services, galleryFeatured] = await Promise.all([
         countRows(admin, "booking_requests", { status: "pending" }),
         countRows(admin, "booking_requests"),
         countRows(admin, "services", { active: true }),
         countRows(admin, "gallery", { featured: true }),
       ]);
+      latencyMs = Math.round(performance.now() - startTime);
 
       connected = !pending.error && !total.error && !services.error && !galleryFeatured.error;
       databaseName = "Supabase";
@@ -123,27 +149,90 @@ export async function OverviewSection() {
 
   return (
     <div className="grid gap-6">
-      <div className="flex flex-wrap items-center gap-3">
-        <span
-          className={`inline-flex items-center gap-2 rounded-pill border px-4 py-2 text-caption font-semibold uppercase tracking-[0.12em] ${
-            connected
-              ? "border-success/30 bg-success/12 text-cream"
-              : "border-error/30 bg-error/10 text-brand-light"
-          }`}
-        >
+      {/* Top Status & Health Strip */}
+      <div className="flex flex-wrap items-center justify-between gap-4 rounded-card border border-cream/10 bg-cream/[0.03] p-4">
+        <div className="flex flex-wrap items-center gap-3">
           <span
-            className={`h-2 w-2 rounded-pill ${connected ? "bg-success" : "bg-error"}`}
-          />
-          {connected ? `${databaseName} connected` : "Database offline"}
-        </span>
+            className={`inline-flex items-center gap-2 rounded-pill border px-3.5 py-1.5 text-caption font-semibold uppercase tracking-[0.12em] ${
+              connected
+                ? "border-success/30 bg-success/12 text-cream"
+                : "border-error/30 bg-error/10 text-brand-light"
+            }`}
+          >
+            <span
+              className={`h-2 w-2 rounded-pill ${connected ? "bg-success" : "bg-error"}`}
+            />
+            {connected ? `${databaseName} connected` : "Database offline"}
+          </span>
+
+          {latencyMs !== null && (
+            <span className="inline-flex items-center gap-1.5 rounded-pill border border-cream/10 bg-cream/5 px-3 py-1 text-caption text-cream/75">
+              <Activity className="h-3.5 w-3.5 text-brand-light" />
+              Query latency: <strong className="text-cream font-mono">{latencyMs} ms</strong>
+            </span>
+          )}
+
+          <span className="inline-flex items-center gap-1.5 rounded-pill border border-cream/10 bg-cream/5 px-3 py-1 text-caption text-cream/75">
+            <Server className="h-3.5 w-3.5 text-brand-light" />
+            Cloudflare Workers Edge
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2 text-caption font-medium text-cream/70">
+          {connected ? (
+            <span className="inline-flex items-center gap-1.5 text-success">
+              <CheckCircle2 className="h-4 w-4" />
+              All systems operational
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 text-error">
+              <AlertTriangle className="h-4 w-4" />
+              System attention required
+            </span>
+          )}
+        </div>
       </div>
 
+      {/* KPI Stat Cards */}
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {stats.map((stat) => (
           <StatCard key={stat.label} label={stat.label} value={stat.value} />
         ))}
       </div>
 
+      {/* Diagnostic & Database Record Audit */}
+      {connected && tableAudits.length > 0 && (
+        <AdminPlate>
+          <div className="flex items-center justify-between border-b border-cream/10 pb-4">
+            <div className="flex items-center gap-2">
+              <Layers className="h-5 w-5 text-brand-light" />
+              <h2 className="font-serif text-h3 text-cream">System Health & Table Integrity</h2>
+            </div>
+            <span className="rounded-pill bg-cream/5 px-3 py-1 text-caption font-semibold uppercase tracking-wider text-warm-grey">
+              Live Database Audit
+            </span>
+          </div>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {tableAudits.map((item) => (
+              <div
+                key={item.name}
+                className="flex items-center justify-between rounded-card border border-cream/10 bg-cream/[0.02] p-3.5"
+              >
+                <div>
+                  <p className="text-body-sm font-medium text-cream">{item.name}</p>
+                  <p className="text-caption text-cream/60">{item.description}</p>
+                </div>
+                <span className="font-serif text-h3 font-medium text-brand-light">
+                  {item.count}
+                </span>
+              </div>
+            ))}
+          </div>
+        </AdminPlate>
+      )}
+
+      {/* Latest Bookings */}
       <AdminPlate>
         <h2 className="font-serif text-h3 text-cream text-balance">Latest booking requests</h2>
         {!connected && (
