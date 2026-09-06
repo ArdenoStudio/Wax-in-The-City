@@ -13,11 +13,11 @@ export function Footer() {
       {/* Ambient Velvet Glow Backdrop */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[550px] w-[900px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(162,15,55,0.22),transparent_70%)] blur-3xl opacity-70"
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[550px] w-[900px] rounded-full bg-gradient-to-b from-brand-action/25 to-transparent blur-3xl opacity-70"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-0 right-0 h-[450px] w-[450px] rounded-full bg-[radial-gradient(circle_at_center,rgba(217,179,95,0.08),transparent_65%)] blur-3xl opacity-50"
+        className="pointer-events-none absolute bottom-0 right-0 h-[450px] w-[450px] rounded-full bg-gradient-to-t from-gold/10 to-transparent blur-3xl opacity-50"
       />
       <div
         aria-hidden
@@ -31,10 +31,10 @@ export function Footer() {
 
       <div className="relative mx-auto max-w-7xl px-5 pb-32 pt-16 md:pb-16 md:pt-20 lg:px-8 lg:pb-20 lg:pt-24">
         {/* Luxury Pre-Footer Reservation Banner */}
-        <div className="relative mb-16 overflow-hidden rounded-3xl border border-cream/12 bg-gradient-to-b from-white/[0.06] to-white/[0.015] p-8 md:p-12 shadow-[0_24px_60px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+        <div className="relative mb-16 overflow-hidden rounded-3xl border border-cream/12 bg-gradient-to-b from-white/[0.06] to-white/[0.015] p-8 md:p-12 shadow-[0_24px_60px_rgba(27,14,16,0.4)] backdrop-blur-xl">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
             <div className="max-w-xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold">
+              <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3.5 py-1 text-caption font-semibold uppercase tracking-[0.22em] text-gold">
                 <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" aria-hidden />
                 Private Sanctuary · Colombo
               </div>
@@ -42,7 +42,7 @@ export function Footer() {
                 An appointment in quiet perfection.
               </h2>
               <p className="mt-3 text-sm md:text-base text-cream/70 leading-relaxed font-light">
-                Indulge in Colombo&apos;s dedicated ladies-only private studios. Single-use spatulas, hospital-grade sterilization, and world-class Lycon Australia &amp; Italian Rica formulations.
+                Indulge in Colombo&apos;s dedicated ladies only private studios. Single-use spatulas, hospital-grade sterilization, and world-class Lycon Australia &amp; Italian Rica formulations.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
@@ -71,7 +71,7 @@ export function Footer() {
               aria-label={`${SITE.name} home`}
               className="group inline-flex items-center gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 rounded-2xl w-fit"
             >
-              <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-cream/15 bg-white/[0.04] p-3 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-500 group-hover:border-gold/40 group-hover:shadow-[0_12px_35px_rgba(217,179,95,0.2)]">
+              <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-cream/15 bg-white/[0.04] p-3 shadow-[0_8px_30px_rgba(27,14,16,0.35)] backdrop-blur-xl transition-all duration-500 group-hover:border-gold/40 group-hover:shadow-[0_12px_35px_rgba(217,179,95,0.2)]">
                 <Image
                   src="/images/witc-logo-white.png"
                   alt={SITE.name}
@@ -85,7 +85,7 @@ export function Footer() {
                 <span className="block font-serif text-xl md:text-2xl font-normal tracking-[0.14em] text-cream uppercase leading-snug">
                   Wax In The City
                 </span>
-                <span className="block text-[10px] uppercase tracking-[0.28em] text-brand-light/80 font-sans mt-0.5">
+                <span className="block text-caption uppercase tracking-[0.28em] text-brand-light/80 font-sans mt-0.5">
                   Private Ladies Sanctuary · Colombo
                 </span>
               </div>
@@ -98,22 +98,22 @@ export function Footer() {
             {/* Hallmarks of Excellence */}
             <div className="mt-6 flex flex-col gap-2.5">
               <div className="flex items-center gap-2.5 text-xs text-cream/75 font-light">
-                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold text-[10px]" aria-hidden>
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold text-xs" aria-hidden>
                   ✦
                 </span>
-                <span>Zero Double-Dipping &amp; Single-Use Spatulas</span>
+                <span>Zero Double Dipping &amp; Single-Use Spatulas</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs text-cream/75 font-light">
-                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold text-[10px]" aria-hidden>
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold text-xs" aria-hidden>
                   ✦
                 </span>
                 <span>Authentic Lycon Australia &amp; Rica Italy Wax</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs text-cream/75 font-light">
-                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold text-[10px]" aria-hidden>
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold text-xs" aria-hidden>
                   ✦
                 </span>
-                <span>Confidential, Ladies-Only Private Suites</span>
+                <span>Confidential, Ladies Only Private Suites</span>
               </div>
             </div>
 
@@ -148,7 +148,7 @@ export function Footer() {
                   href="/services/waxing"
                   className="group flex items-center justify-between text-cream/75 hover:text-cream transition-colors duration-200"
                 >
-                  <span>Stripless Hot Waxing <span className="text-[11px] text-brand-light/70 ml-1">· Lycon</span></span>
+                  <span>Stripless Hot Waxing <span className="text-caption text-brand-light/70 ml-1">· Lycon</span></span>
                   <span className="text-cream/30 group-hover:text-gold transition-colors duration-200 text-xs">&rarr;</span>
                 </Link>
               </li>
@@ -157,7 +157,7 @@ export function Footer() {
                   href="/services/waxing"
                   className="group flex items-center justify-between text-cream/75 hover:text-cream transition-colors duration-200"
                 >
-                  <span>Liposoluble Strip Wax <span className="text-[11px] text-brand-light/70 ml-1">· Rica</span></span>
+                  <span>Liposoluble Strip Wax <span className="text-caption text-brand-light/70 ml-1">· Rica</span></span>
                   <span className="text-cream/30 group-hover:text-gold transition-colors duration-200 text-xs">&rarr;</span>
                 </Link>
               </li>
@@ -252,7 +252,7 @@ export function Footer() {
               {BRANCHES.map((b) => (
                 <div
                   key={b.slug}
-                  className="group relative overflow-hidden rounded-2xl border border-cream/12 bg-white/[0.03] p-4 transition-all duration-300 hover:border-gold/35 hover:bg-white/[0.05] hover:shadow-[0_8px_25px_rgba(0,0,0,0.3)]"
+                  className="group relative overflow-hidden rounded-2xl border border-cream/12 bg-white/[0.03] p-4 transition-all duration-300 hover:border-gold/35 hover:bg-white/[0.05] hover:shadow-[0_8px_25px_rgba(27,14,16,0.3)]"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
@@ -260,7 +260,7 @@ export function Footer() {
                         <h4 className="font-serif text-base text-cream font-medium">
                           {b.name} Studio
                         </h4>
-                        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-medium text-emerald-400 border border-emerald-500/25">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-caption font-medium text-emerald-400 border border-emerald-500/25">
                           <span className="h-1 w-1 rounded-full bg-emerald-400 animate-pulse" aria-hidden />
                           Open Daily
                         </span>
@@ -271,7 +271,7 @@ export function Footer() {
 
                   <div className="mt-3 text-xs text-cream/70 space-y-0.5 tabular-nums font-light">
                     <p>Mon–Sun: {b.hours.weekday}</p>
-                    <p className="text-cream/50 text-[11px]">{b.hours.poya}</p>
+                    <p className="text-cream/50 text-caption">{b.hours.poya}</p>
                   </div>
 
                   <div className="mt-3.5 flex flex-wrap items-center gap-2 pt-3 border-t border-cream/10">
@@ -306,7 +306,7 @@ export function Footer() {
           <p className="text-center sm:text-left">
             &copy; {year} {SITE.name}. All rights reserved.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-5 text-[11px] uppercase tracking-wider text-cream/50">
+          <div className="flex flex-wrap items-center justify-center gap-5 text-caption uppercase tracking-wider text-cream/50">
             <Link href="/about" className="hover:text-cream transition-colors">
               Privacy Protocol
             </Link>
