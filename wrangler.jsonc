@@ -12,5 +12,12 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
+  },
+  "vars": {
+    "ADMIN_PASSWORD": "WaxInTheCity2026!",
+    "ADMIN_SESSION_SECRET": "witc_secure_session_secret_a7e93bc2f10d449e",
+    "DATABASE_URL": "postgresql://neondb_owner:npg_yuKAhVcYB2w8@ep-damp-shape-azl6ymr1-pooler.c-3.ap-southeast-1.aws.neon.tech/neondb?sslmode=require",
+    "NEXT_PUBLIC_SITE_URL": "https://waxinthecity.lk",
+    "NEXT_PUBLIC_WHATSAPP_NUMBER": "94779469437"
   }
 }
