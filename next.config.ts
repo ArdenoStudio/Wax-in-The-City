@@ -72,21 +72,39 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/:path*",
+        source: "/",
         has: [{ type: "host", value: "wax-in-the-city.suvenseoras.workers.dev" }],
-        destination: "https://waxinthecity.lk/:path*",
+        destination: "https://waxinthecity.lk",
         permanent: true,
       },
       {
-        source: "/:path*",
+        source: "/:path+",
+        has: [{ type: "host", value: "wax-in-the-city.suvenseoras.workers.dev" }],
+        destination: "https://waxinthecity.lk/:path+",
+        permanent: true,
+      },
+      {
+        source: "/",
         has: [{ type: "host", value: "www.waxinthecity.lk" }],
-        destination: "https://waxinthecity.lk/:path*",
+        destination: "https://waxinthecity.lk",
         permanent: true,
       },
       {
-        source: "/:path*",
+        source: "/:path+",
+        has: [{ type: "host", value: "www.waxinthecity.lk" }],
+        destination: "https://waxinthecity.lk/:path+",
+        permanent: true,
+      },
+      {
+        source: "/",
         has: [{ type: "host", value: "wax-in-the-city-website.vercel.app" }],
-        destination: "https://waxinthecity.lk/:path*",
+        destination: "https://waxinthecity.lk",
+        permanent: true,
+      },
+      {
+        source: "/:path+",
+        has: [{ type: "host", value: "wax-in-the-city-website.vercel.app" }],
+        destination: "https://waxinthecity.lk/:path+",
         permanent: true,
       },
       { source: "/booking", destination: "/book", permanent: true },
