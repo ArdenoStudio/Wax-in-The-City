@@ -52,11 +52,11 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline'",
+              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: https://*.supabase.co https://lh3.googleusercontent.com",
+              "img-src 'self' data: https://*.supabase.co https://lh3.googleusercontent.com https://www.googletagmanager.com https://*.google-analytics.com",
               "font-src 'self'",
-              "connect-src 'self' https://*.supabase.co",
+              "connect-src 'self' https://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
               "frame-src https://www.google.com",
               "frame-ancestors 'none'",
               "base-uri 'self'",
@@ -71,6 +71,24 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "wax-in-the-city.suvenseoras.workers.dev" }],
+        destination: "https://waxinthecity.lk/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.waxinthecity.lk" }],
+        destination: "https://waxinthecity.lk/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "wax-in-the-city-website.vercel.app" }],
+        destination: "https://waxinthecity.lk/:path*",
+        permanent: true,
+      },
       { source: "/booking", destination: "/book", permanent: true },
       { source: "/pricing", destination: "/services", permanent: true },
       { source: "/wax-types", destination: "/services/waxing", permanent: true },

@@ -8,6 +8,7 @@ import { SmoothScrollProvider } from "@/components/global/SmoothScrollProvider";
 import { SkipLink } from "@/components/global/SkipLink";
 import { MobileStickyActionBar } from "@/components/mobile/MobileStickyActionBar";
 import { AnalyticsTracker } from "@/components/analytics/AnalyticsTracker";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -33,6 +34,25 @@ export const metadata: Metadata = {
     template: `%s · ${SITE.name}`,
   },
   description: SITE.description,
+  keywords: [
+    "waxing colombo",
+    "ladies waxing colombo",
+    "wax in the city sri lanka",
+    "wax in the city lk",
+    "bikini waxing colombo",
+    "brazilian wax colombo",
+    "lycon wax sri lanka",
+    "rica wax colombo",
+    "ladies salon battaramulla",
+    "waxing salon nugegoda",
+    "hydra facial colombo",
+    "moroccan bath colombo",
+    "body waxing sri lanka",
+  ],
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  publisher: SITE.name,
+  category: "beauty",
   manifest: "/site.webmanifest",
   appleWebApp: {
     capable: true,
@@ -96,6 +116,7 @@ export default function RootLayout({
     >
       <body className="min-h-[100dvh] bg-cream text-warm antialiased">
         <SkipLink />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         <AnalyticsTracker />
         <SmoothScrollProvider>
           <ViewTransition default="none">{children}</ViewTransition>

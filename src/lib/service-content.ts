@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getDb } from "@/lib/db";
 import {
   SERVICE_CATEGORIES,
   SERVICES,
@@ -82,6 +83,29 @@ export async function getPublicServiceContent(): Promise<ServiceContent> {
     services: SERVICES,
   };
 
+  // 1. Neon Database Support
+  const sql = getDb();
+  if (sql) {
+    try {
+      const data = await sql`SELECT name, category, description, duration_min, price_from, slug FROM services WHERE active = true ORDER BY sort_order ASC, name ASC`;
+      if (data && data.length > 0) {
+        const services = (data as ServiceRow[])
+          .map((row) => serviceFromRow(row))
+          .filter((service): service is Service => Boolean(service));
+
+        if (services.length > 0) {
+          return {
+            categories: categoriesFromServices(services),
+            services,
+          };
+        }
+      }
+    } catch (error) {
+      console.error("[neon] service query failed:", error);
+    }
+  }
+
+  // 2. Supabase Fallback
   const supabase = await createClient();
   if (!supabase) return fallback;
 
@@ -107,6 +131,22 @@ export async function getPublicServiceContent(): Promise<ServiceContent> {
 }
 
 export async function getAdminServices(): Promise<AdminService[]> {
+  // 1. Neon Database Support
+  const sql = getDb();
+  if (sql) {
+    try {
+      const data = await sql`SELECT id, name, category, description, duration_min, price_from, slug, active, featured, sort_order FROM services ORDER BY sort_order ASC, name ASC`;
+      if (data && data.length > 0) {
+        return (data as ServiceRow[])
+          .map((row) => adminServiceFromRow(row))
+          .filter((service): service is AdminService => Boolean(service));
+      }
+    } catch (error) {
+      console.error("[neon] admin service query failed:", error);
+    }
+  }
+
+  // 2. Supabase Fallback
   const supabase = createAdminClient();
   if (!supabase) return [];
 

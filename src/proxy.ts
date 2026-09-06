@@ -7,24 +7,59 @@ import { NextResponse, type NextRequest } from "next/server";
 const LEGACY_SESSION_COOKIE = "witc_admin_session";
 
 export function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const host = (request.headers.get("host") || "").toLowerCase().trim();
 
-  if (pathname === "/admin" || pathname === "/admin/") {
-    return NextResponse.next();
+  // 1. Canonical Domain Redirection
+  // Ensure workers.dev, www, and vercel.app redirect to official https://waxinthecity.lk
+  const isLocal =
+    host.startsWith("localhost") ||
+    host.startsWith("127.0.0.1") ||
+    host.includes(":3000") ||
+    host.includes(":3001");
+
+  if (!isLocal) {
+    const isWorkersDev = host.includes("workers.dev");
+    const isWww = host.startsWith("www.");
+    const isVercel = host.endsWith(".vercel.app");
+
+    if (isWorkersDev || isWww || isVercel) {
+      const url = request.nextUrl.clone();
+      url.protocol = "https:";
+      url.host = "waxinthecity.lk";
+      url.port = "";
+      return NextResponse.redirect(url, { status: 301 });
+    }
   }
 
-  const hasLegacySession = request.cookies.has(LEGACY_SESSION_COOKIE);
-  const hasSupabaseSession = request.cookies
-    .getAll()
-    .some((cookie) => cookie.name.startsWith("sb-"));
+  // 2. Admin Route Protection
+  const { pathname } = request.nextUrl;
 
-  if (!hasLegacySession && !hasSupabaseSession) {
-    return NextResponse.redirect(new URL("/admin", request.url));
+  if (pathname.startsWith("/admin")) {
+    if (pathname === "/admin" || pathname === "/admin/") {
+      return NextResponse.next();
+    }
+
+    const hasLegacySession = request.cookies.has(LEGACY_SESSION_COOKIE);
+    const hasSupabaseSession = request.cookies
+      .getAll()
+      .some((cookie) => cookie.name.startsWith("sb-"));
+
+    if (!hasLegacySession && !hasSupabaseSession) {
+      return NextResponse.redirect(new URL("/admin", request.url));
+    }
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: [
+    /*
+     * Match all request paths except:
+     * - _next/static (static assets)
+     * - _next/image (image optimization files)
+     * - favicon.ico, images/, videos/
+     */
+    "/((?!_next/static|_next/image|favicon.ico|images/|videos/).*)",
+  ],
 };

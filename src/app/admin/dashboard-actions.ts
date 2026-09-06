@@ -7,6 +7,7 @@ import { z } from "zod";
 import { isAdminAuthenticated, setAdminFlashMessage } from "@/lib/admin-auth";
 import { adminError } from "@/lib/admin-access";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getDb } from "@/lib/db";
 import { GALLERY } from "@/lib/gallery";
 import { WAX_PRICE_ROWS, WAX_PACKAGES } from "@/lib/pricing";
 
@@ -60,16 +61,22 @@ export async function updateBookingStatus(formData: FormData) {
 
   let outcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const { error } = await supabase
-      .from("booking_requests")
-      .update({ status: parsed.data.status })
-      .eq("id", parsed.data.id);
-    outcome = error ? fail("Could not update the booking status.") : ok;
-    if (error) console.error("[admin] booking status update:", error);
+    const sql = getDb();
+    if (sql) {
+      await sql`UPDATE booking_requests SET status = ${parsed.data.status} WHERE id = ${parsed.data.id}`;
+      outcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const { error } = await supabase
+        .from("booking_requests")
+        .update({ status: parsed.data.status })
+        .eq("id", parsed.data.id);
+      outcome = error ? fail("Could not update the booking status.") : ok;
+      if (error) console.error("[admin] booking status update:", error);
+    }
   } catch (error) {
     console.error("[admin] booking status update failed:", error);
-    outcome = fail("Could not reach Supabase to update the booking.");
+    outcome = fail("Could not update the booking in the database.");
   }
 
   await finish(outcome, "Booking status updated.", BOOKING_TAB, false);
@@ -448,27 +455,46 @@ export async function updateWaxPrice(formData: FormData) {
 
   let outcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const { error } = await supabase
-      .from("wax_prices")
-      .update({
-        area: parsed.data.area,
-        category: parsed.data.category,
-        lycon_pinkini: parsed.data.lyconPinkini,
-        lycon_superberry: parsed.data.lyconSuperberry,
-        lycon_aloe_vera: parsed.data.lyconAloeVera,
-        rica_white_choc: parsed.data.ricaWhiteChoc,
-        biahu_gold: parsed.data.biahuGold,
-        note: parsed.data.note,
-        sort_order: parsed.data.sortOrder,
-        active: parsed.data.active,
-      })
-      .eq("id", parsed.data.id);
-    outcome = error ? fail("Could not update the wax pricing row.") : ok;
-    if (error) console.error("[admin] wax price update:", error);
+    const sql = getDb();
+    if (sql) {
+      await sql`
+        UPDATE wax_prices SET
+          area = ${parsed.data.area},
+          category = ${parsed.data.category},
+          lycon_pinkini = ${parsed.data.lyconPinkini},
+          lycon_superberry = ${parsed.data.lyconSuperberry},
+          lycon_aloe_vera = ${parsed.data.lyconAloeVera},
+          rica_white_choc = ${parsed.data.ricaWhiteChoc},
+          biahu_gold = ${parsed.data.biahuGold},
+          note = ${parsed.data.note},
+          sort_order = ${parsed.data.sortOrder},
+          active = ${parsed.data.active}
+        WHERE id = ${parsed.data.id}
+      `;
+      outcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const { error } = await supabase
+        .from("wax_prices")
+        .update({
+          area: parsed.data.area,
+          category: parsed.data.category,
+          lycon_pinkini: parsed.data.lyconPinkini,
+          lycon_superberry: parsed.data.lyconSuperberry,
+          lycon_aloe_vera: parsed.data.lyconAloeVera,
+          rica_white_choc: parsed.data.ricaWhiteChoc,
+          biahu_gold: parsed.data.biahuGold,
+          note: parsed.data.note,
+          sort_order: parsed.data.sortOrder,
+          active: parsed.data.active,
+        })
+        .eq("id", parsed.data.id);
+      outcome = error ? fail("Could not update the wax pricing row.") : ok;
+      if (error) console.error("[admin] wax price update:", error);
+    }
   } catch (error) {
     console.error("[admin] wax price update failed:", error);
-    outcome = fail("Could not reach Supabase to update wax pricing.");
+    outcome = fail("Could not reach database to update wax pricing.");
   }
 
   await finish(outcome, `Wax pricing for ${parsed.data.area} updated.`, PRICING_TAB, true);
@@ -515,26 +541,44 @@ export async function updateWaxPackage(formData: FormData) {
 
   let outcome: Outcome;
   try {
-    const supabase = supabaseOrThrow();
-    const { error } = await supabase
-      .from("wax_packages")
-      .update({
-        name: parsed.data.name,
-        description: parsed.data.description,
-        inclusions: inclusionsArray,
-        price_essential: parsed.data.priceEssential,
-        price_premium: parsed.data.pricePremium,
-        duration: parsed.data.duration,
-        tag: parsed.data.tag,
-        sort_order: parsed.data.sortOrder,
-        active: parsed.data.active,
-      })
-      .eq("id", parsed.data.id);
-    outcome = error ? fail("Could not update the wax package.") : ok;
-    if (error) console.error("[admin] wax package update:", error);
+    const sql = getDb();
+    if (sql) {
+      await sql`
+        UPDATE wax_packages SET
+          name = ${parsed.data.name},
+          description = ${parsed.data.description},
+          inclusions = ${inclusionsArray},
+          price_essential = ${parsed.data.priceEssential},
+          price_premium = ${parsed.data.pricePremium},
+          duration = ${parsed.data.duration},
+          tag = ${parsed.data.tag},
+          sort_order = ${parsed.data.sortOrder},
+          active = ${parsed.data.active}
+        WHERE id = ${parsed.data.id}
+      `;
+      outcome = ok;
+    } else {
+      const supabase = supabaseOrThrow();
+      const { error } = await supabase
+        .from("wax_packages")
+        .update({
+          name: parsed.data.name,
+          description: parsed.data.description,
+          inclusions: inclusionsArray,
+          price_essential: parsed.data.priceEssential,
+          price_premium: parsed.data.pricePremium,
+          duration: parsed.data.duration,
+          tag: parsed.data.tag,
+          sort_order: parsed.data.sortOrder,
+          active: parsed.data.active,
+        })
+        .eq("id", parsed.data.id);
+      outcome = error ? fail("Could not update the wax package.") : ok;
+      if (error) console.error("[admin] wax package update:", error);
+    }
   } catch (error) {
     console.error("[admin] wax package update failed:", error);
-    outcome = fail("Could not reach Supabase to update wax package.");
+    outcome = fail("Could not reach database to update wax package.");
   }
 
   await finish(outcome, `Package ${parsed.data.name} updated.`, PRICING_TAB, true);

@@ -7,12 +7,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, CalendarDays, ChevronDown, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+
 import { IMAGES, VIDEOS, BLUR_DATA_URL } from "@/lib/images";
 import { CARE_STANDARDS } from "@/lib/site";
 import { VideoLoop } from "@/components/ui/video-loop";
@@ -98,7 +93,7 @@ export function HeroSection() {
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.16, ease: EASE_APPLE }}
-            className="mt-4 w-full max-w-[34rem] text-pretty text-body-lg leading-relaxed text-cream/78 will-change-transform"
+            className="mt-4 w-full max-w-[34rem] text-pretty text-body-lg leading-relaxed text-cream/90 will-change-transform"
           >
             Luxurious where it matters, considered everywhere else. Waxing,
             facials and skin care shaped around privacy, fresh preparation and
@@ -112,13 +107,13 @@ export function HeroSection() {
             className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center will-change-transform"
           >
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
-              <Button asChild size="lg" variant="primary" className="w-full sm:w-auto">
+              <Button asChild size="lg" variant="primary" className="w-full sm:w-auto shadow-[0_14px_34px_rgba(162,15,55,0.35)]">
                 <Link href="/book">
                   <CalendarDays className="h-5 w-5" />
                   Book Your Visit
                 </Link>
               </Button>
-              <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto">
+              <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto border border-cream/20 bg-cream/5 text-cream hover:bg-cream/15">
                 <Link href="/services">
                   View Menu
                   <ArrowRight className="h-4 w-4" />
@@ -136,40 +131,52 @@ export function HeroSection() {
             {HERO_TRUST_POINTS.map((point) => (
               <li
                 key={point}
-                className="pressable rounded-pill border border-cream/16 bg-cream/9 px-4 py-2 text-body-sm font-medium text-cream/78 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl"
+                className="pressable rounded-pill border border-cream/20 bg-cream/12 px-4 py-2 text-body-sm font-semibold text-cream shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl"
               >
                 {point}
               </li>
             ))}
           </motion.ul>
 
-          {/* Mobile studio protocol */}
+          {/* Mobile studio protocol — full parity with desktop */}
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.36, delay: reduceMotion ? 0 : 0.26, ease: EASE_APPLE }}
             className="mt-8 lg:hidden will-change-transform"
           >
-            <Accordion type="single" collapsible className="glass-panel rounded-card">
-              <AccordionItem value="protocol" className="border-none">
-                <AccordionTrigger className="px-5 py-4 text-caption font-semibold uppercase tracking-[0.16em] text-brand-light hover:no-underline">
+            <div className="glass-panel overflow-hidden rounded-2xl p-5 shadow-card border border-cream/15 bg-ink/75 backdrop-blur-2xl">
+              <div className="flex items-center justify-between border-b border-cream/14 pb-3">
+                <p className="text-caption font-semibold uppercase tracking-[0.16em] text-brand-light text-pretty">
                   Studio protocol
-                </AccordionTrigger>
-                <AccordionContent className="px-5 pb-5">
-                  <ul className="space-y-3">
-                    {CARE_STANDARDS.map((item) => (
-                      <li
-                        key={item}
-                        className="flex gap-3 rounded-card bg-cream/[0.055] p-3 text-body-sm leading-relaxed text-cream/76"
-                      >
-                        <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+                </p>
+                <span className="rounded-pill bg-cream/12 px-2.5 py-0.5 text-caption font-semibold text-cream">
+                  04 standards
+                </span>
+              </div>
+              <div className="mt-3 overflow-hidden rounded-xl border border-cream/15">
+                <VideoLoop
+                  src={VIDEOS.brandSting.src}
+                  poster={VIDEOS.brandSting.poster}
+                  alt={VIDEOS.brandSting.alt}
+                  className="aspect-[16/9] w-full"
+                />
+              </div>
+              <ul className="mt-4 space-y-2.5">
+                {CARE_STANDARDS.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-2.5 rounded-card bg-cream/[0.08] p-3 text-body-sm leading-relaxed text-cream font-normal"
+                  >
+                    <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 border-t border-cream/14 pt-3 font-serif text-body font-medium text-cream text-pretty">
+                Specialist care without the busy salon floor.
+              </p>
+            </div>
           </motion.div>
         </div>
 

@@ -69,12 +69,12 @@ export function TrustStrip() {
                   aria-hidden
                 />
                 <h3 className="mt-4 font-serif text-h3 font-medium leading-[1.18] tracking-[-0.015em] text-cream text-balance">{pillar.title}</h3>
-                <p className="mt-3 text-body-sm leading-[1.7] text-cream/72 text-pretty">{pillar.body}</p>
+                <p className="mt-3 text-body-sm leading-[1.7] text-cream/88 text-pretty">{pillar.body}</p>
                 <div className="mt-auto pt-7">
-                  <div className="h-px w-full bg-cream/10">
+                  <div className="h-px w-full bg-cream/15">
                     <div className="h-px w-10 bg-gold/80 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full group-hover:bg-gold" />
                   </div>
-                  <span className="mt-3 block text-caption font-semibold uppercase tracking-[0.18em] text-cream/60">
+                  <span className="mt-3 block text-caption font-semibold uppercase tracking-[0.18em] text-cream/75">
                     Studio pillar · 0{i + 1} / 04
                   </span>
                 </div>
@@ -84,7 +84,7 @@ export function TrustStrip() {
         </motion.div>
 
         {/* BeWAXed aftercare retention echo — next appointment + aftercare impossible to miss */}
-        <p className="mx-auto mt-10 max-w-2xl text-center text-body-sm leading-relaxed text-cream/52 text-pretty">
+        <p className="mx-auto mt-10 max-w-2xl text-center text-body-sm font-normal leading-relaxed text-cream/80 text-pretty">
           Aftercare guidance before you leave · Next-visit timing noted · Quiet, private rooms — never rushed.
         </p>
       </div>

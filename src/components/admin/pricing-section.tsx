@@ -4,8 +4,8 @@ import {
   seedWaxPricingFromStatic,
 } from "@/app/admin/dashboard-actions";
 import { getAdminWaxPricing } from "@/lib/pricing-content";
+
 import { isSupabaseAuthConfigured } from "@/lib/admin-access";
-import { formatLKR } from "@/lib/utils";
 import {
   AdminFieldLabel,
   AdminPlate,

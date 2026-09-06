@@ -1,4 +1,5 @@
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getDb } from "@/lib/db";
 import { AdminPlate } from "@/components/admin/primitives";
 import { Smartphone, Monitor, Globe, MessageSquare, CalendarCheck, TrendingUp } from "lucide-react";
 
@@ -21,17 +22,42 @@ interface AnalyticsSummary {
 }
 
 async function getAnalyticsData(): Promise<AnalyticsSummary | null> {
-  const admin = createAdminClient();
-  if (!admin) return null;
+  let events: AnalyticsSummary["recentEvents"] | null = null;
 
-  try {
-    const { data: events, error } = await admin
-      .from("analytics_events")
-      .select("id, event_type, path, device_type, branch, created_at")
-      .order("created_at", { ascending: false })
-      .limit(200);
+  // 1. Neon Database Support
+  const sql = getDb();
+  if (sql) {
+    try {
+      const rows = await sql`
+        SELECT id, event_type, path, device_type, branch, created_at
+        FROM analytics_events
+        ORDER BY created_at DESC
+        LIMIT 200
+      `;
+      events = rows as AnalyticsSummary["recentEvents"];
+    } catch (e) {
+      console.error("[neon] analytics query error:", e);
+    }
+  }
 
-    if (error || !events) return null;
+  // 2. Supabase Fallback
+  if (!events) {
+    const admin = createAdminClient();
+    if (admin) {
+      try {
+        const { data } = await admin
+          .from("analytics_events")
+          .select("id, event_type, path, device_type, branch, created_at")
+          .order("created_at", { ascending: false })
+          .limit(200);
+        events = (data as AnalyticsSummary["recentEvents"]) ?? null;
+      } catch {
+        events = null;
+      }
+    }
+  }
+
+  if (!events) return null;
 
     let totalViews = 0;
     let iosViews = 0;
@@ -66,9 +92,6 @@ async function getAnalyticsData(): Promise<AnalyticsSummary | null> {
       bookingSubmits,
       recentEvents: events.slice(0, 15),
     };
-  } catch {
-    return null;
-  }
 }
 
 export async function AnalyticsSection() {

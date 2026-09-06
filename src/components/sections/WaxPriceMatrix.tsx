@@ -221,40 +221,40 @@ function MobileMatrixCard({ row }: { row: WaxPriceRow }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2, ease: EASE_APPLE }}
-      className="rounded-card border border-warm-border/80 bg-white/80 p-3.5 shadow-sm"
+      className="rounded-card border border-warm-border/80 bg-white/80 p-3.5 shadow-[0_2px_8px_rgba(27,14,16,0.04)]"
     >
-      <div className="flex items-start justify-between gap-2">
+      <div className="flex items-center justify-between gap-3">
         <div className="min-w-0 flex-1">
           <h4 className="font-serif text-body font-semibold text-warm leading-snug">{row.area}</h4>
           {row.note && (
-            <p className="mt-0.5 text-caption text-warm-grey leading-tight">{row.note}</p>
+            <p className="mt-0.5 text-caption font-medium text-warm-grey leading-tight">{row.note}</p>
           )}
         </div>
         <WhatsAppBranchPicker
           service={`${row.area} waxing`}
-          className="pressable inline-flex min-h-9 shrink-0 items-center gap-1 rounded-pill border border-brand-action/35 bg-brand-mist/40 px-3 py-1 text-caption font-semibold text-brand-action active:bg-brand-action active:text-cream"
+          className="pressable inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-pill border border-brand-action/40 bg-brand-mist/60 px-4 py-2 text-caption font-bold text-brand-action shadow-[0_2px_6px_rgba(162,15,55,0.08)] active:bg-brand-action active:text-cream"
         >
-          <WhatsappIcon className="h-3 w-3" />
+          <WhatsappIcon className="h-3.5 w-3.5" />
           <span>Book</span>
         </WhatsAppBranchPicker>
       </div>
 
-      <div className="mt-3 grid grid-cols-3 gap-1.5 border-t border-warm-border/40 pt-2.5 text-center">
-        <div className="rounded-md border border-yellow-200/50 bg-yellow-50/60 px-1 py-1.5">
-          <span className="block text-[10px] font-semibold uppercase tracking-wider text-warm-grey">Brazil Gold</span>
-          <span className="mt-0.5 block text-caption font-semibold text-warm">
+      <div className="mt-3.5 grid grid-cols-3 gap-2 border-t border-warm-border/50 pt-3 text-center">
+        <div className="rounded-lg border border-yellow-300/60 bg-yellow-50/80 px-1.5 py-2">
+          <span className="block text-caption font-bold uppercase tracking-wider text-warm-grey">Brazil Gold</span>
+          <span className="mt-1 block text-body-sm font-bold text-warm">
             {biahuPrice ? formatLKR(biahuPrice) : "—"}
           </span>
         </div>
-        <div className="rounded-md border border-amber-200/50 bg-amber-50/60 px-1 py-1.5">
-          <span className="block text-[10px] font-semibold uppercase tracking-wider text-amber-800">Rica Italy</span>
-          <span className="mt-0.5 block text-caption font-semibold text-warm">
+        <div className="rounded-lg border border-amber-300/60 bg-amber-50/85 px-1.5 py-2">
+          <span className="block text-caption font-bold uppercase tracking-wider text-amber-900">Rica Italy</span>
+          <span className="mt-1 block text-body-sm font-bold text-warm">
             {ricaPrice ? formatLKR(ricaPrice) : "—"}
           </span>
         </div>
-        <div className="rounded-md border border-rose-200/60 bg-rose-50/70 px-1 py-1.5">
-          <span className="block text-[10px] font-semibold uppercase tracking-wider text-rose-700">Lycon Hot</span>
-          <span className="mt-0.5 block text-caption font-semibold text-brand-action">
+        <div className="rounded-lg border border-rose-300/70 bg-rose-50/90 px-1.5 py-2">
+          <span className="block text-caption font-bold uppercase tracking-wider text-rose-800">Lycon Hot</span>
+          <span className="mt-1 block text-body-sm font-bold text-brand-action">
             {lyconPrice ? formatLKR(lyconPrice) : "—"}
           </span>
         </div>

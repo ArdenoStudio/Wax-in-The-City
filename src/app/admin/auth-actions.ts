@@ -21,7 +21,7 @@ async function siteBaseUrl(): Promise<string> {
   const configured = process.env.NEXT_PUBLIC_SITE_URL;
   if (configured) return configured.replace(/\/$/, "");
 
-  return "https://wax-in-the-city-website.vercel.app";
+  return "https://waxinthecity.lk";
 }
 
 export async function signInWithPasswordAction(formData: FormData) {

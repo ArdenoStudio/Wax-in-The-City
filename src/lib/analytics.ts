@@ -1,5 +1,3 @@
-import { createClient } from "@/lib/supabase/client";
-
 export type DeviceType = "ios" | "android" | "desktop";
 
 export interface AnalyticsEventPayload {
@@ -25,16 +23,24 @@ export async function trackEvent(payload: AnalyticsEventPayload): Promise<void> 
     const deviceType = payload.deviceType || detectDeviceType();
     const currentPath = payload.path || window.location.pathname;
 
-    const supabase = createClient();
-    if (!supabase) return;
-
-    await supabase.from("analytics_events").insert({
-      event_type: payload.eventType,
+    const data = {
+      eventType: payload.eventType,
       path: currentPath,
-      device_type: deviceType,
+      deviceType,
       branch: payload.branch || null,
       metadata: payload.metadata || null,
-    });
+    };
+
+    if (typeof fetch === "function") {
+      fetch("/api/analytics", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+        keepalive: true,
+      }).catch(() => {
+        // Non-blocking catch
+      });
+    }
   } catch (err) {
     // Analytics is non-critical; never crash or block user interactions
     if (process.env.NODE_ENV === "development") {

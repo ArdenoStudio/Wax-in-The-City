@@ -50,7 +50,7 @@ export function BeforeAfterSlider({
     <div
       role="region"
       aria-label="Studio standard comparison"
-      className="studio-plate micro-lift overflow-hidden rounded-2xl p-2"
+      className="relative studio-plate micro-lift overflow-hidden rounded-2xl p-2"
     >
       <span className="sr-only">
         Interactive comparison between {beforeLabel} and {afterLabel}. Drag or slide the handle horizontally to see both sides of our studio standard.

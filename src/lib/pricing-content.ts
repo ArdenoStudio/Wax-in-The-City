@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getDb } from "@/lib/db";
 import {
   WAX_PRICE_ROWS,
   WAX_PACKAGES,
@@ -133,6 +134,30 @@ export async function getPublicWaxPricing(): Promise<WaxPricingContent> {
     packages: WAX_PACKAGES,
   };
 
+  // 1. Neon Database Support
+  const sql = getDb();
+  if (sql) {
+    try {
+      const [priceRows, packageRows] = await Promise.all([
+        sql`SELECT * FROM wax_prices WHERE active = true ORDER BY sort_order ASC`,
+        sql`SELECT * FROM wax_packages WHERE active = true ORDER BY sort_order ASC`,
+      ]);
+
+      const rows = (priceRows as DBWaxPriceRow[]).map(mapRowToWaxPriceRow);
+      const packages = (packageRows as DBWaxPackageRow[]).map(mapRowToWaxPackage);
+
+      if (rows.length > 0) {
+        return {
+          rows,
+          packages: packages.length > 0 ? packages : fallback.packages,
+        };
+      }
+    } catch (error) {
+      console.error("[neon] wax pricing query failed:", error);
+    }
+  }
+
+  // 2. Supabase Fallback
   const supabase = await createClient();
   if (!supabase) return fallback;
 
@@ -166,6 +191,25 @@ export async function getAdminWaxPricing(): Promise<{
   prices: AdminWaxPrice[];
   packages: AdminWaxPackage[];
 }> {
+  // 1. Neon Database Support
+  const sql = getDb();
+  if (sql) {
+    try {
+      const [priceRows, packageRows] = await Promise.all([
+        sql`SELECT * FROM wax_prices ORDER BY sort_order ASC`,
+        sql`SELECT * FROM wax_packages ORDER BY sort_order ASC`,
+      ]);
+
+      return {
+        prices: (priceRows as DBWaxPriceRow[]).map(mapRowToAdminWaxPrice),
+        packages: (packageRows as DBWaxPackageRow[]).map(mapRowToAdminWaxPackage),
+      };
+    } catch (error) {
+      console.error("[neon] admin wax pricing query failed:", error);
+    }
+  }
+
+  // 2. Supabase Fallback
   const admin = createAdminClient();
   if (!admin) return { prices: [], packages: [] };
 

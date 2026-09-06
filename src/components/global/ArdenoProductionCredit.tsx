@@ -98,7 +98,7 @@ export function ArdenoProductionCredit({ color = "#fff7f9" }: ArdenoProductionCr
         </div>
 
         <div className="flex flex-col items-center gap-1.5 text-center text-decoration-none">
-          <span className="text-[9px] uppercase tracking-[0.36em] text-white/60 group-hover:text-white/80 transition-all duration-700 font-sans decoration-none">
+          <span className="text-caption uppercase tracking-[0.36em] text-white/60 group-hover:text-white/80 transition-all duration-700 font-sans decoration-none">
             An Ardeno Production
           </span>
           <span
